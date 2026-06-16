@@ -17,7 +17,7 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
   <header class="masthead">
     <div class="masthead-inner">
       <nav class="masthead-nav masthead-nav--left">
-        <a href="#top" class="nav-link">Sign in</a>
+        <a href="/waitlist" class="nav-link">Sign in</a>
         <a href="#product" class="nav-link">Product</a>
         <a href="#workflow" class="nav-link">Workflow</a>
       </nav>
@@ -195,12 +195,12 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     <div class="container product-grid">
       <div>
         <div class="eyebrow eyebrow--strategy">How it works</div>
-        <h2 id="workflow" class="section-h2">A structured place for content to move from idea to approval.</h2>
+        <h2 class="section-h2">A structured place for content to move from idea to approval.</h2>
         <p class="section-body">Each stage has a clear role, output and review point.</p>
         <p class="section-note">Not a project board — a copy desk, where every piece of work has a folder it moves through.</p>
       </div>
 
-      <div class="workflow-stack">
+      <div id="workflow" class="workflow-stack">
         {[
           { label: 'Plan', num: '01', indent: 0, state: 'done' },
           { label: 'Brief', num: '02', indent: 28, state: 'done' },

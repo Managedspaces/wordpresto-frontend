@@ -171,6 +171,17 @@ const {
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    /* Offset sticky masthead (~60px rendered height) so anchors land below it */
+    scroll-padding-top: 68px;
+  }
+
+  @media (max-width: 768px) {
+    html { scroll-padding-top: 56px; }
+  }
+
+  @media (max-width: 480px) {
+    html { scroll-padding-top: 48px; }
   }
 
   body {
