@@ -1,9 +1,1625 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { homePage } from '@/data/pages';
+import { workers } from '@/data/workers';
+
+const { pageTitle, seoTitle, metaDescription } = homePage;
 ---
 
-<BaseLayout>
-  <main>
-    <h1>WordPresto is the content engine behind better publishing workflows.</h1>
-  </main>
+<BaseLayout
+  pageTitle={pageTitle}
+  seoTitle={seoTitle}
+  description={metaDescription}
+  canonical="https://wordpresto.com/"
+>
+
+  <!-- ===================== MASTHEAD ===================== -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <nav class="masthead-nav masthead-nav--left">
+        <a href="#top" class="nav-link">Sign in</a>
+        <a href="#product" class="nav-link">Product</a>
+        <a href="#workflow" class="nav-link">Workflow</a>
+      </nav>
+      <a href="#top" class="masthead-logo">
+        <img src="/brand/horizontal-lockup-transparent.png" alt="WordPresto — the content engine behind publishing" height="48" />
+      </a>
+      <nav class="masthead-nav masthead-nav--right">
+        <a href="#use-cases" class="nav-link">Use cases</a>
+        <a href="#workers" class="nav-link">Workers</a>
+        <a href="#workflow" class="btn btn--primary btn--sm">Explore the workflow</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== 1. HERO ===================== -->
+  <section id="top" class="section section--hero">
+    <div class="container hero-grid">
+
+      <div class="hero-copy">
+        <div class="eyebrow eyebrow--strategy">the content engine behind publishing</div>
+        <h1 class="hero-h1">{pageTitle}</h1>
+        <p class="hero-body">{metaDescription}</p>
+        <p class="hero-audience">Built for copywriters, business owners, website teams and agencies who need structure, quality control and momentum without handing judgement to a black box.</p>
+        <div class="hero-ctas">
+          <a href="#workflow" class="btn btn--primary btn--lg">
+            Explore the workflow
+            <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#workers" class="btn btn--secondary btn--lg btn--tilt">Meet the Workers</a>
+        </div>
+        <div class="hero-prepares">
+          <span class="hero-prepares-label">prepares for</span>
+          <span class="hero-prepares-item">WordPress</span>
+          <span class="hero-dot" aria-hidden="true"></span>
+          <span class="hero-prepares-item">Astro</span>
+          <span class="hero-dot" aria-hidden="true"></span>
+          <span class="hero-prepares-item">Payload</span>
+          <span class="hero-dot" aria-hidden="true"></span>
+          <span class="hero-prepares-item">Sanity</span>
+        </div>
+      </div>
+
+      <!-- Paper mockup composition -->
+      <div class="hero-paper" aria-hidden="true">
+
+        <!-- Marked-up draft (back-left) -->
+        <div class="paper-card paper-card--draft">
+          <div class="paper-fold-corner"></div>
+          <div class="paper-card-header">
+            <span class="mono-label">02 · DRAFT</span>
+            <span class="status-badge status-badge--review">In review</span>
+          </div>
+          <div class="paper-card-body paper-card-body--ruled">
+            <div class="ruled-margin"></div>
+            <h3 class="draft-heading">Why a structured brief beats a blank page</h3>
+            <p class="draft-body">A clear brief gives every writer the same starting point: goal, audience and intent.</p>
+            <p class="draft-body">It removes guesswork and keeps drafts consistent.</p>
+            <span class="hand-note hand-note--amber">tighten intro</span>
+          </div>
+          <span class="paper-tag paper-tag--amber paper-tag--review">In review</span>
+        </div>
+
+        <!-- Content brief sheet (front-right) -->
+        <div class="paper-card paper-card--brief">
+          <span class="folder-tab">BRIEF</span>
+          <div class="paper-fold-corner paper-fold-corner--lg"></div>
+          <div class="brief-body">
+            <div class="mono-label brief-id">01 · BRIEF · launch-guide</div>
+            <h3 class="brief-heading">Content brief</h3>
+            <dl class="brief-grid">
+              <dt class="brief-dt">GOAL</dt>
+              <dd class="brief-dd">Convert trial sign-ups</dd>
+              <dt class="brief-dt">AUDIENCE</dt>
+              <dd class="brief-dd">Website and content leads</dd>
+              <dt class="brief-dt">INTENT</dt>
+              <dd class="brief-dd">Commercial</dd>
+              <dt class="brief-dt">SECTIONS</dt>
+              <dd class="brief-dd">Intro · Proof · CTA</dd>
+            </dl>
+            <div class="brief-footer">
+              <span class="worker-pill">
+                <span class="worker-dot worker-dot--strategy"></span>
+                Iris · Strategist
+              </span>
+              <span class="stamp stamp--signal stamp--rotate-neg">Approved</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Worker profile slip (bottom-left) -->
+        <div class="paper-card paper-card--worker">
+          <div class="paper-fold-corner paper-fold-corner--sm"></div>
+          <div class="worker-slip">
+            <img src="/headshots/profile-17.png" alt="" class="worker-slip-img" width="58" height="58" />
+            <div class="worker-slip-info">
+              <div class="worker-slip-meta">
+                <span class="worker-dot worker-dot--governance"></span>
+                <span class="mono-label">WORKER · REVIEW</span>
+              </div>
+              <div class="worker-slip-name">Audrey</div>
+              <div class="worker-slip-role">Draft Quality Reviewer</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review slip (mid-right) -->
+        <div class="paper-card paper-card--review-slip">
+          <span class="tape"></span>
+          <div class="mono-label review-slip-id">03 · REVIEW</div>
+          <div class="review-slip-item">
+            <span class="review-dot review-dot--amber"></span>
+            <span class="review-slip-text">Needs support — §3</span>
+          </div>
+          <div class="review-slip-item">
+            <span class="review-dot review-dot--cyan"></span>
+            <span class="review-slip-text">Add supporting page</span>
+          </div>
+        </div>
+
+        <!-- CMS destination (bottom-right) -->
+        <div class="paper-card paper-card--cms">
+          <span class="folder-tab folder-tab--sm folder-tab--bottom">04 · CMS</span>
+          <div class="cms-body">
+            <div class="mono-label cms-label">PREPARE FOR</div>
+            <div class="cms-item">
+              <span class="cms-dot cms-dot--signal"></span>
+              <span class="cms-name">WordPress</span>
+              <span class="cms-status">ready</span>
+            </div>
+            <div class="cms-item">
+              <span class="cms-dot cms-dot--empty"></span>
+              <span class="cms-name cms-name--muted">Astro</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 2. PROBLEM ===================== -->
+  <section class="section section--paper-dark section--border-top">
+    <div class="container">
+      <div class="section-intro section-intro--wide">
+        <div class="eyebrow eyebrow--strategy">The desk, before</div>
+        <h2 class="section-h2">Content does not fail because people cannot write. It fails because the workflow is messy.</h2>
+        <p class="section-body">Briefs are vague. Drafts arrive without structure. Good ideas get lost in notes, chats and half-finished documents.</p>
+      </div>
+
+      <div class="problem-grid">
+        {[
+          { title: 'Unclear brief', body: 'Writers start guessing what the page is even for.', note: 'vague?', rot: '-1.3deg' },
+          { title: 'Draft lacks structure', body: 'No shared shape, so every draft reads differently.', rot: '0deg' },
+          { title: 'Checks happen too late', body: 'Important questions surface after the page is already written.', rot: '0deg' },
+          { title: 'Support missing', body: 'Important points move forward without enough support.', note: 'source?', noteColor: 'amber', rot: '1.1deg' },
+          { title: 'Review unclear', body: 'No clear gate, so nobody knows what "done" means.', rot: '0deg' },
+          { title: 'CMS prep left until the end', body: 'Page details and handoff notes become a last-minute scramble.', rot: '0.7deg' },
+        ].map(({ title, body, note, noteColor, rot }) => (
+          <div class="problem-card" style={`transform: rotate(${rot})`}>
+            <div class="paper-fold-corner paper-fold-corner--sm"></div>
+            <div class="problem-card-body">
+              <div class="ruled-margin ruled-margin--sm"></div>
+              <div class="problem-card-title">{title}</div>
+              <div class="problem-card-text">{body}</div>
+              {note && <span class={`hand-note hand-note--${noteColor ?? 'red'} hand-note--card`}>{note}</span>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3. PRODUCT / WORKFLOW ===================== -->
+  <section id="product" class="section section--border-top">
+    <div class="container product-grid">
+      <div>
+        <div class="eyebrow eyebrow--strategy">How it works</div>
+        <h2 id="workflow" class="section-h2">A structured place for content to move from idea to approval.</h2>
+        <p class="section-body">Each stage has a clear role, output and review point.</p>
+        <p class="section-note">Not a project board — a copy desk, where every piece of work has a folder it moves through.</p>
+      </div>
+
+      <div class="workflow-stack">
+        {[
+          { label: 'Plan', num: '01', indent: 0, state: 'done' },
+          { label: 'Brief', num: '02', indent: 28, state: 'done' },
+          { label: 'Draft', num: '03', indent: 56, state: 'done' },
+          { label: 'Review', num: '', indent: 84, state: 'active' },
+          { label: 'Improve', num: '05', indent: 56, state: 'pending' },
+          { label: 'Approve', num: '06', indent: 28, state: 'pending' },
+          { label: 'Prepare for CMS', num: '07', indent: 0, state: 'pending' },
+        ].map(({ label, num, indent, state }) => (
+          <div
+            class={`workflow-row workflow-row--${state}`}
+            style={`margin-left: ${indent}px`}
+            aria-current={state === 'active' ? 'step' : undefined}
+          >
+            <div class="paper-fold-corner paper-fold-corner--sm"></div>
+            <div class="ruled-margin ruled-margin--sm"></div>
+            <span class={`workflow-dot workflow-dot--${state}`} aria-hidden="true">
+              {state === 'done' && (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--wp-signal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>
+              )}
+            </span>
+            <span class={`workflow-label workflow-label--${state}`}>{label}</span>
+            {state === 'active'
+              ? <span class="workflow-badge-now">Now</span>
+              : <span class="workflow-num">{num}</span>
+            }
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 4. CAPABILITIES ===================== -->
+  <section id="capabilities" class="section section--paper-dark section--border-top">
+    <div class="container">
+      <div class="section-intro">
+        <div class="eyebrow eyebrow--strategy">Before the website</div>
+        <h2 class="section-h2">Before it reaches the website.</h2>
+        <p class="section-body">Most of the important work happens before anything is published. WordPresto gives that work a clearer path: from idea, to brief, to draft, to review, to improvement, to approval and handoff.</p>
+      </div>
+
+      <div class="checklist-sheet">
+        <div class="checklist-header">
+          <span class="checklist-title">Before it's published</span>
+          <span class="mono-label">QA CHECKLIST</span>
+        </div>
+        <div class="checklist-body">
+          {[
+            { label: 'Plan the work', body: 'Turn loose ideas and business priorities into a clear direction for the page.', state: 'done' },
+            { label: 'Create the brief', body: 'Give writers the goal, audience, angle and structure before anyone starts drafting.', state: 'done' },
+            { label: 'Shape the draft', body: 'Help the first version follow the purpose of the page instead of starting from a blank document.', state: 'done' },
+            { label: 'Review the work', body: 'Surface what needs attention before the piece reaches the website, CMS or client.', state: 'active' },
+            { label: 'Improve the weak parts', body: 'Tighten sections that are unclear, thin, repetitive or not doing their job.', state: 'pending' },
+            { label: 'Prepare the handoff', body: 'Package the approved work so it can move cleanly into a website, CMS or client review process.', state: 'pending' },
+          ].map(({ label, body, state }, i, arr) => (
+            <div class={`checklist-item${i < arr.length - 1 ? ' checklist-item--border' : ''}`}>
+              <span class={`checklist-box checklist-box--${state}`} aria-hidden="true">
+                {state === 'done' && (
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--wp-signal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>
+                )}
+                {state === 'active' && <span class="checklist-dot-amber"></span>}
+              </span>
+              <div class="checklist-text">
+                <div class={`checklist-label${state === 'pending' ? ' checklist-label--muted' : ''}`}>
+                  {label}
+                  {state === 'active' && <span class="hand-note hand-note--amber hand-note--inline">in progress</span>}
+                </div>
+                <div class={`checklist-desc${state === 'pending' ? ' checklist-desc--muted' : ''}`}>{body}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="checklist-footer">
+          <span class="mono-label">checked before publishing</span>
+          <span class="stamp stamp--signal stamp--rotate-neg">Ready to publish</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 5. USE CASES ===================== -->
+  <section id="use-cases" class="section section--border-top">
+    <div class="container">
+      <div class="section-intro">
+        <div class="eyebrow eyebrow--strategy">Three routes out</div>
+        <h2 class="section-h2">Use WordPresto with the stack you have, or the one you are building next.</h2>
+        <p class="section-body">One content engine. Three ways the finished work leaves the desk.</p>
+      </div>
+
+      <div class="destinations-grid">
+        {[
+          {
+            num: 'DESTINATION 01',
+            title: 'Automated Astro + CMS builds',
+            body: 'The engine behind structured, content-led websites where pages, briefs, updates and handoff notes are planned before they become templates.',
+            note: 'Astro delivery · structured pages',
+          },
+          {
+            num: 'DESTINATION 02',
+            title: 'CMS-connected workflows',
+            body: 'Connect to WordPress, Payload, Sanity or a custom CMS so content is planned, reviewed and prepared before publishing.',
+            note: 'WordPress · Payload · Sanity',
+          },
+          {
+            num: 'DESTINATION 03',
+            title: 'Standalone content engine',
+            body: 'Manage briefs, drafts, reviews and approvals before handing content to a client, editor or website team.',
+            note: 'Brief, review, hand-off',
+          },
+        ].map(({ num, title, body, note }) => (
+          <div class="destination-wrap">
+            <span class="folder-tab folder-tab--destination">{num}</span>
+            <div class="destination-card">
+              <div class="paper-fold-corner"></div>
+              <h3 class="destination-title">{title}</h3>
+              <p class="destination-body">{body}</p>
+              <div class="destination-footer">
+                <span class="destination-arrow">→</span>
+                {note}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 6. WORKERS ===================== -->
+  <section id="workers" class="section section--paper-dark section--border-top">
+    <div class="container">
+      <div class="section-intro section-intro--wide">
+        <div class="eyebrow eyebrow--strategy">The team</div>
+        <h2 class="section-h2">Specialist Workers for each stage of the content workflow.</h2>
+        <p class="section-body">Each Worker is a specialist role with clear inputs, outputs and limits. Browse the team and open any Worker to see where they sit in the workflow.</p>
+      </div>
+
+      <div class="worker-directory-header">
+        <span>WORKER DIRECTORY</span>
+        <span>6 SPECIALIST ROLES · ONE WORKFLOW</span>
+      </div>
+
+      <div class="workers-grid">
+        {workers.map((w) => (
+          <a href={`#workers`} class="worker-card">
+            <div class="paper-fold-corner paper-fold-corner--sm"></div>
+            <div class="worker-card-top">
+              <img src={w.image} alt="" class="worker-card-img" width="64" height="64" />
+              <div class="worker-card-info">
+                <div class="worker-card-name">{w.name}</div>
+                <div class="worker-card-role">{w.role}</div>
+              </div>
+            </div>
+            <div class="worker-card-tags">
+              <span class="worker-tag">
+                <span class="worker-tag-dot" style={`background: ${w.teamColor}`}></span>
+                {w.teamLabel}
+              </span>
+              <span class="worker-tag">Stage · {w.stage}</span>
+            </div>
+            <p class="worker-card-summary">{w.summary}</p>
+            <div class="worker-card-footer">
+              <div class="worker-output">
+                <span class="worker-output-label">OUTPUT</span>
+                <span class="worker-output-value">{w.output}</span>
+              </div>
+              <span class="worker-view-link">
+                View profile
+                <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 7. HUMAN APPROVAL ===================== -->
+  <section class="section section--border-top section--overflow-hidden">
+    <div class="container approval-grid">
+      <div>
+        <div class="eyebrow eyebrow--strategy">Human approval</div>
+        <h2 class="section-h2">Faster content work, without removing human judgement.</h2>
+        <p class="section-body approval-body">Workers plan, draft, check and suggest. People still approve what moves forward — nothing reaches the CMS without human sign-off. This is review-led publishing, not blind automation.</p>
+        <ul class="approval-list" role="list">
+          {[
+            'Workers do not publish without approval.',
+            'Outputs are structured for human review.',
+            'Risks, gaps and weak sections are surfaced early.',
+            'The system supports human judgement — it never overrides it.',
+          ].map((item) => (
+            <li class="approval-list-item">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--wp-signal)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="approval-check"><path d="m5 12 5 5L20 7"/></svg>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Paper mockup: margin notes + approval sheet -->
+      <div class="approval-paper" aria-hidden="true">
+        <!-- Margin notes slip -->
+        <div class="paper-card paper-card--margin-notes">
+          <div class="mono-label">MARGIN NOTES</div>
+          <div class="margin-note-item">
+            <span class="review-dot review-dot--red"></span>
+            <span>Do not publish yet</span>
+          </div>
+          <div class="margin-note-item">
+            <span class="review-dot review-dot--amber"></span>
+            <span>Needs support — §3</span>
+          </div>
+          <div class="margin-note-item">
+            <span class="review-dot review-dot--cyan"></span>
+            <span>Ready for review</span>
+          </div>
+        </div>
+
+        <!-- Approval document -->
+        <div class="paper-card paper-card--approval">
+          <div class="approval-doc-header">
+            <span class="approval-doc-title">Approval</span>
+            <span class="mono-label">launch-guide.md</span>
+          </div>
+          <div class="approval-doc-body">
+            <div class="approval-row">
+              <span>Quality review</span>
+              <span class="status-badge status-badge--ready">Ready</span>
+            </div>
+            <div class="approval-row">
+              <span>Support check</span>
+              <span class="status-badge status-badge--needs">Needs support</span>
+            </div>
+            <div class="approval-row approval-row--last">
+              <span>Final sign-off</span>
+              <span class="mono-label">awaiting human</span>
+            </div>
+          </div>
+          <div class="approval-doc-footer">
+            <span class="mono-label">approved by</span>
+            <span class="hand-signature">A. Mercer</span>
+          </div>
+          <span class="stamp stamp--signal stamp--absolute">Approved</span>
+        </div>
+
+        <!-- Human approval required pill -->
+        <span class="approval-pill">
+          <span class="approval-pill-dot"></span>
+          <span class="mono-label">human approval required</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 8. AUDIENCE ===================== -->
+  <section class="section section--paper-dark section--border-top">
+    <div class="container">
+      <div class="section-intro">
+        <div class="eyebrow eyebrow--strategy">Who it is for</div>
+        <h2 class="section-h2">Built for the people responsible for content outcomes.</h2>
+      </div>
+
+      <div class="audience-grid">
+        {[
+          { group: 'Copywriters', body: 'Better briefs, clearer review notes and a structured way to improve drafts without losing your voice.' },
+          { group: 'Business owners', body: 'A clear view of what content is being made, why it matters and whether it is ready to publish.' },
+          { group: 'Website teams', body: 'A clearer handoff from draft to page, with the purpose, structure and review notes already attached.' },
+          { group: 'Agencies', body: 'A repeatable content process that helps teams move faster while keeping review and approval visible.' },
+        ].map(({ group, body }) => (
+          <div class="audience-card">
+            <div class="paper-fold-corner paper-fold-corner--sm"></div>
+            <div class="audience-for">FOR</div>
+            <h3 class="audience-title">{group}</h3>
+            <p class="audience-body">{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 9. FINAL CTA ===================== -->
+  <section class="section section--cta section--border-top">
+    <div class="cta-inner">
+      <img src="/brand/horizontal-lockup-transparent.png" alt="WordPresto" class="cta-logo" width="174" height="auto" />
+      <h2 class="cta-h2">Give your content workflow somewhere better to live.</h2>
+      <p class="cta-body">Plan, produce, review and improve content before it reaches the CMS, website or client.</p>
+      <div class="cta-buttons">
+        <a href="#workflow" class="btn btn--primary btn--lg">
+          Explore the workflow
+          <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#workers" class="btn btn--secondary btn--lg btn--tilt">Meet the Workers</a>
+      </div>
+      <div class="cta-mark">
+        <span class="cta-rule"></span>
+        <span class="mono-label cta-mark-text">PAPER · INK · SIGNAL · CONTROL</span>
+        <span class="cta-rule"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="/brand/horizontal-lockup-transparent.png" alt="WordPresto" class="footer-logo" width="109" height="62" />
+        <p class="footer-tagline">The content engine behind better publishing workflows.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Product">
+        <span class="footer-nav-heading">Product</span>
+        <a href="#product" class="footer-link">How it works</a>
+        <a href="#workflow" class="footer-link">Workflow</a>
+        <a href="#workers" class="footer-link">Workers</a>
+      </nav>
+      <nav class="footer-nav" aria-label="Use cases">
+        <span class="footer-nav-heading">Use cases</span>
+        <a href="#use-cases" class="footer-link">Astro + CMS builds</a>
+        <a href="#use-cases" class="footer-link">CMS-connected</a>
+        <a href="#use-cases" class="footer-link">Standalone engine</a>
+      </nav>
+      <nav class="footer-nav" aria-label="Audience">
+        <span class="footer-nav-heading">Audience</span>
+        <a href="#top" class="footer-link">Copywriters</a>
+        <a href="#top" class="footer-link">Website teams</a>
+        <a href="#top" class="footer-link">Agencies</a>
+      </nav>
+    </div>
+    <div class="footer-bottom container">
+      <span>© 2026 WordPresto</span>
+      <span>Review-led publishing · Human approval</span>
+    </div>
+  </footer>
+
 </BaseLayout>
+
+<style>
+  /* ===== LAYOUT ===== */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 34px;
+  }
+
+  .section {
+    padding: 92px 0;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+  }
+  .section--paper-dark { background-color: var(--wp-paper-dark); }
+  .section--border-top { border-top: 2px solid var(--wp-ink); }
+  .section--overflow-hidden { overflow: hidden; }
+
+  /* ===== MASTHEAD ===== */
+  .masthead {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+    border-bottom: 2px solid var(--wp-ink);
+  }
+  .masthead-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 34px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 28px;
+  }
+  .masthead-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .masthead-nav--left { justify-content: flex-start; }
+  .masthead-nav--right { justify-content: flex-end; }
+  .masthead-logo img { display: block; height: 48px; width: auto; }
+
+  .nav-link {
+    font-size: var(--wp-text-md);
+    font-weight: 500;
+    color: var(--wp-text-secondary);
+    transition: color 150ms;
+  }
+  .nav-link:hover { color: var(--wp-ink); }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--wp-font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    border-radius: 5px;
+    transition: transform 150ms, box-shadow 150ms;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn--primary {
+    background: var(--wp-ink);
+    color: var(--wp-paper);
+    border: 1px solid var(--wp-ink);
+    box-shadow: 0 2px 4px rgba(17,19,24,0.12), 0 10px 18px -8px rgba(17,19,24,0.22);
+  }
+  .btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(17,19,24,0.16), 0 16px 26px -8px rgba(17,19,24,0.3);
+  }
+  .btn--secondary {
+    background: #FFF;
+    color: var(--wp-ink);
+    border: 1.5px solid var(--wp-ink);
+    box-shadow: 0 2px 4px rgba(17,19,24,0.06), 0 8px 16px -10px rgba(17,19,24,0.16);
+  }
+  .btn--secondary:hover { transform: translateY(-2px); }
+  .btn--tilt { transform: rotate(0.6deg); }
+  .btn--tilt:hover { transform: rotate(0.6deg) translateY(-2px); }
+  .btn--sm { font-size: var(--wp-text-sm); padding: 8px 16px; }
+  .btn--lg { font-size: var(--wp-text-md); padding: 14px 24px; }
+
+  /* ===== HERO ===== */
+  .section--hero {
+    padding: 72px 0 96px;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+    gap: 52px;
+    align-items: center;
+  }
+  .hero-h1 {
+    font-size: clamp(2.7rem, 5.4vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.032em;
+    color: var(--wp-ink);
+    margin: 0;
+  }
+  .hero-body {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+    margin: 28px 0 0;
+    max-width: 500px;
+  }
+  .hero-audience {
+    font-size: var(--wp-text-md);
+    color: var(--wp-text-tertiary);
+    line-height: 1.65;
+    margin: 18px 0 0;
+    max-width: 500px;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    margin-top: 34px;
+    flex-wrap: wrap;
+  }
+  .hero-prepares {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 34px;
+    flex-wrap: wrap;
+  }
+  .hero-prepares-label {
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-muted);
+    font-family: var(--wp-font-mono);
+  }
+  .hero-prepares-item {
+    font-size: var(--wp-text-sm);
+    font-weight: 500;
+    color: var(--wp-text-tertiary);
+  }
+  .hero-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--wp-border-strong);
+  }
+
+  /* ===== PAPER MOCKUP (HERO) ===== */
+  .hero-paper {
+    position: relative;
+    min-height: 600px;
+  }
+  .paper-card {
+    position: absolute;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    overflow: hidden;
+  }
+  .paper-fold-corner {
+    position: absolute;
+    top: 0; right: 0;
+    width: 0; height: 0;
+    border-top: 22px solid var(--wp-paper-dark);
+    border-left: 22px solid transparent;
+    z-index: 5;
+  }
+  .paper-fold-corner::after {
+    content: '';
+    position: absolute;
+    top: -22px; right: -1px;
+    width: 22px; height: 22px;
+    border-left: 1px solid var(--wp-line);
+    border-bottom: 1px solid var(--wp-line);
+    z-index: 4;
+  }
+  .paper-fold-corner--lg { border-top-width: 24px; border-left-width: 24px; }
+  .paper-fold-corner--sm { border-top-width: 18px; border-left-width: 18px; }
+
+  .paper-card--draft {
+    top: 128px; left: 0;
+    width: 286px;
+    transform: rotate(-2.4deg);
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(17,19,24,0.05), 0 22px 44px -18px rgba(17,19,24,0.18);
+  }
+  .paper-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--wp-line);
+  }
+  .paper-card-body {
+    position: relative;
+    padding: 16px 16px 14px 30px;
+  }
+  .paper-card-body--ruled { padding-left: 34px; }
+  .ruled-margin {
+    position: absolute;
+    left: 26px; top: 0; bottom: 0;
+    width: 1px;
+    background: rgba(194,65,58,0.4);
+  }
+  .ruled-margin--sm { left: 20px; }
+
+  .paper-card--brief {
+    position: absolute;
+    top: 0; right: 0;
+    width: 304px;
+    transform: rotate(1.6deg);
+    z-index: 3;
+    box-shadow: 0 2px 4px rgba(17,19,24,0.06), 0 26px 50px -18px rgba(17,19,24,0.22);
+  }
+  .folder-tab {
+    position: absolute;
+    top: -17px; left: 22px;
+    padding: 5px 16px;
+    background: #E3D6B9;
+    border: 1px solid #C7B488;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    font-size: var(--wp-text-xs);
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.1em;
+    color: #5E4F2E;
+    white-space: nowrap;
+  }
+  .folder-tab--sm { font-size: 10px; padding: 4px 13px; }
+  .folder-tab--bottom { top: -16px; left: 16px; }
+  .folder-tab--destination { top: -19px; left: 22px; padding: 7px 20px; border-radius: 8px 8px 0 0; }
+
+  .brief-body { padding: 22px 22px 20px; }
+  .brief-id { margin-bottom: 5px; }
+  .brief-heading {
+    font-size: var(--wp-text-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 18px;
+  }
+  .brief-grid {
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    gap: 10px 12px;
+    align-items: baseline;
+    margin: 0;
+  }
+  .brief-dt {
+    font-size: 11px;
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-muted);
+    letter-spacing: 0.06em;
+  }
+  .brief-dd {
+    font-size: var(--wp-text-base);
+    color: var(--wp-ink);
+    margin: 0;
+  }
+  .brief-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--wp-line);
+  }
+
+  .paper-card--worker {
+    bottom: 0; left: 0;
+    width: 246px;
+    transform: rotate(-1.6deg);
+    z-index: 4;
+    box-shadow: 0 2px 4px rgba(17,19,24,0.05), 0 18px 34px -16px rgba(17,19,24,0.18);
+  }
+  .worker-slip {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+  .worker-slip-img {
+    width: 58px; height: 58px;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 0 0 1px var(--wp-border-secondary);
+    flex-shrink: 0;
+  }
+  .worker-slip-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .worker-slip-name {
+    font-size: var(--wp-text-lg);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .worker-slip-role {
+    font-size: var(--wp-text-xs);
+    color: var(--wp-text-tertiary);
+    margin-top: 2px;
+  }
+
+  .paper-card--review-slip {
+    top: 322px; right: 6px;
+    width: 188px;
+    transform: rotate(2.6deg);
+    z-index: 3;
+    padding: 14px 15px;
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 12px 22px -12px rgba(17,19,24,0.14);
+  }
+  .tape {
+    position: absolute;
+    top: -8px; left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 52px; height: 15px;
+    background: rgba(122,140,120,0.20);
+    border: 1px solid rgba(17,19,24,0.06);
+  }
+  .review-slip-id { margin-bottom: 10px; }
+  .review-slip-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .review-slip-item:last-child { margin-bottom: 0; }
+  .review-slip-text { font-size: var(--wp-text-sm); color: var(--wp-text-secondary); }
+
+  .paper-card--cms {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 184px;
+    z-index: 3;
+    box-shadow: 0 2px 4px rgba(17,19,24,0.05), 0 14px 26px -16px rgba(17,19,24,0.16);
+  }
+  .cms-body { padding: 15px 15px 14px; }
+  .cms-label { margin-bottom: 11px; }
+  .cms-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 9px;
+  }
+  .cms-item:last-child { margin-bottom: 0; }
+  .cms-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .cms-dot--signal { background: var(--wp-signal); }
+  .cms-dot--empty { border: 1.5px solid var(--wp-border-strong); }
+  .cms-name { font-size: var(--wp-text-sm); font-weight: 600; color: var(--wp-ink); }
+  .cms-name--muted { font-weight: 400; color: var(--wp-text-tertiary); }
+  .cms-status { margin-left: auto; font-size: 10px; font-family: var(--wp-font-mono); color: var(--wp-signal); }
+
+  /* ===== SHARED ELEMENTS ===== */
+  .eyebrow {
+    font-size: var(--wp-text-sm);
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .eyebrow--strategy { color: var(--team-strategy); }
+
+  .section-intro { max-width: 660px; margin-bottom: 48px; }
+  .section-intro--wide { max-width: 760px; }
+  .section-h2 {
+    font-size: clamp(2.1rem, 4.4vw, 3.15rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    margin: 0;
+    color: var(--wp-ink);
+  }
+  .section-body {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+    margin: 22px 0 0;
+  }
+  .section-note {
+    font-size: var(--wp-text-md);
+    color: var(--wp-text-tertiary);
+    line-height: 1.65;
+    margin: 16px 0 0;
+  }
+
+  .mono-label {
+    font-size: var(--wp-text-xs);
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .worker-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: var(--wp-text-xs);
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-tertiary);
+  }
+  .worker-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .worker-dot--strategy { background: var(--team-strategy); }
+  .worker-dot--governance { background: var(--team-governance); }
+
+  .review-dot {
+    width: 8px; height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .review-dot--red { background: var(--wp-red); }
+  .review-dot--amber { background: var(--wp-amber); }
+  .review-dot--cyan { background: var(--wp-cyan); }
+
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    font-family: var(--wp-font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    opacity: 0.85;
+  }
+  .stamp--signal { border-color: var(--wp-signal); color: var(--wp-signal); }
+  .stamp--amber { border-color: var(--wp-amber); color: var(--wp-amber); }
+  .stamp--rotate-neg { transform: rotate(-3deg); }
+  .stamp--absolute {
+    position: absolute;
+    top: 80px; right: -12px;
+    transform: rotate(-9deg);
+    background: #FFF;
+    z-index: 4;
+    font-size: 16px;
+    padding: 8px 14px;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    font-family: var(--wp-font-mono);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+  }
+  .status-badge--review { border: 1.5px solid var(--wp-amber); color: var(--wp-amber); background: var(--wp-warning-soft); }
+  .status-badge--ready { border: 1.5px solid var(--wp-signal); color: var(--wp-signal); background: var(--wp-signal-soft); }
+  .status-badge--needs { border: 1.5px solid var(--wp-amber); color: var(--wp-amber); background: var(--wp-warning-soft); }
+
+  .paper-tag {
+    position: absolute;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    font-family: var(--wp-font-mono);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    opacity: 0.82;
+    background: #FFF;
+    z-index: 6;
+  }
+  .paper-tag--amber { border-color: var(--wp-amber); color: var(--wp-amber); }
+  .paper-tag--review { top: 58px; right: -6px; transform: rotate(8deg); }
+
+  .hand-note {
+    font-family: var(--wp-font-hand);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1;
+  }
+  .hand-note--amber { color: var(--wp-amber); }
+  .hand-note--red { color: var(--wp-red); }
+  .hand-note--card {
+    position: absolute;
+    right: 16px; bottom: 10px;
+    transform: rotate(-5deg);
+    opacity: 0.85;
+  }
+  .hand-note--inline {
+    position: absolute;
+    right: 2px; top: 8px;
+    transform: rotate(-7deg);
+    font-size: 20px;
+  }
+
+  .draft-heading {
+    font-size: var(--wp-text-md);
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 11px;
+    letter-spacing: -0.01em;
+  }
+  .draft-body {
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-secondary);
+    line-height: 1.7;
+    margin: 0 0 8px;
+  }
+
+  /* ===== PROBLEM SECTION ===== */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 28px;
+  }
+  .problem-card {
+    position: relative;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 12px 24px -14px rgba(17,19,24,0.15);
+    overflow: hidden;
+  }
+  .problem-card-body {
+    position: relative;
+    padding: 20px 22px 36px 34px;
+  }
+  .problem-card-title {
+    font-size: var(--wp-text-lg);
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .problem-card-text {
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ===== WORKFLOW SECTION ===== */
+  .product-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 56px;
+    align-items: center;
+  }
+  .workflow-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .workflow-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    padding: 15px 22px 15px 32px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 11px 22px -14px rgba(17,19,24,0.14);
+  }
+  .workflow-row--active {
+    border: 2px solid var(--wp-amber);
+    padding: 17px 22px 17px 32px;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(17,19,24,0.07), 0 18px 32px -14px rgba(17,19,24,0.22);
+  }
+  .workflow-dot {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .workflow-dot--done {
+    background: var(--wp-signal-soft);
+  }
+  .workflow-dot--active {
+    background: var(--wp-warning-soft);
+    border: 1.5px solid var(--wp-amber);
+  }
+  .workflow-dot--active::after {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--wp-amber);
+  }
+  .workflow-dot--pending { border: 1.5px solid var(--wp-border-strong); }
+  .workflow-label {
+    font-size: var(--wp-text-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    flex: 1;
+  }
+  .workflow-label--pending { color: var(--wp-text-tertiary); }
+  .workflow-num {
+    font-size: var(--wp-text-sm);
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-muted);
+  }
+  .workflow-badge-now {
+    border: 2px solid var(--wp-amber);
+    color: var(--wp-amber);
+    border-radius: 4px;
+    font-family: var(--wp-font-mono);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    opacity: 0.85;
+  }
+
+  /* ===== CAPABILITIES / CHECKLIST ===== */
+  .checklist-sheet {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 4px rgba(17,19,24,0.06), 0 22px 44px -18px rgba(17,19,24,0.2);
+  }
+  .checklist-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    border-bottom: 2px solid var(--wp-ink);
+  }
+  .checklist-title {
+    font-size: var(--wp-text-2xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .checklist-body { padding: 6px 30px 10px; }
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 0;
+    position: relative;
+  }
+  .checklist-item--border { border-bottom: 1px solid var(--wp-line); }
+  .checklist-box {
+    width: 24px; height: 24px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .checklist-box--done { border: 1.5px solid var(--wp-border-strong); }
+  .checklist-box--active {
+    border: 1.5px solid var(--wp-amber);
+    background: var(--wp-warning-soft);
+  }
+  .checklist-box--pending { border: 1.5px solid var(--wp-border-strong); }
+  .checklist-dot-amber {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--wp-amber);
+  }
+  .checklist-text { flex: 1; min-width: 0; position: relative; }
+  .checklist-label {
+    font-size: var(--wp-text-xl);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 3px;
+  }
+  .checklist-label--muted { color: var(--wp-text-tertiary); }
+  .checklist-desc {
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+  }
+  .checklist-desc--muted { color: var(--wp-text-tertiary); }
+  .checklist-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 30px;
+    border-top: 1px solid var(--wp-line);
+    background: var(--wp-paper);
+  }
+
+  /* ===== USE CASES ===== */
+  .destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .destination-wrap {
+    position: relative;
+    margin-top: 20px;
+  }
+  .destination-card {
+    position: relative;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 14px 26px -16px rgba(17,19,24,0.15);
+    padding: 28px 24px;
+    height: 100%;
+    overflow: hidden;
+  }
+  .destination-title {
+    font-size: var(--wp-text-2xl);
+    font-weight: 700;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .destination-body {
+    font-size: var(--wp-text-md);
+    color: var(--wp-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .destination-footer {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--wp-line);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--wp-text-xs);
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-tertiary);
+  }
+  .destination-arrow { color: var(--wp-ink); font-weight: 700; }
+
+  /* ===== WORKERS ===== */
+  .worker-directory-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--wp-border-strong);
+    border-bottom: 1px solid var(--wp-border-strong);
+    padding: 12px 2px;
+    margin-bottom: 26px;
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.08em;
+    color: var(--wp-text-tertiary);
+  }
+  .workers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+    gap: 22px;
+  }
+  .worker-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 12px 24px -16px rgba(17,19,24,0.14);
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition: border-color 200ms, box-shadow 200ms;
+  }
+  .worker-card:hover {
+    border-color: var(--wp-border-strong);
+    box-shadow: 0 3px 7px rgba(17,19,24,0.1), 0 20px 36px -16px rgba(17,19,24,0.24);
+  }
+  .worker-card-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 16px 12px;
+  }
+  .worker-card-img {
+    width: 64px; height: 64px;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 0 0 1px var(--wp-border-secondary);
+    flex-shrink: 0;
+  }
+  .worker-card-name {
+    font-size: var(--wp-text-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .worker-card-role { font-size: var(--wp-text-sm); color: var(--wp-text-tertiary); margin-top: 3px; }
+  .worker-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 16px 6px;
+  }
+  .worker-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 9px 3px 7px;
+    border: 1px solid var(--wp-line);
+    border-radius: var(--wp-radius-pill);
+    font-size: 10px;
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-tertiary);
+    letter-spacing: 0.04em;
+  }
+  .worker-tag-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .worker-card-summary {
+    margin: 0;
+    padding: 8px 16px 16px;
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+  }
+  .worker-card-footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px 16px;
+    border-top: 1px dashed var(--wp-line);
+  }
+  .worker-output { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .worker-output-label {
+    font-size: 10px;
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-muted);
+    letter-spacing: 0.08em;
+  }
+  .worker-output-value {
+    font-size: var(--wp-text-xs);
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .worker-view-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: var(--wp-text-xs);
+    font-weight: 600;
+    color: var(--wp-ink);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ===== HUMAN APPROVAL ===== */
+  .approval-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 56px;
+    align-items: center;
+  }
+  .approval-body { margin-bottom: 26px; }
+  .approval-list {
+    list-style: none;
+    margin: 0; padding: 0;
+    border-top: 1px solid var(--wp-line);
+  }
+  .approval-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--wp-line);
+    font-size: var(--wp-text-md);
+  }
+  .approval-check { flex-shrink: 0; margin-top: 2px; }
+
+  .approval-paper {
+    position: relative;
+    min-height: 400px;
+  }
+  .paper-card--margin-notes {
+    position: absolute;
+    top: 0; right: 10px;
+    width: 244px;
+    transform: rotate(2.6deg);
+    z-index: 1;
+    padding: 16px 18px;
+    box-shadow: 0 2px 4px rgba(17,19,24,0.05), 0 14px 26px -14px rgba(17,19,24,0.16);
+  }
+  .margin-note-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 9px;
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+  }
+
+  .paper-card--approval {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 340px;
+    transform: rotate(-1.4deg);
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(17,19,24,0.06), 0 24px 46px -16px rgba(17,19,24,0.24);
+  }
+  .approval-doc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-bottom: 2px solid var(--wp-ink);
+  }
+  .approval-doc-title {
+    font-size: var(--wp-text-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .approval-doc-body { padding: 18px 22px; }
+  .approval-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--wp-line);
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+  }
+  .approval-row--last { border-bottom: none; }
+  .approval-doc-footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 22px;
+    border-top: 1px solid var(--wp-line);
+    background: var(--wp-paper);
+  }
+  .hand-signature {
+    font-family: var(--wp-font-hand);
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--wp-ink);
+    line-height: 1;
+    transform: rotate(-3deg);
+    display: inline-block;
+  }
+
+  .approval-pill {
+    position: absolute;
+    top: 168px; right: 0;
+    z-index: 3;
+    transform: rotate(3deg);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: #FFF;
+    border: 1px dashed var(--wp-border-strong);
+    border-radius: var(--wp-radius-pill);
+  }
+  .approval-pill-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--wp-ink);
+  }
+
+  /* ===== AUDIENCE ===== */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .audience-card {
+    position: relative;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 12px 24px -14px rgba(17,19,24,0.15);
+    padding: 22px 20px 24px;
+    overflow: hidden;
+  }
+  .audience-for {
+    font-size: 11px;
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-muted);
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+  }
+  .audience-title {
+    font-size: var(--wp-text-xl);
+    font-weight: 700;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+  .audience-body {
+    margin: 0;
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ===== FINAL CTA ===== */
+  .section--cta { padding: 104px 0 112px; }
+  .cta-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 34px;
+    text-align: center;
+  }
+  .cta-logo {
+    display: block;
+    width: 174px;
+    height: auto;
+    margin: 0 auto 30px;
+  }
+  .cta-h2 {
+    font-size: clamp(2.4rem, 5vw, 3.75rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 0;
+    line-height: 1.04;
+    color: var(--wp-ink);
+  }
+  .cta-body {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+    margin: 22px auto 0;
+    max-width: 560px;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 34px;
+    flex-wrap: wrap;
+  }
+  .cta-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 44px;
+  }
+  .cta-rule {
+    height: 1px;
+    width: 50px;
+    background: var(--wp-border-strong);
+  }
+  .cta-mark-text { letter-spacing: 0.16em; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background-color: var(--wp-paper-dark);
+    background-image: var(--wp-texture-paper);
+    border-top: 2px solid var(--wp-ink);
+    padding: 58px 0 42px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
+  .footer-logo { display: block; height: 62px; width: 109px; align-self: flex-start; margin-left: -4px; }
+  .footer-tagline { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; margin: 6px 0 0; }
+  .footer-nav { display: flex; flex-direction: column; gap: 10px; }
+  .footer-nav-heading { font-size: var(--wp-text-sm); font-weight: 700; }
+  .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); transition: color 150ms; }
+  .footer-link:hover { color: var(--wp-ink); }
+  .footer-bottom {
+    margin-top: 46px;
+    padding-top: 22px;
+    border-top: 1px solid var(--wp-border-strong);
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-muted);
+  }
+</style>

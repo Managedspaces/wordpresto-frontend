@@ -1,0 +1,7 @@
+<svg width="190" height="32" viewBox="0 0 190 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="WordPresto">
+  <rect width="32" height="32" rx="7" fill="#242832"></rect>
+  <rect x="8" y="9" width="16" height="3" rx="1.5" fill="#F7F4EC"></rect>
+  <rect x="8" y="15" width="12" height="3" rx="1.5" fill="#87909C"></rect>
+  <rect x="8" y="21" width="16" height="3" rx="1.5" fill="#1FC77F"></rect>
+  <text x="44" y="22" font-family="Inter, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif" font-size="19" letter-spacing="-0.4" fill="#F7F4EC"><tspan font-weight="500">Word</tspan><tspan font-weight="700">Presto</tspan></text>
+</svg>
