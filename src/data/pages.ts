@@ -19,7 +19,7 @@ export interface PageData {
 
 export const homePage: PageData = {
   slug: '/',
-  pageTitle: 'Word Presto is the content engine behind better publishing workflows.',
+  pageTitle: 'Word Presto is the agentic content engine behind better publishing workflows.',
   seoTitle: 'Content workflow engine for publishing teams | Word Presto',
   metaDescription:
     'Plan, brief, write, review and improve content before it reaches your CMS, website or client.',
@@ -29,7 +29,7 @@ export const homePage: PageData = {
   sections: [
     {
       id: 'hero',
-      heading: 'Word Presto is the content engine behind better publishing workflows.',
+      heading: 'Word Presto is the agentic content engine behind better publishing workflows.',
       body: 'Plan, brief, write, review and improve content before it reaches your CMS, website or client.',
       note: 'Built for copywriters, business owners, website teams and agencies who need structure, quality control and momentum without handing judgement to a black box.',
     },

@@ -38,7 +38,7 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
 
       <div class="hero-copy">
         <div class="eyebrow eyebrow--strategy">the content engine behind publishing</div>
-        <h1 class="hero-h1">{pageTitle}</h1>
+        <h1 class="hero-h1">Word Presto is the <span class="agentic-mark">agentic</span> content engine behind better publishing workflows.</h1>
         <p class="hero-body">{metaDescription}</p>
         <p class="hero-audience">Built for copywriters, business owners, website teams and agencies who need structure, quality control and momentum without handing judgement to a black box.</p>
         <div class="hero-ctas">
@@ -673,6 +673,29 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     color: var(--wp-ink);
     margin: 0;
   }
+
+  /* "agentic" editorial mark — pale ink-wash highlight, slight tilt */
+  .agentic-mark {
+    display: inline-block;
+    position: relative;
+    isolation: isolate;
+    padding: 0 4px;
+    transform: rotate(-2deg);
+    transform-origin: center bottom;
+    white-space: nowrap;
+  }
+  .agentic-mark::before {
+    content: '';
+    position: absolute;
+    inset: 2px -6px -1px -7px;
+    background: #d4e8b2;
+    /* Uneven corners simulate a hand-drawn highlight pass */
+    border-radius: 3px 8px 5px 2px / 6px 3px 7px 4px;
+    transform: skewX(-4deg) rotate(-0.8deg);
+    opacity: 0.78;
+    z-index: -1;
+  }
+
   .hero-body {
     font-size: var(--wp-text-xl);
     color: var(--wp-text-secondary);
