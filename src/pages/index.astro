@@ -695,7 +695,6 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     position: absolute;
     background: #FFF;
     border: 1px solid var(--wp-line);
-    overflow: hidden;
   }
   .paper-fold-corner {
     position: absolute;
@@ -708,7 +707,7 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
   .paper-fold-corner::after {
     content: '';
     position: absolute;
-    top: -22px; right: -1px;
+    top: 0; right: 0;
     width: 22px; height: 22px;
     border-left: 1px solid var(--wp-line);
     border-bottom: 1px solid var(--wp-line);
