@@ -1,0 +1,123 @@
+---
+import { SEO } from 'astro-seo';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const SITE_URL = 'https://wordpresto.com';
+
+const DEFAULT_TITLE = 'WordPresto | The content engine behind better publishing workflows';
+const DEFAULT_DESCRIPTION =
+  'Plan, brief, write, review and improve content before it reaches your CMS, website or client.';
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og/wordpresto-home.png`;
+
+const {
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  canonical = Astro.url.href,
+  ogImage = DEFAULT_OG_IMAGE,
+  noindex = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      noindex={noindex}
+      openGraph={{
+        basic: {
+          title: title,
+          type: 'website',
+          image: ogImage,
+          url: canonical,
+        },
+        optional: {
+          description: description,
+          siteName: 'WordPresto',
+        },
+        image: {
+          width: 1200,
+          height: 630,
+          alt: 'WordPresto — The content engine behind better publishing workflows',
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        title: title,
+        description: description,
+        image: ogImage,
+        imageAlt: 'WordPresto — The content engine behind better publishing workflows',
+      }}
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --ink: #1a1a18;
+    --paper: #f5f0e8;
+    --paper-dark: #ede7d9;
+    --paper-mid: #f0ebe0;
+    --signal: #3d7a4a;
+    --signal-light: #e8f2eb;
+    --rule: #c8bfaa;
+    --muted: #7a7060;
+
+    --font-serif: Georgia, 'Times New Roman', serif;
+    --font-sans: system-ui, -apple-system, sans-serif;
+    --font-mono: 'Courier New', Courier, monospace;
+  }
+
+  html {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    line-height: 1.2;
+    font-weight: normal;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  img, svg {
+    display: block;
+    max-width: 100%;
+  }
+</style>
