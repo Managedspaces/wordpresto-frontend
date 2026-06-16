@@ -560,8 +560,22 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     z-index: 60;
     background-color: var(--wp-bg-primary);
     background-image: var(--wp-texture-paper);
-    border-bottom: 2px solid var(--wp-ink);
     overflow: visible;
+  }
+  .masthead::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      var(--wp-ink) calc(50% - 90px),
+      transparent calc(50% - 90px),
+      transparent calc(50% + 90px),
+      var(--wp-ink) calc(50% + 90px)
+    );
   }
   .masthead-inner {
     position: relative;
