@@ -1655,4 +1655,152 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     font-size: var(--wp-text-sm);
     color: var(--wp-text-muted);
   }
+
+  /* ============================================================
+     RESPONSIVE — tablet landscape / small laptop (≤ 1024px)
+  ============================================================ */
+  @media (max-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 36px;
+    }
+    .hero-paper { min-height: 480px; }
+
+    .product-grid {
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 40px;
+    }
+
+    .audience-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+    .footer-grid > :last-child { display: none; }
+  }
+
+  /* ============================================================
+     RESPONSIVE — tablet portrait / large phone (≤ 768px)
+  ============================================================ */
+  @media (max-width: 768px) {
+    .container { padding: 0 24px; }
+    .section { padding: 60px 0; }
+
+    /* --- Masthead --- */
+    .masthead-inner { padding: 10px 24px; }
+    .masthead-nav--left { display: none; }
+    .masthead-nav--right .nav-link { display: none; }
+    .masthead-logo img { height: 78px; }
+    .masthead::after {
+      background: linear-gradient(
+        to right,
+        var(--wp-ink) calc(50% - 72px),
+        transparent calc(50% - 72px),
+        transparent calc(50% + 72px),
+        var(--wp-ink) calc(50% + 72px)
+      );
+    }
+
+    /* --- Hero --- */
+    .section--hero { padding: 48px 0 56px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 0; }
+    .hero-paper { display: none; }
+    .hero-body { font-size: var(--wp-text-lg); }
+    .hero-audience { font-size: var(--wp-text-base); }
+
+    /* --- Problem --- */
+    .problem-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* --- Workflow --- */
+    .product-grid { grid-template-columns: 1fr; gap: 40px; }
+
+    /* --- Destinations --- */
+    .destinations-grid { grid-template-columns: 1fr; }
+
+    /* --- Approval --- */
+    .approval-grid { grid-template-columns: 1fr; gap: 0; }
+    .approval-paper { display: none; }
+
+    /* --- Audience --- */
+    .audience-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* --- CTA --- */
+    .section--cta { padding: 72px 0 80px; }
+    .cta-inner { padding: 0 24px; }
+
+    /* --- Footer --- */
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .footer-brand {
+      grid-column: 1 / -1;
+      max-width: none;
+    }
+    .footer-grid > :last-child { display: flex; }
+
+    /* --- Workers header --- */
+    .worker-directory-header { flex-wrap: wrap; gap: 6px; }
+  }
+
+  /* ============================================================
+     RESPONSIVE — phone (≤ 480px)
+     Targets: iPhone SE (375px), iPhone 14 (390px), Android (360–412px)
+  ============================================================ */
+  @media (max-width: 480px) {
+    .container { padding: 0 18px; }
+    .section { padding: 44px 0; }
+
+    /* --- Masthead --- */
+    .masthead-inner { padding: 8px 18px; }
+    .masthead-logo img { height: 62px; }
+    .masthead::after {
+      background: linear-gradient(
+        to right,
+        var(--wp-ink) calc(50% - 56px),
+        transparent calc(50% - 56px),
+        transparent calc(50% + 56px),
+        var(--wp-ink) calc(50% + 56px)
+      );
+    }
+    .btn--sm { font-size: 12px; padding: 7px 12px; }
+
+    /* --- Hero --- */
+    .section--hero { padding: 36px 0 48px; }
+    .hero-ctas { flex-direction: column; align-items: flex-start; }
+    .hero-ctas .btn { width: 100%; justify-content: center; }
+    .hero-prepares { gap: 8px; }
+
+    /* --- Section intros --- */
+    .section-body { font-size: var(--wp-text-md); }
+    .section-intro { margin-bottom: 32px; }
+
+    /* --- Problem --- */
+    .problem-grid { grid-template-columns: 1fr; }
+
+    /* --- Workflow — zero out inline margin-left cascade --- */
+    .workflow-row { margin-left: 0 !important; }
+    .workflow-stack { gap: 8px; }
+
+    /* --- Destinations --- */
+    .folder-tab--destination { margin-left: 14px; }
+
+    /* --- Workers --- */
+    .worker-directory-header { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .workers-grid { grid-template-columns: 1fr; }
+
+    /* --- Audience --- */
+    .audience-grid { grid-template-columns: 1fr; }
+
+    /* --- CTA --- */
+    .section--cta { padding: 56px 0 64px; }
+    .cta-inner { padding: 0 18px; }
+    .cta-buttons { flex-direction: column; align-items: stretch; }
+    .cta-buttons .btn { justify-content: center; }
+    .cta-body { font-size: var(--wp-text-md); }
+
+    /* --- Footer --- */
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-brand { grid-column: auto; }
+    .footer-bottom { flex-direction: column; gap: 6px; }
+    .footer { padding: 44px 0 32px; }
+  }
 </style>
