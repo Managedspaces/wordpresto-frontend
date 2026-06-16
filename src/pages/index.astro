@@ -111,7 +111,7 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
         <div class="paper-card paper-card--worker">
           <div class="paper-fold-corner paper-fold-corner--sm"></div>
           <div class="worker-slip">
-            <img src="/headshots/profile-17.png" alt="" class="worker-slip-img" width="58" height="58" />
+            <img src="/agents/profiles/profile-21-192.webp" srcset="/agents/profiles/profile-21-192.webp 1x, /agents/profiles/profile-21-384.webp 2x" alt="" class="worker-slip-img" width="58" height="58" loading="eager" decoding="async" />
             <div class="worker-slip-info">
               <div class="worker-slip-meta">
                 <span class="worker-dot worker-dot--governance"></span>
@@ -347,7 +347,16 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
           <a href={`#workers`} class="worker-card">
             <div class="paper-fold-corner paper-fold-corner--sm"></div>
             <div class="worker-card-top">
-              <img src={w.image} alt="" class="worker-card-img" width="64" height="64" />
+              <img
+                src={w.image}
+                srcset={`${w.image} 1x, ${w.image2x} 2x`}
+                alt={`${w.name} · ${w.role}`}
+                class="worker-card-img"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+              />
               <div class="worker-card-info">
                 <div class="worker-card-name">{w.name}</div>
                 <div class="worker-card-role">{w.role}</div>
@@ -356,7 +365,7 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
             <div class="worker-card-tags">
               <span class="worker-tag">
                 <span class="worker-tag-dot" style={`background: ${w.teamColor}`}></span>
-                {w.teamLabel}
+                {w.department}
               </span>
               <span class="worker-tag">Stage · {w.stage}</span>
             </div>
