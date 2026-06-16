@@ -564,13 +564,13 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     overflow: visible;
   }
   .masthead-inner {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     padding: 12px 34px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 28px;
   }
   .masthead-nav {
     display: flex;
@@ -580,10 +580,11 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
   .masthead-nav--left { justify-content: flex-start; }
   .masthead-nav--right { justify-content: flex-end; }
   .masthead-logo {
-    position: relative;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
     z-index: 61;
-    align-self: start;
-    padding-top: 4px;
   }
   .masthead-logo img { display: block; height: 96px; width: auto; }
 
