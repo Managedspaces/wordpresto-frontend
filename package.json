@@ -12,12 +12,16 @@
     "prebuild": "node scripts/generate-og.mjs && node scripts/generate-page-markdown.mjs && node scripts/generate-llms.mjs",
     "generate:og": "node scripts/generate-og.mjs",
     "generate:markdown": "node scripts/generate-page-markdown.mjs",
-    "generate:llms": "node scripts/generate-llms.mjs"
+    "generate:llms": "node scripts/generate-llms.mjs",
+    "db:setup": "node scripts/setup-db.mjs"
   },
   "dependencies": {
+    "@astrojs/node": "^9.5.5",
     "@astrojs/sitemap": "^3.2.1",
+    "@neondatabase/serverless": "^1.1.0",
     "astro": "^5.1.0",
-    "astro-seo": "^0.8.4"
+    "astro-seo": "^0.8.4",
+    "resend": "^6.12.4"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
