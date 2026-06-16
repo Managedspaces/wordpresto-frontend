@@ -13,14 +13,14 @@
     "generate:og": "node scripts/generate-og.mjs",
     "generate:markdown": "node scripts/generate-page-markdown.mjs",
     "generate:llms": "node scripts/generate-llms.mjs",
-    "db:setup": "node scripts/setup-db.mjs",
-    "start": "node ./dist/server/entry.mjs"
+    "db:setup": "node scripts/setup-db.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^9.5.5",
     "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/vercel": "^10.0.8",
     "@neondatabase/serverless": "^1.1.0",
-    "astro": "^5.1.0",
+    "astro": "^6.4.7",
     "astro-seo": "^0.8.4",
     "resend": "^6.12.4"
   },

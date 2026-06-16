@@ -1,20 +1,17 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 
-// Astro 5 removed the `hybrid` output mode. `output: 'static'` (the default)
-// now behaves identically: all pages/routes are pre-rendered unless they
-// explicitly opt out with `export const prerender = false`.
+// Deployed to Vercel. The Vercel adapter handles both:
+//   - prerendered static pages (index, waitlist) via CDN
+//   - server-rendered API routes (/api/waitlist) via Vercel Serverless Functions
 //
-// The node adapter is still required so the server entry point is emitted at
-// dist/server/entry.mjs to serve the /api/waitlist route at runtime.
-// Start in production with: node ./dist/server/entry.mjs
-//
-// Pre-rendered pages land in dist/client/ as static HTML.
-// Server-only routes (e.g. /api/waitlist) land in dist/server/pages/.
+// Astro 5 note: output: 'hybrid' was removed. output: 'static' (the default)
+// is now equivalent — all pages prerender unless they set prerender = false.
+// The adapter is still required to emit serverless functions for those routes.
 export default defineConfig({
   site: 'https://wordpresto.com',
-  adapter: node({ mode: 'standalone' }),
+  adapter: vercel(),
   integrations: [
     sitemap(),
   ],
