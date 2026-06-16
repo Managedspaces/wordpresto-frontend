@@ -1,0 +1,97 @@
+/**
+ * Generates public/llms.txt and public/llm.txt
+ * Run: node scripts/generate-llms.mjs  (or via prebuild)
+ */
+import { mkdirSync, writeFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const OUT_DIR = join(__dirname, '..', 'public');
+
+mkdirSync(OUT_DIR, { recursive: true });
+
+const content = `# WordPresto
+
+WordPresto is the content engine behind better publishing workflows.
+
+## What WordPresto is
+
+A structured content workflow engine for publishing teams.
+It gives copywriters, business owners, website teams and agencies a clear path from
+idea to approval — plan, brief, draft, review, improve, approve and prepare for
+handoff — before anything is published to a CMS, website or client.
+
+WordPresto is not an AI writing tool that generates content and publishes it automatically.
+It is a workflow engine where AI Workers assist and humans retain final approval.
+
+## Core product direction
+
+Content workflow. Briefing. Drafting. Review. Human approval. Publishing handoff.
+
+## What this site is NOT about
+
+- SEO metadata tooling
+- Accessibility auditing
+- Analytics or reporting dashboards
+- Generic AI content generation
+- Automated publishing without human review
+
+## Main audience
+
+- Copywriters who need clearer briefs and structured review
+- Business owners who need visibility over content quality before it goes live
+- Website teams who need structured handoff from draft to page
+- Agencies who need a repeatable, quality-controlled content process
+
+## Site structure
+
+- Home: https://wordpresto.com/
+  Markdown: https://wordpresto.com/pages/index.md
+  Focus: Content workflow engine for publishing teams.
+  Summary: The core WordPresto product page. Explains the workflow from plan to CMS
+  handoff, introduces Workers, and positions WordPresto as a review-led publishing engine.
+
+## Pages (planned)
+
+- Workers: https://wordpresto.com/workers/
+  Focus: The six specialist Worker roles — Planner, Brief Writer, Draft Reviewer,
+  Section Editor, Approval Reporter, Publishing Preparer.
+
+- Use cases: https://wordpresto.com/use-cases/
+  Focus: Automated Astro + CMS builds, CMS-connected workflows, standalone content engine.
+
+## Workers (specialist AI roles)
+
+Each Worker has clear inputs, outputs and limits. Humans approve before work moves forward.
+
+- Planner — Strategy & Planning — Output: Content direction
+- Brief Writer — Content Production — Output: Page brief
+- Draft Reviewer — Approval & Governance — Output: Review summary
+- Section Editor — Content Production — Output: Edited sections
+- Approval Reporter — Approval & Governance — Output: Approval report
+- Publishing Preparer — CMS Preparation — Output: Handoff pack
+
+## Technology
+
+Built with Astro. Static-first. No CMS dependency on the marketing site.
+Connects to WordPress, Payload, Sanity and other CMSes in product workflows.
+
+## Canonical domain
+
+https://wordpresto.com
+
+## Markdown mirrors
+
+Human-readable and LLM-readable Markdown versions of each page are available at:
+https://wordpresto.com/pages/{slug}.md
+`;
+
+const llmsTxtPath = join(OUT_DIR, 'llms.txt');
+const llmTxtPath = join(OUT_DIR, 'llm.txt');
+
+writeFileSync(llmsTxtPath, content, 'utf8');
+console.log(`✓ Generated: ${llmsTxtPath}`);
+
+writeFileSync(llmTxtPath, content, 'utf8');
+console.log(`✓ Generated: ${llmTxtPath}`);

@@ -5,11 +5,14 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run prebuild && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "typecheck": "astro check",
-    "generate:og": "node scripts/generate-og.mjs"
+    "prebuild": "node scripts/generate-og.mjs && node scripts/generate-page-markdown.mjs && node scripts/generate-llms.mjs",
+    "generate:og": "node scripts/generate-og.mjs",
+    "generate:markdown": "node scripts/generate-page-markdown.mjs",
+    "generate:llms": "node scripts/generate-llms.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
