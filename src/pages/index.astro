@@ -22,7 +22,7 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
         <a href="#workflow" class="nav-link">Workflow</a>
       </nav>
       <a href="#top" class="masthead-logo">
-        <img src="/brand/horizontal-lockup-transparent.png" alt="WordPresto — the content engine behind publishing" height="48" />
+        <img src="/brand/main-logo.png" alt="WordPresto — the content engine behind publishing" height="110" />
       </a>
       <nav class="masthead-nav masthead-nav--right">
         <a href="#use-cases" class="nav-link">Use cases</a>
@@ -560,16 +560,31 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     z-index: 60;
     background-color: var(--wp-bg-primary);
     background-image: var(--wp-texture-paper);
-    border-bottom: 2px solid var(--wp-ink);
+    overflow: visible;
+  }
+  .masthead::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      var(--wp-ink) calc(50% - 90px),
+      transparent calc(50% - 90px),
+      transparent calc(50% + 90px),
+      var(--wp-ink) calc(50% + 90px)
+    );
   }
   .masthead-inner {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     padding: 12px 34px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 28px;
   }
   .masthead-nav {
     display: flex;
@@ -578,7 +593,14 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
   }
   .masthead-nav--left { justify-content: flex-start; }
   .masthead-nav--right { justify-content: flex-end; }
-  .masthead-logo img { display: block; height: 48px; width: auto; }
+  .masthead-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    z-index: 61;
+  }
+  .masthead-logo img { display: block; height: 110px; width: auto; }
 
   .nav-link {
     font-size: var(--wp-text-md);
