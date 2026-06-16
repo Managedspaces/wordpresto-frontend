@@ -22,13 +22,24 @@ async function hashIp(ip: string): Promise<string> {
   return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
-// GET /api/waitlist — health check (table exists, DB reachable)
-export const GET: APIRoute = async () => {
+// GET /api/waitlist?token=<DIAGNOSTIC_TOKEN> — restricted health check
+// Only active when DIAGNOSTIC_TOKEN env var is set. Returns 404 otherwise.
+export const GET: APIRoute = async ({ request }) => {
   const respond = (status: number, body: object) =>
     new Response(JSON.stringify(body), {
       status,
       headers: { 'Content-Type': 'application/json' },
     });
+
+  const expectedToken = process.env.DIAGNOSTIC_TOKEN;
+  if (!expectedToken) {
+    return respond(404, { ok: false });
+  }
+
+  const { searchParams } = new URL(request.url);
+  if (searchParams.get('token') !== expectedToken) {
+    return respond(401, { ok: false });
+  }
 
   if (!process.env.DATABASE_URL) {
     return respond(503, { ok: false, error: 'DATABASE_URL not configured.' });
@@ -45,11 +56,10 @@ export const GET: APIRoute = async () => {
     return respond(exists ? 200 : 503, {
       ok: exists,
       db: 'connected',
-      table: exists ? 'ok' : 'missing — run npm run db:setup',
+      table: exists ? 'ok' : 'missing',
     });
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    return respond(500, { ok: false, db: 'error', error: msg });
+  } catch {
+    return respond(500, { ok: false, db: 'error' });
   }
 };
 
