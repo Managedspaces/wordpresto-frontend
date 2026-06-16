@@ -1,18 +1,18 @@
 ---
-title: "WordPresto is the content engine behind better publishing workflows."
-seoTitle: "Content workflow engine for publishing teams | WordPresto"
+title: "Word Presto is the content engine behind better publishing workflows."
+seoTitle: "Content workflow engine for publishing teams | Word Presto"
 description: "Plan, brief, write, review and improve content before it reaches your CMS, website or client."
 canonical: "https://wordpresto.com/"
 focus: "Content workflow engine for publishing teams"
 ---
 
-# WordPresto is the content engine behind better publishing workflows.
+# Word Presto is the content engine behind better publishing workflows.
 
 Plan, brief, write, review and improve content before it reaches your CMS, website or client.
 
 ---
 
-WordPresto is a structured content workflow engine. It gives teams a clear path from idea to approval — plan, brief, draft, review, improve, approve and prepare for handoff — before anything is published.
+Word Presto is a structured content workflow engine. It gives teams a clear path from idea to approval — plan, brief, draft, review, improve, approve and prepare for handoff — before anything is published.
 
 ## The problem: messy workflows, not poor writers
 
@@ -39,7 +39,7 @@ A structured place for content to move from idea to approval. Each stage has a c
 
 ## Before it reaches the website
 
-Most of the important work happens before anything is published. WordPresto gives that work a clearer path: from idea, to brief, to draft, to review, to improvement, to approval and handoff.
+Most of the important work happens before anything is published. Word Presto gives that work a clearer path: from idea, to brief, to draft, to review, to improvement, to approval and handoff.
 
 - Plan the work — turn loose ideas and business priorities into a clear direction for the page.
 - Create the brief — give writers the goal, audience, angle and structure before anyone starts drafting.
@@ -48,7 +48,7 @@ Most of the important work happens before anything is published. WordPresto give
 - Improve the weak parts — tighten sections that are unclear, thin, repetitive or not doing their job.
 - Prepare the handoff — package the approved work so it can move cleanly into a website, CMS or client review process.
 
-## Three ways to use WordPresto
+## Three ways to use Word Presto
 
 One content engine. Three ways the finished work leaves the desk.
 
