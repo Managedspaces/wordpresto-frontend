@@ -25,13 +25,13 @@ const pages = [
   {
     slug: 'index',
     canonicalUrl: 'https://wordpresto.com/',
-    pageTitle: 'WordPresto is the content engine behind better publishing workflows.',
-    seoTitle: 'Content workflow engine for publishing teams | WordPresto',
+    pageTitle: 'Word Presto is the content engine behind better publishing workflows.',
+    seoTitle: 'Content workflow engine for publishing teams | Word Presto',
     metaDescription:
       'Plan, brief, write, review and improve content before it reaches your CMS, website or client.',
     focus: 'Content workflow engine for publishing teams',
     summary:
-      'WordPresto is a structured content workflow engine. It gives teams a clear path from idea to approval — plan, brief, draft, review, improve, approve and prepare for handoff — before anything is published.',
+      'Word Presto is a structured content workflow engine. It gives teams a clear path from idea to approval — plan, brief, draft, review, improve, approve and prepare for handoff — before anything is published.',
     sections: [
       {
         heading: 'The problem: messy workflows, not poor writers',
@@ -60,7 +60,7 @@ const pages = [
       },
       {
         heading: 'Before it reaches the website',
-        body: 'Most of the important work happens before anything is published. WordPresto gives that work a clearer path: from idea, to brief, to draft, to review, to improvement, to approval and handoff.',
+        body: 'Most of the important work happens before anything is published. Word Presto gives that work a clearer path: from idea, to brief, to draft, to review, to improvement, to approval and handoff.',
         items: [
           'Plan the work — turn loose ideas and business priorities into a clear direction for the page.',
           'Create the brief — give writers the goal, audience, angle and structure before anyone starts drafting.',
@@ -71,7 +71,7 @@ const pages = [
         ],
       },
       {
-        heading: 'Three ways to use WordPresto',
+        heading: 'Three ways to use Word Presto',
         body: 'One content engine. Three ways the finished work leaves the desk.',
         items: [
           'Automated Astro + CMS builds — the engine behind structured, content-led websites where pages, briefs, updates and handoff notes are planned before they become templates.',

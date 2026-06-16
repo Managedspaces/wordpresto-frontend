@@ -19,17 +19,17 @@ export interface PageData {
 
 export const homePage: PageData = {
   slug: '/',
-  pageTitle: 'WordPresto is the content engine behind better publishing workflows.',
-  seoTitle: 'Content workflow engine for publishing teams | WordPresto',
+  pageTitle: 'Word Presto is the content engine behind better publishing workflows.',
+  seoTitle: 'Content workflow engine for publishing teams | Word Presto',
   metaDescription:
     'Plan, brief, write, review and improve content before it reaches your CMS, website or client.',
   focus: 'Content workflow engine for publishing teams',
   summary:
-    'WordPresto is a structured content workflow engine. It gives teams a clear path from idea to approval — plan, brief, draft, review, improve, approve and prepare for handoff — before anything is published.',
+    'Word Presto is a structured content workflow engine. It gives teams a clear path from idea to approval — plan, brief, draft, review, improve, approve and prepare for handoff — before anything is published.',
   sections: [
     {
       id: 'hero',
-      heading: 'WordPresto is the content engine behind better publishing workflows.',
+      heading: 'Word Presto is the content engine behind better publishing workflows.',
       body: 'Plan, brief, write, review and improve content before it reaches your CMS, website or client.',
       note: 'Built for copywriters, business owners, website teams and agencies who need structure, quality control and momentum without handing judgement to a black box.',
     },
@@ -67,7 +67,7 @@ export const homePage: PageData = {
       id: 'capabilities',
       eyebrow: 'Before the website',
       heading: 'Before it reaches the website.',
-      body: 'Most of the important work happens before anything is published. WordPresto gives that work a clearer path: from idea, to brief, to draft, to review, to improvement, to approval and handoff.',
+      body: 'Most of the important work happens before anything is published. Word Presto gives that work a clearer path: from idea, to brief, to draft, to review, to improvement, to approval and handoff.',
       items: [
         { title: 'Plan the work', body: 'Turn loose ideas and business priorities into a clear direction for the page.' },
         { title: 'Create the brief', body: 'Give writers the goal, audience, angle and structure before anyone starts drafting.' },
@@ -80,7 +80,7 @@ export const homePage: PageData = {
     {
       id: 'use-cases',
       eyebrow: 'Three routes out',
-      heading: 'Use WordPresto with the stack you have, or the one you are building next.',
+      heading: 'Use Word Presto with the stack you have, or the one you are building next.',
       body: 'One content engine. Three ways the finished work leaves the desk.',
       items: [
         {

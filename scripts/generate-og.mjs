@@ -38,13 +38,13 @@ const svg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http:/
 
   <!-- =================== LEFT: LOGOTYPE + COPY =================== -->
 
-  <!-- WordPresto logotype -->
+  <!-- Word Presto logotype -->
   <text x="72" y="148"
     font-family="Georgia, 'Times New Roman', serif"
     font-size="82"
     font-weight="700"
     fill="#111318"
-    letter-spacing="-3">WordPresto</text>
+    letter-spacing="-3">Word Presto</text>
 
   <!-- Underline rule under logotype -->
   <line x1="72" y1="164" x2="540" y2="164" stroke="#111318" stroke-width="2.5"/>

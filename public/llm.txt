@@ -1,15 +1,15 @@
-# WordPresto
+# Word Presto
 
-WordPresto is the content engine behind better publishing workflows.
+Word Presto is the content engine behind better publishing workflows.
 
-## What WordPresto is
+## What Word Presto is
 
 A structured content workflow engine for publishing teams.
 It gives copywriters, business owners, website teams and agencies a clear path from
 idea to approval — plan, brief, draft, review, improve, approve and prepare for
 handoff — before anything is published to a CMS, website or client.
 
-WordPresto is not an AI writing tool that generates content and publishes it automatically.
+Word Presto is not an AI writing tool that generates content and publishes it automatically.
 It is a workflow engine where AI Workers assist and humans retain final approval.
 
 ## Core product direction
@@ -36,8 +36,8 @@ Content workflow. Briefing. Drafting. Review. Human approval. Publishing handoff
 - Home: https://wordpresto.com/
   Markdown: https://wordpresto.com/pages/index.md
   Focus: Content workflow engine for publishing teams.
-  Summary: The core WordPresto product page. Explains the workflow from plan to CMS
-  handoff, introduces Workers, and positions WordPresto as a review-led publishing engine.
+  Summary: The core Word Presto product page. Explains the workflow from plan to CMS
+  handoff, introduces Workers, and positions Word Presto as a review-led publishing engine.
 
 ## Pages (planned)
 
