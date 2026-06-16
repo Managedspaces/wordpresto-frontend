@@ -16,7 +16,6 @@
     "db:setup": "node scripts/setup-db.mjs"
   },
   "dependencies": {
-    "@astrojs/node": "^9.5.5",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/vercel": "^10.0.8",
     "@neondatabase/serverless": "^1.1.0",
