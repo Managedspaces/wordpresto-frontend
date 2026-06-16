@@ -1,5 +1,4 @@
 import type { APIRoute } from 'astro';
-import { createHash } from 'crypto';
 import { getDb } from '@/lib/db';
 import { getPricingInfo } from '@/lib/countries';
 
@@ -16,6 +15,53 @@ function safeArray(v: unknown, itemMax = 100, listMax = 40): string[] {
   if (!Array.isArray(v)) return [];
   return v.map((x) => String(x).trim().slice(0, itemMax)).filter(Boolean).slice(0, listMax);
 }
+
+// Web Crypto API — works in Node.js, Vercel Edge, and Cloudflare Workers
+async function hashIp(ip: string): Promise<string> {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(ip));
+  return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+// GET /api/waitlist?token=<DIAGNOSTIC_TOKEN> — restricted health check
+// Only active when DIAGNOSTIC_TOKEN env var is set. Returns 404 otherwise.
+export const GET: APIRoute = async ({ request }) => {
+  const respond = (status: number, body: object) =>
+    new Response(JSON.stringify(body), {
+      status,
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+  const expectedToken = process.env.DIAGNOSTIC_TOKEN;
+  if (!expectedToken) {
+    return respond(404, { ok: false });
+  }
+
+  const { searchParams } = new URL(request.url);
+  if (searchParams.get('token') !== expectedToken) {
+    return respond(401, { ok: false });
+  }
+
+  if (!process.env.DATABASE_URL) {
+    return respond(503, { ok: false, error: 'DATABASE_URL not configured.' });
+  }
+  try {
+    const sql = getDb();
+    const rows = await sql`
+      SELECT EXISTS (
+        SELECT 1 FROM information_schema.tables
+        WHERE table_name = 'waitlist_applications'
+      ) AS table_exists
+    ` as Array<{ table_exists: boolean }>;
+    const exists = rows[0]?.table_exists === true;
+    return respond(exists ? 200 : 503, {
+      ok: exists,
+      db: 'connected',
+      table: exists ? 'ok' : 'missing',
+    });
+  } catch {
+    return respond(500, { ok: false, db: 'error' });
+  }
+};
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   const json = (status: number, body: object) =>
@@ -37,16 +83,16 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   }
 
   // --- Collect and sanitise ---
-  const fullName   = trim(body.full_name, 200);
-  const email      = trim(body.email, 300).toLowerCase();
-  const company    = trim(body.company_name, 200) || null;
-  const role       = trim(body.role, 100);
+  const fullName    = trim(body.full_name, 200);
+  const email       = trim(body.email, 300).toLowerCase();
+  const company     = trim(body.company_name, 200) || null;
+  const role        = trim(body.role, 100);
   const countryCode = trim(body.country_code, 3).toUpperCase();
   const countryName = trim(body.country_name, 100) || null;
   const detectedCC  = trim(body.detected_country_code, 3).toUpperCase() || null;
   const industry    = trim(body.industry, 100);
   const industryCtx = trim(body.industry_context, 1000) || null;
-  const writingNeeds      = safeArray(body.writing_needs);
+  const writingNeeds       = safeArray(body.writing_needs);
   const currentFrustration = trim(body.current_frustration, 2000) || null;
   const workflowPainPoints = safeArray(body.workflow_pain_points);
   const workflowNotes      = trim(body.workflow_notes, 2000) || null;
@@ -62,7 +108,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   const openToCall         = body.open_to_call === true;
 
   // Derive pricing from country
-  const pricing = countryCode ? getPricingInfo(countryCode) : null;
+  const pricing       = countryCode ? getPricingInfo(countryCode) : null;
   const currencyShown = (pricing?.currencySymbol ?? trim(body.currency_shown, 10)) || null;
   const pricingRegion = (pricing?.pricingRegion ?? trim(body.pricing_region, 30)) || null;
 
@@ -77,26 +123,24 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
   // --- Required field validation ---
   const missing: string[] = [];
-  if (!fullName)               missing.push('full_name');
+  if (!fullName)                       missing.push('full_name');
   if (!email || !EMAIL_RE.test(email)) missing.push('email');
-  if (!role)                   missing.push('role');
-  if (!countryCode)            missing.push('country_code');
-  if (!industry)               missing.push('industry');
-  if (writingNeeds.length === 0)      missing.push('writing_needs');
+  if (!role)                           missing.push('role');
+  if (!countryCode)                    missing.push('country_code');
+  if (!industry)                       missing.push('industry');
+  if (writingNeeds.length === 0)       missing.push('writing_needs');
   if (workflowPainPoints.length === 0) missing.push('workflow_pain_points');
-  if (!valueLevel)             missing.push('value_level');
-  if (!monthlyValueBand)       missing.push('monthly_value_band');
-  if (!timeline)               missing.push('timeline');
-  if (!consentToContact)       missing.push('consent_to_contact');
+  if (!valueLevel)                     missing.push('value_level');
+  if (!monthlyValueBand)               missing.push('monthly_value_band');
+  if (!timeline)                       missing.push('timeline');
+  if (!consentToContact)               missing.push('consent_to_contact');
 
   if (missing.length > 0) {
     return json(422, { ok: false, error: 'Please complete all required fields.' });
   }
 
-  // IP hash (never store raw IP)
-  const ipHash = clientAddress
-    ? createHash('sha256').update(clientAddress).digest('hex')
-    : null;
+  // IP hash — Web Crypto API (works in Node.js + Edge runtimes)
+  const ipHash = clientAddress ? await hashIp(clientAddress) : null;
 
   // --- Database insert ---
   if (!process.env.DATABASE_URL) {
@@ -133,7 +177,17 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       )
     `;
   } catch (err) {
-    console.error('[waitlist] db error:', err instanceof Error ? err.message : String(err));
+    // Log the full PG error (code, detail, hint) to Vercel function logs
+    const pgCode = (err as Record<string, unknown>).code as string | undefined;
+    const pgDetail = (err as Record<string, unknown>).detail as string | undefined;
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error('[waitlist] db error — code:', pgCode, '| detail:', pgDetail, '| msg:', msg);
+
+    // Table missing — db:setup not run
+    if (pgCode === '42P01') {
+      return json(503, { ok: false, error: 'Service temporarily unavailable. Please try again shortly.' });
+    }
+
     return json(500, { ok: false, error: 'Something went wrong. Please try again.' });
   }
 
@@ -151,7 +205,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         to: [notifyTo],
         subject: `New waitlist application — ${fullName}`,
         html: `
-          <p><strong>${fullName}</strong> (${email}) has joined the waitlist.</p>
+          <p><strong>${fullName}</strong> (${email}) joined the waitlist.</p>
           <ul>
             <li>Role: ${role}</li>
             <li>Country: ${countryName ?? countryCode}</li>
