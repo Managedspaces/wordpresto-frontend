@@ -65,7 +65,7 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
 
         <!-- Marked-up draft (back-left) -->
         <div class="paper-card paper-card--draft">
-          <div class="paper-fold-corner"></div>
+          <svg class="fold-corner-svg" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M0 0 L22 0 L0 22 Z" fill="#EDE6D8"/><path d="M22 0 L22 22 L0 22 Z" fill="rgba(17,19,24,0.04)"/><line x1="0" y1="22" x2="22" y2="0" stroke="#CACBC5" stroke-width="0.75"/></svg>
           <div class="paper-card-header">
             <span class="mono-label">02 · DRAFT</span>
             <span class="status-badge status-badge--review">In review</span>
@@ -83,7 +83,7 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
         <!-- Content brief sheet (front-right) -->
         <div class="paper-card paper-card--brief">
           <span class="folder-tab">BRIEF</span>
-          <div class="paper-fold-corner paper-fold-corner--lg"></div>
+          <svg class="fold-corner-svg" width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M0 0 L26 0 L0 26 Z" fill="#EDE6D8"/><path d="M26 0 L26 26 L0 26 Z" fill="rgba(17,19,24,0.04)"/><line x1="0" y1="26" x2="26" y2="0" stroke="#CACBC5" stroke-width="0.75"/></svg>
           <div class="brief-body">
             <div class="mono-label brief-id">01 · BRIEF · launch-guide</div>
             <h3 class="brief-heading">Content brief</h3>
@@ -109,7 +109,6 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
 
         <!-- Worker profile slip (bottom-left) -->
         <div class="paper-card paper-card--worker">
-          <div class="paper-fold-corner paper-fold-corner--sm"></div>
           <div class="worker-slip">
             <img src="/agents/profiles/profile-21-192.webp" srcset="/agents/profiles/profile-21-192.webp 1x, /agents/profiles/profile-21-384.webp 2x" alt="" class="worker-slip-img" width="58" height="58" loading="eager" decoding="async" />
             <div class="worker-slip-info">
@@ -177,7 +176,6 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
           { title: 'CMS prep left until the end', body: 'Page details and handoff notes become a last-minute scramble.', rot: '0.7deg' },
         ].map(({ title, body, note, noteColor, rot }) => (
           <div class="problem-card" style={`transform: rotate(${rot})`}>
-            <div class="paper-fold-corner paper-fold-corner--sm"></div>
             <div class="problem-card-body">
               <div class="ruled-margin ruled-margin--sm"></div>
               <div class="problem-card-title">{title}</div>
@@ -215,7 +213,6 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
             style={`margin-left: ${indent}px`}
             aria-current={state === 'active' ? 'step' : undefined}
           >
-            <div class="paper-fold-corner paper-fold-corner--sm"></div>
             <div class="ruled-margin ruled-margin--sm"></div>
             <span class={`workflow-dot workflow-dot--${state}`} aria-hidden="true">
               {state === 'done' && (
@@ -314,7 +311,6 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
           <div class="destination-wrap">
             <span class="folder-tab folder-tab--destination">{num}</span>
             <div class="destination-card">
-              <div class="paper-fold-corner"></div>
               <h3 class="destination-title">{title}</h3>
               <p class="destination-body">{body}</p>
               <div class="destination-footer">
@@ -478,7 +474,6 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
           { group: 'Agencies', body: 'A repeatable content process that helps teams move faster while keeping review and approval visible.' },
         ].map(({ group, body }) => (
           <div class="audience-card">
-            <div class="paper-fold-corner paper-fold-corner--sm"></div>
             <div class="audience-for">FOR</div>
             <h3 class="audience-title">{group}</h3>
             <p class="audience-body">{body}</p>
@@ -749,25 +744,13 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     background: #FFF;
     border: 1px solid var(--wp-line);
   }
-  .paper-fold-corner {
+  .fold-corner-svg {
     position: absolute;
     top: 0; right: 0;
-    width: 0; height: 0;
-    border-top: 22px solid var(--wp-paper-dark);
-    border-left: 22px solid transparent;
+    display: block;
+    pointer-events: none;
     z-index: 5;
   }
-  .paper-fold-corner::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 22px; height: 22px;
-    border-left: 1px solid var(--wp-line);
-    border-bottom: 1px solid var(--wp-line);
-    z-index: 4;
-  }
-  .paper-fold-corner--lg { border-top-width: 24px; border-left-width: 24px; }
-  .paper-fold-corner--sm { border-top-width: 18px; border-left-width: 18px; }
 
   .paper-card--draft {
     top: 128px; left: 0;
