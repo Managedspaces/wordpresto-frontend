@@ -13,7 +13,8 @@
     "generate:og": "node scripts/generate-og.mjs",
     "generate:markdown": "node scripts/generate-page-markdown.mjs",
     "generate:llms": "node scripts/generate-llms.mjs",
-    "db:setup": "node scripts/setup-db.mjs"
+    "db:setup": "node scripts/setup-db.mjs",
+    "start": "node ./dist/server/entry.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^9.5.5",
