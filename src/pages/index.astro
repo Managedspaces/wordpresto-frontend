@@ -425,7 +425,7 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
 
       <div class="workers-grid">
         {workers.map((w) => (
-          <a href={`#workers`} class="worker-card">
+          <a href={`/workers/${w.id.replace(/_/g, '-')}/`} class="worker-card">
             <div class="worker-card-top">
               <img
                 src={w.image}

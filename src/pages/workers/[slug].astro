@@ -1,0 +1,1479 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { workerProfiles, type WorkerProfile } from '@/data/workerProfiles';
+import { workers } from '@/data/workers';
+
+export function getStaticPaths() {
+  return workerProfiles.map((profile) => ({
+    params: { slug: profile.slug },
+    props: { profile },
+  }));
+}
+
+interface Props { profile: WorkerProfile }
+const { profile } = Astro.props;
+
+const relatedProfiles = profile.relatedWorkerIds.map(({ id, description, outputLabel, ctaLabel }) => {
+  const w = workers.find((x) => x.id === id);
+  const p = workerProfiles.find((x) => x.id === id);
+  return w && p ? { worker: w, profile: p, description, outputLabel, ctaLabel } : null;
+}).filter(Boolean);
+---
+
+<BaseLayout
+  pageTitle={profile.h1}
+  seoTitle={profile.seoTitle}
+  description={profile.metaDescription}
+  canonical={`https://wordpresto.com/workers/${profile.slug}/`}
+>
+
+  <!-- ===================== MASTHEAD ===================== -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <nav class="masthead-nav masthead-nav--left">
+        <a href="/waitlist" class="nav-link">Sign in</a>
+        <a href="/#product" class="nav-link">Product</a>
+        <a href="/#capabilities" class="nav-link">Workflow</a>
+      </nav>
+      <a href="/" class="masthead-logo">
+        <img src="/brand/main-logo.png" alt="Word Presto — the content engine behind publishing" height="110" />
+      </a>
+      <nav class="masthead-nav masthead-nav--right">
+        <a href="/#use-cases" class="nav-link">Use cases</a>
+        <a href="/workers/" class="nav-link nav-link--active">Workers</a>
+        <a href="/waitlist" class="btn btn--primary btn--sm">Join the waitlist</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== 1. HERO ===================== -->
+  <section class="section section--hero wp-overflow-hidden">
+    <div class="container">
+      <nav class="wp-breadcrumb" aria-label="Breadcrumb">
+        <a href="/workers/" class="wp-breadcrumb-back">&#8592;</a>
+        <a href="/workers/" class="wp-breadcrumb-link">WORKERS</a>
+        <span class="wp-breadcrumb-sep">/</span>
+        <span class="wp-breadcrumb-current">{profile.name.toUpperCase()}</span>
+      </nav>
+
+      <div class="hero-grid">
+        <!-- LEFT -->
+        <div class="hero-copy">
+          <div class="eyebrow eyebrow--strategy">{profile.role}</div>
+          <div class="hero-pills">
+            <span class="hero-pill hero-pill--team">
+              <span class="hero-pill-dot" style={`background: ${profile.teamColor}`}></span>
+              {profile.heroTagPills.team}
+            </span>
+            <span class="hero-pill">{profile.heroTagPills.stage}</span>
+            <span class="hero-pill">{profile.heroTagPills.output}</span>
+          </div>
+          <h1 class="hero-h1">{profile.h1}</h1>
+          <p class="hero-body">{profile.heroPara1}</p>
+          <p class="hero-audience">{profile.heroPara2}</p>
+          <div class="hero-ctas">
+            <a href="#problem" class="btn btn--primary btn--lg">
+              See how {profile.name} works
+              <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/workers/" class="btn btn--secondary btn--lg btn--tilt">View all Workers</a>
+          </div>
+          <div class="hero-alongside">
+            <span class="hero-alongside-label">works alongside</span>
+            {profile.heroWorksAlongside.map((name, i) => (
+              <>
+                <span class="hero-alongside-name">{name}</span>
+                {i < profile.heroWorksAlongside.length - 1 && <span class="hero-dot" aria-hidden="true"></span>}
+              </>
+            ))}
+          </div>
+        </div>
+
+        <!-- RIGHT: paper composition -->
+        <div class="hero-art" aria-hidden="true">
+
+          <!-- Guidance / output sheet -->
+          <div class="guidance-sheet">
+            <span class="folder-tab folder-tab--guidance">OUTPUT</span>
+            <span class="fold-corner fold-corner--lg"></span>
+            <span class="fold-corner-line fold-corner-line--lg"></span>
+            <div class="guidance-header">
+              <span class="guidance-title">{profile.heroTagPills.output.replace('Output · ', '')}</span>
+              <span class="guidance-worker">{profile.name.toLowerCase()}</span>
+            </div>
+            <div class="guidance-body">
+              <div class="mono-label guidance-meta">PAGE · content-brief.md</div>
+              <div class="guidance-rows">
+                <div class="guidance-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--wp-signal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="guidance-icon"><path d="m5 12 5 5L20 7"/></svg>
+                  <span><strong>{profile.checks[0]}</strong></span>
+                </div>
+                <div class="guidance-row">
+                  <span class="guidance-icon guidance-icon--amber">&#9651;</span>
+                  <span><strong>Review.</strong> {profile.surfaces[0]}</span>
+                </div>
+                <div class="guidance-row">
+                  <span class="guidance-icon guidance-icon--red">&#9472;</span>
+                  <span><strong>Flag.</strong> {profile.surfaces[profile.surfaces.length - 1]}</span>
+                </div>
+              </div>
+            </div>
+            <div class="guidance-footer">
+              <span class="mono-label">{profile.guidanceFooterLabel}</span>
+              <span class="guidance-stamp">{profile.guidanceFooterValue}</span>
+            </div>
+          </div>
+
+          <!-- Worker slip -->
+          <div class="worker-slip-card">
+            <span class="fold-corner fold-corner--sm"></span>
+            <span class="fold-corner-line fold-corner-line--sm"></span>
+            <div class="worker-slip-inner">
+              <img
+                src={profile.portrait}
+                srcset={`${profile.portrait} 1x, ${profile.portrait2x} 2x`}
+                alt={profile.name}
+                class="worker-slip-portrait"
+                width="62"
+                height="62"
+                loading="eager"
+                decoding="async"
+              />
+              <div>
+                <div class="worker-slip-meta">
+                  <span class="worker-slip-dot" style={`background: ${profile.teamColor}`}></span>
+                  <span class="mono-label">WORKER · {profile.department.toUpperCase()}</span>
+                </div>
+                <div class="worker-slip-name">{profile.name}</div>
+                <div class="worker-slip-role">{profile.role}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 2. PROBLEM ===================== -->
+  <section id="problem" class="section section--paper-dark section--border-top">
+    <div class="container">
+      <div class="prob-grid">
+        <!-- LEFT -->
+        <div>
+          <div class="eyebrow eyebrow--strategy">{profile.problemEyebrow}</div>
+          <h2 class="section-h2">{profile.problemH2}</h2>
+          <p class="section-body">{profile.problemPara}</p>
+          <span class="hand-note hand-note--amber prob-annotation">{profile.problemAnnotation}</span>
+        </div>
+
+        <!-- RIGHT: before/after draft sheet -->
+        <div class="ba-wrapper" data-state="raw">
+          <span class="fold-corner fold-corner--md"></span>
+          <span class="fold-corner-line fold-corner-line--md"></span>
+          <div class="ba-header">
+            <span class="ba-filename mono-label">{profile.name.toLowerCase()}-draft.md</span>
+            <div class="ba-tabs">
+              <button class="ba-tab ba-tab--raw" data-ba="raw">Raw draft</button>
+              <button class="ba-tab ba-tab--pass" data-ba="pass">After {profile.name}</button>
+            </div>
+          </div>
+          <div class="ba-body">
+            <span class="ruled-margin-vert"></span>
+            <!-- RAW -->
+            <div class="ba-panel ba-panel--raw">
+              <span class="ba-stamp ba-stamp--red">{profile.beforeStamp}</span>
+              <div class="ba-text" set:html={profile.beforeHtml} />
+              <div class="ba-tags">
+                {profile.beforeTags.map(tag => <span class="ba-tag">{tag}</span>)}
+              </div>
+              <span class="hp-hand ba-note ba-note--red">{profile.beforeNote}</span>
+            </div>
+            <!-- PASS -->
+            <div class="ba-panel ba-panel--pass">
+              <span class="ba-stamp ba-stamp--signal">{profile.afterStamp}</span>
+              <div class="ba-text" set:html={profile.afterHtml} />
+              <div class="ba-tags">
+                {profile.afterTags.map(tag => <span class="ba-tag ba-tag--signal">{tag}</span>)}
+              </div>
+              <span class="hp-hand ba-note ba-note--signal">{profile.afterNote}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3. HOW WORKER HELPS ===================== -->
+  <section class="section section--border-top">
+    <div class="container">
+      <div class="section-intro section-intro--wide">
+        <div class="eyebrow eyebrow--strategy">{profile.helpsEyebrow}</div>
+        <h2 class="section-h2">{profile.helpsH2}</h2>
+        <p class="section-body">{profile.helpsPara}</p>
+      </div>
+      <div class="quad-grid">
+        <div class="quad-card quad-card--rot-neg">
+          <div class="fold-corner fold-corner--sm"></div>
+          <div class="fold-corner-line fold-corner-line--sm"></div>
+          <div class="quad-label" style={`color: ${profile.teamColor}`}>Checks</div>
+          <h3 class="quad-h3">What it checks</h3>
+          <ul class="quad-list">
+            {profile.checks.map(item => <li class="quad-item">{item}</li>)}
+          </ul>
+        </div>
+        <div class="quad-card">
+          <div class="fold-corner fold-corner--sm"></div>
+          <div class="fold-corner-line fold-corner-line--sm"></div>
+          <div class="quad-label" style={`color: ${profile.teamColor}`}>Improves</div>
+          <h3 class="quad-h3">What it improves</h3>
+          <ul class="quad-list">
+            {profile.improves.map(item => <li class="quad-item">{item}</li>)}
+          </ul>
+        </div>
+        <div class="quad-card quad-card--rot-pos">
+          <div class="fold-corner fold-corner--sm"></div>
+          <div class="fold-corner-line fold-corner-line--sm"></div>
+          <div class="quad-label" style={`color: ${profile.teamColor}`}>Prepares</div>
+          <h3 class="quad-h3">What it prepares</h3>
+          <ul class="quad-list">
+            {profile.prepares.map(item => <li class="quad-item">{item}</li>)}
+          </ul>
+        </div>
+        <div class="quad-card quad-card--amber">
+          <div class="quad-label quad-label--amber">Surfaces</div>
+          <h3 class="quad-h3">For human review</h3>
+          <ul class="quad-list">
+            {profile.surfaces.map(item => <li class="quad-item quad-item--amber">{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 4. IO: WORKS FROM / PRODUCES ===================== -->
+  <section class="section section--paper-dark section--border-top">
+    <div class="container">
+      <div class="section-intro">
+        <div class="eyebrow eyebrow--strategy">On the desk</div>
+        <h2 class="section-h2">{profile.ioH2}</h2>
+      </div>
+      <div class="io-grid">
+        <!-- Works from -->
+        <div class="io-panel io-panel--from">
+          <span class="folder-tab">WORKS FROM</span>
+          <div class="io-card">
+            <span class="fold-corner fold-corner--md"></span>
+            <span class="fold-corner-line fold-corner-line--md"></span>
+            <div class="io-list">
+              {profile.worksFrom.map((item, i) => (
+                <div class="io-row io-row--from">
+                  <span class="io-num">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="io-text">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="io-connector">
+          <img
+            src={profile.portrait}
+            srcset={`${profile.portrait} 1x, ${profile.portrait2x} 2x`}
+            alt={profile.name}
+            class="io-portrait"
+            width="62"
+            height="62"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="io-name mono-label">{profile.name.toUpperCase()}</span>
+          <span class="io-arrow">&#8594;</span>
+        </div>
+
+        <!-- Produces -->
+        <div class="io-panel io-panel--produces">
+          <span class="folder-tab">PRODUCES</span>
+          <div class="io-card">
+            <span class="fold-corner fold-corner--md"></span>
+            <span class="fold-corner-line fold-corner-line--md"></span>
+            <div class="io-list">
+              {profile.produces.map((item) => (
+                <div class="io-row io-row--produces">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--wp-signal)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" class="io-check"><path d="m5 12 5 5L20 7"/></svg>
+                  <span class="io-text">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 5. WHEN TO USE ===================== -->
+  <section class="section section--border-top">
+    <div class="container">
+      <div class="section-intro">
+        <div class="eyebrow eyebrow--strategy">When to bring {profile.name} in</div>
+        <h2 class="section-h2">Specific moments where this Worker helps.</h2>
+      </div>
+      <div class="scenario-grid">
+        {profile.scenarios.map((s, i) => (
+          <div class={`scenario-card${i % 2 === 0 ? i % 4 === 0 ? '' : ' scenario-card--rot-neg' : ' scenario-card--rot-pos'}`}>
+            <span class="fold-corner fold-corner--sm"></span>
+            <span class="fold-corner-line fold-corner-line--sm"></span>
+            <span class="ruled-margin-vert"></span>
+            <div class="scenario-num">{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="scenario-h3">{s.title}</h3>
+            <p class="scenario-body">{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 6. HUMAN APPROVAL & BOUNDARIES ===================== -->
+  <section class="section section--paper-dark section--border-top wp-overflow-hidden">
+    <div class="container">
+      <div class="boundary-grid">
+        <!-- LEFT -->
+        <div>
+          <div class="eyebrow eyebrow--strategy">Human approval &amp; boundaries</div>
+          <h2 class="section-h2">{profile.boundaryH2}</h2>
+          <p class="section-body">{profile.boundaryPara}</p>
+          <div class="boundary-checklist">
+            {profile.boundaryChecklist.map(item => (
+              <div class="boundary-check-row">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--wp-signal)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="boundary-check-icon"><path d="m5 12 5 5L20 7"/></svg>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- RIGHT: visual -->
+        <div class="boundary-art" aria-hidden="true">
+          <!-- Will not slip -->
+          <div class="will-not-slip">
+            <div class="mono-label will-not-label">{profile.name.toUpperCase()} WILL NOT</div>
+            {profile.willNot.map(item => (
+              <div class="will-not-row">
+                <span class={`will-not-dot will-not-dot--${item.color}`}></span>
+                <span class="will-not-text">{item.text}</span>
+              </div>
+            ))}
+          </div>
+
+          <!-- Voice review sheet -->
+          <div class="review-sheet">
+            <div class="review-sheet-header">
+              <span class="review-sheet-title">Output review</span>
+              <span class="mono-label review-sheet-file">{profile.name.toLowerCase()}-output.md</span>
+            </div>
+            <div class="review-sheet-body">
+              <div class="review-sheet-row">
+                <span>Quality checked</span>
+                <span class="review-badge review-badge--ready">Ready</span>
+              </div>
+              <div class="review-sheet-row">
+                <span>Brief aligned</span>
+                <span class="review-badge review-badge--ready">Ready</span>
+              </div>
+              <div class="review-sheet-row">
+                <span>Final approval</span>
+                <span class="mono-label review-awaiting">awaiting editor</span>
+              </div>
+            </div>
+            <div class="review-sheet-footer">
+              <span class="mono-label review-sheet-label">approved by</span>
+              <span class="hp-hand review-signature">R. Hale</span>
+            </div>
+            <span class="review-stamp">Approved</span>
+          </div>
+
+          <span class="human-pill">
+            <span class="human-pill-dot"></span>
+            <span class="mono-label">human approval required</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 7. RELATED WORKERS ===================== -->
+  <section id="related" class="section section--border-top">
+    <div class="container">
+      <div class="section-intro section-intro--wide">
+        <div class="eyebrow eyebrow--strategy">Earlier and later in the workflow</div>
+        <h2 class="section-h2">{profile.relatedH2}</h2>
+      </div>
+      <div class="related-header">
+        <span>RELATED WORKERS</span>
+        <span>BY WORKFLOW SEQUENCE</span>
+      </div>
+      <div class="related-grid">
+        {relatedProfiles.map((rel) => rel && (
+          <a href={`/workers/${rel.profile.slug}/`} class="related-card">
+            <span class="fold-corner fold-corner--sm"></span>
+            <span class="fold-corner-line fold-corner-line--sm"></span>
+            <div class="related-card-top">
+              <img
+                src={rel.worker.image}
+                srcset={`${rel.worker.image} 1x, ${rel.worker.image2x} 2x`}
+                alt={rel.worker.name}
+                class="related-portrait"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+              />
+              <div>
+                <div class="related-name">{rel.worker.name}</div>
+                <div class="related-role">{rel.worker.role}</div>
+              </div>
+            </div>
+            <div class="related-pills">
+              <span class="hero-pill hero-pill--team">
+                <span class="hero-pill-dot" style={`background: ${rel.worker.teamColor}`}></span>
+                {rel.profile.heroTagPills.team}
+              </span>
+              <span class="hero-pill">Stage · {rel.worker.stage}</span>
+            </div>
+            <p class="related-desc">{rel.description}</p>
+            <div class="related-footer">
+              <div class="related-output">
+                <span class="mono-label related-output-label">OUTPUT</span>
+                <span class="related-output-value">{rel.outputLabel}</span>
+              </div>
+              <span class="related-cta">
+                {rel.ctaLabel}
+                <svg width="15" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 8. CTA ===================== -->
+  <section class="section section--paper-dark section--border-top cta-section">
+    <div class="cta-inner">
+      <img src="/brand/main-logo.png" alt="Word Presto" class="cta-logo" loading="lazy" />
+      <div class="eyebrow eyebrow--strategy">{profile.role}</div>
+      <h2 class="cta-h2">{profile.ctaH2}</h2>
+      <p class="cta-body">{profile.ctaPara}</p>
+      <div class="cta-actions">
+        <a href="/waitlist" class="btn btn--primary btn--lg">
+          Join the waitlist
+          <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/workers/" class="btn btn--secondary btn--lg btn--tilt">See the full workflow</a>
+      </div>
+      <div class="cta-rule">
+        <span class="cta-rule-line"></span>
+        <span class="mono-label cta-rule-text">PAPER · INK · SIGNAL · CONTROL</span>
+        <span class="cta-rule-line"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/brand/main-logo.png" alt="Word Presto" class="footer-logo" loading="lazy" />
+        <p class="footer-tagline">The content engine behind better publishing workflows.</p>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-heading">Product</span>
+        <a href="/#product" class="footer-link">How it works</a>
+        <a href="/#capabilities" class="footer-link">Workflow</a>
+        <a href="/workers/" class="footer-link">Workers</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-heading">Use cases</span>
+        <a href="/#use-cases" class="footer-link">Astro + CMS builds</a>
+        <a href="/#use-cases" class="footer-link">CMS-connected</a>
+        <a href="/#use-cases" class="footer-link">Standalone engine</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-heading">Workers</span>
+        <a href={`/workers/${profile.slug}/`} class="footer-link">{profile.name} · {profile.role}</a>
+        <a href="/workers/" class="footer-link">All Workers</a>
+        <a href="/#workers" class="footer-link">The workflow</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 WordPresto</span>
+      <span>Review-led publishing · Human approval</span>
+    </div>
+  </footer>
+
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.ba-wrapper').forEach((el) => {
+    el.querySelectorAll<HTMLButtonElement>('[data-ba]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const state = btn.dataset.ba;
+        if (state) el.dataset.state = state;
+      });
+    });
+  });
+</script>
+
+<style>
+  /* ===== MASTHEAD ===== */
+  .masthead {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+    border-bottom: 2px solid var(--wp-ink);
+  }
+  .masthead-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 34px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 28px;
+  }
+  .masthead-logo img { display: block; height: 48px; width: auto; mix-blend-mode: multiply; }
+  .masthead-nav { display: flex; align-items: center; gap: 24px; }
+  .masthead-nav--left { justify-content: flex-start; }
+  .masthead-nav--right { justify-content: flex-end; }
+  .nav-link { font-size: var(--wp-text-md); font-weight: 500; color: var(--wp-text-secondary); }
+  .nav-link:hover { color: var(--wp-ink); }
+  .nav-link--active { color: var(--wp-ink); font-weight: 600; }
+
+  /* ===== SHARED ===== */
+  .section {
+    padding: 92px 0;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+  }
+  .section--hero { padding: 30px 0 84px; }
+  .section--paper-dark {
+    background-color: var(--wp-paper-dark);
+  }
+  .section--border-top { border-top: 2px solid var(--wp-ink); }
+  .section--overflow-hidden { overflow: hidden; }
+  .wp-overflow-hidden { overflow: hidden; }
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 34px;
+  }
+
+  .eyebrow {
+    font-size: var(--wp-text-sm);
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .eyebrow--strategy { color: var(--team-strategy); }
+
+  .section-h2 {
+    font-size: clamp(2.1rem, 4.4vw, 3.15rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    margin: 0;
+    color: var(--wp-ink);
+  }
+  .section-body {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+    margin: 22px 0 0;
+  }
+  .section-intro { max-width: 640px; margin-bottom: 44px; }
+  .section-intro--wide { max-width: 680px; margin-bottom: 28px; }
+
+  /* Breadcrumb */
+  .wp-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.06em;
+    color: var(--wp-text-muted);
+    margin-bottom: 30px;
+  }
+  .wp-breadcrumb-back { color: var(--wp-text-muted); }
+  .wp-breadcrumb-link { color: var(--wp-text-tertiary); }
+  .wp-breadcrumb-sep { color: var(--wp-border-strong); }
+  .wp-breadcrumb-current { color: var(--wp-text-secondary); }
+
+  /* ===== HERO ===== */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    gap: 52px;
+    align-items: center;
+  }
+  .hero-copy { min-width: 0; }
+  .hero-h1 {
+    font-size: clamp(2.7rem, 5.4vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.032em;
+    margin: 0;
+    color: var(--wp-ink);
+  }
+  .hero-body {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+    margin: 26px 0 0;
+    max-width: 500px;
+  }
+  .hero-audience {
+    font-size: var(--wp-text-md);
+    color: var(--wp-text-tertiary);
+    line-height: 1.65;
+    margin: 16px 0 0;
+    max-width: 500px;
+  }
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 11px;
+    border: 1px solid var(--wp-line);
+    border-radius: var(--wp-radius-pill);
+    font-size: 11px;
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-tertiary);
+    letter-spacing: 0.04em;
+  }
+  .hero-pill--team { padding-left: 9px; gap: 7px; }
+  .hero-pill-dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-alongside {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-alongside-label {
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-muted);
+    font-family: var(--wp-font-mono);
+  }
+  .hero-alongside-name { font-size: var(--wp-text-sm); font-weight: 500; color: var(--wp-text-tertiary); }
+  .hero-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--wp-border-strong); display: inline-block; }
+
+  /* Hero art */
+  .hero-art {
+    position: relative;
+    min-width: 0;
+    padding-top: 14px;
+  }
+  .hp-hand { font-family: var(--wp-font-hand); font-weight: 600; }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--wp-text-md);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn--primary {
+    padding: 14px 24px;
+    background: var(--wp-ink);
+    color: #FAF7F0;
+    border: 1px solid var(--wp-ink);
+    box-shadow: 0 2px 4px rgba(54,44,24,0.12), 0 10px 18px -8px rgba(54,44,24,0.22);
+  }
+  .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 3px 6px rgba(54,44,24,0.16), 0 16px 26px -8px rgba(54,44,24,0.3); }
+  .btn--secondary {
+    padding: 14px 22px;
+    background: #FFFFFF;
+    color: var(--wp-ink);
+    border: 1.5px solid var(--wp-ink);
+    box-shadow: 0 2px 4px rgba(54,44,24,0.06), 0 8px 16px -10px rgba(54,44,24,0.16);
+  }
+  .btn--tilt { transform: rotate(0.6deg); }
+  .btn--tilt:hover { transform: rotate(0.6deg) translateY(-2px); box-shadow: 0 3px 6px rgba(54,44,24,0.1), 0 12px 22px -10px rgba(54,44,24,0.22); }
+  .btn--sm { padding: 8px 16px; font-size: var(--wp-text-sm); }
+  .btn--lg { padding: 14px 24px; }
+
+  /* ===== FOLD CORNERS ===== */
+  .fold-corner, .fold-corner-line {
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+  }
+  .fold-corner--sm { width: 0; height: 0; border-top: 18px solid var(--wp-paper-dark); border-left: 18px solid transparent; z-index: 4; }
+  .fold-corner-line--sm { width: 18px; height: 18px; border-left: 1px solid var(--wp-line); border-bottom: 1px solid var(--wp-line); z-index: 3; }
+  .fold-corner--md { width: 0; height: 0; border-top: 22px solid var(--wp-paper-dark); border-left: 22px solid transparent; z-index: 4; }
+  .fold-corner-line--md { width: 22px; height: 22px; border-left: 1px solid var(--wp-line); border-bottom: 1px solid var(--wp-line); z-index: 3; }
+  .fold-corner--lg { width: 0; height: 0; border-top: 24px solid var(--wp-paper-dark); border-left: 24px solid transparent; z-index: 4; }
+  .fold-corner-line--lg { width: 24px; height: 24px; border-left: 1px solid var(--wp-line); border-bottom: 1px solid var(--wp-line); z-index: 3; }
+
+  /* Folder tab */
+  .folder-tab {
+    position: absolute;
+    top: -19px;
+    left: 22px;
+    padding: 7px 20px;
+    background: #E3D6B9;
+    border: 1px solid #C7B488;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    z-index: 4;
+    font-size: var(--wp-text-xs);
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.1em;
+    color: #5E4F2E;
+  }
+  .folder-tab--guidance {
+    top: -17px;
+    padding: 5px 16px;
+    border-radius: 6px 6px 0 0;
+  }
+
+  .mono-label {
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--wp-text-muted);
+  }
+
+  /* ===== GUIDANCE SHEET ===== */
+  .guidance-sheet {
+    position: relative;
+    margin-left: 30px;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 5px rgba(54,44,24,0.06), 0 26px 50px -18px rgba(54,44,24,0.22);
+    transform: rotate(1.4deg);
+    overflow: hidden;
+    z-index: 1;
+  }
+  .guidance-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-bottom: 2px solid var(--wp-ink);
+  }
+  .guidance-title { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; }
+  .guidance-worker { font-size: var(--wp-text-xs); font-family: var(--wp-font-mono); color: var(--wp-text-muted); }
+  .guidance-body { padding: 18px 22px 20px; }
+  .guidance-meta { display: block; margin-bottom: 14px; }
+  .guidance-rows { display: flex; flex-direction: column; gap: 13px; }
+  .guidance-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+    line-height: 1.45;
+  }
+  .guidance-icon { display: block; flex: 0 0 auto; margin-top: 2px; width: 16px; height: 16px; }
+  .guidance-icon--amber { display: flex; align-items: center; justify-content: center; flex: 0 0 auto; margin-top: 2px; color: var(--wp-amber); font-weight: 700; }
+  .guidance-icon--red { display: flex; align-items: center; justify-content: center; flex: 0 0 auto; margin-top: 2px; color: var(--wp-red); font-weight: 700; }
+  .guidance-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 15px 22px;
+    border-top: 1px solid var(--wp-line);
+    background: #FAF7F0;
+  }
+  .guidance-stamp {
+    border: 2px solid var(--wp-signal);
+    color: var(--wp-signal);
+    border-radius: 4px;
+    font-family: var(--wp-font-mono);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    opacity: 0.86;
+    transform: rotate(-3deg);
+    display: inline-block;
+  }
+
+  /* Worker slip card */
+  .worker-slip-card {
+    position: relative;
+    margin-top: -22px;
+    width: 268px;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 4px rgba(54,44,24,0.06), 0 18px 34px -16px rgba(54,44,24,0.2);
+    transform: rotate(-2deg);
+    overflow: hidden;
+    z-index: 2;
+  }
+  .worker-slip-inner {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+  .worker-slip-portrait {
+    width: 62px;
+    height: 62px;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 0 0 1px var(--wp-border-secondary);
+    flex: 0 0 auto;
+  }
+  .worker-slip-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .worker-slip-dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; }
+  .worker-slip-name { font-size: var(--wp-text-xl); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+  .worker-slip-role { font-size: var(--wp-text-xs); color: var(--wp-text-tertiary); margin-top: 2px; }
+
+  /* ===== PROBLEM / BEFORE-AFTER ===== */
+  .prob-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: 52px;
+    align-items: start;
+  }
+  .hand-note { font-family: var(--wp-font-hand); font-weight: 600; }
+  .hand-note--amber { color: var(--wp-amber); }
+  .prob-annotation {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 24px;
+    transform: rotate(-2deg);
+  }
+
+  .ba-wrapper {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 5px rgba(54,44,24,0.06), 0 24px 46px -18px rgba(54,44,24,0.22);
+    overflow: hidden;
+  }
+  .ba-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 15px 22px;
+    border-bottom: 2px solid var(--wp-ink);
+  }
+  .ba-filename { display: block; }
+  .ba-tabs {
+    display: inline-flex;
+    padding: 3px;
+    gap: 3px;
+    background: var(--wp-paper-dark);
+    border: 1px solid var(--wp-line);
+  }
+  .ba-tab {
+    border: none;
+    cursor: pointer;
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    background: transparent;
+    color: var(--wp-text-tertiary);
+    transition: background 150ms, color 150ms, box-shadow 150ms;
+  }
+  .ba-wrapper[data-state="raw"] .ba-tab--raw {
+    background: #FFFFFF;
+    color: var(--wp-ink);
+    box-shadow: inset 0 0 0 1px var(--wp-line), 0 1px 2px rgba(54,44,24,0.12);
+  }
+  .ba-wrapper[data-state="pass"] .ba-tab--pass {
+    background: #FFFFFF;
+    color: var(--wp-ink);
+    box-shadow: inset 0 0 0 1px var(--wp-line), 0 1px 2px rgba(54,44,24,0.12);
+  }
+  .ba-body {
+    position: relative;
+    padding: 26px 28px 28px 38px;
+    min-height: 254px;
+  }
+  .ruled-margin-vert {
+    position: absolute;
+    left: 26px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(194,65,58,0.4);
+  }
+  .ba-panel { }
+  .ba-wrapper[data-state="raw"] .ba-panel--pass { display: none; }
+  .ba-wrapper[data-state="pass"] .ba-panel--raw { display: none; }
+  .ba-stamp {
+    display: inline-block;
+    border: 2px solid;
+    border-radius: 4px;
+    font-family: var(--wp-font-mono);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    opacity: 0.85;
+    transform: rotate(-2deg);
+    margin-bottom: 18px;
+  }
+  .ba-stamp--red { border-color: var(--wp-red); color: var(--wp-red); }
+  .ba-stamp--signal { border-color: var(--wp-signal); color: var(--wp-signal); }
+  .ba-text { font-size: var(--wp-text-xl); line-height: 1.7; color: var(--wp-ink); margin: 0; }
+  :global(.ba-strike) {
+    background: var(--wp-red-soft);
+    color: var(--wp-red);
+    text-decoration: line-through;
+    padding: 0 2px;
+  }
+  :global(.ba-hl) {
+    background: var(--wp-signal-soft);
+    color: var(--wp-signal);
+    padding: 0 3px;
+    font-weight: 500;
+  }
+  .ba-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px; }
+  .ba-tag {
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    color: var(--wp-text-secondary);
+    border: 1px solid var(--wp-line);
+    padding: 4px 10px;
+  }
+  .ba-tag--signal {
+    color: var(--wp-signal);
+    border-color: var(--wp-signal-border);
+    background: var(--wp-signal-soft);
+  }
+  .ba-note {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 22px;
+    transform: rotate(-1.5deg);
+  }
+  .ba-note--red { color: var(--wp-red); }
+  .ba-note--signal { color: var(--wp-signal); }
+
+  /* ===== QUAD CARDS ===== */
+  .quad-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .quad-card {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(54,44,24,0.05), 0 12px 24px -14px rgba(54,44,24,0.15);
+    padding: 22px 22px 24px;
+    overflow: hidden;
+  }
+  .quad-card--rot-neg { transform: rotate(-1deg); }
+  .quad-card--rot-pos { transform: rotate(0.8deg); }
+  .quad-card--amber {
+    border-color: var(--wp-amber);
+    box-shadow: 0 2px 5px rgba(54,44,24,0.07), 0 14px 26px -14px rgba(54,44,24,0.18);
+    transform: rotate(-0.6deg);
+  }
+  .quad-label {
+    font-size: 11px;
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .quad-label--amber { color: var(--wp-amber); }
+  .quad-h3 {
+    font-size: var(--wp-text-lg);
+    font-weight: 700;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+  .quad-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  .quad-item {
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+    line-height: 1.45;
+    padding-left: 15px;
+    position: relative;
+  }
+  .quad-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--wp-border-strong);
+  }
+  .quad-item--amber::before { background: var(--wp-amber); }
+
+  /* ===== IO ===== */
+  .io-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 30px;
+    align-items: center;
+  }
+  .io-panel { position: relative; margin-top: 20px; }
+  .io-card {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(54,44,24,0.05), 0 14px 26px -16px rgba(54,44,24,0.15);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+  }
+  .io-list { display: flex; flex-direction: column; gap: 10px; }
+  .io-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 0 9px 13px;
+  }
+  .io-row--from { border-left: 3px solid var(--wp-text-tertiary); }
+  .io-row--produces { border-left: 3px solid var(--wp-signal); }
+  .io-num { font-family: var(--wp-font-mono); font-size: 11px; color: var(--wp-text-muted); flex: 0 0 auto; }
+  .io-text { font-size: var(--wp-text-md); font-weight: 600; }
+  .io-check { display: block; flex: 0 0 auto; }
+  .io-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 11px;
+  }
+  .io-portrait {
+    width: 62px;
+    height: 62px;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 0 0 1px var(--wp-border-secondary);
+  }
+  .io-name { display: block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--wp-text-tertiary); }
+  .io-arrow { font-size: 26px; color: var(--wp-ink); line-height: 1; }
+
+  /* ===== SCENARIOS ===== */
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 26px;
+  }
+  .scenario-card {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(54,44,24,0.05), 0 12px 24px -14px rgba(54,44,24,0.15);
+    padding: 22px 22px 24px 34px;
+    overflow: hidden;
+  }
+  .scenario-card--rot-neg { transform: rotate(-1.1deg); }
+  .scenario-card--rot-pos { transform: rotate(0.9deg); }
+  .scenario-num {
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    color: var(--wp-text-muted);
+    margin-bottom: 12px;
+  }
+  .scenario-h3 {
+    font-size: var(--wp-text-lg);
+    line-height: 1.3;
+    margin: 0 0 9px;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+  }
+  .scenario-body {
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .scenario-card .ruled-margin-vert {
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(194,65,58,0.34);
+  }
+
+  /* ===== BOUNDARIES ===== */
+  .boundary-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+    gap: 56px;
+    align-items: center;
+  }
+  .boundary-checklist {
+    border-top: 1px solid var(--wp-line);
+    margin-top: 26px;
+  }
+  .boundary-check-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--wp-line);
+    font-size: var(--wp-text-md);
+    color: var(--wp-ink);
+  }
+  .boundary-check-icon { display: block; flex: 0 0 auto; margin-top: 2px; }
+
+  .boundary-art {
+    position: relative;
+    min-height: 360px;
+    min-width: 0;
+  }
+  .will-not-slip {
+    position: absolute;
+    top: 0;
+    right: 6px;
+    width: 240px;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 4px rgba(54,44,24,0.05), 0 14px 26px -14px rgba(54,44,24,0.16);
+    transform: rotate(2.6deg);
+    z-index: 1;
+    padding: 16px 18px;
+  }
+  .will-not-label { display: block; margin-bottom: 11px; }
+  .will-not-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 9px;
+  }
+  .will-not-row:last-child { margin-bottom: 0; }
+  .will-not-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    flex: 0 0 auto;
+  }
+  .will-not-dot--red { background: var(--wp-red); }
+  .will-not-dot--amber { background: var(--wp-amber); }
+  .will-not-text { font-size: var(--wp-text-base); color: var(--wp-text-secondary); }
+
+  .review-sheet {
+    position: relative;
+    margin-top: 64px;
+    width: 340px;
+    max-width: 100%;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 5px rgba(54,44,24,0.06), 0 24px 46px -16px rgba(54,44,24,0.24);
+    transform: rotate(-1.4deg);
+    z-index: 2;
+    overflow: hidden;
+  }
+  .review-sheet-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-bottom: 2px solid var(--wp-ink);
+  }
+  .review-sheet-title { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; }
+  .review-sheet-file { }
+  .review-sheet-body { padding: 0 22px; }
+  .review-sheet-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--wp-line);
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+  }
+  .review-sheet-row:last-child { border-bottom: none; }
+  .review-badge {
+    font-size: var(--wp-text-xs);
+    font-family: var(--wp-font-mono);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+  .review-badge--ready { background: var(--wp-signal-soft); color: var(--wp-signal); border: 1px solid var(--wp-signal-border); }
+  .review-awaiting { color: var(--wp-text-tertiary); }
+  .review-sheet-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 22px;
+    border-top: 1px solid var(--wp-line);
+    background: #FAF7F0;
+  }
+  .review-sheet-label { }
+  .review-signature {
+    font-weight: 700;
+    font-size: 27px;
+    color: var(--wp-ink);
+    line-height: 1;
+    transform: rotate(-3deg);
+    display: inline-block;
+  }
+  .review-stamp {
+    position: absolute;
+    top: 76px;
+    right: -12px;
+    transform: rotate(-9deg);
+    border: 2.5px solid var(--wp-signal);
+    color: var(--wp-signal);
+    border-radius: 5px;
+    font-family: var(--wp-font-mono);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 8px 13px;
+    opacity: 0.85;
+    background: #FFFFFF;
+    z-index: 4;
+  }
+  .human-pill {
+    position: absolute;
+    bottom: 6px;
+    left: 4px;
+    z-index: 3;
+    transform: rotate(2deg);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: #FFFFFF;
+    border: 1px dashed var(--wp-border-strong);
+    border-radius: var(--wp-radius-pill);
+  }
+  .human-pill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--wp-ink); }
+
+  /* ===== RELATED WORKERS ===== */
+  .related-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--wp-border-strong);
+    border-bottom: 1px solid var(--wp-border-strong);
+    padding: 12px 2px;
+    margin-bottom: 26px;
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.08em;
+    color: var(--wp-text-tertiary);
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .related-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(54,44,24,0.05), 0 12px 24px -16px rgba(54,44,24,0.14);
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition: border-color 200ms, box-shadow 200ms;
+  }
+  .related-card:hover {
+    border-color: var(--wp-border-strong);
+    box-shadow: 0 3px 7px rgba(54,44,24,0.1), 0 20px 36px -16px rgba(54,44,24,0.24);
+  }
+  .related-card-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 16px 12px;
+  }
+  .related-portrait {
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 0 0 1px var(--wp-border-secondary);
+    flex: 0 0 auto;
+  }
+  .related-name { font-size: var(--wp-text-xl); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+  .related-role { font-size: var(--wp-text-sm); color: var(--wp-text-tertiary); margin-top: 3px; }
+  .related-pills { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 6px; }
+  .related-desc {
+    margin: 0;
+    padding: 8px 16px 16px;
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+  }
+  .related-footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px 16px;
+    border-top: 1px dashed var(--wp-line);
+  }
+  .related-output { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .related-output-label { display: block; font-size: 10px; letter-spacing: 0.08em; color: var(--wp-text-muted); font-family: var(--wp-font-mono); }
+  .related-output-value { font-size: var(--wp-text-xs); font-family: var(--wp-font-mono); color: var(--wp-text-secondary); }
+  .related-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: var(--wp-text-xs);
+    font-weight: 600;
+    color: var(--wp-ink);
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+
+  /* ===== CTA SECTION ===== */
+  .cta-section { padding: 100px 0 108px; }
+  .cta-inner {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 34px;
+    text-align: center;
+  }
+  .cta-logo { display: block; height: 72px; width: auto; margin: 0 auto 26px; mix-blend-mode: multiply; }
+  .cta-h2 {
+    font-size: clamp(2.4rem, 5vw, 3.75rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 0;
+    line-height: 1.04;
+    color: var(--wp-ink);
+  }
+  .cta-body {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+    margin: 22px auto 0;
+    max-width: 540px;
+  }
+  .cta-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .cta-rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 42px;
+  }
+  .cta-rule-line { height: 1px; width: 50px; background: var(--wp-border-strong); }
+  .cta-rule-text { letter-spacing: 0.16em; color: var(--wp-text-muted); }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background-color: var(--wp-paper-dark);
+    background-image: var(--wp-texture-paper);
+    border-top: 2px solid var(--wp-ink);
+    padding: 58px 0 42px;
+  }
+  .footer-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 34px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
+  .footer-logo { display: block; height: 36px; max-width: 150px; width: auto; mix-blend-mode: multiply; }
+  .footer-tagline { margin: 6px 0 0; font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; }
+  .footer-col { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col-heading { font-size: var(--wp-text-sm); font-weight: 700; }
+  .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); }
+  .footer-link:hover { color: var(--wp-ink); }
+  .footer-bottom {
+    width: 100%;
+    max-width: 1200px;
+    margin: 46px auto 0;
+    padding: 22px 34px 0;
+    border-top: 1px solid var(--wp-border-strong);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-muted);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 940px) {
+    .masthead-nav { display: none; }
+    .masthead-inner { grid-template-columns: 1fr; justify-items: center; padding: 10px 20px; }
+    .hero-grid,
+    .prob-grid,
+    .io-grid,
+    .boundary-grid { grid-template-columns: 1fr !important; }
+    .hero-art { display: none; }
+    .io-connector { flex-direction: row; justify-content: center; }
+    .io-arrow { transform: none; }
+    .boundary-art { display: none; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 700px) {
+    .quad-grid { grid-template-columns: 1fr 1fr; }
+    .scenario-grid { grid-template-columns: 1fr 1fr; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .section { padding: 60px 0; }
+    .section--hero { padding: 20px 0 56px; }
+    .container { padding: 0 20px; }
+    .quad-grid { grid-template-columns: 1fr; }
+    .scenario-grid { grid-template-columns: 1fr; }
+    .hero-ctas { flex-direction: column; align-items: stretch; }
+    .cta-actions { flex-direction: column; align-items: stretch; }
+    .cta-inner { padding: 0 20px; }
+    .footer-inner { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,15 +1,15 @@
-# Word Presto
+# WordPresto
 
-Word Presto is the content engine behind better publishing workflows.
+WordPresto is the content engine behind better publishing workflows.
 
-## What Word Presto is
+## What WordPresto is
 
 A structured content workflow engine for publishing teams.
 It gives copywriters, business owners, website teams and agencies a clear path from
-idea to approval — plan, brief, draft, review, improve, approve and prepare for
-handoff — before anything is published to a CMS, website or client.
+idea to approval: plan, brief, draft, review, improve, approve and prepare for
+handoff, before anything is published to a CMS, website or client.
 
-Word Presto is not an AI writing tool that generates content and publishes it automatically.
+WordPresto is not an AI writing tool that generates content and publishes it automatically.
 It is a workflow engine where AI Workers assist and humans retain final approval.
 
 ## Core product direction
@@ -36,28 +36,87 @@ Content workflow. Briefing. Drafting. Review. Human approval. Publishing handoff
 - Home: https://wordpresto.com/
   Markdown: https://wordpresto.com/pages/index.md
   Focus: Content workflow engine for publishing teams.
-  Summary: The core Word Presto product page. Explains the workflow from plan to CMS
-  handoff, introduces Workers, and positions Word Presto as a review-led publishing engine.
+  Summary: The core WordPresto product page. Explains the workflow from plan to CMS
+  handoff, introduces Workers, and positions WordPresto as a review-led publishing engine.
 
-## Pages (planned)
+- Workers directory: https://wordpresto.com/workers/
+  Markdown: https://wordpresto.com/pages/workers/index.md
+  Focus: All 14 specialist Worker roles in the content workflow.
+  Summary: A directory of every Worker, their role, stage, output and link to their profile.
 
-- Workers: https://wordpresto.com/workers/
-  Focus: The six specialist Worker roles — Planner, Brief Writer, Draft Reviewer,
-  Section Editor, Approval Reporter, Publishing Preparer.
-
-- Use cases: https://wordpresto.com/use-cases/
-  Focus: Automated Astro + CMS builds, CMS-connected workflows, standalone content engine.
-
-## Workers (specialist AI roles)
+## Worker profiles
 
 Each Worker has clear inputs, outputs and limits. Humans approve before work moves forward.
 
-- Planner — Strategy & Planning — Output: Content direction
-- Brief Writer — Content Production — Output: Page brief
-- Draft Reviewer — Approval & Governance — Output: Review summary
-- Section Editor — Content Production — Output: Edited sections
-- Approval Reporter — Approval & Governance — Output: Approval report
-- Publishing Preparer — CMS Preparation — Output: Handoff pack
+1. Helena — Voice & Style Worker — Stage: Brand Voice — Output: Voice & style guidance
+   URL: https://wordpresto.com/workers/voice-style/
+   Markdown: https://wordpresto.com/pages/workers/voice-style.md
+   Topic: Keeps brand voice consistent across every draft and AI-assisted page.
+
+2. Omar — Content Analyst — Stage: Analyse — Output: Content analysis
+   URL: https://wordpresto.com/workers/content-analyst/
+   Markdown: https://wordpresto.com/pages/workers/content-analyst.md
+   Topic: Reviews existing content before any editing or rewriting starts.
+
+3. Marcus — Structure Worker — Stage: Structure — Output: Content structure
+   URL: https://wordpresto.com/workers/structure/
+   Markdown: https://wordpresto.com/pages/workers/structure.md
+   Topic: Shapes heading hierarchy, section order and page flow.
+
+4. Luca — Content Brief Builder — Stage: Brief — Output: Content brief
+   URL: https://wordpresto.com/workers/content-brief-builder/
+   Markdown: https://wordpresto.com/pages/workers/content-brief-builder.md
+   Topic: Turns a topic and goal into a structured content brief before drafting.
+
+5. Ellis — Draft Rewrite Worker — Stage: Draft — Output: Shaped draft
+   URL: https://wordpresto.com/workers/draft-rewrite/
+   Markdown: https://wordpresto.com/pages/workers/draft-rewrite.md
+   Topic: Rewrites drafts that follow the brief and are ready for editorial review.
+
+6. Quinn — Draft Quality Reviewer — Stage: Review — Output: Review notes
+   URL: https://wordpresto.com/workers/draft-quality-reviewer/
+   Markdown: https://wordpresto.com/pages/workers/draft-quality-reviewer.md
+   Topic: Checks whether a draft is clear, structured and ready to move forward.
+
+7. Rosa — Section Rewrite Worker — Stage: Improve — Output: Rewritten sections
+   URL: https://wordpresto.com/workers/section-rewrite/
+   Markdown: https://wordpresto.com/pages/workers/section-rewrite.md
+   Topic: Rewrites individual sections without touching the rest of the piece.
+
+8. Audrey — Approval Report Worker — Stage: Approve — Output: Approval report
+   URL: https://wordpresto.com/workers/approval-report/
+   Markdown: https://wordpresto.com/pages/workers/approval-report.md
+   Topic: Summarises what is ready, what needs attention and what should not move forward.
+
+9. Priya — Readability Worker — Stage: Improve — Output: Improved draft
+   URL: https://wordpresto.com/workers/readability/
+   Markdown: https://wordpresto.com/pages/workers/readability.md
+   Topic: Tightens sentences and improves flow without changing meaning or voice.
+
+10. Ada — Brief-to-Draft Alignment Worker — Stage: Review — Output: Alignment report
+    URL: https://wordpresto.com/workers/brief-draft-alignment/
+    Markdown: https://wordpresto.com/pages/workers/brief-draft-alignment.md
+    Topic: Checks that the draft actually fulfils the brief, section by section.
+
+11. Ravi — CMS Handoff & Publishing Package Worker — Stage: Handoff — Output: Handoff pack
+    URL: https://wordpresto.com/workers/cms-handoff/
+    Markdown: https://wordpresto.com/pages/workers/cms-handoff.md
+    Topic: Packages approved content for clean handoff to a CMS, website or client.
+
+12. Vera — Editorial Risk & Claims Compliance Worker — Stage: Review — Output: Risk & compliance report
+    URL: https://wordpresto.com/workers/editorial-risk-claims/
+    Markdown: https://wordpresto.com/pages/workers/editorial-risk-claims.md
+    Topic: Flags unsupported claims, risky statements and compliance issues before approval.
+
+13. Iris — Content Refresh Brief Worker — Stage: Refresh — Output: Refresh brief
+    URL: https://wordpresto.com/workers/content-refresh-brief/
+    Markdown: https://wordpresto.com/pages/workers/content-refresh-brief.md
+    Topic: Produces a structured brief for refreshing existing content.
+
+14. Nina — Content Distribution Brief Worker — Stage: Distribution — Output: Distribution brief
+    URL: https://wordpresto.com/workers/content-distribution-brief/
+    Markdown: https://wordpresto.com/pages/workers/content-distribution-brief.md
+    Topic: Maps approved content to channels with adaptation guidance for each.
 
 ## Technology
 
