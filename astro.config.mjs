@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
 // Deployed to Vercel. The Vercel adapter handles both:
@@ -12,7 +11,5 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   site: 'https://wordpresto.com',
   adapter: vercel(),
-  integrations: [
-    sitemap(),
-  ],
+  integrations: [],
 });
