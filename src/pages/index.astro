@@ -48,6 +48,9 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
           </a>
           <a href="/waitlist" class="btn btn--secondary btn--lg btn--tilt">Get early access</a>
         </div>
+        <p class="hero-demo-link">
+          <a href="/workflow-demo/" class="demo-link">See rough thinking become review-ready →</a>
+        </p>
         <div class="hero-prepares">
           <span class="hero-prepares-label">prepares for</span>
           <span class="hero-prepares-item">WordPress</span>
@@ -795,6 +798,9 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     margin-top: 34px;
     flex-wrap: wrap;
   }
+  .hero-demo-link { margin: 18px 0 0; }
+  .demo-link { font-size: var(--wp-text-sm); color: var(--wp-text-tertiary); text-decoration: underline; text-underline-offset: 3px; transition: color 150ms; }
+  .demo-link:hover { color: var(--wp-ink); }
   .hero-prepares {
     display: flex;
     align-items: center;
