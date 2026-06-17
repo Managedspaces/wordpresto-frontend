@@ -278,53 +278,7 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     </div>
   </section>
 
-  <!-- ===================== 5. USE CASES ===================== -->
-  <section id="use-cases" class="section section--border-top">
-    <div class="container">
-      <div class="section-intro">
-        <div class="eyebrow eyebrow--strategy">Three routes out</div>
-        <h2 class="section-h2">Use Word Presto with the stack you have, or the one you are building next.</h2>
-        <p class="section-body">One content engine. Three ways the finished work leaves the desk.</p>
-      </div>
-
-      <div class="destinations-grid">
-        {[
-          {
-            num: 'DESTINATION 01',
-            title: 'Automated Astro + CMS builds',
-            body: 'The engine behind structured, content-led websites where pages, briefs, updates and handoff notes are planned before they become templates.',
-            note: 'Astro delivery · structured pages',
-          },
-          {
-            num: 'DESTINATION 02',
-            title: 'CMS-connected workflows',
-            body: 'Connect to WordPress, Payload, Sanity or a custom CMS so content is planned, reviewed and prepared before publishing.',
-            note: 'WordPress · Payload · Sanity',
-          },
-          {
-            num: 'DESTINATION 03',
-            title: 'Standalone content engine',
-            body: 'Manage briefs, drafts, reviews and approvals before handing content to a client, editor or website team.',
-            note: 'Brief, review, hand-off',
-          },
-        ].map(({ num, title, body, note }) => (
-          <div class="destination-wrap">
-            <span class="folder-tab folder-tab--destination">{num}</span>
-            <div class="destination-card">
-              <h3 class="destination-title">{title}</h3>
-              <p class="destination-body">{body}</p>
-              <div class="destination-footer">
-                <span class="destination-arrow">→</span>
-                {note}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== 5.5 VOICE & PERSONA ===================== -->
+  <!-- ===================== 5. VOICE & PERSONA ===================== -->
   <section id="voice" class="section section--border-top">
     <div class="container voice-grid">
 
@@ -332,13 +286,13 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
       <div class="voice-text">
         <div class="eyebrow eyebrow--content">Voice &amp; persona</div>
         <h2 class="section-h2">Voice and judgement stay in the work.</h2>
-        <p class="section-body voice-body">Word Presto can learn from approved content, review notes, preferred phrasing, rejected drafts and the way your team actually edits. That means the workflow does not start from a blank prompt every time. It carries forward tone, structure, judgement and your style from one brief, draft and review to the next.</p>
+        <p class="section-body voice-body">Word Presto learns from approved content, review comments, preferred phrasing, rejected drafts, brand and client voice rules, and the way your team actually edits and approves work. The workflow does not start from a blank prompt every time. It carries your tone, structure, judgement and style forward from one brief, draft and review to the next.</p>
         <ul class="voice-points" role="list">
           {[
-            'Learns from approved examples, not just prompts',
-            'Keeps voice and persona consistent across writers, clients or brands',
-            'Turns review comments into reusable editorial guidance',
-            'Helps new drafts start closer to the way you actually publish',
+            'Learns from approved content, preferred phrasing and rejected drafts',
+            'Applies brand and client voice rules across every brief and draft',
+            'Turns review comments and edits into reusable editorial guidance',
+            'Helps new work start closer to how you actually publish',
             'Keeps humans in control of approval and final judgement',
           ].map((point) => (
             <li class="voice-point">
@@ -361,7 +315,7 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
           <div class="voice-sheet-body">
             <div class="ruled-margin"></div>
             <p class="voice-line voice-line--strike">Our platform enables teams to produce content quickly and efficiently for any channel.</p>
-            <p class="voice-line">Word Presto gives publishing teams a clear path from brief to approved draft — without losing their voice along the way.</p>
+            <p class="voice-line">Word Presto gives publishing teams a clear path from brief to approved draft, without losing their voice along the way.</p>
           </div>
           <!-- Handwritten editorial annotations -->
           <span class="voice-annot voice-annot--1">more direct</span>
@@ -407,6 +361,52 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     </div>
   </section>
 
+  <!-- ===================== 6. USE CASES ===================== -->
+  <section id="use-cases" class="section section--border-top">
+    <div class="container">
+      <div class="section-intro">
+        <div class="eyebrow eyebrow--strategy">Before any publishing stack</div>
+        <h2 class="section-h2">Use Word Presto before any publishing stack.</h2>
+        <p class="section-body">Content is planned, reviewed and approved before it reaches your CMS, website or client. Three ways the finished work leaves the desk.</p>
+      </div>
+
+      <div class="destinations-grid">
+        {[
+          {
+            num: 'DESTINATION 01',
+            title: 'Build structured Astro sites',
+            body: 'The engine behind structured, content-led Astro builds where briefs, drafts and handoff notes are planned before they become templates.',
+            note: 'Astro delivery · structured pages',
+          },
+          {
+            num: 'DESTINATION 02',
+            title: 'Prepare content for your CMS',
+            body: 'Plan, review and approve content before it goes into WordPress, Payload, Sanity or a custom CMS.',
+            note: 'WordPress · Payload · Sanity',
+          },
+          {
+            num: 'DESTINATION 03',
+            title: 'Run a standalone editorial desk',
+            body: 'Manage briefs, drafts, reviews and approvals for any team or client, then hand off clean, approved work.',
+            note: 'Brief · review · hand off',
+          },
+        ].map(({ num, title, body, note }) => (
+          <div class="destination-wrap">
+            <span class="folder-tab folder-tab--destination">{num}</span>
+            <div class="destination-card">
+              <h3 class="destination-title">{title}</h3>
+              <p class="destination-body">{body}</p>
+              <div class="destination-footer">
+                <span class="destination-arrow">→</span>
+                {note}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== 6. WORKERS ===================== -->
   <section id="workers" class="section section--paper-dark section--border-top">
     <div class="container">
@@ -415,6 +415,8 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
         <h2 class="section-h2">Specialist Workers for each stage of the content workflow.</h2>
         <p class="section-body">Each Worker is a specialist role with clear inputs, outputs and limits — covering planning, briefing, drafting, reviewing, improving, approving, compliance and handoff.</p>
       </div>
+
+      <p class="worker-control-line">You do not need every Worker on every job. Word Presto brings in the right specialists for the stage you are at.</p>
 
       <div class="worker-directory-header">
         <span>WORKER DIRECTORY</span>
@@ -1410,6 +1412,14 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
   .destination-arrow { color: var(--wp-ink); font-weight: 700; }
 
   /* ===== WORKERS ===== */
+  .worker-control-line {
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+    margin: 0 0 28px;
+    max-width: 560px;
+    line-height: 1.6;
+  }
+
   .worker-directory-header {
     display: flex;
     align-items: center;
