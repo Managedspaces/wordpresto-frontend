@@ -52,6 +52,8 @@ export interface WorkerProfile {
   }>;
   ctaH2: string;
   ctaPara: string;
+  guidanceFooterLabel: string;
+  guidanceFooterValue: string;
 }
 
 export const workerProfiles: WorkerProfile[] = [
@@ -203,6 +205,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Keep the voice in the work.',
     ctaPara:
       'Add Helena to your content workflow and hold one voice across every page, with human approval before anything ships.',
+    guidanceFooterLabel: 'VOICE FIT',
+    guidanceFooterValue: 'Strong · ready for review',
   },
 
   // 2. Omar - Content Analyst
@@ -222,7 +226,7 @@ export const workerProfiles: WorkerProfile[] = [
       'Omar reviews existing content, context and purpose before any editing or rewriting starts. For teams that need a clear baseline before they touch a page.',
     h1: 'Understand the page before you rewrite it.',
     heroPara1:
-      'Most rewrites start in the wrong place. They change what is easy to change rather than what actually needs changing. Omar reads the existing page first — what it is trying to do, whether it is working, and what is worth keeping — so the work that follows has a clear foundation.',
+      'Most rewrites start in the wrong place. They change what is easy to change rather than what actually needs changing. Omar reads the existing page first: what it is trying to do, whether it is working, and what is worth keeping. That gives the work that follows a clear foundation.',
     heroPara2:
       'For content reviews, site migrations, and any rewrite that needs to start from evidence rather than instinct.',
     heroWorksAlongside: ['Marcus', 'Luca', 'Ellis'],
@@ -241,7 +245,7 @@ export const workerProfiles: WorkerProfile[] = [
     beforeTags: ['No baseline', 'Vague direction', 'Nothing to build from'],
     beforeNote: 'rewriting from a guess',
     afterStamp: 'Analysis done',
-    afterHtml: `<p>The existing homepage has <span class="ba-hl">strong second and third sections</span> that perform well. The intro paragraph needs replacing. Structure is sound — no full rewrite needed.</p>`,
+    afterHtml: `<p>The existing homepage has <span class="ba-hl">strong second and third sections</span> that perform well. The intro paragraph needs replacing. Structure is sound. No full rewrite needed.</p>`,
     afterTags: ['Clear baseline', 'Specific scope', 'Work defined'],
     afterNote: 'now we know what to change',
     helpsEyebrow: 'How this Worker helps',
@@ -353,6 +357,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Understand the page before you rewrite it.',
     ctaPara:
       'Add Omar to your workflow and every rewrite starts from a clear picture of what is already there.',
+    guidanceFooterLabel: 'ANALYSIS STATUS',
+    guidanceFooterValue: 'Complete · brief-ready',
   },
 
   // 3. Marcus - Structure Worker
@@ -503,6 +509,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Give every draft a clearer shape.',
     ctaPara:
       'Add Marcus to your workflow and every page starts with an editorial structure that writers and editors can actually work from.',
+    guidanceFooterLabel: 'STRUCTURE STATUS',
+    guidanceFooterValue: 'Outlined · draft-ready',
   },
 
   // 4. Luca - Content Brief Builder
@@ -519,7 +527,7 @@ export const workerProfiles: WorkerProfile[] = [
     portrait2x: '/agents/profiles/profile-13-384.webp',
     seoTitle: 'Content Brief Builder | WordPresto',
     metaDescription:
-      'Luca turns a topic and goal into a structured content brief — purpose, audience, angle and sections — before any drafting starts.',
+      'Luca turns a topic and goal into a structured content brief: purpose, audience, angle and sections, before any drafting starts.',
     h1: 'Start with a brief that writers can actually use.',
     heroPara1:
       'Most content briefs are either too thin to help or too prescriptive to leave room for writing. Luca builds structured briefs that give writers the context and direction they need without doing the writing for them: purpose, audience, angle, tone direction and a clear section plan.',
@@ -653,6 +661,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Start with a brief that writers can actually use.',
     ctaPara:
       'Add Luca to your workflow and every piece of content starts with a clear brief that reduces revision rounds.',
+    guidanceFooterLabel: 'BRIEF STATUS',
+    guidanceFooterValue: 'Ready for drafting',
   },
 
   // 5. Ellis - Draft Rewrite Worker
@@ -669,7 +679,7 @@ export const workerProfiles: WorkerProfile[] = [
     portrait2x: '/agents/profiles/profile-18-384.webp',
     seoTitle: 'Draft Rewrite Worker | WordPresto',
     metaDescription:
-      'Ellis builds and rewrites drafts that follow the brief — structured, on-purpose, and ready for review. For content that needs a shaped draft before editing or review starts.',
+      'Ellis builds and rewrites drafts that follow the brief: structured, on-purpose, and ready for review. For content that needs a shaped draft before editing or review starts.',
     h1: 'Rewrite drafts without losing the point.',
     heroPara1:
       'A draft that wanders from the brief, buries the main point or runs twice as long as it needs to is not ready for review. Ellis rewrites drafts that follow the brief structure, lead with what matters and read well enough for an editor to make decisions from.',
@@ -684,7 +694,7 @@ export const workerProfiles: WorkerProfile[] = [
     problemEyebrow: 'Where drafts fall short',
     problemH2: 'A draft that wanders cannot be edited into shape. It has to be rewritten.',
     problemPara:
-      'Most first drafts — from writers and from AI — cover the right territory without covering it in the right order. The main point is buried. Sections drift. The introduction spends three paragraphs warming up. Getting a draft ready for review means more than fixing sentences.',
+      'Most first drafts, from writers and from AI, cover the right territory without covering it in the right order. The main point is buried. Sections drift. The introduction spends three paragraphs warming up. Getting a draft ready for review means more than fixing sentences.',
     problemAnnotation: '↘ shape the draft, then review it',
     beforeStamp: 'Unshaped',
     beforeHtml: `<p>We are a <span class="ba-strike">leading provider of innovative solutions</span>. Founded in 2018, <span class="ba-strike">our team of dedicated professionals</span> works hard every day to <span class="ba-strike">deliver value to our valued customers</span>. We believe in <span class="ba-strike">excellence</span>.</p>`,
@@ -697,7 +707,7 @@ export const workerProfiles: WorkerProfile[] = [
     helpsEyebrow: 'How this Worker helps',
     helpsH2: 'A drafter that follows the brief and produces something an editor can work from.',
     helpsPara:
-      'Ellis does the drafting and rewriting that gets content to reviewable quality. The goal is not a finished piece — it is a draft that has a clear shape, follows the brief and gives an editor something real to work with.',
+      'Ellis does the drafting and rewriting that gets content to reviewable quality. The goal is not a finished piece; it is a draft that has a clear shape, follows the brief and gives an editor something real to work with.',
     checks: [
       'Whether the draft follows the brief structure',
       'Whether the opening establishes the main point',
@@ -803,6 +813,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Rewrite drafts without losing the point.',
     ctaPara:
       'Add Ellis to your workflow and every draft reaches review already shaped, structured and brief-led.',
+    guidanceFooterLabel: 'DRAFT STATUS',
+    guidanceFooterValue: 'Shaped · ready for review',
   },
 
   // 6. Quinn - Draft Quality Reviewer
@@ -834,20 +846,20 @@ export const workerProfiles: WorkerProfile[] = [
     problemEyebrow: 'Where drafts move too early',
     problemH2: 'A draft that reaches review too soon costs more than waiting.',
     problemPara:
-      'Sending a draft to a client or senior editor before it is ready is not efficiency — it is a backwards investment. The cost of a structural revision after client feedback is higher than a review pass before the draft leaves the team.',
+      'Sending a draft to a client or senior editor before it is ready is not efficiency; it is a backwards investment. The cost of a structural revision after client feedback is higher than a review pass before the draft leaves the team.',
     problemAnnotation: '↘ review before it moves',
     beforeStamp: 'Not reviewed',
     beforeHtml: `<p>Here is the <span class="ba-strike">finished draft</span> for your review. We are <span class="ba-strike">happy with it</span>. Let us know <span class="ba-strike">if you want any changes</span>. We think it covers <span class="ba-strike">everything</span> you asked for.</p>`,
     beforeTags: ['Not checked', 'Brief not verified', 'Issues not spotted'],
     beforeNote: 'the client will find the problems',
     afterStamp: 'Reviewed',
-    afterHtml: `<p>Section two buries the main benefit. Opening reads well. <span class="ba-hl">Three specific issues flagged</span> before the draft reaches the client — each with a clear fix.</p>`,
+    afterHtml: `<p>Section two buries the main benefit. Opening reads well. <span class="ba-hl">Three specific issues flagged</span> before the draft reaches the client, each with a clear fix.</p>`,
     afterTags: ['Issues flagged', 'Brief checked', 'Ready to present'],
     afterNote: 'problems found before handoff',
     helpsEyebrow: 'How this Worker helps',
     helpsH2: 'A quality check that catches issues before they become client comments.',
     helpsPara:
-      'Quinn does the structured review pass that should happen between drafting and delivery. Not a line edit — a readiness check that identifies whether the draft is clear, structured and ready to move.',
+      'Quinn does the structured review pass that should happen between drafting and delivery. Not a line edit; a readiness check that identifies whether the draft is clear, structured and ready to move.',
     checks: [
       'Whether the draft covers the brief',
       'Whether sections are clear and in order',
@@ -897,7 +909,7 @@ export const workerProfiles: WorkerProfile[] = [
       {
         title: 'An AI draft that passed a basic check.',
         description:
-          'Quinn applies editorial standards, not just grammar — clarity, structure and brief alignment.',
+          'Quinn applies editorial standards, not just grammar: clarity, structure and brief alignment.',
       },
       {
         title: 'A content programme where quality is inconsistent.',
@@ -953,6 +965,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Review the draft before it moves forward.',
     ctaPara:
       'Add Quinn to your workflow and every draft reaches the client or CMS already checked, with issues flagged before they become revision rounds.',
+    guidanceFooterLabel: 'REVIEW STATUS',
+    guidanceFooterValue: 'Checked · issues flagged',
   },
 
   // 7. Rosa - Section Rewrite Worker
@@ -972,7 +986,7 @@ export const workerProfiles: WorkerProfile[] = [
       'Rosa rewrites individual sections that are unclear, thin or off-brief without touching the rest of the piece. For targeted section-level improvements after review.',
     h1: 'Fix the weak section without rewriting the whole page.',
     heroPara1:
-      'When review notes flag a specific section as thin, off-brief or unclear, the answer is not a full page rewrite. Rosa rewrites the specific section that needs fixing — against the brief and in the voice of the surrounding content — without disturbing what is working.',
+      'When review notes flag a specific section as thin, off-brief or unclear, the answer is not a full page rewrite. Rosa rewrites the specific section that needs fixing, working against the brief and in the voice of the surrounding content, without disturbing what is working.',
     heroPara2:
       'For targeted section improvements after draft review, mid-production fixes, and specific revision requests from clients or editors.',
     heroWorksAlongside: ['Quinn', 'Ellis', 'Priya'],
@@ -1102,6 +1116,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Fix the weak section without rewriting the whole page.',
     ctaPara:
       'Add Rosa to your workflow and targeted section fixes happen quickly, precisely and without disturbing what is already working.',
+    guidanceFooterLabel: 'SECTION STATUS',
+    guidanceFooterValue: 'Rewritten · ready for editor',
   },
 
   // 8. Audrey - Approval Report Worker
@@ -1140,7 +1156,7 @@ export const workerProfiles: WorkerProfile[] = [
     beforeTags: ['No summary', 'No clear status', 'Approver left guessing'],
     beforeNote: 'no one can approve this confidently',
     afterStamp: 'Report ready',
-    afterHtml: `<p><span class="ba-hl">9 pieces ready for sign-off. 3 need minor revision before approval. 2 flagged for editorial review</span> — specific issues noted with recommended next steps for each.</p>`,
+    afterHtml: `<p><span class="ba-hl">9 pieces ready for sign-off. 3 need minor revision before approval. 2 flagged for editorial review</span>, with specific issues noted and recommended next steps for each.</p>`,
     afterTags: ['Clear status', 'Specific flags', 'Approver has everything they need'],
     afterNote: 'approval can happen now',
     helpsEyebrow: 'How this Worker helps',
@@ -1216,7 +1232,7 @@ export const workerProfiles: WorkerProfile[] = [
     ],
     boundaryH2: 'Audrey reports. Humans approve.',
     boundaryPara:
-      'Approval is a human decision. Audrey provides the structured information that makes that decision reliable. The sign-off call — and the responsibility that comes with it — is always with a person.',
+      'Approval is a human decision. Audrey provides the structured information that makes that decision reliable. The sign-off call, and the responsibility that comes with it, is always with a person.',
     boundaryChecklist: [
       'Audrey reports on status, she never approves content herself.',
       'Approval reports are structured for the designated approver to review.',
@@ -1252,6 +1268,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Make approval easier to trust.',
     ctaPara:
       'Add Audrey to your workflow and every approval decision is made with a clear, complete picture of what is ready and what is not.',
+    guidanceFooterLabel: 'APPROVAL STATUS',
+    guidanceFooterValue: 'Ready for human sign-off',
   },
 
   // 9. Priya - Readability Worker
@@ -1271,7 +1289,7 @@ export const workerProfiles: WorkerProfile[] = [
       'Priya tightens sentences, simplifies structure and improves flow so content reads clearly for its intended audience. For drafts that are correct but harder to read than they need to be.',
     h1: 'Make good content easier to read.',
     heroPara1:
-      'Content can be factually accurate, well-structured and on-brief, and still be harder to read than it needs to be. Priya tightens sentences, breaks up dense paragraphs, removes unnecessary qualification and improves flow — without changing meaning or losing voice.',
+      'Content can be factually accurate, well-structured and on-brief, and still be harder to read than it needs to be. Priya tightens sentences, breaks up dense paragraphs, removes unnecessary qualification and improves flow, without changing meaning or losing voice.',
     heroPara2:
       'For drafts that are ready in substance but need a readability pass before review or delivery.',
     heroWorksAlongside: ['Ellis', 'Rosa', 'Quinn'],
@@ -1283,20 +1301,20 @@ export const workerProfiles: WorkerProfile[] = [
     problemEyebrow: 'Where readability fails',
     problemH2: 'Dense, correct content still loses readers.',
     problemPara:
-      'Most readability problems are not about the words — they are about sentence length, paragraph density and the ratio of hedging to assertion. A reader who gives up at paragraph three has not read the content, however accurate it was.',
+      'Most readability problems are not about the words; they are about sentence length, paragraph density and the ratio of hedging to assertion. A reader who gives up at paragraph three has not read the content, however accurate it was.',
     problemAnnotation: '↘ readable means actually read',
     beforeStamp: 'Hard to read',
     beforeHtml: `<p>In the context of <span class="ba-strike">the current digital landscape where</span> many organisations are <span class="ba-strike">increasingly looking to leverage</span> available tools, it is important to <span class="ba-strike">bear in mind that</span> the approach taken will <span class="ba-strike">inevitably have</span> an impact on outcomes.</p>`,
     beforeTags: ['Too long', 'Over-qualified', 'Reads as evasive'],
     beforeNote: 'no one will read this to the end',
     afterStamp: 'Readable',
-    afterHtml: `<p>The tools you use affect your results. <span class="ba-hl">Choosing the right approach is the decision that matters most</span> — and it is usually the one teams spend the least time on.</p>`,
+    afterHtml: `<p>The tools you use affect your results. <span class="ba-hl">Choosing the right approach is the decision that matters most</span>, and it is usually the one teams spend the least time on.</p>`,
     afterTags: ['Short and direct', 'Clear', 'Reads naturally'],
     afterNote: 'this version gets read',
     helpsEyebrow: 'How this Worker helps',
     helpsH2: 'A readability pass that gets content actually read.',
     helpsPara:
-      'Priya does the sentence-level and paragraph-level work that turns technically correct content into something a reader finishes. Not a rewrite — a tightening pass that removes everything that makes reading harder.',
+      'Priya does the sentence-level and paragraph-level work that turns technically correct content into something a reader finishes. Not a rewrite; a tightening pass that removes everything that makes reading harder.',
     checks: [
       'Sentence length against intended audience',
       'Paragraph density and scanning ease',
@@ -1335,7 +1353,7 @@ export const workerProfiles: WorkerProfile[] = [
       {
         title: 'A technical product page written by an engineer.',
         description:
-          'Priya translates without dumbing down — clear for the target audience, still accurate.',
+          'Priya translates without dumbing down: clear for the target audience, still accurate.',
       },
       {
         title: 'A long-form article that is dense from end to end.',
@@ -1401,6 +1419,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Make good content easier to read.',
     ctaPara:
       'Add Priya to your workflow and every draft gets a readability pass before it reaches review or delivery.',
+    guidanceFooterLabel: 'READABILITY',
+    guidanceFooterValue: 'Improved · ready for review',
   },
 
   // 10. Ada - Brief-to-Draft Alignment Worker
@@ -1417,10 +1437,10 @@ export const workerProfiles: WorkerProfile[] = [
     portrait2x: '/agents/profiles/profile-32-384.webp',
     seoTitle: 'Brief-to-Draft Alignment Worker | WordPresto',
     metaDescription:
-      'Ada checks that the draft actually fulfils the brief — surfacing gaps, drift and misaligned sections before they go any further.',
+      'Ada checks that the draft actually fulfils the brief, surfacing gaps, drift and misaligned sections before they go any further.',
     h1: 'Check whether the draft actually follows the brief.',
     heroPara1:
-      'A draft that looks good but does not follow the brief is a problem that will surface at review or, worse, at client delivery. Ada compares the final draft against the original brief — section by section — and flags any gaps, scope drift or misalignments before the draft moves forward.',
+      'A draft that looks good but does not follow the brief is a problem that will surface at review or, worse, at client delivery. Ada compares the final draft against the original brief, section by section, and flags any gaps, scope drift or misalignments before the draft moves forward.',
     heroPara2:
       'For draft review stages, brief-heavy content programmes, and any project where brief adherence needs to be verified before delivery.',
     heroWorksAlongside: ['Luca', 'Quinn', 'Ellis'],
@@ -1432,7 +1452,7 @@ export const workerProfiles: WorkerProfile[] = [
     problemEyebrow: 'Where drafts drift from briefs',
     problemH2: 'A draft that follows the brief is the exception, not the rule.',
     problemPara:
-      'Briefs drift during production. Writers interpret differently. AI tools fill gaps with their own defaults. By the time a draft reaches review, it is often covering different ground to what was briefed — and the only way to catch it is to check.',
+      'Briefs drift during production. Writers interpret differently. AI tools fill gaps with their own defaults. By the time a draft reaches review, it is often covering different ground to what was briefed. The only way to catch it is to check.',
     problemAnnotation: '↘ check the brief, not just the draft',
     beforeStamp: 'Not checked',
     beforeHtml: `<p>The draft <span class="ba-strike">looks good</span> to us. It covers the <span class="ba-strike">main points</span> and is the <span class="ba-strike">right length</span>. We think it <span class="ba-strike">meets the brief</span> though we have not <span class="ba-strike">checked it section by section</span>.</p>`,
@@ -1495,7 +1515,7 @@ export const workerProfiles: WorkerProfile[] = [
       {
         title: 'An AI-generated draft that used the brief as a starting point.',
         description:
-          'AI tools fill gaps with defaults — Ada identifies which defaults replaced brief requirements.',
+          'AI tools fill gaps with defaults; Ada identifies which defaults replaced brief requirements.',
       },
       {
         title: 'A client who checks briefs carefully before approving drafts.',
@@ -1551,6 +1571,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Check whether the draft actually follows the brief.',
     ctaPara:
       'Add Ada to your workflow and every draft goes to review with a brief alignment check already done.',
+    guidanceFooterLabel: 'ALIGNMENT STATUS',
+    guidanceFooterValue: 'Checked · gaps flagged',
   },
 
   // 11. Ravi - CMS Handoff & Publishing Package Worker
@@ -1570,7 +1592,7 @@ export const workerProfiles: WorkerProfile[] = [
       'Ravi packages approved content with the structure, metadata and notes needed for clean handoff to a CMS, website or client. For teams that need a publishing-ready content package.',
     h1: 'Prepare approved content for a cleaner handoff.',
     heroPara1:
-      'Approved content that arrives in a CMS without the right metadata, formatting guidance and notes creates work at the point where it should be simple. Ravi takes the approved draft and produces a complete publishing package — content, metadata, formatting notes, CMS fields — so the handoff is clean from the first time.',
+      'Approved content that arrives in a CMS without the right metadata, formatting guidance and notes creates work at the point where it should be simple. Ravi takes the approved draft and produces a complete publishing package: content, metadata, formatting notes, CMS fields. The handoff is clean from the first time.',
     heroPara2:
       'For content teams handing off to developers, CMS editors, or clients who manage their own publishing.',
     heroWorksAlongside: ['Audrey', 'Vera', 'Quinn'],
@@ -1595,7 +1617,7 @@ export const workerProfiles: WorkerProfile[] = [
     helpsEyebrow: 'How this Worker helps',
     helpsH2: 'A publishing package that CMS editors and developers can act on immediately.',
     helpsPara:
-      'Ravi produces the complete handoff package that turns approved content into publishable content. Meta fields, formatting guidance, URL slug, image notes — everything needed for a clean first publish.',
+      'Ravi produces the complete handoff package that turns approved content into publishable content. Meta fields, formatting guidance, URL slug, image notes: everything needed for a clean first publish.',
     checks: [
       'Whether all required metadata fields are populated',
       'Whether formatting is correct for the target CMS',
@@ -1701,6 +1723,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Prepare approved content for a cleaner handoff.',
     ctaPara:
       'Add Ravi to your workflow and every piece of approved content arrives at the CMS with everything needed to publish it cleanly.',
+    guidanceFooterLabel: 'HANDOFF STATUS',
+    guidanceFooterValue: 'Ready for CMS review',
   },
 
   // 12. Vera - Editorial Risk & Claims Compliance Worker
@@ -1720,7 +1744,7 @@ export const workerProfiles: WorkerProfile[] = [
       'Vera flags unsupported claims, risky statements and compliance issues in content before it is approved or published.',
     h1: 'Flag risky claims before they move forward.',
     heroPara1:
-      'Content that contains unsupported claims, legally risky language or compliance issues does not fail at the point of publication — it fails at the point of complaint, challenge or audit. Vera reviews content for claims that cannot be substantiated, statements that create liability, and language that needs compliance clearance.',
+      'Content that contains unsupported claims, legally risky language or compliance issues does not fail at the point of publication; it fails at the point of complaint, challenge or audit. Vera reviews content for claims that cannot be substantiated, statements that create liability, and language that needs compliance clearance.',
     heroPara2:
       'For content teams in regulated industries, agencies with compliance obligations, and any team publishing claims that need to be defensible.',
     heroWorksAlongside: ['Quinn', 'Audrey', 'Ravi'],
@@ -1745,7 +1769,7 @@ export const workerProfiles: WorkerProfile[] = [
     helpsEyebrow: 'How this Worker helps',
     helpsH2: 'A compliance check that finds claims risks before they reach publication.',
     helpsPara:
-      'Vera reviews content for the claims and language that create risk — not to remove strong copy, but to ensure that what gets published can be defended.',
+      'Vera reviews content for the claims and language that create risk, not to remove strong copy, but to ensure that what gets published can be defended.',
     checks: [
       'Unsupported or unqualified claims',
       'Comparative language that implies false superiority',
@@ -1851,6 +1875,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Flag risky claims before they move forward.',
     ctaPara:
       'Add Vera to your workflow and compliance issues are identified before publication, not after.',
+    guidanceFooterLabel: 'RISK REVIEW',
+    guidanceFooterValue: 'Needs evidence check',
   },
 
   // 13. Iris - Content Refresh Brief Worker
@@ -1867,10 +1893,10 @@ export const workerProfiles: WorkerProfile[] = [
     portrait2x: '/agents/profiles/profile-35-384.webp',
     seoTitle: 'Content Refresh Brief Worker | WordPresto',
     metaDescription:
-      'Iris produces a structured brief for refreshing existing content — what to update, what to cut and what to add. For teams refreshing pages with clear direction rather than guesswork.',
+      'Iris produces a structured brief for refreshing existing content: what to update, what to cut and what to add. For teams refreshing pages with clear direction rather than guesswork.',
     h1: 'Refresh content with a clearer reason.',
     heroPara1:
-      'Refreshing content without a brief is how you end up with pages that have been rewritten three times and still do not work. Iris produces a structured refresh brief — what to update, what to cut, what to add, and why — so every refresh starts with clear direction rather than a blank page review.',
+      'Refreshing content without a brief is how you end up with pages that have been rewritten three times and still do not work. Iris produces a structured refresh brief covering what to update, what to cut, what to add, and why, so every refresh starts with clear direction rather than a blank page review.',
     heroPara2:
       'For content refresh programmes, site migrations with existing content, and teams updating pages to reflect changes in product, audience or market.',
     heroWorksAlongside: ['Omar', 'Ada', 'Ellis'],
@@ -2001,6 +2027,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Refresh content with a clearer reason.',
     ctaPara:
       'Add Iris to your workflow and every refresh starts with a brief that tells writers exactly what to change and why.',
+    guidanceFooterLabel: 'REFRESH STATUS',
+    guidanceFooterValue: 'Briefed · ready for writer',
   },
 
   // 14. Nina - Content Distribution Brief Worker
@@ -2020,7 +2048,7 @@ export const workerProfiles: WorkerProfile[] = [
       'Nina creates a distribution brief that maps where approved content should go and how it should be adapted for each channel.',
     h1: 'Plan where approved content should go next.',
     heroPara1:
-      'Approved content that goes directly from sign-off to a single channel wastes most of its value. Nina produces a distribution brief that maps the approved content to the channels where it fits, with adaptation notes for each — so the same piece extends further without being diluted.',
+      'Approved content that goes directly from sign-off to a single channel wastes most of its value. Nina produces a distribution brief that maps the approved content to the channels where it fits, with adaptation notes for each, so the same piece extends further without being diluted.',
     heroPara2:
       'For content teams, agencies and marketing leads who need a structured distribution plan rather than a social afterthought.',
     heroWorksAlongside: ['Ravi', 'Audrey', 'Iris'],
@@ -2032,7 +2060,7 @@ export const workerProfiles: WorkerProfile[] = [
     problemEyebrow: 'Where distribution falls apart',
     problemH2: 'Most content gets published once and forgotten.',
     problemPara:
-      'Approved long-form content often reaches one channel, in one format, at one time. The channel adaptations that would extend its reach — newsletter extract, LinkedIn post, social card, key quote — never happen because there is no plan for them. A distribution brief changes that.',
+      'Approved long-form content often reaches one channel, in one format, at one time. The channel adaptations that would extend its reach (newsletter extract, LinkedIn post, social card, key quote) never happen because there is no plan for them. A distribution brief changes that.',
     problemAnnotation: '↘ plan the distribution before it goes live',
     beforeStamp: 'No plan',
     beforeHtml: `<p>Great, the article is <span class="ba-strike">approved</span>! Let's <span class="ba-strike">post it on LinkedIn</span> and <span class="ba-strike">send it to the newsletter</span>. Someone can <span class="ba-strike">write some social posts</span> if they have time. <span class="ba-strike">Probably fine as is</span>.</p>`,
@@ -2151,6 +2179,8 @@ export const workerProfiles: WorkerProfile[] = [
     ctaH2: 'Plan where approved content should go next.',
     ctaPara:
       'Add Nina to your workflow and every approved piece leaves with a channel distribution plan already written.',
+    guidanceFooterLabel: 'DISTRIBUTION',
+    guidanceFooterValue: 'Briefed · channel-ready',
   },
 ];
 

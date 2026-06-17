@@ -76,7 +76,7 @@ const relatedProfiles = profile.relatedWorkerIds.map(({ id, description, outputL
               See how {profile.name} works
               <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a href="#related" class="btn btn--secondary btn--lg btn--tilt">How {profile.name} works</a>
+            <a href="/workers/" class="btn btn--secondary btn--lg btn--tilt">View all Workers</a>
           </div>
           <div class="hero-alongside">
             <span class="hero-alongside-label">works alongside</span>
@@ -91,7 +91,6 @@ const relatedProfiles = profile.relatedWorkerIds.map(({ id, description, outputL
 
         <!-- RIGHT: paper composition -->
         <div class="hero-art" aria-hidden="true">
-          <span class="hero-art-note hp-hand">one voice, every page &#8594;</span>
 
           <!-- Guidance / output sheet -->
           <div class="guidance-sheet">
@@ -120,8 +119,8 @@ const relatedProfiles = profile.relatedWorkerIds.map(({ id, description, outputL
               </div>
             </div>
             <div class="guidance-footer">
-              <span class="mono-label">VOICE FIT</span>
-              <span class="guidance-stamp">Strong · ready for review</span>
+              <span class="mono-label">{profile.guidanceFooterLabel}</span>
+              <span class="guidance-stamp">{profile.guidanceFooterValue}</span>
             </div>
           </div>
 
@@ -470,7 +469,7 @@ const relatedProfiles = profile.relatedWorkerIds.map(({ id, description, outputL
           Join the waitlist
           <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="/#workers" class="btn btn--secondary btn--lg btn--tilt">See the full workflow</a>
+        <a href="/workers/" class="btn btn--secondary btn--lg btn--tilt">See the full workflow</a>
       </div>
       <div class="cta-rule">
         <span class="cta-rule-line"></span>
@@ -690,16 +689,6 @@ const relatedProfiles = profile.relatedWorkerIds.map(({ id, description, outputL
     position: relative;
     min-width: 0;
     padding-top: 14px;
-  }
-  .hero-art-note {
-    position: absolute;
-    top: -6px;
-    right: 4px;
-    font-size: 23px;
-    color: var(--wp-amber);
-    transform: rotate(-5deg);
-    z-index: 6;
-    display: none;
   }
   .hp-hand { font-family: var(--wp-font-hand); font-weight: 600; }
 
