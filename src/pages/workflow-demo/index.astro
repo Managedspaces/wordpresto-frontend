@@ -4,8 +4,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 <BaseLayout
   pageTitle="See rough thinking become review-ready"
-  seoTitle="WordPresto workflow demo — rough notes to review-ready content"
-  description="A writer's rough notes move through WordPresto. Brief, structure, voice, review and approval — without handing judgement to a machine."
+  seoTitle="WordPresto workflow demo — editorial and search intelligence in one workflow"
+  description="A senior writer's rough notes move through WordPresto. Brief, structure, voice profile, review, metadata and CMS handoff — without handing judgement to a machine."
   canonical="https://wordpresto.com/workflow-demo/"
   noindex={true}
 >
@@ -34,8 +34,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     <div class="container">
       <div class="eyebrow eyebrow--demo">Workflow demo</div>
       <h1 class="demo-h1">See rough thinking become review-ready.</h1>
-      <p class="demo-intro">A writer's rough notes move through WordPresto. Brief, structure, voice, review and approval — without handing judgement to a machine.</p>
+      <p class="demo-intro">A senior writer's messy notes — on why generic SaaS tools fail growing SMEs — move through WordPresto. Brief, voice profile, structure, search intelligence, review and handoff.</p>
       <p class="demo-note">Follow the steps below. Each one reveals a stage of the content workflow. Nothing is published at the end — human approval is required first.</p>
+      <div class="track-legend">
+        <span class="track-legend-item"><span class="track-dot track-dot--editorial"></span>Editorial track</span>
+        <span class="track-legend-item"><span class="track-dot track-dot--search"></span>Search intelligence track</span>
+        <span class="track-legend-item"><span class="track-dot track-dot--handoff"></span>Handoff track</span>
+      </div>
     </div>
   </section>
 
@@ -44,62 +49,82 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     <div class="container">
 
       <!-- Progress rail -->
-      <div class="progress-rail" aria-label="Workflow progress" role="progressbar" aria-valuemin={0} aria-valuemax={9} aria-valuenow={0}>
+      <div class="progress-rail" aria-label="Workflow progress" role="progressbar" aria-valuemin={0} aria-valuemax={15} aria-valuenow={0}>
         <div class="progress-rail-inner">
-          {Array.from({ length: 10 }, (_, i) => (
+          {Array.from({ length: 16 }, (_, i) => (
             <span class={`progress-dot${i === 0 ? ' progress-dot--active' : ''}`} data-step={i} aria-label={`Step ${i}`}></span>
           ))}
         </div>
-        <span class="progress-label mono-label">Step <span id="progress-current">0</span> of 9</span>
+        <span class="progress-label mono-label">Step <span id="progress-current">0</span> of 15</span>
       </div>
 
       <!-- ===== STEP 0: Writer Primer ===== -->
       <div class="demo-step demo-step--visible" id="step-0" data-step="0">
-        <div class="step-label mono-label">YOUR NOTES · CLINIC WEBSITE ARTICLE · IN PROGRESS</div>
+        <div class="step-label mono-label">YOUR NOTES · SAAS + SME ESSAY · IN PROGRESS</div>
         <div class="primer-card">
           <div class="primer-margin"></div>
           <div class="primer-body">
 
-            <p class="primer-line primer-line--lead">Why aesthetic clinic websites often fail after launch — even when the design looks polished.</p>
-            <p class="primer-line">I want to write about why the website often fails not because the design is wrong, but because the clinic workflow behind it is undefined. The design can look professional and still lose every enquiry because nobody has decided what happens when the message comes in, who it goes to, what a suitable lead actually looks like, or what the patient is supposed to do after they land on the page.</p>
-            <p class="primer-line">I don't want this to sound like I'm attacking designers. Good design matters. The point is that design cannot fix an undefined workflow — and that's the clinic's job to sort out first, not the agency's.</p>
+            <p class="primer-line primer-line--lead">Why generic SaaS tools often fail growing SMEs — and why workflow-specific operating systems are starting to win.</p>
+
+            <p class="primer-line">I want to write about the moment a growing SME hits a wall — not a product wall, not a funding wall, but a <em>tooling wall</em>. The business has scaled past the founder's memory but not far enough to justify enterprise software. It has accumulated subscriptions like scar tissue. Every tool was a good decision in isolation. Together they have become a kind of organised confusion.</p>
+
+            <p class="primer-line">The specific thing I want to argue: the problem is not the tools. The tools are often fine. The problem is that SMEs adopt tools as if the tool is the strategy. Choosing a project management platform is not the same as having a project management process. The tool is not the system.</p>
 
             <div class="primer-divider"></div>
 
-            <p class="primer-line primer-line--keep">Keep the phrase: "the website is not the workflow."</p>
-            <span class="hand-annot hand-annot--keep">keep this ↓</span>
-            <p class="primer-line primer-line--keep">Possibly also: "a form is not a follow-up system."</p>
-            <p class="primer-line">The first phrase is the core idea. The second might be the best single line in the whole piece. Not sure whether to use both or just one — writer decision, not the brief's.</p>
+            <p class="primer-line primer-line--keep">Keep the phrase: "the tool is not the system."</p>
+            <span class="hand-annot hand-annot--keep">keep both ↓</span>
+            <p class="primer-line primer-line--keep">Also want to use: "software expands; the business contracts around it."</p>
+            <p class="primer-line">The second phrase is the one I'm most attached to — it describes the mechanism, not just the symptom. A business starts to define itself by the shape of its tooling rather than the shape of its work. That inversion is the problem. Not sure whether to use it as an opener or as the pivot moment midway through.</p>
 
             <div class="primer-divider"></div>
 
-            <p class="primer-line">Pain points I want to cover (from real patterns, not invented):</p>
-            <p class="primer-line">— WhatsApp enquiries that arrive with no owner — they sit on the clinic manager's phone, sometimes for days, with no handover system<br />
-            — Contact forms that collect vague enquiries but no qualification data: no treatment type, no timeline, no sense of whether this is the right patient<br />
-            — People booking consultations before anyone has checked suitability — wasted appointments, disappointed patients, staff time lost<br />
-            — Staff replying to enquiries in completely different tones depending on who is on shift<br />
-            — Clinic owners asking agencies for a better website when the actual problem is the intake process<br />
-            — Consent starting at the wrong point — often after the booking, sometimes after the treatment begins<br />
-            — Aftercare and follow-up living in a separate system with no connection back to the original enquiry<br />
-            — Clinic owners diagnosing a conversion problem when they actually have a workflow problem</p>
+            <p class="primer-line">Observable patterns I want to cover — from real client work, not invented scenarios:</p>
+            <p class="primer-line">
+            — The 12-person agency running Notion, Slack, Monday, HubSpot, Google Workspace, Toggl, Loom, and four other tools. Nobody knows which one is the source of truth. New staff take three weeks to orient.<br />
+            — Founders who treat a CRM subscription as a sales strategy. The CRM is empty. There is no cadence. There is a licence fee.<br />
+            — Teams that use a project management tool for communication and a communication tool for project management. Slack has become a task tracker. Notion has become a chat thread.<br />
+            — The "integration layer" fantasy: buying a fifth tool to make the other four talk to each other.<br />
+            — SaaS vendors whose onboarding is designed for teams of 200, not teams of 12. The SME builds its process around the vendor's assumptions rather than its own.<br />
+            — The hidden cost: cognitive overhead. Staff context-switch between six platforms before lunch. Decision fatigue is a systems problem, not a people problem.<br />
+            — Workflow-specific tools starting to win: Linear for product teams, Superhuman for comms, specialised content OS for content teams. The category is emerging. Nobody has named it well yet.
+            </p>
 
             <div class="primer-divider"></div>
 
-            <p class="primer-line">Audience: clinic owners, clinic managers, and possibly agencies who build clinic sites. The tone should be fair to agencies. An agency cannot design around a workflow the clinic hasn't defined. That's the clinic's responsibility first.</p>
-            <p class="primer-line">Tone: experienced, fair, practical. Not a lecture. Not another "here is what a great website looks like" piece. No "unlock your digital potential" energy. Domain knowledge, not generic content-marketing voice.</p>
+            <p class="primer-line">Audience: I'm writing for three groups who might read this but need slightly different things from it.<br />
+            — Primary: scaling SME founders or ops leads who recognise the problem and are looking for a frame to articulate it — possibly to their team, possibly to a consultant they're considering hiring.<br />
+            — Secondary: content strategists and agency leads who recommend tools to clients and are tired of the liability that comes with that.<br />
+            — Adjacent: investors or advisors watching the SME ops space who want a practitioner perspective, not another market research report.</p>
+
+            <p class="primer-line">The audience tension: founders will be defensive about their tool choices. I need to make clear early that this is not a "you made bad decisions" argument. Every tool was a reasonable decision. The problem is structural, not personal.</p>
 
             <div class="primer-divider"></div>
 
-            <p class="primer-line">Claims caution: do not say "most clinic websites fail" without defining what failure means. Failure here means the site does not create a clear, qualified next step for the right kind of patient. Use scenarios rather than statistics.</p>
-            <p class="primer-line">Consent and aftercare references should stay operational. Do not stray into legal or compliance advice — that is not this piece.</p>
+            <p class="primer-line">Competitor/market framing: almost all the content on this topic is vendor-authored. "The best project management tools for small teams" — written by the project management tool vendor. "How to build your SaaS stack" — written by someone with affiliate links. There is almost no independent, practitioner-authored content on the failure mode. That's the gap I want to occupy.</p>
+
+            <p class="primer-line">I do not want this to read as anti-SaaS. SaaS has genuinely lowered the cost of capability for small businesses. The argument is narrower: capability without coherence is expensive in ways that don't appear on the subscription invoice.</p>
 
             <div class="primer-divider"></div>
 
-            <p class="primer-line">Format question — I am not sure what this should become:<br />
-            1. An article (probably first)<br />
-            2. A landing page section for a service offering<br />
-            3. A guide for clinic owners to work through before briefing a website project<br /><br />
-            Start as an article. It could feed a service page later. Decision deferred until first draft is shaped.</p>
+            <p class="primer-line">Source and evidence gaps: I have no proprietary data. Gartner and Forrester have SME software adoption research but it's expensive and usually vendor-funded anyway. My evidence base is observable patterns from advisory and client work. I need to write this as scenario-led, not statistic-led. The risk: it reads as anecdote. The mitigation: specificity. If the scenario is described with enough operational detail, the reader's recognition is the validation.</p>
+
+            <p class="primer-line">One stat I can probably use: the average SME uses somewhere between 8–15 SaaS tools (there are several published estimates in this range from Blissfully/Productiv annual reports). Worth checking the most recent figure — I want to cite carefully, not loosely.</p>
+
+            <div class="primer-divider"></div>
+
+            <p class="primer-line">Tone and persona concerns: I want to write as a practitioner who has watched this happen, not a consultant diagnosing it from the outside. The distinction is in the specificity of the observation. The voice should be essayist, not listicle. I don't want subheadings like "5 Reasons SaaS Fails SMEs." I want a through-line argument with room to breathe.</p>
+
+            <p class="primer-line">Phrases to avoid: "digital transformation," "tech stack optimisation," "unlock efficiency," "streamline your workflow," "scale your operations." All vendor-voice. All wrong register for what I'm trying to write.</p>
+
+            <div class="primer-divider"></div>
+
+            <p class="primer-line">Format uncertainty — I genuinely don't know what this should become:<br />
+            1. A long-form essay (probably first — fits the voice and argument)<br />
+            2. A positioning piece / landing page for a consulting or advisory offer<br />
+            3. A practical guide: "an SME ops audit before your next SaaS renewal"<br /><br />
+            Start as an essay. The argument needs room. If it works, it can be repurposed into a guide or adapted as a positioning piece. That decision should come after the first draft is shaped, not before.</p>
 
           </div>
         </div>
@@ -108,10 +133,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         </div>
       </div>
 
-      <!-- ===== STEP 1: Omar ===== -->
+      <!-- ===== STEP 1: Omar — Content Analyst (EDITORIAL) ===== -->
       <div class="demo-step" id="step-1" data-step="1">
-        <div class="worker-pill mono-label">STEP 1 OF 9 · OMAR · CONTENT ANALYST · STAGE: ANALYSE</div>
-        <p class="worker-action">Reading your notes. Extracting what matters before a brief is written.</p>
+        <div class="worker-pill mono-label">STEP 1 OF 15 · OMAR · CONTENT ANALYST · EDITORIAL TRACK</div>
+        <p class="worker-action">Reading your notes. Extracting the argument, identifying audience tensions, flagging preserved phrases. Passing signals to the search intelligence track.</p>
         <div class="output-card">
           <div class="output-card-header">
             <span class="output-card-title">CONTENT ANALYSIS</span>
@@ -119,39 +144,31 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           <div class="output-card-body">
             <div class="output-section">
               <div class="output-heading">Core argument</div>
-              <p class="output-para">The clinic website fails not because the design is wrong, but because the workflow behind it was never defined. Design cannot fix an undefined operational process. That is the clinic's responsibility — not the agency's.</p>
+              <p class="output-para">Generic SaaS tools fail growing SMEs not because the tools are bad, but because SMEs adopt them as if the tool is the strategy. The problem is structural: capability without coherence. The business eventually contracts around its tooling rather than around its work — and that inversion is costly in ways that don't appear on the subscription invoice.</p>
             </div>
             <div class="output-section">
               <div class="output-heading">Audience groups identified</div>
-              <p class="output-para output-list">— Primary: clinic owners commissioning or reviewing a website<br />— Secondary: clinic managers who handle day-to-day enquiries<br />— Adjacent: agencies who build clinic sites (this audience changes the tone requirement)<br /><span class="output-indent">→ Writer's note explicitly asks that agencies not be blamed. Brief must carry this.</span></p>
+              <p class="output-para output-list">— Primary: scaling SME founders and ops leads — defensive about tool choices, need a structural frame not a blame frame<br />— Secondary: content strategists and agency leads who carry liability for tool recommendations<br />— Adjacent: investors and advisors wanting practitioner perspective, not market research<br /><span class="output-indent">→ Audience tension: founders will be defensive. Brief must carry the "not a bad decisions argument" framing explicitly.</span></p>
             </div>
             <div class="output-section output-section--signal">
               <div class="output-heading output-heading--signal">Two phrases to preserve — both flagged by writer</div>
-              <p class="output-para output-list">— "the website is not the workflow" — core thesis, use as section anchor<br />— "a form is not a follow-up system" — strongest single line in notes; writer uncertain whether to use both<br /><span class="output-indent">Recommendation: keep both. They do different things. First is the argument; second is the best example of it.</span></p>
+              <p class="output-para output-list">— "the tool is not the system" — core thesis, functional and direct. Use as section anchor.<br />— "software expands; the business contracts around it" — mechanism statement, strongest single line. Writer uncertain whether to open with it or use as pivot. Recommendation: use as pivot midway through — it lands harder after the reader has recognised the pattern.<br /><span class="output-indent">Both phrases must reach the brief and survive through to the final draft.</span></p>
             </div>
             <div class="output-section">
-              <div class="output-heading">Tension to manage</div>
-              <p class="output-para">Writer wants to be fair to agencies. The risk is that the piece reads as "agencies make nice pages and miss the point." That reading alienates a legitimate audience and misattributes blame. The brief should make explicit: the clinic is responsible for defining the workflow before briefing a designer. The agency cannot design around what the clinic hasn't defined.</p>
+              <div class="output-heading">Voice constraint — critical</div>
+              <p class="output-para">Writer is explicit: essayist register, not listicle. Practitioner authority, not consultant diagnosis. The Voice Worker will need a specific persona calibration for this piece — not generic "professional, clear, direct" — but the specific posture of someone who has watched this happen inside real businesses and is describing it without selling anything. This is an unusual requirement; flag for Helena.</p>
             </div>
             <div class="output-section">
-              <div class="output-heading">Likely content format</div>
-              <p class="output-para">Writer has deferred the format decision and is starting with an article. This is the right call. The material is strong enough for an article that could later feed a service page or a pre-project guide for clinic owners. Brief as article; note the format optionality for later.</p>
-            </div>
-            <div class="output-section">
-              <div class="output-heading">Claims risk areas</div>
-              <p class="output-para output-list">— "Most clinics don't have a system" — unquantified. Use scenarios, not statistics.<br />— Consent and aftercare references must stay operational. No legal framing.<br />— Avoid "most agencies" language — see tension note above.</p>
-            </div>
-            <div class="output-section">
-              <div class="output-heading">Missing writer input</div>
-              <p class="output-para output-list">— No specific clinic scenario yet (writer has the WhatsApp pattern; needs one concrete scene)<br />— Conclusion shape is open — writer needs to decide between action list and "what good looks like" example<br />— Word count not yet fixed — brief builder to recommend based on scope</p>
+              <div class="output-heading">Claims and evidence risk</div>
+              <p class="output-para output-list">— No proprietary data. Evidence base is observable patterns from client work.<br />— One citable statistic: 8–15 SaaS tools per SME (Blissfully/Productiv). Writer flagged this for verification before use.<br />— Risk: scenario-led evidence reads as anecdote. Mitigation: operational specificity earns the reader's recognition.<br />— Writer has pre-emptively noted: do not use "most SMEs" generalisations without grounding.</p>
             </div>
             <div class="output-section output-section--signal">
-              <div class="output-heading output-heading--signal">Recommendation</div>
-              <p class="output-para">Strong foundation. Two phrases preserved. Format deferred correctly. Proceed to brief — with agency-fairness and claims caution carried through.</p>
+              <div class="output-heading output-heading--signal">Signals passing to search intelligence</div>
+              <p class="output-para output-list">— Core topic: SaaS tool adoption failure mode for growing SMEs<br />— Reader pain: tool sprawl, no coherent operating model, recognises the problem but can't articulate it<br />— Competitive gap: all current content is vendor-authored. Independent practitioner perspective is genuinely underserved.<br />— Format signal: essay first; potential downstream: positioning piece, ops audit guide</p>
             </div>
           </div>
           <div class="voice-note">
-            <span class="hand-note">Two phrases, not one. Both should reach the brief.</span>
+            <span class="hand-note">Two phrases, not one. Voice calibration flagged as non-standard — passing to Helena with a specific brief.</span>
           </div>
         </div>
         <div class="step-cta-wrap">
@@ -159,512 +176,833 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         </div>
       </div>
 
-      <!-- ===== STEP 2: Luca ===== -->
+      <!-- ===== STEP 2: Intent Worker (SEARCH TRACK) ===== -->
       <div class="demo-step" id="step-2" data-step="2">
-        <div class="worker-pill mono-label">STEP 2 OF 9 · LUCA · CONTENT BRIEF BUILDER · STAGE: BRIEF</div>
-        <p class="worker-action">Turning your thinking into a brief that keeps what matters and gives the draft a clear shape.</p>
-        <div class="output-card output-card--brief">
-          <span class="folder-tab">BRIEF</span>
+        <div class="worker-pill worker-pill--search mono-label">STEP 2 OF 15 · INTENT WORKER · SEARCH INTELLIGENCE TRACK</div>
+        <p class="worker-action">Mapping what readers are actually searching for. Search intent supports the angle. It does not replace it.</p>
+        <div class="output-card output-card--search">
           <div class="output-card-header output-card-header--ruled">
-            <span class="output-card-title">CONTENT BRIEF</span>
-            <span class="mono-label">01 · BRIEF · clinic-website-article</span>
+            <span class="output-card-title">SEARCH INTENT ANALYSIS</span>
+            <span class="track-badge track-badge--search">SEARCH TRACK</span>
+          </div>
+          <div class="output-card-body">
+            <div class="output-section output-section--signal">
+              <div class="output-heading output-heading--signal">Primary intent identified</div>
+              <p class="output-para">Scaling SME founder or ops lead, experiencing tool sprawl, unable to name the failure mode. They know something is wrong — productivity is not improving despite more subscriptions — but they are attributing it to team behaviour or tool choice rather than operating model structure. The article reframes their diagnosis. This reader is not searching for a recommendation; they are searching for a frame.</p>
+            </div>
+            <div class="output-section">
+              <div class="output-heading">Query family</div>
+              <p class="output-para output-list">— "why do saas tools fail small businesses"<br />— "too many tools not enough productivity"<br />— "saas tool sprawl small business"<br />— "why project management software doesn't work for my team"<br />— "small business software stack not working"<br />— "workflow tools sme not enough"<br />— "saas fatigue small business"</p>
+            </div>
+            <div class="output-section">
+              <div class="output-heading">Reader journey stage</div>
+              <p class="output-para">Problem-aware, solution-unaware. The reader knows something is wrong. They have tried adding more tools. That also didn't work. They are now questioning the category — "is it the tools, or is it us?" The writer's answer — it is neither; it is the absence of an operating model — is exactly what this reader needs. The essay reframes the question before answering it.</p>
+            </div>
+            <div class="output-section">
+              <div class="output-heading">Snippet opportunity</div>
+              <p class="output-para">A direct, quotable answer in the first 200 words — "the problem is not the tools; the problem is that capability without coherence is expensive in ways that don't appear on the subscription invoice" — is a strong featured snippet candidate. The writer's core thesis is already snippet-shaped. No reformatting needed; protect this in drafting.</p>
+            </div>
+            <div class="output-section">
+              <div class="output-heading">What this does not change</div>
+              <p class="output-para">The writer's angle, voice and domain knowledge remain theirs. The intent map shows where the essay can reach, not what argument to make. The writer's domain knowledge — operational specificity, independence from vendor funding — is the advantage.</p>
+            </div>
+          </div>
+        </div>
+        <div class="step-cta-wrap">
+          <button class="demo-cta" data-reveals="3">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 3: Content Analyst Search Mode (SEARCH TRACK) ===== -->
+      <div class="demo-step" id="step-3" data-step="3">
+        <div class="worker-pill worker-pill--search mono-label">STEP 3 OF 15 · CONTENT ANALYST · SEARCH MODE · SEARCH INTELLIGENCE TRACK</div>
+        <p class="worker-action">Mapping the search landscape. Identifying what ranks now, what competitors miss, and where the writer's depth is the genuine advantage.</p>
+        <div class="output-card output-card--search">
+          <div class="output-card-header output-card-header--ruled">
+            <span class="output-card-title">SEARCH LANDSCAPE ANALYSIS</span>
+            <span class="track-badge track-badge--search">SEARCH TRACK</span>
+          </div>
+          <div class="output-card-body">
+            <div class="output-section">
+              <div class="output-heading">What currently ranks on this topic</div>
+              <p class="output-para output-list">— "Best project management tools for small businesses" — vendor comparison posts<br />— "Top SaaS tools for growing teams" — affiliate-link listicles<br />— "How to build a SaaS stack for your SME" — vendor-funded guides<br />— "Digital transformation for small businesses" — generic consultancy content<br />— SaaS vendor case studies positioning their product as the solution<br />— No independent, practitioner-authored analysis of the failure mode itself</p>
+            </div>
+            <div class="output-section output-section--signal">
+              <div class="output-heading output-heading--signal">The gap this writer owns</div>
+              <p class="output-para">Nothing in the current search landscape covers the structural failure mode from an independent practitioner perspective. Every article on this topic either recommends tools (vendor interest) or diagnoses "poor adoption" (consultancy interest selling change management). The writer's angle — that the problem is an absent operating model, not bad tool selection — is genuinely underserved. The writer's domain knowledge is the advantage: real client observations, no vendor affiliation, practitioner register.</p>
+            </div>
+            <div class="output-section">
+              <div class="output-heading">Competitor content weaknesses</div>
+              <p class="output-para output-list">— All top-ranking content has a product or service to sell<br />— No content names the "software expands; the business contracts around it" inversion<br />— No content covers cognitive overhead as a systems problem<br />— No content on the workflow-specific OS category as an emerging answer<br />— Scenario-level operational specificity is absent throughout</p>
+            </div>
+            <div class="output-section">
+              <div class="output-heading">SEO checks the path — writer takes it</div>
+              <p class="output-para">SEO checks the path, structure and evidence. The writer's argument is the destination. The gap analysis confirms the topic is underserved at this level of independence and specificity. The content brief will incorporate this landscape to shape structure — not to alter what the writer argues.</p>
+            </div>
+          </div>
+        </div>
+        <div class="step-cta-wrap">
+          <button class="demo-cta" data-reveals="4">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 4: Cluster Worker (SEARCH TRACK) ===== -->
+      <div class="demo-step" id="step-4" data-step="4">
+        <div class="worker-pill worker-pill--search mono-label">STEP 4 OF 15 · CLUSTER WORKER · SEARCH INTELLIGENCE TRACK</div>
+        <p class="worker-action">Mapping topical fit, the content cluster this piece belongs to, internal link opportunities, and cannibalisation risk.</p>
+        <div class="output-card output-card--search">
+          <div class="output-card-header output-card-header--ruled">
+            <span class="output-card-title">TOPICAL CLUSTER MAP</span>
+            <span class="track-badge track-badge--search">SEARCH TRACK</span>
+          </div>
+          <div class="output-card-body">
+            <div class="output-section">
+              <div class="output-heading">Parent topic</div>
+              <p class="output-para">SME operations and business productivity — specifically the operating model layer beneath tooling. This essay carves a distinct angle within a broad cluster: not "how to choose tools" but "why tooling without an operating model fails and what the emerging alternative looks like."</p>
+            </div>
+            <div class="output-section output-section--signal">
+              <div class="output-heading output-heading--signal">Supporting content this essay could anchor</div>
+              <p class="output-para output-list">— SME ops audit guide: "Reviewing your tool stack before the next renewal round"<br />— Workflow-specific OS category overview: "What workflow-specific operating systems are and why they're different"<br />— Practical pre-tool checklist: "What operating model questions to answer before buying the next subscription"<br />— Content team ops piece: "Why a content calendar is not a content workflow"<br /><span class="output-indent">→ Writer noted format optionality — this essay could later seed several of these downstream pieces</span></p>
+            </div>
+            <div class="output-section">
+              <div class="output-heading">Internal link slots identified</div>
+              <p class="output-para output-list">— Section on operating model → link to ops audit guide (if published)<br />— Section on workflow-specific OS category → link to category overview piece<br />— Conclusion → link to pre-tool checklist<br />— Evidence section → cite Blissfully/Productiv stat with source note</p>
+            </div>
+            <div class="output-section">
+              <div class="output-heading">Cannibalisation check</div>
+              <p class="output-para">No cannibalisation risk detected. This essay occupies a specific angle (structural failure mode, independent perspective) not currently covered. Adjacent content on tool recommendations and productivity covers different reader intent and journey stages. Safe to proceed.</p>
+            </div>
+          </div>
+        </div>
+        <div class="step-cta-wrap">
+          <button class="demo-cta" data-reveals="5">Build the brief →</button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 5: Luca — Content Brief (EDITORIAL) ===== -->
+      <div class="demo-step" id="step-5" data-step="5">
+        <div class="worker-pill mono-label">STEP 5 OF 15 · LUCA · BRIEF BUILDER · EDITORIAL TRACK</div>
+        <p class="worker-action">Building a structured content brief from the analysis and search intelligence. Both sources inform the brief — neither overrides the writer.</p>
+        <div class="output-card output-card--brief">
+          <div class="folder-tab">CONTENT BRIEF</div>
+          <div class="output-card-header">
+            <span class="output-card-title">CONTENT BRIEF — SME + SAAS ESSAY</span>
           </div>
           <div class="output-card-body">
             <dl class="brief-dl">
-              <dt class="brief-dt">GOAL</dt>
-              <dd class="brief-dd">Help clinic owners see the operational gap that exists before a designer is briefed — and understand that fixing it is their job, not the agency's</dd>
-              <dt class="brief-dt">PRIMARY AUDIENCE</dt>
-              <dd class="brief-dd">Clinic owners commissioning or reviewing a website</dd>
-              <dt class="brief-dt">SECONDARY AUDIENCE</dt>
-              <dd class="brief-dd">Clinic managers and agencies who build aesthetic clinic sites — tone must be fair to agencies throughout</dd>
-              <dt class="brief-dt">INTENT</dt>
-              <dd class="brief-dd">Useful, practical — not a sales piece. No "unlock your digital potential" energy.</dd>
-              <dt class="brief-dt">TONE</dt>
-              <dd class="brief-dd">Practitioner-to-practitioner. Direct, warm, slightly wry. Not a lecture.</dd>
-              <dt class="brief-dt">FORMAT</dt>
-              <dd class="brief-dd">Article (first). May feed a service page or pre-project guide later — decision deferred</dd>
-              <dt class="brief-dt">WORD COUNT</dt>
-              <dd class="brief-dd">900–1,200</dd>
+              <dt class="brief-dt">Working title</dt>
+              <dd class="brief-dd">Why generic SaaS tools often fail growing SMEs — and why workflow-specific operating systems are starting to win</dd>
+              <dt class="brief-dt">Format</dt>
+              <dd class="brief-dd">Long-form essay (2,000–2,600 words). Writer has noted format optionality — this could later seed an ops audit guide and a positioning piece.</dd>
+              <dt class="brief-dt">Primary reader</dt>
+              <dd class="brief-dd">Scaling SME founder or ops lead, experiencing tool sprawl. Has tried adding more tools. That also didn't work. Looking for a frame, not a recommendation.</dd>
+              <dt class="brief-dt">Core argument</dt>
+              <dd class="brief-dd">Generic SaaS tools fail SMEs not because the tools are bad but because capability without an operating model is expensive in ways that don't appear on the subscription invoice.</dd>
+              <dt class="brief-dt">Voice register</dt>
+              <dd class="brief-dd">Essayist, practitioner authority. Not consultant diagnosis, not listicle. Specific calibration required — flag for Voice Worker.</dd>
             </dl>
-            <div class="brief-divider"></div>
-            <div class="output-section">
-              <div class="output-heading">PRESERVE — BOTH PHRASES (writer's instruction)</div>
-              <p class="output-para output-list">— "the website is not the workflow" — section anchor, not the headline<br />— "a form is not a follow-up system" — strongest single example; use to close the forms section<br /><span class="output-indent">Do not paraphrase either. Both are to appear in the draft as written.</span></p>
-            </div>
-            <div class="output-section">
-              <div class="output-heading">KEEP</div>
-              <p class="output-para output-list">— Specific clinic scenarios (WhatsApp enquiry pattern, unqualified booking, consent timing)<br />— Operational language throughout — not conversion, not digital strategy<br />— Conversational, not expert-to-layperson</p>
-            </div>
-            <div class="output-section">
-              <div class="output-heading">AVOID</div>
-              <p class="output-para output-list">— "Most agencies" generalisations — the brief explicitly protects agency readers<br />— "Most clinics fail" — unquantified. Use scenarios instead<br />— Design criticism for its own sake<br />— Generic "here is what a great website looks like" conclusion<br />— Legal or compliance framing around consent — keep operational only</p>
-            </div>
-            <div class="output-section">
-              <div class="output-heading">SECTIONS</div>
-              <p class="output-para output-list">1. The problem that happens before design starts<br />2. What a patient actually does when they arrive at a clinic site<br />3. The operational gaps: WhatsApp, weak forms, unqualified bookings, staff consistency, consent, aftercare<br />4. The website is not the workflow [anchor phrase — §4 title]<br />5. What to sort out before briefing a designer<br />Close: what good operational readiness looks like — a scenario, not a checklist</p>
-            </div>
-            <div class="output-section">
-              <div class="output-heading">OPEN WRITER DECISIONS</div>
-              <p class="output-para output-list">— §3 WhatsApp scenario: writer to provide specific scene (not generalisation)<br />— Closing example: writer to choose between action steps or "what good looks like" scene<br />— "A form is not a follow-up system" placement: writer to confirm — recommendation is end of forms section</p>
-            </div>
-          </div>
-          <div class="voice-note">
-            <span class="hand-note">Both phrases in the brief. Agency fairness explicit. Format held open correctly.</span>
+            <hr class="brief-divider" />
+            <dl class="brief-dl">
+              <dt class="brief-dt">Phrases to preserve</dt>
+              <dd class="brief-dd">"the tool is not the system" (section anchor, core thesis)<br />"software expands; the business contracts around it" (mechanism statement — pivot point, not opener)</dd>
+              <dt class="brief-dt">Phrases to avoid</dt>
+              <dd class="brief-dd">"digital transformation," "tech stack optimisation," "unlock efficiency," "streamline your workflow," "scale your operations" — all vendor-voice, wrong register</dd>
+              <dt class="brief-dt">Audience framing</dt>
+              <dd class="brief-dd">Not a "you made bad decisions" argument. Every tool was a reasonable decision. The problem is structural. Make this explicit early — the defensive founder must feel seen, not judged.</dd>
+            </dl>
+            <hr class="brief-divider" />
+            <dl class="brief-dl">
+              <dt class="brief-dt">Evidence guidance</dt>
+              <dd class="brief-dd">Scenario-led, not statistic-led. If the Blissfully/Productiv stat is used, verify the most recent figure and cite carefully. Observable patterns from client work are the evidence base — specificity earns recognition.</dd>
+              <dt class="brief-dt">Search context</dt>
+              <dd class="brief-dd">Reader is problem-aware, solution-unaware. Essay reframes their diagnosis. No competitor covers this at this level of independence or specificity — writer's domain advantage is significant.</dd>
+              <dt class="brief-dt">Topical cluster</dt>
+              <dd class="brief-dd">Anchor piece for SME ops / business productivity cluster. Can seed: ops audit guide, workflow-specific OS overview, pre-tool checklist.</dd>
+            </dl>
           </div>
         </div>
         <div class="step-cta-wrap">
-          <button class="demo-cta" data-reveals="3">Follow the workflow →</button>
+          <button class="demo-cta" data-reveals="6">Check the evidence →</button>
         </div>
       </div>
 
-      <!-- ===== STEP 3: Marcus ===== -->
-      <div class="demo-step" id="step-3" data-step="3">
-        <div class="worker-pill mono-label">STEP 3 OF 9 · MARCUS · STRUCTURE WORKER · STAGE: STRUCTURE</div>
-        <p class="worker-action">Shaping a clear structure that places both phrases where they land hardest.</p>
-        <div class="output-card">
-          <div class="output-card-header">
-            <span class="output-card-title">ARTICLE STRUCTURE</span>
-          </div>
-          <div class="output-card-body output-card-body--outline">
-            <div class="outline-row outline-row--h1">
-              <span class="outline-tag">H1</span>
-              <span class="outline-text">Clinic websites often fail before design starts</span>
-            </div>
-            <div class="outline-row">
-              <span class="outline-tag outline-tag--muted">INTRO</span>
-              <div class="outline-content">
-                <span class="outline-text">The problem is not the design</span>
-                <span class="outline-sub">Open with the WhatsApp scenario — specific, not a generalisation. Draw the reader in before naming the argument.</span>
-              </div>
-            </div>
-            <div class="outline-row outline-row--section">
-              <span class="outline-tag">§ 1</span>
-              <div class="outline-content">
-                <span class="outline-text">What a patient actually does when they find the clinic</span>
-                <span class="outline-sub">— They don't fill in a form. They send a message.<br />— What happens next depends entirely on whether the clinic has a system.<br />— Most don't. (Use scenario — not a statistic.)</span>
-              </div>
-            </div>
-            <div class="outline-row outline-row--section">
-              <span class="outline-tag">§ 2</span>
-              <div class="outline-content">
-                <span class="outline-text">What the enquiry process actually looks like</span>
-                <span class="outline-sub">— Qualification: treatment type, timeline, suitability<br />— Staff tone: inconsistent, shift-dependent<br />— Unqualified consultations: wasted appointments, staff time lost<br />— Note on agency role: the brief rarely includes the workflow. That's the clinic's job first.</span>
-              </div>
-            </div>
-            <div class="outline-row outline-row--section">
-              <span class="outline-tag">§ 3</span>
-              <div class="outline-content">
-                <span class="outline-text">Where it breaks: forms, consent and aftercare</span>
-                <span class="outline-sub">— Contact form collects a name and email. No qualification.<br />— Consent begins after booking — sometimes after treatment.<br />— Aftercare lives in a separate system, disconnected from the original enquiry.<br />— Phrase placement: "A form is not a follow-up system." [close §3]</span>
-              </div>
-            </div>
-            <div class="outline-row outline-row--section outline-row--anchor">
-              <span class="outline-tag">§ 4</span>
-              <div class="outline-content">
-                <span class="outline-text outline-text--preserved">The website is not the workflow</span>
-                <span class="outline-sub">First phrase as section title and anchor. Named argument. Not the headline — here, mid-article, where it lands after the evidence.</span>
-              </div>
-            </div>
-            <div class="outline-row outline-row--section">
-              <span class="outline-tag">§ 5</span>
-              <div class="outline-content">
-                <span class="outline-text">What to sort out before you brief a designer</span>
-                <span class="outline-sub">— Operational steps, not a feature list<br />— Framed as: what the designer will need from you that you cannot outsource<br />— Agency fairness protected throughout — the brief defines the constraint</span>
-              </div>
-            </div>
-            <div class="outline-row outline-row--close">
-              <span class="outline-tag outline-tag--muted">CLOSE</span>
-              <div class="outline-content">
-                <span class="outline-text">What good looks like — a scenario, not a checklist</span>
-                <span class="outline-sub">A clinic that worked through the workflow first. What the agency was able to build as a result. Writer to provide from real experience or composite — not invented.</span>
-              </div>
-            </div>
-          </div>
-          <div class="voice-note">
-            <span class="hand-note">First phrase: §4 section title. Second phrase: §3 close. Both placed deliberately.</span>
-          </div>
-        </div>
-        <div class="step-cta-wrap">
-          <button class="demo-cta" data-reveals="4">Follow the workflow →</button>
-        </div>
-      </div>
-
-      <!-- ===== STEP 4: Helena ===== -->
-      <div class="demo-step" id="step-4" data-step="4">
-        <div class="worker-pill mono-label">STEP 4 OF 9 · HELENA · VOICE &amp; STYLE WORKER · STAGE: VOICE</div>
-        <p class="worker-action">Reading your notes for register and voice. Checking what must not get edited out.</p>
-        <div class="output-card">
-          <div class="output-card-header">
-            <span class="output-card-title">VOICE &amp; STYLE GUIDANCE</span>
+      <!-- ===== STEP 6: Evidence Gap Worker (SEARCH TRACK) ===== -->
+      <div class="demo-step" id="step-6" data-step="6">
+        <div class="worker-pill worker-pill--search mono-label">STEP 6 OF 15 · EVIDENCE GAP WORKER · SEARCH INTELLIGENCE TRACK</div>
+        <p class="worker-action">Identifying claims that will need support. The writer's own expertise is the primary evidence — the system flags where it needs to show.</p>
+        <div class="output-card output-card--search">
+          <div class="output-card-header output-card-header--ruled">
+            <span class="output-card-title">EVIDENCE GAP ANALYSIS</span>
+            <span class="track-badge track-badge--search">SEARCH TRACK</span>
           </div>
           <div class="output-card-body">
-            <div class="output-section">
-              <div class="output-heading">Voice identified from your notes</div>
-              <p class="output-para">Practitioner-to-practitioner. The reader is not being taught from scratch — they are being reminded of something they probably already half-know. Direct without being blunt. Slightly wry. Domain knowledge, not generic content-marketing voice. The writer's phrase "no unlock your digital potential energy" is instructive — keep that sensibility throughout.</p>
-            </div>
             <div class="output-section output-section--signal">
-              <div class="output-heading output-heading--signal">Both phrases preserved — exact wording, confirmed positions</div>
-              <p class="output-para output-list">— "the website is not the workflow" — §4 section title and anchor<br />— "a form is not a follow-up system" — §3 close<br /><span class="output-indent">Neither phrase should be paraphrased, softened, or repositioned without writer sign-off.</span></p>
+              <div class="output-heading output-heading--signal">Writer expertise as primary evidence</div>
+              <p class="output-para">The writer's notes describe seven operational failure patterns from "real client work, not invented scenarios." This is the evidence base. The essay must make the experiential authority visible — not through citation, but through operational specificity. The 12-person agency with ten tools and no source of truth is an example, not an anecdote, if described with enough detail for a reader to recognise it. The writer's domain knowledge is the advantage.</p>
             </div>
             <div class="output-section">
-              <div class="output-heading">Tone guidance for the draft</div>
-              <p class="output-para output-list">— Open with the specific WhatsApp scenario — a scene, not a statement<br />— The WhatsApp enquiry that sits on someone's phone for two days is a better opening than any abstract claim<br />— Avoid "most clinics" — use "in this pattern" or describe a specific scenario<br />— Agency framing: "The brief rarely includes the workflow" is the right phrasing — observation, not verdict<br />— Consent and aftercare: operational language only. No "legally required" or "compliance" framing.</p>
-            </div>
-            <div class="output-section">
-              <div class="output-heading">What to protect in the draft</div>
-              <p class="output-para output-list">— The register in your notes is experienced and fair, not instructional<br />— The agency-fairness note ("their job is limited to what the clinic has defined") must come through naturally<br />— Conclusion: a scenario, not a list. The piece should end on something the reader can picture, not a bullet list of actions.</p>
+              <div class="output-heading">Claims that will need grounding</div>
+              <p class="output-para output-list">— "Generic SaaS tools often fail growing SMEs" — ground this with the specific failure mechanism (absent operating model), not a generalisation<br />— The 12-person agency scenario — describe one concrete scene; specificity earns the claim<br />— "Cognitive overhead is a systems problem, not a people problem" — this is the most assertive claim; earn it with a specific mechanism description<br />— The "workflow-specific OS" category claim — name real examples (Linear, Superhuman, specialist content tools); the claim is weaker without them</p>
             </div>
             <div class="output-section output-section--warning">
-              <div class="output-heading output-heading--warning">Risk areas for the drafter</div>
-              <p class="output-para output-list">— Do not flatten the voice into generic content-marketing<br />— Do not let agency-fairness become an apology or a hedge — it's a structural point, not a disclaimer<br />— §3 needs one real scenario, not a list of patterns — the list is in the notes; the draft needs the scene</p>
+              <div class="output-heading output-heading--warning">Caution areas</div>
+              <p class="output-para output-list">— Do not write "most SMEs fail to implement SaaS tools correctly" — unquantified and patronising. Use: "a growing SME can reach a point where..."<br />— Blissfully/Productiv stat: verify before use. If the figure is outdated or the source is vendor-funded, note that caveat or drop the stat entirely<br />— The "workflow-specific OS" framing is the writer's term for an emerging category — make clear it is the writer's framing, not an established industry term</p>
             </div>
-          </div>
-          <div class="voice-note">
-            <span class="hand-note">"This sounds like the writer" — do not flatten it into a content template</span>
+            <div class="output-section">
+              <div class="output-heading">What does not need external evidence</div>
+              <p class="output-para">Operational descriptions — the tool-as-chat-thread inversion, the integration layer fantasy, the onboarding designed for 200-person teams — are observable, not claimed statistics. Write them as scenarios. The reader's recognition is the validation.</p>
+            </div>
           </div>
         </div>
         <div class="step-cta-wrap">
-          <button class="demo-cta" data-reveals="5">Follow the workflow →</button>
+          <button class="demo-cta" data-reveals="7">Build the structure →</button>
         </div>
       </div>
 
-      <!-- ===== STEP 5: Ellis ===== -->
-      <div class="demo-step" id="step-5" data-step="5">
-        <div class="worker-pill mono-label">STEP 5 OF 9 · ELLIS · DRAFT REWRITE WORKER · STAGE: DRAFT</div>
-        <p class="worker-action">Shaping the opening and early sections. Both phrases in position. Writer gaps held open.</p>
-        <div class="output-card output-card--draft">
+      <!-- ===== STEP 7: Marcus — Structure Worker (EDITORIAL + SEARCH) ===== -->
+      <div class="demo-step" id="step-7" data-step="7">
+        <div class="worker-pill mono-label">STEP 7 OF 15 · MARCUS · STRUCTURE WORKER · EDITORIAL + SEARCH</div>
+        <p class="worker-action">Building the essay outline. Section intent, anchor placement, FAQ candidates, internal link slots — shaped by both editorial brief and search intelligence.</p>
+        <div class="output-card">
           <div class="output-card-header">
-            <span class="output-card-title">DRAFT EXCERPT · INTRO + §1 + §2 (PARTIAL)</span>
-            <span class="status-badge status-badge--review">Draft</span>
+            <span class="output-card-title">ESSAY OUTLINE</span>
+          </div>
+          <div class="output-card-body output-card-body--outline">
+
+            <div class="outline-row outline-row--h1">
+              <span class="outline-tag">H1</span>
+              <div class="outline-content">
+                <span class="outline-text">Why generic SaaS tools often fail growing SMEs — and why workflow-specific operating systems are starting to win</span>
+                <span class="outline-sub">Working title. Writer to finalise. Strong snippet candidate — states the reframe and the emerging answer in the same sentence.</span>
+              </div>
+            </div>
+
+            <div class="outline-row outline-row--section">
+              <span class="outline-tag">§1</span>
+              <div class="outline-content">
+                <span class="outline-text">The scene: a 12-person agency, ten subscriptions, no source of truth</span>
+                <span class="outline-sub">Open with the concrete scenario before stating the argument. Earn the reframe. New staff take three weeks to orient — that cost is real and measurable. Use this to introduce the failure mode without blaming anyone.</span>
+              </div>
+            </div>
+
+            <div class="outline-row outline-row--section">
+              <span class="outline-tag">§2</span>
+              <div class="outline-content">
+                <span class="outline-text">What "failure" actually means here — and what it doesn't</span>
+                <span class="outline-sub">Define the failure mode precisely: capability without coherence. Not bad tools, not bad people. The absence of an operating model. Pre-empt the defensive founder response: "every tool was a reasonable decision."</span>
+              </div>
+            </div>
+
+            <div class="outline-row outline-row--anchor">
+              <span class="outline-tag">§3</span>
+              <div class="outline-content">
+                <span class="outline-text">The seven patterns — none of them a tool problem</span>
+                <span class="outline-sub">Work through the seven observable patterns. Scenario-first for each. The CRM with no cadence; Slack as task tracker; the integration layer fantasy; onboarding designed for 200.</span>
+                <span class="outline-sub outline-text--preserved">→ Pivot at the close of §3: "software expands; the business contracts around it."</span>
+              </div>
+            </div>
+
+            <div class="outline-row outline-row--anchor">
+              <span class="outline-tag">§4</span>
+              <div class="outline-content">
+                <span class="outline-text">The operating model that was supposed to come first</span>
+                <span class="outline-sub">Section anchor: the core thesis, stated directly.</span>
+                <span class="outline-sub outline-text--preserved">→ Open §4 with: "the tool is not the system."</span>
+                <span class="outline-sub">What an operating model covers: who owns what, what a good output looks like, what triggers the next step. This is what workflow-specific tools assume you already have. Most SMEs don't.</span>
+              </div>
+            </div>
+
+            <div class="outline-row outline-row--section">
+              <span class="outline-tag">§5</span>
+              <div class="outline-content">
+                <span class="outline-text">Why workflow-specific operating systems are starting to win</span>
+                <span class="outline-sub">The emerging category. Name real examples: Linear (product teams), Superhuman (comms), specialist content OS (content teams). These tools assume a workflow and enforce it — rather than leaving the team to construct one around a generic platform. Internal link slot: workflow-specific OS category overview (if published).</span>
+              </div>
+            </div>
+
+            <div class="outline-row outline-row--section">
+              <span class="outline-tag">§6</span>
+              <div class="outline-content">
+                <span class="outline-text">Before the next renewal — what to clarify first</span>
+                <span class="outline-sub">Practical close. Not a checklist yet — the essay format doesn't need one. Three questions to answer before buying the next subscription. Internal link slot: pre-tool checklist (if published).</span>
+              </div>
+            </div>
+
+            <div class="outline-row">
+              <span class="outline-tag outline-tag--muted">FAQ</span>
+              <div class="outline-content">
+                <span class="outline-text">FAQ candidates (People Also Ask targets)</span>
+                <span class="outline-sub">— "Why do SaaS tools fail small businesses?" → §2 answer<br />— "How many SaaS tools does the average small business use?" → §1 with stat citation<br />— "What is a workflow-specific operating system?" → §5 answer<br />— "What should I fix before buying more software?" → §6 answer</span>
+              </div>
+            </div>
+
+            <div class="outline-row">
+              <span class="outline-tag outline-tag--muted">LINKS</span>
+              <div class="outline-content">
+                <span class="outline-text">Internal link slots</span>
+                <span class="outline-sub">§1 → stat source note · §3 → ops audit guide · §5 → workflow-specific OS overview · §6 → pre-tool checklist (anchor)</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="step-cta-wrap">
+          <button class="demo-cta" data-reveals="8">Calibrate the voice →</button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 8: Helena — Voice & Style (EDITORIAL) ===== -->
+      <div class="demo-step" id="step-8" data-step="8">
+        <div class="worker-pill mono-label">STEP 8 OF 15 · HELENA · VOICE &amp; PERSONA WORKER · EDITORIAL TRACK</div>
+        <p class="worker-action">Applying a trained voice profile — not a generic tone prompt. This piece requires specific persona calibration. Omar flagged the requirement; Helena runs it.</p>
+        <div class="output-card">
+          <div class="output-card-header">
+            <span class="output-card-title">VOICE PROFILE — PERSONA CALIBRATION</span>
+          </div>
+          <div class="output-card-body">
+
+            <div class="output-section output-section--signal">
+              <div class="output-heading output-heading--signal">Trained voice profile applied: Senior Practitioner · Essayist Register</div>
+              <p class="output-para">This is not a "professional and clear" tone instruction. This is a specific persona with specific markers. The writer has articulated it precisely in their notes — the Voice Worker's role is to make it operational and protect it through the draft.</p>
+            </div>
+
+            <div class="output-section">
+              <div class="output-heading">Profile markers — what this voice does</div>
+              <p class="output-para output-list">— Observes before concluding. The scene is described before the argument is named.<br />— Uses short declarative sentences for claims; longer constructions for mechanisms and context.<br />— Names specific things: a 12-person agency, ten subscriptions, three weeks to orient — not "many small businesses."<br />— Distinguishes between the tool and the person. No blame, no irony at the expense of the reader.<br />— Permits genuine uncertainty: "I'm not sure whether this should open with the mechanism or build to it." That uncertainty is voice, not weakness.<br />— Closes sections with the sharpest line, not a summary. "The tool is not the system" is a closing line, not a topic sentence.</p>
+            </div>
+
+            <div class="output-section output-section--warning">
+              <div class="output-heading output-heading--warning">What this voice profile explicitly rejects</div>
+              <p class="output-para output-list">— Vendor-voice contamination: "unlock," "streamline," "optimise," "leverage," "scale" — all banned<br />— Listicle structure: numbered subheadings, bullet-heavy sections, "in conclusion" wrappers<br />— Consultant diagnosis posture: "what organisations typically fail to recognise is..." — the writer is not above the room<br />— Hedging by qualification: "it could be argued that" — state the claim, earn it with specificity<br />— Generic "professional, clear, direct" tone: this is not a corporate communications brief</p>
+            </div>
+
+            <div class="output-section">
+              <div class="output-heading">Voice calibration check — against the brief</div>
+              <p class="output-para output-list">— Essay opens with a scene, not a claim: ✓ (structure brief confirms §1 is scenario-first)<br />— Both preserved phrases are closing lines, not topic sentences: ✓ (structure places them correctly)<br />— No "digital transformation" or vendor-register language in outline: ✓<br />— Audience framing positions the reader as someone who made reasonable decisions: ✓<br />— Evidence is scenario-led, operational specificity carries it: ✓</p>
+            </div>
+
+            <div class="output-section">
+              <div class="output-heading">Instruction to Ellis (Draft Worker)</div>
+              <p class="output-para">Write §1 as a scene before it is an argument. The 12-person agency scenario should feel immediately recognisable to the primary reader — the goal is recognition before persuasion. Maintain the practitioner's distance: observed, not judged. Both preserved phrases are protected: they arrive at the end of their sections, not at the beginning.</p>
+            </div>
+
+          </div>
+          <div class="voice-note">
+            <span class="hand-note">Not a tone slider. A calibrated persona. The difference is visible in every sentence.</span>
+          </div>
+        </div>
+        <div class="step-cta-wrap">
+          <button class="demo-cta" data-reveals="9">Write the draft →</button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 9: Ellis — Draft (EDITORIAL) ===== -->
+      <div class="demo-step" id="step-9" data-step="9">
+        <div class="worker-pill mono-label">STEP 9 OF 15 · ELLIS · DRAFT WORKER · EDITORIAL TRACK</div>
+        <p class="worker-action">Writing the opening sections. Voice from Helena's persona calibration. Structure from Marcus. Both preserved phrases in position.</p>
+        <div class="output-card">
+          <div class="output-card-header">
+            <span class="output-card-title">DRAFT EXCERPT — SECTIONS 1–4</span>
           </div>
           <div class="output-card-body output-card-body--draft">
             <div class="draft-margin"></div>
-            <p class="draft-text draft-text--heading">Clinic websites often fail before design starts</p>
-            <p class="draft-text">A WhatsApp arrives on Tuesday afternoon. A prospective patient — she has found the clinic through Instagram, she has a question about a treatment, she thinks the pricing might work. Nobody picks it up until Thursday. By then she has booked somewhere else.</p>
-            <p class="draft-text">The clinic has a professional-looking website. Good photography. Clean layout. It did not save the lead.</p>
-            <p class="draft-text">The problem was not the website. It was the absence of any system behind it.</p>
-            <p class="draft-text draft-text--subheading">§1 · What a patient actually does</p>
-            <p class="draft-text">When a patient finds a clinic online, they rarely fill in a contact form. They send a message. Sometimes WhatsApp, sometimes Instagram DM, sometimes a reply to a story. Where that message goes — and what happens to it — depends entirely on whether the clinic has a process for it.</p>
-            <p class="draft-text">In many cases, there is no process. The message arrives in someone's inbox. It sits there. The lead is lost not because the clinic is uninterested, but because nobody decided what "handling an enquiry" actually means.</p>
-            <p class="draft-text draft-text--subheading">§2 · The brief rarely includes the workflow</p>
-            <p class="draft-text">When a clinic commissions a website, the brief tends to cover the things a designer can see: pages, layout, photography, copy. What it rarely covers is what happens when the website works — when someone clicks, enquires, and expects a response.</p>
-            <p class="draft-text">That is not the agency's oversight. An agency cannot design around a workflow the clinic has not yet defined. Deciding who handles enquiries, what qualification looks like, and when a consultation is appropriate — those are operational questions. They belong to the clinic, before any brief goes out.</p>
-            <p class="draft-text draft-text--subheading">§3 · [WRITER INPUT NEEDED — specific scene for forms and consent gap]</p>
-            <p class="draft-text draft-text--anchor-placeholder">[Forms section close] A form is not a follow-up system.</p>
-          </div>
-          <div class="voice-note">
-            <span class="hand-note">Both phrases drafted in. §3 scene held open for you — that part is yours.</span>
+
+            <p class="draft-text draft-text--heading">Why generic SaaS tools often fail growing SMEs — and why workflow-specific operating systems are starting to win</p>
+
+            <p class="draft-text">The agency had twelve people and ten subscriptions. Notion for documentation, Slack for communication, Monday for projects, HubSpot for the CRM they rarely opened, Google Workspace for everything else, and five other tools filling specific gaps that had accumulated over three years of reasonable decisions. When a new account manager joined, her induction took most of three weeks — not because the work was complicated, but because nobody could tell her with confidence which tool was the source of truth for any given type of information. Nobody was wrong. The tools were fine. Something else had gone wrong.</p>
+
+            <p class="draft-text">That something is not unusual. A growing SME tends to accumulate software the way it accumulates processes: one decision at a time, each one defensible in isolation, none of them part of a deliberate operating model. The result is a set of tools that were each designed to solve a problem and together have created several new ones.</p>
+
+            <p class="draft-text draft-text--subheading">§3 — THE SEVEN PATTERNS</p>
+
+            <p class="draft-text">There is a particular pattern that appears in almost every scaling SME eventually. The project management platform becomes a communication channel. The communication channel becomes a task tracker. The CRM is fully licensed and largely empty — there is a subscription, but no cadence, no owner, and no agreed definition of what a qualified lead looks like. At some point someone buys a fifth tool to make the other four talk to each other. The integration layer is not a system; it is an admission that the other tools were never designed to work together.</p>
+
+            <p class="draft-text">None of these are tool failures. They are operating model failures that the tools are now making visible.</p>
+
+            <p class="draft-text draft-text--anchor">Software expands; the business contracts around it.</p>
+
+            <p class="draft-text">The business stops defining its processes by what the work requires and starts defining them by what the platforms permit. The shape of the business becomes the shape of its tooling. That inversion is expensive in ways that don't appear on any subscription invoice — in decision fatigue, in onboarding time, in the slow erosion of institutional knowledge that now lives inside six different platforms and is accessible to no one completely.</p>
+
+            <p class="draft-text draft-text--subheading">§4 — THE OPERATING MODEL THAT WAS SUPPOSED TO COME FIRST</p>
+
+            <p class="draft-text draft-text--anchor">The tool is not the system.</p>
+
+            <p class="draft-text">Buying a project management platform is not the same as having a project management process. Subscribing to a CRM is not the same as having a sales approach. The tool is the container; the operating model is what fills it — who owns what, what a good output looks like, what triggers the next step. Workflow-specific tools are starting to win precisely because they make this explicit. They are built around a specific kind of work and assume a workflow rather than leaving the team to construct one around a generic interface.</p>
+
+            <p class="draft-text draft-text--anchor-placeholder">[§5–§6 — WORKFLOW-SPECIFIC OS CATEGORY + PRE-RENEWAL QUESTIONS — continues in full draft]</p>
           </div>
         </div>
         <div class="step-cta-wrap">
-          <button class="demo-cta" data-reveals="6">Follow the workflow →</button>
+          <button class="demo-cta" data-reveals="10">Review the draft →</button>
         </div>
       </div>
 
-      <!-- ===== STEP 6: Quinn ===== -->
-      <div class="demo-step" id="step-6" data-step="6">
-        <div class="worker-pill mono-label">STEP 6 OF 9 · QUINN · DRAFT QUALITY REVIEWER · STAGE: REVIEW</div>
-        <p class="worker-action">Checking the draft against the brief. What is working. What still needs the writer.</p>
+      <!-- ===== STEP 10: Quinn — Quality Reviewer (EDITORIAL) ===== -->
+      <div class="demo-step" id="step-10" data-step="10">
+        <div class="worker-pill mono-label">STEP 10 OF 15 · QUINN · QUALITY REVIEWER · EDITORIAL TRACK</div>
+        <p class="worker-action">Reviewing draft quality against the brief. Checking editorial alignment, voice calibration and search structure.</p>
         <div class="output-card">
           <div class="output-card-header">
-            <span class="output-card-title">DRAFT QUALITY REVIEW</span>
+            <span class="output-card-title">QUALITY REVIEW</span>
           </div>
           <div class="output-card-body output-card-body--checklist">
             <div class="review-row review-row--pass">
               <span class="review-icon review-icon--pass">✓</span>
               <div class="review-text">
-                <span class="review-item">Opening scene (WhatsApp, Tuesday)</span>
-                <span class="review-note">— specific, grounded, earns attention without claiming anything</span>
+                <span class="review-item">Core argument established via scene, not assertion</span>
+                <span class="review-note">§1 opens with the 12-person agency scenario. The argument follows the recognition. Voice calibration followed correctly.</span>
               </div>
             </div>
             <div class="review-row review-row--pass">
               <span class="review-icon review-icon--pass">✓</span>
               <div class="review-text">
-                <span class="review-item">Agency-fairness framing</span>
-                <span class="review-note">— "An agency cannot design around a workflow the clinic has not yet defined" — exactly right</span>
+                <span class="review-item">Both preserved phrases in position</span>
+                <span class="review-note">"software expands; the business contracts around it" closes §3 as the pivot. "the tool is not the system" opens §4 as the thesis anchor. Both protected and placed correctly.</span>
               </div>
             </div>
             <div class="review-row review-row--pass">
               <span class="review-icon review-icon--pass">✓</span>
               <div class="review-text">
-                <span class="review-item">"The website is not the workflow" — §4 anchor</span>
-                <span class="review-note">— positioned correctly; arrives after evidence, not before</span>
+                <span class="review-item">Audience framing: not a blame argument</span>
+                <span class="review-note">§2 explicitly frames the failure as structural, not personal. "Every tool was a defensible decision" — present in draft. Defensive founder is addressed before they defend.</span>
               </div>
             </div>
             <div class="review-row review-row--pass">
               <span class="review-icon review-icon--pass">✓</span>
               <div class="review-text">
-                <span class="review-item">"A form is not a follow-up system" — §3 close</span>
-                <span class="review-note">— exact phrasing preserved; used as a landing line, not buried</span>
+                <span class="review-item">Voice calibration: essayist register maintained</span>
+                <span class="review-note">No vendor-register language in draft. No listicle structure. Short declarative sentences for claims; longer constructions for mechanisms. Helena's calibration holds through §4.</span>
               </div>
             </div>
             <div class="review-row review-row--pass">
               <span class="review-icon review-icon--pass">✓</span>
               <div class="review-text">
-                <span class="review-item">Tone throughout intro and §§1–2</span>
-                <span class="review-note">— practitioner-to-practitioner; not instructional; not a lecture</span>
-              </div>
-            </div>
-            <div class="review-row review-row--pass">
-              <span class="review-icon review-icon--pass">✓</span>
-              <div class="review-text">
-                <span class="review-item">Brief alignment</span>
-                <span class="review-note">— sections match the agreed structure; word count on track</span>
+                <span class="review-item">Search structure aligned</span>
+                <span class="review-note">H1 is snippet-shaped. §1 opening paragraph is a strong featured snippet candidate. §3 patterns and §4 thesis map to FAQ targets. Structure passes search alignment check.</span>
               </div>
             </div>
             <div class="review-row review-row--warn">
-              <span class="review-icon review-icon--warn">△</span>
+              <span class="review-icon review-icon--warn">!</span>
               <div class="review-text">
-                <span class="review-item">§3 scene — forms, consent and aftercare</span>
-                <span class="review-note">— section is placeholder only. Brief called for a specific scene.</span>
-                <span class="review-sub">The writer's notes have the material: consent timing, aftercare disconnected from the original enquiry.<br />This needs a scenario — one clinic, one patient journey, one gap — not a list of patterns.<br />Writer input required before this section can be reviewed.</span>
+                <span class="review-item">§5–§6 are placeholders only</span>
+                <span class="review-note">The workflow-specific OS section and the practical close are not yet drafted. The category naming and real examples (Linear, Superhuman) need to appear in §5. Internal link slots cannot be placed until §5–§6 are complete.</span>
               </div>
             </div>
             <div class="review-row review-row--warn">
-              <span class="review-icon review-icon--warn">△</span>
+              <span class="review-icon review-icon--warn">!</span>
               <div class="review-text">
-                <span class="review-item">Close — "what good looks like"</span>
-                <span class="review-note">— currently ends at §5 action steps; brief called for a concluding scene</span>
-                <span class="review-sub">The piece should close on something the reader can picture. A clinic that sorted the workflow first.<br />What changed for the agency, the designer, and the patient as a result.<br />Writer to supply — from real experience or a composite, not invented.</span>
-              </div>
-            </div>
-            <div class="review-row review-row--fail">
-              <span class="review-icon review-icon--fail">✗</span>
-              <div class="review-text">
-                <span class="review-item">"In many cases, there is no process" (§1, paragraph 2)</span>
-                <span class="review-note">— still a generalisation; Vera has this flagged</span>
-                <span class="review-sub">Replace with scenario framing or reframe as "when there is no process."<br />Easy fix — writer's call on preferred phrasing.</span>
+                <span class="review-item">Blissfully/Productiv stat not yet verified</span>
+                <span class="review-note">Writer flagged this for checking before use. Not yet in draft — confirm or remove before approval.</span>
               </div>
             </div>
             <div class="review-status">
-              <span class="review-status-label mono-label">STATUS</span>
-              <span class="status-badge status-badge--review">Near-ready · 2 writer inputs needed before approval can proceed</span>
+              <span class="mono-label review-status-label">DRAFT STATUS</span>
+              <span class="mono-label">§1–§4: PASS · §5–§6: PENDING · PROCEED TO RISK REVIEW</span>
             </div>
-          </div>
-          <div class="voice-note">
-            <span class="hand-note">Both gaps need the writer's own material — not generic scenes, not composite invention</span>
           </div>
         </div>
         <div class="step-cta-wrap">
-          <button class="demo-cta" data-reveals="7">Follow the workflow →</button>
+          <button class="demo-cta" data-reveals="11">Check claims and risk →</button>
         </div>
       </div>
 
-      <!-- ===== STEP 7: Vera ===== -->
-      <div class="demo-step" id="step-7" data-step="7">
-        <div class="worker-pill mono-label">STEP 7 OF 9 · VERA · EDITORIAL RISK &amp; CLAIMS · STAGE: REVIEW</div>
-        <p class="worker-action">Reviewing claims, generalisations and framing risk. Checking the writer's own cautions are honoured.</p>
+      <!-- ===== STEP 11: Vera — Risk & Claims (EDITORIAL) ===== -->
+      <div class="demo-step" id="step-11" data-step="11">
+        <div class="worker-pill mono-label">STEP 11 OF 15 · VERA · RISK &amp; CLAIMS · EDITORIAL TRACK</div>
+        <p class="worker-action">Checking all claims against the writer's own caution notes and the brief. Flagging risk before approval. Noting metadata risk where claims appear in title or description.</p>
         <div class="output-card">
           <div class="output-card-header">
             <span class="output-card-title">RISK &amp; CLAIMS REVIEW</span>
-            <span class="status-badge status-badge--ready">Low risk overall</span>
           </div>
           <div class="output-card-body output-card-body--checklist">
-            <p class="risk-summary mono-label">LOW RISK OVERALL · 3 items for writer attention · 1 deferred pending §3</p>
-            <div class="review-row review-row--warn">
-              <span class="review-icon review-icon--warn">⚠</span>
+            <span class="risk-summary mono-label">Claims reviewed against writer's own caution notes and editorial brief. Evidence sources checked.</span>
+            <div class="review-row review-row--pass">
+              <span class="review-icon review-icon--pass">✓</span>
               <div class="review-text">
-                <span class="review-item">"In many cases, there is no process" — §1, paragraph 2</span>
-                <span class="review-sub">Unquantified generalisation — writer explicitly flagged this risk in their notes.<br />Reframe as scenario: "When there is no process — and there often isn't — the lead sits."<br />Or remove the quantifier entirely and describe the WhatsApp sitting on a specific phone.<br /><span class="review-risk-level">Risk level: Low · Easy writer fix · Do not generalise further</span></span>
-              </div>
-            </div>
-            <div class="review-row review-row--warn">
-              <span class="review-icon review-icon--warn">⚠</span>
-              <div class="review-text">
-                <span class="review-item">Agency framing — any remaining generalisation about agencies</span>
-                <span class="review-sub">The §2 draft handles this well: "An agency cannot design around a workflow the clinic has not yet defined."<br />Check full draft for any remaining "agencies miss the brief" phrasing — none should remain.<br />Writer's intent was fairness, not criticism. Brief carries this instruction explicitly.<br /><span class="review-risk-level">Risk level: Low · Confirm in full draft before approval</span></span>
-              </div>
-            </div>
-            <div class="review-row review-row--warn">
-              <span class="review-icon review-icon--warn">⚠</span>
-              <div class="review-text">
-                <span class="review-item">Consent and aftercare references — §3 (pending writer input)</span>
-                <span class="review-sub">Writer's notes say: "do not stray into legal or compliance advice." This instruction must hold.<br />Any consent reference in §3 should describe timing and workflow, not legal requirement.<br />Check §3 once writer completes the scene — defer claims sign-off until §3 is written.<br /><span class="review-risk-level">Risk level: Low · Held pending §3 completion</span></span>
+                <span class="review-item">No ungrounded "most SMEs" generalisation</span>
+                <span class="review-sub">Draft uses "a growing SME tends to..." and the specific 12-person scenario. Writer's own caution observed. The failure mode is described structurally, not attributed to the majority without evidence.</span>
+                <span class="review-risk-level">RISK: LOW</span>
               </div>
             </div>
             <div class="review-row review-row--pass">
               <span class="review-icon review-icon--pass">✓</span>
-              <span class="review-item">No regulatory or medical claims in existing sections</span>
-            </div>
-            <div class="review-row review-row--pass">
-              <span class="review-icon review-icon--pass">✓</span>
-              <span class="review-item">No pricing, ROI or conversion claims</span>
-            </div>
-            <div class="review-row review-row--pass">
-              <span class="review-icon review-icon--pass">✓</span>
-              <span class="review-item">No competitor names or comparisons</span>
-            </div>
-            <div class="review-row review-row--pass">
-              <span class="review-icon review-icon--pass">✓</span>
-              <span class="review-item">No before/after treatment claims</span>
-            </div>
-            <div class="review-row review-row--pass">
-              <span class="review-icon review-icon--pass">✓</span>
-              <span class="review-item">No statistical claims requiring citation in reviewed sections</span>
+              <div class="review-text">
+                <span class="review-item">Vendor-voice language absent from draft</span>
+                <span class="review-sub">Avoided list checked: "digital transformation," "unlock efficiency," "streamline," "scale your operations" — none present in §1–§4. Voice calibration holds.</span>
+                <span class="review-risk-level">RISK: LOW</span>
+              </div>
             </div>
             <div class="review-row review-row--pass">
               <span class="review-icon review-icon--pass">✓</span>
               <div class="review-text">
-                <span class="review-item">Both preserved phrases — claims-clean</span>
-                <span class="review-note">— "the website is not the workflow" and "a form is not a follow-up system" carry no claim that requires evidence</span>
+                <span class="review-item">"Workflow-specific OS" framing correctly positioned</span>
+                <span class="review-sub">This is introduced as the writer's framing for an emerging category — not presented as an established industry term. §5 draft (pending) must maintain this positioning.</span>
+                <span class="review-risk-level">RISK: LOW (§5 pending)</span>
+              </div>
+            </div>
+            <div class="review-row review-row--warn">
+              <span class="review-icon review-icon--warn">!</span>
+              <div class="review-text">
+                <span class="review-item">Blissfully/Productiv stat: unverified — do not publish until checked</span>
+                <span class="review-sub">Writer flagged this for verification. The "8–15 SaaS tools per SME" figure has multiple published estimates; the most current and independently funded source must be identified. If no clean source is available, remove the stat and rely on scenario evidence.</span>
+                <span class="review-risk-level">RISK: MEDIUM — WRITER ACTION REQUIRED</span>
+              </div>
+            </div>
+            <div class="review-row review-row--warn">
+              <span class="review-icon review-icon--warn">!</span>
+              <div class="review-text">
+                <span class="review-item">Title uses "often fail" — scope check required</span>
+                <span class="review-sub">Working title includes "often fail." The body grounds this correctly, but the title is the first claim a reader sees. "Often" is defensible with the operational pattern evidence; confirm this is the writer's intent or revise to "can fail."</span>
+                <span class="review-risk-level">RISK: LOW-MEDIUM — WRITER DECISION</span>
+              </div>
+            </div>
+            <div class="review-row review-row--warn">
+              <span class="review-icon review-icon--warn">!</span>
+              <div class="review-text">
+                <span class="review-item">Metadata risk: SEO title and meta description must not overstate</span>
+                <span class="review-sub">Both will be prepared in Step 12. Claims caution must carry through — no "always fail," no "guaranteed" language, no vendor-voice framing in the description. SEO Metadata Worker briefed on this constraint.</span>
+                <span class="review-risk-level">RISK: FLAGGED FOR STEP 12</span>
               </div>
             </div>
             <div class="review-status">
-              <span class="review-status-label mono-label">RECOMMENDATION</span>
-              <span class="review-item">Safe to proceed to approval once writer addresses the generalisation in §1 and completes §3. Three items noted — none are blockers once the writer has reviewed them.</span>
+              <span class="mono-label review-status-label">CLAIMS STATUS</span>
+              <span class="mono-label">§1–§4: PASS WITH 2 WRITER ACTIONS · METADATA: PASS TO STEP 12</span>
             </div>
-          </div>
-          <div class="voice-note">
-            <span class="hand-note">Writer's own cautions are honoured — none overridden</span>
           </div>
         </div>
         <div class="step-cta-wrap">
-          <button class="demo-cta" data-reveals="8">Follow the workflow →</button>
+          <button class="demo-cta" data-reveals="12">Prepare the metadata →</button>
         </div>
       </div>
 
-      <!-- ===== STEP 8: Audrey ===== -->
-      <div class="demo-step" id="step-8" data-step="8">
-        <div class="worker-pill mono-label">STEP 8 OF 9 · AUDREY · APPROVAL REPORT WORKER · STAGE: APPROVE</div>
-        <p class="worker-action">Compiling the approval report. What is clear and ready. What still needs the writer's decision.</p>
+      <!-- ===== STEP 12: SEO Metadata Pack (SEARCH TRACK) ===== -->
+      <div class="demo-step" id="step-12" data-step="12">
+        <div class="worker-pill worker-pill--search mono-label">STEP 12 OF 15 · SEO METADATA WORKER + SCHEMA WORKER · SEARCH INTELLIGENCE TRACK</div>
+        <p class="worker-action">Preparing the full metadata pack. The system prepares metadata and handoff. The writer approves the work.</p>
+        <div class="output-card output-card--search">
+          <div class="output-card-header output-card-header--ruled">
+            <span class="output-card-title">SEO METADATA PACK</span>
+            <span class="track-badge track-badge--search">SEARCH TRACK</span>
+          </div>
+          <div class="output-card-body">
+            <div class="output-section">
+              <div class="output-heading">SEO title options</div>
+              <p class="output-para output-list">A — Why generic SaaS tools often fail growing SMEs (and what works instead)<br /><span class="output-indent">62 chars · Reframe-first · Honest scope · Recommended</span><br /><br />B — SaaS tool sprawl is an SME operating model problem, not a software problem<br /><span class="output-indent">76 chars · Argument-forward · Strong topical signal · Check display truncation</span><br /><br />C — Before you buy the next subscription: why SaaS fails SMEs and what to do instead<br /><span class="output-indent">83 chars · Intent-matched · Stronger for "pre-renewal" reader · May truncate on mobile</span></p>
+            </div>
+            <div class="output-section">
+              <div class="output-heading">Meta description</div>
+              <p class="output-para">A growing SME can accumulate a dozen SaaS subscriptions and still have no coherent operating model. This essay explains the structural failure mode — not the tools, but the absence of the system they were supposed to support.<br /><span class="output-indent" style="font-size:var(--wp-text-xs);color:var(--wp-text-muted);">152 chars · Claims-compliant · Independent register · No vendor-voice language</span></p>
+            </div>
+            <div class="output-section">
+              <div class="output-heading">Recommended slug</div>
+              <p class="output-para" style="font-family:var(--wp-font-mono);font-size:var(--wp-text-sm);">/why-saas-tools-fail-growing-smes/</p>
+            </div>
+            <div class="output-section">
+              <div class="output-heading">Excerpt / OG description</div>
+              <p class="output-para">The tool is not the system. An essay on why growing SMEs accumulate capability without coherence — and why workflow-specific operating systems are starting to change that.</p>
+            </div>
+            <div class="output-section output-section--signal">
+              <div class="output-heading output-heading--signal">SERP snippet angle</div>
+              <p class="output-para">Target: the §1 opening paragraph (12-person agency → structural failure mode). The opening 150–200 words are naturally snippet-shaped: describe a specific observable scenario and name the cause directly. The writer's opening is already in the right form — protect it in drafting. No reformatting needed for snippet eligibility.</p>
+            </div>
+            <div class="output-section">
+              <div class="output-heading">Schema notes</div>
+              <p class="output-para output-list">— Type: Article (BlogPosting)<br />— FAQ schema applicable for §2 failure definition, §5 workflow-specific OS explainer, §6 pre-renewal questions — 4–5 Q&amp;A pairs available<br />— BreadcrumbList: Home → SME Operations → This essay<br />— No HowTo schema at this stage (format is essay not guide; revisit if §6 becomes a numbered checklist)<br />— Author entity: confirm with writer whether personal structured data should be included</p>
+            </div>
+          </div>
+        </div>
+        <div class="step-cta-wrap">
+          <button class="demo-cta" data-reveals="13">Review for approval →</button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 13: Audrey — Approval Report (COMBINED) ===== -->
+      <div class="demo-step" id="step-13" data-step="13">
+        <div class="worker-pill mono-label">STEP 13 OF 15 · AUDREY · APPROVAL REPORT · EDITORIAL + SEARCH</div>
+        <p class="worker-action">Consolidating the full workflow into a single approval report. Both tracks summarised. Writer input items listed. Nothing approved without the writer.</p>
         <div class="output-card">
           <div class="output-card-header output-card-header--approval">
             <span class="output-card-title">APPROVAL REPORT</span>
           </div>
           <div class="output-card-body output-card-body--approval">
             <dl class="approval-dl">
-              <dt class="approval-dt">ARTICLE</dt>
-              <dd class="approval-dd">Clinic websites often fail before design starts</dd>
-              <dt class="approval-dt">WRITER</dt>
-              <dd class="approval-dd">[Your name]</dd>
-              <dt class="approval-dt">DATE</dt>
-              <dd class="approval-dd">Today</dd>
-              <dt class="approval-dt">WORD COUNT</dt>
-              <dd class="approval-dd">847 words (draft, §3 and close incomplete)</dd>
+              <dt class="approval-dt">Article</dt>
+              <dd class="approval-dd">Why generic SaaS tools often fail growing SMEs — and why workflow-specific operating systems are starting to win</dd>
+              <dt class="approval-dt">Writer</dt>
+              <dd class="approval-dd">To be confirmed</dd>
+              <dt class="approval-dt">Date</dt>
+              <dd class="approval-dd">Pending writer review</dd>
+              <dt class="approval-dt">Format</dt>
+              <dd class="approval-dd">Long-form essay, 2,000–2,600 words (§5–§6 draft pending)</dd>
             </dl>
-            <div class="approval-divider"></div>
-            <div class="output-section output-section--signal">
-              <div class="output-heading output-heading--signal">Ready — no further Worker input needed</div>
-              <div class="approval-list">
-                <div class="approval-item approval-item--pass"><span class="approval-icon approval-icon--pass">✓</span>Core argument — operational gap, not a design problem</div>
-                <div class="approval-item approval-item--pass"><span class="approval-icon approval-icon--pass">✓</span>Opening scene (WhatsApp, Tuesday) — specific and grounded</div>
-                <div class="approval-item approval-item--pass"><span class="approval-icon approval-icon--pass">✓</span>§§1–2 — drafted, reviewed, voice consistent</div>
-                <div class="approval-item approval-item--pass"><span class="approval-icon approval-icon--pass">✓</span>"The website is not the workflow" — §4 anchor, exact phrasing preserved</div>
-                <div class="approval-item approval-item--pass"><span class="approval-icon approval-icon--pass">✓</span>"A form is not a follow-up system" — §3 close, exact phrasing preserved</div>
-                <div class="approval-item approval-item--pass"><span class="approval-icon approval-icon--pass">✓</span>Agency-fairness framing — held throughout, no blame language</div>
-                <div class="approval-item approval-item--pass"><span class="approval-icon approval-icon--pass">✓</span>Brief alignment — structure matches, tone matches</div>
-                <div class="approval-item approval-item--pass"><span class="approval-icon approval-icon--pass">✓</span>Claims review — existing sections passed</div>
+            <hr class="approval-divider" />
+            <div class="output-heading" style="margin-bottom:12px;">Editorial track — items reviewed</div>
+            <div class="approval-list">
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>Core argument established via scene — §1 opens with 12-person agency scenario</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>"software expands; the business contracts around it" — preserved, §3 pivot</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>"the tool is not the system" — preserved, §4 section anchor</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>Voice calibration: essayist register, practitioner authority — maintained §1–§4</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>Audience framing: structural failure, not blame — confirmed §2</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>Vendor-voice language: absent from draft — confirmed</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--warn">!</span>
+                <span>§5–§6 draft pending — essay not complete</span>
               </div>
             </div>
-            <div class="output-section output-section--warning">
-              <div class="output-heading output-heading--warning">Needs writer input before approval can proceed</div>
-              <div class="approval-list">
-                <div class="approval-item approval-item--warn"><span class="approval-icon approval-icon--warn">△</span>§3 scene — forms, consent, aftercare — placeholder only. Writer's specific scenario needed.</div>
-                <div class="approval-item approval-item--warn"><span class="approval-icon approval-icon--warn">△</span>Close — "what good looks like" scene — writer to provide from experience</div>
-                <div class="approval-item approval-item--warn"><span class="approval-icon approval-icon--warn">△</span>"In many cases, there is no process" — §1 generalisation — rephrase as scenario</div>
-                <div class="approval-item approval-item--warn"><span class="approval-icon approval-icon--warn">△</span>§3 consent references — Vera to re-check once §3 is written</div>
+            <hr class="approval-divider" />
+            <div class="output-heading" style="margin-bottom:12px;">Search intelligence track — items reviewed</div>
+            <div class="approval-list">
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>Intent map: problem-aware, solution-unaware reader — reframe essay, strong fit</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>Search gap confirmed: independent practitioner perspective genuinely underserved</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>Topical cluster mapped: anchor piece for SME operations cluster</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>Evidence gaps addressed: scenario-first, stat flagged for verification</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>SEO title options prepared (3 variants) — writer to select</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>Meta description: claims-compliant, independent register, no vendor-voice</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--pass">✓</span>
+                <span>Schema notes: Article + FAQ schema, BreadcrumbList — ready</span>
               </div>
             </div>
-            <div class="approval-summary-row">
-              <span class="approval-summary-label mono-label">RISK SUMMARY</span>
-              <span class="approval-summary-value">Low · Nothing in existing sections blocks publication</span>
-            </div>
-            <div class="approval-summary-row">
-              <span class="approval-summary-label mono-label">VOICE STATUS</span>
-              <span class="approval-summary-value">Preserved · Sounds like the writer throughout</span>
-            </div>
-            <div class="approval-summary-row">
-              <span class="approval-summary-label mono-label">BOTH PHRASES</span>
-              <span class="approval-summary-value">Preserved exact · Positioned as instructed</span>
+            <hr class="approval-divider" />
+            <div class="output-heading" style="margin-bottom:12px;">Writer input required before approval</div>
+            <div class="approval-list">
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--warn">!</span>
+                <span>Complete §5–§6 draft — workflow-specific OS section and pre-renewal close</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--warn">!</span>
+                <span>Verify Blissfully/Productiv stat — confirm source and figure, or remove</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--warn">!</span>
+                <span>Select SEO title (options A, B or C)</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--warn">!</span>
+                <span>Confirm "often fail" scope in working title (or revise to "can fail")</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--warn">!</span>
+                <span>Confirm author entity for structured data (personal schema yes/no)</span>
+              </div>
+              <div class="approval-item">
+                <span class="approval-icon approval-icon--warn">!</span>
+                <span>Place internal links when cluster articles are published</span>
+              </div>
             </div>
             <div class="approval-stamp-block">
               <div class="approval-stamp">
-                <div class="approval-stamp-title">NOT YET APPROVED</div>
-                <div class="approval-stamp-sub">Return to writer — 4 items</div>
+                <div class="approval-stamp-title">PENDING WRITER REVIEW</div>
+                <div class="approval-stamp-sub">6 WRITER ACTIONS REQUIRED</div>
               </div>
-              <p class="approval-close">Nothing published. Human approval required.<br />Workers have done their part. The rest is yours.</p>
+              <p class="approval-close">Both editorial and search tracks are ready for writer review. The workflow prepares the work. The writer approves it. Nothing moves to CMS until the writer signs off.</p>
             </div>
-          </div>
-          <div class="voice-note">
-            <span class="hand-note">Four items, all yours. Both your phrases held exactly. The voice is still yours.</span>
           </div>
         </div>
         <div class="step-cta-wrap">
-          <button class="demo-cta demo-cta--final" data-reveals="9">Review the finished piece →</button>
+          <button class="demo-cta" data-reveals="14">Prepare CMS handoff →</button>
         </div>
       </div>
 
-      <!-- ===== STEP 9: Final Review Surface ===== -->
-      <div class="demo-step" id="step-9" data-step="9">
+      <!-- ===== STEP 14: Ravi — CMS Handoff (HANDOFF TRACK) ===== -->
+      <div class="demo-step" id="step-14" data-step="14">
+        <div class="worker-pill worker-pill--handoff mono-label">STEP 14 OF 15 · RAVI · CMS HANDOFF WORKER · HANDOFF TRACK</div>
+        <p class="worker-action">Preparing the CMS handoff package. Nothing is published without the writer's approval. This step packages the content — the writer releases it.</p>
+        <div class="output-card">
+          <div class="output-card-header output-card-header--ruled">
+            <span class="output-card-title">CMS HANDOFF CHECKLIST</span>
+          </div>
+          <div class="output-card-body output-card-body--checklist">
+            <div class="review-row review-row--pass">
+              <span class="review-icon review-icon--pass">✓</span>
+              <div class="review-text">
+                <span class="review-item">Draft prepared and review-ready</span>
+                <span class="review-note">Sections 1–4 complete and reviewed. §5–§6 flagged as pending — CMS package held until complete.</span>
+              </div>
+            </div>
+            <div class="review-row review-row--pass">
+              <span class="review-icon review-icon--pass">✓</span>
+              <div class="review-text">
+                <span class="review-item">Metadata pack prepared</span>
+                <span class="review-note">SEO title (3 options), meta description, slug, excerpt/OG — all ready for writer selection and CMS entry.</span>
+              </div>
+            </div>
+            <div class="review-row review-row--pass">
+              <span class="review-icon review-icon--pass">✓</span>
+              <div class="review-text">
+                <span class="review-item">Schema markup ready</span>
+                <span class="review-note">Article schema, FAQ schema pairs (4–5 Q&amp;A), BreadcrumbList — structured and ready to implement on publish.</span>
+              </div>
+            </div>
+            <div class="review-row review-row--pass">
+              <span class="review-icon review-icon--pass">✓</span>
+              <div class="review-text">
+                <span class="review-item">Internal link slots mapped</span>
+                <span class="review-note">Four internal link positions identified across §1, §3, §5, §6. Links to be placed by writer when target articles are live.</span>
+              </div>
+            </div>
+            <div class="review-row review-row--warn">
+              <span class="review-icon review-icon--warn">!</span>
+              <div class="review-text">
+                <span class="review-item">§5–§6 draft pending — package incomplete</span>
+                <span class="review-note">CMS handoff is staged. Both sections must be written, reviewed and approved before the package is released.</span>
+              </div>
+            </div>
+            <div class="review-row review-row--warn">
+              <span class="review-icon review-icon--warn">!</span>
+              <div class="review-text">
+                <span class="review-item">Writer approval required before publish</span>
+                <span class="review-note">Workers do not publish. The CMS handoff package is ready for the writer to review, approve and release. No automated publishing. No blind handoff.</span>
+              </div>
+            </div>
+            <div class="review-status">
+              <span class="mono-label review-status-label">HANDOFF STATUS</span>
+              <span class="mono-label">STAGED · PENDING §5–§6 + WRITER APPROVAL · NOT PUBLISHED</span>
+            </div>
+          </div>
+        </div>
+        <div class="step-cta-wrap">
+          <button class="demo-cta" data-reveals="15">See the full review surface →</button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 15: Final Review Surface ===== -->
+      <div class="demo-step" id="step-15" data-step="15">
+        <div class="worker-pill mono-label">STEP 15 OF 15 · FINAL REVIEW SURFACE · EDITORIAL + SEARCH + HANDOFF</div>
+        <p class="worker-action">Everything in one place. The writer sees the full picture before approving.</p>
         <div class="review-surface">
           <div class="review-surface-header">
-            <span class="mono-label review-surface-eyebrow">REVIEW SURFACE</span>
-            <h2 class="review-surface-title">Clinic websites often fail before design starts</h2>
+            <span class="mono-label review-surface-eyebrow">WRITER REVIEW SURFACE · PENDING APPROVAL</span>
+            <h2 class="review-surface-title">Why generic SaaS tools often fail growing SMEs — and why workflow-specific operating systems are starting to win</h2>
           </div>
           <div class="review-surface-body">
 
-            <!-- Left: metadata -->
+            <!-- Left column -->
             <div class="review-meta">
               <dl class="review-meta-dl">
-                <dt class="review-meta-dt">ORIGINAL NOTES</dt>
-                <dd class="review-meta-dd review-meta-dd--signal">Preserved in full</dd>
-                <dt class="review-meta-dt">CORE ARGUMENT</dt>
-                <dd class="review-meta-dd">Operational gap — not a design problem</dd>
-                <dt class="review-meta-dt">BOTH PHRASES</dt>
-                <dd class="review-meta-dd review-meta-dd--signal">Preserved exact · Placed as instructed</dd>
-                <dt class="review-meta-dt">BRIEF STATUS</dt>
-                <dd class="review-meta-dd review-meta-dd--signal">Complete — agency fairness explicit</dd>
-                <dt class="review-meta-dt">STRUCTURE</dt>
-                <dd class="review-meta-dd">6 sections, outlined and reviewed</dd>
-                <dt class="review-meta-dt">VOICE GUIDANCE</dt>
-                <dd class="review-meta-dd">Practitioner-to-practitioner, direct, fair</dd>
-                <dt class="review-meta-dt">QUALITY REVIEW</dt>
-                <dd class="review-meta-dd review-meta-dd--warn">Near-ready · 4 writer inputs needed</dd>
-                <dt class="review-meta-dt">CLAIMS REVIEW</dt>
-                <dd class="review-meta-dd review-meta-dd--warn">Low risk · 3 items flagged · §3 deferred</dd>
-                <dt class="review-meta-dt">APPROVAL STATUS</dt>
-                <dd class="review-meta-dd review-meta-dd--blocked">NOT YET APPROVED</dd>
+                <dt class="review-meta-dt">Format</dt>
+                <dd class="review-meta-dd">Essay · 2,000–2,600 words</dd>
+                <dt class="review-meta-dt">Editorial status</dt>
+                <dd class="review-meta-dd review-meta-dd--warn">§5–§6 pending · 4 sections complete</dd>
+                <dt class="review-meta-dt">Claims status</dt>
+                <dd class="review-meta-dd review-meta-dd--warn">Pass · stat unverified · 2 writer actions</dd>
+                <dt class="review-meta-dt">Preserved phrases</dt>
+                <dd class="review-meta-dd review-meta-dd--signal">Both present · in position</dd>
+                <dt class="review-meta-dt">Voice calibration</dt>
+                <dd class="review-meta-dd review-meta-dd--signal">Essayist register · confirmed §1–§4</dd>
               </dl>
 
               <div class="review-cms-block">
-                <div class="review-cms-heading mono-label">CMS READINESS</div>
+                <span class="mono-label review-cms-heading">SEARCH INTELLIGENCE SUMMARY</span>
                 <dl class="review-meta-dl review-meta-dl--sm">
-                  <dt class="review-meta-dt">Target</dt>
-                  <dd class="review-meta-dd">WordPress / Payload / Sanity</dd>
-                  <dt class="review-meta-dt">Slug (draft)</dt>
-                  <dd class="review-meta-dd review-meta-dd--mono">/clinic-websites-fail-before-design</dd>
-                  <dt class="review-meta-dt">Word count</dt>
-                  <dd class="review-meta-dd">847 (draft — §3 + close incomplete)</dd>
-                  <dt class="review-meta-dt">Featured image</dt>
-                  <dd class="review-meta-dd review-meta-dd--warn">Required</dd>
-                  <dt class="review-meta-dt">Meta description</dt>
-                  <dd class="review-meta-dd review-meta-dd--warn">Drafted — needs writer review</dd>
-                  <dt class="review-meta-dt">Status</dt>
-                  <dd class="review-meta-dd review-meta-dd--blocked">NOT PUBLISHED · Awaiting approval</dd>
+                  <dt class="review-meta-dt">Reader intent</dt>
+                  <dd class="review-meta-dd">Problem-aware SME founder · reframe essay · strong fit</dd>
+                  <dt class="review-meta-dt">Search gap</dt>
+                  <dd class="review-meta-dd review-meta-dd--signal">Confirmed · no independent practitioner content at depth</dd>
+                  <dt class="review-meta-dt">Topical cluster</dt>
+                  <dd class="review-meta-dd">SME operations · anchor piece</dd>
+                  <dt class="review-meta-dt">Cannibalisation</dt>
+                  <dd class="review-meta-dd review-meta-dd--signal">None detected</dd>
+                  <dt class="review-meta-dt">Internal link slots</dt>
+                  <dd class="review-meta-dd">4 identified · links pending publication</dd>
+                </dl>
+              </div>
+
+              <div class="review-cms-block">
+                <span class="mono-label review-cms-heading">SEO METADATA PACK</span>
+                <div class="review-meta-pack">
+                  <div class="meta-pack-row">
+                    <span class="meta-pack-label">SEO TITLE</span>
+                    <span class="meta-pack-value">Why generic SaaS tools often fail growing SMEs (and what works instead)<span class="meta-pack-alt">Option A · 62 chars · Recommended</span></span>
+                  </div>
+                  <div class="meta-pack-row">
+                    <span class="meta-pack-label">META</span>
+                    <span class="meta-pack-value">A growing SME can accumulate a dozen SaaS subscriptions and still have no coherent operating model. This essay explains the structural failure mode.</span>
+                  </div>
+                  <div class="meta-pack-row">
+                    <span class="meta-pack-label">SLUG</span>
+                    <span class="meta-pack-value" style="font-family:var(--wp-font-mono);font-size:11px;">/why-saas-tools-fail-growing-smes/</span>
+                  </div>
+                  <div class="meta-pack-row">
+                    <span class="meta-pack-label">SCHEMA</span>
+                    <span class="meta-pack-value">Article · FAQ (4–5 pairs) · BreadcrumbList</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="review-cms-block">
+                <span class="mono-label review-cms-heading">CMS HANDOFF STATUS</span>
+                <dl class="review-meta-dl review-meta-dl--sm">
+                  <dt class="review-meta-dt">Package</dt>
+                  <dd class="review-meta-dd review-meta-dd--warn">Staged · §5–§6 pending</dd>
+                  <dt class="review-meta-dt">Publish status</dt>
+                  <dd class="review-meta-dd review-meta-dd--blocked">NOT PUBLISHED</dd>
+                  <dt class="review-meta-dt">Approval</dt>
+                  <dd class="review-meta-dd">Writer review required</dd>
                 </dl>
               </div>
 
               <div class="review-next-block">
-                <div class="review-next-heading mono-label">WHAT HAPPENS NEXT</div>
-                <p class="review-next-body">Return to writer for four specific additions — §3 scene, closing scene, one rephrasing in §1, and a final consent check once §3 is written.<br />Writer reviews, approves, signs off.<br />Nothing is published without that approval.</p>
+                <span class="mono-label review-next-heading">WRITER INPUT REQUIRED</span>
+                <p class="review-next-body">Complete §5–§6 · Verify stat (or remove) · Select SEO title · Confirm "often" scope · Confirm author schema · Place internal links when cluster articles are live</p>
               </div>
             </div>
 
-            <!-- Right: draft preview -->
+            <!-- Right column: draft preview -->
             <div class="review-draft">
+              <span class="mono-label" style="display:block;margin-bottom:14px;letter-spacing:0.1em;color:var(--wp-text-muted);">DRAFT PREVIEW</span>
               <div class="review-draft-card">
                 <div class="review-draft-header">
-                  <span class="mono-label">DRAFT PREVIEW · IN REVIEW</span>
-                  <span class="status-badge status-badge--review">Not approved</span>
+                  <span class="mono-label" style="font-size:10px;color:var(--wp-text-muted);">SECTIONS 1–4 · §5–§6 PENDING</span>
+                  <span class="mono-label" style="font-size:10px;color:var(--wp-amber);">REVIEW DRAFT</span>
                 </div>
                 <div class="review-draft-body">
                   <div class="review-draft-margin"></div>
-                  <p class="review-draft-heading">Clinic websites often fail before design starts</p>
-                  <p class="review-draft-text">A WhatsApp arrives on Tuesday afternoon. A prospective patient has found the clinic through Instagram, she has a question about a treatment, she thinks the pricing might work. Nobody picks it up until Thursday. By then she has booked somewhere else.</p>
-                  <p class="review-draft-text">The clinic has a professional-looking website. Good photography. Clean layout. It did not save the lead.</p>
-                  <p class="review-draft-text">The problem was not the website. It was the absence of any system behind it.</p>
-                  <p class="review-draft-text review-draft-text--anchor">The website is not the workflow.</p>
-                  <span class="hand-annot hand-annot--draft">both phrases kept exactly ✓</span>
+                  <h3 class="review-draft-heading">Why generic SaaS tools often fail growing SMEs</h3>
+                  <p class="review-draft-text">The agency had twelve people and ten subscriptions. Nobody could tell the new account manager with confidence which tool was the source of truth for any given type of information. Nobody was wrong. The tools were fine. Something else had gone wrong.</p>
+                  <p class="review-draft-text">Every tool was a reasonable decision in isolation. Together they had become a kind of organised confusion. That is not a tool failure. It is an operating model failure that the tools are now making visible.</p>
+                  <p class="review-draft-text review-draft-text--anchor">Software expands; the business contracts around it.</p>
+                  <p class="review-draft-text">The business stops defining its processes by what the work requires and starts defining them by what the platforms permit. That inversion is expensive in ways that don't appear on any subscription invoice.</p>
+                  <p class="review-draft-text review-draft-text--anchor">The tool is not the system.</p>
+                  <p class="review-draft-text">Buying a project management platform is not the same as having a project management process. The tool is the container; the operating model is what fills it.</p>
+                  <span class="hand-annot hand-annot--draft">ready for review ✓</span>
                 </div>
               </div>
             </div>
@@ -673,17 +1011,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
           <!-- Final statement -->
           <div class="review-final">
-            <p class="review-final-line">Ready for writer review.</p>
-            <p class="review-final-line">Nothing published yet.</p>
-            <p class="review-final-line review-final-line--strong">Human approval required.</p>
+            <p class="review-final-line">The system prepares the work.</p>
+            <p class="review-final-line review-final-line--strong">The writer approves it.</p>
+            <p class="review-final-line" style="font-size:clamp(1rem,2vw,1.3rem);color:var(--wp-text-muted);margin-top:8px;">Nothing published yet. Human approval required.</p>
             <div class="review-final-cta">
-              <a href="/waitlist" class="btn btn--primary btn--lg">
-                Join the waitlist
-                <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
+              <a href="/waitlist" class="demo-cta demo-cta--final">See this for your own content →</a>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -759,7 +1093,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
       updateProgress(stepNum);
 
-      if (stepNum === 9) {
+      if (stepNum === 15) {
         const ctaSection = document.getElementById('demo-cta-section');
         if (ctaSection) ctaSection.style.display = '';
       }
@@ -809,177 +1143,103 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 28px;
+    gap: 16px;
   }
-  .masthead-logo img { display: block; height: 48px; width: auto; mix-blend-mode: multiply; }
-  .masthead-nav { display: flex; align-items: center; gap: 24px; }
-  .masthead-nav--left { justify-content: flex-start; }
-  .masthead-nav--right { justify-content: flex-end; }
-  .nav-link { font-size: var(--wp-text-md); font-weight: 500; color: var(--wp-text-secondary); transition: color 150ms; }
-  .nav-link:hover { color: var(--wp-ink); }
-
-  /* ===== BUTTONS ===== */
-  .btn {
-    display: inline-flex;
+  .masthead-logo {
+    display: flex;
     align-items: center;
-    gap: 8px;
-    font-family: var(--wp-font-sans);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    border-radius: 5px;
-    transition: transform 150ms, box-shadow 150ms;
-    cursor: pointer;
+    justify-content: center;
+  }
+  .masthead-logo img { height: 56px; width: auto; display: block; mix-blend-mode: multiply; }
+  .masthead-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .masthead-nav--right { justify-content: flex-end; }
+  .nav-link {
+    font-size: var(--wp-text-sm);
+    font-weight: 500;
+    color: var(--wp-text-secondary);
+    transition: color 120ms;
     text-decoration: none;
+    white-space: nowrap;
   }
-  .btn--primary {
-    background: var(--wp-ink);
-    color: var(--wp-paper);
-    border: 1px solid var(--wp-ink);
-    box-shadow: 0 2px 4px rgba(17,19,24,0.12), 0 10px 18px -8px rgba(17,19,24,0.22);
-  }
-  .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 3px 6px rgba(17,19,24,0.16), 0 16px 26px -8px rgba(17,19,24,0.3); }
-  .btn--secondary { background: #FFF; color: var(--wp-ink); border: 1.5px solid var(--wp-ink); box-shadow: 0 2px 4px rgba(17,19,24,0.06), 0 8px 16px -10px rgba(17,19,24,0.16); }
-  .btn--secondary:hover { transform: translateY(-2px); }
-  .btn--tilt { transform: rotate(0.6deg); }
-  .btn--tilt:hover { transform: rotate(0.6deg) translateY(-2px); }
-  .btn--sm { font-size: var(--wp-text-sm); padding: 8px 16px; }
-  .btn--lg { font-size: var(--wp-text-md); padding: 14px 24px; }
+  .nav-link:hover { color: var(--wp-ink); }
 
   /* ===== LAYOUT ===== */
   .container {
     width: 100%;
-    max-width: 900px;
+    max-width: 860px;
     margin: 0 auto;
     padding: 0 34px;
   }
-  .section {
-    padding: 72px 0;
-    background-color: var(--wp-bg-primary);
-    background-image: var(--wp-texture-paper);
-  }
-  .section--border-top { border-top: 2px solid var(--wp-ink); }
-  .section--intro { padding: 56px 0 52px; }
-  .section--demo { padding: 56px 0 80px; }
+  .section { padding: 72px 0; }
+  .section--intro { padding: 56px 0 48px; }
+  .section--demo { padding: 48px 0 80px; }
+  .section--border-top { border-top: 1px solid var(--wp-line); }
 
   /* ===== INTRO ===== */
-  .eyebrow {
-    font-size: var(--wp-text-sm);
-    font-family: var(--wp-font-mono);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-  .eyebrow--demo { color: var(--wp-amber); }
+  .eyebrow { font-size: var(--wp-text-xs); font-family: var(--wp-font-mono); letter-spacing: 0.16em; color: var(--wp-text-muted); text-transform: uppercase; margin-bottom: 14px; }
+  .eyebrow--demo { margin-bottom: 16px; }
   .demo-h1 {
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-size: clamp(2rem, 4.5vw, 3rem);
     font-weight: 700;
     letter-spacing: -0.03em;
-    line-height: 1.05;
+    line-height: 1.08;
     color: var(--wp-ink);
-    margin: 0 0 22px;
+    margin: 0 0 20px;
   }
   .demo-intro {
     font-size: var(--wp-text-xl);
     color: var(--wp-text-secondary);
-    line-height: 1.5;
+    line-height: 1.55;
     margin: 0 0 14px;
-    max-width: 660px;
+    max-width: 640px;
   }
   .demo-note {
     font-size: var(--wp-text-base);
-    color: var(--wp-text-tertiary);
-    line-height: 1.65;
+    color: var(--wp-text-muted);
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.03em;
+    line-height: 1.6;
     margin: 0;
-    max-width: 580px;
   }
 
-  /* ===== SHARED ===== */
-  .mono-label {
-    font-size: var(--wp-text-xs);
-    font-family: var(--wp-font-mono);
-    color: var(--wp-text-muted);
-    letter-spacing: 0.08em;
-  }
-  .hand-note {
-    font-family: var(--wp-font-hand);
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--wp-amber);
-    line-height: 1.3;
-  }
-  .status-badge {
-    display: inline-flex;
-    align-items: center;
-    border-radius: 4px;
-    font-family: var(--wp-font-mono);
-    font-weight: 600;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    white-space: nowrap;
-  }
-  .status-badge--review { border: 1.5px solid var(--wp-amber); color: var(--wp-amber); background: var(--wp-amber-soft); }
-  .status-badge--ready { border: 1.5px solid var(--wp-signal); color: var(--wp-signal); background: var(--wp-signal-soft); }
+  /* ===== TRACK LEGEND ===== */
+  .track-legend { display: flex; align-items: center; gap: 20px; margin-top: 16px; flex-wrap: wrap; }
+  .track-legend-item { display: inline-flex; align-items: center; gap: 7px; font-size: var(--wp-text-xs); font-family: var(--wp-font-mono); color: var(--wp-text-tertiary); letter-spacing: 0.06em; }
+  .track-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .track-dot--editorial { background: var(--wp-ink); }
+  .track-dot--search { background: var(--wp-signal); }
+  .track-dot--handoff { background: var(--wp-amber); }
 
   /* ===== PROGRESS RAIL ===== */
-  .progress-rail {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 48px;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--wp-line);
-  }
-  .progress-rail-inner {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex: 1;
-  }
+  .progress-rail { display: flex; align-items: center; gap: 16px; margin-bottom: 44px; flex-wrap: wrap; }
+  .progress-rail-inner { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
   .progress-dot {
+    display: inline-block;
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    border: 1.5px solid var(--wp-line);
-    background: transparent;
-    transition: background 300ms, border-color 300ms;
-    flex-shrink: 0;
+    background: var(--wp-line);
+    transition: background 250ms, transform 200ms;
   }
-  .progress-dot--active {
-    background: var(--wp-ink);
-    border-color: var(--wp-ink);
-  }
-  .progress-dot--done {
-    background: var(--wp-signal);
-    border-color: var(--wp-signal);
-  }
-  .progress-label { white-space: nowrap; }
+  .progress-dot--active { background: var(--wp-ink); transform: scale(1.25); }
+  .progress-dot--done { background: var(--wp-signal); }
+  .progress-label { font-size: var(--wp-text-xs); color: var(--wp-text-muted); }
 
-  /* ===== DEMO STEPS ===== */
+  /* ===== DEMO STEP ===== */
   .demo-step {
+    margin-bottom: 52px;
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 400ms ease, transform 400ms ease;
-    margin-bottom: 56px;
+    transform: translateY(18px);
     pointer-events: none;
+    transition: opacity 420ms ease, transform 420ms ease;
   }
-  .demo-step--visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  .demo-step--revealed {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .step-label {
-    margin-bottom: 14px;
-    display: block;
-    letter-spacing: 0.1em;
-  }
+  .demo-step--visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .demo-step--revealed { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .step-label { margin-bottom: 14px; display: block; letter-spacing: 0.1em; }
 
   /* ===== WORKER PILL ===== */
   .worker-pill {
@@ -994,17 +1254,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     color: var(--wp-text-muted);
     margin-bottom: 8px;
   }
-  .worker-action {
-    font-size: var(--wp-text-base);
-    color: var(--wp-text-tertiary);
-    margin: 0 0 18px;
-    font-style: italic;
-  }
+  .worker-pill--search { background: var(--wp-signal-soft); border-color: var(--wp-signal-border); color: var(--wp-signal); }
+  .worker-pill--handoff { background: var(--wp-amber-soft); border-color: rgba(196,122,28,0.22); color: var(--wp-amber); }
+  .worker-action { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); margin: 0 0 18px; font-style: italic; }
 
   /* ===== STEP CTA ===== */
-  .step-cta-wrap {
-    margin-top: 22px;
-  }
+  .step-cta-wrap { margin-top: 22px; }
   .demo-cta {
     display: inline-flex;
     align-items: center;
@@ -1021,12 +1276,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     cursor: pointer;
     transition: transform 150ms, box-shadow 150ms;
     box-shadow: 0 2px 4px rgba(17,19,24,0.12), 0 10px 18px -8px rgba(17,19,24,0.22);
+    text-decoration: none;
   }
   .demo-cta:hover { transform: translateY(-2px); box-shadow: 0 3px 6px rgba(17,19,24,0.16), 0 16px 26px -8px rgba(17,19,24,0.3); }
-  .demo-cta--final {
-    background: var(--wp-signal);
-    border: 1px solid var(--wp-signal);
-  }
+  .demo-cta--final { background: var(--wp-signal); border: 1px solid var(--wp-signal); }
 
   /* ===== PRIMER CARD ===== */
   .primer-card {
@@ -1036,303 +1289,88 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     box-shadow: 0 2px 5px rgba(54,44,24,0.06), 0 10px 30px -10px rgba(54,44,24,0.14);
     transform: rotate(-0.5deg);
     overflow: hidden;
-    background-image:
-      repeating-linear-gradient(
-        transparent,
-        transparent 27px,
-        rgba(0,0,200,0.06) 27px,
-        rgba(0,0,200,0.06) 28px
-      );
+    background-image: repeating-linear-gradient(transparent, transparent 27px, rgba(0,0,200,0.06) 27px, rgba(0,0,200,0.06) 28px);
     background-position: 0 36px;
   }
-  .primer-margin {
-    position: absolute;
-    left: 42px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: rgba(194,65,58,0.28);
-    z-index: 2;
-  }
-  .primer-body {
-    position: relative;
-    padding: 28px 28px 28px 58px;
-    z-index: 1;
-  }
-  .primer-line {
-    font-size: var(--wp-text-base);
-    color: var(--wp-ink);
-    line-height: 1.85;
-    margin: 0 0 18px;
-    font-family: Georgia, 'Times New Roman', serif;
-  }
+  .primer-margin { position: absolute; left: 42px; top: 0; bottom: 0; width: 1px; background: rgba(194,65,58,0.28); z-index: 2; }
+  .primer-body { position: relative; padding: 28px 28px 28px 58px; z-index: 1; }
+  .primer-line { font-size: var(--wp-text-base); color: var(--wp-ink); line-height: 1.85; margin: 0 0 18px; font-family: Georgia, 'Times New Roman', serif; }
   .primer-line:last-child { margin-bottom: 0; }
-  .primer-line--lead {
-    font-size: var(--wp-text-lg);
-    font-weight: 700;
-    font-family: var(--wp-font-sans);
-    letter-spacing: -0.02em;
-    line-height: 1.3;
-    color: var(--wp-ink);
-    margin-bottom: 20px;
-  }
-  .primer-line--keep {
-    font-style: italic;
-    color: var(--wp-text-secondary);
-    border-left: 3px solid var(--wp-amber);
-    padding-left: 12px;
-    margin-left: -15px;
-  }
-  .primer-divider {
-    border: none;
-    border-top: 1px solid rgba(0,0,180,0.09);
-    margin: 22px 0;
-  }
-  .hand-annot {
-    font-family: var(--wp-font-hand);
-    font-weight: 600;
-    color: var(--wp-amber);
-    font-size: 1rem;
-    line-height: 1;
-    position: absolute;
-  }
-  .hand-annot--keep {
-    top: 126px;
-    right: 24px;
-    transform: rotate(4deg);
-    font-size: 1.05rem;
-  }
+  .primer-line--lead { font-size: var(--wp-text-lg); font-weight: 700; font-family: var(--wp-font-sans); letter-spacing: -0.02em; line-height: 1.3; color: var(--wp-ink); margin-bottom: 20px; }
+  .primer-line--keep { font-style: italic; color: var(--wp-text-secondary); border-left: 3px solid var(--wp-amber); padding-left: 12px; margin-left: -15px; }
+  .primer-divider { border: none; border-top: 1px solid rgba(0,0,180,0.09); margin: 22px 0; }
+  .hand-annot { font-family: var(--wp-font-hand); font-weight: 600; color: var(--wp-amber); font-size: 1rem; line-height: 1; position: absolute; }
+  .hand-annot--keep { top: 126px; right: 24px; transform: rotate(4deg); font-size: 1.05rem; }
 
   /* ===== OUTPUT CARDS ===== */
-  .output-card {
-    position: relative;
-    background: #fff;
-    border: 1px solid var(--wp-line);
-    box-shadow: 0 2px 5px rgba(54,44,24,0.06), 0 10px 30px -10px rgba(54,44,24,0.14);
-  }
-  .output-card--brief {
-    padding-top: 20px;
-  }
-  .output-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 16px 24px;
-    border-bottom: 2px solid var(--wp-ink);
-  }
-  .output-card-header--ruled {
-    border-bottom: 1px solid var(--wp-line);
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+  .output-card { position: relative; background: #fff; border: 1px solid var(--wp-line); box-shadow: 0 2px 5px rgba(54,44,24,0.06), 0 10px 30px -10px rgba(54,44,24,0.14); }
+  .output-card--brief { padding-top: 20px; }
+  .output-card--search { background: #FDFCF9; border-color: var(--wp-signal-border); }
+  .output-card-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 24px; border-bottom: 2px solid var(--wp-ink); }
+  .output-card-header--ruled { border-bottom: 1px solid var(--wp-line); flex-wrap: wrap; gap: 6px; }
   .output-card-header--approval { border-bottom: 2px solid var(--wp-ink); }
-  .output-card-title {
-    font-size: var(--wp-text-base);
-    font-family: var(--wp-font-mono);
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--wp-ink);
-  }
-  .output-card-body {
-    padding: 22px 24px;
-  }
-  .output-card-body--draft {
-    padding-left: 46px;
-    position: relative;
-  }
+  .output-card-title { font-size: var(--wp-text-base); font-family: var(--wp-font-mono); font-weight: 700; letter-spacing: 0.1em; color: var(--wp-ink); }
+  .output-card-body { padding: 22px 24px; }
+  .output-card-body--draft { padding-left: 46px; position: relative; }
   .output-card-body--checklist { padding: 10px 24px 20px; }
   .output-card-body--outline { padding: 12px 24px 22px; }
   .output-card-body--approval { padding: 22px 24px; }
 
+  /* ===== TRACK BADGE ===== */
+  .track-badge { display: inline-flex; align-items: center; border-radius: 3px; font-family: var(--wp-font-mono); font-weight: 600; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; }
+  .track-badge--search { background: var(--wp-signal-soft); border: 1px solid var(--wp-signal-border); color: var(--wp-signal); }
+
   /* ===== OUTPUT SECTIONS ===== */
-  .output-section {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--wp-line);
-  }
+  .output-section { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--wp-line); }
   .output-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
   .output-section--signal { background: var(--wp-signal-soft); border: 1px solid var(--wp-signal-border); padding: 14px 18px; border-radius: 3px; margin-bottom: 20px; }
   .output-section--warning { background: var(--wp-amber-soft); border: 1px solid rgba(196,122,28,0.22); padding: 14px 18px; border-radius: 3px; margin-bottom: 20px; }
-  .output-heading {
-    font-size: 11px;
-    font-family: var(--wp-font-mono);
-    letter-spacing: 0.1em;
-    color: var(--wp-text-muted);
-    margin-bottom: 7px;
-    text-transform: uppercase;
-  }
+  .output-heading { font-size: 11px; font-family: var(--wp-font-mono); letter-spacing: 0.1em; color: var(--wp-text-muted); margin-bottom: 7px; text-transform: uppercase; }
   .output-heading--signal { color: var(--wp-signal); }
   .output-heading--warning { color: var(--wp-amber); }
-  .output-para {
-    font-size: var(--wp-text-base);
-    color: var(--wp-text-secondary);
-    line-height: 1.65;
-    margin: 0;
-  }
+  .output-para { font-size: var(--wp-text-base); color: var(--wp-text-secondary); line-height: 1.65; margin: 0; }
   .output-list { white-space: pre-line; }
   .output-indent { display: inline-block; padding-left: 16px; }
 
   /* ===== FOLDER TAB ===== */
-  .folder-tab {
-    position: absolute;
-    top: -17px; left: 22px;
-    padding: 5px 16px;
-    background: #E3D6B9;
-    border: 1px solid #C7B488;
-    border-bottom: none;
-    border-radius: 6px 6px 0 0;
-    font-size: var(--wp-text-xs);
-    font-family: var(--wp-font-mono);
-    letter-spacing: 0.1em;
-    color: #5E4F2E;
-    white-space: nowrap;
-    z-index: 2;
-  }
+  .folder-tab { position: absolute; top: -17px; left: 22px; padding: 5px 16px; background: #E3D6B9; border: 1px solid #C7B488; border-bottom: none; border-radius: 6px 6px 0 0; font-size: var(--wp-text-xs); font-family: var(--wp-font-mono); letter-spacing: 0.1em; color: #5E4F2E; white-space: nowrap; z-index: 2; }
 
   /* ===== BRIEF DL ===== */
-  .brief-dl {
-    display: grid;
-    grid-template-columns: 110px 1fr;
-    gap: 12px 16px;
-    margin: 0 0 18px;
-    align-items: baseline;
-  }
-  .brief-dt {
-    font-size: 11px;
-    font-family: var(--wp-font-mono);
-    color: var(--wp-text-muted);
-    letter-spacing: 0.08em;
-  }
-  .brief-dd {
-    font-size: var(--wp-text-base);
-    color: var(--wp-ink);
-    margin: 0;
-    line-height: 1.4;
-  }
-  .brief-divider {
-    border: none;
-    border-top: 1px solid var(--wp-line);
-    margin: 20px 0;
-  }
+  .brief-dl { display: grid; grid-template-columns: 110px 1fr; gap: 12px 16px; margin: 0 0 18px; align-items: baseline; }
+  .brief-dt { font-size: 11px; font-family: var(--wp-font-mono); color: var(--wp-text-muted); letter-spacing: 0.08em; }
+  .brief-dd { font-size: var(--wp-text-base); color: var(--wp-ink); margin: 0; line-height: 1.4; }
+  .brief-divider { border: none; border-top: 1px solid var(--wp-line); margin: 20px 0; }
 
   /* ===== VOICE NOTE ===== */
-  .voice-note {
-    padding: 14px 24px;
-    border-top: 1px dashed var(--wp-line);
-    background: var(--wp-paper-soft);
-  }
+  .voice-note { padding: 14px 24px; border-top: 1px dashed var(--wp-line); background: var(--wp-paper-soft); }
+  .hand-note { font-family: var(--wp-font-hand); color: var(--wp-amber); font-size: 1rem; font-weight: 600; }
 
   /* ===== OUTLINE ===== */
-  .outline-row {
-    display: flex;
-    gap: 18px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--wp-line);
-    align-items: flex-start;
-  }
+  .outline-row { display: flex; gap: 18px; padding: 12px 0; border-bottom: 1px solid var(--wp-line); align-items: flex-start; }
   .outline-row:last-child { border-bottom: none; }
   .outline-row--h1 { padding-bottom: 16px; }
   .outline-row--section { padding: 14px 0; }
   .outline-row--anchor { background: var(--wp-signal-soft); padding: 14px 12px; border: 1px solid var(--wp-signal-border); border-radius: 3px; margin-bottom: 2px; }
-  .outline-tag {
-    font-size: 11px;
-    font-family: var(--wp-font-mono);
-    color: var(--wp-text-muted);
-    letter-spacing: 0.06em;
-    min-width: 40px;
-    flex-shrink: 0;
-    padding-top: 1px;
-  }
+  .outline-tag { font-size: 11px; font-family: var(--wp-font-mono); color: var(--wp-text-muted); letter-spacing: 0.06em; min-width: 40px; flex-shrink: 0; padding-top: 1px; }
   .outline-tag--muted { color: var(--wp-text-muted); opacity: 0.6; }
-  .outline-text {
-    font-size: var(--wp-text-base);
-    color: var(--wp-ink);
-    line-height: 1.4;
-    font-weight: 600;
-  }
-  .outline-text--preserved {
-    color: var(--wp-signal);
-    font-style: italic;
-  }
+  .outline-text { font-size: var(--wp-text-base); color: var(--wp-ink); line-height: 1.4; font-weight: 600; }
+  .outline-text--preserved { color: var(--wp-signal); font-style: italic; font-weight: 500; }
   .outline-content { display: flex; flex-direction: column; gap: 5px; }
-  .outline-sub {
-    font-size: var(--wp-text-sm);
-    color: var(--wp-text-tertiary);
-    line-height: 1.6;
-    white-space: pre-line;
-  }
+  .outline-sub { font-size: var(--wp-text-sm); color: var(--wp-text-tertiary); line-height: 1.6; white-space: pre-line; }
 
   /* ===== DRAFT CARD ===== */
-  .draft-margin {
-    position: absolute;
-    left: 36px;
-    top: 0; bottom: 0;
-    width: 1px;
-    background: rgba(194,65,58,0.3);
-  }
-  .draft-text {
-    font-size: var(--wp-text-base);
-    color: var(--wp-text-primary);
-    line-height: 1.8;
-    margin: 0 0 16px;
-    font-family: Georgia, 'Times New Roman', serif;
-  }
+  .draft-margin { position: absolute; left: 36px; top: 0; bottom: 0; width: 1px; background: rgba(194,65,58,0.3); }
+  .draft-text { font-size: var(--wp-text-base); color: var(--wp-text-primary); line-height: 1.8; margin: 0 0 16px; font-family: Georgia, 'Times New Roman', serif; }
   .draft-text:last-child { margin-bottom: 0; }
-  .draft-text--heading {
-    font-size: var(--wp-text-xl);
-    font-weight: 700;
-    font-family: var(--wp-font-sans);
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    color: var(--wp-ink);
-  }
-  .draft-text--subheading {
-    font-size: var(--wp-text-sm);
-    font-family: var(--wp-font-mono);
-    color: var(--wp-text-muted);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    margin-top: 20px;
-    margin-bottom: 12px;
-  }
-  .draft-text--anchor {
-    font-weight: 700;
-    font-style: italic;
-    color: var(--wp-ink);
-    font-family: var(--wp-font-sans);
-    font-size: var(--wp-text-lg);
-  }
-  .draft-text--anchor-placeholder {
-    font-weight: 600;
-    font-style: italic;
-    color: var(--wp-amber);
-    font-family: var(--wp-font-sans);
-    font-size: var(--wp-text-base);
-    border-left: 3px solid var(--wp-amber);
-    padding-left: 12px;
-    margin-left: -15px;
-  }
+  .draft-text--heading { font-size: var(--wp-text-xl); font-weight: 700; font-family: var(--wp-font-sans); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 20px; color: var(--wp-ink); }
+  .draft-text--subheading { font-size: var(--wp-text-sm); font-family: var(--wp-font-mono); color: var(--wp-text-muted); font-weight: 700; letter-spacing: 0.06em; margin-top: 20px; margin-bottom: 12px; }
+  .draft-text--anchor { font-weight: 700; font-style: italic; color: var(--wp-ink); font-family: var(--wp-font-sans); font-size: var(--wp-text-lg); }
+  .draft-text--anchor-placeholder { font-weight: 600; font-style: italic; color: var(--wp-amber); font-family: var(--wp-font-sans); font-size: var(--wp-text-base); border-left: 3px solid var(--wp-amber); padding-left: 12px; margin-left: -15px; }
 
   /* ===== REVIEW CHECKLIST ===== */
-  .review-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--wp-line);
-    font-size: var(--wp-text-base);
-  }
+  .review-row { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--wp-line); font-size: var(--wp-text-base); }
   .review-row:last-child { border-bottom: none; }
-  .review-icon {
-    font-size: 1rem;
-    font-weight: 700;
-    flex-shrink: 0;
-    line-height: 1.5;
-    min-width: 18px;
-    font-family: var(--wp-font-mono);
-  }
+  .review-icon { font-size: 1rem; font-weight: 700; flex-shrink: 0; line-height: 1.5; min-width: 18px; font-family: var(--wp-font-mono); }
   .review-icon--pass { color: var(--wp-signal); }
   .review-icon--warn { color: var(--wp-amber); }
   .review-icon--fail { color: var(--wp-red); }
@@ -1341,331 +1379,87 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   .review-note { font-size: var(--wp-text-sm); color: var(--wp-text-tertiary); }
   .review-sub { font-size: var(--wp-text-sm); color: var(--wp-text-secondary); line-height: 1.6; white-space: pre-line; }
   .review-risk-level { color: var(--wp-text-muted); font-family: var(--wp-font-mono); font-size: 11px; letter-spacing: 0.06em; }
-  .review-status {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 0 4px;
-    border-top: 2px solid var(--wp-ink);
-    margin-top: 10px;
-    flex-wrap: wrap;
-  }
+  .review-status { display: flex; align-items: center; gap: 14px; padding: 16px 0 4px; border-top: 2px solid var(--wp-ink); margin-top: 10px; flex-wrap: wrap; }
   .review-status-label { color: var(--wp-text-muted); }
-  .risk-summary {
-    display: block;
-    padding: 12px 0 16px;
-    border-bottom: 1px solid var(--wp-line);
-    margin-bottom: 4px;
-    color: var(--wp-text-secondary);
-  }
+  .risk-summary { display: block; padding: 12px 0 16px; border-bottom: 1px solid var(--wp-line); margin-bottom: 4px; color: var(--wp-text-secondary); }
 
   /* ===== APPROVAL CARD ===== */
-  .approval-dl {
-    display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 10px 14px;
-    margin: 0 0 18px;
-    align-items: baseline;
-  }
-  .approval-dt {
-    font-size: 11px;
-    font-family: var(--wp-font-mono);
-    color: var(--wp-text-muted);
-    letter-spacing: 0.08em;
-  }
-  .approval-dd {
-    font-size: var(--wp-text-base);
-    color: var(--wp-ink);
-    margin: 0;
-  }
-  .approval-divider {
-    border: none;
-    border-top: 1px solid var(--wp-line);
-    margin: 16px 0;
-  }
+  .approval-dl { display: grid; grid-template-columns: 90px 1fr; gap: 10px 14px; margin: 0 0 18px; align-items: baseline; }
+  .approval-dt { font-size: 11px; font-family: var(--wp-font-mono); color: var(--wp-text-muted); letter-spacing: 0.08em; }
+  .approval-dd { font-size: var(--wp-text-base); color: var(--wp-ink); margin: 0; }
+  .approval-divider { border: none; border-top: 1px solid var(--wp-line); margin: 16px 0; }
   .approval-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
-  .approval-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: var(--wp-text-base);
-    color: var(--wp-text-secondary);
-    line-height: 1.4;
-  }
+  .approval-item { display: flex; align-items: center; gap: 10px; font-size: var(--wp-text-base); color: var(--wp-text-secondary); line-height: 1.4; }
   .approval-icon { font-size: 0.95rem; font-weight: 700; flex-shrink: 0; font-family: var(--wp-font-mono); }
   .approval-icon--pass { color: var(--wp-signal); }
   .approval-icon--warn { color: var(--wp-amber); }
-  .approval-summary-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 10px 0;
-    border-top: 1px solid var(--wp-line);
-    flex-wrap: wrap;
-  }
-  .approval-summary-label { min-width: 120px; }
-  .approval-summary-value { font-size: var(--wp-text-base); color: var(--wp-text-secondary); }
-  .approval-stamp-block {
-    margin-top: 24px;
-    padding-top: 20px;
-    border-top: 2px solid var(--wp-ink);
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .approval-stamp {
-    border: 2px solid var(--wp-ink);
-    padding: 12px 20px;
-    border-radius: 3px;
-    text-align: center;
-    flex-shrink: 0;
-  }
-  .approval-stamp-title {
-    font-family: var(--wp-font-mono);
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.14em;
-    color: var(--wp-ink);
-  }
-  .approval-stamp-sub {
-    font-size: var(--wp-text-xs);
-    font-family: var(--wp-font-mono);
-    color: var(--wp-text-tertiary);
-    letter-spacing: 0.06em;
-    margin-top: 4px;
-  }
-  .approval-close {
-    font-size: var(--wp-text-base);
-    color: var(--wp-text-secondary);
-    line-height: 1.65;
-    margin: 0;
-  }
+  .approval-stamp-block { margin-top: 24px; padding-top: 20px; border-top: 2px solid var(--wp-ink); display: flex; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+  .approval-stamp { border: 2px solid var(--wp-ink); padding: 12px 20px; border-radius: 3px; text-align: center; flex-shrink: 0; }
+  .approval-stamp-title { font-family: var(--wp-font-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; color: var(--wp-ink); }
+  .approval-stamp-sub { font-size: var(--wp-text-xs); font-family: var(--wp-font-mono); color: var(--wp-text-tertiary); letter-spacing: 0.06em; margin-top: 4px; }
+  .approval-close { font-size: var(--wp-text-base); color: var(--wp-text-secondary); line-height: 1.65; margin: 0; }
 
-  /* ===== REVIEW SURFACE (Step 9) ===== */
-  .review-surface {
-    background: #fff;
-    border: 1px solid var(--wp-line);
-    box-shadow: 0 2px 5px rgba(54,44,24,0.06), 0 12px 40px -10px rgba(54,44,24,0.18);
-  }
-  .review-surface-header {
-    padding: 28px 32px 24px;
-    border-bottom: 2px solid var(--wp-ink);
-  }
-  .review-surface-eyebrow {
-    display: block;
-    margin-bottom: 10px;
-    letter-spacing: 0.14em;
-  }
-  .review-surface-title {
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    margin: 0;
-    color: var(--wp-ink);
-    line-height: 1.15;
-  }
-  .review-surface-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-  }
-  .review-meta {
-    padding: 26px 28px;
-    border-right: 1px solid var(--wp-line);
-  }
-  .review-meta-dl {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    gap: 10px 12px;
-    margin: 0 0 24px;
-    align-items: baseline;
-  }
+  /* ===== REVIEW SURFACE ===== */
+  .review-surface { background: #fff; border: 1px solid var(--wp-line); box-shadow: 0 2px 5px rgba(54,44,24,0.06), 0 12px 40px -10px rgba(54,44,24,0.18); }
+  .review-surface-header { padding: 28px 32px 24px; border-bottom: 2px solid var(--wp-ink); }
+  .review-surface-eyebrow { display: block; margin-bottom: 10px; letter-spacing: 0.14em; }
+  .review-surface-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.025em; margin: 0; color: var(--wp-ink); line-height: 1.15; }
+  .review-surface-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .review-meta { padding: 26px 28px; border-right: 1px solid var(--wp-line); }
+  .review-meta-dl { display: grid; grid-template-columns: 130px 1fr; gap: 10px 12px; margin: 0 0 24px; align-items: baseline; }
   .review-meta-dl--sm { gap: 8px 12px; margin-bottom: 0; }
-  .review-meta-dt {
-    font-size: 11px;
-    font-family: var(--wp-font-mono);
-    color: var(--wp-text-muted);
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-  }
-  .review-meta-dd {
-    font-size: var(--wp-text-sm);
-    color: var(--wp-text-secondary);
-    margin: 0;
-    line-height: 1.4;
-  }
+  .review-meta-dt { font-size: 11px; font-family: var(--wp-font-mono); color: var(--wp-text-muted); letter-spacing: 0.07em; text-transform: uppercase; }
+  .review-meta-dd { font-size: var(--wp-text-sm); color: var(--wp-text-secondary); margin: 0; line-height: 1.4; }
   .review-meta-dd--signal { color: var(--wp-signal); font-weight: 600; }
   .review-meta-dd--warn { color: var(--wp-amber); }
-  .review-meta-dd--blocked {
-    font-family: var(--wp-font-mono);
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--wp-ink);
-  }
-  .review-meta-dd--mono {
-    font-family: var(--wp-font-mono);
-    font-size: 11px;
-    color: var(--wp-text-tertiary);
-    letter-spacing: 0.04em;
-    word-break: break-all;
-  }
-  .review-cms-block {
-    padding-top: 20px;
-    border-top: 1px solid var(--wp-line);
-    margin-bottom: 20px;
-  }
-  .review-cms-heading {
-    display: block;
-    margin-bottom: 12px;
-    letter-spacing: 0.12em;
-  }
-  .review-next-block {
-    padding-top: 18px;
-    border-top: 1px solid var(--wp-line);
-  }
-  .review-next-heading {
-    display: block;
-    margin-bottom: 10px;
-    letter-spacing: 0.12em;
-  }
-  .review-next-body {
-    font-size: var(--wp-text-base);
-    color: var(--wp-text-secondary);
-    line-height: 1.65;
-    margin: 0;
-  }
+  .review-meta-dd--blocked { font-family: var(--wp-font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; color: var(--wp-ink); }
 
-  /* Draft preview (right column) */
-  .review-draft {
-    padding: 26px 28px;
-  }
-  .review-draft-card {
-    background: var(--wp-paper-soft);
-    border: 1px solid var(--wp-line);
-  }
-  .review-draft-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 12px 18px;
-    border-bottom: 1px solid var(--wp-line);
-    flex-wrap: wrap;
-  }
-  .review-draft-body {
-    position: relative;
-    padding: 18px 18px 18px 42px;
-  }
-  .review-draft-margin {
-    position: absolute;
-    left: 28px; top: 0; bottom: 0;
-    width: 1px;
-    background: rgba(194,65,58,0.25);
-  }
-  .review-draft-heading {
-    font-size: var(--wp-text-lg);
-    font-weight: 700;
-    font-family: var(--wp-font-sans);
-    letter-spacing: -0.02em;
-    margin: 0 0 14px;
-    color: var(--wp-ink);
-    line-height: 1.2;
-  }
-  .review-draft-text {
-    font-size: var(--wp-text-sm);
-    color: var(--wp-text-secondary);
-    line-height: 1.7;
-    margin: 0 0 12px;
-    font-family: Georgia, 'Times New Roman', serif;
-  }
+  /* ===== META PACK ===== */
+  .review-meta-pack { margin-top: 16px; background: var(--wp-paper-soft); border: 1px solid var(--wp-line); padding: 14px 18px; }
+  .meta-pack-row { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--wp-line); align-items: flex-start; }
+  .meta-pack-row:last-child { border-bottom: none; }
+  .meta-pack-label { font-size: 10px; font-family: var(--wp-font-mono); color: var(--wp-text-muted); letter-spacing: 0.08em; min-width: 60px; flex-shrink: 0; padding-top: 2px; }
+  .meta-pack-value { font-size: var(--wp-text-xs); color: var(--wp-text-secondary); line-height: 1.5; }
+  .meta-pack-alt { font-size: 10px; color: var(--wp-text-muted); font-family: var(--wp-font-mono); display: block; margin-top: 2px; }
+
+  .review-cms-block { padding-top: 20px; border-top: 1px solid var(--wp-line); margin-bottom: 20px; }
+  .review-cms-heading { display: block; margin-bottom: 12px; letter-spacing: 0.12em; }
+  .review-next-block { padding-top: 18px; border-top: 1px solid var(--wp-line); }
+  .review-next-heading { display: block; margin-bottom: 10px; letter-spacing: 0.12em; }
+  .review-next-body { font-size: var(--wp-text-base); color: var(--wp-text-secondary); line-height: 1.65; margin: 0; }
+
+  /* Draft preview */
+  .review-draft { padding: 26px 28px; }
+  .review-draft-card { background: var(--wp-paper-soft); border: 1px solid var(--wp-line); }
+  .review-draft-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 18px; border-bottom: 1px solid var(--wp-line); flex-wrap: wrap; }
+  .review-draft-body { position: relative; padding: 18px 18px 18px 42px; }
+  .review-draft-margin { position: absolute; left: 28px; top: 0; bottom: 0; width: 1px; background: rgba(194,65,58,0.25); }
+  .review-draft-heading { font-size: var(--wp-text-lg); font-weight: 700; font-family: var(--wp-font-sans); letter-spacing: -0.02em; margin: 0 0 14px; color: var(--wp-ink); line-height: 1.2; }
+  .review-draft-text { font-size: var(--wp-text-sm); color: var(--wp-text-secondary); line-height: 1.7; margin: 0 0 12px; font-family: Georgia, 'Times New Roman', serif; }
   .review-draft-text:last-child { margin-bottom: 0; }
-  .review-draft-text--anchor {
-    font-weight: 700;
-    font-style: italic;
-    color: var(--wp-ink);
-    font-family: var(--wp-font-sans);
-    font-size: var(--wp-text-base);
-    margin-top: 4px;
-  }
-  .hand-annot--draft {
-    position: absolute;
-    bottom: 18px;
-    right: 16px;
-    font-size: 0.95rem;
-    color: var(--wp-signal);
-    transform: rotate(-4deg);
-  }
+  .review-draft-text--anchor { font-weight: 700; font-style: italic; color: var(--wp-ink); font-family: var(--wp-font-sans); font-size: var(--wp-text-base); margin-top: 4px; }
+  .hand-annot--draft { position: absolute; bottom: 18px; right: 16px; font-size: 0.95rem; color: var(--wp-signal); transform: rotate(-4deg); }
 
   /* Final statement */
-  .review-final {
-    padding: 36px 32px 40px;
-    border-top: 2px solid var(--wp-ink);
-    text-align: center;
-    background: var(--wp-paper-soft);
-  }
-  .review-final-line {
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    color: var(--wp-text-tertiary);
-    margin: 0 0 8px;
-    line-height: 1.2;
-  }
-  .review-final-line--strong {
-    color: var(--wp-ink);
-    font-size: clamp(1.6rem, 3.4vw, 2.4rem);
-    margin-top: 4px;
-    margin-bottom: 28px;
-  }
+  .review-final { padding: 36px 32px 40px; border-top: 2px solid var(--wp-ink); text-align: center; background: var(--wp-paper-soft); }
+  .review-final-line { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.025em; color: var(--wp-text-tertiary); margin: 0 0 8px; line-height: 1.2; }
+  .review-final-line--strong { color: var(--wp-ink); font-size: clamp(1.6rem, 3.4vw, 2.4rem); margin-top: 4px; margin-bottom: 28px; }
   .review-final-cta { margin-top: 4px; }
 
   /* ===== FINAL CTA SECTION ===== */
   .section--cta { padding: 96px 0 104px; }
-  .cta-inner {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 34px;
-    text-align: center;
-  }
+  .cta-inner { max-width: 760px; margin: 0 auto; padding: 0 34px; text-align: center; }
   .cta-logo { display: block; width: 174px; height: auto; margin: 0 auto 30px; }
-  .cta-h2 {
-    font-size: clamp(2.2rem, 4.8vw, 3.4rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    margin: 0;
-    line-height: 1.05;
-    color: var(--wp-ink);
-  }
-  .cta-body {
-    font-size: var(--wp-text-xl);
-    color: var(--wp-text-secondary);
-    line-height: 1.5;
-    margin: 20px auto 0;
-    max-width: 520px;
-  }
+  .cta-h2 { font-size: clamp(2.2rem, 4.8vw, 3.4rem); font-weight: 700; letter-spacing: -0.03em; margin: 0; line-height: 1.05; color: var(--wp-ink); }
+  .cta-body { font-size: var(--wp-text-xl); color: var(--wp-text-secondary); line-height: 1.5; margin: 20px auto 0; max-width: 520px; }
   .cta-buttons { display: flex; gap: 12px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
   .cta-mark { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 40px; }
   .cta-rule { height: 1px; width: 44px; background: var(--wp-line); }
   .cta-mark-text { letter-spacing: 0.14em; }
 
   /* ===== FOOTER ===== */
-  .footer {
-    background-color: var(--wp-paper-dark);
-    background-image: var(--wp-texture-paper);
-    border-top: 2px solid var(--wp-ink);
-    padding: 58px 0 42px;
-  }
-  .footer-inner {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 34px;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 32px;
-  }
+  .footer { background-color: var(--wp-paper-dark); background-image: var(--wp-texture-paper); border-top: 2px solid var(--wp-ink); padding: 58px 0 42px; }
+  .footer-inner { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 34px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; }
   .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
   .footer-logo { display: block; height: 90px; width: auto; align-self: flex-start; mix-blend-mode: multiply; }
   .footer-tagline { margin: 6px 0 0; font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; }
@@ -1673,19 +1467,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   .footer-col-heading { font-size: var(--wp-text-sm); font-weight: 700; }
   .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); transition: color 150ms; }
   .footer-link:hover { color: var(--wp-ink); }
-  .footer-bottom {
-    width: 100%;
-    max-width: 1200px;
-    margin: 46px auto 0;
-    padding: 22px 34px 0;
-    border-top: 1px solid var(--wp-line);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: space-between;
-    font-size: var(--wp-text-sm);
-    color: var(--wp-text-muted);
-  }
+  .footer-bottom { width: 100%; max-width: 1200px; margin: 46px auto 0; padding: 22px 34px 0; border-top: 1px solid var(--wp-line); display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; font-size: var(--wp-text-sm); color: var(--wp-text-muted); }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
@@ -1693,14 +1475,11 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     .section { padding: 52px 0; }
     .section--intro { padding: 44px 0 40px; }
     .section--demo { padding: 40px 0 60px; }
-
     .masthead-nav { display: none; }
     .masthead-inner { grid-template-columns: 1fr; justify-items: center; padding: 10px 20px; }
-
     .review-surface-body { grid-template-columns: 1fr; }
     .review-meta { border-right: none; border-bottom: 1px solid var(--wp-line); }
     .review-meta-dl { grid-template-columns: 110px 1fr; }
-
     .footer-inner { grid-template-columns: 1fr 1fr; }
     .footer-brand { grid-column: 1 / -1; max-width: none; }
   }
@@ -1709,17 +1488,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     .container { padding: 0 18px; }
     .section { padding: 40px 0; }
     .section--intro { padding: 36px 0 32px; }
-
     .masthead-inner { padding: 8px 18px; }
-
     .progress-rail { gap: 12px; }
     .progress-rail-inner { gap: 5px; }
     .progress-dot { width: 8px; height: 8px; }
-
     .brief-dl { grid-template-columns: 1fr; gap: 4px 0; }
     .brief-dt { margin-top: 10px; }
     .brief-dt:first-child { margin-top: 0; }
-
     .review-surface-header { padding: 20px 20px 16px; }
     .review-meta { padding: 20px 18px; }
     .review-meta-dl { grid-template-columns: 96px 1fr; font-size: 11px; gap: 8px 10px; }
@@ -1727,23 +1502,20 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     .review-draft-body { padding-left: 30px; }
     .review-draft-margin { left: 18px; }
     .review-final { padding: 24px 20px 28px; }
-
     .output-card-header { padding: 12px 18px; }
     .output-card-body { padding: 18px; }
     .output-card-body--draft { padding: 18px 18px 18px 34px; }
     .draft-margin { left: 22px; }
     .primer-body { padding: 22px 18px 22px 44px; }
     .primer-margin { left: 32px; }
-
     .section--cta { padding: 56px 0 64px; }
     .cta-inner { padding: 0 18px; }
     .cta-buttons { flex-direction: column; align-items: stretch; }
     .cta-buttons .btn { justify-content: center; }
-
     .footer-inner { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 6px; }
     .footer { padding: 40px 0 28px; }
-
     .approval-stamp-block { flex-direction: column; }
+    .track-legend { gap: 12px; }
   }
 </style>
