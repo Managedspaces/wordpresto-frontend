@@ -14,7 +14,7 @@ WordPresto brings in the right specialists for the stage you are at, so each pie
 
 ### Helena — Voice & Style Worker
 
-- Stage: Brand Voice
+- Stage: Voice
 - Output: Voice & style guidance
 - URL: https://wordpresto.com/workers/voice-style/
 - Markdown: https://wordpresto.com/pages/workers/voice-style.md
