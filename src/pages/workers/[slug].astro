@@ -95,8 +95,6 @@ const relatedProfiles = profile.relatedWorkerIds.map(({ id, description, outputL
           <!-- Guidance / output sheet -->
           <div class="guidance-sheet">
             <span class="folder-tab folder-tab--guidance">OUTPUT</span>
-            <span class="fold-corner fold-corner--lg"></span>
-            <span class="fold-corner-line fold-corner-line--lg"></span>
             <div class="guidance-header">
               <span class="guidance-title">{profile.heroTagPills.output.replace('Output · ', '')}</span>
               <span class="guidance-worker">{profile.name.toLowerCase()}</span>
@@ -775,7 +773,6 @@ const relatedProfiles = profile.relatedWorkerIds.map(({ id, description, outputL
     border: 1px solid var(--wp-line);
     box-shadow: 0 2px 5px rgba(54,44,24,0.06), 0 26px 50px -18px rgba(54,44,24,0.22);
     transform: rotate(1.4deg);
-    overflow: hidden;
     z-index: 1;
   }
   .guidance-header {
