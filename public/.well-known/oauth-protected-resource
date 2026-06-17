@@ -1,0 +1,8 @@
+{
+  "resource": "https://wordpresto.com",
+  "authorization_servers": [],
+  "scopes_supported": [],
+  "bearer_methods_supported": [],
+  "resource_documentation": "https://wordpresto.com/llms.txt",
+  "note": "WordPresto public marketing resources do not require OAuth. No protected public API resource is exposed by this site."
+}

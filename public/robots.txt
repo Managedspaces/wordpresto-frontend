@@ -1,4 +1,29 @@
+# As a condition of accessing this website, you agree to abide by the
+# following content signals:
+#
+# (a) If a content-signal = yes, you may collect content for the corresponding use.
+# (b) If a content-signal = no, you may not collect content for the corresponding use.
+# (c) If the website operator does not include a content signal for a corresponding use,
+#     the website operator neither grants nor restricts permission via content signal.
+#
+# search: building a search index and providing search results.
+# ai-input: inputting public content into AI models for retrieval, grounding or real-time answers.
+# ai-train: training or fine-tuning AI models.
+#
+# Restrictions expressed via content signals are reservations of rights.
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
+Disallow: /api/
+Disallow: /_astro/
 
 Sitemap: https://wordpresto.com/sitemap.xml
+Sitemap: https://wordpresto.com/sitemap.md
+
+# AI and agent-readable resources
+LLMS: https://wordpresto.com/llms.txt
+LLM: https://wordpresto.com/llm.txt
+LLMS-Full: https://wordpresto.com/llms-full.txt
+Agent-Skills: https://wordpresto.com/.well-known/agent-skills/index.json
+MCP: https://wordpresto.com/.well-known/mcp.json

@@ -1,0 +1,13 @@
+{
+  "name": "WordPresto public site",
+  "url": "https://wordpresto.com/",
+  "description": "WordPresto public marketing pages expose read-only content for browser agents. No browser-invokable WebMCP tools are currently registered.",
+  "tools": [],
+  "resources": [
+    "https://wordpresto.com/llms.txt",
+    "https://wordpresto.com/llms-full.txt",
+    "https://wordpresto.com/sitemap.md"
+  ],
+  "write_actions": false,
+  "publishing_actions": false
+}

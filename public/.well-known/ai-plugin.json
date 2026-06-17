@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "WordPresto Public Resources",
+  "name_for_model": "wordpresto_public_resources",
+  "description_for_human": "Read-only public resources for understanding WordPresto.",
+  "description_for_model": "Use WordPresto's llms.txt, llms-full.txt, sitemap.md and Markdown mirrors to understand the product. Do not assume write, publish, commerce or auth capabilities.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "none",
+    "url": "https://wordpresto.com/.well-known/api-catalog"
+  },
+  "logo_url": "https://wordpresto.com/brand/main-logo.png",
+  "contact_email": "hello@wordpresto.com",
+  "legal_info_url": "https://wordpresto.com/"
+}

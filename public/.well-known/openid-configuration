@@ -1,0 +1,8 @@
+{
+  "issuer": "https://wordpresto.com",
+  "service_documentation": "https://wordpresto.com/llms.txt",
+  "response_types_supported": [],
+  "subject_types_supported": [],
+  "id_token_signing_alg_values_supported": [],
+  "note": "No public OpenID Connect provider is exposed by the WordPresto marketing site. Public agent-readable resources are unauthenticated and read-only."
+}

@@ -1,0 +1,11 @@
+{
+  "issuer": "https://wordpresto.com",
+  "service_documentation": "https://wordpresto.com/llms.txt",
+  "authorization_endpoint": null,
+  "token_endpoint": null,
+  "registration_endpoint": null,
+  "grant_types_supported": [],
+  "response_types_supported": [],
+  "scopes_supported": [],
+  "note": "The WordPresto public marketing site exposes unauthenticated read-only content resources only. No public OAuth authorisation server is available for these resources."
+}

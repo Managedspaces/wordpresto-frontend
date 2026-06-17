@@ -1,6 +1,10 @@
 /**
  * Generates Markdown mirror files from the shared data sources.
- * Output: public/pages/{slug}.md
+ * Output:
+ * - public/pages/{slug}.md  (legacy LLM resource paths)
+ * - public/index.md, public/workers/index.md, public/workflow-demo/index.md  (direct URL mirrors)
+ * - public/workers/{slug}/index.md  (direct URL mirrors per worker)
+ *
  * Run: npx tsx scripts/generate-page-markdown.ts  (or via prebuild)
  *
  * Single source of truth:
@@ -15,10 +19,19 @@ import { workerProfiles } from '../src/data/workerProfiles';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
-const OUT_DIR = join(ROOT, 'public', 'pages');
+const PUBLIC_DIR = join(ROOT, 'public');
+const OUT_DIR = join(PUBLIC_DIR, 'pages');
+const SITE_URL = 'https://wordpresto.com';
 
 mkdirSync(OUT_DIR, { recursive: true });
 mkdirSync(join(OUT_DIR, 'workers'), { recursive: true });
+
+function writeMirror(relativePath: string, content: string) {
+  const outPath = join(PUBLIC_DIR, relativePath);
+  mkdirSync(dirname(outPath), { recursive: true });
+  writeFileSync(outPath, content, 'utf8');
+  console.log(`✓ Markdown mirror: ${outPath}`);
+}
 
 /* ------------------------------------------------------------------ */
 /*  Render homepage as Markdown                                         */
@@ -29,7 +42,7 @@ function renderHomepageMarkdown() {
     `---`,
     `title: "${p.seoTitle.replace(/"/g, '\\"')}"`,
     `description: "${p.metaDescription.replace(/"/g, '\\"')}"`,
-    `canonical: "https://wordpresto.com/"`,
+    `canonical: "${SITE_URL}/"`,
     `focus: "${p.focus}"`,
     `---`,
     ``,
@@ -57,7 +70,58 @@ function renderHomepageMarkdown() {
     }
   }
 
+  lines.push(
+    `## Agent-readable resources`,
+    ``,
+    `- LLM index: ${SITE_URL}/llms.txt`,
+    `- Full Markdown context: ${SITE_URL}/llms-full.txt`,
+    `- Markdown sitemap: ${SITE_URL}/sitemap.md`,
+    `- Workers directory: ${SITE_URL}/workers/index.md`,
+    ``,
+  );
+
   return lines.join('\n');
+}
+
+/* ------------------------------------------------------------------ */
+/*  Render workflow demo as Markdown                                    */
+/* ------------------------------------------------------------------ */
+function renderWorkflowDemoMarkdown() {
+  return [
+    `---`,
+    `title: "WordPresto workflow demo | Editorial and search intelligence in one workflow"`,
+    `description: "A senior writer's rough notes move through WordPresto from brief, structure and voice profile to review, metadata and CMS handoff."`,
+    `canonical: "${SITE_URL}/workflow-demo/"`,
+    `focus: "Workflow demo"`,
+    `---`,
+    ``,
+    `# See rough thinking become review-ready`,
+    ``,
+    `A senior writer's messy notes move through WordPresto. Brief, voice profile, structure, search intelligence, review and handoff work together without handing judgement to a machine.`,
+    ``,
+    `## What the demo shows`,
+    ``,
+    `- A rough practitioner note becomes a structured content signal map.`,
+    `- Editorial and search intelligence tracks work alongside each other.`,
+    `- Voice, evidence, structure, review and handoff happen before publishing.`,
+    `- Nothing is published automatically. Human approval is required first.`,
+    ``,
+    `## Workflow stages`,
+    ``,
+    `- Writer primer: messy source notes and preserved phrases.`,
+    `- Content analysis: argument, audience tensions, key phrases and evidence gaps.`,
+    `- Search intent: reader need, query family, journey stage and snippet opportunity.`,
+    `- Brief and structure: a practical plan before drafting begins.`,
+    `- Voice profile: register, phrases to protect and phrases to avoid.`,
+    `- Draft and section review: shaping work without losing the writer's judgement.`,
+    `- Evidence and approval: surfacing what is ready, weak or risky.`,
+    `- CMS handoff: preparing approved content for a website, CMS or client workflow.`,
+    ``,
+    `## Boundary`,
+    ``,
+    `The demo is intentionally review-led. WordPresto workers assist with structure, review, improvement and handoff, but people approve what moves forward.`,
+    ``,
+  ].join('\n');
 }
 
 /* ------------------------------------------------------------------ */
@@ -65,7 +129,7 @@ function renderHomepageMarkdown() {
 /* ------------------------------------------------------------------ */
 function renderWorkerMarkdown(w: (typeof workerProfiles)[number]) {
   const output = w.heroTagPills.output.replace('Output · ', '');
-  const canonicalUrl = `https://wordpresto.com/workers/${w.slug}/`;
+  const canonicalUrl = `${SITE_URL}/workers/${w.slug}/`;
 
   const lines: string[] = [
     `---`,
@@ -141,7 +205,7 @@ function renderWorkersIndexMarkdown() {
     `---`,
     `title: "Content workflow Workers | WordPresto"`,
     `description: "Meet the specialist Workers in the WordPresto content workflow: from content analysis and brief building to voice review, approval reporting and CMS handoff."`,
-    `canonical: "https://wordpresto.com/workers/"`,
+    `canonical: "${SITE_URL}/workers/"`,
     `---`,
     ``,
     `# Specialist Workers for every stage of the content workflow.`,
@@ -156,14 +220,14 @@ function renderWorkersIndexMarkdown() {
 
   for (const w of workerProfiles) {
     const output = w.heroTagPills.output.replace('Output · ', '');
-    const canonicalUrl = `https://wordpresto.com/workers/${w.slug}/`;
     lines.push(
       `### ${w.name} — ${w.role}`,
       ``,
       `- Stage: ${w.stage}`,
       `- Output: ${output}`,
-      `- URL: ${canonicalUrl}`,
-      `- Markdown: https://wordpresto.com/pages/workers/${w.slug}.md`,
+      `- URL: ${SITE_URL}/workers/${w.slug}/`,
+      `- Markdown: ${SITE_URL}/workers/${w.slug}/index.md`,
+      `- Legacy Markdown: ${SITE_URL}/pages/workers/${w.slug}.md`,
       ``,
       w.metaDescription,
       ``,
@@ -176,19 +240,25 @@ function renderWorkersIndexMarkdown() {
 /* ------------------------------------------------------------------ */
 /*  Generate all files                                                  */
 /* ------------------------------------------------------------------ */
+
+// Homepage
 const homeMd = renderHomepageMarkdown();
-const homeOutPath = join(OUT_DIR, 'index.md');
-writeFileSync(homeOutPath, homeMd, 'utf8');
-console.log(`✓ Markdown mirror: ${homeOutPath}`);
+writeMirror('pages/index.md', homeMd);
+writeMirror('index.md', homeMd);
 
+// Workflow demo
+const workflowDemoMd = renderWorkflowDemoMarkdown();
+writeMirror('pages/workflow-demo.md', workflowDemoMd);
+writeMirror('workflow-demo/index.md', workflowDemoMd);
+
+// Workers index
 const workersIndexMd = renderWorkersIndexMarkdown();
-const workersIndexPath = join(OUT_DIR, 'workers', 'index.md');
-writeFileSync(workersIndexPath, workersIndexMd, 'utf8');
-console.log(`✓ Markdown mirror: ${workersIndexPath}`);
+writeMirror('pages/workers/index.md', workersIndexMd);
+writeMirror('workers/index.md', workersIndexMd);
 
+// Worker profiles
 for (const w of workerProfiles) {
   const md = renderWorkerMarkdown(w);
-  const outPath = join(OUT_DIR, 'workers', `${w.slug}.md`);
-  writeFileSync(outPath, md, 'utf8');
-  console.log(`✓ Markdown mirror: ${outPath}`);
+  writeMirror(`pages/workers/${w.slug}.md`, md);
+  writeMirror(`workers/${w.slug}/index.md`, md);
 }

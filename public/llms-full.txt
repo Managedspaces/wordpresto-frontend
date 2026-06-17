@@ -1,0 +1,1897 @@
+# WordPresto full Markdown context
+
+This file consolidates the main public WordPresto marketing and Worker content for AI agents. Prefer individual Markdown mirrors when you only need one page.
+
+## Site index
+
+- Home: https://wordpresto.com/index.md
+- Workflow demo: https://wordpresto.com/workflow-demo/index.md
+- Workers directory: https://wordpresto.com/workers/index.md
+- Make approval easier to trust.: https://wordpresto.com/workers/approval-report/index.md
+- Check whether the draft actually follows the brief.: https://wordpresto.com/workers/brief-draft-alignment/index.md
+- Prepare approved content for a cleaner handoff.: https://wordpresto.com/workers/cms-handoff/index.md
+- Understand the page before you rewrite it.: https://wordpresto.com/workers/content-analyst/index.md
+- Start with a brief that writers can actually use.: https://wordpresto.com/workers/content-brief-builder/index.md
+- Plan where approved content should go next.: https://wordpresto.com/workers/content-distribution-brief/index.md
+- Refresh content with a clearer reason.: https://wordpresto.com/workers/content-refresh-brief/index.md
+- Review the draft before it moves forward.: https://wordpresto.com/workers/draft-quality-reviewer/index.md
+- Rewrite drafts without losing the point.: https://wordpresto.com/workers/draft-rewrite/index.md
+- Flag risky claims before they move forward.: https://wordpresto.com/workers/editorial-risk-claims/index.md
+- Make good content easier to read.: https://wordpresto.com/workers/readability/index.md
+- Fix the weak section without rewriting the whole page.: https://wordpresto.com/workers/section-rewrite/index.md
+- Give every draft a clearer shape.: https://wordpresto.com/workers/structure/index.md
+- Keep the voice in the work.: https://wordpresto.com/workers/voice-style/index.md
+
+---
+
+# Home
+
+Canonical: https://wordpresto.com/
+Markdown: https://wordpresto.com/index.md
+
+# Word Presto is the agentic content engine behind better publishing workflows.
+
+Plan, brief, write, review and improve content before it reaches your CMS, website or client.
+
+---
+
+Word Presto is a structured content workflow engine. It gives teams a clear path from idea to approval — plan, brief, draft, review, improve, approve and prepare for handoff — before anything is published.
+
+## Content does not fail because people cannot write. It fails because the workflow is messy.
+
+Briefs are vague. Drafts arrive without structure. Good ideas get lost in notes, chats and half-finished documents.
+
+- Unclear brief: Writers start guessing what the page is even for.
+- Draft lacks structure: No shared shape, so every draft reads differently.
+- Checks happen too late: Important questions surface after the page is already written.
+- Support missing: Important points move forward without enough support.
+- Review unclear: No clear gate, so nobody knows what "done" means.
+- CMS prep left until the end: Page details and handoff notes become a last-minute scramble.
+
+## A structured place for content to move from idea to approval.
+
+Each stage has a clear role, output and review point.
+
+> Not a project board — a copy desk, where every piece of work has a folder it moves through.
+
+- Plan: Turn loose ideas and business priorities into a clear direction.
+- Brief: Give writers the goal, audience, angle and structure before drafting starts.
+- Draft: Help the first version follow the purpose of the page.
+- Review: Surface what needs attention before the piece reaches the website or CMS.
+- Improve: Tighten sections that are unclear, thin, repetitive or not doing their job.
+- Approve: Human sign-off before anything moves to publishing.
+- Prepare for CMS: Package the approved work for clean handoff.
+
+## Before it reaches the website.
+
+Most of the important work happens before anything is published. Word Presto gives that work a clearer path: from idea, to brief, to draft, to review, to improvement, to approval and handoff.
+
+- Plan the work: Turn loose ideas and business priorities into a clear direction for the page.
+- Create the brief: Give writers the goal, audience, angle and structure before anyone starts drafting.
+- Shape the draft: Help the first version follow the purpose of the page instead of starting from a blank document.
+- Review the work: Surface what needs attention before the piece reaches the website, CMS or client.
+- Improve the weak parts: Tighten sections that are unclear, thin, repetitive or not doing their job.
+- Prepare the handoff: Package the approved work so it can move cleanly into a website, CMS or client review process.
+
+## Use Word Presto with the stack you have, or the one you are building next.
+
+One content engine. Three ways the finished work leaves the desk.
+
+- Automated Astro + CMS builds: The engine behind structured, content-led websites where pages, briefs, updates and handoff notes are planned before they become templates.
+- CMS-connected workflows: Connect to WordPress, Payload, Sanity or a custom CMS so content is planned, reviewed and prepared before publishing.
+- Standalone content engine: Manage briefs, drafts, reviews and approvals before handing content to a client, editor or website team.
+
+## Specialist Workers for each stage of the content workflow.
+
+Each Worker is a specialist role with clear inputs, outputs and limits. Browse the team and open any Worker to see where they sit in the workflow.
+
+## Faster content work, without removing human judgement.
+
+Workers plan, draft, check and suggest. People still approve what moves forward — nothing reaches the CMS without human sign-off. This is review-led publishing, not blind automation.
+
+- Workers do not publish without approval.
+- Outputs are structured for human review.
+- Risks, gaps and weak sections are surfaced early.
+- The system supports human judgement — it never overrides it.
+
+## Built for the people responsible for content outcomes.
+
+- Copywriters: Better briefs, clearer review notes and a structured way to improve drafts without losing your voice.
+- Business owners: A clear view of what content is being made, why it matters and whether it is ready to publish.
+- Website teams: A clearer handoff from draft to page, with the purpose, structure and review notes already attached.
+- Agencies: A repeatable content process that helps teams move faster while keeping review and approval visible.
+
+## Give your content workflow somewhere better to live.
+
+Plan, produce, review and improve content before it reaches the CMS, website or client.
+
+## Agent-readable resources
+
+- LLM index: https://wordpresto.com/llms.txt
+- Full Markdown context: https://wordpresto.com/llms-full.txt
+- Markdown sitemap: https://wordpresto.com/sitemap.md
+- Workers directory: https://wordpresto.com/workers/index.md
+
+---
+
+# Workflow demo
+
+Canonical: https://wordpresto.com/workflow-demo/
+Markdown: https://wordpresto.com/workflow-demo/index.md
+
+# See rough thinking become review-ready
+
+A senior writer's messy notes move through WordPresto. Brief, voice profile, structure, search intelligence, review and handoff work together without handing judgement to a machine.
+
+## What the demo shows
+
+- A rough practitioner note becomes a structured content signal map.
+- Editorial and search intelligence tracks work alongside each other.
+- Voice, evidence, structure, review and handoff happen before publishing.
+- Nothing is published automatically. Human approval is required first.
+
+## Workflow stages
+
+- Writer primer: messy source notes and preserved phrases.
+- Content analysis: argument, audience tensions, key phrases and evidence gaps.
+- Search intent: reader need, query family, journey stage and snippet opportunity.
+- Brief and structure: a practical plan before drafting begins.
+- Voice profile: register, phrases to protect and phrases to avoid.
+- Draft and section review: shaping work without losing the writer's judgement.
+- Evidence and approval: surfacing what is ready, weak or risky.
+- CMS handoff: preparing approved content for a website, CMS or client workflow.
+
+## Boundary
+
+The demo is intentionally review-led. WordPresto workers assist with structure, review, improvement and handoff, but people approve what moves forward.
+
+---
+
+# Workers directory
+
+Canonical: https://wordpresto.com/workers/
+Markdown: https://wordpresto.com/workers/index.md
+
+# Specialist Workers for every stage of the content workflow.
+
+WordPresto brings in the right specialists for the stage you are at, so each piece of content gets the support it actually needs.
+
+---
+
+## Worker directory (14 specialist roles)
+
+### Helena — Voice & Style Worker
+
+- Stage: Voice
+- Output: Voice & style guidance
+- URL: https://wordpresto.com/workers/voice-style/
+- Markdown: https://wordpresto.com/workers/voice-style/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/voice-style.md
+
+Helena checks every draft against your voice rules and approved examples, shaping it back to your house style before review. For teams with one consistent voice to keep.
+
+### Omar — Content Analyst
+
+- Stage: Analyse
+- Output: Content analysis
+- URL: https://wordpresto.com/workers/content-analyst/
+- Markdown: https://wordpresto.com/workers/content-analyst/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-analyst.md
+
+Omar reviews existing content, context and purpose before any editing or rewriting starts. For teams that need a clear baseline before they touch a page.
+
+### Marcus — Structure Worker
+
+- Stage: Structure
+- Output: Content structure
+- URL: https://wordpresto.com/workers/structure/
+- Markdown: https://wordpresto.com/workers/structure/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/structure.md
+
+Marcus shapes headings, sections and page flow so content has a clear editorial structure before or during drafting. For pages that need a proper shape before writing starts.
+
+### Luca — Content Brief Builder
+
+- Stage: Brief
+- Output: Content brief
+- URL: https://wordpresto.com/workers/content-brief-builder/
+- Markdown: https://wordpresto.com/workers/content-brief-builder/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-brief-builder.md
+
+Luca turns a topic and goal into a structured content brief: purpose, audience, angle and sections, before any drafting starts.
+
+### Ellis — Draft Rewrite Worker
+
+- Stage: Draft
+- Output: Shaped draft
+- URL: https://wordpresto.com/workers/draft-rewrite/
+- Markdown: https://wordpresto.com/workers/draft-rewrite/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/draft-rewrite.md
+
+Ellis builds and rewrites drafts that follow the brief: structured, on-purpose, and ready for review. For content that needs a shaped draft before editing or review starts.
+
+### Quinn — Draft Quality Reviewer
+
+- Stage: Review
+- Output: Review notes
+- URL: https://wordpresto.com/workers/draft-quality-reviewer/
+- Markdown: https://wordpresto.com/workers/draft-quality-reviewer/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/draft-quality-reviewer.md
+
+Quinn checks whether a draft is clear, structured and ready to move forward before it reaches a client or CMS. For teams that need a structured review before sign-off.
+
+### Rosa — Section Rewrite Worker
+
+- Stage: Improve
+- Output: Rewritten sections
+- URL: https://wordpresto.com/workers/section-rewrite/
+- Markdown: https://wordpresto.com/workers/section-rewrite/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/section-rewrite.md
+
+Rosa rewrites individual sections that are unclear, thin or off-brief without touching the rest of the piece. For targeted section-level improvements after review.
+
+### Audrey — Approval Report Worker
+
+- Stage: Approve
+- Output: Approval report
+- URL: https://wordpresto.com/workers/approval-report/
+- Markdown: https://wordpresto.com/workers/approval-report/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/approval-report.md
+
+Audrey summarises what is ready, what needs attention and what should not move forward, so humans can make a confident sign-off decision.
+
+### Priya — Readability Worker
+
+- Stage: Improve
+- Output: Improved draft
+- URL: https://wordpresto.com/workers/readability/
+- Markdown: https://wordpresto.com/workers/readability/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/readability.md
+
+Priya tightens sentences, simplifies structure and improves flow so content reads clearly for its intended audience. For drafts that are correct but harder to read than they need to be.
+
+### Ada — Brief-to-Draft Alignment Worker
+
+- Stage: Review
+- Output: Alignment report
+- URL: https://wordpresto.com/workers/brief-draft-alignment/
+- Markdown: https://wordpresto.com/workers/brief-draft-alignment/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/brief-draft-alignment.md
+
+Ada checks that the draft actually fulfils the brief, surfacing gaps, drift and misaligned sections before they go any further.
+
+### Ravi — CMS Handoff & Publishing Package Worker
+
+- Stage: Handoff
+- Output: Handoff pack
+- URL: https://wordpresto.com/workers/cms-handoff/
+- Markdown: https://wordpresto.com/workers/cms-handoff/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/cms-handoff.md
+
+Ravi packages approved content with the structure, metadata and notes needed for clean handoff to a CMS, website or client. For teams that need a publishing-ready content package.
+
+### Vera — Editorial Risk & Claims Compliance Worker
+
+- Stage: Review
+- Output: Risk & compliance report
+- URL: https://wordpresto.com/workers/editorial-risk-claims/
+- Markdown: https://wordpresto.com/workers/editorial-risk-claims/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/editorial-risk-claims.md
+
+Vera flags unsupported claims, risky statements and compliance issues in content before it is approved or published.
+
+### Iris — Content Refresh Brief Worker
+
+- Stage: Refresh
+- Output: Refresh brief
+- URL: https://wordpresto.com/workers/content-refresh-brief/
+- Markdown: https://wordpresto.com/workers/content-refresh-brief/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-refresh-brief.md
+
+Iris produces a structured brief for refreshing existing content: what to update, what to cut and what to add. For teams refreshing pages with clear direction rather than guesswork.
+
+### Nina — Content Distribution Brief Worker
+
+- Stage: Distribution
+- Output: Distribution brief
+- URL: https://wordpresto.com/workers/content-distribution-brief/
+- Markdown: https://wordpresto.com/workers/content-distribution-brief/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-distribution-brief.md
+
+Nina creates a distribution brief that maps where approved content should go and how it should be adapted for each channel.
+
+---
+
+# Make approval easier to trust.
+
+Canonical: https://wordpresto.com/workers/approval-report/
+Markdown: https://wordpresto.com/workers/approval-report/index.md
+
+# Make approval easier to trust.
+
+Audrey summarises what is ready, what needs attention and what should not move forward, so humans can make a confident sign-off decision.
+
+---
+
+Approval decisions made without a clear picture of what is ready often go wrong in one of two ways: things are approved that should not be, or things are held up that were ready to move. Audrey assembles a structured approval report so the person making the sign-off decision has the information they actually need.
+
+## Approval is only reliable when the approver has the right information.
+
+Most approval problems are information problems. The person signing off either does not have a clear view of what was reviewed and what was not, or they are reading every draft themselves because there is no summary. Either way, it takes longer than it should and the decisions are less confident than they need to be.
+
+## A report that gives approvers a clear view, not a pile of drafts.
+
+Audrey assembles everything the approver needs into one structured report: what is ready, what is not, what the specific issues are, and what needs to happen next. Sign-off decisions become faster and more confident.
+
+### Checks
+
+- Whether each piece has been through the required review stages
+- Whether outstanding issues are clearly documented
+- Whether anything is flagged as a risk before approval
+
+### Improves
+
+- Approval process speed by removing ambiguity
+- Approval confidence by surfacing the right information
+- Sign-off documentation for audit and reference
+
+### Prepares
+
+- A structured approval report
+- A clear ready/not ready status for each piece
+- Specific next steps for anything not yet approved
+
+### Surfaces for human review
+
+- Content that needs more review before sign-off
+- Compliance or risk issues that should be resolved first
+- Pieces being held up by information that is missing
+
+## What Audrey works from, and what she produces.
+
+### Works from
+
+- Draft quality review notes
+- Risk and compliance flags
+- Brief alignment reports
+- Current approval criteria
+- Content status across the project
+
+### Produces
+
+- Structured approval report
+- Ready / needs attention / not ready classification
+- Specific issue notes with next steps
+- Sign-off documentation
+- Handoff notes for CMS or publishing
+
+## When to use Audrey
+
+### A content batch of 20 pieces needs director sign-off by Friday.
+
+Audrey produces a report the director can review in 20 minutes rather than 2 hours.
+
+### A client reviewing a site migration before launch.
+
+The approval report gives clients a clear view of what has been reviewed, what is ready, and what is still outstanding.
+
+### A compliance-sensitive content programme.
+
+Audrey tracks which pieces have cleared compliance review and surfaces those that have not.
+
+### An agency where approval decisions are inconsistent.
+
+A structured report creates an approval standard that applies to every project.
+
+### A project that stalled at approval and no one knows why.
+
+The report identifies exactly what is blocking each piece and what needs to happen to move it forward.
+
+### Multiple stakeholders with different approval criteria.
+
+One report maps all criteria and shows the status of each piece against each set of requirements.
+
+## Audrey reports. Humans approve.
+
+Approval is a human decision. Audrey provides the structured information that makes that decision reliable. The sign-off call, and the responsibility that comes with it, is always with a person.
+
+### Boundary checklist
+
+- Audrey reports on status, she never approves content herself.
+- Approval reports are structured for the designated approver to review.
+- Risk and compliance flags are included, not filtered out.
+- The report supports approval judgement, it does not replace it.
+
+### Will not
+
+- Approve or sign off content
+- Bypass compliance flags
+- Mark content ready without evidence
+
+## Workers Audrey works with.
+
+- **Quinn — Draft Quality Reviewer**: Provides the quality review that feeds the approval report. Output: Review notes.
+- **Vera — Editorial Risk & Claims Compliance Worker**: Flags compliance and risk issues before approval. Output: Risk & compliance report.
+- **Ravi — CMS Handoff & Publishing Package Worker**: Takes approved content and prepares it for CMS handoff. Output: Handoff pack.
+
+---
+
+# Check whether the draft actually follows the brief.
+
+Canonical: https://wordpresto.com/workers/brief-draft-alignment/
+Markdown: https://wordpresto.com/workers/brief-draft-alignment/index.md
+
+# Check whether the draft actually follows the brief.
+
+Ada checks that the draft actually fulfils the brief, surfacing gaps, drift and misaligned sections before they go any further.
+
+---
+
+A draft that looks good but does not follow the brief is a problem that will surface at review or, worse, at client delivery. Ada compares the final draft against the original brief, section by section, and flags any gaps, scope drift or misalignments before the draft moves forward.
+
+## A draft that follows the brief is the exception, not the rule.
+
+Briefs drift during production. Writers interpret differently. AI tools fill gaps with their own defaults. By the time a draft reaches review, it is often covering different ground to what was briefed. The only way to catch it is to check.
+
+## A brief-check that catches drift before it becomes a client problem.
+
+Ada does the structured comparison between brief and draft that most teams skip because they are moving too fast. Gaps and drift caught before delivery are free. Caught at client review, they cost revision rounds.
+
+### Checks
+
+- Whether each brief section is present and addressed
+- Whether audience and purpose are maintained throughout
+- Whether the angle and intent from the brief survive in the draft
+
+### Improves
+
+- Brief alignment reporting so gaps are specific
+- Revision guidance so fixes are targeted
+- Draft handoff notes so the writer knows exactly what to address
+
+### Prepares
+
+- A structured alignment report
+- Section-by-section brief comparison
+- Specific fix notes for the writer
+
+### Surfaces for human review
+
+- Scope drift that crept in during production
+- Brief sections that were interpreted differently
+- Missing content that was required by the brief
+
+## What Ada works from, and what she produces.
+
+### Works from
+
+- Final content brief
+- Current draft
+- Any mid-project brief amendments
+- Review notes
+- Audience and purpose definitions
+
+### Produces
+
+- Brief-to-draft alignment report
+- Section-by-section comparison
+- Gap and drift flags
+- Fix notes for the writer
+- Handoff to review or revision
+
+## When to use Ada
+
+### A draft that was rewritten mid-project and may have lost brief alignment.
+
+Ada checks the current draft against the final brief, regardless of revision history.
+
+### A content programme where multiple writers worked to the same brief.
+
+She checks each draft to the same standard and identifies where interpretations diverged.
+
+### An AI-generated draft that used the brief as a starting point.
+
+AI tools fill gaps with defaults; Ada identifies which defaults replaced brief requirements.
+
+### A client who checks briefs carefully before approving drafts.
+
+An alignment report before client delivery means the client review focuses on creative decisions, not brief compliance.
+
+### A long brief with many specific requirements.
+
+Ada tracks every requirement and confirms which ones are met, which are partially met, and which are missing.
+
+### A revision round that changed the brief scope.
+
+She re-checks alignment after brief changes to confirm the draft was updated accordingly.
+
+## Ada checks alignment. Writers and editors make the changes.
+
+An alignment report is a structured input to revision, not a list of required changes. Ada identifies what does not match the brief; whether to address it, and how, is a writer and editor decision.
+
+### Boundary checklist
+
+- Ada checks alignment, she never rewrites content.
+- Alignment findings are structured for editorial review.
+- Ambiguous brief sections are flagged as questions, not resolved.
+- Alignment supports the brief, it does not change it.
+
+### Will not
+
+- Rewrite or edit content
+- Override brief amendments agreed with client
+- Mark gaps as minor without editorial input
+
+## Workers Ada works alongside.
+
+- **Luca — Content Brief Builder**: Builds the brief that Ada checks against. Output: Content brief.
+- **Quinn — Draft Quality Reviewer**: Reviews quality alongside alignment checking. Output: Review notes.
+- **Ellis — Draft Rewrite Worker**: Rewrites the draft after alignment gaps are identified. Output: Shaped draft.
+
+---
+
+# Prepare approved content for a cleaner handoff.
+
+Canonical: https://wordpresto.com/workers/cms-handoff/
+Markdown: https://wordpresto.com/workers/cms-handoff/index.md
+
+# Prepare approved content for a cleaner handoff.
+
+Ravi packages approved content with the structure, metadata and notes needed for clean handoff to a CMS, website or client. For teams that need a publishing-ready content package.
+
+---
+
+Approved content that arrives in a CMS without the right metadata, formatting guidance and notes creates work at the point where it should be simple. Ravi takes the approved draft and produces a complete publishing package: content, metadata, formatting notes, CMS fields. The handoff is clean from the first time.
+
+## Bad handoffs cost more time than bad drafts.
+
+A piece of content that reaches a CMS editor or developer without proper metadata, formatting notes or field guidance gets published with errors, or gets sent back for information. The handoff step is cheap to get right and expensive to get wrong.
+
+## A publishing package that CMS editors and developers can act on immediately.
+
+Ravi produces the complete handoff package that turns approved content into publishable content. Meta fields, formatting guidance, URL slug, image notes: everything needed for a clean first publish.
+
+### Checks
+
+- Whether all required metadata fields are populated
+- Whether formatting is correct for the target CMS
+- Whether images and assets are properly referenced
+
+### Improves
+
+- Handoff completeness so CMS editors can publish without follow-up
+- Metadata quality so SEO and accessibility fields are correct
+- Publishing consistency across a content programme
+
+### Prepares
+
+- A complete handoff pack
+- Populated CMS field notes
+- Formatting and asset guidance
+
+### Surfaces for human review
+
+- Missing metadata that needs writer or client input
+- Content that is not ready for CMS despite being approved
+- CMS-specific requirements that the content does not yet meet
+
+## What Ravi works from, and what he produces.
+
+### Works from
+
+- Approved final draft
+- CMS field requirements
+- Metadata brief
+- Brand guidelines
+- Asset and image references
+
+### Produces
+
+- Complete handoff pack
+- Populated CMS field notes
+- URL and slug guidance
+- Image and asset notes
+- Publish-ready content document
+
+## When to use Ravi
+
+### A content programme handing off to a WordPress editor.
+
+Ravi produces a handoff pack that maps every field in the editor's template.
+
+### An Astro site build where content needs to be structured for frontmatter.
+
+He packages content in the format the developer needs, including all frontmatter fields.
+
+### A client who manages their own CMS but finds handoffs confusing.
+
+A clear, complete handoff document reduces the client's publishing errors and support requests.
+
+### A batch of 30 approved pages all needing metadata.
+
+Ravi works through the batch consistently, so every page is packaged to the same standard.
+
+### A migration project with legacy content needing re-packaging.
+
+He updates metadata and formatting notes for the new CMS without touching the approved copy.
+
+### A launch deadline where the CMS editor has one hour to publish.
+
+A complete handoff pack means they can spend that hour publishing, not chasing missing information.
+
+## Ravi packages. Publishing teams and editors decide what goes live.
+
+A handoff pack is a publishing-ready document, not permission to publish. What goes live, when, and in what form is a decision for the publishing team, client or editorial director.
+
+### Boundary checklist
+
+- Ravi packages content, he never publishes it.
+- Handoff packs are structured for the receiving team to verify.
+- Incomplete information is flagged, not guessed.
+- The handoff supports publishing, it does not authorise it.
+
+### Will not
+
+- Publish content directly
+- Approve content for publication
+- Guess at missing metadata
+
+## Workers Ravi works with.
+
+- **Audrey — Approval Report Worker**: Confirms what is approved before handoff packaging begins. Output: Approval report.
+- **Vera — Editorial Risk & Claims Compliance Worker**: Clears compliance and risk before the handoff pack is produced. Output: Risk & compliance report.
+- **Quinn — Draft Quality Reviewer**: Provides the final quality review before handoff. Output: Review notes.
+
+---
+
+# Understand the page before you rewrite it.
+
+Canonical: https://wordpresto.com/workers/content-analyst/
+Markdown: https://wordpresto.com/workers/content-analyst/index.md
+
+# Understand the page before you rewrite it.
+
+Omar reviews existing content, context and purpose before any editing or rewriting starts. For teams that need a clear baseline before they touch a page.
+
+---
+
+Most rewrites start in the wrong place. They change what is easy to change rather than what actually needs changing. Omar reads the existing page first: what it is trying to do, whether it is working, and what is worth keeping. That gives the work that follows a clear foundation.
+
+## Rewriting without reading is how you lose what was already working.
+
+A page that has been live for two years has something in it: structure that readers responded to, a tone that fitted, sections that ranked. Rewriting from scratch without reviewing what is there first means starting every project further back than you need to.
+
+## A content reader that maps what is there before anything changes.
+
+Omar does the analysis work that should happen before every brief is written, but rarely does: reading the existing page for what it is and what it is trying to do.
+
+### Checks
+
+- Whether the page is fulfilling its stated purpose
+- What structure and sections are already working
+- Gaps between intent and current content
+
+### Improves
+
+- Rewrite scope, so it covers less but changes more
+- Brief quality, by giving writers a real baseline
+- Prioritisation, so the most important changes go first
+
+### Prepares
+
+- A content analysis summary
+- A clear view of what to keep, change or cut
+- A starting point for the brief or structure pass
+
+### Surfaces for human review
+
+- Pages where a light edit is enough
+- Structural problems that will affect any rewrite
+- Misalignments between page purpose and content
+
+## What Omar works from, and what he produces.
+
+### Works from
+
+- Existing page content
+- Stated page goal or brief
+- Brand guidelines
+- Audience definition
+- Any prior review notes
+
+### Produces
+
+- Content analysis summary
+- What to keep, change or cut
+- Brief input notes
+- Gap report
+- Structural observations
+
+## When to use Omar
+
+### A site migration with 200 pages to review.
+
+Omar reads each page to a consistent standard, flagging what is worth carrying forward and what should be retired.
+
+### A refresh brief with no clear scope.
+
+He maps the existing content so the brief has a specific starting point rather than a general direction.
+
+### An inherited website you did not build.
+
+Omar gives you a quick picture of what is there, what is working, and what is noise.
+
+### A high-performing page that you are nervous to touch.
+
+He identifies which parts of it matter so you can improve around them rather than replacing them.
+
+### A client insisting on a full rewrite.
+
+Analysis often reveals a lighter touch is enough, which saves budget and preserves what is already working.
+
+### Preparing for a writer who is new to the client.
+
+A content analysis gives any writer a real brief rather than starting from a blank page.
+
+## Omar analyses. Editors and clients decide.
+
+Content analysis is an input, not an instruction. Omar maps what is there and flags what matters. What changes, what stays and what gets cut is a judgement call for the editor or client to make.
+
+### Boundary checklist
+
+- Omar reviews and analyses, he never changes content directly.
+- His analysis is structured for a human editor to act on.
+- Unclear or contested decisions are flagged, not resolved.
+- Analysis supports editorial judgement, it does not replace it.
+
+### Will not
+
+- Edit or rewrite pages
+- Make final scope decisions
+- Override client priorities
+
+## Workers Omar passes to.
+
+- **Marcus — Structure Worker**: Uses the analysis to shape section hierarchy and flow. Output: Content structure.
+- **Luca — Content Brief Builder**: Builds the brief from analysis insights. Output: Content brief.
+- **Ellis — Draft Rewrite Worker**: Rewrites with a clear picture of the existing page. Output: Shaped draft.
+
+---
+
+# Start with a brief that writers can actually use.
+
+Canonical: https://wordpresto.com/workers/content-brief-builder/
+Markdown: https://wordpresto.com/workers/content-brief-builder/index.md
+
+# Start with a brief that writers can actually use.
+
+Luca turns a topic and goal into a structured content brief: purpose, audience, angle and sections, before any drafting starts.
+
+---
+
+Most content briefs are either too thin to help or too prescriptive to leave room for writing. Luca builds structured briefs that give writers the context and direction they need without doing the writing for them: purpose, audience, angle, tone direction and a clear section plan.
+
+## A weak brief produces a draft you will have to rewrite anyway.
+
+A brief that says 'write about our service for our customers' is not a brief. It is an instruction to guess. Every hour a writer spends working from a vague brief is an hour spent producing content that will need structural revision before it can be used.
+
+## A brief that gives writers direction without removing their judgement.
+
+Luca builds the brief structure that prevents rewrite rounds. A well-scoped brief with a real angle, a clear audience and section guidance produces better drafts because writers know what they are building.
+
+### Checks
+
+- Whether purpose is clear and specific
+- Whether audience is defined enough to write to
+- Whether the angle is distinct and arguable
+
+### Improves
+
+- Brief scope so it is actionable, not just directional
+- Section structure so the outline is usable
+- Tone and voice direction so the writer has a starting register
+
+### Prepares
+
+- A structured content brief
+- An outlined section plan
+- Writing direction and constraints
+
+### Surfaces for human review
+
+- Topics where more research is needed first
+- Briefs that need client input before drafting
+- Scope conflicts that will cause revision rounds later
+
+## What Luca works from, and what he produces.
+
+### Works from
+
+- Content topic or subject
+- Stated goal
+- Audience definition
+- Brand voice guidelines
+- Content analysis or research notes
+
+### Produces
+
+- Structured content brief
+- Section outline
+- Audience and tone notes
+- Writing constraints
+- Handoff to writer or drafting Worker
+
+## When to use Luca
+
+### Starting a new content programme with consistent briefs.
+
+Luca builds every brief to the same standard, so drafts start from the same quality of direction.
+
+### Briefing AI-assisted drafting tools.
+
+A structured brief is the difference between a usable AI draft and one that needs a full rewrite.
+
+### Agency briefing for a client they have just onboarded.
+
+Luca turns the intake notes into a brief that a writer can act on without guessing at client preferences.
+
+### Building a content calendar with actual direction in it.
+
+Each piece in the calendar gets a brief summary that clarifies what it is for and who it is for.
+
+### A product launch with multiple content pieces.
+
+One brief structure applied consistently means all the pieces align without constant alignment calls.
+
+### A writer who is new to the brand.
+
+A clear brief replaces weeks of implicit knowledge transfer with a document they can refer to.
+
+## Luca briefs. Writers and editors make the creative decisions.
+
+A brief is a starting point, not a script. Luca structures the brief so the direction is clear, but the writing, voice choices and creative judgements are for the writer and editor to make.
+
+### Boundary checklist
+
+- Luca builds briefs, he never writes the content itself.
+- Brief decisions are documented for editor or client review.
+- Gaps in direction are flagged before drafting starts.
+- The brief supports the writer, it does not replace them.
+
+### Will not
+
+- Draft or write content
+- Make brand positioning decisions
+- Override agreed scope
+
+## Workers Luca hands off to.
+
+- **Ellis — Draft Rewrite Worker**: Takes the brief and builds the shaped draft. Output: Shaped draft.
+- **Ada — Brief-to-Draft Alignment Worker**: Checks the draft actually matches the brief. Output: Alignment report.
+- **Helena — Voice & Style Worker**: Applies voice rules against the brief direction. Output: Voice & style guidance.
+
+---
+
+# Plan where approved content should go next.
+
+Canonical: https://wordpresto.com/workers/content-distribution-brief/
+Markdown: https://wordpresto.com/workers/content-distribution-brief/index.md
+
+# Plan where approved content should go next.
+
+Nina creates a distribution brief that maps where approved content should go and how it should be adapted for each channel.
+
+---
+
+Approved content that goes directly from sign-off to a single channel wastes most of its value. Nina produces a distribution brief that maps the approved content to the channels where it fits, with adaptation notes for each, so the same piece extends further without being diluted.
+
+## Most content gets published once and forgotten.
+
+Approved long-form content often reaches one channel, in one format, at one time. The channel adaptations that would extend its reach (newsletter extract, LinkedIn post, social card, key quote) never happen because there is no plan for them. A distribution brief changes that.
+
+## A distribution brief that maps approved content to channels with adaptation guidance.
+
+Nina turns approved content into a channel distribution brief: where it goes, how it adapts for each channel, and what the writer or social team needs to produce for each one.
+
+### Checks
+
+- Whether the content suits the channels being planned for
+- Whether adaptation needs are channel-appropriate
+- Whether the distribution plan is proportionate to the content
+
+### Improves
+
+- Distribution planning so it is channel-specific, not generic
+- Adaptation guidance so each version serves its channel
+- Content value by extending reach without diluting quality
+
+### Prepares
+
+- A structured distribution brief
+- Per-channel adaptation notes
+- Format and length guidance for each channel
+
+### Surfaces for human review
+
+- Channels that are not a good fit for the content
+- Content that would benefit from repurposing before distribution
+- Distribution timing conflicts or sequencing issues
+
+## What Nina works from, and what she produces.
+
+### Works from
+
+- Approved content
+- Channel list and audience definitions
+- Distribution goals
+- Brand voice guidelines
+- Publishing calendar or timing notes
+
+### Produces
+
+- Distribution brief
+- Per-channel adaptation notes
+- Format and length guidance
+- Publishing timing notes
+- Handoff to content or social team
+
+## When to use Nina
+
+### A long-form article that needs extracting for LinkedIn and email.
+
+Nina briefs the extracts specifically so each one works for its channel and audience.
+
+### A product launch with content going out across five channels.
+
+She maps the launch content to each channel with timing and adaptation notes in one brief.
+
+### An agency producing content for a client with a complex channel mix.
+
+The distribution brief becomes the handoff to the social and email teams, not a separate conversation.
+
+### A content programme where distribution is an afterthought.
+
+Nina builds distribution into the workflow at the point of approval, not as a separate task.
+
+### A piece of research that can support multiple content formats.
+
+She maps which insights work for which channels and briefs the adaptations accordingly.
+
+### A team where the writer and social manager work separately.
+
+A distribution brief bridges the two teams without the writer having to brief the social team directly.
+
+## Nina plans distribution. Content and social teams produce the adaptations.
+
+A distribution brief is a plan, not produced content. Nina maps where content should go and how it should adapt. The adapted versions, the publishing decisions and the channel judgements are for the content and social teams to make.
+
+### Boundary checklist
+
+- Nina briefs distribution, she never produces adapted content.
+- Distribution briefs are structured for channel teams to action.
+- Channel fit questions are flagged, not assumed.
+- The brief supports channel teams, it does not replace their judgement.
+
+### Will not
+
+- Produce adapted content for channels
+- Publish or schedule content
+- Expand distribution scope without approval
+
+## Workers Nina works alongside.
+
+- **Audrey — Approval Report Worker**: Confirms content is approved before distribution is planned. Output: Approval report.
+- **Ravi — CMS Handoff & Publishing Package Worker**: Handles the primary channel handoff in parallel. Output: Handoff pack.
+- **Iris — Content Refresh Brief Worker**: Feeds distributed content back into refresh planning. Output: Refresh brief.
+
+---
+
+# Refresh content with a clearer reason.
+
+Canonical: https://wordpresto.com/workers/content-refresh-brief/
+Markdown: https://wordpresto.com/workers/content-refresh-brief/index.md
+
+# Refresh content with a clearer reason.
+
+Iris produces a structured brief for refreshing existing content: what to update, what to cut and what to add. For teams refreshing pages with clear direction rather than guesswork.
+
+---
+
+Refreshing content without a brief is how you end up with pages that have been rewritten three times and still do not work. Iris produces a structured refresh brief covering what to update, what to cut, what to add, and why, so every refresh starts with clear direction rather than a blank page review.
+
+## Refreshing without a brief produces a different version of the same problem.
+
+A content refresh without clear direction tends to do one of two things: update what is easy to update and leave the structural problems intact, or trigger a full rewrite when a light edit would have been enough. A refresh brief defines the scope before work starts.
+
+## A refresh brief that scopes the work before a writer touches the page.
+
+Iris turns a refresh request into a structured brief with specific update, cut and add instructions so writers and editors know exactly what the refresh is for and what it needs to achieve.
+
+### Checks
+
+- Whether the page purpose is still current
+- Whether existing sections are worth keeping
+- Whether the refresh scope is proportionate to the problem
+
+### Improves
+
+- Refresh direction so it is specific, not vague
+- Scope definition so the brief covers change, not just update
+- Writer efficiency by removing ambiguity about what to do
+
+### Prepares
+
+- A structured refresh brief
+- An update / cut / add section plan
+- Rationale notes for the brief owner
+
+### Surfaces for human review
+
+- Pages where a structural change is needed, not just a refresh
+- Refresh requests that lack clear rationale
+- Content that should be retired rather than updated
+
+## What Iris works from, and what she produces.
+
+### Works from
+
+- Existing page content
+- Refresh goals or trigger notes
+- Content analysis
+- Brand and product updates
+- Audience or market change notes
+
+### Produces
+
+- Structured refresh brief
+- Update / cut / add section plan
+- Refresh rationale notes
+- Writer handoff brief
+- Scope and success criteria
+
+## When to use Iris
+
+### A product page that needs updating after a rebrand.
+
+Iris maps what needs changing against the new brand direction and produces a specific update brief.
+
+### A content programme refreshing 50 pages in Q1.
+
+She briefs each refresh consistently so writers are not reinventing scope for every page.
+
+### A site that has grown organically and has inconsistent pages.
+
+Refresh briefs create a consistent standard for each page type.
+
+### A blog archive with posts that are outdated but still traffic-generating.
+
+Iris briefs a targeted update that improves accuracy without removing what readers found useful.
+
+### A new product feature that needs adding to existing pages.
+
+She scopes which pages need updating, what to add, and where it fits.
+
+### A client who keeps requesting small changes to the same pages.
+
+A proper refresh brief resolves the underlying issues rather than patching them page by page.
+
+## Iris briefs the refresh. Writers and editors make the changes.
+
+A refresh brief is a scope document, not a set of approved changes. Iris maps what needs to happen; whether to proceed, and how, is an editorial and client decision.
+
+### Boundary checklist
+
+- Iris briefs the refresh, she never makes the changes.
+- Refresh briefs are structured for writer and editor review.
+- Pages recommended for retirement are flagged, not removed.
+- The refresh brief supports editorial scope, it does not set it unilaterally.
+
+### Will not
+
+- Edit or rewrite pages directly
+- Retire or remove content
+- Expand refresh scope without editorial approval
+
+## Workers Iris works alongside.
+
+- **Omar — Content Analyst**: Provides the analysis that informs the refresh brief. Output: Content analysis.
+- **Ada — Brief-to-Draft Alignment Worker**: Checks the refresh draft against the refresh brief. Output: Alignment report.
+- **Ellis — Draft Rewrite Worker**: Rewrites the sections flagged in the refresh brief. Output: Shaped draft.
+
+---
+
+# Review the draft before it moves forward.
+
+Canonical: https://wordpresto.com/workers/draft-quality-reviewer/
+Markdown: https://wordpresto.com/workers/draft-quality-reviewer/index.md
+
+# Review the draft before it moves forward.
+
+Quinn checks whether a draft is clear, structured and ready to move forward before it reaches a client or CMS. For teams that need a structured review before sign-off.
+
+---
+
+A draft that goes to a client or review meeting with structural issues, unclear sections or brief drift wastes everyone's time. Quinn checks each draft before it moves: is it clear, is it structured, does it follow the brief, and is it ready for the next step.
+
+## A draft that reaches review too soon costs more than waiting.
+
+Sending a draft to a client or senior editor before it is ready is not efficiency; it is a backwards investment. The cost of a structural revision after client feedback is higher than a review pass before the draft leaves the team.
+
+## A quality check that catches issues before they become client comments.
+
+Quinn does the structured review pass that should happen between drafting and delivery. Not a line edit; a readiness check that identifies whether the draft is clear, structured and ready to move.
+
+### Checks
+
+- Whether the draft covers the brief
+- Whether sections are clear and in order
+- Whether the opening establishes the purpose
+
+### Improves
+
+- Review feedback so it is specific and actionable
+- Draft quality assessment so editors have a clear view
+- Handoff notes so the next step is clear
+
+### Prepares
+
+- Structured review notes for the editor
+- A clear readiness decision for the team
+- Specific issues and suggested fixes
+
+### Surfaces for human review
+
+- Structural issues that need a rewrite
+- Brief gaps or drift the writer missed
+- Sections that need client or SME input
+
+## What Quinn works from, and what he produces.
+
+### Works from
+
+- Draft content
+- Original content brief
+- Brand voice guidelines
+- Review criteria
+- Prior review notes
+
+### Produces
+
+- Structured review notes
+- Readiness assessment
+- Specific issue flags
+- Fix recommendations
+- Handoff notes for next step
+
+## When to use Quinn
+
+### A draft ready for client delivery on Friday.
+
+Quinn checks it on Thursday so any issues can be fixed before the client sees them.
+
+### A long-form piece that three writers contributed to.
+
+He identifies where the voice shifts, where sections contradict each other, and where the structure breaks down.
+
+### An AI draft that passed a basic check.
+
+Quinn applies editorial standards, not just grammar: clarity, structure and brief alignment.
+
+### A content programme where quality is inconsistent.
+
+A consistent review pass at the same stage creates a quality baseline the team can measure against.
+
+### A brief that changed mid-draft.
+
+Quinn checks the draft against the final brief, not the original, and flags what needs updating.
+
+### A client who leaves detailed revision comments on every draft.
+
+Fewer issues reaching the client means fewer revision rounds and faster sign-off.
+
+## Quinn reviews. Editors and clients decide what to change.
+
+A review is a structured input to editorial, not a set of instructions. Quinn identifies issues and flags them clearly. What gets changed, and how, is an editorial and client decision.
+
+### Boundary checklist
+
+- Quinn reviews and flags, he never edits directly.
+- Review notes are structured for an editor to act on.
+- Uncertain or subjective calls are flagged as questions, not decisions.
+- Review supports editorial judgement, it does not override it.
+
+### Will not
+
+- Edit or rewrite content
+- Make final content decisions
+- Approve content for publication
+
+## Workers Quinn passes to.
+
+- **Rosa — Section Rewrite Worker**: Rewrites the specific sections Quinn flags as weak. Output: Rewritten sections.
+- **Ada — Brief-to-Draft Alignment Worker**: Checks brief-to-draft alignment in detail. Output: Alignment report.
+- **Audrey — Approval Report Worker**: Assembles the review into a sign-off decision. Output: Approval report.
+
+---
+
+# Rewrite drafts without losing the point.
+
+Canonical: https://wordpresto.com/workers/draft-rewrite/
+Markdown: https://wordpresto.com/workers/draft-rewrite/index.md
+
+# Rewrite drafts without losing the point.
+
+Ellis builds and rewrites drafts that follow the brief: structured, on-purpose, and ready for review. For content that needs a shaped draft before editing or review starts.
+
+---
+
+A draft that wanders from the brief, buries the main point or runs twice as long as it needs to is not ready for review. Ellis rewrites drafts that follow the brief structure, lead with what matters and read well enough for an editor to make decisions from.
+
+## A draft that wanders cannot be edited into shape. It has to be rewritten.
+
+Most first drafts, from writers and from AI, cover the right territory without covering it in the right order. The main point is buried. Sections drift. The introduction spends three paragraphs warming up. Getting a draft ready for review means more than fixing sentences.
+
+## A drafter that follows the brief and produces something an editor can work from.
+
+Ellis does the drafting and rewriting that gets content to reviewable quality. The goal is not a finished piece; it is a draft that has a clear shape, follows the brief and gives an editor something real to work with.
+
+### Checks
+
+- Whether the draft follows the brief structure
+- Whether the opening establishes the main point
+- Whether sections are in a logical order
+
+### Improves
+
+- Opener so the main point leads
+- Section structure so it follows brief logic
+- Length and pacing so it does not run over
+
+### Prepares
+
+- A shaped draft ready for editorial review
+- A rewrite that the brief team can sign off
+- Content ready for a voice or quality pass
+
+### Surfaces for human review
+
+- Brief gaps that emerged during drafting
+- Sections that need client or SME input
+- Passages where the intent is unclear
+
+## What Ellis works from, and what he produces.
+
+### Works from
+
+- Content brief
+- Existing draft or raw notes
+- Brand voice guidelines
+- Structure outline
+- Research notes
+
+### Produces
+
+- Shaped draft
+- Rewritten content sections
+- Drafting notes for the editor
+- Brief deviation notes
+- Ready-for-review draft
+
+## When to use Ellis
+
+### An AI draft that is accurate but completely unshaped.
+
+Ellis gives it structure and a lead, turning output into a reviewable draft.
+
+### A first draft from a new writer that needs structural work.
+
+He reshapes without rewriting the whole thing, preserving what works.
+
+### A brief that changed mid-project.
+
+Ellis rewrites the affected sections against the new direction.
+
+### A page that has been revised by too many people and lost coherence.
+
+One clean rewrite pass against the original brief restores consistency.
+
+### Content needed quickly with no time for multiple rounds.
+
+A clean first draft saves the revision cycles that vague first drafts generate.
+
+### A client wanting to see a draft before approving full production.
+
+Ellis produces a tight draft that gives clients something real to react to.
+
+## Ellis drafts. Editors and clients make the final calls.
+
+A shaped draft is an input to editorial, not the finished product. Ellis rewrites to get content to reviewable quality. Creative decisions, sign-off and final changes are editorial and client decisions.
+
+### Boundary checklist
+
+- Ellis drafts and rewrites, he never publishes.
+- Drafts are structured for an editor to review and approve.
+- Brief deviations are noted, not silently corrected.
+- Drafting supports the brief, it does not override it.
+
+### Will not
+
+- Publish or finalise content
+- Override brief scope
+- Make tone decisions without brief
+
+## Workers Ellis hands off to.
+
+- **Helena — Voice & Style Worker**: Applies voice rules to Ellis's shaped draft. Output: Voice & style guidance.
+- **Quinn — Draft Quality Reviewer**: Reviews the draft for clarity and readiness. Output: Review notes.
+- **Ada — Brief-to-Draft Alignment Worker**: Checks the draft fulfils the brief. Output: Alignment report.
+
+---
+
+# Flag risky claims before they move forward.
+
+Canonical: https://wordpresto.com/workers/editorial-risk-claims/
+Markdown: https://wordpresto.com/workers/editorial-risk-claims/index.md
+
+# Flag risky claims before they move forward.
+
+Vera flags unsupported claims, risky statements and compliance issues in content before it is approved or published.
+
+---
+
+Content that contains unsupported claims, legally risky language or compliance issues does not fail at the point of publication; it fails at the point of complaint, challenge or audit. Vera reviews content for claims that cannot be substantiated, statements that create liability, and language that needs compliance clearance.
+
+## Risky content looks fine until it is challenged.
+
+A claim that cannot be supported, a comparison that implies something false, or language that creates liability looks identical to good copy until someone questions it. Catching these before publication is free. Addressing them after is not.
+
+## A compliance check that finds claims risks before they reach publication.
+
+Vera reviews content for the claims and language that create risk, not to remove strong copy, but to ensure that what gets published can be defended.
+
+### Checks
+
+- Unsupported or unqualified claims
+- Comparative language that implies false superiority
+- Compliance-sensitive language in regulated areas
+
+### Improves
+
+- Claims language so it is specific and defensible
+- Risk visibility so approvers have the information they need
+- Compliance documentation for audit purposes
+
+### Prepares
+
+- A risk and compliance report
+- Specific claim flags with evidence or fix options
+- Compliance clearance notes for approval
+
+### Surfaces for human review
+
+- Claims needing third-party evidence
+- Language requiring legal review
+- Regulated-sector terminology that needs specialist clearance
+
+## What Vera works from, and what she produces.
+
+### Works from
+
+- Draft or approved content
+- Compliance guidelines
+- Sector-specific regulatory context
+- Claims evidence or sourcing
+- Prior compliance notes
+
+### Produces
+
+- Risk and compliance report
+- Flagged claims with evidence requirements
+- Compliance clearance documentation
+- Fix options for flagged language
+- Approval input for Audrey
+
+## When to use Vera
+
+### A financial services firm publishing investment-related content.
+
+Vera applies sector compliance standards to the draft before it reaches the compliance team.
+
+### A healthcare brand making claims about outcomes.
+
+Claims about results and effectiveness are flagged for clinical evidence before approval.
+
+### An agency writing comparative content for a client.
+
+Comparative claims are reviewed for substantiation before the client sees them.
+
+### A product launch with bold performance claims.
+
+Vera flags which claims need evidence and which need softening before the launch copy goes live.
+
+### A content refresh picking up old pages with outdated claims.
+
+She identifies claims that were once accurate but are no longer defensible.
+
+### A B2B brand writing about market position.
+
+Market leadership and superiority claims are reviewed for substantiation before publication.
+
+## Vera flags. Legal and compliance teams make the calls.
+
+A risk report is an input to editorial and compliance review, not a sign-off. Vera identifies risks and flags them clearly. Whether to act on them, how, and whether content can proceed is a decision for legal, compliance and editorial teams.
+
+### Boundary checklist
+
+- Vera flags risks, she never approves or clears content.
+- Risk reports are structured for editorial and legal review.
+- Compliance decisions are flagged, not made.
+- Risk reporting supports editorial sign-off, it does not replace legal review.
+
+### Will not
+
+- Provide legal clearance
+- Approve content with unresolved compliance flags
+- Remove claims without explicit instruction
+
+## Workers Vera works alongside.
+
+- **Quinn — Draft Quality Reviewer**: Reviews quality before the compliance check. Output: Review notes.
+- **Audrey — Approval Report Worker**: Includes compliance flags in the approval report. Output: Approval report.
+- **Ravi — CMS Handoff & Publishing Package Worker**: Receives clearance confirmation before producing the handoff pack. Output: Handoff pack.
+
+---
+
+# Make good content easier to read.
+
+Canonical: https://wordpresto.com/workers/readability/
+Markdown: https://wordpresto.com/workers/readability/index.md
+
+# Make good content easier to read.
+
+Priya tightens sentences, simplifies structure and improves flow so content reads clearly for its intended audience. For drafts that are correct but harder to read than they need to be.
+
+---
+
+Content can be factually accurate, well-structured and on-brief, and still be harder to read than it needs to be. Priya tightens sentences, breaks up dense paragraphs, removes unnecessary qualification and improves flow, without changing meaning or losing voice.
+
+## Dense, correct content still loses readers.
+
+Most readability problems are not about the words; they are about sentence length, paragraph density and the ratio of hedging to assertion. A reader who gives up at paragraph three has not read the content, however accurate it was.
+
+## A readability pass that gets content actually read.
+
+Priya does the sentence-level and paragraph-level work that turns technically correct content into something a reader finishes. Not a rewrite; a tightening pass that removes everything that makes reading harder.
+
+### Checks
+
+- Sentence length against intended audience
+- Paragraph density and scanning ease
+- Unnecessary qualification and hedging
+
+### Improves
+
+- Sentence structure so it reads naturally
+- Paragraph length and breathing room
+- Opening sentences so each paragraph leads with the point
+
+### Prepares
+
+- An improved draft with a readability pass applied
+- Readability notes for the editor
+- Content ready for final review
+
+### Surfaces for human review
+
+- Sections where meaning was sacrificed for density
+- Passages that need additional information to make sense
+- Audience-level mismatches between content and reader
+
+## What Priya works from, and what she produces.
+
+### Works from
+
+- Existing draft
+- Audience definition
+- Brand voice guidelines
+- Readability target or brief note
+- Review notes
+
+### Produces
+
+- Improved draft
+- Readability pass notes
+- Specific sentence and paragraph improvements
+- Editor handoff notes
+
+## When to use Priya
+
+### A technical product page written by an engineer.
+
+Priya translates without dumbing down: clear for the target audience, still accurate.
+
+### A long-form article that is dense from end to end.
+
+A readability pass creates breathing room and makes the piece readable in one sitting.
+
+### Content produced from AI that is grammatically fine but hard to scan.
+
+She improves flow and sentence rhythm without changing the structure.
+
+### A compliance document that legal have to read.
+
+Readability improvements make it faster to read and easier to act on.
+
+### A client who keeps saying the content 'feels heavy'.
+
+A readability pass usually resolves this without structural changes.
+
+### A landing page with a high bounce rate.
+
+Readability is often the difference between a page someone reads and a page someone leaves.
+
+## Priya improves readability. Writers and editors keep the voice.
+
+A readability pass improves flow without changing meaning or overriding voice decisions. If a sentence is deliberately complex for stylistic reasons, Priya surfaces it rather than flattening it.
+
+### Boundary checklist
+
+- Priya improves readability, she never changes meaning.
+- Stylistic decisions that look like errors are surfaced, not changed.
+- Readability changes are documented for editorial review.
+- Readability supports the voice, it does not override it.
+
+### Will not
+
+- Change meaning or intent
+- Override deliberate style choices
+- Simplify specialist content without guidance
+
+## Workers Priya works alongside.
+
+- **Ellis — Draft Rewrite Worker**: Produces the shaped draft that the readability pass follows. Output: Shaped draft.
+- **Quinn — Draft Quality Reviewer**: Reviews the improved draft for clarity and readiness. Output: Review notes.
+- **Rosa — Section Rewrite Worker**: Rewrites sections that need more than a readability pass. Output: Rewritten sections.
+
+---
+
+# Fix the weak section without rewriting the whole page.
+
+Canonical: https://wordpresto.com/workers/section-rewrite/
+Markdown: https://wordpresto.com/workers/section-rewrite/index.md
+
+# Fix the weak section without rewriting the whole page.
+
+Rosa rewrites individual sections that are unclear, thin or off-brief without touching the rest of the piece. For targeted section-level improvements after review.
+
+---
+
+When review notes flag a specific section as thin, off-brief or unclear, the answer is not a full page rewrite. Rosa rewrites the specific section that needs fixing, working against the brief and in the voice of the surrounding content, without disturbing what is working.
+
+## One weak section can undermine a page that otherwise works.
+
+It is rarely the whole page that needs a rewrite. Usually it is the third section that buries the point, or the proof section that does not have enough in it, or the conclusion that does not close. Rewriting the whole page to fix one section wastes the work that is already good.
+
+## A section editor that fixes what needs fixing without touching what does not.
+
+Rosa rewrites at section level: the specific paragraph, the weak proof block, the introduction that does not land. No full-page rewrite, no disruption to the sections that are working.
+
+### Checks
+
+- Whether the section fulfils its stated purpose
+- Whether it matches the brief and surrounding tone
+- Whether it is earning its place in the page structure
+
+### Improves
+
+- Section clarity and specificity
+- Section tone alignment with the rest of the piece
+- Section length and economy
+
+### Prepares
+
+- A rewritten section, ready to drop in
+- Section notes for the editor
+- Brief alignment confirmation
+
+### Surfaces for human review
+
+- Sections where a rewrite is not enough and structural change is needed
+- Missing information that the writer needs to supply
+- Brief conflicts that caused the section problem
+
+## What Rosa works from, and what she produces.
+
+### Works from
+
+- The specific section for rewrite
+- Original content brief
+- Review notes
+- Brand voice guidelines
+- Surrounding page context
+
+### Produces
+
+- Rewritten section
+- Section edit notes
+- Brief alignment check
+- Handoff notes for editor
+
+## When to use Rosa
+
+### A review flagged the proof section as too thin.
+
+Rosa rewrites that section with stronger specifics, without changing anything around it.
+
+### A client requested one section be reconsidered after sign-off.
+
+She rewrites the specific section against the client note without reopening the rest of the piece.
+
+### The introduction does not match the page the brief described.
+
+A targeted intro rewrite realigns the page opener without a full revision.
+
+### An AI draft where some sections are good and one is clearly not.
+
+Rosa fixes the weak section and leaves the others in place.
+
+### A long-form article where the middle third loses momentum.
+
+Section-level rewriting of the weak middle brings the piece back on track.
+
+### A writer who produced a strong draft but struggled with the CTA.
+
+One section rewrite is faster and better than sending the whole piece back.
+
+## Rosa rewrites sections. Editors approve the changes.
+
+A rewritten section is a replacement option, not a final edit. Rosa produces the revised version; whether it goes in, gets adjusted, or gets sent back is an editorial decision.
+
+### Boundary checklist
+
+- Rosa rewrites sections, she never publishes them.
+- Rewritten sections are presented for editorial review.
+- Scope is limited to the flagged section unless instructed otherwise.
+- Section rewrites support the brief, not the Worker's preference.
+
+### Will not
+
+- Rewrite beyond the agreed section
+- Publish changes directly
+- Alter brief scope
+
+## Workers Rosa works alongside.
+
+- **Quinn — Draft Quality Reviewer**: Reviews the full draft and flags which sections need work. Output: Review notes.
+- **Priya — Readability Worker**: Improves flow and clarity after section rewrites. Output: Improved draft.
+- **Ada — Brief-to-Draft Alignment Worker**: Checks the rewritten section aligns with the brief. Output: Alignment report.
+
+---
+
+# Give every draft a clearer shape.
+
+Canonical: https://wordpresto.com/workers/structure/
+Markdown: https://wordpresto.com/workers/structure/index.md
+
+# Give every draft a clearer shape.
+
+Marcus shapes headings, sections and page flow so content has a clear editorial structure before or during drafting. For pages that need a proper shape before writing starts.
+
+---
+
+Content without structure is hard to review, easy to misread, and frustrating to edit. Marcus maps the heading hierarchy, section order and content flow so every draft starts or continues with a shape that makes sense editorially and for the reader.
+
+## Badly structured content cannot be fixed by better writing.
+
+You can improve every sentence on a page and it will still fail if the sections are in the wrong order, if the headings do not tell a story, or if the most important point is buried in the middle. Structure is not formatting, it is editorial logic.
+
+## Editorial architecture that gives every page a reading path.
+
+Marcus does the structural work that prevents content from becoming a pile of sections. Every page that goes through a structure pass comes out with a clear, defensible shape.
+
+### Checks
+
+- Heading hierarchy and section logic
+- Section order against reader journey
+- Missing or duplicated structural elements
+
+### Improves
+
+- Section sequencing so it follows editorial logic
+- Heading clarity so each one does editorial work
+- Page flow from opening to close
+
+### Prepares
+
+- A structured outline for the writer
+- Heading structure for the CMS
+- Section notes for the brief
+
+### Surfaces for human review
+
+- Structural decisions that need editorial input
+- Sections where purpose is unclear
+- Content blocks that belong on a different page
+
+## What Marcus works from, and what he produces.
+
+### Works from
+
+- Content brief or stated page goal
+- Existing draft or raw notes
+- Content analysis
+- Brand guidelines
+- Reader journey notes
+
+### Produces
+
+- Structured content outline
+- Ordered heading hierarchy
+- Section plan
+- Flow notes for the writer
+- Structural recommendations
+
+## When to use Marcus
+
+### A long-form page written in one session that lacks shape.
+
+Marcus reorganises the sections into a clear reading order without the writer having to start again.
+
+### A brief that needs a structural skeleton before drafting.
+
+He maps the heading hierarchy so writers know exactly what goes where.
+
+### A landing page with too many competing sections.
+
+Marcus identifies which sections earn their place and in which order they should appear.
+
+### A migrated page that was structured for a different purpose.
+
+He reshapes the structure for the current goal without touching the content itself.
+
+### A product page where the most important section is last.
+
+Moving proof before pricing is often all a page needs to perform better.
+
+### A content team where each writer structures differently.
+
+A structure pass creates a shared shape standard before writing starts.
+
+## Marcus structures. Editors and clients approve the shape.
+
+Structure is a recommendation, not a directive. Marcus maps the best reading path based on the content goal. Whether to use that shape, adjust it or overrule it is an editorial and client decision.
+
+### Boundary checklist
+
+- Marcus structures and organises, he never rewrites content.
+- Structural choices are documented for editors to review.
+- Unclear purpose sections are flagged, not removed.
+- Structure supports the brief, it does not override it.
+
+### Will not
+
+- Rewrite or edit copy
+- Remove sections without instruction
+- Impose structure against the brief
+
+## Workers Marcus hands off to.
+
+- **Luca — Content Brief Builder**: Builds the brief around the approved structure. Output: Content brief.
+- **Ellis — Draft Rewrite Worker**: Drafts within the structural framework Marcus sets. Output: Shaped draft.
+- **Helena — Voice & Style Worker**: Applies voice guidance to the structurally shaped draft. Output: Voice & style guidance.
+
+---
+
+# Keep the voice in the work.
+
+Canonical: https://wordpresto.com/workers/voice-style/
+Markdown: https://wordpresto.com/workers/voice-style/index.md
+
+# Keep the voice in the work.
+
+Helena checks every draft against your voice rules and approved examples, shaping it back to your house style before review. For teams with one consistent voice to keep.
+
+---
+
+When different writers and AI tools all touch the same site, brand voice drifts page by page. Helena reads your voice rules and approved examples, then checks and shapes every draft, so it still sounds like you by the time it reaches review.
+
+## Brand voice is the first thing to break in an AI-assisted workflow.
+
+Generating text was never the hard part. The hard part is that every writer, and every AI tool, has its own default voice. Across a real site, that drift is the difference between a brand and a pile of pages.
+
+## A voice editor that reads every draft against your house style.
+
+Helena does the work a good voice editor does: consistently, on every page, before anyone has to read the draft cold.
+
+### Checks
+
+- Tone against brand voice rules
+- Banned and cliché phrasing
+- Consistency across sections
+
+### Improves
+
+- Off-voice sentences, rewritten in style
+- Vague phrasing made concrete
+- Rhythm and readability
+
+### Prepares
+
+- A shaped draft, ready for rewrite
+- Voice and style guidance notes
+- A clean handoff to review
+
+### Surfaces for human review
+
+- Voice calls it is unsure about
+- Meaning that may have shifted
+- Claims that need a human eye
+
+## What Helena works from, and what she produces.
+
+### Works from
+
+- Brand voice rules
+- Approved examples
+- Content brief
+- Existing draft
+- Review notes
+
+### Produces
+
+- Voice & style guidance
+- Shaped draft
+- Rewritten section
+- Review notes
+- Handoff pack
+
+## When to use Helena
+
+### Three writers, one brand, three voices.
+
+Helena reads each draft against the same voice rules, so the by-line changes but the voice does not.
+
+### AI drafts that are fine, but sound like everyone else.
+
+She strips the generic AI register and pulls the writing back toward your house style before review.
+
+### A new freelancer has not found the voice yet.
+
+Helena turns 'close, but not quite us' into concrete, sentence-level guidance they can act on.
+
+### Migrating old pages with tone all over the place.
+
+She flags the worst offenders first, so a re-voicing pass starts where it actually matters.
+
+### A campaign needs to feel like one piece, not ten.
+
+Across landing pages, emails and posts, Helena holds a single voice so the campaign reads as one.
+
+### You are rewriting your voice rules and need a test.
+
+Run a few real pages through Helena to see where the new rules actually land, and where they do not.
+
+## Helena shapes the voice. People still make the call.
+
+Voice is a judgement, not a rule. Helena suggests, checks and prepares. She is deliberately built to stop where editorial judgement begins, and nothing she touches is published without a human approving it.
+
+### Boundary checklist
+
+- Helena suggests on-voice rewrites, she never publishes.
+- Voice calls are structured for an editor to review.
+- Uncertain or risky lines are surfaced, not hidden.
+- Helena supports editorial judgement, it never replaces it.
+
+### Will not
+
+- Publish or push to CMS
+- Override an editor
+- Flatten a deliberate choice
+
+## Workers Helena hands off to.
+
+- **Ellis — Draft Rewrite Worker**: Rewrites the full draft using Helena's voice guidance. Output: Rewritten draft.
+- **Quinn — Draft Quality Reviewer**: Checks the shaped draft for clarity and readiness. Output: Review summary.
+- **Audrey — Approval Report Worker**: Assembles the review into a clear approval decision. Output: Approval report.
+
+---
