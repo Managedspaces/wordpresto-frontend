@@ -9,9 +9,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "typecheck": "astro check",
-    "prebuild": "node scripts/generate-og.mjs && node scripts/generate-page-markdown.mjs && node scripts/generate-llms.mjs",
+    "prebuild": "node scripts/generate-og.mjs && npx tsx scripts/generate-page-markdown.ts && node scripts/generate-llms.mjs",
     "generate:og": "node scripts/generate-og.mjs",
-    "generate:markdown": "node scripts/generate-page-markdown.mjs",
+    "generate:markdown": "npx tsx scripts/generate-page-markdown.ts",
     "generate:llms": "node scripts/generate-llms.mjs",
     "db:setup": "node scripts/setup-db.mjs"
   },
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "sharp": "^0.33.5",
+    "tsx": "^4.22.4",
     "typescript": "^5.7.2"
   }
 }

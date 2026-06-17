@@ -24,7 +24,33 @@ A brief that says 'write about our service for our customers' is not a brief. It
 
 Luca builds the brief structure that prevents rewrite rounds. A well-scoped brief with a real angle, a clear audience and section guidance produces better drafts because writers know what they are building.
 
-## Works from
+### Checks
+
+- Whether purpose is clear and specific
+- Whether audience is defined enough to write to
+- Whether the angle is distinct and arguable
+
+### Improves
+
+- Brief scope so it is actionable, not just directional
+- Section structure so the outline is usable
+- Tone and voice direction so the writer has a starting register
+
+### Prepares
+
+- A structured content brief
+- An outlined section plan
+- Writing direction and constraints
+
+### Surfaces for human review
+
+- Topics where more research is needed first
+- Briefs that need client input before drafting
+- Scope conflicts that will cause revision rounds later
+
+## What Luca works from, and what he produces.
+
+### Works from
 
 - Content topic or subject
 - Stated goal
@@ -32,7 +58,7 @@ Luca builds the brief structure that prevents rewrite rounds. A well-scoped brie
 - Brand voice guidelines
 - Content analysis or research notes
 
-## Produces
+### Produces
 
 - Structured content brief
 - Section outline
@@ -40,9 +66,42 @@ Luca builds the brief structure that prevents rewrite rounds. A well-scoped brie
 - Writing constraints
 - Handoff to writer or drafting Worker
 
+## When to use Luca
+
+### Starting a new content programme with consistent briefs.
+
+Luca builds every brief to the same standard, so drafts start from the same quality of direction.
+
+### Briefing AI-assisted drafting tools.
+
+A structured brief is the difference between a usable AI draft and one that needs a full rewrite.
+
+### Agency briefing for a client they have just onboarded.
+
+Luca turns the intake notes into a brief that a writer can act on without guessing at client preferences.
+
+### Building a content calendar with actual direction in it.
+
+Each piece in the calendar gets a brief summary that clarifies what it is for and who it is for.
+
+### A product launch with multiple content pieces.
+
+One brief structure applied consistently means all the pieces align without constant alignment calls.
+
+### A writer who is new to the brand.
+
+A clear brief replaces weeks of implicit knowledge transfer with a document they can refer to.
+
 ## Luca briefs. Writers and editors make the creative decisions.
 
 A brief is a starting point, not a script. Luca structures the brief so the direction is clear, but the writing, voice choices and creative judgements are for the writer and editor to make.
+
+### Boundary checklist
+
+- Luca builds briefs, he never writes the content itself.
+- Brief decisions are documented for editor or client review.
+- Gaps in direction are flagged before drafting starts.
+- The brief supports the writer, it does not replace them.
 
 ### Will not
 
@@ -50,8 +109,8 @@ A brief is a starting point, not a script. Luca structures the brief so the dire
 - Make brand positioning decisions
 - Override agreed scope
 
-## Related Workers
+## Workers Luca hands off to.
 
-- Ellis (Draft Rewrite)
-- Ada (Brief-to-Draft Alignment)
-- Helena (Voice & Style)
+- **Ellis — Draft Rewrite Worker**: Takes the brief and builds the shaped draft. Output: Shaped draft.
+- **Ada — Brief-to-Draft Alignment Worker**: Checks the draft actually matches the brief. Output: Alignment report.
+- **Helena — Voice & Style Worker**: Applies voice rules against the brief direction. Output: Voice & style guidance.
