@@ -696,6 +696,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <span class="output-card-title">RISK &amp; CLAIMS REVIEW</span>
           </div>
           <div class="output-card-body" style="padding:0;">
+            <div class="claims-table-wrap">
             <table class="claims-table">
               <thead class="claims-thead">
                 <tr class="claims-tr">
@@ -744,6 +745,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
                 </tr>
               </tbody>
             </table>
+            </div><!-- /claims-table-wrap -->
             <div class="claims-footer">
               <span class="mono-label" style="color:var(--wp-text-muted);font-size:11px;">CLAIMS STATUS: §1–§4 PASS WITH 2 WRITER ACTIONS · METADATA: PASS TO STEP 12</span>
             </div>
@@ -1323,6 +1325,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       const el = document.getElementById('step-' + stepNum);
       if (!el) return;
 
+      // Put element in the render tree first (opacity still 0), then animate.
+      // The forced reflow ensures the CSS transition fires from opacity:0.
+      el.style.display = 'block';
+      void el.getBoundingClientRect();
       el.classList.add('demo-step--revealed');
 
       requestAnimationFrame(() => {
@@ -1472,14 +1478,15 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
   /* ===== DEMO STEP ===== */
   .demo-step {
+    display: none;
     margin-bottom: 52px;
     opacity: 0;
     transform: translateY(18px);
     pointer-events: none;
     transition: opacity 420ms ease, transform 420ms ease;
   }
-  .demo-step--visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .demo-step--revealed { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .demo-step--visible { display: block; opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .demo-step--revealed { display: block; opacity: 1; transform: translateY(0); pointer-events: auto; }
   .step-label { margin-bottom: 14px; display: block; letter-spacing: 0.1em; }
 
   /* ===== WORKER PILL ===== */
@@ -1809,6 +1816,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   .profile-note { font-size: var(--wp-text-sm); color: var(--wp-text-secondary); line-height: 1.6; margin: 0; }
 
   /* ===== CLAIMS TABLE (Vera Step 11) ===== */
+  .claims-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .claims-table { width: 100%; border-collapse: collapse; }
   .claims-thead { background: var(--wp-paper-soft); border-bottom: 2px solid var(--wp-ink); }
   .claims-th { padding: 10px 16px; font-size: 10px; font-family: var(--wp-font-mono); color: var(--wp-text-muted); letter-spacing: 0.08em; text-align: left; font-weight: 600; }
@@ -1915,6 +1923,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   @media (max-width: 480px) {
     .claims-th--narrow { display: none; }
     .claims-td:nth-child(2) { display: none; }
+    .section-map-flag { display: none; }
+    .section-map-row { grid-template-columns: 22px 1fr; }
     .review-approval-strip { flex-direction: column; }
     .approval-strip-item { border-right: none; border-bottom: 1px solid var(--wp-line); }
     .approval-strip-item:last-child { border-bottom: none; }
