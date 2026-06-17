@@ -1731,14 +1731,19 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
   .voice-annot {
     font-family: var(--wp-font-hand);
     font-weight: 600;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1;
     position: absolute;
+    z-index: 5;
   }
-  .voice-annot--1 { color: var(--wp-amber); top: 22px; right: -62px; transform: rotate(3deg); }
-  .voice-annot--2 { color: var(--wp-amber); top: 56px; right: -70px; transform: rotate(-2deg); }
-  .voice-annot--3 { color: var(--wp-signal); bottom: 52px; right: -54px; transform: rotate(2deg); }
-  .voice-annot--4 { color: var(--wp-red); bottom: 22px; right: -84px; transform: rotate(-3deg); font-size: 13px; }
+  /* "more direct" — sits beside the struck-through first line */
+  .voice-annot--1 { color: var(--wp-amber); top: 22px; right: -50px; transform: rotate(2deg); }
+  /* "warmer tone" — second note, offset below */
+  .voice-annot--2 { color: var(--wp-amber); top: 60px; right: -60px; transform: rotate(-3deg); }
+  /* "keep this ✓" — green, pulled close to card edge to feel attached to the clean sentence */
+  .voice-annot--3 { color: var(--wp-signal); top: 114px; right: -34px; transform: rotate(1.5deg); font-size: 21px; font-weight: 700; }
+  /* "avoid this phrasing" — red note near bottom of card */
+  .voice-annot--4 { color: var(--wp-red); bottom: 18px; right: -62px; transform: rotate(-2deg); font-size: 16px; }
 
   /* Voice guidance card */
   .voice-guidance-card {
