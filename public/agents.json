@@ -1,0 +1,28 @@
+{
+  "name": "WordPresto",
+  "url": "https://wordpresto.com/",
+  "description": "The content engine behind better publishing workflows.",
+  "preferred_resources": [
+    {
+      "url": "https://wordpresto.com/llms.txt",
+      "type": "text/plain",
+      "purpose": "Curated LLM entry point"
+    },
+    {
+      "url": "https://wordpresto.com/llms-full.txt",
+      "type": "text/plain",
+      "purpose": "Full public context"
+    },
+    {
+      "url": "https://wordpresto.com/sitemap.md",
+      "type": "text/markdown",
+      "purpose": "Markdown sitemap"
+    }
+  ],
+  "policy": {
+    "public_read": true,
+    "write_actions": false,
+    "publishing_actions": false,
+    "commerce_actions": false
+  }
+}

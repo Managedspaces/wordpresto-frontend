@@ -1,0 +1,12 @@
+{
+  "name": "WordPresto public resource discovery",
+  "description": "WordPresto does not currently expose a public application API on the marketing site. Public agent-readable resources are listed here.",
+  "public_api_available": false,
+  "resources": [
+    "https://wordpresto.com/llms.txt",
+    "https://wordpresto.com/llms-full.txt",
+    "https://wordpresto.com/sitemap.md",
+    "https://wordpresto.com/.well-known/agent-skills/index.json",
+    "https://wordpresto.com/.well-known/mcp.json"
+  ]
+}

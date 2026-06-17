@@ -9,10 +9,11 @@
     "preview": "astro preview",
     "astro": "astro",
     "typecheck": "astro check",
-    "prebuild": "node scripts/generate-og.mjs && npx tsx scripts/generate-page-markdown.ts && node scripts/generate-llms.mjs",
+    "prebuild": "node scripts/generate-og.mjs && npx tsx scripts/generate-page-markdown.ts && node scripts/generate-llms.mjs && node scripts/validate-agent-resources.mjs",
     "generate:og": "node scripts/generate-og.mjs",
     "generate:markdown": "npx tsx scripts/generate-page-markdown.ts",
     "generate:llms": "node scripts/generate-llms.mjs",
+    "validate:agent-ready": "npm run generate:markdown && npm run generate:llms && node scripts/validate-agent-resources.mjs",
     "db:setup": "node scripts/setup-db.mjs"
   },
   "dependencies": {

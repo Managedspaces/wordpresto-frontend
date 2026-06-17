@@ -1,0 +1,37 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://wordpresto.com/",
+      "service-desc": [
+        {
+          "href": "https://wordpresto.com/llms.txt",
+          "type": "text/plain",
+          "title": "WordPresto LLM resource index"
+        },
+        {
+          "href": "https://wordpresto.com/llms-full.txt",
+          "type": "text/plain",
+          "title": "WordPresto full Markdown context"
+        },
+        {
+          "href": "https://wordpresto.com/sitemap.md",
+          "type": "text/markdown",
+          "title": "WordPresto Markdown sitemap"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://wordpresto.com/.well-known/mcp.json",
+          "type": "application/json",
+          "title": "WordPresto read-only MCP discovery card"
+        },
+        {
+          "href": "https://wordpresto.com/.well-known/agent-skills/index.json",
+          "type": "application/json",
+          "title": "WordPresto agent skills index"
+        }
+      ]
+    }
+  ],
+  "note": "WordPresto's public marketing site exposes read-only content resources, not a public write API."
+}

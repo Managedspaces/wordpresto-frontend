@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "name": "WordPresto public resources",
+  "description": "Read-only discovery metadata for WordPresto public marketing and Worker documentation resources.",
+  "homepage": "https://wordpresto.com/",
+  "documentation": "https://wordpresto.com/llms.txt",
+  "transport": {
+    "type": "none",
+    "note": "The public marketing site does not expose an interactive MCP tool server. Use the listed read-only resources for context."
+  },
+  "capabilities": {
+    "tools": false,
+    "resources": true,
+    "prompts": false,
+    "auth_required": false,
+    "write_actions": false
+  },
+  "resources": [
+    {
+      "name": "LLM index",
+      "uri": "https://wordpresto.com/llms.txt",
+      "mime_type": "text/plain",
+      "description": "Curated LLM entry point for WordPresto."
+    },
+    {
+      "name": "Full Markdown context",
+      "uri": "https://wordpresto.com/llms-full.txt",
+      "mime_type": "text/plain",
+      "description": "Consolidated public site and Worker context."
+    },
+    {
+      "name": "Markdown sitemap",
+      "uri": "https://wordpresto.com/sitemap.md",
+      "mime_type": "text/markdown",
+      "description": "Readable index of public pages and Markdown mirrors."
+    },
+    {
+      "name": "Homepage",
+      "uri": "https://wordpresto.com/index.md",
+      "mime_type": "text/markdown",
+      "description": "Homepage Markdown mirror."
+    },
+    {
+      "name": "Workers directory",
+      "uri": "https://wordpresto.com/workers/index.md",
+      "mime_type": "text/markdown",
+      "description": "Directory of all WordPresto Workers."
+    }
+  ],
+  "security": {
+    "public_read_only": true,
+    "publishing_tools_exposed": false,
+    "cms_write_tools_exposed": false,
+    "commerce_exposed": false
+  }
+}
