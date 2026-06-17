@@ -1,156 +1,221 @@
 /**
- * Generates public/llms.txt and public/llm.txt
+ * Generates:
+ *   public/llms.txt        — curated LLM entry point (llms.txt standard)
+ *   public/llm.txt         — alias of llms.txt
+ *   public/llms-full.txt   — consolidated full Markdown context for agents
+ *   public/sitemap.md      — human and agent-readable Markdown sitemap
+ *
  * Run: node scripts/generate-llms.mjs  (or via prebuild)
  */
-import { mkdirSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const OUT_DIR = join(__dirname, '..', 'public');
+const PUBLIC_DIR = join(__dirname, '..', 'public');
+const PAGES_DIR = join(PUBLIC_DIR, 'pages');
+const WORKERS_DIR = join(PAGES_DIR, 'workers');
+const SITE_URL = 'https://wordpresto.com';
 
-mkdirSync(OUT_DIR, { recursive: true });
+mkdirSync(PUBLIC_DIR, { recursive: true });
 
-const content = `# WordPresto
+function readGeneratedMarkdown(relativePath) {
+  const filePath = join(PUBLIC_DIR, relativePath);
+  if (!existsSync(filePath)) return '';
+  return readFileSync(filePath, 'utf8').trim();
+}
 
-WordPresto is the content engine behind better publishing workflows.
+function stripFrontmatter(markdown) {
+  return markdown.replace(/^---[\s\S]*?---\s*/, '').trim();
+}
 
-## What WordPresto is
+function extractTitle(markdown, fallback) {
+  const match = markdown.match(/^#\s+(.+)$/m);
+  return match?.[1]?.trim() ?? fallback;
+}
 
-A structured content workflow engine for publishing teams.
-It gives copywriters, business owners, website teams and agencies a clear path from
-idea to approval: plan, brief, draft, review, improve, approve and prepare for
-handoff, before anything is published to a CMS, website or client.
+function extractDescription(markdown) {
+  const match = markdown.match(/^description:\s+"(.+)"$/m);
+  return match?.[1]?.trim() ?? '';
+}
 
-WordPresto is not an AI writing tool that generates content and publishes it automatically.
-It is a workflow engine where AI Workers assist and humans retain final approval.
+const workerFiles = existsSync(WORKERS_DIR)
+  ? readdirSync(WORKERS_DIR)
+      .filter((f) => f.endsWith('.md') && f !== 'index.md')
+      .sort((a, b) => a.localeCompare(b))
+  : [];
 
-## Core product direction
+const pageResources = [
+  {
+    title: 'Home',
+    htmlPath: '/',
+    markdownPath: '/index.md',
+    legacyMarkdownPath: '/pages/index.md',
+    sourcePath: 'pages/index.md',
+    focus: 'Overview of WordPresto, the content engine behind better publishing workflows.',
+  },
+  {
+    title: 'Workflow demo',
+    htmlPath: '/workflow-demo/',
+    markdownPath: '/workflow-demo/index.md',
+    legacyMarkdownPath: '/pages/workflow-demo.md',
+    sourcePath: 'pages/workflow-demo.md',
+    focus: 'Step-by-step demo showing rough thinking becoming review-ready content.',
+  },
+  {
+    title: 'Workers directory',
+    htmlPath: '/workers/',
+    markdownPath: '/workers/index.md',
+    legacyMarkdownPath: '/pages/workers/index.md',
+    sourcePath: 'pages/workers/index.md',
+    focus: 'Directory of the specialist Workers used in the WordPresto content workflow.',
+  },
+];
 
-Content workflow. Briefing. Drafting. Review. Human approval. Publishing handoff.
+const workerResources = workerFiles.map((file) => {
+  const slug = file.replace(/\.md$/, '');
+  const markdown = readGeneratedMarkdown(`pages/workers/${file}`);
+  return {
+    title: extractTitle(markdown, slug),
+    htmlPath: `/workers/${slug}/`,
+    markdownPath: `/workers/${slug}/index.md`,
+    legacyMarkdownPath: `/pages/workers/${file}`,
+    sourcePath: `pages/workers/${file}`,
+    focus: extractDescription(markdown) || 'Worker profile in the WordPresto content workflow.',
+  };
+});
 
-## What this site is NOT about
+const allResources = [...pageResources, ...workerResources];
 
-- SEO metadata tooling
-- Accessibility auditing
-- Analytics or reporting dashboards
-- Generic AI content generation
-- Automated publishing without human review
+/* ------------------------------------------------------------------ */
+/*  llms.txt                                                            */
+/* ------------------------------------------------------------------ */
+const llmsLines = [
+  '# WordPresto',
+  '',
+  '> WordPresto is the content engine behind better publishing workflows.',
+  '',
+  'WordPresto helps copywriters, business owners, website teams and agencies plan, brief, write, review, improve, approve and prepare content before it reaches a CMS, website or client.',
+  '',
+  'The product is review-led. Workers assist with structured content work, but humans retain judgement and final approval. WordPresto is not a chatbot product, not generic AI content generation, and not blind autopilot publishing.',
+  '',
+  '## Agent guidance',
+  '',
+  '- Prefer the Markdown URLs listed here over scraping HTML.',
+  '- Use direct Markdown mirrors first: `/index.md`, `/workers/index.md`, `/workers/{slug}/index.md`.',
+  '- Use `/llms-full.txt` when you need consolidated context in one file.',
+  '- Do not assume public marketing pages expose write, publish, commerce, auth or CMS APIs unless a documented API says so.',
+  '- Publishing and editing are not live capabilities on this public marketing site.',
+  '',
+  '## Core pages',
+  '',
+];
 
-## Main audience
+for (const resource of pageResources) {
+  llmsLines.push(`- [${resource.title}](${SITE_URL}${resource.markdownPath}): ${resource.focus}`);
+}
 
-- Copywriters who need clearer briefs and structured review
-- Business owners who need visibility over content quality before it goes live
-- Website teams who need structured handoff from draft to page
-- Agencies who need a repeatable, quality-controlled content process
+llmsLines.push('', '## Worker profiles', '');
+for (const resource of workerResources) {
+  llmsLines.push(`- [${resource.title}](${SITE_URL}${resource.markdownPath}): ${resource.focus}`);
+}
 
-## Site structure
+llmsLines.push(
+  '',
+  '## Complete context',
+  '',
+  `- [Full Markdown context](${SITE_URL}/llms-full.txt): Consolidated public site context.`,
+  `- [Markdown sitemap](${SITE_URL}/sitemap.md): Human and agent-readable route index.`,
+  `- [XML sitemap](${SITE_URL}/sitemap.xml): Search crawler sitemap.`,
+  `- [Agent skills](${SITE_URL}/.well-known/agent-skills/index.json): Public read-only guidance for agents using WordPresto content.`,
+  `- [MCP card](${SITE_URL}/.well-known/mcp.json): Discovery metadata for public read-only resources.`,
+  '',
+  '## Canonical domain',
+  '',
+  SITE_URL,
+  '',
+);
 
-- Home: https://wordpresto.com/
-  Markdown: https://wordpresto.com/pages/index.md
-  Focus: Content workflow engine for publishing teams.
-  Summary: The core WordPresto product page. Explains the workflow from plan to CMS
-  handoff, introduces Workers, and positions WordPresto as a review-led publishing engine.
+/* ------------------------------------------------------------------ */
+/*  sitemap.md                                                          */
+/* ------------------------------------------------------------------ */
+const sitemapLines = [
+  '# WordPresto Markdown sitemap',
+  '',
+  'A readable index of public WordPresto pages and their Markdown mirrors.',
+  '',
+  '## Public pages',
+  '',
+];
 
-- Workers directory: https://wordpresto.com/workers/
-  Markdown: https://wordpresto.com/pages/workers/index.md
-  Focus: All 14 specialist Worker roles in the content workflow.
-  Summary: A directory of every Worker, their role, stage, output and link to their profile.
+for (const resource of allResources) {
+  sitemapLines.push(
+    `### ${resource.title}`,
+    '',
+    `- HTML: ${SITE_URL}${resource.htmlPath}`,
+    `- Markdown: ${SITE_URL}${resource.markdownPath}`,
+    `- Legacy Markdown: ${SITE_URL}${resource.legacyMarkdownPath}`,
+    `- Focus: ${resource.focus}`,
+    '',
+  );
+}
 
-## Worker profiles
+sitemapLines.push(
+  '## Agent discovery',
+  '',
+  `- LLM index: ${SITE_URL}/llms.txt`,
+  `- Full context: ${SITE_URL}/llms-full.txt`,
+  `- XML sitemap: ${SITE_URL}/sitemap.xml`,
+  `- MCP card: ${SITE_URL}/.well-known/mcp.json`,
+  `- Agent skills: ${SITE_URL}/.well-known/agent-skills/index.json`,
+  '',
+);
 
-Each Worker has clear inputs, outputs and limits. Humans approve before work moves forward.
+/* ------------------------------------------------------------------ */
+/*  llms-full.txt                                                       */
+/* ------------------------------------------------------------------ */
+const fullLines = [
+  '# WordPresto full Markdown context',
+  '',
+  'This file consolidates the main public WordPresto marketing and Worker content for AI agents. Prefer individual Markdown mirrors when you only need one page.',
+  '',
+  '## Site index',
+  '',
+  ...allResources.map((r) => `- ${r.title}: ${SITE_URL}${r.markdownPath}`),
+  '',
+  '---',
+  '',
+];
 
-1. Helena — Voice & Style Worker — Stage: Brand Voice — Output: Voice & style guidance
-   URL: https://wordpresto.com/workers/voice-style/
-   Markdown: https://wordpresto.com/pages/workers/voice-style.md
-   Topic: Keeps brand voice consistent across every draft and AI-assisted page.
+for (const resource of allResources) {
+  const markdown = stripFrontmatter(readGeneratedMarkdown(resource.sourcePath));
+  if (!markdown) continue;
+  fullLines.push(
+    `# ${resource.title}`,
+    '',
+    `Canonical: ${SITE_URL}${resource.htmlPath}`,
+    `Markdown: ${SITE_URL}${resource.markdownPath}`,
+    '',
+    markdown,
+    '',
+    '---',
+    '',
+  );
+}
 
-2. Omar — Content Analyst — Stage: Analyse — Output: Content analysis
-   URL: https://wordpresto.com/workers/content-analyst/
-   Markdown: https://wordpresto.com/pages/workers/content-analyst.md
-   Topic: Reviews existing content before any editing or rewriting starts.
+/* ------------------------------------------------------------------ */
+/*  Write all outputs                                                   */
+/* ------------------------------------------------------------------ */
+const llmsContent = llmsLines.join('\n');
+const outputs = [
+  ['llms.txt', llmsContent],
+  ['llm.txt', llmsContent],
+  ['sitemap.md', sitemapLines.join('\n')],
+  ['llms-full.txt', fullLines.join('\n')],
+];
 
-3. Marcus — Structure Worker — Stage: Structure — Output: Content structure
-   URL: https://wordpresto.com/workers/structure/
-   Markdown: https://wordpresto.com/pages/workers/structure.md
-   Topic: Shapes heading hierarchy, section order and page flow.
-
-4. Luca — Content Brief Builder — Stage: Brief — Output: Content brief
-   URL: https://wordpresto.com/workers/content-brief-builder/
-   Markdown: https://wordpresto.com/pages/workers/content-brief-builder.md
-   Topic: Turns a topic and goal into a structured content brief before drafting.
-
-5. Ellis — Draft Rewrite Worker — Stage: Draft — Output: Shaped draft
-   URL: https://wordpresto.com/workers/draft-rewrite/
-   Markdown: https://wordpresto.com/pages/workers/draft-rewrite.md
-   Topic: Rewrites drafts that follow the brief and are ready for editorial review.
-
-6. Quinn — Draft Quality Reviewer — Stage: Review — Output: Review notes
-   URL: https://wordpresto.com/workers/draft-quality-reviewer/
-   Markdown: https://wordpresto.com/pages/workers/draft-quality-reviewer.md
-   Topic: Checks whether a draft is clear, structured and ready to move forward.
-
-7. Rosa — Section Rewrite Worker — Stage: Improve — Output: Rewritten sections
-   URL: https://wordpresto.com/workers/section-rewrite/
-   Markdown: https://wordpresto.com/pages/workers/section-rewrite.md
-   Topic: Rewrites individual sections without touching the rest of the piece.
-
-8. Audrey — Approval Report Worker — Stage: Approve — Output: Approval report
-   URL: https://wordpresto.com/workers/approval-report/
-   Markdown: https://wordpresto.com/pages/workers/approval-report.md
-   Topic: Summarises what is ready, what needs attention and what should not move forward.
-
-9. Priya — Readability Worker — Stage: Improve — Output: Improved draft
-   URL: https://wordpresto.com/workers/readability/
-   Markdown: https://wordpresto.com/pages/workers/readability.md
-   Topic: Tightens sentences and improves flow without changing meaning or voice.
-
-10. Ada — Brief-to-Draft Alignment Worker — Stage: Review — Output: Alignment report
-    URL: https://wordpresto.com/workers/brief-draft-alignment/
-    Markdown: https://wordpresto.com/pages/workers/brief-draft-alignment.md
-    Topic: Checks that the draft actually fulfils the brief, section by section.
-
-11. Ravi — CMS Handoff & Publishing Package Worker — Stage: Handoff — Output: Handoff pack
-    URL: https://wordpresto.com/workers/cms-handoff/
-    Markdown: https://wordpresto.com/pages/workers/cms-handoff.md
-    Topic: Packages approved content for clean handoff to a CMS, website or client.
-
-12. Vera — Editorial Risk & Claims Compliance Worker — Stage: Review — Output: Risk & compliance report
-    URL: https://wordpresto.com/workers/editorial-risk-claims/
-    Markdown: https://wordpresto.com/pages/workers/editorial-risk-claims.md
-    Topic: Flags unsupported claims, risky statements and compliance issues before approval.
-
-13. Iris — Content Refresh Brief Worker — Stage: Refresh — Output: Refresh brief
-    URL: https://wordpresto.com/workers/content-refresh-brief/
-    Markdown: https://wordpresto.com/pages/workers/content-refresh-brief.md
-    Topic: Produces a structured brief for refreshing existing content.
-
-14. Nina — Content Distribution Brief Worker — Stage: Distribution — Output: Distribution brief
-    URL: https://wordpresto.com/workers/content-distribution-brief/
-    Markdown: https://wordpresto.com/pages/workers/content-distribution-brief.md
-    Topic: Maps approved content to channels with adaptation guidance for each.
-
-## Technology
-
-Built with Astro. Static-first. No CMS dependency on the marketing site.
-Connects to WordPress, Payload, Sanity and other CMSes in product workflows.
-
-## Canonical domain
-
-https://wordpresto.com
-
-## Markdown mirrors
-
-Human-readable and LLM-readable Markdown versions of each page are available at:
-https://wordpresto.com/pages/{slug}.md
-`;
-
-const llmsTxtPath = join(OUT_DIR, 'llms.txt');
-const llmTxtPath = join(OUT_DIR, 'llm.txt');
-
-writeFileSync(llmsTxtPath, content, 'utf8');
-console.log(`✓ Generated: ${llmsTxtPath}`);
-
-writeFileSync(llmTxtPath, content, 'utf8');
-console.log(`✓ Generated: ${llmTxtPath}`);
+for (const [filename, content] of outputs) {
+  const outPath = join(PUBLIC_DIR, filename);
+  writeFileSync(outPath, content, 'utf8');
+  console.log(`✓ Generated: ${outPath}`);
+}

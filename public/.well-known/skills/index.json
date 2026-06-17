@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "name": "WordPresto Agent Skills",
+  "description": "Alias of /.well-known/agent-skills/index.json for agents that check the shorter skills path.",
+  "skills": [
+    {
+      "name": "read-wordpresto-site",
+      "type": "skill-md",
+      "description": "Use WordPresto's llms.txt, Markdown mirrors and full context file to understand the product and public content workflow pages.",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "url": "https://wordpresto.com/.well-known/agent-skills/read-wordpresto-site/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

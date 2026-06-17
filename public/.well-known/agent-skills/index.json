@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "name": "WordPresto Agent Skills",
+  "description": "Read-only skills for understanding and using WordPresto public Markdown resources.",
+  "skills": [
+    {
+      "name": "read-wordpresto-site",
+      "type": "skill-md",
+      "description": "Use WordPresto's llms.txt, Markdown mirrors and full context file to understand the product and public content workflow pages.",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "url": "https://wordpresto.com/.well-known/agent-skills/read-wordpresto-site/SKILL.md"
+        }
+      ]
+    },
+    {
+      "name": "summarise-wordpresto",
+      "type": "skill-md",
+      "description": "Summarise WordPresto accurately from canonical Markdown resources without inventing unsupported publishing or commerce capabilities.",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "url": "https://wordpresto.com/.well-known/agent-skills/summarise-wordpresto/SKILL.md"
+        }
+      ]
+    },
+    {
+      "name": "compare-wordpresto-workflows",
+      "type": "skill-md",
+      "description": "Compare WordPresto content workflow concepts using the public Worker and workflow Markdown resources.",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "url": "https://wordpresto.com/.well-known/agent-skills/compare-wordpresto-workflows/SKILL.md"
+        }
+      ]
+    }
+  ]
+}
