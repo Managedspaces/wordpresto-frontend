@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run prebuild && astro build",
+    "build": "npm run prebuild && astro build && node scripts/inject-markdown-routes.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "typecheck": "astro check",
