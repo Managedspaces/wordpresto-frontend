@@ -200,24 +200,47 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     try {
       const { Resend } = await import('resend');
       const resend = new Resend(resendKey);
+      const submittedAt = new Date().toUTCString();
+
+      const lines: string[] = [
+        `Name:        ${fullName}`,
+        `Email:       ${email}`,
+        company    ? `Company:     ${company}`   : '',
+        websiteUrl ? `Website:     ${websiteUrl}` : '',
+        `Role:        ${role}`,
+        `Industry:    ${industry}`,
+        industryCtx ? `Context:     ${industryCtx}` : '',
+        `Country:     ${countryName ?? countryCode}`,
+        writingNeeds.length     ? `Needs:       ${writingNeeds.join(', ')}`       : '',
+        workflowPainPoints.length ? `Pain points: ${workflowPainPoints.join(', ')}` : '',
+        currentFrustration ? `Frustration: ${currentFrustration}` : '',
+        `Plan tier:   ${monthlyValueBand}${monthlyValueLabel ? ` (${monthlyValueLabel})` : ''}`,
+        `Timeline:    ${timeline}`,
+        teamSetup    ? `Team setup:  ${teamSetup}`    : '',
+        monthlyVolume ? `Volume:      ${monthlyVolume}` : '',
+        openToCall   ? `Open to call: yes` : '',
+        finalNotes   ? `Notes:       ${finalNotes}` : '',
+        `Submitted:   ${submittedAt}`,
+      ].filter(Boolean);
+
+      const text = lines.join('\n');
+
+      const html = `<pre style="font-family:monospace;font-size:13px;line-height:1.6">${
+        text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      }</pre>`;
+
       await resend.emails.send({
         from: notifyFrom,
         to: [notifyTo],
-        subject: `New waitlist application — ${fullName}`,
-        html: `
-          <p><strong>${fullName}</strong> (${email}) joined the waitlist.</p>
-          <ul>
-            <li>Role: ${role}</li>
-            <li>Country: ${countryName ?? countryCode}</li>
-            <li>Industry: ${industry}</li>
-            <li>Timeline: ${timeline}</li>
-            <li>Value band: ${monthlyValueBand}</li>
-          </ul>
-        `.trim(),
+        subject: 'New WordPresto waitlist application',
+        text,
+        html,
       });
     } catch (err) {
       console.error('[waitlist] resend error:', err instanceof Error ? err.message : String(err));
     }
+  } else if (!resendKey || !notifyTo || !notifyFrom) {
+    console.warn('[waitlist] notification skipped — RESEND_API_KEY, WAITLIST_NOTIFY_TO or WAITLIST_NOTIFY_FROM not set');
   }
 
   return json(200, { ok: true });
