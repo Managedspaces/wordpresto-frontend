@@ -1,0 +1,111 @@
+---
+export const prerender = false;
+
+import { verifySession } from '@/lib/adminAuth';
+
+const secret = process.env.ADMIN_SESSION_SECRET ?? '';
+const already = await verifySession(Astro.request.headers.get('cookie'), secret);
+if (already) return Astro.redirect('/admin/waitlist');
+
+const error = Astro.url.searchParams.has('error');
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin — WordPresto</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: #f5f0e8;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: #fffdf8;
+      border: 1px solid #d4cfc6;
+      padding: 40px 36px 36px;
+      width: 100%;
+      max-width: 360px;
+      box-shadow: 2px 2px 0 #d4cfc6;
+    }
+    .heading {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+      color: #1a1a1a;
+    }
+    .sub {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 28px;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    input {
+      display: block;
+      width: 100%;
+      border: 1px solid #c8c3ba;
+      background: #fff;
+      padding: 9px 12px;
+      font-size: 15px;
+      font-family: inherit;
+      color: #1a1a1a;
+      margin-bottom: 18px;
+      border-radius: 0;
+      outline: none;
+    }
+    input:focus { border-color: #1a1a1a; }
+    button {
+      width: 100%;
+      background: #1a1a1a;
+      color: #fffdf8;
+      border: none;
+      padding: 11px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    button:hover { background: #333; }
+    .error {
+      font-size: 13px;
+      color: #b00;
+      margin-bottom: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <p class="heading">WordPresto Admin</p>
+    <p class="sub">Sign in to view waitlist entries.</p>
+
+    {error && <p class="error">Incorrect username or password.</p>}
+
+    <form method="POST" action="/api/admin/auth">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" autocomplete="username" required />
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required />
+
+      <button type="submit">Sign in</button>
+    </form>
+  </div>
+</body>
+</html>

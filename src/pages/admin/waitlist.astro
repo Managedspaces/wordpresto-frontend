@@ -1,0 +1,387 @@
+---
+export const prerender = false;
+
+import { verifySession } from '@/lib/adminAuth';
+import { getDb } from '@/lib/db';
+
+const secret = process.env.ADMIN_SESSION_SECRET ?? '';
+const authed = await verifySession(Astro.request.headers.get('cookie'), secret);
+if (!authed) return Astro.redirect('/admin/login');
+
+const PAGE_SIZE = 25;
+const page = Math.max(1, parseInt(Astro.url.searchParams.get('page') ?? '1', 10) || 1);
+const offset = (page - 1) * PAGE_SIZE;
+
+let rows: Record<string, unknown>[] = [];
+let total = 0;
+let dbError = false;
+
+try {
+  const sql = getDb();
+  const [data, count] = await Promise.all([
+    sql`
+      SELECT
+        id, full_name, email, company_name, website_url, role,
+        country_name, country_code, industry, industry_context,
+        writing_needs, workflow_pain_points, current_frustration,
+        monthly_value_band, monthly_value_label, value_level,
+        timeline, team_setup, monthly_volume,
+        open_to_call, consent_to_contact, final_notes,
+        source, created_at
+      FROM waitlist_applications
+      ORDER BY created_at DESC
+      LIMIT ${PAGE_SIZE} OFFSET ${offset}
+    `,
+    sql`SELECT COUNT(*)::int AS total FROM waitlist_applications`,
+  ]);
+  rows = data as Record<string, unknown>[];
+  const countRows = count as Array<Record<string, unknown>>;
+  total = Number(countRows[0]?.total ?? 0);
+} catch {
+  dbError = true;
+}
+
+const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+function fmt(v: unknown): string {
+  if (v === null || v === undefined || v === '') return '—';
+  if (Array.isArray(v)) return v.length ? v.join(', ') : '—';
+  if (typeof v === 'object') {
+    const arr = Object.values(v as Record<string, unknown>);
+    return arr.length ? arr.join(', ') : '—';
+  }
+  return String(v);
+}
+
+function fmtDate(v: unknown): string {
+  if (!v) return '—';
+  const d = new Date(String(v));
+  return isNaN(d.getTime()) ? String(v) : d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+
+function jsonArr(v: unknown): string[] {
+  if (Array.isArray(v)) return v.map(String);
+  if (typeof v === 'string') { try { const p = JSON.parse(v); return Array.isArray(p) ? p.map(String) : []; } catch { return []; } }
+  return [];
+}
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Waitlist entries — WordPresto Admin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: #f5f0e8;
+      color: #1a1a1a;
+      min-height: 100dvh;
+    }
+    a { color: inherit; }
+
+    /* ── header ── */
+    .bar {
+      background: #1a1a1a;
+      color: #fffdf8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 48px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .bar-title { font-size: 14px; font-weight: 700; letter-spacing: 0.02em; }
+    .bar-meta { font-size: 12px; color: #aaa; }
+    .bar-right { display: flex; align-items: center; gap: 16px; }
+    .logout-btn {
+      font-family: inherit;
+      font-size: 12px;
+      background: none;
+      border: 1px solid #555;
+      color: #ccc;
+      padding: 4px 12px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+    }
+    .logout-btn:hover { border-color: #fff; color: #fff; }
+
+    /* ── container ── */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 32px 24px 64px; }
+
+    .page-hd {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #1a1a1a;
+    }
+    .page-hd h1 { font-size: 22px; font-weight: 700; }
+    .count { font-size: 13px; color: #777; }
+
+    /* ── error ── */
+    .db-err {
+      background: #fff3f3;
+      border: 1px solid #e88;
+      padding: 16px 20px;
+      font-size: 14px;
+      color: #900;
+    }
+
+    /* ── table ── */
+    .tbl-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    thead th {
+      background: #1a1a1a;
+      color: #fffdf8;
+      text-align: left;
+      padding: 8px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      white-space: nowrap;
+    }
+    tbody tr { border-bottom: 1px solid #e0dbd2; }
+    tbody tr:nth-child(even) td { background: #f9f6f1; }
+    tbody tr td { background: #fffdf8; }
+    td { padding: 0; vertical-align: top; }
+
+    /* summary row — the clickable bit */
+    .row-summary {
+      display: grid;
+      grid-template-columns: 180px 200px 140px 110px 130px 90px 130px;
+      gap: 0;
+      cursor: pointer;
+      list-style: none;
+      padding: 10px 12px;
+      align-items: start;
+    }
+    .row-summary::-webkit-details-marker { display: none; }
+    details[open] .row-summary { background: #f0ebe1; }
+    details summary { display: block; }
+
+    .cell { padding: 0 8px 0 0; }
+    .cell-name { font-weight: 600; }
+    .cell-email { color: #555; font-size: 12.5px; word-break: break-all; }
+    .cell-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: #1a1a1a;
+      color: #fffdf8;
+      padding: 2px 6px;
+    }
+    .cell-muted { color: #777; font-size: 12.5px; }
+
+    /* expanded detail panel */
+    .row-detail {
+      padding: 16px 20px 20px 20px;
+      background: #f0ebe1;
+      border-top: 1px dashed #c8c3ba;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px 24px;
+      font-size: 13px;
+    }
+    .field-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #888;
+      margin-bottom: 3px;
+    }
+    .field-val { color: #1a1a1a; line-height: 1.5; }
+    .field-val.long { white-space: pre-wrap; }
+
+    /* ── pagination ── */
+    .pager {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+      font-size: 13px;
+    }
+    .pager a, .pager span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      border: 1px solid #c8c3ba;
+      text-decoration: none;
+      color: #1a1a1a;
+      background: #fffdf8;
+    }
+    .pager a:hover { background: #f0ebe1; }
+    .pager .current { background: #1a1a1a; color: #fffdf8; border-color: #1a1a1a; }
+    .pager .disabled { color: #bbb; pointer-events: none; }
+
+    @media (max-width: 900px) {
+      .row-summary { grid-template-columns: 1fr 1fr; gap: 4px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="bar">
+  <span class="bar-title">WordPresto Admin</span>
+  <div class="bar-right">
+    <span class="bar-meta">{total} application{total !== 1 ? 's' : ''}</span>
+    <form method="POST" action="/api/admin/auth">
+      <input type="hidden" name="action" value="logout" />
+      <button class="logout-btn" type="submit">Sign out</button>
+    </form>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="page-hd">
+    <h1>Waitlist applications</h1>
+    <span class="count">Page {page} of {totalPages}</span>
+  </div>
+
+  {dbError && (
+    <p class="db-err">Could not connect to the database. Check DATABASE_URL and try again.</p>
+  )}
+
+  {!dbError && rows.length === 0 && (
+    <p style="color:#888;font-size:14px">No applications yet.</p>
+  )}
+
+  {!dbError && rows.length > 0 && (
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Country</th>
+            <th>Plan tier</th>
+            <th>Timeline</th>
+            <th>Submitted</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr>
+              <td colspan="7">
+                <details>
+                  <summary class="row-summary">
+                    <div class="cell cell-name">{fmt(r.full_name)}</div>
+                    <div class="cell cell-email">{fmt(r.email)}</div>
+                    <div class="cell">{fmt(r.role)}</div>
+                    <div class="cell cell-muted">{fmt(r.country_code)}</div>
+                    <div class="cell">
+                      {r.monthly_value_band ? <span class="cell-badge">{fmt(r.monthly_value_band)}</span> : '—'}
+                    </div>
+                    <div class="cell cell-muted">{fmt(r.timeline)}</div>
+                    <div class="cell cell-muted">{fmtDate(r.created_at)}</div>
+                  </summary>
+
+                  <div class="row-detail">
+                    {r.company_name && (
+                      <div>
+                        <div class="field-label">Company</div>
+                        <div class="field-val">{fmt(r.company_name)}</div>
+                      </div>
+                    )}
+                    {r.website_url && (
+                      <div>
+                        <div class="field-label">Website</div>
+                        <div class="field-val"><a href={String(r.website_url)} target="_blank" rel="noopener">{fmt(r.website_url)}</a></div>
+                      </div>
+                    )}
+                    <div>
+                      <div class="field-label">Industry</div>
+                      <div class="field-val">{fmt(r.industry)}{r.industry_context ? ` — ${fmt(r.industry_context)}` : ''}</div>
+                    </div>
+                    <div>
+                      <div class="field-label">Writing needs</div>
+                      <div class="field-val">{jsonArr(r.writing_needs).join(', ') || '—'}</div>
+                    </div>
+                    <div>
+                      <div class="field-label">Pain points</div>
+                      <div class="field-val">{jsonArr(r.workflow_pain_points).join(', ') || '—'}</div>
+                    </div>
+                    {r.current_frustration && (
+                      <div style="grid-column: 1 / -1">
+                        <div class="field-label">Current frustration</div>
+                        <div class="field-val long">{fmt(r.current_frustration)}</div>
+                      </div>
+                    )}
+                    <div>
+                      <div class="field-label">Value level</div>
+                      <div class="field-val">{fmt(r.value_level)}{r.monthly_value_label ? ` (${fmt(r.monthly_value_label)})` : ''}</div>
+                    </div>
+                    {r.team_setup && (
+                      <div>
+                        <div class="field-label">Team setup</div>
+                        <div class="field-val">{fmt(r.team_setup)}</div>
+                      </div>
+                    )}
+                    {r.monthly_volume && (
+                      <div>
+                        <div class="field-label">Monthly volume</div>
+                        <div class="field-val">{fmt(r.monthly_volume)}</div>
+                      </div>
+                    )}
+                    <div>
+                      <div class="field-label">Open to call</div>
+                      <div class="field-val">{r.open_to_call ? 'Yes' : 'No'}</div>
+                    </div>
+                    {r.final_notes && (
+                      <div style="grid-column: 1 / -1">
+                        <div class="field-label">Final notes</div>
+                        <div class="field-val long">{fmt(r.final_notes)}</div>
+                      </div>
+                    )}
+                    <div>
+                      <div class="field-label">Source</div>
+                      <div class="field-val">{fmt(r.source)}</div>
+                    </div>
+                  </div>
+                </details>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+
+  {totalPages > 1 && (
+    <nav class="pager" aria-label="Pagination">
+      {page > 1
+        ? <a href={`?page=${page - 1}`}>&lsaquo;</a>
+        : <span class="disabled">&lsaquo;</span>}
+
+      {Array.from({ length: totalPages }, (_, i) => i + 1)
+        .filter(n => Math.abs(n - page) <= 2 || n === 1 || n === totalPages)
+        .map((n, i, arr) => (
+          <>
+            {i > 0 && arr[i - 1] !== n - 1 && <span>…</span>}
+            {n === page
+              ? <span class="current">{n}</span>
+              : <a href={`?page=${n}`}>{n}</a>}
+          </>
+        ))}
+
+      {page < totalPages
+        ? <a href={`?page=${page + 1}`}>&rsaquo;</a>
+        : <span class="disabled">&rsaquo;</span>}
+    </nav>
+  )}
+
+</main>
+</body>
+</html>
