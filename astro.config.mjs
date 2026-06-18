@@ -10,11 +10,6 @@ import vercel from '@astrojs/vercel';
 // The adapter is still required to emit serverless functions for those routes.
 export default defineConfig({
   site: 'https://wordpresto.com',
-  adapter: vercel({
-    // Deploy Astro middleware as a true Vercel Edge Function.
-    // This runs BEFORE Vercel's "handle: filesystem" routing, so
-    // it can intercept Accept: text/markdown on prerendered static pages.
-    edgeMiddleware: true,
-  }),
+  adapter: vercel(),
   integrations: [],
 });
