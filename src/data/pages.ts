@@ -19,19 +19,19 @@ export interface PageData {
 
 export const homePage: PageData = {
   slug: '/',
-  pageTitle: 'Word Presto is the agentic content engine behind better publishing workflows.',
-  seoTitle: 'Content workflow engine for publishing teams | Word Presto',
+  pageTitle: 'Word Presto is the agentic content engine for writers, editors and publishing teams.',
+  seoTitle: 'Content workflow engine for writers and publishing teams | Word Presto',
   metaDescription:
-    'Plan, brief, write, review and improve content before it reaches your CMS, website or client.',
-  focus: 'Content workflow engine for publishing teams',
+    'Plan, brief, write, review, improve and prepare content for search, readers and CMS handoff.',
+  focus: 'Content workflow engine for writers and publishing teams',
   summary:
-    'Word Presto is a structured content workflow engine. It gives teams a clear path from idea to approval — plan, brief, draft, review, improve, approve and prepare for handoff — before anything is published.',
+    'Word Presto puts the writer at the centre, then surrounds the writing process with structure, search, evidence, review, approval and CMS preparation. It gives teams a clear path from idea to approval before anything is published.',
   sections: [
     {
       id: 'hero',
-      heading: 'Word Presto is the agentic content engine behind better publishing workflows.',
-      body: 'Plan, brief, write, review and improve content before it reaches your CMS, website or client.',
-      note: 'Built for copywriters, business owners, website teams and agencies who need structure, quality control and momentum without handing judgement to a black box.',
+      heading: 'Word Presto is the agentic content engine for writers, editors and publishing teams.',
+      body: 'Plan, brief, write, review, improve and prepare content for search, readers and CMS handoff, without handing judgement to a black box.',
+      note: 'Built for writers, editors, website teams and agencies who want structure, search-readiness and quality control without losing their own judgement.',
     },
     {
       id: 'problem',
@@ -78,6 +78,20 @@ export const homePage: PageData = {
       ],
     },
     {
+      id: 'seo',
+      eyebrow: 'Search, built in',
+      heading: 'SEO belongs in the writing workflow, not after it.',
+      body: 'Search performance is not a plugin you add at the end. It is shaped by the brief, the structure, the intent, the evidence, the internal links, the metadata and the quality of the finished page.',
+      note: 'Word Presto helps writers see those signals while the work is still being shaped, so SEO becomes part of the editorial process rather than a last-minute checklist.',
+      items: [
+        { title: 'Match the page to search intent before drafting', body: '' },
+        { title: 'Structure headings and sections around the job the page needs to do', body: '' },
+        { title: 'Surface weak sections, missing support and evidence gaps', body: '' },
+        { title: 'Prepare titles, descriptions, slugs and CMS fields before handoff', body: '' },
+        { title: 'Keep human judgement in control of what moves forward', body: '' },
+      ],
+    },
+    {
       id: 'use-cases',
       eyebrow: 'Three routes out',
       heading: 'Use Word Presto with the stack you have, or the one you are building next.',
@@ -101,7 +115,7 @@ export const homePage: PageData = {
       id: 'workers',
       eyebrow: 'The team',
       heading: 'Specialist Workers for each stage of the content workflow.',
-      body: 'Each Worker is a specialist role with clear inputs, outputs and limits. Browse the team and open any Worker to see where they sit in the workflow.',
+      body: 'Specialist Workers support each stage of the content workflow, from strategy and structure to drafting, proofing, SEO review, evidence, approval and CMS handoff. SEO is part of the workflow, not a separate mode.',
     },
     {
       id: 'approval',
@@ -122,7 +136,7 @@ export const homePage: PageData = {
       items: [
         {
           title: 'Copywriters',
-          body: 'Better briefs, clearer review notes and a structured way to improve drafts without losing your voice.',
+          body: 'Better briefs, clearer review notes, SEO-aware structure and a working canvas that helps improve drafts without flattening your voice.',
         },
         {
           title: 'Business owners',
@@ -130,11 +144,11 @@ export const homePage: PageData = {
         },
         {
           title: 'Website teams',
-          body: 'A clearer handoff from draft to page, with the purpose, structure and review notes already attached.',
+          body: 'A clearer path from draft to page, with structure, metadata, internal link notes, evidence gaps and CMS handoff already attached.',
         },
         {
           title: 'Agencies',
-          body: 'A repeatable content process that helps teams move faster while keeping review and approval visible.',
+          body: 'A repeatable content process for client work, where writers, SEO reviewers and approvers can work from the same brief, canvas and approval trail.',
         },
       ],
     },

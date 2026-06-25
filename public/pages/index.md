@@ -1,17 +1,17 @@
 ---
-title: "Content workflow engine for publishing teams | Word Presto"
-description: "Plan, brief, write, review and improve content before it reaches your CMS, website or client."
+title: "Content workflow engine for writers and publishing teams | Word Presto"
+description: "Plan, brief, write, review, improve and prepare content for search, readers and CMS handoff."
 canonical: "https://wordpresto.com/"
-focus: "Content workflow engine for publishing teams"
+focus: "Content workflow engine for writers and publishing teams"
 ---
 
-# Word Presto is the agentic content engine behind better publishing workflows.
+# Word Presto is the agentic content engine for writers, editors and publishing teams.
 
-Plan, brief, write, review and improve content before it reaches your CMS, website or client.
+Plan, brief, write, review, improve and prepare content for search, readers and CMS handoff.
 
 ---
 
-Word Presto is a structured content workflow engine. It gives teams a clear path from idea to approval — plan, brief, draft, review, improve, approve and prepare for handoff — before anything is published.
+Word Presto puts the writer at the centre, then surrounds the writing process with structure, search, evidence, review, approval and CMS preparation. It gives teams a clear path from idea to approval before anything is published.
 
 ## Content does not fail because people cannot write. It fails because the workflow is messy.
 
@@ -49,6 +49,18 @@ Most of the important work happens before anything is published. Word Presto giv
 - Improve the weak parts: Tighten sections that are unclear, thin, repetitive or not doing their job.
 - Prepare the handoff: Package the approved work so it can move cleanly into a website, CMS or client review process.
 
+## SEO belongs in the writing workflow, not after it.
+
+Search performance is not a plugin you add at the end. It is shaped by the brief, the structure, the intent, the evidence, the internal links, the metadata and the quality of the finished page.
+
+> Word Presto helps writers see those signals while the work is still being shaped, so SEO becomes part of the editorial process rather than a last-minute checklist.
+
+- Match the page to search intent before drafting
+- Structure headings and sections around the job the page needs to do
+- Surface weak sections, missing support and evidence gaps
+- Prepare titles, descriptions, slugs and CMS fields before handoff
+- Keep human judgement in control of what moves forward
+
 ## Use Word Presto with the stack you have, or the one you are building next.
 
 One content engine. Three ways the finished work leaves the desk.
@@ -59,7 +71,7 @@ One content engine. Three ways the finished work leaves the desk.
 
 ## Specialist Workers for each stage of the content workflow.
 
-Each Worker is a specialist role with clear inputs, outputs and limits. Browse the team and open any Worker to see where they sit in the workflow.
+Specialist Workers support each stage of the content workflow, from strategy and structure to drafting, proofing, SEO review, evidence, approval and CMS handoff. SEO is part of the workflow, not a separate mode.
 
 ## Faster content work, without removing human judgement.
 
@@ -72,10 +84,10 @@ Workers plan, draft, check and suggest. People still approve what moves forward 
 
 ## Built for the people responsible for content outcomes.
 
-- Copywriters: Better briefs, clearer review notes and a structured way to improve drafts without losing your voice.
+- Copywriters: Better briefs, clearer review notes, SEO-aware structure and a working canvas that helps improve drafts without flattening your voice.
 - Business owners: A clear view of what content is being made, why it matters and whether it is ready to publish.
-- Website teams: A clearer handoff from draft to page, with the purpose, structure and review notes already attached.
-- Agencies: A repeatable content process that helps teams move faster while keeping review and approval visible.
+- Website teams: A clearer path from draft to page, with structure, metadata, internal link notes, evidence gaps and CMS handoff already attached.
+- Agencies: A repeatable content process for client work, where writers, SEO reviewers and approvers can work from the same brief, canvas and approval trail.
 
 ## Give your content workflow somewhere better to live.
 

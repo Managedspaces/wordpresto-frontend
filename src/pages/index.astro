@@ -38,9 +38,9 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
 
       <div class="hero-copy">
         <div class="eyebrow eyebrow--strategy">the content engine behind publishing</div>
-        <h1 class="hero-h1">Word Presto is the <span class="agentic-mark">agentic</span> content engine behind better publishing workflows.</h1>
-        <p class="hero-body">{metaDescription}</p>
-        <p class="hero-audience">Built for copywriters, business owners, website teams and agencies who need structure, quality control and momentum without handing judgement to a black box.</p>
+        <h1 class="hero-h1">Word Presto is the <span class="agentic-mark">agentic</span> content engine for writers, editors and publishing teams.</h1>
+        <p class="hero-body">Plan, brief, write, review, improve and prepare content for search, readers and CMS handoff, without handing judgement to a black box.</p>
+        <p class="hero-audience">Built for writers, editors, website teams and agencies who want structure, search-readiness and quality control without losing their own judgement.</p>
         <div class="hero-ctas">
           <a href="/waitlist" class="btn btn--primary btn--lg">
             Join the waitlist
@@ -284,6 +284,33 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     </div>
   </section>
 
+  <!-- ===================== 4b. EMBEDDED SEO ===================== -->
+  <section id="seo" class="section section--border-top">
+    <div class="container seo-grid">
+      <div class="seo-intro">
+        <div class="eyebrow eyebrow--strategy">Search, built in</div>
+        <h2 class="section-h2">SEO belongs in the writing workflow, not after it.</h2>
+        <p class="section-body">Search performance is not a plugin you add at the end. It is shaped by the brief, the structure, the intent, the evidence, the internal links, the metadata and the quality of the finished page.</p>
+        <p class="section-note">Word Presto helps writers see those signals while the work is still being shaped, so SEO becomes part of the editorial process rather than a last-minute checklist.</p>
+      </div>
+
+      <ul class="seo-points" role="list">
+        {[
+          'Match the page to search intent before drafting',
+          'Structure headings and sections around the job the page needs to do',
+          'Surface weak sections, missing support and evidence gaps',
+          'Prepare titles, descriptions, slugs and CMS fields before handoff',
+          'Keep human judgement in control of what moves forward',
+        ].map((point) => (
+          <li class="seo-point">
+            <span class="seo-point-dot" aria-hidden="true"></span>
+            <span>{point}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
   <!-- ===================== 5. VOICE & PERSONA ===================== -->
   <section id="voice" class="section section--border-top">
     <div class="container voice-grid">
@@ -419,7 +446,7 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
       <div class="section-intro section-intro--wide">
         <div class="eyebrow eyebrow--strategy">The team</div>
         <h2 class="section-h2">Specialist Workers for each stage of the content workflow.</h2>
-        <p class="section-body">Each Worker is a specialist role with clear inputs, outputs and limits — covering planning, briefing, drafting, reviewing, improving, approving, compliance and handoff.</p>
+        <p class="section-body">Specialist Workers support each stage of the content workflow, from strategy and structure to drafting, proofing, SEO review, evidence, approval and CMS handoff. SEO is part of the workflow, not a separate mode.</p>
       </div>
 
       <p class="worker-control-line">WordPresto brings in the right specialists for the stage you are at, so each piece of content gets the support it actually needs.</p>
@@ -559,10 +586,10 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
 
       <div class="audience-grid">
         {[
-          { group: 'Copywriters', body: 'Better briefs, clearer review notes and a structured way to improve drafts without losing your voice.' },
+          { group: 'Copywriters', body: 'Better briefs, clearer review notes, SEO-aware structure and a working canvas that helps improve drafts without flattening your voice.' },
           { group: 'Business owners', body: 'A clear view of what content is being made, why it matters and whether it is ready to publish.' },
-          { group: 'Website teams', body: 'A clearer handoff from draft to page, with the purpose, structure and review notes already attached.' },
-          { group: 'Agencies', body: 'A repeatable content process that helps teams move faster while keeping review and approval visible.' },
+          { group: 'Website teams', body: 'A clearer path from draft to page, with structure, metadata, internal link notes, evidence gaps and CMS handoff already attached.' },
+          { group: 'Agencies', body: 'A repeatable content process for client work, where writers, SEO reviewers and approvers can work from the same brief, canvas and approval trail.' },
         ].map(({ group, body }) => (
           <div class="audience-card">
             <div class="audience-for">FOR</div>
@@ -1377,6 +1404,41 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     background: var(--wp-paper);
   }
 
+  /* ===== EMBEDDED SEO ===== */
+  .seo-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 56px;
+    align-items: center;
+  }
+  .seo-intro { max-width: 560px; }
+  .seo-points {
+    list-style: none;
+    margin: 0;
+    padding: 26px 28px;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 16px 30px -18px rgba(17,19,24,0.16);
+  }
+  .seo-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 15px 0;
+    font-size: var(--wp-text-lg);
+    line-height: 1.5;
+    color: var(--wp-ink);
+  }
+  .seo-point + .seo-point { border-top: 1px solid var(--wp-line); }
+  .seo-point-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    background: var(--wp-signal);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
   /* ===== USE CASES ===== */
   .destinations-grid {
     display: grid;
@@ -2017,6 +2079,10 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
 
     /* --- Destinations --- */
     .destinations-grid { grid-template-columns: 1fr; }
+
+    /* --- Embedded SEO --- */
+    .seo-grid { grid-template-columns: 1fr; gap: 32px; }
+    .seo-intro { max-width: none; }
 
     /* --- Voice --- */
     .voice-grid { grid-template-columns: 1fr; gap: 40px; }
