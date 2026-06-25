@@ -4,23 +4,29 @@
 
 This is the WordPresto Astro frontend marketing site.
 
-WordPresto is the content engine behind better publishing workflows. The site should present WordPresto as a human, tactile, paper-and-ink content workflow system for copywriters, business owners, website teams and agencies.
+WordPresto is a writer-centred, agentic content workflow system. It puts the writer at the centre, then surrounds the writing process with SEO, structure, evidence, review, approval and CMS preparation. The site should present it as a human, tactile, paper-and-ink content workflow for writers, editors, copywriters, business owners, website teams and agencies.
 
-The front-end should not feel like an AI SaaS dashboard, chatbot product or generic SEO tool.
+The front-end should not feel like an AI SaaS dashboard, chatbot product, generic SEO automation tool, Yoast/RankMath-style checklist, Surfer/Clearscope clone, AI content generator or black-box publishing tool.
+
+### Brand wordmark
+
+Visible body copy uses **Word Presto** (two words) to match the existing rendered site. The single-token **WordPresto** is used in machine-readable contexts (`llms.txt`, structured data, the domain). When writing visible copy, match the surrounding components — they use "Word Presto". Do not mix the two within visible copy.
 
 ## Core Positioning
 
 Homepage visible positioning:
 
-> WordPresto is the content engine behind better publishing workflows.
+> Word Presto is the agentic content engine for writers, editors and publishing teams.
 
 Supporting line:
 
-> Plan, brief, write, review and improve content before it reaches your CMS, website or client.
+> Plan, brief, write, review, improve and prepare content for search, readers and CMS handoff, without handing judgement to a black box.
 
-Keep the homepage focused on content workflow, human review, publishing preparation and useful handoff.
+Core idea: the writer is at the centre; SEO, structure, evidence, review, approval and CMS preparation are wrapped around the writing process, not bolted on at the end.
 
-Do not lead with SEO, technical audits, metadata, accessibility, schema, conversion alignment or internal Worker machinery on the homepage.
+Keep the homepage writer-led, workflow-led and human-review-led. SEO is **embedded** in the workflow and may be visible, but it is one signal among many — never the main frame.
+
+Do not reposition the homepage as a generic SEO automation tool, a checklist product, a Surfer/Clearscope clone, an AI content generator or a black-box publishing tool. The brand strapline "The content engine behind better publishing workflows" remains valid in footer/brand contexts, but the hero leads with writers.
 
 ## Visual Direction
 
@@ -114,9 +120,9 @@ Do not automatically reuse the visible H1 as the browser title unless deliberate
 Example:
 
 ```ts
-seoTitle: "Content workflow engine for publishing teams | WordPresto",
-pageTitle: "WordPresto is the content engine behind better publishing workflows.",
-metaDescription: "Plan, brief, write, review and improve content before it reaches your CMS, website or client."
+seoTitle: "Content workflow engine for writers and publishing teams | Word Presto",
+pageTitle: "Word Presto is the agentic content engine for writers, editors and publishing teams.",
+metaDescription: "Plan, brief, write, review, improve and prepare content for search, readers and CMS handoff."
 ```
 
 Use `astro-seo` for metadata.
@@ -134,9 +140,13 @@ Include:
 
 Each page should have a generated Markdown version.
 
-The Astro page and Markdown mirror must come from the same source of truth.
+The Markdown mirror is generated from the shared data file, not from the `.astro` page:
 
-Do not manually duplicate copy in `.astro` and `.md`.
+* `src/data/pages.ts` is the source of truth for the homepage Markdown mirror.
+* `scripts/generate-page-markdown.ts` renders the mirrors; it runs via `prebuild`.
+* `src/data/workerProfiles.ts` is the source of truth for Worker pages.
+
+Important gotcha: `src/pages/index.astro` currently holds its visible copy **inline** (it only imports `pageTitle`, `seoTitle` and `metaDescription` from `pages.ts`). So homepage copy lives in two places. When you change homepage copy you must update **both** `src/pages/index.astro` (visible) and `src/data/pages.ts` (mirror source), then regenerate with `npm run generate:markdown` so `public/index.md`, `public/pages/index.md` and `public/llms-full.txt` stay in sync. Do not hand-edit the generated `.md` files.
 
 Generate:
 
@@ -173,19 +183,25 @@ Use plain, human workflow language:
 * publishing preparation
 * human review
 
-Avoid visible homepage language:
+SEO is now part of the homepage story, framed as embedded in the workflow. The following are allowed in visible homepage copy when described as part of planning, writing, review and handoff (not as a standalone tool):
 
 * SEO
+* search intent
 * metadata
+* titles, descriptions, slugs, CMS fields
+* internal links
+* evidence gaps
+
+Still avoid as visible homepage language (these stay deeper in the product):
+
 * schema
 * accessibility
 * conversion alignment
 * technical audit
-* capabilities
 * cannibalisation
-* internal linking
+* "automated SEO auditing" / "fully automated SEO" as a primary frame
 
-Those concepts can exist deeper in the product, but they should not be the homepage front door.
+Frame SEO as a signal the writer sees while shaping the work, never as a bolt-on module or a checklist product.
 
 ## Waitlist
 
@@ -229,9 +245,18 @@ Avoid:
 * “10x content”
 * “revolutionary”
 * “game-changing”
+* “best”
 * “autopilot publishing”
 * “write blogs in seconds”
+* “scale content without headcount”
+* “AI writes for you”
+* “set and forget”
+* “one-click publishing”
+* “guaranteed rankings”
 * overexplaining AI
+* em dashes (use commas, full stops or "without ..." phrasing instead)
+
+Avoid "AI-powered" phrasing unless it is genuinely necessary.
 
 Do not overuse the product name in body copy.
 
@@ -268,8 +293,11 @@ Homepage Worker cards should use plain role language, such as:
 * Brief Writer
 * Draft Reviewer
 * Section Editor
+* SEO Reviewer
 * Approval Reporter
 * Publishing Preparer
+
+SEO review is an explicit stage in the workflow, not a separate mode. Present it as one specialist role among many, sitting alongside drafting, proofing, evidence, approval and CMS handoff.
 
 Deeper Worker pages can introduce more specific worker roles.
 
@@ -282,7 +310,10 @@ Before reporting completion, verify:
 * homepage is readable on mobile
 * waitlist form works on mobile
 * CTAs route to `/waitlist`
-* visible homepage copy does not expose technical/SEO/internal capability language
+* homepage hero leads with writers and editors, not with SEO
+* SEO is framed as embedded in the workflow, never as a standalone tool or checklist
+* visible homepage copy does not expose deeper-only language (schema, accessibility, conversion alignment, technical audit, cannibalisation)
+* no em dashes in homepage copy
 * `<title>` and visible H1 are separate where required
 * meta description exists
 * OG image exists
