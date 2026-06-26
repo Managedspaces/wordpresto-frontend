@@ -1,0 +1,148 @@
+/**
+ * Single source of truth for WordPresto's top-level routes.
+ *
+ * Everything except the data-driven Worker profile pages lives here. The
+ * Worker profiles come from `workerProfiles` and are appended by each sitemap,
+ * so adding a Worker updates both sitemaps automatically.
+ *
+ * Both sitemaps consume this list, so a page can never be present in one and
+ * missing from the other:
+ *   - XML sitemap:  src/pages/sitemap.xml.ts     (entries where `inXml` is true)
+ *   - HTML sitemap: src/pages/sitemap/index.astro (grouped by `group`)
+ *
+ * When you add a public page, add it here once.
+ *
+ * Auth-gated routes (/admin/*) and API endpoints (/api/*) are intentionally
+ * omitted: they should not be advertised to crawlers or agents.
+ */
+
+export type RouteGroup = 'main' | 'machine';
+
+export type ChangeFreq =
+  | 'always'
+  | 'hourly'
+  | 'daily'
+  | 'weekly'
+  | 'monthly'
+  | 'yearly'
+  | 'never';
+
+export interface SiteRoute {
+  /** Path relative to the site root, with a trailing slash for pages. */
+  path: string;
+  /** Human-readable label for the visible HTML sitemap. */
+  label: string;
+  /** Short description for the visible HTML sitemap. */
+  description: string;
+  /** Which section of the visible HTML sitemap this route belongs to. */
+  group: RouteGroup;
+  /** Whether to emit a <url> entry in sitemap.xml. */
+  inXml: boolean;
+  /** XML <changefreq>. Only used when `inXml` is true. */
+  changefreq?: ChangeFreq;
+  /** XML <priority>. Only used when `inXml` is true. */
+  priority?: number;
+  /** Markdown mirror URL, when the page has one. */
+  markdown?: string;
+}
+
+export const siteRoutes: SiteRoute[] = [
+  {
+    path: '/',
+    label: 'Home',
+    description: 'The content engine behind better publishing workflows.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'weekly',
+    priority: 1.0,
+    markdown: '/index.md',
+  },
+  {
+    path: '/workers/',
+    label: 'Workers',
+    description: 'All specialist Workers in the content workflow.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'weekly',
+    priority: 0.9,
+    markdown: '/workers/index.md',
+  },
+  {
+    path: '/workers/seo/',
+    label: 'SEO Workers',
+    description: 'The SEO Workers directory: search, structure, schema, trust and evidence.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'weekly',
+    priority: 0.9,
+    markdown: '/workers/seo/index.md',
+  },
+  {
+    path: '/workflow-demo/',
+    label: 'Workflow demo',
+    description: 'See a full content workflow run end to end.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'monthly',
+    priority: 0.8,
+    markdown: '/workflow-demo/index.md',
+  },
+  {
+    path: '/waitlist/',
+    label: 'Join the waitlist',
+    description: 'Early access application.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'monthly',
+    priority: 0.6,
+  },
+  {
+    path: '/sitemap/',
+    label: 'Site map',
+    description: 'Every page on wordpresto.com, organised by section.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'monthly',
+    priority: 0.3,
+    markdown: '/sitemap.md',
+  },
+
+  // Machine-readable resources: surfaced on the HTML sitemap, not in sitemap.xml.
+  {
+    path: '/sitemap.xml',
+    label: 'sitemap.xml',
+    description: 'XML sitemap for search engines. Updates automatically when pages are added.',
+    group: 'machine',
+    inXml: false,
+  },
+  {
+    path: '/sitemap.md',
+    label: 'sitemap.md',
+    description: 'Human and agent-readable Markdown route index.',
+    group: 'machine',
+    inXml: false,
+  },
+  {
+    path: '/llms.txt',
+    label: 'llms.txt',
+    description: 'Site index for large language models.',
+    group: 'machine',
+    inXml: false,
+  },
+  {
+    path: '/llms-full.txt',
+    label: 'llms-full.txt',
+    description: 'Consolidated full Markdown context for agents.',
+    group: 'machine',
+    inXml: false,
+  },
+];
+
+/** Routes that should appear in sitemap.xml. */
+export const xmlRoutes = siteRoutes.filter((r) => r.inXml);
+
+/** Primary pages, for the top of the visible HTML sitemap. */
+export const mainRoutes = siteRoutes.filter((r) => r.group === 'main');
+
+/** Machine-readable resources, for the foot of the visible HTML sitemap. */
+export const machineRoutes = siteRoutes.filter((r) => r.group === 'machine');
