@@ -16,6 +16,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { homePage } from '../src/data/pages';
 import { workerProfiles } from '../src/data/workerProfiles';
+import { workersDirectory, seoWorkersDirectory, workflowDemo } from '../src/data/staticPages';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -89,15 +90,15 @@ function renderHomepageMarkdown() {
 function renderWorkflowDemoMarkdown() {
   return [
     `---`,
-    `title: "WordPresto workflow demo | Editorial and search intelligence in one workflow"`,
-    `description: "A senior writer's rough notes move through WordPresto from brief, structure and voice profile to review, metadata and CMS handoff."`,
+    `title: "${workflowDemo.seoTitle.replace(/"/g, '\\"')}"`,
+    `description: "${workflowDemo.metaDescription.replace(/"/g, '\\"')}"`,
     `canonical: "${SITE_URL}/workflow-demo/"`,
     `focus: "Workflow demo"`,
     `---`,
     ``,
-    `# See rough thinking become review-ready`,
+    `# ${workflowDemo.h1}`,
     ``,
-    `A senior writer's messy notes move through WordPresto. Brief, voice profile, structure, search intelligence, review and handoff work together without handing judgement to a machine.`,
+    workflowDemo.intro,
     ``,
     `## What the demo shows`,
     ``,
@@ -208,14 +209,14 @@ const seoProfiles = workerProfiles.filter((w) => w.team === 'seo');
 function renderWorkersIndexMarkdown() {
   const lines: string[] = [
     `---`,
-    `title: "Content workflow Workers | WordPresto"`,
-    `description: "Meet the specialist Workers in the WordPresto content workflow: from content analysis and brief building to voice review, approval reporting and CMS handoff."`,
+    `title: "${workersDirectory.seoTitle.replace(/"/g, '\\"')}"`,
+    `description: "${workersDirectory.metaDescription.replace(/"/g, '\\"')}"`,
     `canonical: "${SITE_URL}/workers/"`,
     `---`,
     ``,
-    `# Specialist Workers for every stage of the content workflow.`,
+    `# ${workersDirectory.h1}`,
     ``,
-    `WordPresto brings in the right specialists for the stage you are at, so each piece of content gets the support it actually needs.`,
+    workersDirectory.intro,
     ``,
     `See also the [SEO Workers directory](${SITE_URL}/workers/seo/).`,
     ``,
@@ -250,14 +251,14 @@ function renderWorkersIndexMarkdown() {
 function renderSeoWorkersIndexMarkdown() {
   const lines: string[] = [
     `---`,
-    `title: "SEO Workers for search, structure and authority | WordPresto"`,
-    `description: "Meet the SEO Workers in the WordPresto workflow: SEO title and metadata, search snippets, schema, technical health, trust and author credibility, and evidence gaps. Review-led and human-approved."`,
+    `title: "${seoWorkersDirectory.seoTitle.replace(/"/g, '\\"')}"`,
+    `description: "${seoWorkersDirectory.metaDescription.replace(/"/g, '\\"')}"`,
     `canonical: "${SITE_URL}/workers/seo/"`,
     `---`,
     ``,
-    `# SEO Workers for search, structure and authority.`,
+    `# ${seoWorkersDirectory.h1}`,
     ``,
-    `The SEO Workers help writers and editorial teams make content easier to understand, structure, retrieve and approve. They review metadata, search snippets, schema, technical health, trust and evidence while the writer is still shaping the work. Every output is for human review.`,
+    seoWorkersDirectory.intro,
     ``,
     `See also the [Content Workers directory](${SITE_URL}/workers/).`,
     ``,

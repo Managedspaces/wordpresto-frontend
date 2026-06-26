@@ -1,13 +1,13 @@
 ---
-title: "WordPresto workflow demo | Editorial and search intelligence in one workflow"
-description: "A senior writer's rough notes move through WordPresto from brief, structure and voice profile to review, metadata and CMS handoff."
+title: "WordPresto workflow demo, editorial and search intelligence in one workflow"
+description: "A senior writer's rough notes move through WordPresto. Brief, structure, voice profile, review, metadata and CMS handoff, without handing judgement to a machine."
 canonical: "https://wordpresto.com/workflow-demo/"
 focus: "Workflow demo"
 ---
 
-# See rough thinking become review-ready
+# See rough thinking become review-ready.
 
-A senior writer's messy notes move through WordPresto. Brief, voice profile, structure, search intelligence, review and handoff work together without handing judgement to a machine.
+A senior writer's messy notes, on why generic SaaS tools fail growing SMEs, move through WordPresto. Brief, voice profile, structure, search intelligence, review and handoff.
 
 ## What the demo shows
 

@@ -1,15 +1,13 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { seoWorkers } from '@/data/workers';
-
-const seoTitle = 'SEO Workers for search, structure and authority | WordPresto';
-const metaDescription = 'Meet the SEO Workers in the WordPresto workflow, covering SEO title and metadata, search snippets, schema, technical health, trust and author credibility, and evidence gaps. Review-led and human-approved.';
+import { seoWorkersDirectory as meta } from '@/data/staticPages';
 ---
 
 <BaseLayout
-  pageTitle="SEO Workers for search, structure and authority."
-  seoTitle={seoTitle}
-  description={metaDescription}
+  pageTitle={meta.h1}
+  seoTitle={meta.seoTitle}
+  description={meta.metaDescription}
   canonical="https://wordpresto.com/workers/seo/"
 >
 
@@ -43,8 +41,8 @@ const metaDescription = 'Meet the SEO Workers in the WordPresto workflow, coveri
       </nav>
 
       <div class="eyebrow eyebrow--seo">Search &amp; SEO</div>
-      <h1 class="page-h1">SEO Workers for search, structure and authority.</h1>
-      <p class="page-intro">The SEO Workers help writers and editorial teams make content easier to understand, structure, retrieve and approve. They review metadata, search snippets, schema, technical health, trust and evidence, and surface what matters while the writer is still shaping the work. Every output is for human review.</p>
+      <h1 class="page-h1">{meta.h1}</h1>
+      <p class="page-intro">{meta.intro}</p>
       <div class="worker-directory-header">
         <span>SEO WORKER DIRECTORY</span>
         <span>{seoWorkers.length} SPECIALIST ROLES · SEARCH, EVIDENCE &amp; AUTHORITY</span>

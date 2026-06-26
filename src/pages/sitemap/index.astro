@@ -1,16 +1,14 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { workerProfiles } from '@/data/workerProfiles';
+import { mainRoutes, machineRoutes } from '@/data/siteRoutes';
 
 const seoTitle = 'Site map | WordPresto';
 const metaDescription = 'A complete map of the WordPresto site — main pages, Workers and resources.';
 
-const mainPages = [
-  { href: '/', label: 'Home', desc: 'The content engine behind better publishing workflows.' },
-  { href: '/workers/', label: 'Workers', desc: 'All specialist Workers in the content workflow.' },
-  { href: '/waitlist/', label: 'Join the waitlist', desc: 'Early access application.' },
-  { href: '/workflow-demo/', label: 'Workflow demo', desc: 'See a full content workflow run end to end.' },
-];
+// Worker profiles are split to mirror the two directory pages they live under.
+const contentWorkers = workerProfiles.filter((w) => w.team !== 'seo');
+const seoWorkers = workerProfiles.filter((w) => w.team === 'seo');
 ---
 
 <BaseLayout
@@ -52,24 +50,41 @@ const mainPages = [
       <section class="sitemap-section">
         <h2 class="section-heading">Main pages</h2>
         <ul class="sitemap-list">
-          {mainPages.map(p => (
+          {mainRoutes.map(p => (
             <li class="sitemap-item">
-              <a href={p.href} class="sitemap-link">
+              <a href={p.path} class="sitemap-link">
                 <span class="sitemap-label">{p.label}</span>
-                <span class="sitemap-url">{p.href}</span>
+                <span class="sitemap-url">{p.path}</span>
               </a>
-              <p class="sitemap-desc">{p.desc}</p>
+              <p class="sitemap-desc">{p.description}</p>
             </li>
           ))}
         </ul>
       </section>
 
-      <!-- Workers -->
+      <!-- Content Workers -->
       <section class="sitemap-section">
-        <h2 class="section-heading">Workers</h2>
+        <h2 class="section-heading">Content Workers</h2>
         <p class="section-intro">Specialist Workers for every stage of the content workflow.</p>
         <ul class="sitemap-list sitemap-list--workers">
-          {workerProfiles.map(w => (
+          {contentWorkers.map(w => (
+            <li class="sitemap-item">
+              <a href={`/workers/${w.slug}/`} class="sitemap-link">
+                <span class="sitemap-label">{w.role}</span>
+                <span class="sitemap-url">/workers/{w.slug}/</span>
+              </a>
+              <p class="sitemap-desc">{w.name} &middot; {w.department}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- SEO Workers -->
+      <section class="sitemap-section">
+        <h2 class="section-heading">SEO Workers</h2>
+        <p class="section-intro">SEO Workers for search, structure and authority. See the <a href="/workers/seo/" class="sitemap-inline-link">SEO Workers directory</a>.</p>
+        <ul class="sitemap-list sitemap-list--workers">
+          {seoWorkers.map(w => (
             <li class="sitemap-item">
               <a href={`/workers/${w.slug}/`} class="sitemap-link">
                 <span class="sitemap-label">{w.role}</span>
@@ -85,20 +100,15 @@ const mainPages = [
       <section class="sitemap-section sitemap-section--minor">
         <h2 class="section-heading">Machine-readable</h2>
         <ul class="sitemap-list">
-          <li class="sitemap-item">
-            <a href="/sitemap.xml" class="sitemap-link">
-              <span class="sitemap-label">sitemap.xml</span>
-              <span class="sitemap-url">/sitemap.xml</span>
-            </a>
-            <p class="sitemap-desc">XML sitemap for search engines. Updates automatically when new Workers are added.</p>
-          </li>
-          <li class="sitemap-item">
-            <a href="/llms.txt" class="sitemap-link">
-              <span class="sitemap-label">llms.txt</span>
-              <span class="sitemap-url">/llms.txt</span>
-            </a>
-            <p class="sitemap-desc">Site index for large language models.</p>
-          </li>
+          {machineRoutes.map(p => (
+            <li class="sitemap-item">
+              <a href={p.path} class="sitemap-link">
+                <span class="sitemap-label">{p.label}</span>
+                <span class="sitemap-url">{p.path}</span>
+              </a>
+              <p class="sitemap-desc">{p.description}</p>
+            </li>
+          ))}
         </ul>
       </section>
 
@@ -217,6 +227,11 @@ const mainPages = [
     font-size: var(--wp-text-base);
     color: var(--wp-text-secondary);
     margin: 0 0 24px;
+  }
+  .sitemap-inline-link {
+    color: var(--wp-ink);
+    font-weight: 600;
+    text-decoration: underline;
   }
 
   /* ===== LIST ===== */

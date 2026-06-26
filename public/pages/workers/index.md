@@ -1,6 +1,6 @@
 ---
 title: "Content workflow Workers | WordPresto"
-description: "Meet the specialist Workers in the WordPresto content workflow: from content analysis and brief building to voice review, approval reporting and CMS handoff."
+description: "Meet the specialist Workers in the WordPresto content workflow, from content analysis and brief building to voice review, approval reporting and CMS handoff."
 canonical: "https://wordpresto.com/workers/"
 ---
 

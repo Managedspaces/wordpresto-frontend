@@ -142,9 +142,9 @@ Plan, produce, review and improve content before it reaches the CMS, website or 
 Canonical: https://wordpresto.com/workflow-demo/
 Markdown: https://wordpresto.com/workflow-demo/index.md
 
-# See rough thinking become review-ready
+# See rough thinking become review-ready.
 
-A senior writer's messy notes move through WordPresto. Brief, voice profile, structure, search intelligence, review and handoff work together without handing judgement to a machine.
+A senior writer's messy notes, on why generic SaaS tools fail growing SMEs, move through WordPresto. Brief, voice profile, structure, search intelligence, review and handoff.
 
 ## What the demo shows
 
@@ -334,7 +334,7 @@ Markdown: https://wordpresto.com/workers/seo/index.md
 
 # SEO Workers for search, structure and authority.
 
-The SEO Workers help writers and editorial teams make content easier to understand, structure, retrieve and approve. They review metadata, search snippets, schema, technical health, trust and evidence while the writer is still shaping the work. Every output is for human review.
+The SEO Workers help writers and editorial teams make content easier to understand, structure, retrieve and approve. They review metadata, search snippets, schema, technical health, trust and evidence, and surface what matters while the writer is still shaping the work. Every output is for human review.
 
 See also the [Content Workers directory](https://wordpresto.com/workers/).
 

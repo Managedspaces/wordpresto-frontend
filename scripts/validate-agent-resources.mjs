@@ -19,6 +19,7 @@ const requiredFiles = [
   'index.md',
   'workflow-demo/index.md',
   'workers/index.md',
+  'workers/seo/index.md',
   // Legacy mirrors (read by generate-llms.mjs)
   'pages/index.md',
   'pages/workflow-demo.md',
