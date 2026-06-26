@@ -200,6 +200,11 @@ function renderWorkerMarkdown(w: (typeof workerProfiles)[number]) {
 /* ------------------------------------------------------------------ */
 /*  Render workers index as Markdown                                    */
 /* ------------------------------------------------------------------ */
+// Content Workers are every profile that is not on the SEO team. SEO Workers
+// are listed separately so each directory mirror matches its HTML page.
+const contentProfiles = workerProfiles.filter((w) => w.team !== 'seo');
+const seoProfiles = workerProfiles.filter((w) => w.team === 'seo');
+
 function renderWorkersIndexMarkdown() {
   const lines: string[] = [
     `---`,
@@ -212,13 +217,57 @@ function renderWorkersIndexMarkdown() {
     ``,
     `WordPresto brings in the right specialists for the stage you are at, so each piece of content gets the support it actually needs.`,
     ``,
+    `See also the [SEO Workers directory](${SITE_URL}/workers/seo/).`,
+    ``,
     `---`,
     ``,
-    `## Worker directory (${workerProfiles.length} specialist roles)`,
+    `## Content Worker directory (${contentProfiles.length} specialist roles)`,
     ``,
   ];
 
-  for (const w of workerProfiles) {
+  for (const w of contentProfiles) {
+    const output = w.heroTagPills.output.replace('Output · ', '');
+    lines.push(
+      `### ${w.name} — ${w.role}`,
+      ``,
+      `- Stage: ${w.stage}`,
+      `- Output: ${output}`,
+      `- URL: ${SITE_URL}/workers/${w.slug}/`,
+      `- Markdown: ${SITE_URL}/workers/${w.slug}/index.md`,
+      `- Legacy Markdown: ${SITE_URL}/pages/workers/${w.slug}.md`,
+      ``,
+      w.metaDescription,
+      ``,
+    );
+  }
+
+  return lines.join('\n');
+}
+
+/* ------------------------------------------------------------------ */
+/*  Render SEO workers index as Markdown                                */
+/* ------------------------------------------------------------------ */
+function renderSeoWorkersIndexMarkdown() {
+  const lines: string[] = [
+    `---`,
+    `title: "SEO Workers for search, structure and authority | WordPresto"`,
+    `description: "Meet the SEO Workers in the WordPresto workflow: SEO title and metadata, search snippets, schema, technical health, trust and author credibility, and evidence gaps. Review-led and human-approved."`,
+    `canonical: "${SITE_URL}/workers/seo/"`,
+    `---`,
+    ``,
+    `# SEO Workers for search, structure and authority.`,
+    ``,
+    `The SEO Workers help writers and editorial teams make content easier to understand, structure, retrieve and approve. They review metadata, search snippets, schema, technical health, trust and evidence while the writer is still shaping the work. Every output is for human review.`,
+    ``,
+    `See also the [Content Workers directory](${SITE_URL}/workers/).`,
+    ``,
+    `---`,
+    ``,
+    `## SEO Worker directory (${seoProfiles.length} specialist roles)`,
+    ``,
+  ];
+
+  for (const w of seoProfiles) {
     const output = w.heroTagPills.output.replace('Output · ', '');
     lines.push(
       `### ${w.name} — ${w.role}`,
@@ -251,10 +300,16 @@ const workflowDemoMd = renderWorkflowDemoMarkdown();
 writeMirror('pages/workflow-demo.md', workflowDemoMd);
 writeMirror('workflow-demo/index.md', workflowDemoMd);
 
-// Workers index
+// Workers index (content)
 const workersIndexMd = renderWorkersIndexMarkdown();
 writeMirror('pages/workers/index.md', workersIndexMd);
 writeMirror('workers/index.md', workersIndexMd);
+
+// SEO workers index. Only the nested URL mirror is written: a flat
+// pages/workers/seo.md would be picked up by the worker scan in generate-llms
+// and mistaken for a Worker profile.
+const seoWorkersIndexMd = renderSeoWorkersIndexMarkdown();
+writeMirror('workers/seo/index.md', seoWorkersIndexMd);
 
 // Worker profiles
 for (const w of workerProfiles) {

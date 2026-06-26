@@ -7,6 +7,7 @@ This file consolidates the main public WordPresto marketing and Worker content f
 - Home: https://wordpresto.com/index.md
 - Workflow demo: https://wordpresto.com/workflow-demo/index.md
 - Workers directory: https://wordpresto.com/workers/index.md
+- SEO Workers directory: https://wordpresto.com/workers/seo/index.md
 - Make approval easier to trust.: https://wordpresto.com/workers/approval-report/index.md
 - Check whether the draft actually follows the brief.: https://wordpresto.com/workers/brief-draft-alignment/index.md
 - Prepare approved content for a cleaner handoff.: https://wordpresto.com/workers/cms-handoff/index.md
@@ -103,6 +104,10 @@ One content engine. Three ways the finished work leaves the desk.
 
 Specialist Workers support each stage of the content workflow, from strategy and structure to drafting, proofing, SEO review, evidence, approval and CMS handoff. SEO is part of the workflow, not a separate mode.
 
+## SEO Workers, working inside the writing.
+
+A second team of specialists helps content be understood, structured, retrieved and approved. They review titles and metadata, search snippets, schema, technical signals, trust and evidence while the writer is still shaping the work. Every suggestion goes through human review.
+
 ## Faster content work, without removing human judgement.
 
 Workers plan, draft, check and suggest. People still approve what moves forward — nothing reaches the CMS without human sign-off. This is review-led publishing, not blind automation.
@@ -174,9 +179,11 @@ Markdown: https://wordpresto.com/workers/index.md
 
 WordPresto brings in the right specialists for the stage you are at, so each piece of content gets the support it actually needs.
 
+See also the [SEO Workers directory](https://wordpresto.com/workers/seo/).
+
 ---
 
-## Worker directory (20 specialist roles)
+## Content Worker directory (14 specialist roles)
 
 ### Helena — Voice & Style Worker
 
@@ -317,6 +324,23 @@ Iris produces a structured brief for refreshing existing content: what to update
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-distribution-brief.md
 
 Nina creates a distribution brief that maps where approved content should go and how it should be adapted for each channel.
+
+---
+
+# SEO Workers directory
+
+Canonical: https://wordpresto.com/workers/seo/
+Markdown: https://wordpresto.com/workers/seo/index.md
+
+# SEO Workers for search, structure and authority.
+
+The SEO Workers help writers and editorial teams make content easier to understand, structure, retrieve and approve. They review metadata, search snippets, schema, technical health, trust and evidence while the writer is still shaping the work. Every output is for human review.
+
+See also the [Content Workers directory](https://wordpresto.com/workers/).
+
+---
+
+## SEO Worker directory (6 specialist roles)
 
 ### Nadia — SEO Title & Metadata Worker
 

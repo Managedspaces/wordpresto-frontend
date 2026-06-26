@@ -18,7 +18,8 @@ The product is review-led. Workers assist with structured content work, but huma
 
 - [Home](https://wordpresto.com/index.md): Overview of WordPresto, the content engine behind better publishing workflows.
 - [Workflow demo](https://wordpresto.com/workflow-demo/index.md): Step-by-step demo showing rough thinking becoming review-ready content.
-- [Workers directory](https://wordpresto.com/workers/index.md): Directory of the specialist Workers used in the WordPresto content workflow.
+- [Workers directory](https://wordpresto.com/workers/index.md): Directory of the content Workers used in the WordPresto content workflow.
+- [SEO Workers directory](https://wordpresto.com/workers/seo/index.md): Directory of the SEO Workers used in the WordPresto workflow.
 
 ## Worker profiles
 

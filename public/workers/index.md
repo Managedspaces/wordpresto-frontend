@@ -8,9 +8,11 @@ canonical: "https://wordpresto.com/workers/"
 
 WordPresto brings in the right specialists for the stage you are at, so each piece of content gets the support it actually needs.
 
+See also the [SEO Workers directory](https://wordpresto.com/workers/seo/).
+
 ---
 
-## Worker directory (20 specialist roles)
+## Content Worker directory (14 specialist roles)
 
 ### Helena — Voice & Style Worker
 
@@ -151,63 +153,3 @@ Iris produces a structured brief for refreshing existing content: what to update
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-distribution-brief.md
 
 Nina creates a distribution brief that maps where approved content should go and how it should be adapted for each channel.
-
-### Nadia — SEO Title & Metadata Worker
-
-- Stage: Metadata
-- Output: Metadata drafts
-- URL: https://wordpresto.com/workers/seo-metadata/
-- Markdown: https://wordpresto.com/workers/seo-metadata/index.md
-- Legacy Markdown: https://wordpresto.com/pages/workers/seo-metadata.md
-
-Nadia reviews the SEO title, meta description and H1 against search intent, then drafts clearer options for the writer to approve. Metadata that reads well for people and search.
-
-### Morgan — SERP Snippet Worker
-
-- Stage: Snippets
-- Output: Snippet review
-- URL: https://wordpresto.com/workers/serp-snippet-opportunity/
-- Markdown: https://wordpresto.com/workers/serp-snippet-opportunity/index.md
-- Legacy Markdown: https://wordpresto.com/pages/workers/serp-snippet-opportunity.md
-
-Morgan reviews how a page is likely to appear in search results and points out snippet and rich-result opportunities worth shaping for. Review-only, never a guarantee.
-
-### Sofia — Schema Worker
-
-- Stage: Structured data
-- Output: Schema review
-- URL: https://wordpresto.com/workers/schema/
-- Markdown: https://wordpresto.com/workers/schema/index.md
-- Legacy Markdown: https://wordpresto.com/pages/workers/schema.md
-
-Sofia reviews the structured data on a page and recommends the schema types that match what the page actually is, for human review. No invented fields, no false markup.
-
-### Maya — Technical Health Worker
-
-- Stage: Technical
-- Output: Technical findings
-- URL: https://wordpresto.com/workers/technical-health/
-- Markdown: https://wordpresto.com/workers/technical-health/index.md
-- Legacy Markdown: https://wordpresto.com/pages/workers/technical-health.md
-
-Maya checks the technical signals behind a page, metadata, headings, indexability and structure, and reports what needs a closer look. Standards-backed and review-only.
-
-### Alex — Trust & Author Credibility Worker
-
-- Stage: Trust
-- Output: Trust review
-- URL: https://wordpresto.com/workers/trust-author-credibility/
-- Markdown: https://wordpresto.com/workers/trust-author-credibility/index.md
-- Legacy Markdown: https://wordpresto.com/pages/workers/trust-author-credibility.md
-
-Alex reviews the trust, authorship and credibility signals around a page so readers and search engines can see who stands behind the content. Review-only, never invented.
-
-### Theo — Evidence Gap Worker
-
-- Stage: Evidence
-- Output: Evidence checklist
-- URL: https://wordpresto.com/workers/evidence-gap/
-- Markdown: https://wordpresto.com/workers/evidence-gap/index.md
-- Legacy Markdown: https://wordpresto.com/pages/workers/evidence-gap.md
-
-Theo turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off. What to back up, where to source it, what to hold.

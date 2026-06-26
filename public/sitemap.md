@@ -23,7 +23,14 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - HTML: https://wordpresto.com/workers/
 - Markdown: https://wordpresto.com/workers/index.md
 - Legacy Markdown: https://wordpresto.com/pages/workers/index.md
-- Focus: Directory of the specialist Workers used in the WordPresto content workflow.
+- Focus: Directory of the content Workers used in the WordPresto content workflow.
+
+### SEO Workers directory
+
+- HTML: https://wordpresto.com/workers/seo/
+- Markdown: https://wordpresto.com/workers/seo/index.md
+- Legacy Markdown: https://wordpresto.com/workers/seo/index.md
+- Focus: Directory of the SEO Workers used in the WordPresto workflow.
 
 ### Make approval easier to trust.
 
