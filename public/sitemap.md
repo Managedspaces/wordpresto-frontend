@@ -95,12 +95,26 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/editorial-risk-claims.md
 - Focus: Vera flags unsupported claims, risky statements and compliance issues in content before it is approved or published.
 
+### Back up the claims before they go live.
+
+- HTML: https://wordpresto.com/workers/evidence-gap/
+- Markdown: https://wordpresto.com/workers/evidence-gap/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/evidence-gap.md
+- Focus: Theo turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off. What to back up, where to source it, what to hold.
+
 ### Make good content easier to read.
 
 - HTML: https://wordpresto.com/workers/readability/
 - Markdown: https://wordpresto.com/workers/readability/index.md
 - Legacy Markdown: https://wordpresto.com/pages/workers/readability.md
 - Focus: Priya tightens sentences, simplifies structure and improves flow so content reads clearly for its intended audience. For drafts that are correct but harder to read than they need to be.
+
+### Describe the page so machines understand it too.
+
+- HTML: https://wordpresto.com/workers/schema/
+- Markdown: https://wordpresto.com/workers/schema/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/schema.md
+- Focus: Sofia reviews the structured data on a page and recommends the schema types that match what the page actually is, for human review. No invented fields, no false markup.
 
 ### Fix the weak section without rewriting the whole page.
 
@@ -109,12 +123,40 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/section-rewrite.md
 - Focus: Rosa rewrites individual sections that are unclear, thin or off-brief without touching the rest of the piece. For targeted section-level improvements after review.
 
+### Get the title, description and H1 right.
+
+- HTML: https://wordpresto.com/workers/seo-metadata/
+- Markdown: https://wordpresto.com/workers/seo-metadata/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/seo-metadata.md
+- Focus: Nadia reviews the SEO title, meta description and H1 against search intent, then drafts clearer options for the writer to approve. Metadata that reads well for people and search.
+
+### Shape how the page shows up in search.
+
+- HTML: https://wordpresto.com/workers/serp-snippet-opportunity/
+- Markdown: https://wordpresto.com/workers/serp-snippet-opportunity/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/serp-snippet-opportunity.md
+- Focus: Morgan reviews how a page is likely to appear in search results and points out snippet and rich-result opportunities worth shaping for. Review-only, never a guarantee.
+
 ### Give every draft a clearer shape.
 
 - HTML: https://wordpresto.com/workers/structure/
 - Markdown: https://wordpresto.com/workers/structure/index.md
 - Legacy Markdown: https://wordpresto.com/pages/workers/structure.md
 - Focus: Marcus shapes headings, sections and page flow so content has a clear editorial structure before or during drafting. For pages that need a proper shape before writing starts.
+
+### Check the technical signals behind the page.
+
+- HTML: https://wordpresto.com/workers/technical-health/
+- Markdown: https://wordpresto.com/workers/technical-health/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/technical-health.md
+- Focus: Maya checks the technical signals behind a page, metadata, headings, indexability and structure, and reports what needs a closer look. Standards-backed and review-only.
+
+### Show who stands behind the content.
+
+- HTML: https://wordpresto.com/workers/trust-author-credibility/
+- Markdown: https://wordpresto.com/workers/trust-author-credibility/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/trust-author-credibility.md
+- Focus: Alex reviews the trust, authorship and credibility signals around a page so readers and search engines can see who stands behind the content. Review-only, never invented.
 
 ### Keep the voice in the work.
 
