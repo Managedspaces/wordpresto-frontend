@@ -1,15 +1,13 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { workers } from '@/data/workers';
-
-const seoTitle = 'Content workflow Workers | WordPresto';
-const metaDescription = 'Meet the specialist Workers in the WordPresto content workflow — from content analysis and brief building to voice review, approval reporting and CMS handoff.';
+import { workersDirectory as meta } from '@/data/staticPages';
 ---
 
 <BaseLayout
-  pageTitle="Specialist Workers for every stage of the content workflow."
-  seoTitle={seoTitle}
-  description={metaDescription}
+  pageTitle={meta.h1}
+  seoTitle={meta.seoTitle}
+  description={meta.metaDescription}
   canonical="https://wordpresto.com/workers/"
 >
 
@@ -36,8 +34,8 @@ const metaDescription = 'Meet the specialist Workers in the WordPresto content w
   <section class="section section--hero">
     <div class="container">
       <div class="eyebrow eyebrow--strategy">The team</div>
-      <h1 class="page-h1">Specialist Workers for every stage of the content workflow.</h1>
-      <p class="page-intro">WordPresto brings in the right specialists for the stage you are at, so each piece of content gets the support it actually needs.</p>
+      <h1 class="page-h1">{meta.h1}</h1>
+      <p class="page-intro">{meta.intro}</p>
       <div class="worker-directory-header">
         <span>WORKER DIRECTORY</span>
         <span>{workers.length} SPECIALIST ROLES · ONE CONTENT WORKFLOW</span>

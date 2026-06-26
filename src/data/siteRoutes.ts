@@ -78,23 +78,24 @@ export const siteRoutes: SiteRoute[] = [
     markdown: '/workers/seo/index.md',
   },
   {
+    // noindex (see src/pages/workflow-demo/index.astro): listed for humans on
+    // the HTML sitemap, but kept out of sitemap.xml so search engines are not
+    // asked to index a page marked noindex.
     path: '/workflow-demo/',
     label: 'Workflow demo',
     description: 'See a full content workflow run end to end.',
     group: 'main',
-    inXml: true,
-    changefreq: 'monthly',
-    priority: 0.8,
+    inXml: false,
     markdown: '/workflow-demo/index.md',
   },
   {
+    // noindex (see src/pages/waitlist.astro): HTML sitemap only, not in
+    // sitemap.xml.
     path: '/waitlist/',
     label: 'Join the waitlist',
     description: 'Early access application.',
     group: 'main',
-    inXml: true,
-    changefreq: 'monthly',
-    priority: 0.6,
+    inXml: false,
   },
   {
     path: '/sitemap/',

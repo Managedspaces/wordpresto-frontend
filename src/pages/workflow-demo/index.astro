@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { workflowDemo as meta } from '@/data/staticPages';
 ---
 
 <BaseLayout
-  pageTitle="See rough thinking become review-ready"
-  seoTitle="WordPresto workflow demo — editorial and search intelligence in one workflow"
-  description="A senior writer's rough notes move through WordPresto. Brief, structure, voice profile, review, metadata and CMS handoff — without handing judgement to a machine."
+  pageTitle={meta.h1}
+  seoTitle={meta.seoTitle}
+  description={meta.metaDescription}
   canonical="https://wordpresto.com/workflow-demo/"
   noindex={true}
 >
@@ -33,8 +34,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <section class="section section--intro">
     <div class="container">
       <div class="eyebrow eyebrow--demo">Workflow demo</div>
-      <h1 class="demo-h1">See rough thinking become review-ready.</h1>
-      <p class="demo-intro">A senior writer's messy notes, on why generic SaaS tools fail growing SMEs, move through WordPresto. Brief, voice profile, structure, search intelligence, review and handoff.</p>
+      <h1 class="demo-h1">{meta.h1}</h1>
+      <p class="demo-intro">{meta.intro}</p>
       <p class="demo-note">Follow the steps below. Each one reveals a stage of the content workflow. Nothing is published at the end, human approval is required first.</p>
       <div class="track-legend">
         <span class="track-legend-item"><span class="track-dot track-dot--editorial"></span>Editorial track</span>

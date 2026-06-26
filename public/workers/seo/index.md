@@ -1,12 +1,12 @@
 ---
 title: "SEO Workers for search, structure and authority | WordPresto"
-description: "Meet the SEO Workers in the WordPresto workflow: SEO title and metadata, search snippets, schema, technical health, trust and author credibility, and evidence gaps. Review-led and human-approved."
+description: "Meet the SEO Workers in the WordPresto workflow, covering SEO title and metadata, search snippets, schema, technical health, trust and author credibility, and evidence gaps. Review-led and human-approved."
 canonical: "https://wordpresto.com/workers/seo/"
 ---
 
 # SEO Workers for search, structure and authority.
 
-The SEO Workers help writers and editorial teams make content easier to understand, structure, retrieve and approve. They review metadata, search snippets, schema, technical health, trust and evidence while the writer is still shaping the work. Every output is for human review.
+The SEO Workers help writers and editorial teams make content easier to understand, structure, retrieve and approve. They review metadata, search snippets, schema, technical health, trust and evidence, and surface what matters while the writer is still shaping the work. Every output is for human review.
 
 See also the [Content Workers directory](https://wordpresto.com/workers/).
 
