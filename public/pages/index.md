@@ -73,6 +73,10 @@ One content engine. Three ways the finished work leaves the desk.
 
 Specialist Workers support each stage of the content workflow, from strategy and structure to drafting, proofing, SEO review, evidence, approval and CMS handoff. SEO is part of the workflow, not a separate mode.
 
+## SEO Workers, working inside the writing.
+
+A second team of specialists helps content be understood, structured, retrieved and approved. They review titles and metadata, search snippets, schema, technical signals, trust and evidence while the writer is still shaping the work. Every suggestion goes through human review.
+
 ## Faster content work, without removing human judgement.
 
 Workers plan, draft, check and suggest. People still approve what moves forward — nothing reaches the CMS without human sign-off. This is review-led publishing, not blind automation.

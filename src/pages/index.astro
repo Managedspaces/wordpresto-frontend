@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { homePage } from '@/data/pages';
-import { workers } from '@/data/workers';
+import { workers, seoWorkers } from '@/data/workers';
 
 const { pageTitle, seoTitle, metaDescription } = homePage;
 ---
@@ -495,6 +495,73 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
             </div>
           </a>
         ))}
+      </div>
+
+      <div class="workers-section-cta">
+        <a href="/workers/" class="btn btn--secondary btn--sm">See all Content Workers</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 6b. SEO WORKERS ===================== -->
+  <section id="seo-workers" class="section section--border-top">
+    <div class="container">
+      <div class="section-intro section-intro--wide">
+        <div class="eyebrow eyebrow--seo">Search &amp; SEO</div>
+        <h2 class="section-h2">SEO Workers, working inside the writing.</h2>
+        <p class="section-body">A second team of specialists helps content be understood, structured, retrieved and approved. They review titles and metadata, search snippets, schema, technical signals, trust and evidence while the writer is still shaping the work. SEO stays part of the workflow, never a separate checklist.</p>
+      </div>
+
+      <p class="worker-control-line">Every SEO suggestion is structured for human review. Nothing is published, ranked or promised on its own.</p>
+
+      <div class="worker-directory-header">
+        <span>SEO WORKER DIRECTORY</span>
+        <span>{seoWorkers.length} SPECIALIST ROLES · SEARCH, EVIDENCE &amp; AUTHORITY</span>
+      </div>
+
+      <div class="workers-grid">
+        {seoWorkers.map((w) => (
+          <a href={`/workers/${w.id.replace(/_/g, '-')}/`} class="worker-card">
+            <div class="worker-card-top">
+              <img
+                src={w.image}
+                srcset={`${w.image} 1x, ${w.image2x} 2x`}
+                alt={`${w.name} · ${w.role}`}
+                class="worker-card-img"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="worker-card-info">
+                <div class="worker-card-name">{w.name}</div>
+                <div class="worker-card-role">{w.role}</div>
+              </div>
+            </div>
+            <div class="worker-card-tags">
+              <span class="worker-tag">
+                <span class="worker-tag-dot" style={`background: ${w.teamColor}`}></span>
+                {w.department}
+              </span>
+              <span class="worker-tag">Stage · {w.stage}</span>
+            </div>
+            <p class="worker-card-summary">{w.summary}</p>
+            <div class="worker-card-footer">
+              <div class="worker-output">
+                <span class="worker-output-label">OUTPUT</span>
+                <span class="worker-output-value">{w.output}</span>
+              </div>
+              <span class="worker-view-link">
+                View profile
+                <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="workers-section-cta">
+        <a href="/workers/seo/" class="btn btn--secondary btn--sm">See all SEO Workers</a>
       </div>
     </div>
   </section>
@@ -1072,6 +1139,8 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     margin-bottom: 16px;
   }
   .eyebrow--strategy { color: var(--team-strategy); }
+  .eyebrow--seo { color: var(--team-seo); }
+  .workers-section-cta { margin-top: 28px; }
 
   .section-intro { max-width: 660px; margin-bottom: 48px; }
   .section-intro--wide { max-width: 760px; }

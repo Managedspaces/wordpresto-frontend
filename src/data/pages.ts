@@ -118,6 +118,12 @@ export const homePage: PageData = {
       body: 'Specialist Workers support each stage of the content workflow, from strategy and structure to drafting, proofing, SEO review, evidence, approval and CMS handoff. SEO is part of the workflow, not a separate mode.',
     },
     {
+      id: 'seo-workers',
+      eyebrow: 'Search & SEO',
+      heading: 'SEO Workers, working inside the writing.',
+      body: 'A second team of specialists helps content be understood, structured, retrieved and approved. They review titles and metadata, search snippets, schema, technical signals, trust and evidence while the writer is still shaping the work. Every suggestion goes through human review.',
+    },
+    {
       id: 'approval',
       eyebrow: 'Human approval',
       heading: 'Faster content work, without removing human judgement.',

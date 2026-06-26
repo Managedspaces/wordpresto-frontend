@@ -18,7 +18,8 @@ The product is review-led. Workers assist with structured content work, but huma
 
 - [Home](https://wordpresto.com/index.md): Overview of WordPresto, the content engine behind better publishing workflows.
 - [Workflow demo](https://wordpresto.com/workflow-demo/index.md): Step-by-step demo showing rough thinking becoming review-ready content.
-- [Workers directory](https://wordpresto.com/workers/index.md): Directory of the specialist Workers used in the WordPresto content workflow.
+- [Workers directory](https://wordpresto.com/workers/index.md): Directory of the content Workers used in the WordPresto content workflow.
+- [SEO Workers directory](https://wordpresto.com/workers/seo/index.md): Directory of the SEO Workers used in the WordPresto workflow.
 
 ## Worker profiles
 
@@ -32,9 +33,15 @@ The product is review-led. Workers assist with structured content work, but huma
 - [Review the draft before it moves forward.](https://wordpresto.com/workers/draft-quality-reviewer/index.md): Quinn checks whether a draft is clear, structured and ready to move forward before it reaches a client or CMS. For teams that need a structured review before sign-off.
 - [Rewrite drafts without losing the point.](https://wordpresto.com/workers/draft-rewrite/index.md): Ellis builds and rewrites drafts that follow the brief: structured, on-purpose, and ready for review. For content that needs a shaped draft before editing or review starts.
 - [Flag risky claims before they move forward.](https://wordpresto.com/workers/editorial-risk-claims/index.md): Vera flags unsupported claims, risky statements and compliance issues in content before it is approved or published.
+- [Back up the claims before they go live.](https://wordpresto.com/workers/evidence-gap/index.md): Theo turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off. What to back up, where to source it, what to hold.
 - [Make good content easier to read.](https://wordpresto.com/workers/readability/index.md): Priya tightens sentences, simplifies structure and improves flow so content reads clearly for its intended audience. For drafts that are correct but harder to read than they need to be.
+- [Describe the page so machines understand it too.](https://wordpresto.com/workers/schema/index.md): Sofia reviews the structured data on a page and recommends the schema types that match what the page actually is, for human review. No invented fields, no false markup.
 - [Fix the weak section without rewriting the whole page.](https://wordpresto.com/workers/section-rewrite/index.md): Rosa rewrites individual sections that are unclear, thin or off-brief without touching the rest of the piece. For targeted section-level improvements after review.
+- [Get the title, description and H1 right.](https://wordpresto.com/workers/seo-metadata/index.md): Nadia reviews the SEO title, meta description and H1 against search intent, then drafts clearer options for the writer to approve. Metadata that reads well for people and search.
+- [Shape how the page shows up in search.](https://wordpresto.com/workers/serp-snippet-opportunity/index.md): Morgan reviews how a page is likely to appear in search results and points out snippet and rich-result opportunities worth shaping for. Review-only, never a guarantee.
 - [Give every draft a clearer shape.](https://wordpresto.com/workers/structure/index.md): Marcus shapes headings, sections and page flow so content has a clear editorial structure before or during drafting. For pages that need a proper shape before writing starts.
+- [Check the technical signals behind the page.](https://wordpresto.com/workers/technical-health/index.md): Maya checks the technical signals behind a page, metadata, headings, indexability and structure, and reports what needs a closer look. Standards-backed and review-only.
+- [Show who stands behind the content.](https://wordpresto.com/workers/trust-author-credibility/index.md): Alex reviews the trust, authorship and credibility signals around a page so readers and search engines can see who stands behind the content. Review-only, never invented.
 - [Keep the voice in the work.](https://wordpresto.com/workers/voice-style/index.md): Helena checks every draft against your voice rules and approved examples, shaping it back to your house style before review. For teams with one consistent voice to keep.
 
 ## Complete context

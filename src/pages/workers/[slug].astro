@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { workerProfiles, type WorkerProfile } from '@/data/workerProfiles';
-import { workers } from '@/data/workers';
+import { allWorkers } from '@/data/workers';
 
 export function getStaticPaths() {
   return workerProfiles.map((profile) => ({
@@ -14,7 +14,7 @@ interface Props { profile: WorkerProfile }
 const { profile } = Astro.props;
 
 const relatedProfiles = profile.relatedWorkerIds.map(({ id, description, outputLabel, ctaLabel }) => {
-  const w = workers.find((x) => x.id === id);
+  const w = allWorkers.find((x) => x.id === id);
   const p = workerProfiles.find((x) => x.id === id);
   return w && p ? { worker: w, profile: p, description, outputLabel, ctaLabel } : null;
 }).filter(Boolean);

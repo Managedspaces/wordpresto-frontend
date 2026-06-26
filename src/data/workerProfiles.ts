@@ -4,7 +4,7 @@ export interface WorkerProfile {
   name: string;
   role: string;
   department: string;
-  team: 'content' | 'governance';
+  team: 'content' | 'governance' | 'seo';
   stage: string;
   teamColor: string;
   portrait: string;
@@ -2181,6 +2181,926 @@ export const workerProfiles: WorkerProfile[] = [
       'Add Nina to your workflow and every approved piece leaves with a channel distribution plan already written.',
     guidanceFooterLabel: 'DISTRIBUTION',
     guidanceFooterValue: 'Briefed · channel-ready',
+  },
+
+  /* =================================================================== */
+  /*  SEO WORKERS                                                        */
+  /*  ids, names, departments and portraits mirror the backend          */
+  /*  WORKER_REGISTRY (shared/workflows/workers.ts) exactly. SEO Workers */
+  /*  support the writer and editor and never publish or rank anything   */
+  /*  on their own. Every output is review-only and human-approved.      */
+  /* =================================================================== */
+
+  // 15. Nadia - SEO Title & Metadata Worker
+  {
+    id: 'seo_metadata',
+    slug: 'seo-metadata',
+    name: 'Nadia',
+    role: 'SEO Title & Metadata Worker',
+    department: 'SEO Metadata',
+    team: 'seo',
+    stage: 'Metadata',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-22-192.webp',
+    portrait2x: '/agents/profiles/profile-22-384.webp',
+    seoTitle: 'SEO Title & Metadata Worker | WordPresto',
+    metaDescription:
+      'Nadia reviews the SEO title, meta description and H1 against search intent, then drafts clearer options for the writer to approve. Metadata that reads well for people and search.',
+    h1: 'Get the title, description and H1 right.',
+    heroPara1:
+      'The title, meta description and H1 are the first thing a reader sees in search, and the easiest thing to leave as an afterthought. Nadia reads them against the page and the intent behind the query, flags what is missing, weak, overlong or off the mark, and drafts clearer options.',
+    heroPara2:
+      'For writers and editors who want metadata that reflects the page honestly, without guessing at character limits or chasing keywords.',
+    heroWorksAlongside: ['Morgan', 'Sofia', 'Quinn'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Metadata',
+      output: 'Output · Metadata drafts',
+    },
+    problemEyebrow: 'Where the click is won or lost',
+    problemH2: 'Good content with a weak title still loses the click.',
+    problemPara:
+      'Metadata is usually written last, in a hurry, by whoever is closest to the publish button. The result is titles that repeat the brand, descriptions that restate the H1 and pages that undersell what they actually offer. Nadia treats the SERP-facing layer as part of the writing.',
+    problemAnnotation: '↘ title says nothing, description repeats it',
+    beforeStamp: 'Weak',
+    beforeHtml: `<p><strong>Title:</strong> <span class="ba-strike">Home | Blog | Our Company Name Ltd</span><br/><strong>Description:</strong> <span class="ba-strike">Welcome to our blog where we write about lots of things in our industry.</span></p>`,
+    beforeTags: ['No intent match', 'Brand-stuffed', 'Says nothing'],
+    beforeNote: 'why would anyone click this',
+    afterStamp: 'Clear',
+    afterHtml: `<p><strong>Title:</strong> <span class="ba-hl">How to choose a content workflow (a practical guide)</span><br/><strong>Description:</strong> <span class="ba-hl">A plain walkthrough of how to plan, brief, review and approve content, with the questions to ask before you commit.</span></p>`,
+    afterTags: ['Matches intent', 'Specific', 'Honest promise'],
+    afterNote: 'now it earns the click',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A metadata editor that reads intent, not just keywords.',
+    helpsPara:
+      'Nadia checks the title, description and H1 the way a careful editor would: against what the page is for and what the reader was looking for, then proposes drafts you can accept, edit or reject.',
+    checks: [
+      'Title, description and H1 against search intent',
+      'Length, duplication and keyword stuffing',
+      'Promises the page does not actually keep',
+    ],
+    improves: [
+      'Vague titles made specific and readable',
+      'Descriptions that say what the page offers',
+      'H1 and title that work together, not against',
+    ],
+    prepares: [
+      'Draft metadata with length guidance',
+      'Clear before-and-after for review',
+      'Notes on the intent each option targets',
+    ],
+    surfaces: [
+      'Titles where intent is genuinely unclear',
+      'Claims in metadata that need evidence',
+      'Compliance-sensitive wording to check',
+    ],
+    ioH2: 'What Nadia works from, and what she produces.',
+    worksFrom: [
+      'Page content and current H1',
+      'Existing title and meta description',
+      'Detected search intent',
+      'Target topic or query',
+      'Brand and compliance rules',
+    ],
+    produces: [
+      'Draft SEO title options',
+      'Draft meta description',
+      'H1 suggestions',
+      'Length and intent notes',
+      'Review-ready metadata pack',
+    ],
+    scenarios: [
+      {
+        title: 'A strong article with a forgettable title.',
+        description:
+          'Nadia rewrites the title and description to match what readers are actually searching for, without overpromising.',
+      },
+      {
+        title: 'Titles that all start with the brand name.',
+        description:
+          'She moves the value to the front so the page leads with what it offers, not who published it.',
+      },
+      {
+        title: 'Descriptions that just repeat the heading.',
+        description:
+          'Nadia turns a restated H1 into a description that tells the reader what they will get from the page.',
+      },
+      {
+        title: 'A page targeting the wrong intent.',
+        description:
+          'When the metadata promises one thing and the page delivers another, she flags the mismatch for a human to resolve.',
+      },
+      {
+        title: 'Migrating a library of old posts.',
+        description:
+          'She reviews titles and descriptions at scale and surfaces the weakest first, so a metadata pass starts where it counts.',
+      },
+      {
+        title: 'A regulated topic where wording matters.',
+        description:
+          'Nadia drafts carefully and surfaces claims that need sign-off, rather than writing a promise the page cannot back up.',
+      },
+    ],
+    boundaryH2: 'Nadia drafts the metadata. People decide what ships.',
+    boundaryPara:
+      'A title is a promise to a reader. Nadia proposes and checks, but she is built to stop at the draft. Nothing she writes is published or pushed to a CMS without a person approving it first.',
+    boundaryChecklist: [
+      'Nadia drafts metadata, she never publishes it.',
+      'Every option is shown for an editor to approve.',
+      'Mismatches and risky claims are surfaced, not hidden.',
+      'Nadia supports the writer, she does not replace judgement.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Publish or push to CMS' },
+      { color: 'red', text: 'Promise rankings or traffic' },
+      { color: 'amber', text: 'Stuff keywords to game search' },
+    ],
+    relatedH2: 'Workers Nadia works with.',
+    relatedWorkerIds: [
+      {
+        id: 'serp_snippet_opportunity',
+        description: 'Looks at how the page appears in results and where snippets can be won.',
+        outputLabel: 'Snippet review',
+        ctaLabel: 'How Morgan reviews',
+      },
+      {
+        id: 'schema',
+        description: 'Reviews structured data so the page can qualify for richer results.',
+        outputLabel: 'Schema review',
+        ctaLabel: 'How Sofia reviews',
+      },
+      {
+        id: 'draft_quality_reviewer',
+        description: 'Checks the draft itself is clear and ready before metadata is finalised.',
+        outputLabel: 'Review notes',
+        ctaLabel: 'How Quinn reviews',
+      },
+    ],
+    ctaH2: 'Get the title, description and H1 right.',
+    ctaPara:
+      'Add Nadia to your workflow and every page reaches review with metadata that reflects it honestly and reads well in search.',
+    guidanceFooterLabel: 'METADATA',
+    guidanceFooterValue: 'Drafted · ready for review',
+  },
+
+  // 16. Morgan - SERP Snippet Worker
+  {
+    id: 'serp_snippet_opportunity',
+    slug: 'serp-snippet-opportunity',
+    name: 'Morgan',
+    role: 'SERP Snippet Worker',
+    department: 'SERP Optimisation',
+    team: 'seo',
+    stage: 'Snippets',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-38-192.webp',
+    portrait2x: '/agents/profiles/profile-38-384.webp',
+    seoTitle: 'SERP Snippet Worker | WordPresto',
+    metaDescription:
+      'Morgan reviews how a page is likely to appear in search results and points out snippet and rich-result opportunities worth shaping for. Review-only, never a guarantee.',
+    h1: 'Shape how the page shows up in search.',
+    heroPara1:
+      'A page does not just rank, it appears. The title, description and the way content is structured all shape what a reader sees in the results. Morgan reviews those snippet elements and points out where a clear answer, a list or a structured section could earn a richer result.',
+    heroPara2:
+      'For editors who want their pages to read well in search results, not only on the page itself.',
+    heroWorksAlongside: ['Nadia', 'Sofia', 'Omar'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Snippets',
+      output: 'Output · Snippet review',
+    },
+    problemEyebrow: 'Where the page meets the results',
+    problemH2: 'The result a reader sees is not always the page you wrote.',
+    problemPara:
+      'Search engines build the snippet, not you. If the page buries its answer, has no clear list or question structure, or leaves the description to chance, the result reads as flat as everything around it. Morgan reviews the elements that shape that snippet, honestly, without promising a feature will be granted.',
+    problemAnnotation: '↘ the answer is there, just buried',
+    beforeStamp: 'Buried',
+    beforeHtml: `<p><span class="ba-strike">There are many factors to consider and it depends on a range of things, which we will explore in detail throughout this article in the sections below.</span></p>`,
+    beforeTags: ['No clear answer', 'No structure', 'Flat snippet'],
+    beforeNote: 'nothing for search to pull',
+    afterStamp: 'Liftable',
+    afterHtml: `<p><span class="ba-hl">A content workflow has six stages: plan, brief, write, review, improve and approve.</span> Each one is covered below.</p>`,
+    afterTags: ['Direct answer', 'Listable', 'Snippet-ready'],
+    afterNote: 'now there is something to feature',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A reviewer who reads the page the way a result page does.',
+    helpsPara:
+      'Morgan looks at the title, description and on-page structure together and surfaces concrete, reviewable opportunities, so the page has the best honest chance of a clear, useful snippet.',
+    checks: [
+      'Title and description quality for results',
+      'Whether the page answers its query directly',
+      'Structure that supports lists, steps or FAQs',
+    ],
+    improves: [
+      'Answers moved up and made explicit',
+      'Sections shaped for a cleaner snippet',
+      'Question-led content made scannable',
+    ],
+    prepares: [
+      'A list of rich-result opportunities',
+      'Suggested snippet improvements',
+      'Notes on which result types fit the page',
+    ],
+    surfaces: [
+      'Opportunities that need a schema check',
+      'Claims that would need evidence to feature',
+      'Where intent and format do not match',
+    ],
+    ioH2: 'What Morgan works from, and what he produces.',
+    worksFrom: [
+      'Page title and meta description',
+      'Headings and content structure',
+      'Detected search intent',
+      'Question and list patterns on the page',
+      'Schema review where available',
+    ],
+    produces: [
+      'Snippet opportunity review',
+      'Rich-result suggestions',
+      'Structure improvement notes',
+      'Priority of quick wins',
+      'Review-ready summary',
+    ],
+    scenarios: [
+      {
+        title: 'A how-to that never lists its steps.',
+        description:
+          'Morgan suggests a clear numbered structure so the steps can be read at a glance and stand a chance of featuring.',
+      },
+      {
+        title: 'An FAQ page with the answers hidden in prose.',
+        description:
+          'He points out where short, direct answers would help both readers and the results page.',
+      },
+      {
+        title: 'A strong guide with a flat description.',
+        description:
+          'Morgan flags the snippet elements that are letting the page down and hands them to Nadia for redrafting.',
+      },
+      {
+        title: 'A page that could earn a rich result.',
+        description:
+          'He notes which structured result types genuinely fit and refers the schema work to Sofia, without promising Google will grant it.',
+      },
+      {
+        title: 'Comparing two pages competing for the same query.',
+        description:
+          'Morgan reviews how each is likely to appear and surfaces which structure serves the reader best.',
+      },
+      {
+        title: 'A reader question buried three paragraphs deep.',
+        description:
+          'He recommends leading with the answer so the page is useful immediately, on the page and in search.',
+      },
+    ],
+    boundaryH2: 'Morgan reviews the opportunity. Search still decides.',
+    boundaryPara:
+      'No tool controls what a search engine shows. Morgan reviews and recommends, and is careful never to promise a snippet, a ranking or traffic. Every suggestion is for a person to weigh and approve.',
+    boundaryChecklist: [
+      'Morgan reviews snippets, he never guarantees one.',
+      'Recommendations are shown for an editor to approve.',
+      'Opportunities needing schema or evidence are flagged.',
+      'Morgan supports the writer, he does not replace judgement.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Guarantee a featured snippet' },
+      { color: 'red', text: 'Promise rankings or traffic' },
+      { color: 'amber', text: 'Force structure that hurts reading' },
+    ],
+    relatedH2: 'Workers Morgan works with.',
+    relatedWorkerIds: [
+      {
+        id: 'seo_metadata',
+        description: 'Drafts the title and description that shape the snippet.',
+        outputLabel: 'Metadata drafts',
+        ctaLabel: 'How Nadia drafts',
+      },
+      {
+        id: 'schema',
+        description: 'Reviews the structured data that rich results depend on.',
+        outputLabel: 'Schema review',
+        ctaLabel: 'How Sofia reviews',
+      },
+      {
+        id: 'content_analyst',
+        description: 'Assesses the underlying content the snippet is drawn from.',
+        outputLabel: 'Content analysis',
+        ctaLabel: 'How Omar reviews',
+      },
+    ],
+    ctaH2: 'Shape how the page shows up in search.',
+    ctaPara:
+      'Add Morgan to your workflow and every page reaches review with its snippet opportunities surfaced, honestly and ready to act on.',
+    guidanceFooterLabel: 'SNIPPET',
+    guidanceFooterValue: 'Reviewed · opportunities noted',
+  },
+
+  // 17. Sofia - Schema Worker
+  {
+    id: 'schema',
+    slug: 'schema',
+    name: 'Sofia',
+    role: 'Schema Worker',
+    department: 'Structured Data',
+    team: 'seo',
+    stage: 'Structured data',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-10-192.webp',
+    portrait2x: '/agents/profiles/profile-10-384.webp',
+    seoTitle: 'Schema Worker | WordPresto',
+    metaDescription:
+      'Sofia reviews the structured data on a page and recommends the schema types that match what the page actually is, for human review. No invented fields, no false markup.',
+    h1: 'Describe the page so machines understand it too.',
+    heroPara1:
+      'Structured data tells search engines what a page actually is: an article, a product, a guide, a business. Sofia reviews the schema already present, assesses what the page really represents, and recommends the types that fit, so the markup describes the page honestly.',
+    heroPara2:
+      'For teams who want structured data that reflects the content, not a pile of markup copied between templates.',
+    heroWorksAlongside: ['Nadia', 'Morgan', 'Maya'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Structured data',
+      output: 'Output · Schema review',
+    },
+    problemEyebrow: 'Where the markup drifts from the page',
+    problemH2: 'Structured data only helps when it tells the truth.',
+    problemPara:
+      'Schema is easy to copy and hard to keep honest. Pages inherit markup from a template, describe themselves as something they are not, or carry no structured data at all. Sofia reviews what is there against what the page actually is, and recommends types that match.',
+    problemAnnotation: '↘ marked as a product, reads as an article',
+    beforeStamp: 'Mismatched',
+    beforeHtml: `<p><span class="ba-strike">@type: Product</span> on a page that is plainly a how-to guide, with <span class="ba-strike">no Article or HowTo markup</span> anywhere.</p>`,
+    beforeTags: ['Wrong type', 'Inherited markup', 'Describes nothing'],
+    beforeNote: 'this is not a product page',
+    afterStamp: 'Matched',
+    afterHtml: `<p><span class="ba-hl">@type: HowTo</span> with article context, recommended because the page is a step-by-step guide. <span class="ba-hl">Suggested for review.</span></p>`,
+    afterTags: ['Type fits page', 'Honest markup', 'For approval'],
+    afterNote: 'now the markup matches reality',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A reviewer who matches schema to what the page really is.',
+    helpsPara:
+      'Sofia reports the structured data she detects, assesses the apparent page type, and recommends suitable schema. She never invents fields or marks a page as something it is not.',
+    checks: [
+      'Structured data already on the page',
+      'Whether detected types match the content',
+      'Missing schema the page could honestly use',
+    ],
+    improves: [
+      'Type recommendations that fit the page',
+      'Markup that reflects the real content',
+      'Clarity on what each type is for',
+    ],
+    prepares: [
+      'A schema review with detected types',
+      'Recommended types for approval',
+      'Notes on why each type fits',
+    ],
+    surfaces: [
+      'Markup that claims more than the page does',
+      'Fields that would need real data to fill',
+      'Cases where a human should decide the type',
+    ],
+    ioH2: 'What Sofia works from, and what she produces.',
+    worksFrom: [
+      'Existing structured data',
+      'Page content and headings',
+      'Apparent page type',
+      'Business or organisation context',
+      'Technical review where available',
+    ],
+    produces: [
+      'Detected schema report',
+      'Recommended schema types',
+      'Reasoning for each recommendation',
+      'Notes on fields that need real data',
+      'Review-ready schema summary',
+    ],
+    scenarios: [
+      {
+        title: 'A guide carrying product markup from a template.',
+        description:
+          'Sofia flags the mismatch and recommends the article or how-to types that actually describe the page.',
+      },
+      {
+        title: 'A page with no structured data at all.',
+        description:
+          'She assesses what the page is and recommends a sensible starting set, for a person to approve.',
+      },
+      {
+        title: 'A business page missing organisation details.',
+        description:
+          'Sofia points out the schema that would describe the organisation, without inventing facts to fill it.',
+      },
+      {
+        title: 'An FAQ that could support FAQ markup.',
+        description:
+          'She notes the opportunity and refers the snippet implications to Morgan, leaving the decision to the editor.',
+      },
+      {
+        title: 'Schema copied across a whole section.',
+        description:
+          'Sofia reviews where the inherited markup no longer fits the individual pages it sits on.',
+      },
+      {
+        title: 'A claim-heavy page in a regulated field.',
+        description:
+          'She surfaces markup that would assert more than the page can support and leaves it for human review.',
+      },
+    ],
+    boundaryH2: 'Sofia recommends the schema. People approve the markup.',
+    boundaryPara:
+      'Structured data is a statement about the page. Sofia reviews and recommends, but never writes false markup, invents fields or marks a page as something it is not. Recommendations go through human approval before anything is applied.',
+    boundaryChecklist: [
+      'Sofia recommends schema, she never fakes markup.',
+      'Detected types and recommendations are shown for review.',
+      'Fields that need real data are surfaced, not filled.',
+      'Sofia supports the team, she does not replace judgement.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Write false or invented markup' },
+      { color: 'red', text: 'Mark a page as what it is not' },
+      { color: 'amber', text: 'Fill fields without real data' },
+    ],
+    relatedH2: 'Workers Sofia works with.',
+    relatedWorkerIds: [
+      {
+        id: 'serp_snippet_opportunity',
+        description: 'Connects schema opportunities to how the page appears in results.',
+        outputLabel: 'Snippet review',
+        ctaLabel: 'How Morgan reviews',
+      },
+      {
+        id: 'technical_health',
+        description: 'Checks the wider technical signals the page depends on.',
+        outputLabel: 'Technical findings',
+        ctaLabel: 'How Maya reviews',
+      },
+      {
+        id: 'seo_metadata',
+        description: 'Drafts the title and description that sit alongside the markup.',
+        outputLabel: 'Metadata drafts',
+        ctaLabel: 'How Nadia drafts',
+      },
+    ],
+    ctaH2: 'Describe the page so machines understand it too.',
+    ctaPara:
+      'Add Sofia to your workflow and every page reaches review with structured data that matches what it actually is.',
+    guidanceFooterLabel: 'SCHEMA',
+    guidanceFooterValue: 'Reviewed · types recommended',
+  },
+
+  // 18. Maya - Technical Health Worker
+  {
+    id: 'technical_health',
+    slug: 'technical-health',
+    name: 'Maya',
+    role: 'Technical Health Worker',
+    department: 'Technical Review',
+    team: 'seo',
+    stage: 'Technical',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-02-192.webp',
+    portrait2x: '/agents/profiles/profile-02-384.webp',
+    seoTitle: 'Technical Health Worker | WordPresto',
+    metaDescription:
+      'Maya checks the technical signals behind a page, metadata, headings, indexability and structure, and reports what needs a closer look. Standards-backed and review-only.',
+    h1: 'Check the technical signals behind the page.',
+    heroPara1:
+      'Great writing can still be held back by quiet technical problems: a missing title, a broken heading order, a page that cannot be indexed. Maya reviews those signals against established standards and reports findings by category, so nothing technical is left to chance.',
+    heroPara2:
+      'For editors and website teams who want a clear, standards-backed read on a page before it goes live.',
+    heroWorksAlongside: ['Sofia', 'Nadia', 'Alex'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Technical',
+      output: 'Output · Technical findings',
+    },
+    problemEyebrow: 'Where good content quietly underperforms',
+    problemH2: 'A strong page can be let down by signals no one checked.',
+    problemPara:
+      'Technical issues rarely announce themselves. A page with a missing meta title, headings that skip levels, or an accidental noindex can read perfectly while quietly underperforming. Maya reviews these signals against standards and reports what needs attention, in plain language.',
+    problemAnnotation: '↘ reads fine, set to noindex',
+    beforeStamp: 'Unchecked',
+    beforeHtml: `<p>Heading order: <span class="ba-strike">H1 → H3 → H3</span>. Meta title: <span class="ba-strike">missing</span>. Indexable: <span class="ba-strike">no (noindex set)</span>.</p>`,
+    beforeTags: ['Skipped heading', 'No title', 'Not indexable'],
+    beforeNote: 'this will never be found',
+    afterStamp: 'Reviewed',
+    afterHtml: `<p>Heading order: <span class="ba-hl">H1 → H2 → H3</span>. Meta title: <span class="ba-hl">present and reviewed</span>. Indexable: <span class="ba-hl">yes</span>. Flagged for fix before publish.</p>`,
+    afterTags: ['Clean hierarchy', 'Title present', 'Indexable'],
+    afterNote: 'now the basics hold up',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A technical reviewer who reports findings, not noise.',
+    helpsPara:
+      'Maya runs standards-backed technical checks and groups what she finds into clear categories with scores, so a person can see what matters and decide what to fix. She reviews, she does not change the page.',
+    checks: [
+      'Metadata, headings and indexability',
+      'Page structure and technical signals',
+      'Schema presence and accessibility basics',
+    ],
+    improves: [
+      'A clear picture of technical health',
+      'Findings grouped by category',
+      'A sensible order to fix things in',
+    ],
+    prepares: [
+      'Standards-backed technical findings',
+      'Category scores for the page',
+      'Notes on what to check before publish',
+    ],
+    surfaces: [
+      'Issues that need a developer to resolve',
+      'Findings that need a human decision',
+      'Signals a single page cannot confirm alone',
+    ],
+    ioH2: 'What Maya works from, and what she produces.',
+    worksFrom: [
+      'Page metadata and headings',
+      'Indexability signals',
+      'Page structure and content sections',
+      'Schema presence',
+      'Accessibility and technical signals',
+    ],
+    produces: [
+      'Technical health findings',
+      'Category scores',
+      'Prioritised issues to review',
+      'Notes for developers where needed',
+      'Review-ready technical summary',
+    ],
+    scenarios: [
+      {
+        title: 'A page accidentally set to noindex.',
+        description:
+          'Maya flags it before publish, so a page meant to be found is not quietly hidden from search.',
+      },
+      {
+        title: 'Headings that skip from H1 to H3.',
+        description:
+          'She reports the broken hierarchy so the structure reads cleanly for readers, assistive tech and search.',
+      },
+      {
+        title: 'A new template before it ships.',
+        description:
+          'Maya reviews the technical signals on a sample page so issues are caught once, not on every page later.',
+      },
+      {
+        title: 'A content refresh that touched the markup.',
+        description:
+          'She checks that titles, headings and indexability still hold up after the edit.',
+      },
+      {
+        title: 'A page that reads well but ranks poorly.',
+        description:
+          'Maya surfaces the technical signals that might be holding it back, for a person to investigate.',
+      },
+      {
+        title: 'Handing a list of fixes to a developer.',
+        description:
+          'She groups findings by category and priority so the technical work is clear and scoped.',
+      },
+    ],
+    boundaryH2: 'Maya reports the findings. People decide the fixes.',
+    boundaryPara:
+      'A technical review is information, not an instruction. Maya checks and reports, but she does not edit the page, change settings or push anything live. Her findings are for a person to act on.',
+    boundaryChecklist: [
+      'Maya reviews the page, she never edits it.',
+      'Findings are reported for a person to act on.',
+      'Issues needing a developer are flagged clearly.',
+      'Maya supports the team, she does not replace judgement.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Edit the page or change settings' },
+      { color: 'red', text: 'Publish or push anything live' },
+      { color: 'amber', text: 'Claim a fix without human review' },
+    ],
+    relatedH2: 'Workers Maya works with.',
+    relatedWorkerIds: [
+      {
+        id: 'schema',
+        description: 'Reviews the structured data among the technical signals.',
+        outputLabel: 'Schema review',
+        ctaLabel: 'How Sofia reviews',
+      },
+      {
+        id: 'seo_metadata',
+        description: 'Drafts the metadata Maya checks for presence and quality.',
+        outputLabel: 'Metadata drafts',
+        ctaLabel: 'How Nadia drafts',
+      },
+      {
+        id: 'trust_author_credibility',
+        description: 'Reviews the trust signals that sit alongside technical health.',
+        outputLabel: 'Trust review',
+        ctaLabel: 'How Alex reviews',
+      },
+    ],
+    ctaH2: 'Check the technical signals behind the page.',
+    ctaPara:
+      'Add Maya to your workflow and every page reaches review with its technical signals checked against standards.',
+    guidanceFooterLabel: 'TECHNICAL',
+    guidanceFooterValue: 'Reviewed · findings logged',
+  },
+
+  // 19. Alex - Trust & Author Credibility Worker
+  {
+    id: 'trust_author_credibility',
+    slug: 'trust-author-credibility',
+    name: 'Alex',
+    role: 'Trust & Author Credibility Worker',
+    department: 'Trust & Credibility',
+    team: 'seo',
+    stage: 'Trust',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-39-192.webp',
+    portrait2x: '/agents/profiles/profile-39-384.webp',
+    seoTitle: 'Trust & Author Credibility Worker | WordPresto',
+    metaDescription:
+      'Alex reviews the trust, authorship and credibility signals around a page so readers and search engines can see who stands behind the content. Review-only, never invented.',
+    h1: 'Show who stands behind the content.',
+    heroPara1:
+      'On topics that affect money, health or major decisions, readers and search engines both want to know who wrote this and why they can be trusted. Alex reviews the author context, organisation identity, evidence support and credibility signals around a page, and reports where trust is clear and where it is missing.',
+    heroPara2:
+      'For teams publishing advice-led or higher-stakes content who want their credibility to be visible, not assumed.',
+    heroWorksAlongside: ['Theo', 'Vera', 'Sofia'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Trust',
+      output: 'Output · Trust review',
+    },
+    problemEyebrow: 'Where credibility goes unsaid',
+    problemH2: 'Good advice from nobody in particular is hard to trust.',
+    problemPara:
+      'Plenty of genuinely expert content is published with no visible author, no organisation context and no sign of who reviewed it. The expertise is real, but the reader cannot see it, and neither can search. Alex reviews the signals that make credibility visible.',
+    problemAnnotation: '↘ expert advice, no named author',
+    beforeStamp: 'Unattributed',
+    beforeHtml: `<p>Medical guidance published with <span class="ba-strike">no author byline</span>, <span class="ba-strike">no reviewer</span> and <span class="ba-strike">no organisation context</span>.</p>`,
+    beforeTags: ['No author', 'No review', 'High-stakes topic'],
+    beforeNote: 'who is telling me this?',
+    afterStamp: 'Attributed',
+    afterHtml: `<p>The same guidance with a <span class="ba-hl">named author and credentials</span>, <span class="ba-hl">a reviewer</span> and <span class="ba-hl">clear organisation context</span>. Flagged for sign-off.</p>`,
+    afterTags: ['Named author', 'Reviewed by', 'Clear ownership'],
+    afterNote: 'now the trust is visible',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A reviewer who checks whether trust is actually visible.',
+    helpsPara:
+      'Alex reviews authorship, organisation ownership, evidence support and credibility signals, returns a readiness read and surfaces what needs a human eye, especially on sensitive topics. He reports signals, he never invents credentials.',
+    checks: [
+      'Author byline, bio and credentials',
+      'Organisation ownership and context',
+      'Evidence support and review signals',
+    ],
+    improves: [
+      'A clear picture of trust readiness',
+      'Gaps in authorship made visible',
+      'Where credibility could be shown better',
+    ],
+    prepares: [
+      'A trust and credibility review',
+      'A readiness read for the page',
+      'Notes on sensitive-topic risk',
+    ],
+    surfaces: [
+      'High-stakes claims that need expertise shown',
+      'Missing author or reviewer context',
+      'Credibility decisions for a human to make',
+    ],
+    ioH2: 'What Alex works from, and what he produces.',
+    worksFrom: [
+      'Author context and byline',
+      'Organisation and ownership signals',
+      'Evidence support on the page',
+      'Topic sensitivity (advice, health, money)',
+      'Schema credibility signals',
+    ],
+    produces: [
+      'Trust and credibility review',
+      'A trust readiness read',
+      'Authorship gap notes',
+      'Sensitive-topic risk flags',
+      'Review-ready trust summary',
+    ],
+    scenarios: [
+      {
+        title: 'Health or finance advice with no named author.',
+        description:
+          'Alex flags the missing authorship so a real, qualified person can be credited before the page goes live.',
+      },
+      {
+        title: 'A respected organisation that never says so.',
+        description:
+          'He points out where organisation context and ownership could make existing credibility visible.',
+      },
+      {
+        title: 'A page that should show a reviewer.',
+        description:
+          'Alex notes where a reviewed-by signal would reassure readers on a higher-stakes topic.',
+      },
+      {
+        title: 'Claims that lean on expertise not shown.',
+        description:
+          'He surfaces where the page assumes authority it has not demonstrated, and refers evidence work to Theo.',
+      },
+      {
+        title: 'Preparing content for a regulated sector.',
+        description:
+          'Alex reviews trust signals alongside Vera so credibility and compliance are considered together.',
+      },
+      {
+        title: 'A guest post from an unknown contributor.',
+        description:
+          'He flags the missing author context so a person can decide how to attribute and stand behind it.',
+      },
+    ],
+    boundaryH2: 'Alex reviews the trust signals. People stand behind the page.',
+    boundaryPara:
+      'Credibility cannot be manufactured. Alex reviews and reports, but he never invents an author, fabricates credentials or claims a review that did not happen. What he surfaces is for a person to act on honestly.',
+    boundaryChecklist: [
+      'Alex reviews trust signals, he never invents them.',
+      'Authorship gaps are surfaced for a person to fill.',
+      'Sensitive-topic risks are flagged for human review.',
+      'Alex supports the team, he does not replace judgement.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Invent authors or credentials' },
+      { color: 'red', text: 'Claim a review that did not happen' },
+      { color: 'amber', text: 'Assume authority the page has not shown' },
+    ],
+    relatedH2: 'Workers Alex works with.',
+    relatedWorkerIds: [
+      {
+        id: 'evidence_gap',
+        description: 'Turns weak or missing evidence into a clear checklist.',
+        outputLabel: 'Evidence checklist',
+        ctaLabel: 'How Theo reviews',
+      },
+      {
+        id: 'editorial_risk_claims',
+        description: 'Flags unsupported claims and compliance risk before approval.',
+        outputLabel: 'Risk & compliance report',
+        ctaLabel: 'How Vera reviews',
+      },
+      {
+        id: 'schema',
+        description: 'Reviews the structured data that carries credibility signals.',
+        outputLabel: 'Schema review',
+        ctaLabel: 'How Sofia reviews',
+      },
+    ],
+    ctaH2: 'Show who stands behind the content.',
+    ctaPara:
+      'Add Alex to your workflow and every page reaches review with its trust and authorship signals checked and visible.',
+    guidanceFooterLabel: 'TRUST',
+    guidanceFooterValue: 'Reviewed · signals checked',
+  },
+
+  // 20. Theo - Evidence Gap Worker
+  {
+    id: 'evidence_gap',
+    slug: 'evidence-gap',
+    name: 'Theo',
+    role: 'Evidence Gap Worker',
+    department: 'Evidence Assurance',
+    team: 'seo',
+    stage: 'Evidence',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-23-192.webp',
+    portrait2x: '/agents/profiles/profile-23-384.webp',
+    seoTitle: 'Evidence Gap Worker | WordPresto',
+    metaDescription:
+      'Theo turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off. What to back up, where to source it, what to hold.',
+    h1: 'Back up the claims before they go live.',
+    heroPara1:
+      'Content is full of claims: figures, comparisons, statements of fact. Some are solid, some are guesses, and some should not be published until they are checked. Theo gathers the evidence warnings raised across the workflow and turns them into a single, practical checklist of what to support, where to find it, and what to hold.',
+    heroPara2:
+      'For editors and reviewers who want claims supported before approval, not after a reader, or a regulator, notices.',
+    heroWorksAlongside: ['Alex', 'Vera', 'Audrey'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Evidence',
+      output: 'Output · Evidence checklist',
+    },
+    problemEyebrow: 'Where claims outrun the proof',
+    problemH2: 'The risky claims are rarely the ones that look risky.',
+    problemPara:
+      'A confident sentence reads as fact whether or not anything backs it. Across a draft, unsupported figures and tidy-sounding comparisons slip through because no one is tracking which claim needs a source. Theo consolidates those gaps into one checklist, so nothing rests on an assumption no one checked.',
+    problemAnnotation: '↘ a precise number, no source',
+    beforeStamp: 'Unsupported',
+    beforeHtml: `<p>Our method is <span class="ba-strike">proven to cut review time by 40%</span> and is <span class="ba-strike">the most accurate on the market</span>.</p>`,
+    beforeTags: ['No source', 'Superlative claim', 'Needs evidence'],
+    beforeNote: 'where does 40% come from?',
+    afterStamp: 'Checked',
+    afterHtml: `<p>Flagged: <span class="ba-hl">"40%" needs a source or removal</span>. <span class="ba-hl">"Most accurate" needs proof or rewording.</span> Safe interim wording suggested.</p>`,
+    afterTags: ['Source required', 'Reword or prove', 'For review'],
+    afterNote: 'now nothing ships on a guess',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A checklist that turns vague worry into specific actions.',
+    helpsPara:
+      'Theo consolidates evidence warnings into a structured checklist: what needs support, a suggested source, the level of risk, whether it should block approval, and safe interim wording. The work of supporting a claim stays with people.',
+    checks: [
+      'Claims that lack a source',
+      'Figures and comparisons that need proof',
+      'Statements that may overstate the case',
+    ],
+    improves: [
+      'Vague worries turned into clear actions',
+      'A single view of every evidence gap',
+      'Priority and risk on each item',
+    ],
+    prepares: [
+      'An evidence checklist for the page',
+      'Suggested sources to look for',
+      'Safe interim wording where useful',
+    ],
+    surfaces: [
+      'Claims that should block approval',
+      'High-risk statements for a human to weigh',
+      'Sources that need a person to verify',
+    ],
+    ioH2: 'What Theo works from, and what he produces.',
+    worksFrom: [
+      'Evidence warnings from the workflow',
+      'Claims and figures in the draft',
+      'Topic sensitivity and risk',
+      'Existing sources on the page',
+      'Review and compliance notes',
+    ],
+    produces: [
+      'A consolidated evidence checklist',
+      'Required-evidence items',
+      'Suggested sources and risk levels',
+      'Approval-blocking flags',
+      'Safe interim wording',
+    ],
+    scenarios: [
+      {
+        title: 'A precise statistic with no citation.',
+        description:
+          'Theo flags the figure, marks it as needing a source, and suggests safe wording until one is found.',
+      },
+      {
+        title: 'A superlative the page cannot prove.',
+        description:
+          'He surfaces "the best" or "the most accurate" as claims that need evidence or a rewrite before approval.',
+      },
+      {
+        title: 'A draft full of confident assertions.',
+        description:
+          'Theo pulls every unsupported claim into one checklist so a reviewer is not hunting for them line by line.',
+      },
+      {
+        title: 'A regulated topic near sign-off.',
+        description:
+          'He marks the claims that should block approval until they are properly supported, and hands risk to Vera.',
+      },
+      {
+        title: 'Preparing a page for handoff.',
+        description:
+          'Theo confirms the evidence checklist is clear before Audrey assembles the approval report.',
+      },
+      {
+        title: 'A claim that leans on unseen expertise.',
+        description:
+          'He coordinates with Alex so authority and evidence are both shown, not assumed.',
+      },
+    ],
+    boundaryH2: 'Theo finds the gaps. People supply the proof.',
+    boundaryPara:
+      'Evidence is a human responsibility. Theo identifies what needs support and how risky each gap is, but he does not invent sources, fabricate figures or approve a claim. Filling and verifying the evidence stays with people.',
+    boundaryChecklist: [
+      'Theo finds gaps, he never invents evidence.',
+      'Every item is shown for a person to resolve.',
+      'Claims that should block approval are flagged.',
+      'Theo supports the reviewer, he does not replace judgement.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Invent sources or figures' },
+      { color: 'red', text: 'Approve an unsupported claim' },
+      { color: 'amber', text: 'Wave through a high-risk statement' },
+    ],
+    relatedH2: 'Workers Theo works with.',
+    relatedWorkerIds: [
+      {
+        id: 'trust_author_credibility',
+        description: 'Reviews whether the authority behind the claims is visible.',
+        outputLabel: 'Trust review',
+        ctaLabel: 'How Alex reviews',
+      },
+      {
+        id: 'editorial_risk_claims',
+        description: 'Flags unsupported claims and compliance risk before approval.',
+        outputLabel: 'Risk & compliance report',
+        ctaLabel: 'How Vera reviews',
+      },
+      {
+        id: 'approval_report',
+        description: 'Assembles the evidence checklist into the approval decision.',
+        outputLabel: 'Approval report',
+        ctaLabel: 'How Audrey approves',
+      },
+    ],
+    ctaH2: 'Back up the claims before they go live.',
+    ctaPara:
+      'Add Theo to your workflow and every page reaches review with its evidence gaps gathered into one clear checklist.',
+    guidanceFooterLabel: 'EVIDENCE',
+    guidanceFooterValue: 'Checked · gaps listed',
   },
 ];
 

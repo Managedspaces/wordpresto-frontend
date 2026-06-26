@@ -7,6 +7,7 @@ This file consolidates the main public WordPresto marketing and Worker content f
 - Home: https://wordpresto.com/index.md
 - Workflow demo: https://wordpresto.com/workflow-demo/index.md
 - Workers directory: https://wordpresto.com/workers/index.md
+- SEO Workers directory: https://wordpresto.com/workers/seo/index.md
 - Make approval easier to trust.: https://wordpresto.com/workers/approval-report/index.md
 - Check whether the draft actually follows the brief.: https://wordpresto.com/workers/brief-draft-alignment/index.md
 - Prepare approved content for a cleaner handoff.: https://wordpresto.com/workers/cms-handoff/index.md
@@ -17,9 +18,15 @@ This file consolidates the main public WordPresto marketing and Worker content f
 - Review the draft before it moves forward.: https://wordpresto.com/workers/draft-quality-reviewer/index.md
 - Rewrite drafts without losing the point.: https://wordpresto.com/workers/draft-rewrite/index.md
 - Flag risky claims before they move forward.: https://wordpresto.com/workers/editorial-risk-claims/index.md
+- Back up the claims before they go live.: https://wordpresto.com/workers/evidence-gap/index.md
 - Make good content easier to read.: https://wordpresto.com/workers/readability/index.md
+- Describe the page so machines understand it too.: https://wordpresto.com/workers/schema/index.md
 - Fix the weak section without rewriting the whole page.: https://wordpresto.com/workers/section-rewrite/index.md
+- Get the title, description and H1 right.: https://wordpresto.com/workers/seo-metadata/index.md
+- Shape how the page shows up in search.: https://wordpresto.com/workers/serp-snippet-opportunity/index.md
 - Give every draft a clearer shape.: https://wordpresto.com/workers/structure/index.md
+- Check the technical signals behind the page.: https://wordpresto.com/workers/technical-health/index.md
+- Show who stands behind the content.: https://wordpresto.com/workers/trust-author-credibility/index.md
 - Keep the voice in the work.: https://wordpresto.com/workers/voice-style/index.md
 
 ---
@@ -97,6 +104,10 @@ One content engine. Three ways the finished work leaves the desk.
 
 Specialist Workers support each stage of the content workflow, from strategy and structure to drafting, proofing, SEO review, evidence, approval and CMS handoff. SEO is part of the workflow, not a separate mode.
 
+## SEO Workers, working inside the writing.
+
+A second team of specialists helps content be understood, structured, retrieved and approved. They review titles and metadata, search snippets, schema, technical signals, trust and evidence while the writer is still shaping the work. Every suggestion goes through human review.
+
 ## Faster content work, without removing human judgement.
 
 Workers plan, draft, check and suggest. People still approve what moves forward — nothing reaches the CMS without human sign-off. This is review-led publishing, not blind automation.
@@ -168,9 +179,11 @@ Markdown: https://wordpresto.com/workers/index.md
 
 WordPresto brings in the right specialists for the stage you are at, so each piece of content gets the support it actually needs.
 
+See also the [SEO Workers directory](https://wordpresto.com/workers/seo/).
+
 ---
 
-## Worker directory (14 specialist roles)
+## Content Worker directory (14 specialist roles)
 
 ### Helena — Voice & Style Worker
 
@@ -311,6 +324,83 @@ Iris produces a structured brief for refreshing existing content: what to update
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-distribution-brief.md
 
 Nina creates a distribution brief that maps where approved content should go and how it should be adapted for each channel.
+
+---
+
+# SEO Workers directory
+
+Canonical: https://wordpresto.com/workers/seo/
+Markdown: https://wordpresto.com/workers/seo/index.md
+
+# SEO Workers for search, structure and authority.
+
+The SEO Workers help writers and editorial teams make content easier to understand, structure, retrieve and approve. They review metadata, search snippets, schema, technical health, trust and evidence while the writer is still shaping the work. Every output is for human review.
+
+See also the [Content Workers directory](https://wordpresto.com/workers/).
+
+---
+
+## SEO Worker directory (6 specialist roles)
+
+### Nadia — SEO Title & Metadata Worker
+
+- Stage: Metadata
+- Output: Metadata drafts
+- URL: https://wordpresto.com/workers/seo-metadata/
+- Markdown: https://wordpresto.com/workers/seo-metadata/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/seo-metadata.md
+
+Nadia reviews the SEO title, meta description and H1 against search intent, then drafts clearer options for the writer to approve. Metadata that reads well for people and search.
+
+### Morgan — SERP Snippet Worker
+
+- Stage: Snippets
+- Output: Snippet review
+- URL: https://wordpresto.com/workers/serp-snippet-opportunity/
+- Markdown: https://wordpresto.com/workers/serp-snippet-opportunity/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/serp-snippet-opportunity.md
+
+Morgan reviews how a page is likely to appear in search results and points out snippet and rich-result opportunities worth shaping for. Review-only, never a guarantee.
+
+### Sofia — Schema Worker
+
+- Stage: Structured data
+- Output: Schema review
+- URL: https://wordpresto.com/workers/schema/
+- Markdown: https://wordpresto.com/workers/schema/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/schema.md
+
+Sofia reviews the structured data on a page and recommends the schema types that match what the page actually is, for human review. No invented fields, no false markup.
+
+### Maya — Technical Health Worker
+
+- Stage: Technical
+- Output: Technical findings
+- URL: https://wordpresto.com/workers/technical-health/
+- Markdown: https://wordpresto.com/workers/technical-health/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/technical-health.md
+
+Maya checks the technical signals behind a page, metadata, headings, indexability and structure, and reports what needs a closer look. Standards-backed and review-only.
+
+### Alex — Trust & Author Credibility Worker
+
+- Stage: Trust
+- Output: Trust review
+- URL: https://wordpresto.com/workers/trust-author-credibility/
+- Markdown: https://wordpresto.com/workers/trust-author-credibility/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/trust-author-credibility.md
+
+Alex reviews the trust, authorship and credibility signals around a page so readers and search engines can see who stands behind the content. Review-only, never invented.
+
+### Theo — Evidence Gap Worker
+
+- Stage: Evidence
+- Output: Evidence checklist
+- URL: https://wordpresto.com/workers/evidence-gap/
+- Markdown: https://wordpresto.com/workers/evidence-gap/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/evidence-gap.md
+
+Theo turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off. What to back up, where to source it, what to hold.
 
 ---
 
@@ -1454,6 +1544,120 @@ A risk report is an input to editorial and compliance review, not a sign-off. Ve
 
 ---
 
+# Back up the claims before they go live.
+
+Canonical: https://wordpresto.com/workers/evidence-gap/
+Markdown: https://wordpresto.com/workers/evidence-gap/index.md
+
+# Back up the claims before they go live.
+
+Theo turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off. What to back up, where to source it, what to hold.
+
+---
+
+Content is full of claims: figures, comparisons, statements of fact. Some are solid, some are guesses, and some should not be published until they are checked. Theo gathers the evidence warnings raised across the workflow and turns them into a single, practical checklist of what to support, where to find it, and what to hold.
+
+## The risky claims are rarely the ones that look risky.
+
+A confident sentence reads as fact whether or not anything backs it. Across a draft, unsupported figures and tidy-sounding comparisons slip through because no one is tracking which claim needs a source. Theo consolidates those gaps into one checklist, so nothing rests on an assumption no one checked.
+
+## A checklist that turns vague worry into specific actions.
+
+Theo consolidates evidence warnings into a structured checklist: what needs support, a suggested source, the level of risk, whether it should block approval, and safe interim wording. The work of supporting a claim stays with people.
+
+### Checks
+
+- Claims that lack a source
+- Figures and comparisons that need proof
+- Statements that may overstate the case
+
+### Improves
+
+- Vague worries turned into clear actions
+- A single view of every evidence gap
+- Priority and risk on each item
+
+### Prepares
+
+- An evidence checklist for the page
+- Suggested sources to look for
+- Safe interim wording where useful
+
+### Surfaces for human review
+
+- Claims that should block approval
+- High-risk statements for a human to weigh
+- Sources that need a person to verify
+
+## What Theo works from, and what he produces.
+
+### Works from
+
+- Evidence warnings from the workflow
+- Claims and figures in the draft
+- Topic sensitivity and risk
+- Existing sources on the page
+- Review and compliance notes
+
+### Produces
+
+- A consolidated evidence checklist
+- Required-evidence items
+- Suggested sources and risk levels
+- Approval-blocking flags
+- Safe interim wording
+
+## When to use Theo
+
+### A precise statistic with no citation.
+
+Theo flags the figure, marks it as needing a source, and suggests safe wording until one is found.
+
+### A superlative the page cannot prove.
+
+He surfaces "the best" or "the most accurate" as claims that need evidence or a rewrite before approval.
+
+### A draft full of confident assertions.
+
+Theo pulls every unsupported claim into one checklist so a reviewer is not hunting for them line by line.
+
+### A regulated topic near sign-off.
+
+He marks the claims that should block approval until they are properly supported, and hands risk to Vera.
+
+### Preparing a page for handoff.
+
+Theo confirms the evidence checklist is clear before Audrey assembles the approval report.
+
+### A claim that leans on unseen expertise.
+
+He coordinates with Alex so authority and evidence are both shown, not assumed.
+
+## Theo finds the gaps. People supply the proof.
+
+Evidence is a human responsibility. Theo identifies what needs support and how risky each gap is, but he does not invent sources, fabricate figures or approve a claim. Filling and verifying the evidence stays with people.
+
+### Boundary checklist
+
+- Theo finds gaps, he never invents evidence.
+- Every item is shown for a person to resolve.
+- Claims that should block approval are flagged.
+- Theo supports the reviewer, he does not replace judgement.
+
+### Will not
+
+- Invent sources or figures
+- Approve an unsupported claim
+- Wave through a high-risk statement
+
+## Workers Theo works with.
+
+- **Alex — Trust & Author Credibility Worker**: Reviews whether the authority behind the claims is visible. Output: Trust review.
+- **Vera — Editorial Risk & Claims Compliance Worker**: Flags unsupported claims and compliance risk before approval. Output: Risk & compliance report.
+- **Audrey — Approval Report Worker**: Assembles the evidence checklist into the approval decision. Output: Approval report.
+
+---
+
 # Make good content easier to read.
 
 Canonical: https://wordpresto.com/workers/readability/
@@ -1564,6 +1768,120 @@ A readability pass improves flow without changing meaning or overriding voice de
 - **Ellis — Draft Rewrite Worker**: Produces the shaped draft that the readability pass follows. Output: Shaped draft.
 - **Quinn — Draft Quality Reviewer**: Reviews the improved draft for clarity and readiness. Output: Review notes.
 - **Rosa — Section Rewrite Worker**: Rewrites sections that need more than a readability pass. Output: Rewritten sections.
+
+---
+
+# Describe the page so machines understand it too.
+
+Canonical: https://wordpresto.com/workers/schema/
+Markdown: https://wordpresto.com/workers/schema/index.md
+
+# Describe the page so machines understand it too.
+
+Sofia reviews the structured data on a page and recommends the schema types that match what the page actually is, for human review. No invented fields, no false markup.
+
+---
+
+Structured data tells search engines what a page actually is: an article, a product, a guide, a business. Sofia reviews the schema already present, assesses what the page really represents, and recommends the types that fit, so the markup describes the page honestly.
+
+## Structured data only helps when it tells the truth.
+
+Schema is easy to copy and hard to keep honest. Pages inherit markup from a template, describe themselves as something they are not, or carry no structured data at all. Sofia reviews what is there against what the page actually is, and recommends types that match.
+
+## A reviewer who matches schema to what the page really is.
+
+Sofia reports the structured data she detects, assesses the apparent page type, and recommends suitable schema. She never invents fields or marks a page as something it is not.
+
+### Checks
+
+- Structured data already on the page
+- Whether detected types match the content
+- Missing schema the page could honestly use
+
+### Improves
+
+- Type recommendations that fit the page
+- Markup that reflects the real content
+- Clarity on what each type is for
+
+### Prepares
+
+- A schema review with detected types
+- Recommended types for approval
+- Notes on why each type fits
+
+### Surfaces for human review
+
+- Markup that claims more than the page does
+- Fields that would need real data to fill
+- Cases where a human should decide the type
+
+## What Sofia works from, and what she produces.
+
+### Works from
+
+- Existing structured data
+- Page content and headings
+- Apparent page type
+- Business or organisation context
+- Technical review where available
+
+### Produces
+
+- Detected schema report
+- Recommended schema types
+- Reasoning for each recommendation
+- Notes on fields that need real data
+- Review-ready schema summary
+
+## When to use Sofia
+
+### A guide carrying product markup from a template.
+
+Sofia flags the mismatch and recommends the article or how-to types that actually describe the page.
+
+### A page with no structured data at all.
+
+She assesses what the page is and recommends a sensible starting set, for a person to approve.
+
+### A business page missing organisation details.
+
+Sofia points out the schema that would describe the organisation, without inventing facts to fill it.
+
+### An FAQ that could support FAQ markup.
+
+She notes the opportunity and refers the snippet implications to Morgan, leaving the decision to the editor.
+
+### Schema copied across a whole section.
+
+Sofia reviews where the inherited markup no longer fits the individual pages it sits on.
+
+### A claim-heavy page in a regulated field.
+
+She surfaces markup that would assert more than the page can support and leaves it for human review.
+
+## Sofia recommends the schema. People approve the markup.
+
+Structured data is a statement about the page. Sofia reviews and recommends, but never writes false markup, invents fields or marks a page as something it is not. Recommendations go through human approval before anything is applied.
+
+### Boundary checklist
+
+- Sofia recommends schema, she never fakes markup.
+- Detected types and recommendations are shown for review.
+- Fields that need real data are surfaced, not filled.
+- Sofia supports the team, she does not replace judgement.
+
+### Will not
+
+- Write false or invented markup
+- Mark a page as what it is not
+- Fill fields without real data
+
+## Workers Sofia works with.
+
+- **Morgan — SERP Snippet Worker**: Connects schema opportunities to how the page appears in results. Output: Snippet review.
+- **Maya — Technical Health Worker**: Checks the wider technical signals the page depends on. Output: Technical findings.
+- **Nadia — SEO Title & Metadata Worker**: Drafts the title and description that sit alongside the markup. Output: Metadata drafts.
 
 ---
 
@@ -1680,6 +1998,234 @@ A rewritten section is a replacement option, not a final edit. Rosa produces the
 
 ---
 
+# Get the title, description and H1 right.
+
+Canonical: https://wordpresto.com/workers/seo-metadata/
+Markdown: https://wordpresto.com/workers/seo-metadata/index.md
+
+# Get the title, description and H1 right.
+
+Nadia reviews the SEO title, meta description and H1 against search intent, then drafts clearer options for the writer to approve. Metadata that reads well for people and search.
+
+---
+
+The title, meta description and H1 are the first thing a reader sees in search, and the easiest thing to leave as an afterthought. Nadia reads them against the page and the intent behind the query, flags what is missing, weak, overlong or off the mark, and drafts clearer options.
+
+## Good content with a weak title still loses the click.
+
+Metadata is usually written last, in a hurry, by whoever is closest to the publish button. The result is titles that repeat the brand, descriptions that restate the H1 and pages that undersell what they actually offer. Nadia treats the SERP-facing layer as part of the writing.
+
+## A metadata editor that reads intent, not just keywords.
+
+Nadia checks the title, description and H1 the way a careful editor would: against what the page is for and what the reader was looking for, then proposes drafts you can accept, edit or reject.
+
+### Checks
+
+- Title, description and H1 against search intent
+- Length, duplication and keyword stuffing
+- Promises the page does not actually keep
+
+### Improves
+
+- Vague titles made specific and readable
+- Descriptions that say what the page offers
+- H1 and title that work together, not against
+
+### Prepares
+
+- Draft metadata with length guidance
+- Clear before-and-after for review
+- Notes on the intent each option targets
+
+### Surfaces for human review
+
+- Titles where intent is genuinely unclear
+- Claims in metadata that need evidence
+- Compliance-sensitive wording to check
+
+## What Nadia works from, and what she produces.
+
+### Works from
+
+- Page content and current H1
+- Existing title and meta description
+- Detected search intent
+- Target topic or query
+- Brand and compliance rules
+
+### Produces
+
+- Draft SEO title options
+- Draft meta description
+- H1 suggestions
+- Length and intent notes
+- Review-ready metadata pack
+
+## When to use Nadia
+
+### A strong article with a forgettable title.
+
+Nadia rewrites the title and description to match what readers are actually searching for, without overpromising.
+
+### Titles that all start with the brand name.
+
+She moves the value to the front so the page leads with what it offers, not who published it.
+
+### Descriptions that just repeat the heading.
+
+Nadia turns a restated H1 into a description that tells the reader what they will get from the page.
+
+### A page targeting the wrong intent.
+
+When the metadata promises one thing and the page delivers another, she flags the mismatch for a human to resolve.
+
+### Migrating a library of old posts.
+
+She reviews titles and descriptions at scale and surfaces the weakest first, so a metadata pass starts where it counts.
+
+### A regulated topic where wording matters.
+
+Nadia drafts carefully and surfaces claims that need sign-off, rather than writing a promise the page cannot back up.
+
+## Nadia drafts the metadata. People decide what ships.
+
+A title is a promise to a reader. Nadia proposes and checks, but she is built to stop at the draft. Nothing she writes is published or pushed to a CMS without a person approving it first.
+
+### Boundary checklist
+
+- Nadia drafts metadata, she never publishes it.
+- Every option is shown for an editor to approve.
+- Mismatches and risky claims are surfaced, not hidden.
+- Nadia supports the writer, she does not replace judgement.
+
+### Will not
+
+- Publish or push to CMS
+- Promise rankings or traffic
+- Stuff keywords to game search
+
+## Workers Nadia works with.
+
+- **Morgan — SERP Snippet Worker**: Looks at how the page appears in results and where snippets can be won. Output: Snippet review.
+- **Sofia — Schema Worker**: Reviews structured data so the page can qualify for richer results. Output: Schema review.
+- **Quinn — Draft Quality Reviewer**: Checks the draft itself is clear and ready before metadata is finalised. Output: Review notes.
+
+---
+
+# Shape how the page shows up in search.
+
+Canonical: https://wordpresto.com/workers/serp-snippet-opportunity/
+Markdown: https://wordpresto.com/workers/serp-snippet-opportunity/index.md
+
+# Shape how the page shows up in search.
+
+Morgan reviews how a page is likely to appear in search results and points out snippet and rich-result opportunities worth shaping for. Review-only, never a guarantee.
+
+---
+
+A page does not just rank, it appears. The title, description and the way content is structured all shape what a reader sees in the results. Morgan reviews those snippet elements and points out where a clear answer, a list or a structured section could earn a richer result.
+
+## The result a reader sees is not always the page you wrote.
+
+Search engines build the snippet, not you. If the page buries its answer, has no clear list or question structure, or leaves the description to chance, the result reads as flat as everything around it. Morgan reviews the elements that shape that snippet, honestly, without promising a feature will be granted.
+
+## A reviewer who reads the page the way a result page does.
+
+Morgan looks at the title, description and on-page structure together and surfaces concrete, reviewable opportunities, so the page has the best honest chance of a clear, useful snippet.
+
+### Checks
+
+- Title and description quality for results
+- Whether the page answers its query directly
+- Structure that supports lists, steps or FAQs
+
+### Improves
+
+- Answers moved up and made explicit
+- Sections shaped for a cleaner snippet
+- Question-led content made scannable
+
+### Prepares
+
+- A list of rich-result opportunities
+- Suggested snippet improvements
+- Notes on which result types fit the page
+
+### Surfaces for human review
+
+- Opportunities that need a schema check
+- Claims that would need evidence to feature
+- Where intent and format do not match
+
+## What Morgan works from, and what he produces.
+
+### Works from
+
+- Page title and meta description
+- Headings and content structure
+- Detected search intent
+- Question and list patterns on the page
+- Schema review where available
+
+### Produces
+
+- Snippet opportunity review
+- Rich-result suggestions
+- Structure improvement notes
+- Priority of quick wins
+- Review-ready summary
+
+## When to use Morgan
+
+### A how-to that never lists its steps.
+
+Morgan suggests a clear numbered structure so the steps can be read at a glance and stand a chance of featuring.
+
+### An FAQ page with the answers hidden in prose.
+
+He points out where short, direct answers would help both readers and the results page.
+
+### A strong guide with a flat description.
+
+Morgan flags the snippet elements that are letting the page down and hands them to Nadia for redrafting.
+
+### A page that could earn a rich result.
+
+He notes which structured result types genuinely fit and refers the schema work to Sofia, without promising Google will grant it.
+
+### Comparing two pages competing for the same query.
+
+Morgan reviews how each is likely to appear and surfaces which structure serves the reader best.
+
+### A reader question buried three paragraphs deep.
+
+He recommends leading with the answer so the page is useful immediately, on the page and in search.
+
+## Morgan reviews the opportunity. Search still decides.
+
+No tool controls what a search engine shows. Morgan reviews and recommends, and is careful never to promise a snippet, a ranking or traffic. Every suggestion is for a person to weigh and approve.
+
+### Boundary checklist
+
+- Morgan reviews snippets, he never guarantees one.
+- Recommendations are shown for an editor to approve.
+- Opportunities needing schema or evidence are flagged.
+- Morgan supports the writer, he does not replace judgement.
+
+### Will not
+
+- Guarantee a featured snippet
+- Promise rankings or traffic
+- Force structure that hurts reading
+
+## Workers Morgan works with.
+
+- **Nadia — SEO Title & Metadata Worker**: Drafts the title and description that shape the snippet. Output: Metadata drafts.
+- **Sofia — Schema Worker**: Reviews the structured data that rich results depend on. Output: Schema review.
+- **Omar — Content Analyst**: Assesses the underlying content the snippet is drawn from. Output: Content analysis.
+
+---
+
 # Give every draft a clearer shape.
 
 Canonical: https://wordpresto.com/workers/structure/
@@ -1791,6 +2337,234 @@ Structure is a recommendation, not a directive. Marcus maps the best reading pat
 - **Luca — Content Brief Builder**: Builds the brief around the approved structure. Output: Content brief.
 - **Ellis — Draft Rewrite Worker**: Drafts within the structural framework Marcus sets. Output: Shaped draft.
 - **Helena — Voice & Style Worker**: Applies voice guidance to the structurally shaped draft. Output: Voice & style guidance.
+
+---
+
+# Check the technical signals behind the page.
+
+Canonical: https://wordpresto.com/workers/technical-health/
+Markdown: https://wordpresto.com/workers/technical-health/index.md
+
+# Check the technical signals behind the page.
+
+Maya checks the technical signals behind a page, metadata, headings, indexability and structure, and reports what needs a closer look. Standards-backed and review-only.
+
+---
+
+Great writing can still be held back by quiet technical problems: a missing title, a broken heading order, a page that cannot be indexed. Maya reviews those signals against established standards and reports findings by category, so nothing technical is left to chance.
+
+## A strong page can be let down by signals no one checked.
+
+Technical issues rarely announce themselves. A page with a missing meta title, headings that skip levels, or an accidental noindex can read perfectly while quietly underperforming. Maya reviews these signals against standards and reports what needs attention, in plain language.
+
+## A technical reviewer who reports findings, not noise.
+
+Maya runs standards-backed technical checks and groups what she finds into clear categories with scores, so a person can see what matters and decide what to fix. She reviews, she does not change the page.
+
+### Checks
+
+- Metadata, headings and indexability
+- Page structure and technical signals
+- Schema presence and accessibility basics
+
+### Improves
+
+- A clear picture of technical health
+- Findings grouped by category
+- A sensible order to fix things in
+
+### Prepares
+
+- Standards-backed technical findings
+- Category scores for the page
+- Notes on what to check before publish
+
+### Surfaces for human review
+
+- Issues that need a developer to resolve
+- Findings that need a human decision
+- Signals a single page cannot confirm alone
+
+## What Maya works from, and what she produces.
+
+### Works from
+
+- Page metadata and headings
+- Indexability signals
+- Page structure and content sections
+- Schema presence
+- Accessibility and technical signals
+
+### Produces
+
+- Technical health findings
+- Category scores
+- Prioritised issues to review
+- Notes for developers where needed
+- Review-ready technical summary
+
+## When to use Maya
+
+### A page accidentally set to noindex.
+
+Maya flags it before publish, so a page meant to be found is not quietly hidden from search.
+
+### Headings that skip from H1 to H3.
+
+She reports the broken hierarchy so the structure reads cleanly for readers, assistive tech and search.
+
+### A new template before it ships.
+
+Maya reviews the technical signals on a sample page so issues are caught once, not on every page later.
+
+### A content refresh that touched the markup.
+
+She checks that titles, headings and indexability still hold up after the edit.
+
+### A page that reads well but ranks poorly.
+
+Maya surfaces the technical signals that might be holding it back, for a person to investigate.
+
+### Handing a list of fixes to a developer.
+
+She groups findings by category and priority so the technical work is clear and scoped.
+
+## Maya reports the findings. People decide the fixes.
+
+A technical review is information, not an instruction. Maya checks and reports, but she does not edit the page, change settings or push anything live. Her findings are for a person to act on.
+
+### Boundary checklist
+
+- Maya reviews the page, she never edits it.
+- Findings are reported for a person to act on.
+- Issues needing a developer are flagged clearly.
+- Maya supports the team, she does not replace judgement.
+
+### Will not
+
+- Edit the page or change settings
+- Publish or push anything live
+- Claim a fix without human review
+
+## Workers Maya works with.
+
+- **Sofia — Schema Worker**: Reviews the structured data among the technical signals. Output: Schema review.
+- **Nadia — SEO Title & Metadata Worker**: Drafts the metadata Maya checks for presence and quality. Output: Metadata drafts.
+- **Alex — Trust & Author Credibility Worker**: Reviews the trust signals that sit alongside technical health. Output: Trust review.
+
+---
+
+# Show who stands behind the content.
+
+Canonical: https://wordpresto.com/workers/trust-author-credibility/
+Markdown: https://wordpresto.com/workers/trust-author-credibility/index.md
+
+# Show who stands behind the content.
+
+Alex reviews the trust, authorship and credibility signals around a page so readers and search engines can see who stands behind the content. Review-only, never invented.
+
+---
+
+On topics that affect money, health or major decisions, readers and search engines both want to know who wrote this and why they can be trusted. Alex reviews the author context, organisation identity, evidence support and credibility signals around a page, and reports where trust is clear and where it is missing.
+
+## Good advice from nobody in particular is hard to trust.
+
+Plenty of genuinely expert content is published with no visible author, no organisation context and no sign of who reviewed it. The expertise is real, but the reader cannot see it, and neither can search. Alex reviews the signals that make credibility visible.
+
+## A reviewer who checks whether trust is actually visible.
+
+Alex reviews authorship, organisation ownership, evidence support and credibility signals, returns a readiness read and surfaces what needs a human eye, especially on sensitive topics. He reports signals, he never invents credentials.
+
+### Checks
+
+- Author byline, bio and credentials
+- Organisation ownership and context
+- Evidence support and review signals
+
+### Improves
+
+- A clear picture of trust readiness
+- Gaps in authorship made visible
+- Where credibility could be shown better
+
+### Prepares
+
+- A trust and credibility review
+- A readiness read for the page
+- Notes on sensitive-topic risk
+
+### Surfaces for human review
+
+- High-stakes claims that need expertise shown
+- Missing author or reviewer context
+- Credibility decisions for a human to make
+
+## What Alex works from, and what he produces.
+
+### Works from
+
+- Author context and byline
+- Organisation and ownership signals
+- Evidence support on the page
+- Topic sensitivity (advice, health, money)
+- Schema credibility signals
+
+### Produces
+
+- Trust and credibility review
+- A trust readiness read
+- Authorship gap notes
+- Sensitive-topic risk flags
+- Review-ready trust summary
+
+## When to use Alex
+
+### Health or finance advice with no named author.
+
+Alex flags the missing authorship so a real, qualified person can be credited before the page goes live.
+
+### A respected organisation that never says so.
+
+He points out where organisation context and ownership could make existing credibility visible.
+
+### A page that should show a reviewer.
+
+Alex notes where a reviewed-by signal would reassure readers on a higher-stakes topic.
+
+### Claims that lean on expertise not shown.
+
+He surfaces where the page assumes authority it has not demonstrated, and refers evidence work to Theo.
+
+### Preparing content for a regulated sector.
+
+Alex reviews trust signals alongside Vera so credibility and compliance are considered together.
+
+### A guest post from an unknown contributor.
+
+He flags the missing author context so a person can decide how to attribute and stand behind it.
+
+## Alex reviews the trust signals. People stand behind the page.
+
+Credibility cannot be manufactured. Alex reviews and reports, but he never invents an author, fabricates credentials or claims a review that did not happen. What he surfaces is for a person to act on honestly.
+
+### Boundary checklist
+
+- Alex reviews trust signals, he never invents them.
+- Authorship gaps are surfaced for a person to fill.
+- Sensitive-topic risks are flagged for human review.
+- Alex supports the team, he does not replace judgement.
+
+### Will not
+
+- Invent authors or credentials
+- Claim a review that did not happen
+- Assume authority the page has not shown
+
+## Workers Alex works with.
+
+- **Theo — Evidence Gap Worker**: Turns weak or missing evidence into a clear checklist. Output: Evidence checklist.
+- **Vera — Editorial Risk & Claims Compliance Worker**: Flags unsupported claims and compliance risk before approval. Output: Risk & compliance report.
+- **Sofia — Schema Worker**: Reviews the structured data that carries credibility signals. Output: Schema review.
 
 ---
 

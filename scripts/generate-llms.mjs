@@ -68,7 +68,15 @@ const pageResources = [
     markdownPath: '/workers/index.md',
     legacyMarkdownPath: '/pages/workers/index.md',
     sourcePath: 'pages/workers/index.md',
-    focus: 'Directory of the specialist Workers used in the WordPresto content workflow.',
+    focus: 'Directory of the content Workers used in the WordPresto content workflow.',
+  },
+  {
+    title: 'SEO Workers directory',
+    htmlPath: '/workers/seo/',
+    markdownPath: '/workers/seo/index.md',
+    legacyMarkdownPath: '/workers/seo/index.md',
+    sourcePath: 'workers/seo/index.md',
+    focus: 'Directory of the SEO Workers used in the WordPresto workflow.',
   },
 ];
 

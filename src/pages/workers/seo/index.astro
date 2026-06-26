@@ -1,16 +1,16 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { workers } from '@/data/workers';
+import { seoWorkers } from '@/data/workers';
 
-const seoTitle = 'Content workflow Workers | WordPresto';
-const metaDescription = 'Meet the specialist Workers in the WordPresto content workflow — from content analysis and brief building to voice review, approval reporting and CMS handoff.';
+const seoTitle = 'SEO Workers for search, structure and authority | WordPresto';
+const metaDescription = 'Meet the SEO Workers in the WordPresto workflow, covering SEO title and metadata, search snippets, schema, technical health, trust and author credibility, and evidence gaps. Review-led and human-approved.';
 ---
 
 <BaseLayout
-  pageTitle="Specialist Workers for every stage of the content workflow."
+  pageTitle="SEO Workers for search, structure and authority."
   seoTitle={seoTitle}
   description={metaDescription}
-  canonical="https://wordpresto.com/workers/"
+  canonical="https://wordpresto.com/workers/seo/"
 >
 
   <!-- ===================== MASTHEAD ===================== -->
@@ -35,15 +35,22 @@ const metaDescription = 'Meet the specialist Workers in the WordPresto content w
   <!-- HERO -->
   <section class="section section--hero">
     <div class="container">
-      <div class="eyebrow eyebrow--strategy">The team</div>
-      <h1 class="page-h1">Specialist Workers for every stage of the content workflow.</h1>
-      <p class="page-intro">WordPresto brings in the right specialists for the stage you are at, so each piece of content gets the support it actually needs.</p>
+      <nav class="wp-breadcrumb" aria-label="Breadcrumb">
+        <a href="/workers/" class="wp-breadcrumb-back">&#8592;</a>
+        <a href="/workers/" class="wp-breadcrumb-link">WORKERS</a>
+        <span class="wp-breadcrumb-sep">/</span>
+        <span class="wp-breadcrumb-current">SEO</span>
+      </nav>
+
+      <div class="eyebrow eyebrow--seo">Search &amp; SEO</div>
+      <h1 class="page-h1">SEO Workers for search, structure and authority.</h1>
+      <p class="page-intro">The SEO Workers help writers and editorial teams make content easier to understand, structure, retrieve and approve. They review metadata, search snippets, schema, technical health, trust and evidence, and surface what matters while the writer is still shaping the work. Every output is for human review.</p>
       <div class="worker-directory-header">
-        <span>WORKER DIRECTORY</span>
-        <span>{workers.length} SPECIALIST ROLES · ONE CONTENT WORKFLOW</span>
+        <span>SEO WORKER DIRECTORY</span>
+        <span>{seoWorkers.length} SPECIALIST ROLES · SEARCH, EVIDENCE &amp; AUTHORITY</span>
       </div>
       <div class="workers-grid">
-        {workers.map((w) => (
+        {seoWorkers.map((w) => (
           <a href={`/workers/${w.id.replace(/_/g, '-')}/`} class="worker-card">
             <div class="worker-card-top">
               <img
@@ -83,11 +90,11 @@ const metaDescription = 'Meet the specialist Workers in the WordPresto content w
         ))}
       </div>
 
-      <a href="/workers/seo/" class="workers-crosslink">
+      <a href="/workers/" class="workers-crosslink">
         <span class="workers-crosslink-label">Also in the workflow</span>
-        <span class="workers-crosslink-title">SEO Workers, in their own directory</span>
+        <span class="workers-crosslink-title">Content Workers, in their own directory</span>
         <span class="workers-crosslink-cta">
-          See the SEO Workers
+          See the Content Workers
           <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
       </a>
@@ -108,10 +115,9 @@ const metaDescription = 'Meet the specialist Workers in the WordPresto content w
         <a href="/workers/" class="footer-link">Workers</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-heading">Use cases</span>
-        <a href="/#use-cases" class="footer-link">Astro + CMS builds</a>
-        <a href="/#use-cases" class="footer-link">CMS-connected</a>
-        <a href="/#use-cases" class="footer-link">Standalone engine</a>
+        <span class="footer-col-heading">Workers</span>
+        <a href="/workers/" class="footer-link">Content Workers</a>
+        <a href="/workers/seo/" class="footer-link">SEO Workers</a>
       </div>
       <div class="footer-col">
         <span class="footer-col-heading">Company</span>
@@ -194,7 +200,24 @@ const metaDescription = 'Meet the specialist Workers in the WordPresto content w
     text-transform: uppercase;
     margin-bottom: 16px;
   }
-  .eyebrow--strategy { color: var(--team-strategy); }
+  .eyebrow--seo { color: var(--team-seo); }
+
+  /* Breadcrumb */
+  .wp-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.06em;
+    color: var(--wp-text-muted);
+    margin-bottom: 26px;
+  }
+  .wp-breadcrumb-back { color: var(--wp-text-muted); }
+  .wp-breadcrumb-link { color: var(--wp-text-tertiary); }
+  .wp-breadcrumb-sep { color: var(--wp-border-strong); }
+  .wp-breadcrumb-current { color: var(--wp-text-secondary); }
+
   .page-h1 {
     font-size: clamp(2.4rem, 5vw, 3.75rem);
     font-weight: 700;
@@ -209,7 +232,7 @@ const metaDescription = 'Meet the specialist Workers in the WordPresto content w
     color: var(--wp-text-secondary);
     line-height: 1.5;
     margin: 0 0 36px;
-    max-width: 600px;
+    max-width: 640px;
   }
 
   /* ===== WORKER DIRECTORY ===== */
@@ -230,41 +253,6 @@ const metaDescription = 'Meet the specialist Workers in the WordPresto content w
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 20px;
-  }
-  .workers-crosslink {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 6px 16px;
-    margin-top: 28px;
-    padding: 18px 22px;
-    background: #FFF;
-    border: 1px dashed var(--wp-border-strong);
-    text-decoration: none;
-    color: inherit;
-    transition: border-color 200ms, box-shadow 200ms;
-  }
-  .workers-crosslink:hover {
-    border-color: var(--wp-ink);
-    box-shadow: 0 3px 7px rgba(54,44,24,0.08), 0 16px 30px -18px rgba(54,44,24,0.2);
-  }
-  .workers-crosslink-label {
-    font-family: var(--wp-font-mono);
-    font-size: var(--wp-text-xs);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--team-seo);
-  }
-  .workers-crosslink-title { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.01em; }
-  .workers-crosslink-cta {
-    margin-left: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: var(--wp-text-sm);
-    font-weight: 600;
-    color: var(--wp-ink);
-    white-space: nowrap;
   }
   .worker-card {
     position: relative;
@@ -359,6 +347,43 @@ const metaDescription = 'Meet the specialist Workers in the WordPresto content w
     flex: 0 0 auto;
   }
 
+  /* ===== CROSS-LINK ===== */
+  .workers-crosslink {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 16px;
+    margin-top: 28px;
+    padding: 18px 22px;
+    background: #FFF;
+    border: 1px dashed var(--wp-border-strong);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 200ms, box-shadow 200ms;
+  }
+  .workers-crosslink:hover {
+    border-color: var(--wp-ink);
+    box-shadow: 0 3px 7px rgba(54,44,24,0.08), 0 16px 30px -18px rgba(54,44,24,0.2);
+  }
+  .workers-crosslink-label {
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--team-strategy);
+  }
+  .workers-crosslink-title { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.01em; }
+  .workers-crosslink-cta {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--wp-text-sm);
+    font-weight: 600;
+    color: var(--wp-ink);
+    white-space: nowrap;
+  }
+
   /* ===== FOOTER ===== */
   .footer {
     background-color: var(--wp-paper-dark);
@@ -406,6 +431,7 @@ const metaDescription = 'Meet the specialist Workers in the WordPresto content w
     .container { padding: 0 20px; }
     .workers-grid { grid-template-columns: 1fr; }
     .worker-directory-header { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .workers-crosslink-cta { margin-left: 0; }
     .footer-inner { grid-template-columns: 1fr; }
   }
 </style>

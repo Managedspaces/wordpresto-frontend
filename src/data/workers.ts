@@ -1,6 +1,13 @@
 // Worker profile image manifest for the marketing site.
 // Mirrors WORKER_PROFILE_IMAGE from client/src/lib/agentProfileImages.ts
-// for content-workflow workers only. SEO workers are not shown on the homepage.
+// (the backend's single source of truth). Worker ids, names, departments and
+// portraits match the backend WORKER_REGISTRY in shared/workflows/workers.ts
+// exactly — this file does not invent a second taxonomy.
+//
+// The homepage worker grid renders the `workers` array only (content and
+// governance). SEO workers live in their own `seoWorkers` array so they appear
+// on the /workers/ directory and get profile pages, but never leak into the
+// homepage grid or the homepage's writer-led, embedded-SEO positioning.
 //
 // Image path pattern: /agents/profiles/profile-{n}-{size}.webp
 // Sizes: 192 (1×), 384 (2× srcset)
@@ -10,7 +17,7 @@ export interface WorkerData {
   name: string;       // First name shown on card
   role: string;       // Worker display title
   department: string; // Department tag
-  team: 'content' | 'governance';
+  team: 'content' | 'governance' | 'seo';
   stage: string;
   summary: string;
   output: string;
@@ -203,3 +210,98 @@ export const workers: WorkerData[] = [
     teamColor: 'var(--team-content)',
   },
 ];
+
+// SEO Workers. These sit alongside the content Workers in the same workflow and
+// use the identical card and profile-page pattern. They are kept in a separate
+// array so the homepage (which renders `workers`) stays writer-led, while the
+// /workers/ directory and the profile route render the full team.
+//
+// ids, names, departments and portraits mirror the backend WORKER_REGISTRY and
+// WORKER_PROFILE_IMAGE exactly (shared/workflows/workers.ts). Only `available`,
+// publicly-appropriate review/draft Workers are shown — internal Workers such as
+// Safe Edit and Publishing are deliberately not exposed.
+export const seoWorkers: WorkerData[] = [
+  {
+    id: 'seo_metadata',
+    name: 'Nadia',
+    role: 'SEO Title & Metadata Worker',
+    department: 'SEO Metadata',
+    team: 'seo',
+    stage: 'Metadata',
+    summary: 'Reviews the SEO title, meta description and H1 against search intent, then drafts clearer options for the writer to approve.',
+    output: 'Metadata drafts',
+    image: '/agents/profiles/profile-22-192.webp',
+    image2x: '/agents/profiles/profile-22-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
+  {
+    id: 'serp_snippet_opportunity',
+    name: 'Morgan',
+    role: 'SERP Snippet Worker',
+    department: 'SERP Optimisation',
+    team: 'seo',
+    stage: 'Snippets',
+    summary: 'Looks at how a page is likely to appear in search results and points out snippet and rich-result opportunities worth shaping for.',
+    output: 'Snippet review',
+    image: '/agents/profiles/profile-38-192.webp',
+    image2x: '/agents/profiles/profile-38-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
+  {
+    id: 'schema',
+    name: 'Sofia',
+    role: 'Schema Worker',
+    department: 'Structured Data',
+    team: 'seo',
+    stage: 'Structured data',
+    summary: 'Reviews the structured data on a page and recommends the schema types that match what the page actually is, for review.',
+    output: 'Schema review',
+    image: '/agents/profiles/profile-10-192.webp',
+    image2x: '/agents/profiles/profile-10-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
+  {
+    id: 'technical_health',
+    name: 'Maya',
+    role: 'Technical Health Worker',
+    department: 'Technical Review',
+    team: 'seo',
+    stage: 'Technical',
+    summary: 'Checks the technical signals behind a page — metadata, headings, indexability and structure — and reports what needs a closer look.',
+    output: 'Technical findings',
+    image: '/agents/profiles/profile-02-192.webp',
+    image2x: '/agents/profiles/profile-02-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
+  {
+    id: 'trust_author_credibility',
+    name: 'Alex',
+    role: 'Trust & Author Credibility Worker',
+    department: 'Trust & Credibility',
+    team: 'seo',
+    stage: 'Trust',
+    summary: 'Reviews the trust and authorship signals around a page so readers, and search engines, can see who stands behind the content.',
+    output: 'Trust review',
+    image: '/agents/profiles/profile-39-192.webp',
+    image2x: '/agents/profiles/profile-39-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
+  {
+    id: 'evidence_gap',
+    name: 'Theo',
+    role: 'Evidence Gap Worker',
+    department: 'Evidence Assurance',
+    team: 'seo',
+    stage: 'Evidence',
+    summary: 'Turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off.',
+    output: 'Evidence checklist',
+    image: '/agents/profiles/profile-23-192.webp',
+    image2x: '/agents/profiles/profile-23-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
+];
+
+// Combined list for lookups (e.g. resolving related Workers across both teams).
+// The homepage must keep using `workers` only; use this where the full team is
+// needed, such as the /workers/ directory and the profile route.
+export const allWorkers: WorkerData[] = [...workers, ...seoWorkers];

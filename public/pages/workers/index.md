@@ -8,9 +8,11 @@ canonical: "https://wordpresto.com/workers/"
 
 WordPresto brings in the right specialists for the stage you are at, so each piece of content gets the support it actually needs.
 
+See also the [SEO Workers directory](https://wordpresto.com/workers/seo/).
+
 ---
 
-## Worker directory (14 specialist roles)
+## Content Worker directory (14 specialist roles)
 
 ### Helena — Voice & Style Worker
 
