@@ -20,6 +20,7 @@ The product is review-led. Workers assist with structured content work, but huma
 - [Workflow demo](https://wordpresto.com/workflow-demo/index.md): Step-by-step demo showing rough thinking becoming review-ready content.
 - [Workers directory](https://wordpresto.com/workers/index.md): Directory of the content Workers used in the WordPresto content workflow.
 - [SEO Workers directory](https://wordpresto.com/workers/seo/index.md): Directory of the SEO Workers used in the WordPresto workflow.
+- [WordPrestoBot crawler](https://wordpresto.com/prestobot/index.md): About WordPrestoBot, the Word Presto web crawler, and how to control it with robots.txt.
 
 ## Worker profiles
 
