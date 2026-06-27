@@ -32,6 +32,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/workers/seo/index.md
 - Focus: Directory of the SEO Workers used in the WordPresto workflow.
 
+### WordPrestoBot crawler
+
+- HTML: https://wordpresto.com/prestobot/
+- Markdown: https://wordpresto.com/prestobot/index.md
+- Legacy Markdown: https://wordpresto.com/pages/prestobot.md
+- Focus: About WordPrestoBot, the Word Presto web crawler, and how to control it with robots.txt.
+
 ### Make approval easier to trust.
 
 - HTML: https://wordpresto.com/workers/approval-report/

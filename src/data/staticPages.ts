@@ -40,6 +40,15 @@ export const seoWorkersDirectory: StaticPageMeta = {
     'The SEO Workers help writers and editorial teams make content easier to understand, structure, retrieve and approve. They review metadata, search snippets, schema, technical health, trust and evidence, and surface what matters while the writer is still shaping the work. Every output is for human review.',
 };
 
+export const prestobot: StaticPageMeta = {
+  seoTitle: 'WordPrestoBot, the Word Presto web crawler | Word Presto',
+  metaDescription:
+    'What WordPrestoBot is, why it visited your site, and how to control it with robots.txt. The read-only web crawler operated by Word Presto.',
+  h1: 'WordPrestoBot, our web crawler',
+  intro:
+    'If you found this page from a line in your server logs, hello, and thanks for checking. WordPrestoBot is the web crawler operated by Word Presto, an agentic content and SEO workflow tool. It reads public HTML to extract SEO and content signals on behalf of a Word Presto user, and nothing more.',
+};
+
 export const workflowDemo: StaticPageMeta = {
   seoTitle: 'WordPresto workflow demo, editorial and search intelligence in one workflow',
   metaDescription:

@@ -100,6 +100,7 @@ const contentPages = [
   { route: '/', md: 'index.md' },
   { route: '/workflow-demo/', md: 'workflow-demo/index.md' },
   { route: '/workers/', md: 'workers/index.md' },
+  { route: '/prestobot/', md: 'prestobot/index.md' },
 ];
 
 const workersDir = join(PUBLIC_DIR, 'workers');

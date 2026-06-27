@@ -54,6 +54,12 @@ const markdownRoutes = [
     dest: '/sitemap.md',
     headers: MD_HEADERS,
   },
+  {
+    src: '^/prestobot/?$',
+    has: [{ type: 'header', key: 'accept', value: ACCEPT_MD }],
+    dest: '/prestobot/index.md',
+    headers: MD_HEADERS,
+  },
 ];
 
 const fsIndex = config.routes.findIndex((r) => r.handle === 'filesystem');

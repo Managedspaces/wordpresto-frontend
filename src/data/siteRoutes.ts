@@ -98,6 +98,16 @@ export const siteRoutes: SiteRoute[] = [
     inXml: false,
   },
   {
+    path: '/prestobot/',
+    label: 'WordPrestoBot',
+    description: 'About WordPrestoBot, the Word Presto web crawler, and how to control it.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'monthly',
+    priority: 0.4,
+    markdown: '/prestobot/index.md',
+  },
+  {
     path: '/sitemap/',
     label: 'Site map',
     description: 'Every page on wordpresto.com, organised by section.',

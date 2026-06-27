@@ -78,6 +78,14 @@ const pageResources = [
     sourcePath: 'workers/seo/index.md',
     focus: 'Directory of the SEO Workers used in the WordPresto workflow.',
   },
+  {
+    title: 'WordPrestoBot crawler',
+    htmlPath: '/prestobot/',
+    markdownPath: '/prestobot/index.md',
+    legacyMarkdownPath: '/pages/prestobot.md',
+    sourcePath: 'pages/prestobot.md',
+    focus: 'About WordPrestoBot, the Word Presto web crawler, and how to control it with robots.txt.',
+  },
 ];
 
 const workerResources = workerFiles.map((file) => {
