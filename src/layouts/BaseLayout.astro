@@ -77,7 +77,10 @@ const {
     <!-- Microsoft Clarity -->
     <script>
       import Clarity from '@microsoft/clarity';
-      Clarity.init('xe24fb1uow');
+      const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
+      if (clarityProjectId) {
+        Clarity.init(clarityProjectId);
+      }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
