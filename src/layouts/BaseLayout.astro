@@ -74,6 +74,15 @@ const {
       gtag('config', 'G-ES3KQBXKK7');
     </script>
 
+    <!-- Microsoft Clarity -->
+    <script>
+      import Clarity from '@microsoft/clarity';
+      const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
+      if (clarityProjectId) {
+        Clarity.init(clarityProjectId);
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
