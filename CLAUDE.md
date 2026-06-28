@@ -136,6 +136,23 @@ Include:
 * Twitter card
 * robots defaults
 
+## Analytics
+
+Analytics load from the `<head>` in `src/layouts/BaseLayout.astro`, so they apply to every page.
+
+Two tools run side by side:
+
+* **Google Analytics** (gtag), with the measurement ID set inline. It is a public value, so it lives directly in the layout.
+* **Microsoft Clarity** (heatmaps and session recordings), using the `@microsoft/clarity` package. The project ID is read from the `PUBLIC_CLARITY_PROJECT_ID` environment variable, not hardcoded.
+
+Rules for Clarity:
+
+* The variable must keep the `PUBLIC_` prefix so Astro exposes it to the browser.
+* Clarity only initialises when the variable is set, so it is a clean no-op for local builds and previews that do not define it.
+* Set `PUBLIC_CLARITY_PROJECT_ID` in the Vercel project Environment Variables (Production) for it to run on the live site.
+
+Keep analytics light. Do not add further third-party trackers without a clear reason.
+
 ## Markdown Mirrors And LLM Files
 
 Each page should have a generated Markdown version.
