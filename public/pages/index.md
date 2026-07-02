@@ -13,89 +13,74 @@ Plan, brief, write, review, improve and prepare content for search, readers and 
 
 Word Presto puts the writer at the centre, then surrounds the writing process with structure, search, evidence, review, approval and CMS preparation. It gives teams a clear path from idea to approval before anything is published.
 
-## Content does not fail because people cannot write. It fails because the workflow is messy.
+## This is not another content dashboard.
 
-Briefs are vague. Drafts arrive without structure. Good ideas get lost in notes, chats and half-finished documents.
+Most content work does not fall apart because people cannot write. It falls apart because the brief changes, reviews arrive late, claims lose their sources, SEO gets bolted on at the end, and nobody knows who has approved what.
 
-- Unclear brief: Writers start guessing what the page is even for.
-- Draft lacks structure: No shared shape, so every draft reads differently.
-- Checks happen too late: Important questions surface after the page is already written.
-- Support missing: Important points move forward without enough support.
-- Review unclear: No clear gate, so nobody knows what "done" means.
-- CMS prep left until the end: Page details and handoff notes become a last-minute scramble.
+> Word Presto gives the work a desk. Emma runs it.
 
-## A structured place for content to move from idea to approval.
+- Brief agreed and on file
+- SEO checked in the draft, not after
+- Claims carry their evidence
+- Approval sits with the Editor
 
-Each stage has a clear role, output and review point.
+## Meet Emma, your managing editor.
 
-> Not a project board — a copy desk, where every piece of work has a folder it moves through.
+- She keeps the project in view: Emma reads the living context behind the work: pages, queries, metrics, gaps, voice, previous decisions and what the Editor has already approved.
+- She keeps the work moving: From brief to draft, proofing, review and approval, Emma keeps the next right step clear.
+- She brings in the specialists: Claims, voice, SEO, evidence, links, risk and handoff all come through the right desk at the right time.
+- She knows the line: Emma can recommend, route and prepare. Only the Editor can approve.
 
-- Plan: Turn loose ideas and business priorities into a clear direction.
-- Brief: Give writers the goal, audience, angle and structure before drafting starts.
-- Draft: Help the first version follow the purpose of the page.
-- Review: Surface what needs attention before the piece reaches the website or CMS.
-- Improve: Tighten sections that are unclear, thin, repetitive or not doing their job.
-- Approve: Human sign-off before anything moves to publishing.
-- Prepare for CMS: Package the approved work for clean handoff.
+## Emma's four commitments.
 
-## Before it reaches the website.
+The standards Emma holds to on every piece of work: the rules that make the desk trustworthy.
 
-Most of the important work happens before anything is published. Word Presto gives that work a clearer path: from idea, to brief, to draft, to review, to improvement, to approval and handoff.
+- Ground truth above all: No invented figures. No unsupported claims. No pretending weak evidence is strong.
+- Say the honest thing: Emma will not flatter a bad draft. She tells you what needs work.
+- Protect your work: Nothing publishes without the Editor's approval.
+- Remember what matters: Emma learns the standards, voice and decisions that shape the project.
 
-- Plan the work: Turn loose ideas and business priorities into a clear direction for the page.
-- Create the brief: Give writers the goal, audience, angle and structure before anyone starts drafting.
-- Shape the draft: Help the first version follow the purpose of the page instead of starting from a blank document.
-- Review the work: Surface what needs attention before the piece reaches the website, CMS or client.
-- Improve the weak parts: Tighten sections that are unclear, thin, repetitive or not doing their job.
-- Prepare the handoff: Package the approved work so it can move cleanly into a website, CMS or client review process.
+## One working surface for the actual copy.
 
-## SEO belongs in the writing workflow, not after it.
+The Canvas is where Emma brings the work together: imported pages, drafts, rewrites, proofing notes, specialist findings and approval decisions.
 
-Search performance is not a plugin you add at the end. It is shaped by the brief, the structure, the intent, the evidence, the internal links, the metadata and the quality of the finished page.
+- Import, draft, rewrite, proof and review in one place.
+- Specialist findings arrive as margin notes, not meetings.
+- Final approval still required, always.
 
-> Word Presto helps writers see those signals while the work is still being shaped, so SEO becomes part of the editorial process rather than a last-minute checklist.
+## 41 specialists. One managing editor.
 
-- Match the page to search intent before drafting
-- Structure headings and sections around the job the page needs to do
-- Surface weak sections, missing support and evidence gaps
-- Prepare titles, descriptions, slugs and CMS fields before handoff
-- Keep human judgement in control of what moves forward
+Emma is not working alone. Behind her is the full Word Presto specialist bench: content production, SEO, operations and approval governance workers, each with a defined role and place in the workflow.
 
-## Use Word Presto with the stack you have, or the one you are building next.
+> Emma brings in the right specialist at the right moment, then returns the findings that need the Editor's judgement.
 
-One content engine. Three ways the finished work leaves the desk.
+- Content Production Team: Plans, drafts, rewrites and proofs the copy, turning briefs into structured, ready content.
+- SEO Team: Works search intent, structure and technical signals into the draft, not bolted on at the end.
+- Operations / Management: Coordinates the review flow and keeps every piece of work ready for a human decision.
+- Approval / Governance: Checks risk, evidence and readiness, and whether a change is ready for the Editor.
 
-- Automated Astro + CMS builds: The engine behind structured, content-led websites where pages, briefs, updates and handoff notes are planned before they become templates.
-- CMS-connected workflows: Connect to WordPress, Payload, Sanity or a custom CMS so content is planned, reviewed and prepared before publishing.
-- Standalone content engine: Manage briefs, drafts, reviews and approvals before handing content to a client, editor or website team.
+## Same standard. Native voice.
 
-## Specialist Workers for each stage of the content workflow.
+When you work in another language, you do not get Emma translated. You get a managing editor who runs the same desk in her own language and idiom.
 
-Specialist Workers support each stage of the content workflow, from strategy and structure to drafting, proofing, SEO review, evidence, approval and CMS handoff. SEO is part of the workflow, not a separate mode.
+> Six editors. One standard.
 
-## SEO Workers, working inside the writing.
+- Emma: Dublin · English
+- Aurora: Lisbon · Portuguese
+- Francisca: São Paulo · Brazilian Portuguese
+- Sofía: Madrid · Spanish
+- Sabine: Berlin · German
+- Ambre: Paris · French
 
-A second team of specialists helps content be understood, structured, retrieved and approved. They review titles and metadata, search snippets, schema, technical signals, trust and evidence while the writer is still shaping the work. Every suggestion goes through human review.
+## Only the Editor can approve the work.
 
-## Faster content work, without removing human judgement.
+Emma can prepare the work. Specialists can review it. The Canvas can organise it. But only the Editor can approve it.
 
-Workers plan, draft, check and suggest. People still approve what moves forward — nothing reaches the CMS without human sign-off. This is review-led publishing, not blind automation.
+> Nothing goes live until the human in charge says yes.
 
-- Workers do not publish without approval.
-- Outputs are structured for human review.
-- Risks, gaps and weak sections are surfaced early.
-- The system supports human judgement — it never overrides it.
+## Put Emma at the centre of your content operation.
 
-## Built for the people responsible for content outcomes.
-
-- Copywriters: Better briefs, clearer review notes, SEO-aware structure and a working canvas that helps improve drafts without flattening your voice.
-- Business owners: A clear view of what content is being made, why it matters and whether it is ready to publish.
-- Website teams: A clearer path from draft to page, with structure, metadata, internal link notes, evidence gaps and CMS handoff already attached.
-- Agencies: A repeatable content process for client work, where writers, SEO reviewers and approvers can work from the same brief, canvas and approval trail.
-
-## Give your content workflow somewhere better to live.
-
-Plan, produce, review and improve content before it reaches the CMS, website or client.
+For writers, editors and publishing teams who need better content work without giving up editorial control.
 
 ## Agent-readable resources
 
