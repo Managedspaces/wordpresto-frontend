@@ -1,3 +1,5 @@
+import type { Locale } from '@/i18n/locales';
+
 // Marketing-safe worker/team manifest for the public site.
 //
 // SOURCE OF TRUTH: this mirrors the WordPresto product app's real worker
@@ -109,6 +111,56 @@ export const TEAM_META: Record<TeamId, TeamMeta> = {
   },
 };
 
+// Translated name/summary/cta per locale. `color` and `href` never change
+// by locale, so they stay only in TEAM_META above; getTeamMeta() below
+// merges the two. English (`en`) intentionally mirrors TEAM_META verbatim
+// so there is one wording to maintain, not two.
+type TeamCopy = Record<TeamId, Pick<TeamMeta, 'name' | 'summary' | 'cta'>>;
+
+const TEAM_I18N: Record<Locale, TeamCopy> = {
+  en: {
+    content: { name: 'Content Production Team', summary: 'Plans, drafts, rewrites and proofs the copy, turning briefs into structured, ready content.', cta: 'Browse Content Workers' },
+    seo: { name: 'SEO Team', summary: 'Works search intent, structure, technical signals, evidence and internal relationships into the content, not bolted on at the end.', cta: 'Browse SEO Workers' },
+    operations: { name: 'Operations / Management', summary: 'Coordinates the review flow and keeps every piece of work ready for a human decision.', cta: 'Browse Operations' },
+    governance: { name: 'Approval / Governance Team', summary: 'Checks risk, evidence, approval state and whether proposed changes are ready for the Editor.', cta: 'Browse Approval Workers' },
+  },
+  pt: {
+    content: { name: 'Equipa de Produção de Conteúdo', summary: 'Planeia, redige, reescreve e revê o texto, transformando briefings em conteúdo estruturado e pronto.', cta: 'Ver especialistas de conteúdo' },
+    seo: { name: 'Equipa de SEO', summary: 'Trabalha a intenção de pesquisa, a estrutura, os sinais técnicos, a evidência e as relações internas no conteúdo, não como um extra final.', cta: 'Ver especialistas de SEO' },
+    operations: { name: 'Operações / Gestão', summary: 'Coordena o fluxo de revisão e mantém cada peça de trabalho pronta para uma decisão humana.', cta: 'Ver Operações' },
+    governance: { name: 'Equipa de Aprovação / Governação', summary: 'Verifica o risco, a evidência, o estado de aprovação e se as alterações propostas estão prontas para o Editor.', cta: 'Ver especialistas de aprovação' },
+  },
+  'pt-br': {
+    content: { name: 'Time de Produção de Conteúdo', summary: 'Planeja, redige, reescreve e revisa o texto, transformando briefings em conteúdo estruturado e pronto.', cta: 'Ver especialistas de conteúdo' },
+    seo: { name: 'Time de SEO', summary: 'Trabalha a intenção de busca, a estrutura, os sinais técnicos, as evidências e as relações internas no conteúdo, não como um extra do final.', cta: 'Ver especialistas de SEO' },
+    operations: { name: 'Operações / Gestão', summary: 'Coordena o fluxo de revisão e mantém cada parte do trabalho pronta para uma decisão humana.', cta: 'Ver Operações' },
+    governance: { name: 'Time de Aprovação / Governança', summary: 'Verifica o risco, as evidências, o status de aprovação e se as mudanças propostas estão prontas para o Editor.', cta: 'Ver especialistas de aprovação' },
+  },
+  es: {
+    content: { name: 'Equipo de Producción de Contenido', summary: 'Planifica, redacta, reescribe y corrige el texto, convirtiendo los briefs en contenido estructurado y listo.', cta: 'Ver especialistas de contenido' },
+    seo: { name: 'Equipo de SEO', summary: 'Trabaja la intención de búsqueda, la estructura, las señales técnicas, la evidencia y las relaciones internas en el contenido, no como algo añadido al final.', cta: 'Ver especialistas de SEO' },
+    operations: { name: 'Operaciones / Gestión', summary: 'Coordina el flujo de revisión y mantiene cada pieza de trabajo lista para una decisión humana.', cta: 'Ver Operaciones' },
+    governance: { name: 'Equipo de Aprobación / Gobernanza', summary: 'Verifica el riesgo, la evidencia, el estado de aprobación y si los cambios propuestos están listos para el Editor.', cta: 'Ver especialistas de aprobación' },
+  },
+  de: {
+    content: { name: 'Content-Produktions-Team', summary: 'Plant, entwirft, überarbeitet und korrigiert den Text und macht aus Briefings strukturierten, fertigen Content.', cta: 'Content-Spezialist:innen ansehen' },
+    seo: { name: 'SEO-Team', summary: 'Arbeitet Suchintention, Struktur, technische Signale, Belege und interne Verknüpfungen in den Content ein, statt sie am Ende anzuflanschen.', cta: 'SEO-Spezialist:innen ansehen' },
+    operations: { name: 'Operations / Management', summary: 'Koordiniert den Review-Fluss und hält jedes Stück Arbeit bereit für eine menschliche Entscheidung.', cta: 'Operations ansehen' },
+    governance: { name: 'Freigabe-/Governance-Team', summary: 'Prüft Risiko, Belege, Freigabestatus und ob vorgeschlagene Änderungen bereit für den Editor sind.', cta: 'Freigabe-Spezialist:innen ansehen' },
+  },
+  fr: {
+    content: { name: 'Équipe de Production de Contenu', summary: 'Planifie, rédige, réécrit et relit le texte, transformant les briefs en contenu structuré et prêt.', cta: 'Voir les spécialistes contenu' },
+    seo: { name: 'Équipe SEO', summary: 'Intègre l’intention de recherche, la structure, les signaux techniques, les preuves et les relations internes dans le contenu, pas ajoutés à la fin.', cta: 'Voir les spécialistes SEO' },
+    operations: { name: 'Opérations / Gestion', summary: 'Coordonne le flux de révision et garde chaque élément de travail prêt pour une décision humaine.', cta: 'Voir les opérations' },
+    governance: { name: 'Équipe Validation / Gouvernance', summary: 'Vérifie le risque, les preuves, l’état de validation et si les changements proposés sont prêts pour l’Éditeur.', cta: 'Voir les spécialistes validation' },
+  },
+};
+
+/** TeamMeta with name/summary/cta translated for `locale`; color/href are locale-independent. */
+export function getTeamMeta(id: TeamId, locale: Locale = 'en'): TeamMeta {
+  return { ...TEAM_META[id], ...TEAM_I18N[locale][id] };
+}
+
 // One entry per visible worker (safe_edit and publishing excluded, matching the
 // app's BETA_DASHBOARD_HIDDEN_WORKER_IDS). `slug` is set only where an existing
 // /workers/[slug]/ profile page exists in workerProfiles.ts.
@@ -186,12 +238,12 @@ export function getExampleWorkers(team: TeamId, max = 6): WorkerEntry[] {
   return [...withProfile, ...withoutProfile].slice(0, max);
 }
 
-export function getTeamGroups(exampleMax = 6): TeamGroup[] {
+export function getTeamGroups(exampleMax = 6, locale: Locale = 'en'): TeamGroup[] {
   return TEAM_ORDER.map((team) => {
     const workers = getWorkersByTeam(team);
     const examples = getExampleWorkers(team, exampleMax);
     return {
-      ...TEAM_META[team],
+      ...getTeamMeta(team, locale),
       workers,
       count: workers.length,
       examples,
