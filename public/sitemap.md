@@ -53,6 +53,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/brief-draft-alignment.md
 - Focus: Ada checks that the draft actually fulfils the brief, surfacing gaps, drift and misaligned sections before they go any further.
 
+### Make the writing cleaner before it reaches review.
+
+- HTML: https://wordpresto.com/workers/clarity-proofing/
+- Markdown: https://wordpresto.com/workers/clarity-proofing/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/clarity-proofing.md
+- Focus: Esme proofs grammar, clarity, tone and risk-aware wording, producing review-only suggestions so editors can improve the copy without handing control to automation.
+
 ### Prepare approved content for a cleaner handoff.
 
 - HTML: https://wordpresto.com/workers/cms-handoff/

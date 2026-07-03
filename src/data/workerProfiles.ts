@@ -3102,6 +3102,163 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'EVIDENCE',
     guidanceFooterValue: 'Checked · gaps listed',
   },
+
+  // 21. Esme - Clarity & Proofing Worker
+  {
+    id: 'clarity_proofing',
+    slug: 'clarity-proofing',
+    name: 'Esme',
+    role: 'Creative Writing Worker',
+    department: 'Clarity & Proofing',
+    team: 'content',
+    stage: 'Proofing',
+    teamColor: 'var(--team-content)',
+    portrait: '/agents/profiles/profile-42-192.webp',
+    portrait2x: '/agents/profiles/profile-42-384.webp',
+    seoTitle: 'Clarity & Proofing Worker | WordPresto',
+    metaDescription:
+      'Esme proofs grammar, clarity, tone and risk-aware wording, producing review-only suggestions so editors can improve the copy without handing control to automation.',
+    h1: 'Make the writing cleaner before it reaches review.',
+    heroPara1:
+      'Good editing is not just fixing typos. It is knowing where a sentence drifts, where a phrase sounds almost right, where the tone has slipped, and where the reader has to work too hard. Esme proofs the writing itself: grammar, spelling, punctuation, clarity, concision, readability, tone, consistency, repetition, word choice and risk-aware language. She produces review-only suggestions so editors can improve the copy without handing control of the page to automation.',
+    heroPara2:
+      'For drafting workflows, content reviews, page updates, client edits and final editorial checks before approval.',
+    heroWorksAlongside: ['Helena', 'Quinn', 'Dana'],
+    heroTagPills: {
+      team: 'Content Production',
+      stage: 'Stage · Proofing',
+      output: 'Output · Clarity review',
+    },
+    problemEyebrow: 'Where editing workflows go wrong',
+    problemH2: 'A page can be factually right and still difficult to read.',
+    problemPara:
+      'Most content does not fail because every sentence is broken. It fails because small problems accumulate: a vague phrase here, a long sentence there, repeated wording, weak transitions, punctuation noise, tone drift and unnecessary complexity. Esme catches the language-level issues before they become review friction.',
+    problemAnnotation: '↘ proof the writing, then approve it',
+    beforeStamp: 'Raw draft',
+    beforeHtml: `<p>The page has been designed to help users understand the service offering and it gives a number of different examples that may be useful for people who are potentially considering making a booking.</p>`,
+    beforeTags: ['Long sentence', 'Vague wording', 'Flat rhythm', 'Weak conversion language'],
+    beforeNote: 'this makes the page feel unfinished',
+    afterStamp: 'After Esme',
+    afterHtml: `<p>The page explains the service clearly, gives practical examples, and helps potential clients decide whether to book.</p>`,
+    afterTags: ['Clearer sentence', 'Less repetition', 'Stronger reader focus', 'Cleaner rhythm'],
+    afterNote: 'editors can review the suggestion, not rewrite from scratch',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A proofing pass that improves the writing without taking control from the editor.',
+    helpsPara:
+      'Esme reviews the language at sentence, paragraph and page level. She highlights issues that make the copy harder to read, less consistent, less polished or riskier than it needs to be. She does not rewrite the page for the editor. She gives specific, reviewable suggestions so a human can accept, reject or adapt the change.',
+    checks: [
+      'Grammar, spelling and punctuation',
+      'Clarity, concision and sentence length',
+      'Repetition, weak phrasing and word choice',
+      'Tone, voice fit and consistency',
+      'Risk-aware wording and overstatement',
+    ],
+    improves: [
+      'Readability before a page reaches final review',
+      'Sentence-level precision without changing the approved meaning',
+      'Consistency across sections, drafts and page updates',
+    ],
+    prepares: [
+      'A structured clarity and proofing review',
+      'Sentence-level suggestions for human review',
+      'A list of wording issues that need editorial judgement',
+    ],
+    surfaces: [
+      'Phrases that are technically correct but awkward',
+      'Sentences that need simplifying',
+      'Tone drift from the selected voice or page purpose',
+      'Risky claims, overstatements or unclear wording',
+    ],
+    ioH2: 'What Esme works from, and what she produces.',
+    worksFrom: [
+      'Page or draft text',
+      'Writing Canvas content',
+      'Section rewrite output',
+      'Voice and style signals',
+      'Draft quality review signals',
+    ],
+    produces: [
+      'Clarity review',
+      'Grammar and punctuation suggestions',
+      'Concision and readability flags',
+      'Tone and consistency notes',
+      'Risk-aware wording alerts',
+    ],
+    scenarios: [
+      {
+        title: 'A page is nearly ready but still feels rough.',
+        description:
+          'Esme finds the language-level friction: awkward sentences, repeated phrases, unclear wording and punctuation issues.',
+      },
+      {
+        title: 'A draft has been edited by several people.',
+        description:
+          'She checks for consistency so the page does not feel stitched together from different voices.',
+      },
+      {
+        title: 'A client has made manual copy changes.',
+        description:
+          "Esme reviews the new wording without undoing the client's intent or silently rewriting the page.",
+      },
+      {
+        title: 'A page needs a Grammarly-style proofing pass inside the Word Presto workflow.',
+        description:
+          'She gives practical sentence-level suggestions while keeping the editor in control.',
+      },
+      {
+        title: 'A regulated or sensitive topic needs careful wording.',
+        description:
+          'Esme flags overstatement, risky phrasing and language that may need a human compliance check.',
+      },
+      {
+        title: 'A final draft is moving towards approval.',
+        description:
+          'She catches small issues before the Editorial Approval Gate reviews the page.',
+      },
+    ],
+    boundaryH2: 'Esme proofs the writing. Editors decide what changes.',
+    boundaryPara:
+      'A clarity review is not an automatic rewrite. Esme produces suggestions, flags and review notes. The editor decides what to accept, what to reject and what needs a different human edit.',
+    boundaryChecklist: [
+      'Esme suggests, she never applies.',
+      'Suggestions are designed for review inside the editorial workflow.',
+      'Tone and clarity notes support human judgement, they do not replace it.',
+      'Risk-aware wording is flagged for review, not treated as legal or compliance approval.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Edit or rewrite live content directly' },
+      { color: 'red', text: 'Apply suggestions without human approval' },
+      { color: 'red', text: 'Publish, update WordPress, or write to any CMS' },
+      { color: 'red', text: 'Call an external provider for this local proofing pass' },
+      { color: 'red', text: 'Invent facts, evidence or brand rules' },
+    ],
+    relatedH2: 'Workers Esme works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'voice_style',
+        description: 'Checks whether the copy fits the configured voice before proofing tightens the language.',
+        outputLabel: 'Voice review',
+        ctaLabel: 'How Helena checks',
+      },
+      {
+        id: 'draft_quality_reviewer',
+        description: 'Checks whether the draft covers the approved changes and has quality risks.',
+        outputLabel: 'Draft quality review',
+        ctaLabel: 'How Quinn reviews',
+      },
+      {
+        id: 'editorial_approval_gate',
+        description: 'Reviews whether the content is ready for human editorial approval.',
+        outputLabel: 'Approval gate',
+        ctaLabel: 'How Dana decides',
+      },
+    ],
+    ctaH2: 'Make the writing cleaner before it reaches review.',
+    ctaPara:
+      'Add Esme to your workflow and every page gets a careful proofing pass before it reaches final approval.',
+    guidanceFooterLabel: 'PROOFING STATUS',
+    guidanceFooterValue: 'Suggestions ready · awaiting editor',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {
