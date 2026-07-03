@@ -5521,6 +5521,160 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'DISCOVERY STATUS',
     guidanceFooterValue: 'Pages ready for review',
   },
+  // 36. Patrick - Page Inspector
+  {
+    id: 'page_inspector',
+    slug: 'page-inspector',
+    name: 'Patrick',
+    role: 'Page Inspector',
+    roleTitle: 'Source Examiner',
+    department: 'Discovery',
+    team: 'seo',
+    stage: 'Discovery',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-01-192.webp',
+    portrait2x: '/agents/profiles/profile-01-384.webp',
+    seoTitle: 'Page Inspector Worker | WordPresto',
+    metaDescription:
+      'Patrick inspects the page and extracts the source signals the rest of the workflow depends on: title, meta description, headings, links, images, schema, word count and visible page structure.',
+    h1: 'Start with what the page actually says.',
+    heroPara1:
+      'Before Word Presto recommends changes, the page needs to be read properly. Patrick inspects the page and extracts the source signals the rest of the workflow depends on: title, meta description, headings, links, images, schema, word count and visible page structure. He gives the team an accurate, current picture of the page as it actually exists, not as anyone assumes it to be.',
+    heroPara2:
+      'For page review, content audits, technical checks, briefing and any workflow step that needs to start from confirmed page facts rather than assumptions.',
+    heroWorksAlongside: ['Maya', 'Yuna', 'Kenji'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Discovery',
+      output: 'Output · Page signals',
+    },
+    problemEyebrow: 'Where page review goes wrong',
+    problemH2: 'You cannot review a page you have not actually inspected.',
+    problemPara:
+      'Teams often work from memory, from an old screenshot or from what a page is supposed to contain rather than what it actually contains. Titles get rewritten without checking the live one. Headings are assumed instead of confirmed. Missing schema goes unnoticed. The review starts from guesswork instead of the page itself. Patrick inspects first, so the rest of the workflow starts from what is really there.',
+    problemAnnotation: '↘ inspect first, recommend second',
+    beforeStamp: 'Guesswork',
+    beforeHtml: `<p>The team assumes the page still has the old title, a clear H1 and working internal links, without checking the live page.</p>`,
+    beforeTags: ['Assumed title', 'Unconfirmed headings', 'Unknown schema', 'No source check'],
+    beforeNote: 'the review starts from assumption',
+    afterStamp: 'Page inspected',
+    afterHtml: `<p>Patrick confirms the live title, meta description, headings, links, images, schema and word count.</p>`,
+    afterTags: ['Confirmed source signals', 'Structure mapped', 'Schema checked', 'Ready for review'],
+    afterNote: 'the review starts from fact',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A source layer for page-level review.',
+    helpsPara:
+      'Patrick reads the live page and extracts its source signals, giving other Workers and editors a confirmed starting point instead of an assumed one.',
+    checks: [
+      'Page title and meta description',
+      'Heading structure and hierarchy',
+      'Visible page structure and sections',
+      'Internal and outbound links',
+      'Images and alt text presence',
+      'Schema markup presence',
+      'Word count',
+    ],
+    improves: [
+      'Accuracy of page review',
+      'Briefing and audit starting points',
+      'Confidence in technical checks',
+      'Handoff quality to other Workers',
+    ],
+    prepares: [
+      'Page signals summary',
+      'Confirmed source facts',
+      'Structure notes for review',
+      'Flags for missing elements',
+    ],
+    surfaces: [
+      'Titles or descriptions that may need attention',
+      'Heading structure issues',
+      'Missing or thin schema',
+      'Pages with unusually low word counts',
+    ],
+    ioH2: 'What Patrick works from, and what he produces.',
+    worksFrom: [
+      'Live page URL',
+      'Website project',
+      'Site discovery results',
+      'Existing page metadata',
+    ],
+    produces: [
+      'Page signals summary',
+      'Confirmed title and meta description',
+      'Heading and structure notes',
+      'Link and image inventory',
+      'Schema presence check',
+    ],
+    scenarios: [
+      {
+        title: 'A page is selected for review.',
+        description: 'Patrick confirms exactly what the live page contains before review begins.',
+      },
+      {
+        title: 'A title or meta description needs checking.',
+        description: 'He reports the current live values rather than what the team assumes they are.',
+      },
+      {
+        title: 'A technical check is needed.',
+        description: 'Patrick surfaces schema, heading and structure signals for Maya to assess further.',
+      },
+      {
+        title: 'A content brief needs source facts.',
+        description: 'He gives the brief writer a confirmed picture of the page as it stands today.',
+      },
+      {
+        title: 'An audit covers many pages.',
+        description: 'Patrick inspects each page so the audit is built on current, not assumed, information.',
+      },
+      {
+        title: 'Search intent or evidence review is next.',
+        description: 'He hands Yuna and Kenji a confirmed source page to work from.',
+      },
+    ],
+    boundaryH2: 'Patrick reports what the page says. Editors decide what to do about it.',
+    boundaryPara:
+      'Patrick inspects and reports source signals. He does not rewrite the page, judge quality, assign priority or publish. Editors and other Workers use his findings to decide what happens next.',
+    boundaryChecklist: [
+      'Patrick reports the page as it exists, he never edits or rewrites it himself.',
+      'His findings are source facts, not quality judgements or priority calls.',
+      'Missing elements are flagged clearly, not silently assumed to be fine.',
+      'Deeper technical or editorial judgement stays with the relevant Worker or editor.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Rewrite or edit page content' },
+      { color: 'red', text: 'Publish or write to any CMS' },
+      { color: 'red', text: 'Judge content quality or assign priority' },
+      { color: 'red', text: 'Assume page facts without checking the live page' },
+      { color: 'red', text: 'Replace human review of what the findings mean' },
+    ],
+    relatedH2: 'Workers Patrick works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'technical_health',
+        description: 'Takes the confirmed page signals and reviews the wider technical picture.',
+        outputLabel: 'Technical findings',
+        ctaLabel: 'How Maya reviews',
+      },
+      {
+        id: 'intent_analyst',
+        description: 'Uses the inspected page to assess how well it matches search intent.',
+        outputLabel: 'Intent assessment',
+        ctaLabel: 'How Yuna assesses',
+      },
+      {
+        id: 'evidence',
+        description: 'Checks the claims on the inspected page against available evidence.',
+        outputLabel: 'Evidence bundle',
+        ctaLabel: 'How Kenji reviews',
+      },
+    ],
+    ctaH2: 'Start every page review from confirmed facts.',
+    ctaPara:
+      'Patrick gives Word Presto an accurate reading of the page itself, so the rest of the workflow builds on what is really there.',
+    guidanceFooterLabel: 'INSPECTION STATUS',
+    guidanceFooterValue: 'Page signals ready for review',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {

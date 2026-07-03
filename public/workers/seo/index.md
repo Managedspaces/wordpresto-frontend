@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (13 specialist roles)
+## SEO Worker directory (14 specialist roles)
 
 ### Morgan — SERP Snippet Worker
 
@@ -143,3 +143,13 @@ Cassius reviews competitor coverage from stored SERP competitor data, surfacing 
 - Legacy Markdown: https://wordpresto.com/pages/workers/site-discovery.md
 
 Claire helps identify the pages in a website project so editors can see what needs review, where the content opportunities are and how the site begins to fit together.
+
+### Patrick — Page Inspector
+
+- Stage: Discovery
+- Output: Page signals
+- URL: https://wordpresto.com/workers/page-inspector/
+- Markdown: https://wordpresto.com/workers/page-inspector/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/page-inspector.md
+
+Patrick inspects the page and extracts the source signals the rest of the workflow depends on: title, meta description, headings, links, images, schema, word count and visible page structure.

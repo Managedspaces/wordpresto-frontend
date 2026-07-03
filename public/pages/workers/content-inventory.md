@@ -119,6 +119,6 @@ Nora does not create a complete site inventory, crawl the domain, edit content o
 
 ## Workers Nora works alongside.
 
-- **page_inspector**: Extracts the source signals Nora uses for classification. Output: Page signals.
+- **Patrick — Page Inspector**: Extracts the source signals Nora uses for classification. Output: Page signals.
 - **intent_analyst**: Reviews whether the apparent page type matches reader intent. Output: Intent assessment.
 - **Hugo — Content Pruning & Consolidation Worker**: Uses inventory context before recommending maintenance action. Output: Maintenance review.

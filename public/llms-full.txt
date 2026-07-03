@@ -30,6 +30,7 @@ This file consolidates the main public WordPresto marketing and Worker content f
 - Flag risky claims before they move forward.: https://wordpresto.com/workers/editorial-risk-claims/index.md
 - Back up the claims before they go live.: https://wordpresto.com/workers/evidence-gap/index.md
 - Review the paths readers and crawlers can actually follow.: https://wordpresto.com/workers/internal-link-pathway/index.md
+- Start with what the page actually says.: https://wordpresto.com/workers/page-inspector/index.md
 - Make good content easier to read.: https://wordpresto.com/workers/readability/index.md
 - Turn complex findings into a clear editorial review.: https://wordpresto.com/workers/review/index.md
 - Turn findings into changes that can be reviewed safely.: https://wordpresto.com/workers/safe-change-planner/index.md
@@ -376,7 +377,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (13 specialist roles)
+## SEO Worker directory (14 specialist roles)
 
 ### Morgan — SERP Snippet Worker
 
@@ -507,6 +508,16 @@ Cassius reviews competitor coverage from stored SERP competitor data, surfacing 
 - Legacy Markdown: https://wordpresto.com/pages/workers/site-discovery.md
 
 Claire helps identify the pages in a website project so editors can see what needs review, where the content opportunities are and how the site begins to fit together.
+
+### Patrick — Page Inspector
+
+- Stage: Discovery
+- Output: Page signals
+- URL: https://wordpresto.com/workers/page-inspector/
+- Markdown: https://wordpresto.com/workers/page-inspector/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/page-inspector.md
+
+Patrick inspects the page and extracts the source signals the rest of the workflow depends on: title, meta description, headings, links, images, schema, word count and visible page structure.
 
 ---
 
@@ -1999,7 +2010,7 @@ Nora does not create a complete site inventory, crawl the domain, edit content o
 
 ## Workers Nora works alongside.
 
-- **page_inspector**: Extracts the source signals Nora uses for classification. Output: Page signals.
+- **Patrick — Page Inspector**: Extracts the source signals Nora uses for classification. Output: Page signals.
 - **intent_analyst**: Reviews whether the apparent page type matches reader intent. Output: Intent assessment.
 - **Hugo — Content Pruning & Consolidation Worker**: Uses inventory context before recommending maintenance action. Output: Maintenance review.
 
@@ -3065,6 +3076,128 @@ Felix does not add, remove or rewrite links automatically. He does not crawl the
 
 ---
 
+# Start with what the page actually says.
+
+Canonical: https://wordpresto.com/workers/page-inspector/
+Markdown: https://wordpresto.com/workers/page-inspector/index.md
+
+# Start with what the page actually says.
+
+Patrick inspects the page and extracts the source signals the rest of the workflow depends on: title, meta description, headings, links, images, schema, word count and visible page structure.
+
+---
+
+Before Word Presto recommends changes, the page needs to be read properly. Patrick inspects the page and extracts the source signals the rest of the workflow depends on: title, meta description, headings, links, images, schema, word count and visible page structure. He gives the team an accurate, current picture of the page as it actually exists, not as anyone assumes it to be.
+
+## You cannot review a page you have not actually inspected.
+
+Teams often work from memory, from an old screenshot or from what a page is supposed to contain rather than what it actually contains. Titles get rewritten without checking the live one. Headings are assumed instead of confirmed. Missing schema goes unnoticed. The review starts from guesswork instead of the page itself. Patrick inspects first, so the rest of the workflow starts from what is really there.
+
+## A source layer for page-level review.
+
+Patrick reads the live page and extracts its source signals, giving other Workers and editors a confirmed starting point instead of an assumed one.
+
+### Checks
+
+- Page title and meta description
+- Heading structure and hierarchy
+- Visible page structure and sections
+- Internal and outbound links
+- Images and alt text presence
+- Schema markup presence
+- Word count
+
+### Improves
+
+- Accuracy of page review
+- Briefing and audit starting points
+- Confidence in technical checks
+- Handoff quality to other Workers
+
+### Prepares
+
+- Page signals summary
+- Confirmed source facts
+- Structure notes for review
+- Flags for missing elements
+
+### Surfaces for human review
+
+- Titles or descriptions that may need attention
+- Heading structure issues
+- Missing or thin schema
+- Pages with unusually low word counts
+
+## What Patrick works from, and what he produces.
+
+### Works from
+
+- Live page URL
+- Website project
+- Site discovery results
+- Existing page metadata
+
+### Produces
+
+- Page signals summary
+- Confirmed title and meta description
+- Heading and structure notes
+- Link and image inventory
+- Schema presence check
+
+## When to use Patrick
+
+### A page is selected for review.
+
+Patrick confirms exactly what the live page contains before review begins.
+
+### A title or meta description needs checking.
+
+He reports the current live values rather than what the team assumes they are.
+
+### A technical check is needed.
+
+Patrick surfaces schema, heading and structure signals for Maya to assess further.
+
+### A content brief needs source facts.
+
+He gives the brief writer a confirmed picture of the page as it stands today.
+
+### An audit covers many pages.
+
+Patrick inspects each page so the audit is built on current, not assumed, information.
+
+### Search intent or evidence review is next.
+
+He hands Yuna and Kenji a confirmed source page to work from.
+
+## Patrick reports what the page says. Editors decide what to do about it.
+
+Patrick inspects and reports source signals. He does not rewrite the page, judge quality, assign priority or publish. Editors and other Workers use his findings to decide what happens next.
+
+### Boundary checklist
+
+- Patrick reports the page as it exists, he never edits or rewrites it himself.
+- His findings are source facts, not quality judgements or priority calls.
+- Missing elements are flagged clearly, not silently assumed to be fine.
+- Deeper technical or editorial judgement stays with the relevant Worker or editor.
+
+### Will not
+
+- Rewrite or edit page content
+- Publish or write to any CMS
+- Judge content quality or assign priority
+- Assume page facts without checking the live page
+- Replace human review of what the findings mean
+
+## Workers Patrick works alongside.
+
+- **Maya — Technical Health Worker**: Takes the confirmed page signals and reviews the wider technical picture. Output: Technical findings.
+- **intent_analyst**: Uses the inspected page to assess how well it matches search intent. Output: Intent assessment.
+- **evidence**: Checks the claims on the inspected page against available evidence. Output: Evidence bundle.
+
+---
+
 # Make good content easier to read.
 
 Canonical: https://wordpresto.com/workers/readability/
@@ -4115,7 +4248,7 @@ Claire helps organise the site for review. She does not decide strategy, delete 
 
 ## Workers Claire works alongside.
 
-- **page_inspector**: Inspects individual pages once they are selected for review. Output: Page signals.
+- **Patrick — Page Inspector**: Inspects individual pages once they are selected for review. Output: Page signals.
 - **Nora — Content Inventory Worker**: Classifies pages as content assets and records planning signals. Output: Inventory review.
 - **internal_linking**: Reviews how selected pages connect to related content. Output: Link assessment.
 
