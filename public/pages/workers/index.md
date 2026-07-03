@@ -12,7 +12,7 @@ See also the [SEO Workers directory](https://wordpresto.com/workers/seo/).
 
 ---
 
-## Content Worker directory (15 specialist roles)
+## Content Worker directory (16 specialist roles)
 
 ### Helena — Voice & Style Worker
 
@@ -163,3 +163,13 @@ Nina creates a distribution brief that maps where approved content should go and
 - Legacy Markdown: https://wordpresto.com/pages/workers/clarity-proofing.md
 
 Esme proofs grammar, clarity, tone and risk-aware wording, producing review-only suggestions so editors can improve the copy without handing control to automation.
+
+### Nora — Content Inventory Worker
+
+- Stage: Content inventory
+- Output: Inventory review
+- URL: https://wordpresto.com/workers/content-inventory/
+- Markdown: https://wordpresto.com/workers/content-inventory/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-inventory.md
+
+Nora reviews the page as a content asset, identifying page type, structural signals, content gaps and inventory metadata that can help editors plan better work.

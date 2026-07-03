@@ -168,7 +168,7 @@ export const WORKERS: WorkerEntry[] = [
   // ---- Content Production Team ----
   { id: 'content_analyst', name: 'Omar', roleTitle: 'Content reviewer', department: 'Content Review', team: 'content', status: 'available', slug: 'content-analyst', portrait: 5 },
   { id: 'structure', name: 'Marcus', roleTitle: 'Structure editor', department: 'Editorial Architecture', team: 'content', status: 'available', slug: 'structure', portrait: 7 },
-  { id: 'content_inventory', name: 'Nora', roleTitle: 'Content inventory specialist', department: 'Content Inventory', team: 'content', status: 'available', slug: null, portrait: 14 },
+  { id: 'content_inventory', name: 'Nora', roleTitle: 'Content inventory specialist', department: 'Content Inventory', team: 'content', status: 'available', slug: 'content-inventory', portrait: 14 },
   { id: 'voice_style', name: 'Helena', roleTitle: 'Brand voice specialist', department: 'Brand Voice', team: 'content', status: 'available', slug: 'voice-style', portrait: 8 },
   { id: 'content_brief_builder', name: 'Luca', roleTitle: 'Editorial brief writer', department: 'Editorial Planning', team: 'content', status: 'available', slug: 'content-brief-builder', portrait: 13 },
   { id: 'draft_rewrite', name: 'Ellis', roleTitle: 'Draft copy specialist', department: 'Editorial Drafting', team: 'content', status: 'available', slug: 'draft-rewrite', portrait: 18 },

@@ -109,6 +109,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-format-serp-fit.md
 - Focus: Ivan reviews whether the current content format matches the likely intent and expected page shape, flagging format conflicts and metadata that promises a different experience.
 
+### Understand what kind of content asset you are dealing with.
+
+- HTML: https://wordpresto.com/workers/content-inventory/
+- Markdown: https://wordpresto.com/workers/content-inventory/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-inventory.md
+- Focus: Nora reviews the page as a content asset, identifying page type, structural signals, content gaps and inventory metadata that can help editors plan better work.
+
 ### Decide whether weak content should be improved, merged or left alone.
 
 - HTML: https://wordpresto.com/workers/content-pruning-consolidation/

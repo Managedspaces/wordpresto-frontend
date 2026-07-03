@@ -4390,6 +4390,167 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'MAINTENANCE STATUS',
     guidanceFooterValue: 'Needs review · consolidate candidate',
   },
+
+  // 29. Nora - Content Inventory Worker
+  {
+    id: 'content_inventory',
+    slug: 'content-inventory',
+    name: 'Nora',
+    role: 'Content Inventory Worker',
+    roleTitle: 'Content Inventory Specialist',
+    department: 'Content Inventory',
+    team: 'content',
+    stage: 'Content inventory',
+    teamColor: 'var(--team-content)',
+    portrait: '/agents/profiles/profile-14-192.webp',
+    portrait2x: '/agents/profiles/profile-14-384.webp',
+    seoTitle: 'Content Inventory Worker | WordPresto',
+    metaDescription:
+      'Nora reviews the page as a content asset, identifying page type, structural signals, content gaps and inventory metadata that can help editors plan better work.',
+    h1: 'Understand what kind of content asset you are dealing with.',
+    heroPara1:
+      'Before a page can be improved, it needs to be classified. Is it a service page, guide, article, landing page, comparison page, support page or something else? What signals are present? What is missing? What would help future planning? Nora reviews the page as a content asset. She identifies page type, structural signals, content gaps and inventory metadata that can help editors plan better work.',
+    heroPara2:
+      'For content audits, page reviews, content planning and early-stage editorial assessment.',
+    heroWorksAlongside: ['Patrick', 'Yuna', 'Hugo'],
+    heroTagPills: {
+      team: 'Content Production',
+      stage: 'Stage · Content inventory',
+      output: 'Output · Inventory review',
+    },
+    problemEyebrow: 'Where content planning goes wrong',
+    problemH2: 'Teams start improving pages before they know what the page is meant to be.',
+    problemPara:
+      'A page can only be judged properly once its role is clear. A thin service page, a weak article and an incomplete comparison page need different actions. Without inventory context, every recommendation risks becoming generic. Nora gives the workflow a clearer content classification before deeper review begins.',
+    problemAnnotation: '↘ classify the asset before improving it',
+    beforeStamp: 'Unclear asset',
+    beforeHtml: `<p>The page has service copy, FAQs and guide-style sections, but no clear content type.</p>`,
+    beforeTags: ['Unclear role', 'Mixed structure', 'Missing metadata', 'Hard to plan'],
+    beforeNote: 'the team does not know what job the page has',
+    afterStamp: 'Inventory reviewed',
+    afterHtml: `<p>The page is classified as a service decision page with missing proof, FAQ depth and related-page support.</p>`,
+    afterTags: ['Clearer type', 'Planning gaps', 'Better workflow routing', 'Review-ready'],
+    afterNote: 'the editor knows what kind of asset this is',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Page-level inventory without pretending to crawl the whole site.',
+    helpsPara:
+      'Nora reviews the inspected page as a single content asset. She does not build a full site inventory, crawl linked pages or classify the entire domain. She gives editors a useful page-level inventory review.',
+    checks: [
+      'Apparent page type',
+      'Content and structural signals',
+      'Missing asset elements',
+      'Page role clarity',
+      'Planning metadata needs',
+      'Manual checks for future inventory work',
+    ],
+    improves: [
+      'Content audit clarity',
+      'Page review routing',
+      'Brief and maintenance planning',
+      'Understanding of what kind of page is being reviewed',
+    ],
+    prepares: [
+      'Content inventory review',
+      'Apparent asset classification',
+      'Missing-signal list',
+      'Planning notes for future work',
+    ],
+    surfaces: [
+      'Pages with unclear purpose',
+      'Missing content elements',
+      'Mixed page-type signals',
+      'Metadata that would help future content planning',
+    ],
+    ioH2: 'What Nora works from, and what she produces.',
+    worksFrom: [
+      'Page copy',
+      'Page structure',
+      'Metadata',
+      'Source signals',
+      'Existing worker findings where available',
+    ],
+    produces: [
+      'Inventory review',
+      'Page-type classification',
+      'Missing asset signals',
+      'Planning metadata notes',
+      'Manual checks',
+    ],
+    scenarios: [
+      {
+        title: 'A page review needs a starting classification.',
+        description:
+          'Nora identifies what kind of content asset the workflow is handling.',
+      },
+      {
+        title: 'A content audit is messy.',
+        description:
+          'She gives each reviewed page clearer inventory context.',
+      },
+      {
+        title: 'A page has mixed signals.',
+        description:
+          'Nora flags when the page behaves like more than one content type.',
+      },
+      {
+        title: 'A maintenance decision is coming.',
+        description:
+          'She helps clarify whether the asset should be refreshed, consolidated or expanded.',
+      },
+      {
+        title: 'A brief needs page-type context.',
+        description:
+          'Nora gives the brief builder a clearer starting point.',
+      },
+      {
+        title: 'The team needs planning metadata.',
+        description:
+          'She lists what would make the asset easier to manage later.',
+      },
+    ],
+    boundaryH2: 'Nora classifies the page. Editors decide what it becomes.',
+    boundaryPara:
+      'Nora does not create a complete site inventory, crawl the domain, edit content or publish changes. She reviews the current page and prepares planning context.',
+    boundaryChecklist: [
+      'Nora classifies the page, she never edits or restructures it herself.',
+      'Reviews cover the current page, not a full-site crawl or inventory.',
+      'Planning notes are prompts for editorial routing, not automatic actions.',
+      'Missing-signal lists are flagged for review, not treated as confirmed gaps.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Crawl the full site' },
+      { color: 'red', text: 'Confirm full inventory coverage' },
+      { color: 'red', text: 'Rewrite or restructure the page automatically' },
+      { color: 'red', text: 'Create or delete content records' },
+      { color: 'red', text: 'Publish or write to any CMS' },
+    ],
+    relatedH2: 'Workers Nora works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'page_inspector',
+        description: 'Extracts the source signals Nora uses for classification.',
+        outputLabel: 'Page signals',
+        ctaLabel: 'How Patrick extracts',
+      },
+      {
+        id: 'intent_analyst',
+        description: 'Reviews whether the apparent page type matches reader intent.',
+        outputLabel: 'Intent assessment',
+        ctaLabel: 'How Yuna reviews',
+      },
+      {
+        id: 'content_pruning_consolidation',
+        description: 'Uses inventory context before recommending maintenance action.',
+        outputLabel: 'Maintenance review',
+        ctaLabel: 'How Hugo uses it',
+      },
+    ],
+    ctaH2: 'Classify the page before deciding what to do with it.',
+    ctaPara:
+      'Nora helps editors understand the content asset, its missing signals and its planning role before deeper work begins.',
+    guidanceFooterLabel: 'INVENTORY STATUS',
+    guidanceFooterValue: 'Asset reviewed · gaps found',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {

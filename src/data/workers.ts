@@ -224,6 +224,19 @@ export const workers: WorkerData[] = [
     image2x: '/agents/profiles/profile-42-384.webp',
     teamColor: 'var(--team-content)',
   },
+  {
+    id: 'content_inventory',
+    name: 'Nora',
+    role: 'Content Inventory Worker',
+    department: 'Content Inventory',
+    team: 'content',
+    stage: 'Content inventory',
+    summary: 'Reviews the page as a content asset, identifying page type, structural signals, content gaps and inventory metadata to help editors plan better work.',
+    output: 'Inventory review',
+    image: '/agents/profiles/profile-14-192.webp',
+    image2x: '/agents/profiles/profile-14-384.webp',
+    teamColor: 'var(--team-content)',
+  },
 ];
 
 // SEO Workers. These sit alongside the content Workers in the same workflow and
