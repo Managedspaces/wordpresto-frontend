@@ -60,6 +60,13 @@ const markdownRoutes = [
     dest: '/prestobot/index.md',
     headers: MD_HEADERS,
   },
+  // Homepage locale mirrors (src/data/i18n/home.ts) — see context.md.
+  ...['pt', 'pt-br', 'es', 'de', 'fr'].map((locale) => ({
+    src: `^/${locale}/?$`,
+    has: [{ type: 'header', key: 'accept', value: ACCEPT_MD }],
+    dest: `/${locale}/index.md`,
+    headers: MD_HEADERS,
+  })),
 ];
 
 const fsIndex = config.routes.findIndex((r) => r.handle === 'filesystem');

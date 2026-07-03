@@ -1,0 +1,1774 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { homeContent } from '@/data/i18n/home';
+import { commonStrings } from '@/data/i18n/common';
+import { getTeamGroups, TOTAL_SPECIALISTS, TOTAL_TEAMS } from '@/data/workerRegistry';
+import { FLAG_SVG } from '@/i18n/flags';
+import { LOCALES, localeHref, type Locale } from '@/i18n/locales';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = homeContent[locale];
+const c = commonStrings[locale];
+const teamGroups = getTeamGroups(6);
+
+// Flag/accent per language-editor tile. Team names/summaries in the
+// specialist bench below still come from workerRegistry.ts (English only
+// for now — see context.md, "Phase 2").
+const EDITOR_META = [
+  { code: 'IE', image: 'emma', lead: true, accent: '#169B62' },
+  { code: 'PT', image: 'aurora', lead: false, accent: '#046A38' },
+  { code: 'BR', image: 'francisca', lead: false, accent: '#009739' },
+  { code: 'ES', image: 'sofia', lead: false, accent: '#AA151B' },
+  { code: 'DE', image: 'sabine', lead: false, accent: '#DD0000' },
+  { code: 'FR', image: 'ambre', lead: false, accent: '#0055A4' },
+];
+const editors = t.languages.editors.map((e, i) => ({ ...e, ...EDITOR_META[i] }));
+
+const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpresto.com${localeHref(locale, '/')}`;
+---
+
+<BaseLayout
+  pageTitle={t.seo.pageTitle}
+  seoTitle={t.seo.seoTitle}
+  description={t.seo.metaDescription}
+  canonical={canonical}
+>
+
+  <!-- ===================== MASTHEAD ===================== -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <nav class="masthead-nav masthead-nav--left">
+        <a href={localeHref(locale, '/waitlist')} class="nav-link">{c.signIn}</a>
+        <a href={`${localeHref(locale, '/')}#emma-desk`} class="nav-link">{c.theDesk}</a>
+        <a href={`${localeHref(locale, '/')}#canvas`} class="nav-link">{c.canvas}</a>
+      </nav>
+      <a href={localeHref(locale, '/')} class="masthead-logo">
+        <img src="/brand/main-logo.png" alt="Word Presto — the content engine behind publishing" height="110" />
+      </a>
+      <nav class="masthead-nav masthead-nav--right">
+        <a href={`${localeHref(locale, '/')}#specialists`} class="nav-link">{c.specialists}</a>
+        <a href={`${localeHref(locale, '/')}#languages`} class="nav-link">{c.languages}</a>
+        <a href="#" class="nav-link">{c.pricing}</a>
+        <div class="locale-switcher">
+          <a
+            href={localeHref(locale, '/')}
+            class="locale-switcher-current"
+            aria-label={LOCALES.find((l) => l.code === locale)?.label}
+            set:html={FLAG_SVG[LOCALES.find((l) => l.code === locale)?.countryCode ?? 'IE']}
+          />
+          <div class="locale-switcher-menu">
+            {LOCALES.filter((l) => l.code !== locale).map((l) => (
+              <a
+                href={localeHref(l.code, '/')}
+                class="locale-switcher-flag"
+                aria-label={l.label}
+                set:html={FLAG_SVG[l.countryCode]}
+              />
+            ))}
+          </div>
+        </div>
+        <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== 1. HERO ===================== -->
+  <section id="top" class="section section--hero">
+    <div class="container hero-grid">
+
+      <div class="hero-copy">
+        <div class="eyebrow eyebrow--strategy">{t.hero.eyebrow}</div>
+        <h1 class="hero-h1">{t.hero.h1Prefix}<span class="agentic-mark">{t.hero.h1Agentic}</span>{t.hero.h1Suffix}</h1>
+        <p class="hero-body">{t.hero.body}</p>
+        <div class="hero-approval-note">
+          <p>{t.hero.approvalNoteLine1}<br />{t.hero.approvalNoteLine2}</p>
+        </div>
+        <div class="hero-ctas">
+          <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--lg">
+            {t.hero.ctaPrimary}
+            <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href={`${localeHref(locale, '/')}#emma-desk`} class="btn btn--secondary btn--lg btn--tilt">{t.hero.ctaSecondary}</a>
+        </div>
+        <p class="hero-demo-link">
+          <a href="/workflow-demo/" class="demo-link">{t.hero.demoLink} →</a>
+        </p>
+        <div class="hero-prepares">
+          <span class="hero-prepares-label">{t.hero.preparesLabel}</span>
+          <span class="hero-prepares-item">WordPress</span>
+          <span class="hero-dot" aria-hidden="true"></span>
+          <span class="hero-prepares-item">Astro</span>
+          <span class="hero-dot" aria-hidden="true"></span>
+          <span class="hero-prepares-item">Payload</span>
+          <span class="hero-dot" aria-hidden="true"></span>
+          <span class="hero-prepares-item">Sanity</span>
+        </div>
+      </div>
+
+      <!-- Editorial operations board: Editor → Emma → Canvas + specialists → Approval + CMS -->
+      <div class="hero-board-wrap">
+        <span class="hero-board-note">{t.board.note}</span>
+
+        <div class="hero-board">
+          <div class="board-header">
+            <span class="board-header-title">{t.board.title}</span>
+            <span class="mono-label board-live"><span class="board-live-dot"></span>{t.board.liveLabel}</span>
+          </div>
+
+          <div class="board-body">
+            <div class="board-row board-row--editor">
+              <span class="board-avatar-icon" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--wp-ink)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+              </span>
+              <div class="board-row-info">
+                <div class="mono-label">{t.board.editorInChief}</div>
+                <div class="board-row-name">{t.board.you}</div>
+              </div>
+              <span class="mono-label">{t.board.finalCall}</span>
+            </div>
+
+            <div class="board-connector" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="var(--wp-border-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2 V11 M4 8 L7.5 11.5 L11 8"></path></svg>
+            </div>
+
+            <div class="board-row board-row--emma">
+              <img src="/editors/emma-192.webp" srcset="/editors/emma-192.webp 1x, /editors/emma-384.webp 2x" alt="Emma, managing editor" class="board-avatar-img" width="52" height="52" loading="eager" decoding="async" />
+              <div class="board-row-info">
+                <div class="board-row-name-line"><span class="board-row-name">Emma</span><span class="mono-label">{t.board.emmaRole}</span></div>
+                <div class="board-row-sub">{t.board.emmaSub}</div>
+              </div>
+              <span class="board-status-badge"><span class="board-status-dot"></span>{t.board.preparing}</span>
+            </div>
+
+            <div class="board-connector" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="var(--wp-border-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2 V11 M4 8 L7.5 11.5 L11 8"></path></svg>
+            </div>
+
+            <div class="board-canvas-card">
+              <div class="board-canvas-header">
+                <span class="mono-label">{t.board.canvasLabel}</span>
+                <span class="mono-label">{t.board.workingSurface}</span>
+              </div>
+              <div class="board-canvas-line"></div>
+              <div class="board-canvas-line" style="width: 82%;"></div>
+              <div class="board-canvas-line" style="width: 64%;"></div>
+              <div class="board-canvas-chips">
+                <span class="board-chip board-chip--amber">{t.board.chip1}</span>
+                <span class="board-chip board-chip--cyan">{t.board.chip2}</span>
+              </div>
+            </div>
+
+            <div class="board-specialist-row">
+              <div class="board-avatar-stack">
+                <img src="/agents/profiles/profile-08-192.webp" alt="" width="26" height="26" loading="lazy" decoding="async" />
+                <img src="/agents/profiles/profile-34-192.webp" alt="" width="26" height="26" loading="lazy" decoding="async" />
+                <img src="/agents/profiles/profile-21-192.webp" alt="" width="26" height="26" loading="lazy" decoding="async" />
+                <img src="/agents/profiles/profile-25-192.webp" alt="" width="26" height="26" loading="lazy" decoding="async" />
+              </div>
+              <div class="board-row-info">
+                <div class="board-row-name" style="font-size: var(--wp-text-sm);">{t.board.specialistDesk}</div>
+                <div class="mono-label">{t.board.reportsThroughEmma}</div>
+              </div>
+            </div>
+
+            <div class="board-connector" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="var(--wp-border-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2 V11 M4 8 L7.5 11.5 L11 8"></path></svg>
+            </div>
+
+            <div class="board-gate-row">
+              <div class="board-gate-approval">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--wp-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
+                <span>{t.board.gateApproval}</span>
+              </div>
+              <div class="board-gate-cms">
+                <span class="board-gate-cms-dot"></span>
+                <span>{t.board.gateCms}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <span class="hero-board-stamp">{t.board.stamp}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 2. THE OPERATING MODEL ===================== -->
+  <section id="not-dashboard" class="section section--paper-dark section--border-top">
+    <div class="container">
+      <div class="section-intro section-intro--wide">
+        <div class="eyebrow eyebrow--strategy">{t.operatingModel.eyebrow}</div>
+        <h2 class="section-h2">{t.operatingModel.h2}</h2>
+        <p class="section-body">{t.operatingModel.body}</p>
+        <p class="section-note">{t.operatingModel.note}</p>
+      </div>
+
+      <div class="desk-compare">
+        <div class="desk-before">
+          <div class="mono-label desk-compare-label">{t.operatingModel.beforeLabel}</div>
+          <div class="problem-grid problem-grid--compact">
+            {t.operatingModel.beforeCards.map(({ title, body, note }, i) => {
+              const rots = ['-1.6deg', '1.4deg', '0.8deg', '-0.6deg'];
+              const noteColors = [undefined, undefined, 'amber', undefined];
+              return (
+                <div class="problem-card" style={`transform: rotate(${rots[i]})`}>
+                  <div class="problem-card-body">
+                    <div class="ruled-margin ruled-margin--sm"></div>
+                    <div class="problem-card-title">{title}</div>
+                    <div class="problem-card-text">{body}</div>
+                    {note && <span class={`hand-note hand-note--${noteColors[i] ?? 'red'} hand-note--card`}>{note}</span>}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div class="desk-arrow">
+          <img src="/editors/emma-192.webp" srcset="/editors/emma-192.webp 1x, /editors/emma-384.webp 2x" alt="Emma, managing editor" class="desk-arrow-img" width="60" height="60" loading="lazy" decoding="async" />
+          <div class="desk-arrow-label">Emma<br /><span class="mono-label">{t.operatingModel.emmaRole}</span></div>
+          <svg width="46" height="16" viewBox="0 0 46 16" fill="none" aria-hidden="true"><path d="M1 8 H40 M35 3 L41 8 L35 13" stroke="var(--wp-ink)" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+
+        <div class="desk-after">
+          <div class="mono-label desk-compare-label">{t.operatingModel.afterLabel}</div>
+          <div class="desk-after-card">
+            <div class="desk-after-header">{t.operatingModel.afterHeader}</div>
+            <div class="desk-after-list">
+              {t.operatingModel.afterItems.map((label, i) => {
+                const nums = ['01', '02', '03', '04'];
+                const colors = ['var(--wp-signal)', 'var(--wp-cyan)', 'var(--wp-amber)', 'var(--wp-ink)'];
+                return (
+                  <div class="desk-after-item">
+                    <span class="mono-label desk-after-num">{nums[i]}</span>
+                    <span class="desk-after-dot" style={`background: ${colors[i]}`}></span>
+                    <span class="desk-after-text">{label}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3. EMMA RUNS THE DESK ===================== -->
+  <section id="emma-desk" class="section section--border-top">
+    <div class="container">
+      <div class="emma-desk-header">
+        <div class="emma-desk-intro">
+          <div class="eyebrow eyebrow--strategy">{t.emmaDesk.eyebrow}</div>
+          <h2 class="section-h2">{t.emmaDesk.h2}</h2>
+        </div>
+        <div class="emma-desk-badge">
+          <img src="/editors/emma-192.webp" srcset="/editors/emma-192.webp 1x, /editors/emma-384.webp 2x" alt="Emma, managing editor" width="46" height="46" loading="lazy" decoding="async" />
+          <div>
+            <div class="emma-desk-badge-name">Emma</div>
+            <div class="mono-label">{t.emmaDesk.badgeRole} · {t.emmaDesk.badgeCity}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="emma-cards-grid">
+        {t.emmaDesk.cards.map(({ title, body }, i) => (
+          <div class="emma-card">
+            <div class="emma-card-top">
+              <span class="emma-card-index">{String(i + 1).padStart(2, '0')}</span>
+              <span class="mono-label">EMMA</span>
+            </div>
+            <h3 class="emma-card-title">{title}</h3>
+            <p class="emma-card-body">{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 4. FOUR COMMITMENTS ===================== -->
+  <section id="commitments" class="section section--paper-dark section--border-top">
+    <div class="container">
+      <div class="section-intro">
+        <div class="eyebrow eyebrow--strategy">{t.commitments.eyebrow}</div>
+        <h2 class="section-h2" set:html={t.commitments.h2} />
+        <p class="section-body">{t.commitments.body}</p>
+      </div>
+
+      <div class="commitments-panel">
+        <div class="commitments-panel-header">
+          <span class="commitments-panel-title">{t.commitments.panelTitle}</span>
+          <span class="mono-label">{t.commitments.panelLabel}</span>
+        </div>
+        <div class="commitments-grid">
+          {t.commitments.items.map(({ num, title, body }) => (
+            <div class="commitment-item">
+              <div class="commitment-item-head">
+                <span class="commitment-num">{num}</span>
+                <h3 class="commitment-title">{title}</h3>
+              </div>
+              <p class="commitment-body" set:html={body} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 5. THE CANVAS ===================== -->
+  <section id="canvas" class="section section--border-top section--overflow-hidden">
+    <div class="container canvas-grid">
+      <div>
+        <div class="eyebrow eyebrow--strategy">{t.canvas.eyebrow}</div>
+        <h2 class="section-h2">{t.canvas.h2}</h2>
+        <p class="section-body">{t.canvas.body}</p>
+        <div class="canvas-points">
+          {t.canvas.points.map((point, i) => {
+            const colors = ['var(--wp-amber)', 'var(--wp-cyan)', 'var(--wp-ink)'];
+            return (
+              <div class="canvas-point"><span class="canvas-point-dot" style={`background: ${colors[i]};`}></span><span>{point}</span></div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div class="canvas-doc-wrap">
+        <div class="canvas-doc">
+          <div class="canvas-doc-header">
+            <div class="canvas-doc-header-left">
+              <img src="/editors/emma-192.webp" srcset="/editors/emma-192.webp 1x, /editors/emma-384.webp 2x" alt="Emma, managing editor" width="28" height="28" loading="lazy" decoding="async" />
+              <div>
+                <div class="canvas-doc-title">Canvas</div>
+                <div class="mono-label">{t.canvas.docLabel}</div>
+              </div>
+            </div>
+            <span class="mono-label" set:html={t.canvas.draftLabel} />
+          </div>
+
+          <div class="canvas-doc-body">
+            <div class="canvas-doc-copy">
+              <h3 class="canvas-doc-heading">{t.canvas.docHeading}</h3>
+              <div class="canvas-line"></div>
+              <div class="canvas-line" style="width: 94%;"></div>
+              <div class="canvas-line canvas-line--amber" style="width: 88%;"></div>
+              <div class="canvas-line" style="width: 76%; margin-bottom: 22px;"></div>
+              <div class="mono-label canvas-doc-subhead">{t.canvas.sectionLabel}</div>
+              <div class="canvas-line"></div>
+              <div class="canvas-line canvas-line--cyan" style="width: 70%;"></div>
+              <div class="canvas-line" style="width: 90%;"></div>
+            </div>
+            <div class="canvas-margin-rail">
+              <div class="mono-label">{t.canvas.marginLabel}</div>
+              {t.canvas.marginNotes.map(({ tag, text }, i) => {
+                const colors = ['amber', 'default', 'cyan', 'default'];
+                const color = colors[i];
+                return (
+                  <div class={`canvas-margin-note canvas-margin-note--${color}`}>
+                    <div class={`mono-label canvas-margin-tag canvas-margin-tag--${color}`}>{tag}</div>
+                    <div class="canvas-margin-text">{text}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div class="canvas-doc-footer">
+            <span class="canvas-doc-footer-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--wp-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
+              {t.canvas.footerLeft}
+            </span>
+            <span class="mono-label">{t.canvas.footerRight}</span>
+          </div>
+        </div>
+        <span class="canvas-doc-annot">{t.canvas.annotation}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 6. SPECIALIST BENCH ===================== -->
+  <section id="specialists" class="section section--paper-dark section--border-top">
+    <div class="container">
+      <div class="section-intro section-intro--wide">
+        <div class="eyebrow eyebrow--strategy">{t.specialists.eyebrow}</div>
+        <h2 class="section-h2">{TOTAL_SPECIALISTS}{t.specialists.h2Suffix}</h2>
+        <p class="section-body">{t.specialists.body}</p>
+        <p class="section-note" set:html={t.specialists.note} />
+      </div>
+
+      <div class="scale-strip">
+        <span class="scale-strip-strong">{TOTAL_SPECIALISTS} {c.specialists.toLowerCase()}</span>
+        <span class="scale-strip-dot"></span>
+        <span>{TOTAL_TEAMS}{t.specialists.teamsSuffix}</span>
+        <span class="scale-strip-dot"></span>
+        <span>{t.specialists.coordinatedThroughEmma}</span>
+        <span class="scale-strip-dot"></span>
+        <span>{t.specialists.editorApprovalRequired}</span>
+      </div>
+
+      <div class="team-cards-grid">
+        {teamGroups.map(({ name, color, summary, examples, moreCount, count, href, cta }) => (
+          <div class="team-card">
+            <span class="team-card-bar" style={`background: ${color}`}></span>
+            <div class="team-card-head">
+              <div class="team-card-eyebrow"><span class="team-card-dot" style={`background: ${color}`}></span><span class="mono-label">TEAM · {count} SPECIALIST{count === 1 ? "" : "S"}</span></div>
+              <div class="team-card-name">{name}</div>
+            </div>
+            <p class="team-card-summary">{summary}</p>
+            <div class="team-card-chips-label">{t.specialists.chipsLabel}</div>
+            <div class="team-card-chips">
+              {examples.map((w) => <span class="team-chip">{w.name}</span>)}
+              {moreCount > 0 && <span class="team-chip team-chip--more">+ {moreCount}</span>}
+            </div>
+            <a href={href} class="team-card-cta">
+              {cta}
+              <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/specialists/" class="team-card-cta team-card-cta--secondary">
+              {t.specialists.browseProfiles}
+              <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 7. SAME DESK, NATIVE VOICE ===================== -->
+  <section id="languages" class="section section--border-top">
+    <div class="container">
+      <div class="section-intro">
+        <div class="eyebrow eyebrow--strategy">{t.languages.eyebrow}</div>
+        <h2 class="section-h2">{t.languages.h2}</h2>
+        <p class="section-body">{t.languages.body}</p>
+      </div>
+
+      <div class="editors-grid">
+        {editors.map(({ name, city, lang, code, image, lead, accent }) => (
+          <div class="editor-card">
+            <span class="editor-card-accent" style={`background: ${accent}`}></span>
+            <span class="editor-card-flag" set:html={FLAG_SVG[code]} />
+            {lead && <span class="editor-card-lead">LEAD</span>}
+            <img src={`/editors/${image}-192.webp`} srcset={`/editors/${image}-192.webp 1x, /editors/${image}-384.webp 2x`} alt={`${name}, managing editor`} class="editor-card-img" width="68" height="68" loading="lazy" decoding="async" />
+            <div class="editor-card-name">{name}</div>
+            <div class="editor-card-city">{city}</div>
+            <div class="editor-card-lang"><span class="mono-label" style={`color: ${accent}`}>{code}</span><span class="mono-label editor-card-lang-name">{lang}</span></div>
+          </div>
+        ))}
+      </div>
+
+      <div class="editors-closing">
+        <span class="editors-closing-rule"></span>
+        <span class="editors-closing-text">{t.languages.closingText}</span>
+        <span class="editors-closing-rule"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 8. APPROVAL IS THE GATE ===================== -->
+  <section id="approval" class="section section--border-top section--overflow-hidden">
+    <div class="container approval-grid">
+      <div>
+        <div class="eyebrow eyebrow--strategy">{t.approval.eyebrow}</div>
+        <h2 class="section-h2">{t.approval.h2}</h2>
+        <p class="section-body approval-body">{t.approval.body}</p>
+        <p class="approval-final-line">{t.approval.finalLine}</p>
+      </div>
+
+      <!-- Approval sheet -->
+      <div class="approval-paper" aria-hidden="true">
+        <div class="paper-card paper-card--approval">
+          <div class="approval-doc-header">
+            <span class="approval-doc-title">{t.approval.docTitle}</span>
+            <span class="mono-label">{t.approval.filename}</span>
+          </div>
+          <div class="approval-doc-body">
+            <div class="approval-row">
+              <span set:html={t.approval.row1} />
+              <span class="status-badge status-badge--ready">{t.approval.row1Status}</span>
+            </div>
+            <div class="approval-row">
+              <span>{t.approval.row2}</span>
+              <span class="status-badge status-badge--ready">{t.approval.row2Status}</span>
+            </div>
+            <div class="approval-row approval-row--last">
+              <span>{t.approval.row3}</span>
+              <span class="mono-label approval-awaiting">{t.approval.row3Status}</span>
+            </div>
+          </div>
+          <div class="approval-doc-footer">
+            <span class="mono-label">{t.approval.approvedByLabel}</span>
+            <span class="hand-signature">A. Mercer</span>
+          </div>
+          <span class="stamp stamp--signal stamp--absolute">{t.approval.stampText}</span>
+        </div>
+
+        <!-- Human approval required pill -->
+        <span class="approval-pill">
+          <span class="approval-pill-dot"></span>
+          <span class="mono-label">{t.approval.pillText}</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 9. FINAL CTA ===================== -->
+  <section class="section section--cta section--border-top">
+    <div class="cta-inner">
+      <img src="/editors/emma-192.webp" srcset="/editors/emma-192.webp 1x, /editors/emma-384.webp 2x" alt="Emma, managing editor" class="cta-avatar" width="78" height="78" loading="lazy" decoding="async" />
+      <h2 class="cta-h2">{t.cta.h2}</h2>
+      <p class="cta-body">{t.cta.body}</p>
+      <div class="cta-buttons">
+        <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--lg">
+          {t.cta.ctaPrimary}
+          <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href={`${localeHref(locale, '/')}#emma-desk`} class="btn btn--secondary btn--lg btn--tilt">{t.cta.ctaSecondary}</a>
+      </div>
+      <div class="cta-mark">
+        <span class="cta-rule"></span>
+        <span class="mono-label cta-mark-text">{t.cta.markText}</span>
+        <span class="cta-rule"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="/brand/horizontal-lockup-transparent.png" alt="Word Presto" class="footer-logo" />
+        <p class="footer-tagline">{c.footerTagline}</p>
+      </div>
+      <nav class="footer-nav" aria-label={t.footer.deskHeading}>
+        <span class="footer-nav-heading">{t.footer.deskHeading}</span>
+        <a href={`${localeHref(locale, '/')}#emma-desk`} class="footer-link">{t.footer.deskLinks[0]}</a>
+        <a href={`${localeHref(locale, '/')}#canvas`} class="footer-link">{t.footer.deskLinks[1]}</a>
+        <a href={`${localeHref(locale, '/')}#specialists`} class="footer-link">{t.footer.deskLinks[2]}</a>
+      </nav>
+      <nav class="footer-nav" aria-label={t.footer.standardsHeading}>
+        <span class="footer-nav-heading">{t.footer.standardsHeading}</span>
+        <a href={`${localeHref(locale, '/')}#commitments`} class="footer-link">{t.footer.standardsLinks[0]}</a>
+        <a href={`${localeHref(locale, '/')}#approval`} class="footer-link">{t.footer.standardsLinks[1]}</a>
+        <a href={`${localeHref(locale, '/')}#languages`} class="footer-link">{t.footer.standardsLinks[2]}</a>
+      </nav>
+      <nav class="footer-nav" aria-label={t.footer.forHeading}>
+        <span class="footer-nav-heading">{t.footer.forHeading}</span>
+        <a href={`${localeHref(locale, '/')}#top`} class="footer-link">{t.footer.forLinks[0]}</a>
+        <a href={`${localeHref(locale, '/')}#top`} class="footer-link">{t.footer.forLinks[1]}</a>
+        <a href={`${localeHref(locale, '/')}#top`} class="footer-link">{t.footer.forLinks[2]}</a>
+      </nav>
+    </div>
+    <div class="footer-bottom container">
+      <span>{t.footer.copyright}</span>
+      <span>{t.footer.tagline2}</span>
+      <a href="/sitemap/" class="footer-link footer-sitemap-link">{c.siteMap}</a>
+    </div>
+  </footer>
+
+</BaseLayout>
+
+<style>
+  /* ===== LAYOUT ===== */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 34px;
+  }
+
+  .section {
+    padding: 92px 0;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+  }
+  .section--paper-dark { background-color: var(--wp-paper-dark); }
+  .section--border-top { border-top: 2px solid var(--wp-ink); }
+  .section--overflow-hidden { overflow: hidden; }
+
+  /* ===== MASTHEAD ===== */
+  .masthead {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+    overflow: visible;
+    transform: translateZ(0);
+  }
+  .masthead::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      var(--wp-ink) calc(50% - 90px),
+      transparent calc(50% - 90px),
+      transparent calc(50% + 90px),
+      var(--wp-ink) calc(50% + 90px)
+    );
+  }
+  .masthead-inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .masthead-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .masthead-nav--left { justify-content: flex-start; }
+  .masthead-nav--right { justify-content: flex-end; }
+  .masthead-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    z-index: 61;
+  }
+  .masthead-logo img { display: block; height: 110px; width: auto; mix-blend-mode: multiply; }
+
+  .nav-link {
+    font-size: var(--wp-text-md);
+    font-weight: 500;
+    color: var(--wp-text-secondary);
+    transition: color 150ms;
+  }
+  .nav-link:hover { color: var(--wp-ink); }
+
+  /* Single current-locale flag inline; the other five reveal in a small
+     hover/focus dropdown, so the masthead's width never depends on how long
+     a given locale's nav labels happen to run. */
+  .locale-switcher { position: relative; display: flex; align-items: center; }
+  .locale-switcher-current,
+  .locale-switcher-flag {
+    display: block;
+    width: 16px;
+    height: 12px;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px var(--wp-border-secondary);
+  }
+  .locale-switcher-current { box-shadow: 0 0 0 1.5px var(--wp-ink); }
+  .locale-switcher-flag { opacity: 0.7; transition: opacity 150ms; }
+  .locale-switcher-flag:hover { opacity: 1; }
+  .locale-switcher-current :global(svg),
+  .locale-switcher-flag :global(svg) { display: block; width: 100%; height: 100%; }
+  .locale-switcher-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 62;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 4px 14px rgba(17,19,24,0.14);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 150ms, transform 150ms, visibility 150ms;
+  }
+  .locale-switcher:hover .locale-switcher-menu,
+  .locale-switcher:focus-within .locale-switcher-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--wp-font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    border-radius: 5px;
+    transition: transform 150ms, box-shadow 150ms;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn--primary {
+    background: var(--wp-ink);
+    color: var(--wp-paper);
+    border: 1px solid var(--wp-ink);
+    box-shadow: 0 2px 4px rgba(17,19,24,0.12), 0 10px 18px -8px rgba(17,19,24,0.22);
+  }
+  .btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(17,19,24,0.16), 0 16px 26px -8px rgba(17,19,24,0.3);
+  }
+  .btn--secondary {
+    background: #FFF;
+    color: var(--wp-ink);
+    border: 1.5px solid var(--wp-ink);
+    box-shadow: 0 2px 4px rgba(17,19,24,0.06), 0 8px 16px -10px rgba(17,19,24,0.16);
+  }
+  .btn--secondary:hover { transform: translateY(-2px); }
+  .btn--tilt { transform: rotate(0.6deg); }
+  .btn--tilt:hover { transform: rotate(0.6deg) translateY(-2px); }
+  .btn--sm { font-size: var(--wp-text-sm); padding: 8px 16px; }
+  .btn--lg { font-size: var(--wp-text-md); padding: 14px 24px; }
+
+  /* ===== HERO ===== */
+  .section--hero {
+    padding: 72px 0 96px;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+    gap: 52px;
+    align-items: center;
+  }
+  .hero-h1 {
+    font-size: clamp(2.7rem, 5.4vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.032em;
+    color: var(--wp-ink);
+    margin: 0;
+  }
+
+  /* "agentic" editorial mark — pale ink-wash highlight, slight tilt */
+  .agentic-mark {
+    display: inline-block;
+    position: relative;
+    isolation: isolate;
+    padding: 0 4px;
+    transform: rotate(-2deg);
+    transform-origin: center bottom;
+    white-space: nowrap;
+  }
+  .agentic-mark::before {
+    content: '';
+    position: absolute;
+    inset: 2px -6px -1px -7px;
+    background: #d4e8b2;
+    /* Uneven corners simulate a hand-drawn highlight pass */
+    border-radius: 3px 8px 5px 2px / 6px 3px 7px 4px;
+    transform: skewX(-4deg) rotate(-0.8deg);
+    opacity: 0.78;
+    z-index: -1;
+  }
+
+  .hero-body {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+    margin: 28px 0 0;
+    max-width: 500px;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    margin-top: 34px;
+    flex-wrap: wrap;
+  }
+  .hero-demo-link { margin: 18px 0 0; }
+  .demo-link { font-size: var(--wp-text-sm); color: var(--wp-text-tertiary); text-decoration: underline; text-underline-offset: 3px; transition: color 150ms; }
+  .demo-link:hover { color: var(--wp-ink); }
+  .hero-prepares {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 34px;
+    flex-wrap: wrap;
+  }
+  .hero-prepares-label {
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-muted);
+    font-family: var(--wp-font-mono);
+  }
+  .hero-prepares-item {
+    font-size: var(--wp-text-sm);
+    font-weight: 500;
+    color: var(--wp-text-tertiary);
+  }
+  .hero-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--wp-border-strong);
+  }
+
+  /* ===== PAPER CARD (shared base) ===== */
+  .paper-card {
+    position: relative;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+  }
+  .ruled-margin {
+    position: absolute;
+    left: 26px; top: 0; bottom: 0;
+    width: 1px;
+    background: rgba(194,65,58,0.4);
+  }
+  .ruled-margin--sm { left: 20px; }
+
+  /* ===== HERO APPROVAL NOTE ===== */
+  .hero-approval-note {
+    position: relative;
+    margin: 26px 0 0;
+    max-width: 500px;
+    padding: 15px 18px 15px 20px;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    border-left: 3px solid var(--wp-ink);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 10px 22px -16px rgba(17,19,24,0.16);
+  }
+  .hero-approval-note p {
+    margin: 0;
+    font-size: var(--wp-text-md);
+    font-weight: 600;
+    color: var(--wp-ink);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+
+  /* ===== HERO EDITORIAL OPERATIONS BOARD ===== */
+  .hero-board-wrap {
+    position: relative;
+    min-width: 0;
+    padding-top: 14px;
+  }
+  .hero-board-note {
+    position: absolute;
+    top: -6px; right: 8px;
+    z-index: 6;
+    transform: rotate(4deg);
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.05;
+    color: var(--wp-amber);
+    text-align: center;
+  }
+  .hero-board {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 5px rgba(17,19,24,0.06), 0 30px 56px -22px rgba(17,19,24,0.26);
+    transform: rotate(-0.8deg);
+    overflow: hidden;
+  }
+  .board-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 22px;
+    border-bottom: 2px solid var(--wp-ink);
+  }
+  .board-header-title { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; }
+  .board-live { display: inline-flex; align-items: center; gap: 7px; }
+  .board-live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--wp-signal); }
+  .board-body { padding: 16px 22px 20px; display: flex; flex-direction: column; gap: 4px; }
+
+  .board-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border: 1px solid var(--wp-line);
+    background: var(--wp-paper);
+  }
+  .board-row-info { flex: 1; min-width: 0; }
+  .board-row-name { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+  .board-avatar-icon {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: 1.5px solid var(--wp-ink);
+    display: flex; align-items: center; justify-content: center;
+    flex: 0 0 auto;
+  }
+
+  .board-row--emma {
+    position: relative;
+    gap: 13px;
+    padding: 13px 15px;
+    background: #FFFFFF;
+    border: 2px solid var(--wp-ink);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.06), 0 12px 22px -14px rgba(17,19,24,0.2);
+  }
+  .board-avatar-img {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 1.5px var(--wp-ink);
+    flex: 0 0 auto;
+  }
+  .board-row-name-line { display: flex; align-items: center; gap: 8px; }
+  .board-row-sub { font-size: var(--wp-text-sm); color: var(--wp-text-secondary); margin-top: 3px; }
+  .board-status-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 9px;
+    border: 1px solid var(--wp-signal-border);
+    background: var(--wp-signal-soft);
+    border-radius: var(--wp-radius-pill);
+    font-size: 10px;
+    font-family: var(--wp-font-mono);
+    color: var(--wp-signal);
+    letter-spacing: 0.04em;
+    flex: 0 0 auto;
+  }
+  .board-status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--wp-signal); }
+
+  .board-connector { display: flex; justify-content: center; padding: 4px 0; }
+
+  .board-canvas-card { padding: 13px 15px; border: 1px solid var(--wp-line); background: var(--wp-paper-soft); }
+  .board-canvas-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 9px; }
+  .board-canvas-line { height: 5px; width: 100%; background: var(--wp-line); border-radius: 3px; margin-bottom: 6px; }
+  .board-canvas-line:last-of-type { margin-bottom: 0; }
+  .board-canvas-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .board-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 9px;
+    border-radius: var(--wp-radius-pill);
+    font-size: 10px;
+    font-family: var(--wp-font-mono);
+  }
+  .board-chip--amber { border: 1px solid rgba(196,122,28,0.3); background: var(--wp-amber-soft); color: var(--wp-amber); }
+  .board-chip--cyan { border: 1px solid rgba(8,145,178,0.3); background: var(--wp-cyan-soft); color: var(--wp-cyan); }
+
+  .board-specialist-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 14px;
+    border: 1px dashed var(--wp-border-strong);
+    background: #FFFFFF;
+  }
+  .board-avatar-stack { display: flex; align-items: center; }
+  .board-avatar-stack img {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 1.5px #FFFFFF, 0 0 0 2.5px var(--wp-border-secondary);
+    margin-left: -8px;
+  }
+  .board-avatar-stack img:first-child { margin-left: 0; }
+
+  .board-gate-row { display: grid; grid-template-columns: 1.25fr 1fr; gap: 10px; margin-top: 4px; }
+  .board-gate-approval {
+    display: flex; align-items: center; gap: 9px;
+    padding: 12px 14px;
+    border: 1.5px solid var(--wp-amber);
+    background: var(--wp-amber-soft);
+    font-size: var(--wp-text-sm);
+    font-weight: 700;
+    color: var(--wp-ink);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  .board-gate-cms {
+    display: flex; align-items: center; gap: 9px;
+    padding: 12px 14px;
+    border: 1px solid var(--wp-line);
+    background: #FFFFFF;
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-tertiary);
+    line-height: 1.15;
+  }
+  .board-gate-cms-dot { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--wp-border-strong); flex: 0 0 auto; }
+
+  .hero-board-stamp {
+    position: absolute;
+    bottom: 42px; left: -14px;
+    z-index: 6;
+    transform: rotate(-8deg);
+    border: 2.5px solid var(--wp-ink);
+    color: var(--wp-ink);
+    border-radius: 5px;
+    font-family: var(--wp-font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 6px 11px;
+    opacity: 0.72;
+    background: #FFFFFF;
+  }
+
+  /* ===== SHARED ELEMENTS ===== */
+  .eyebrow {
+    font-size: var(--wp-text-sm);
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .eyebrow--strategy { color: var(--team-strategy); }
+
+  .section-intro { max-width: 660px; margin-bottom: 48px; }
+  .section-intro--wide { max-width: 760px; }
+  .section-h2 {
+    font-size: clamp(2.1rem, 4.4vw, 3.15rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    margin: 0;
+    color: var(--wp-ink);
+  }
+  .section-body {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+    margin: 22px 0 0;
+  }
+  .section-note {
+    font-size: var(--wp-text-md);
+    color: var(--wp-text-tertiary);
+    line-height: 1.65;
+    margin: 16px 0 0;
+  }
+
+  .mono-label {
+    font-size: var(--wp-text-xs);
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    font-family: var(--wp-font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    opacity: 0.85;
+  }
+  .stamp--signal { border-color: var(--wp-signal); color: var(--wp-signal); }
+  .stamp--absolute {
+    position: absolute;
+    top: 80px; right: -12px;
+    transform: rotate(-9deg);
+    background: #FFF;
+    z-index: 4;
+    font-size: 16px;
+    padding: 8px 14px;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    font-family: var(--wp-font-mono);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+  }
+  .status-badge--ready { border: 1.5px solid var(--wp-signal); color: var(--wp-signal); background: var(--wp-signal-soft); }
+
+  .hand-note {
+    font-family: var(--wp-font-hand);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1;
+  }
+  .hand-note--amber { color: var(--wp-amber); }
+  .hand-note--red { color: var(--wp-red); }
+  .hand-note--card {
+    position: absolute;
+    right: 16px; bottom: 10px;
+    transform: rotate(-5deg);
+    opacity: 0.85;
+  }
+
+  /* ===== PROBLEM SECTION / OPERATING MODEL ===== */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 28px;
+  }
+  .problem-grid--compact { grid-template-columns: repeat(2, 1fr); gap: 20px 18px; }
+  .problem-card {
+    position: relative;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 12px 24px -14px rgba(17,19,24,0.15);
+    overflow: hidden;
+  }
+  .problem-card-body {
+    position: relative;
+    padding: 20px 22px 36px 34px;
+  }
+  .problem-card-title {
+    font-size: var(--wp-text-lg);
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .problem-card-text {
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+  }
+
+  .desk-compare {
+    display: grid;
+    grid-template-columns: 1.15fr auto 1fr;
+    gap: 34px;
+    align-items: center;
+  }
+  .desk-compare-label { margin-bottom: 16px; }
+  .desk-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .desk-arrow-img {
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 2px var(--wp-paper-dark), 0 0 0 3.5px var(--wp-ink);
+  }
+  .desk-arrow-label {
+    font-size: var(--wp-text-sm);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-align: center;
+    line-height: 1.1;
+  }
+  .desk-after-card {
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 4px rgba(17,19,24,0.06), 0 20px 40px -18px rgba(17,19,24,0.2);
+    overflow: hidden;
+  }
+  .desk-after-header {
+    padding: 15px 18px;
+    border-bottom: 2px solid var(--wp-ink);
+    font-size: var(--wp-text-md);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .desk-after-list { padding: 6px 18px 10px; }
+  .desk-after-item {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--wp-line);
+  }
+  .desk-after-item:last-child { border-bottom: none; }
+  .desk-after-num { width: 18px; }
+  .desk-after-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .desk-after-text { font-size: var(--wp-text-base); color: var(--wp-ink); font-weight: 500; }
+
+  /* ===== EMMA RUNS THE DESK ===== */
+  .emma-desk-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 44px;
+  }
+  .emma-desk-intro { max-width: 640px; }
+  .emma-desk-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05);
+    padding: 10px 14px;
+    transform: rotate(0.8deg);
+  }
+  .emma-desk-badge img { border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1.5px var(--wp-ink); }
+  .emma-desk-badge-name { font-size: var(--wp-text-md); font-weight: 700; letter-spacing: -0.01em; }
+
+  .emma-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .emma-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 14px 28px -18px rgba(17,19,24,0.16);
+    padding: 22px 22px 24px;
+    height: 100%;
+  }
+  .emma-card-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 13px;
+    margin-bottom: 15px;
+    border-bottom: 1.5px solid var(--wp-ink);
+  }
+  .emma-card-index {
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    color: var(--wp-ink);
+  }
+  .emma-card-title {
+    font-size: var(--wp-text-xl);
+    font-weight: 700;
+    margin: 0 0 9px;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--wp-ink);
+  }
+  .emma-card-body { margin: 0; font-size: var(--wp-text-base); color: var(--wp-text-secondary); line-height: 1.55; }
+
+  /* ===== FOUR COMMITMENTS ===== */
+  .commitments-panel {
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 4px rgba(17,19,24,0.06), 0 22px 44px -20px rgba(17,19,24,0.2);
+  }
+  .commitments-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 30px;
+    border-bottom: 2px solid var(--wp-ink);
+  }
+  .commitments-panel-title { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; }
+  .commitments-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+  .commitment-item { padding: 26px 30px; border-right: 1px solid var(--wp-line); border-bottom: 1px solid var(--wp-line); }
+  .commitment-item:nth-child(2n) { border-right: none; }
+  .commitment-item:nth-last-child(-n+2) { border-bottom: none; }
+  .commitment-item-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .commitment-num { font-family: var(--wp-font-mono); font-size: var(--wp-text-sm); color: var(--wp-signal); font-weight: 600; }
+  .commitment-title { font-size: var(--wp-text-xl); font-weight: 700; margin: 0; letter-spacing: -0.02em; color: var(--wp-ink); }
+  .commitment-body { margin: 0 0 0 30px; font-size: var(--wp-text-md); color: var(--wp-text-secondary); line-height: 1.55; }
+
+  /* ===== THE CANVAS ===== */
+  .canvas-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+    gap: 56px;
+    align-items: center;
+  }
+  .canvas-points { border-top: 1px solid var(--wp-line); }
+  .canvas-point { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--wp-line); font-size: var(--wp-text-md); color: var(--wp-ink); }
+  .canvas-point:last-child { border-bottom: none; }
+  .canvas-point-dot { width: 8px; height: 8px; border-radius: 2px; flex: 0 0 auto; }
+
+  .canvas-doc-wrap { position: relative; min-width: 0; }
+  .canvas-doc {
+    position: relative;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 5px rgba(17,19,24,0.06), 0 28px 52px -20px rgba(17,19,24,0.24);
+    transform: rotate(-0.6deg);
+  }
+  .canvas-doc-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 24px; border-bottom: 2px solid var(--wp-ink); }
+  .canvas-doc-header-left { display: flex; align-items: center; gap: 11px; }
+  .canvas-doc-header-left img { border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1.5px var(--wp-ink); }
+  .canvas-doc-title { font-size: var(--wp-text-md); font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+  .canvas-doc-body { display: grid; grid-template-columns: 1fr 190px; }
+  .canvas-doc-copy { padding: 24px 26px; border-right: 1px solid var(--wp-line); }
+  .canvas-doc-heading { font-size: var(--wp-text-2xl); font-weight: 700; letter-spacing: -0.02em; margin: 0 0 14px; line-height: 1.15; color: var(--wp-ink); }
+  .canvas-line { height: 6px; background: var(--wp-line); border-radius: 3px; margin-bottom: 9px; }
+  .canvas-line--amber { background: var(--wp-amber-soft); border: 1px solid rgba(196,122,28,0.3); }
+  .canvas-line--cyan { background: var(--wp-cyan-soft); border: 1px solid rgba(8,145,178,0.3); }
+  .canvas-doc-subhead { margin-bottom: 10px; }
+  .canvas-margin-rail { padding: 20px 16px; background: var(--wp-paper-soft); display: flex; flex-direction: column; gap: 12px; }
+  .canvas-margin-note { padding: 9px 11px; background: #FFF; border: 1px solid var(--wp-line); border-left: 3px solid var(--wp-border-strong); }
+  .canvas-margin-note--amber { border-color: rgba(196,122,28,0.3); border-left-color: var(--wp-amber); }
+  .canvas-margin-note--cyan { border-color: rgba(8,145,178,0.3); border-left-color: var(--wp-cyan); }
+  .canvas-margin-tag { margin-bottom: 3px; }
+  .canvas-margin-tag--amber { color: var(--wp-amber); }
+  .canvas-margin-tag--cyan { color: var(--wp-cyan); }
+  .canvas-margin-text { font-size: var(--wp-text-sm); color: var(--wp-text-secondary); line-height: 1.4; }
+  .canvas-doc-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 24px; border-top: 1px solid var(--wp-line); background: var(--wp-paper); }
+  .canvas-doc-footer-left { display: inline-flex; align-items: center; gap: 8px; font-size: var(--wp-text-sm); font-family: var(--wp-font-mono); color: var(--wp-text-secondary); }
+  .canvas-doc-annot {
+    position: absolute;
+    top: -12px; right: 22px;
+    z-index: 4;
+    transform: rotate(5deg);
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--wp-ink);
+  }
+
+  /* ===== SPECIALIST BENCH ===== */
+  .scale-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    border-top: 1px solid var(--wp-border-strong);
+    border-bottom: 1px solid var(--wp-border-strong);
+    padding: 13px 2px;
+    margin-bottom: 26px;
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-sm);
+    letter-spacing: 0.04em;
+    color: var(--wp-text-tertiary);
+  }
+  .scale-strip-strong { font-weight: 700; color: var(--wp-ink); }
+  .scale-strip-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--wp-border-strong); }
+
+  .team-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .team-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 14px 28px -18px rgba(17,19,24,0.16);
+    overflow: hidden;
+    height: 100%;
+  }
+  .team-card-bar { position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+  .team-card-head { padding: 20px 20px 14px; border-bottom: 1px solid var(--wp-line); }
+  .team-card-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+  .team-card-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .team-card-name { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; color: var(--wp-ink); }
+  .team-card-summary { margin: 0; padding: 14px 20px 14px; font-size: var(--wp-text-sm); color: var(--wp-text-secondary); line-height: 1.5; }
+  .team-card-chips-label {
+    padding: 0 20px 8px;
+    font-size: 11px;
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+  }
+  .team-card-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 20px 18px; }
+  .team-chip {
+    padding: 3px 10px;
+    border: 1px solid var(--wp-line);
+    border-radius: var(--wp-radius-pill);
+    font-size: 11px;
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-secondary);
+    letter-spacing: 0.02em;
+  }
+  .team-chip--more {
+    color: var(--wp-text-tertiary);
+    font-style: italic;
+    border-style: dashed;
+  }
+  .team-card-cta {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 20px;
+    border-top: 1px dashed var(--wp-line);
+    font-size: var(--wp-text-sm);
+    font-weight: 600;
+    color: var(--wp-ink);
+    text-decoration: none;
+  }
+  .team-card-cta--secondary { color: var(--wp-text-tertiary); font-weight: 500; }
+
+  /* ===== SAME DESK, NATIVE VOICE ===== */
+  .editors-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .editor-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 12px 22px -18px rgba(17,19,24,0.14);
+    padding: 20px 12px 18px;
+  }
+  .editor-card-lead {
+    position: absolute;
+    top: 10px; right: 10px;
+    padding: 2px 6px;
+    border: 1px solid var(--wp-signal-border);
+    background: var(--wp-signal-soft);
+    border-radius: var(--wp-radius-pill);
+    font-size: 9px;
+    font-family: var(--wp-font-mono);
+    color: var(--wp-signal);
+    letter-spacing: 0.06em;
+  }
+  .editor-card-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    opacity: 0.75;
+  }
+  .editor-card-flag {
+    position: absolute;
+    top: 9px; left: 9px;
+    width: 20px;
+    height: 14px;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px var(--wp-border-secondary), 0 1px 2px rgba(17,19,24,0.12);
+  }
+  .editor-card-flag :global(svg) { display: block; width: 100%; height: 100%; }
+  .editor-card-img { border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1.5px var(--wp-border-secondary); margin-bottom: 12px; }
+  .editor-card-name { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+  .editor-card-city { font-size: var(--wp-text-xs); color: var(--wp-text-tertiary); margin-top: 4px; }
+  .editor-card-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 11px;
+    padding: 3px 9px;
+    border: 1px solid var(--wp-line);
+    border-radius: var(--wp-radius-pill);
+  }
+  .editor-card-lang span:first-child { font-weight: 600; color: var(--wp-ink); }
+  .editor-card-lang-name { color: var(--wp-text-tertiary); }
+  .editors-closing { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 36px; }
+  .editors-closing-rule { height: 1px; width: 44px; background: var(--wp-border-strong); }
+  .editors-closing-text { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; color: var(--wp-ink); }
+
+  /* ===== HUMAN APPROVAL ===== */
+  .approval-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 56px;
+    align-items: center;
+  }
+  .approval-body { margin-bottom: 18px; }
+  .approval-final-line {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-ink);
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .approval-paper {
+    position: relative;
+    min-height: 340px;
+  }
+
+  .paper-card--approval {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 340px;
+    transform: rotate(-1.4deg);
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(17,19,24,0.06), 0 24px 46px -16px rgba(17,19,24,0.24);
+  }
+  .approval-doc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-bottom: 2px solid var(--wp-ink);
+  }
+  .approval-doc-title {
+    font-size: var(--wp-text-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .approval-doc-body { padding: 18px 22px; }
+  .approval-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--wp-line);
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+  }
+  .approval-row--last { border-bottom: none; }
+  .approval-awaiting { color: var(--wp-amber); letter-spacing: 0.04em; }
+  .approval-doc-footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 22px;
+    border-top: 1px solid var(--wp-line);
+    background: var(--wp-paper);
+  }
+  .hand-signature {
+    font-family: var(--wp-font-hand);
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--wp-ink);
+    line-height: 1;
+    transform: rotate(-3deg);
+    display: inline-block;
+  }
+
+  .approval-pill {
+    position: absolute;
+    bottom: -14px; left: 18px;
+    z-index: 3;
+    transform: rotate(2deg);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: #FFF;
+    border: 1px dashed var(--wp-border-strong);
+    border-radius: var(--wp-radius-pill);
+  }
+  .approval-pill-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--wp-ink);
+  }
+
+  /* ===== FINAL CTA ===== */
+  .section--cta { padding: 104px 0 112px; }
+  .cta-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 34px;
+    text-align: center;
+  }
+  .cta-avatar {
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 2px var(--wp-paper), 0 0 0 3.5px var(--wp-ink);
+    margin: 0 auto 22px;
+  }
+  .cta-h2 {
+    font-size: clamp(2.4rem, 5vw, 3.75rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 0;
+    line-height: 1.04;
+    color: var(--wp-ink);
+  }
+  .cta-body {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+    margin: 22px auto 0;
+    max-width: 560px;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 34px;
+    flex-wrap: wrap;
+  }
+  .cta-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 44px;
+  }
+  .cta-rule {
+    height: 1px;
+    width: 50px;
+    background: var(--wp-border-strong);
+  }
+  .cta-mark-text { letter-spacing: 0.16em; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background-color: var(--wp-paper-dark);
+    background-image: var(--wp-texture-paper);
+    border-top: 2px solid var(--wp-ink);
+    padding: 58px 0 42px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
+  .footer-logo { display: block; height: 90px; width: auto; align-self: flex-start; margin-left: -4px; }
+  .footer-tagline { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; margin: 6px 0 0; }
+  .footer-nav { display: flex; flex-direction: column; gap: 10px; }
+  .footer-nav-heading { font-size: var(--wp-text-sm); font-weight: 700; }
+  .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); transition: color 150ms; }
+  .footer-link:hover { color: var(--wp-ink); }
+  .footer-bottom {
+    margin-top: 46px;
+    padding-top: 22px;
+    border-top: 1px solid var(--wp-border-strong);
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-muted);
+  }
+
+  /* ============================================================
+     RESPONSIVE — tablet landscape / small laptop (≤ 1024px)
+  ============================================================ */
+  @media (max-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 36px;
+    }
+
+    .emma-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .team-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .editors-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+    .footer-grid > :last-child { display: none; }
+  }
+
+  /* ============================================================
+     RESPONSIVE — tablet portrait / large phone (≤ 768px)
+  ============================================================ */
+  @media (max-width: 768px) {
+    .container { padding: 0 24px; }
+    .section { padding: 60px 0; }
+
+    /* --- Masthead --- */
+    .masthead-inner { padding: 10px 24px; }
+    .masthead-nav--left { display: none; }
+    .masthead-nav--right .nav-link { display: none; }
+    .locale-switcher { display: none; }
+    .masthead-logo img { height: 78px; }
+    .masthead::after {
+      background: linear-gradient(
+        to right,
+        var(--wp-ink) calc(50% - 72px),
+        transparent calc(50% - 72px),
+        transparent calc(50% + 72px),
+        var(--wp-ink) calc(50% + 72px)
+      );
+    }
+
+    /* --- Hero --- */
+    .section--hero { padding: 48px 0 56px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-body { font-size: var(--wp-text-lg); }
+    .hero-board-note { display: none; }
+    .hero-board-stamp { display: none; }
+
+    /* --- Operating model / desk compare --- */
+    .desk-compare { grid-template-columns: 1fr; gap: 28px; }
+    .desk-arrow { flex-direction: row; justify-content: center; }
+    .desk-arrow svg { transform: rotate(90deg); }
+    .problem-grid--compact { grid-template-columns: repeat(2, 1fr); }
+
+    /* --- Emma runs the desk --- */
+    .emma-desk-header { flex-direction: column; align-items: flex-start; }
+    .emma-cards-grid { grid-template-columns: 1fr 1fr; }
+
+    /* --- Four commitments --- */
+    .commitments-grid { grid-template-columns: 1fr; }
+    .commitment-item { border-right: none !important; border-bottom: 1px solid var(--wp-line) !important; }
+    .commitment-item:last-child { border-bottom: none !important; }
+
+    /* --- Canvas --- */
+    .canvas-grid { grid-template-columns: 1fr; gap: 36px; }
+    .canvas-doc-body { grid-template-columns: 1fr; }
+    .canvas-doc-copy { border-right: none; border-bottom: 1px solid var(--wp-line); }
+    .canvas-doc-annot { display: none; }
+
+    /* --- Specialist bench --- */
+    .team-cards-grid { grid-template-columns: 1fr 1fr; }
+
+    /* --- Languages --- */
+    .editors-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+    /* --- Approval --- */
+    .approval-grid { grid-template-columns: 1fr; gap: 40px; }
+
+    /* --- CTA --- */
+    .section--cta { padding: 72px 0 80px; }
+    .cta-inner { padding: 0 24px; }
+
+    /* --- Footer --- */
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .footer-brand {
+      grid-column: 1 / -1;
+      max-width: none;
+    }
+    .footer-grid > :last-child { display: flex; }
+  }
+
+  /* ============================================================
+     RESPONSIVE — phone (≤ 480px)
+     Targets: iPhone SE (375px), iPhone 14 (390px), Android (360–412px)
+  ============================================================ */
+  @media (max-width: 480px) {
+    .container { padding: 0 18px; }
+    .section { padding: 44px 0; }
+
+    /* --- Masthead --- */
+    .masthead-inner { padding: 8px 18px; }
+    .masthead-logo img { height: 62px; }
+    .masthead::after {
+      background: linear-gradient(
+        to right,
+        var(--wp-ink) calc(50% - 56px),
+        transparent calc(50% - 56px),
+        transparent calc(50% + 56px),
+        var(--wp-ink) calc(50% + 56px)
+      );
+    }
+    .btn--sm { font-size: 12px; padding: 7px 12px; }
+
+    /* --- Hero --- */
+    .section--hero { padding: 36px 0 48px; }
+    .hero-ctas { flex-direction: column; align-items: flex-start; }
+    .hero-ctas .btn { width: 100%; justify-content: center; }
+    .hero-prepares { gap: 8px; }
+    .hero-board { transform: none; }
+
+    /* --- Section intros --- */
+    .section-body { font-size: var(--wp-text-md); }
+    .section-intro { margin-bottom: 32px; }
+
+    /* --- Operating model --- */
+    .problem-grid--compact { grid-template-columns: 1fr; }
+
+    /* --- Emma runs the desk --- */
+    .emma-cards-grid { grid-template-columns: 1fr; }
+
+    /* --- Specialist bench --- */
+    .team-cards-grid { grid-template-columns: 1fr; }
+
+    /* --- Languages --- */
+    .editors-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+    /* --- CTA --- */
+    .section--cta { padding: 56px 0 64px; }
+    .cta-inner { padding: 0 18px; }
+    .cta-buttons { flex-direction: column; align-items: stretch; }
+    .cta-buttons .btn { justify-content: center; }
+    .cta-body { font-size: var(--wp-text-md); }
+
+    /* --- Footer --- */
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-brand { grid-column: auto; }
+    .footer-bottom { flex-direction: column; gap: 6px; }
+    .footer { padding: 44px 0 32px; }
+  }
+</style>

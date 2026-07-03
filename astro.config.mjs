@@ -10,6 +10,18 @@ import vercel from '@astrojs/vercel';
 // The adapter is still required to emit serverless functions for those routes.
 export default defineConfig({
   site: 'https://wordpresto.com',
+  // English stays unprefixed at "/"; other locales are served from their own
+  // "/pt/", "/pt-br/", "/es/", "/de/", "/fr/" dynamic route trees
+  // (src/pages/[locale]/...) rather than Astro's automatic per-locale folder
+  // convention, so every page keeps a single template/data source instead of
+  // being duplicated per language. `routing: 'manual'` disables Astro's own
+  // i18n middleware and folder convention accordingly; see src/i18n/locales.ts
+  // and context.md for the full plan.
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'pt', 'pt-br', 'es', 'de', 'fr'],
+    routing: 'manual',
+  },
   adapter: vercel({
     // Deploy Astro middleware as a true Vercel Edge Function.
     // This runs BEFORE Vercel's "handle: filesystem" routing, so
