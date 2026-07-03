@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (11 specialist roles)
+## SEO Worker directory (12 specialist roles)
 
 ### Nadia — SEO Title & Metadata Worker
 
@@ -123,3 +123,13 @@ Diane reviews conversion alignment: CTA clarity, trust signals, proof gaps, meta
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-format-serp-fit.md
 
 Ivan reviews whether the current content format matches the likely intent and expected page shape, flagging format conflicts and metadata that promises a different experience.
+
+### Felix — Internal Link Pathway Worker
+
+- Stage: Internal linking
+- Output: Pathway review
+- URL: https://wordpresto.com/workers/internal-link-pathway/
+- Markdown: https://wordpresto.com/workers/internal-link-pathway/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/internal-link-pathway.md
+
+Felix reviews internal link pathway health: orphan risk, anchor text quality, hub-and-spoke relationships, missing next-step links, competing links and pathway coherence.

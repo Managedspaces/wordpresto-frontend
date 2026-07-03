@@ -379,6 +379,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-30-384.webp',
     teamColor: 'var(--team-seo)',
   },
+  {
+    id: 'internal_link_pathway',
+    name: 'Felix',
+    role: 'Internal Link Pathway Worker',
+    department: 'Internal Linking',
+    team: 'seo',
+    stage: 'Internal linking',
+    summary: 'Reviews internal link pathway health: orphan risk, anchor text quality, hub-and-spoke relationships, missing next-step links and pathway coherence.',
+    output: 'Pathway review',
+    image: '/agents/profiles/profile-31-192.webp',
+    image2x: '/agents/profiles/profile-31-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).

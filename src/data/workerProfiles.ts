@@ -4068,6 +4068,167 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'FORMAT STATUS',
     guidanceFooterValue: 'Poor fit · review needed',
   },
+
+  // 27. Felix - Internal Link Pathway Worker
+  {
+    id: 'internal_link_pathway',
+    slug: 'internal-link-pathway',
+    name: 'Felix',
+    role: 'Internal Link Pathway Worker',
+    roleTitle: 'Internal Link Pathway Analyst',
+    department: 'Internal Linking',
+    team: 'seo',
+    stage: 'Internal linking',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-31-192.webp',
+    portrait2x: '/agents/profiles/profile-31-384.webp',
+    seoTitle: 'Internal Link Pathway Worker | WordPresto',
+    metaDescription:
+      'Felix reviews internal link pathway health: orphan risk, anchor text quality, hub-and-spoke relationships, missing next-step links, competing links and pathway coherence.',
+    h1: 'Review the paths readers and crawlers can actually follow.',
+    heroPara1:
+      'Internal links are not just SEO signals. They are routes through the site. Good links help readers move from question to proof, from guide to service, from supporting page to commercial page and from broad topic to specific action. Felix reviews internal link pathway health: orphan risk, anchor text quality, hub-and-spoke relationships, missing next-step links, competing links and pathway coherence.',
+    heroPara2:
+      'For internal link audits, page reviews, topic-cluster improvements and conversion-path checks.',
+    heroWorksAlongside: ['Leo', 'Zara', 'Diane'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Internal linking',
+      output: 'Output · Pathway review',
+    },
+    problemEyebrow: 'Where internal linking goes wrong',
+    problemH2: 'Links exist, but they do not always create a useful path.',
+    problemPara:
+      'A page may have internal links that are vague, disconnected, buried, distracting or pointed at the wrong next step. It may fail to connect to its hub, support pages or conversion path. Felix reviews whether links form a coherent pathway, not just whether links are present.',
+    problemAnnotation: '↘ turn links into journeys',
+    beforeStamp: 'Weak pathway',
+    beforeHtml: `<p>The page links to three unrelated posts and uses vague anchors that do not explain why the reader should click.</p>`,
+    beforeTags: ['Loose links', 'Weak anchors', 'No hub relationship', 'Poor next step'],
+    beforeNote: 'the site feels disconnected',
+    afterStamp: 'Pathway clarified',
+    afterHtml: `<p>Links support the page role, use descriptive anchors and lead to useful supporting or conversion pages.</p>`,
+    afterTags: ['Clear anchors', 'Better cluster path', 'Useful next step', 'Review-safe'],
+    afterNote: 'the reader has a route forward',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Internal link pathway review before link edits.',
+    helpsPara:
+      'Felix reviews already-visible page signals and link context. He does not edit anchors, fetch linked pages, crawl the whole site or publish changes. He gives editors a structured pathway review.',
+    checks: [
+      'Internal link presence and placement',
+      'Anchor text clarity',
+      'Missing next-step links',
+      'Hub, spoke and supporting-page signals',
+      'Competing or distracting links',
+      'Pathway coherence',
+    ],
+    improves: [
+      'Reader movement through the site',
+      'Internal link quality',
+      'Topic-cluster support',
+      'Conversion-path clarity',
+    ],
+    prepares: [
+      'Internal pathway review',
+      'Link action prompts',
+      'Anchor-quality notes',
+      'Manual site-graph checks',
+    ],
+    surfaces: [
+      'Weak anchors',
+      'Missing supporting links',
+      'Confusing link paths',
+      "Internal links that may compete with the page's purpose",
+    ],
+    ioH2: 'What Felix works from, and what he produces.',
+    worksFrom: [
+      'Internal links',
+      'Anchor text',
+      'Content relationship review',
+      'Intent and format signals',
+      'Conversion alignment signals',
+    ],
+    produces: [
+      'Pathway review',
+      'Anchor-quality notes',
+      'Missing-link prompts',
+      'Competing pathway risks',
+      'Recommended link actions',
+    ],
+    scenarios: [
+      {
+        title: 'A page has links but no clear journey.',
+        description:
+          'Felix checks whether the links form a useful pathway.',
+      },
+      {
+        title: 'A topic cluster needs better support.',
+        description:
+          'He reviews whether the page connects to hubs, spokes or supporting pages.',
+      },
+      {
+        title: 'Anchor text feels vague.',
+        description:
+          'Felix flags links that do not explain their destination.',
+      },
+      {
+        title: 'A page has weak conversion movement.',
+        description:
+          'He checks whether internal links support or distract from the intended next step.',
+      },
+      {
+        title: 'A page may be isolated.',
+        description:
+          'Felix lists orphan-risk signals and manual checks.',
+      },
+      {
+        title: 'Editors are planning link improvements.',
+        description:
+          'He gives reviewable link actions before anyone edits the page.',
+      },
+    ],
+    boundaryH2: 'Felix reviews pathways. Editors decide link changes.',
+    boundaryPara:
+      'Felix does not add, remove or rewrite links automatically. He does not crawl the full site or confirm full orphan status unless discovery data exists. He produces review-only pathway findings.',
+    boundaryChecklist: [
+      'Felix flags pathway issues, he never edits links himself.',
+      'Findings come from already-visible page signals, not a full site crawl.',
+      'Orphan status is only confirmed when discovery data exists.',
+      'Recommended link actions are prompts for editorial review, not automatic changes.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Edit links or anchors automatically' },
+      { color: 'red', text: 'Fetch every linked page' },
+      { color: 'red', text: 'Confirm site-wide orphan status without crawl data' },
+      { color: 'red', text: 'Create redirects or navigation changes' },
+      { color: 'red', text: 'Publish or write to any CMS' },
+    ],
+    relatedH2: 'Workers Felix works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'internal_linking',
+        description: 'Reviews the broader page relationship layer.',
+        outputLabel: 'Link assessment',
+        ctaLabel: 'How Leo reviews',
+      },
+      {
+        id: 'topical_authority',
+        description: 'Checks whether link pathways support the topic cluster.',
+        outputLabel: 'Coverage review',
+        ctaLabel: 'How Zara reviews',
+      },
+      {
+        id: 'conversion_alignment',
+        description: 'Checks whether the pathway supports the intended action.',
+        outputLabel: 'Conversion review',
+        ctaLabel: 'How Diane checks',
+      },
+    ],
+    ctaH2: 'Make internal links work like a system.',
+    ctaPara:
+      'Felix helps editors turn loose links into clear reader pathways, topic support and reviewable link actions.',
+    guidanceFooterLabel: 'PATHWAY STATUS',
+    guidanceFooterValue: 'Needs review · weak pathways',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {
