@@ -139,11 +139,64 @@ translated heading, so it's left as a single English page that already
 surfaces every locale's URLs for discovery. Revisit only if this
 reasoning changes.
 
-**Next up:** `/workers/[slug]/` (20 profile pages, by far the largest
-remaining piece) and `/workflow-demo/` (1,937 lines, the largest
-still-English page after the profiles). Worker profile pages should be
-tackled as their own dedicated pass, most likely with translation work
-parallelised per locale rather than done serially.
+**Also done:** `/workers/[slug]/` — all 20 individual Worker profile pages
+are now localised in all 6 locales (100 new pages). This was the largest
+single piece of the whole i18n effort: ~150 lines of rich prose per
+worker (hero copy, a before/after voice example, four "what it
+checks/improves/prepares/surfaces" lists, works-from/produces lists, six
+scenarios, a boundary checklist, related-worker blurbs, a CTA) × 20
+workers × 5 locales. Translation work was parallelised across 10
+background agents (one per locale per half of the roster, 10 workers
+each) to keep each agent's task a manageable, focused chunk rather than
+one enormous single-shot translation; each wrote a
+`src/data/i18n/workerProfiles/{locale}.batch{1,2}.ts` file matching a
+shared `WorkerProfileTranslatable` interface, merged at read time onto
+the English `workerProfiles.ts` record via `getLocalizedProfile()` — the
+same "don't duplicate English" pattern as `getTeamMeta()`.
+
+Same taxonomy decision as `/workers/`, `/workers/seo/` and
+`/specialists/*`: `role`, `department`, `stage`, `team`, and all three
+`heroTagPills` values stay English (they're the same fixed worker
+vocabulary that appears identically across every page a worker's title
+shows up on). Worker/person names (Helena, Omar, etc.) stay untouched as
+proper names. Everything else — hero paragraphs, the before/after voice
+example (HTML markup preserved, only visible text translated), all the
+descriptive lists, scenarios, boundary copy, related-worker blurbs, CTA —
+is fully translated. `beforeHtml`/`afterHtml`'s `<span class="ba-strike">`
+/`<span class="ba-hl">` markup and `relatedWorkerIds[].id` lookup keys
+were kept byte-identical to English throughout; only the surrounding text
+translates.
+
+No Markdown mirror per locale for these pages either, consistent with the
+`/workers/` decision (and honestly out of scope at this volume — 20
+workers × 5 locales of markdown would be its own project). The XML
+sitemap (`sitemap.xml.ts`) does include all 100 locale profile URLs for
+crawler discovery, even without a mirror; the human HTML sitemap stays
+English-only per the existing `/sitemap/` decision above.
+
+Cross-links to profile pages from `/workers/`, `/workers/seo/` and
+`/specialists/*` now use `localeHref()` instead of plain English paths,
+now that the route exists in every locale — the last of the
+"revisit once the route exists" follow-ups flagged in earlier phases.
+
+**Found and fixed two pre-existing translation gaps while building this
+pass:** the "What it checks / improves / prepares" quad-card headings on
+every profile page were hardcoded English strings never wired to any
+locale dictionary (now in `workerProfilePageChrome`), and the footer's
+"How it works" link was hardcoded English across *every* previously
+shipped translated page (specialists, workers directory, prestobot, and
+this one) — added `commonStrings.howItWorks` and fixed all six
+components. Caught via visual Playwright review of a live German page,
+not by code inspection alone — a reminder that string-audit greps don't
+catch everything and a real screenshot pass matters.
+
+**Next up:** `/workflow-demo/` (1,937 lines) is the only major page left
+untranslated. It's a dense, narrative workflow-demo essay
+(`noindex`, not an SEO page) — deliberately deferred earlier in this plan
+as needing focused, unhurried attention rather than being folded into a
+larger batch. With the worker-profile pass now setting a proven pattern
+for parallelising very large translation volumes across background
+agents, the same approach applies well here.
 
 hreflang tags and hreflang-aware hreflang/canonical linking between locale
 variants are not wired up yet — each locale page has its own correct

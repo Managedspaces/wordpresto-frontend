@@ -1,0 +1,19 @@
+---
+import WorkerProfilePage from '@/components/WorkerProfilePage.astro';
+import { workerProfiles } from '@/data/workerProfiles';
+import { LOCALES, DEFAULT_LOCALE } from '@/i18n/locales';
+
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).flatMap((l) =>
+    workerProfiles.map((profile) => ({
+      params: { locale: l.path, slug: profile.slug },
+      props: { locale: l.code, englishProfile: profile },
+    }))
+  );
+}
+
+interface Props { locale: import('@/i18n/locales').Locale; englishProfile: (typeof workerProfiles)[number] }
+const { locale, englishProfile } = Astro.props;
+---
+
+<WorkerProfilePage locale={locale} englishProfile={englishProfile} />

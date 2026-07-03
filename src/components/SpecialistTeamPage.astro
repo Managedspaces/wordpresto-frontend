@@ -99,7 +99,7 @@ const canonical = locale === 'en'
               {w.status === 'planned' && <span class="specialist-tag specialist-tag--planned">{shared.planned}</span>}
             </div>
             {w.slug ? (
-              <a href={`/workers/${w.slug}/`} class="specialist-card-link">
+              <a href={localeHref(locale, `/workers/${w.slug}/`)} class="specialist-card-link">
                 {shared.viewProfile}
                 <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
@@ -126,7 +126,7 @@ const canonical = locale === 'en'
       </div>
       <div class="footer-col">
         <span class="footer-col-heading">{c.product}</span>
-        <a href={`${localeHref(locale, '/')}#product`} class="footer-link">How it works</a>
+        <a href={`${localeHref(locale, '/')}#product`} class="footer-link">{c.howItWorks}</a>
         <a href={`${localeHref(locale, '/')}#capabilities`} class="footer-link">{c.workflow}</a>
         <a href={localeHref(locale, '/workers/')} class="footer-link">{c.workers}</a>
       </div>
