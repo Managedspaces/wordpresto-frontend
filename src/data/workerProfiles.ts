@@ -2,7 +2,10 @@ export interface WorkerProfile {
   id: string;
   slug: string;
   name: string;
+  /** The branded "X Worker" title used in the hero and CTA eyebrows. */
   role: string;
+  /** The plain analyst/specialist title used on the worker-slip card, matching workerRegistry.ts's roleTitle. Falls back to `role` when not set. */
+  roleTitle?: string;
   department: string;
   team: 'content' | 'governance' | 'seo';
   stage: string;
@@ -3109,6 +3112,7 @@ export const workerProfiles: WorkerProfile[] = [
     slug: 'clarity-proofing',
     name: 'Esme',
     role: 'Creative Writing Worker',
+    roleTitle: 'Clarity & Proofing Specialist',
     department: 'Clarity & Proofing',
     team: 'content',
     stage: 'Proofing',
@@ -3258,6 +3262,167 @@ export const workerProfiles: WorkerProfile[] = [
       'Add Esme to your workflow and every page gets a careful proofing pass before it reaches final approval.',
     guidanceFooterLabel: 'PROOFING STATUS',
     guidanceFooterValue: 'Suggestions ready · awaiting editor',
+  },
+
+  // 22. Cleo - Cannibalisation & Overlap Worker
+  {
+    id: 'cannibalisation_overlap',
+    slug: 'cannibalisation-overlap',
+    name: 'Cleo',
+    role: 'Cannibalisation & Overlap Worker',
+    roleTitle: 'Content Cannibalisation Analyst',
+    department: 'Content Cannibalisation',
+    team: 'seo',
+    stage: 'Overlap review',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-26-192.webp',
+    portrait2x: '/agents/profiles/profile-26-384.webp',
+    seoTitle: 'Cannibalisation & Overlap Worker | WordPresto',
+    metaDescription:
+      'Cleo reviews a page for intent conflict, overlap risk and unclear content role, helping editors decide whether to sharpen, support, consolidate or manually check a page against others.',
+    h1: 'Find pages that are trying to do too many jobs.',
+    heroPara1:
+      'Content cannibalisation is not only a site-wide ranking problem. It can start inside a single page: mixed intent, unclear editorial role, metadata that promises the wrong thing, thin sections that belong elsewhere, or page copy that competes with another likely asset. Cleo reviews a page for intent conflict, overlap risk and unclear content role. She helps editors decide whether the page should be sharpened, supported, consolidated or manually checked against other pages.',
+    heroPara2:
+      'For SEO reviews, content audits, topical planning and page improvement workflows.',
+    heroWorksAlongside: ['Yuna', 'Zara', 'Hugo'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Overlap review',
+      output: 'Output · Cannibalisation review',
+    },
+    problemEyebrow: 'Where cannibalisation starts',
+    problemH2: 'Pages compete when their role is unclear.',
+    problemPara:
+      'A page may try to be a guide, a service page, a comparison page and a sales page all at once. Or it may contain a thin section that should be a separate supporting article. Or its title and meta description may promise an intent the body does not satisfy. Cleo reviews those overlap signals before the site becomes harder to manage.',
+    problemAnnotation: '↘ clarify the page role',
+    beforeStamp: 'Overlap risk',
+    beforeHtml: `<p>The page introduces the service, compares alternatives, answers broad FAQs and targets a guide-style title.</p>`,
+    beforeTags: ['Mixed intent', 'Unclear role', 'Thin supporting sections', 'SERP promise mismatch'],
+    beforeNote: 'the page may compete with future content',
+    afterStamp: 'Role clarified',
+    afterHtml: `<p>The page is positioned as a service decision page, with guide content moved into supporting assets.</p>`,
+    afterTags: ['Clear page role', 'Cleaner intent', 'Better cluster planning', 'Manual checks listed'],
+    afterNote: 'the editor knows what this page is for',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A cannibalisation review that stays honest about its limits.',
+    helpsPara:
+      'Cleo reviews the page-level signals already available in the workflow. She can flag risk indicators and manual checks, but she does not claim full cross-site cannibalisation detection unless site crawl and ranking data exist.',
+    checks: [
+      'Within-page intent conflict',
+      'Metadata promise mismatch',
+      'Unclear editorial role',
+      'Thin sections that may belong elsewhere',
+      'Page-level overlap risk',
+      'Manual cross-page checks needed',
+    ],
+    improves: [
+      'Clarity of page purpose',
+      'Topic-cluster planning',
+      'Content consolidation decisions',
+      'Confidence before rewriting or expanding a page',
+    ],
+    prepares: [
+      'Cannibalisation risk review',
+      'Recommended page role',
+      'Manual overlap checks',
+      'Suggested next action',
+    ],
+    surfaces: [
+      'Pages trying to serve competing intents',
+      'Sections that may deserve their own page',
+      'Metadata that may compete with another asset',
+      'Risks requiring crawl, keyword or SERP confirmation',
+    ],
+    ioH2: 'What Cleo works from, and what she produces.',
+    worksFrom: [
+      'Intent assessment',
+      'Content inventory signals',
+      'Metadata review',
+      'Link and relationship signals',
+      'Page structure and content depth',
+    ],
+    produces: [
+      'Overlap risk review',
+      'Recommended page role',
+      'Intent conflict notes',
+      'Manual cross-page checks',
+      'Consolidation prompts',
+    ],
+    scenarios: [
+      {
+        title: 'A page feels unfocused.',
+        description:
+          'Cleo checks whether the page is mixing intents or trying to serve too many purposes.',
+      },
+      {
+        title: 'You suspect keyword cannibalisation.',
+        description:
+          'She reviews page-level risk and lists what needs cross-page confirmation.',
+      },
+      {
+        title: 'Metadata and content do not match.',
+        description:
+          'Cleo flags when the title or meta description promises a different page than the body delivers.',
+      },
+      {
+        title: 'A content cluster is becoming messy.',
+        description:
+          'She helps identify whether a page should be sharpened, split, supported or consolidated.',
+      },
+      {
+        title: 'A section feels too thin.',
+        description:
+          'Cleo flags content that may be better as a supporting page or internal link target.',
+      },
+      {
+        title: 'A rewrite might make overlap worse.',
+        description:
+          'She helps editors protect the page role before copy changes begin.',
+      },
+    ],
+    boundaryH2: 'Cleo flags risk. Editors decide the content strategy.',
+    boundaryPara:
+      'Cleo does not merge pages, redirect URLs, delete content or declare confirmed site-wide cannibalisation from page-only evidence. She gives the editor a structured risk review and manual checks.',
+    boundaryChecklist: [
+      'Cleo flags overlap risk, she never merges or deletes pages.',
+      'Cross-page cannibalisation claims are only made with supporting crawl or ranking data.',
+      'Recommended page roles are proposals for editorial review, not automatic changes.',
+      'Manual checks are listed clearly so editors know what still needs confirming.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Merge, prune or redirect pages' },
+      { color: 'red', text: 'Confirm cross-page cannibalisation without supporting data' },
+      { color: 'red', text: 'Rewrite titles or content automatically' },
+      { color: 'red', text: 'Delete sections or pages' },
+      { color: 'red', text: 'Publish or apply changes to a CMS' },
+    ],
+    relatedH2: 'Workers Cleo works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'intent_analyst',
+        description: 'Identifies the reader intent Cleo checks for conflict.',
+        outputLabel: 'Intent assessment',
+        ctaLabel: 'How Yuna identifies',
+      },
+      {
+        id: 'topical_authority',
+        description: 'Reviews topic-cluster depth and support.',
+        outputLabel: 'Coverage review',
+        ctaLabel: 'How Zara reviews',
+      },
+      {
+        id: 'content_pruning_consolidation',
+        description: 'Helps turn overlap findings into maintenance recommendations.',
+        outputLabel: 'Maintenance review',
+        ctaLabel: 'How Hugo helps',
+      },
+    ],
+    ctaH2: 'Clarify the role before the page competes with itself.',
+    ctaPara:
+      'Cleo helps editors see overlap risk, mixed intent and consolidation questions before content moves forward.',
+    guidanceFooterLabel: 'OVERLAP STATUS',
+    guidanceFooterValue: 'Needs review · role unclear',
   },
 ];
 

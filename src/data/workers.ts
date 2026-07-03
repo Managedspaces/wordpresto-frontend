@@ -314,6 +314,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-23-384.webp',
     teamColor: 'var(--team-governance)',
   },
+  {
+    id: 'cannibalisation_overlap',
+    name: 'Cleo',
+    role: 'Cannibalisation & Overlap Worker',
+    department: 'Content Cannibalisation',
+    team: 'seo',
+    stage: 'Overlap review',
+    summary: 'Reviews a page for intent conflict, overlap risk and unclear content role, helping editors decide whether to sharpen, support, consolidate or manually check it against other pages.',
+    output: 'Cannibalisation review',
+    image: '/agents/profiles/profile-26-192.webp',
+    image2x: '/agents/profiles/profile-26-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).

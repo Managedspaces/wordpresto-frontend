@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (6 specialist roles)
+## SEO Worker directory (7 specialist roles)
 
 ### Nadia — SEO Title & Metadata Worker
 
@@ -73,3 +73,13 @@ Alex reviews the trust, authorship and credibility signals around a page so read
 - Legacy Markdown: https://wordpresto.com/pages/workers/evidence-gap.md
 
 Theo turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off. What to back up, where to source it, what to hold.
+
+### Cleo — Cannibalisation & Overlap Worker
+
+- Stage: Overlap review
+- Output: Cannibalisation review
+- URL: https://wordpresto.com/workers/cannibalisation-overlap/
+- Markdown: https://wordpresto.com/workers/cannibalisation-overlap/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/cannibalisation-overlap.md
+
+Cleo reviews a page for intent conflict, overlap risk and unclear content role, helping editors decide whether to sharpen, support, consolidate or manually check a page against others.

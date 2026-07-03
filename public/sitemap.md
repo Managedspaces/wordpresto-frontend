@@ -53,6 +53,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/brief-draft-alignment.md
 - Focus: Ada checks that the draft actually fulfils the brief, surfacing gaps, drift and misaligned sections before they go any further.
 
+### Find pages that are trying to do too many jobs.
+
+- HTML: https://wordpresto.com/workers/cannibalisation-overlap/
+- Markdown: https://wordpresto.com/workers/cannibalisation-overlap/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/cannibalisation-overlap.md
+- Focus: Cleo reviews a page for intent conflict, overlap risk and unclear content role, helping editors decide whether to sharpen, support, consolidate or manually check a page against others.
+
 ### Make the writing cleaner before it reaches review.
 
 - HTML: https://wordpresto.com/workers/clarity-proofing/

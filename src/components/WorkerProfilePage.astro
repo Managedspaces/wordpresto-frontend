@@ -153,7 +153,7 @@ const canonical = locale === 'en'
                   <span class="mono-label">{t.workerLabel} {profile.department.toUpperCase()}</span>
                 </div>
                 <div class="worker-slip-name">{profile.name}</div>
-                <div class="worker-slip-role">{profile.role}</div>
+                <div class="worker-slip-role">{profile.roleTitle ?? profile.role}</div>
               </div>
             </div>
           </div>
@@ -410,60 +410,62 @@ const canonical = locale === 'en'
   </section>
 
   <!-- ===================== 7. RELATED WORKERS ===================== -->
-  <section id="related" class="section section--border-top">
-    <div class="container">
-      <div class="section-intro section-intro--wide">
-        <div class="eyebrow eyebrow--strategy">{t.earlierLaterEyebrow}</div>
-        <h2 class="section-h2">{profile.relatedH2}</h2>
-      </div>
-      <div class="related-header">
-        <span>{t.relatedWorkersLabel}</span>
-        <span>{t.byWorkflowSequenceLabel}</span>
-      </div>
-      <div class="related-grid">
-        {relatedProfiles.map((rel) => rel && (
-          <a href={localeHref(locale, `/workers/${rel.profile.slug}/`)} class="related-card">
-            <span class="fold-corner fold-corner--sm"></span>
-            <span class="fold-corner-line fold-corner-line--sm"></span>
-            <div class="related-card-top">
-              <img
-                src={rel.worker.image}
-                srcset={`${rel.worker.image} 1x, ${rel.worker.image2x} 2x`}
-                alt={rel.worker.name}
-                class="related-portrait"
-                width="64"
-                height="64"
-                loading="lazy"
-                decoding="async"
-              />
-              <div>
-                <div class="related-name">{rel.worker.name}</div>
-                <div class="related-role">{rel.worker.role}</div>
+  {relatedProfiles.length > 0 && (
+    <section id="related" class="section section--border-top">
+      <div class="container">
+        <div class="section-intro section-intro--wide">
+          <div class="eyebrow eyebrow--strategy">{t.earlierLaterEyebrow}</div>
+          <h2 class="section-h2">{profile.relatedH2}</h2>
+        </div>
+        <div class="related-header">
+          <span>{t.relatedWorkersLabel}</span>
+          <span>{t.byWorkflowSequenceLabel}</span>
+        </div>
+        <div class="related-grid">
+          {relatedProfiles.map((rel) => rel && (
+            <a href={localeHref(locale, `/workers/${rel.profile.slug}/`)} class="related-card">
+              <span class="fold-corner fold-corner--sm"></span>
+              <span class="fold-corner-line fold-corner-line--sm"></span>
+              <div class="related-card-top">
+                <img
+                  src={rel.worker.image}
+                  srcset={`${rel.worker.image} 1x, ${rel.worker.image2x} 2x`}
+                  alt={rel.worker.name}
+                  class="related-portrait"
+                  width="64"
+                  height="64"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div>
+                  <div class="related-name">{rel.worker.name}</div>
+                  <div class="related-role">{rel.worker.role}</div>
+                </div>
               </div>
-            </div>
-            <div class="related-pills">
-              <span class="hero-pill hero-pill--team">
-                <span class="hero-pill-dot" style={`background: ${rel.worker.teamColor}`}></span>
-                {rel.profile.heroTagPills.team}
-              </span>
-              <span class="hero-pill">{shared.stagePrefix}{rel.worker.stage}</span>
-            </div>
-            <p class="related-desc">{rel.description}</p>
-            <div class="related-footer">
-              <div class="related-output">
-                <span class="mono-label related-output-label">{shared.outputLabel}</span>
-                <span class="related-output-value">{rel.outputLabel}</span>
+              <div class="related-pills">
+                <span class="hero-pill hero-pill--team">
+                  <span class="hero-pill-dot" style={`background: ${rel.worker.teamColor}`}></span>
+                  {rel.profile.heroTagPills.team}
+                </span>
+                <span class="hero-pill">{shared.stagePrefix}{rel.worker.stage}</span>
               </div>
-              <span class="related-cta">
-                {rel.ctaLabel}
-                <svg width="15" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-            </div>
-          </a>
-        ))}
+              <p class="related-desc">{rel.description}</p>
+              <div class="related-footer">
+                <div class="related-output">
+                  <span class="mono-label related-output-label">{shared.outputLabel}</span>
+                  <span class="related-output-value">{rel.outputLabel}</span>
+                </div>
+                <span class="related-cta">
+                  {rel.ctaLabel}
+                  <svg width="15" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
   <!-- ===================== 8. CTA ===================== -->
   <section class="section section--paper-dark section--border-top cta-section">
