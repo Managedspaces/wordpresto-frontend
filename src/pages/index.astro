@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { homePage } from '@/data/pages';
+import { getTeamGroups, TOTAL_SPECIALISTS, TOTAL_TEAMS } from '@/data/workerRegistry';
 
 const { pageTitle, seoTitle, metaDescription } = homePage;
+const teamGroups = getTeamGroups(6);
 ---
 
 <BaseLayout
@@ -359,15 +361,15 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     <div class="container">
       <div class="section-intro section-intro--wide">
         <div class="eyebrow eyebrow--strategy">The specialist bench</div>
-        <h2 class="section-h2">41 specialists. One managing editor.</h2>
+        <h2 class="section-h2">{TOTAL_SPECIALISTS} specialists. One managing editor.</h2>
         <p class="section-body">Emma is not working alone. Behind her is the full Word Presto specialist bench: content production, SEO, operations and approval governance workers, each with a defined role and place in the workflow.</p>
         <p class="section-note">Emma brings in the right specialist at the right moment, then returns the findings that need the Editor&rsquo;s judgement.</p>
       </div>
 
       <div class="scale-strip">
-        <span class="scale-strip-strong">41 specialists</span>
+        <span class="scale-strip-strong">{TOTAL_SPECIALISTS} specialists</span>
         <span class="scale-strip-dot"></span>
-        <span>4 teams</span>
+        <span>{TOTAL_TEAMS} teams</span>
         <span class="scale-strip-dot"></span>
         <span>coordinated through Emma</span>
         <span class="scale-strip-dot"></span>
@@ -375,59 +377,24 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
       </div>
 
       <div class="team-cards-grid">
-        {[
-          {
-            name: 'Content Production Team',
-            color: 'var(--team-content)',
-            summary: 'Plans, drafts, rewrites and proofs the copy, turning briefs into structured, ready content.',
-            chips: ['Omar', 'Marcus', 'Helena', 'Luca', 'Ellis', 'Quinn'],
-            href: '/workers/',
-            cta: 'Browse Content Workers',
-          },
-          {
-            name: 'SEO Team',
-            color: 'var(--team-seo)',
-            summary: 'Works search intent, structure and technical signals into the draft, not bolted on at the end.',
-            chips: ['Nadia', 'Morgan', 'Sofia', 'Maya', 'Alex', 'Theo'],
-            href: '/workers/seo/',
-            cta: 'Browse SEO Workers',
-          },
-          {
-            name: 'Operations / Management',
-            color: 'var(--team-strategy)',
-            summary: 'Coordinates the review flow and keeps every piece of work ready for a human decision.',
-            chips: [],
-            href: null,
-            cta: null,
-          },
-          {
-            name: 'Approval / Governance',
-            color: 'var(--team-governance)',
-            summary: 'Checks risk, evidence and readiness, and whether a change is ready for the Editor.',
-            chips: ['Audrey', 'Vera'],
-            href: null,
-            cta: null,
-          },
-        ].map(({ name, color, summary, chips, href, cta }) => (
+        {teamGroups.map(({ name, color, summary, examples, moreCount, count, href, cta }) => (
           <div class="team-card">
             <span class="team-card-bar" style={`background: ${color}`}></span>
             <div class="team-card-head">
-              <div class="team-card-eyebrow"><span class="team-card-dot" style={`background: ${color}`}></span><span class="mono-label">TEAM</span></div>
+              <div class="team-card-eyebrow"><span class="team-card-dot" style={`background: ${color}`}></span><span class="mono-label">TEAM · {count} SPECIALIST{count === 1 ? "" : "S"}</span></div>
               <div class="team-card-name">{name}</div>
             </div>
             <p class="team-card-summary">{summary}</p>
-            {chips.length > 0 && (
-              <div class="team-card-chips">
-                {chips.map((n) => <span class="team-chip">{n}</span>)}
-              </div>
-            )}
-            {href && (
-              <a href={href} class="team-card-cta">
-                {cta}
-                <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            )}
-            <a href="/workers/" class="team-card-cta team-card-cta--secondary">
+            <div class="team-card-chips-label">A few of the specialists Emma can bring in:</div>
+            <div class="team-card-chips">
+              {examples.map((w) => <span class="team-chip">{w.name}</span>)}
+              {moreCount > 0 && <span class="team-chip team-chip--more">+ {moreCount} more</span>}
+            </div>
+            <a href={href} class="team-card-cta">
+              {cta}
+              <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/specialists/" class="team-card-cta team-card-cta--secondary">
               Browse specialist profiles
               <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
@@ -1315,6 +1282,14 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
   .team-card-dot { width: 8px; height: 8px; border-radius: 50%; }
   .team-card-name { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; color: var(--wp-ink); }
   .team-card-summary { margin: 0; padding: 14px 20px 14px; font-size: var(--wp-text-sm); color: var(--wp-text-secondary); line-height: 1.5; }
+  .team-card-chips-label {
+    padding: 0 20px 8px;
+    font-size: 11px;
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+  }
   .team-card-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 20px 18px; }
   .team-chip {
     padding: 3px 10px;
@@ -1324,6 +1299,11 @@ const { pageTitle, seoTitle, metaDescription } = homePage;
     font-family: var(--wp-font-mono);
     color: var(--wp-text-secondary);
     letter-spacing: 0.02em;
+  }
+  .team-chip--more {
+    color: var(--wp-text-tertiary);
+    font-style: italic;
+    border-style: dashed;
   }
   .team-card-cta {
     margin-top: auto;

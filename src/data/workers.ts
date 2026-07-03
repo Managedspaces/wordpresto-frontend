@@ -1,13 +1,15 @@
-// Worker profile image manifest for the marketing site.
-// Mirrors WORKER_PROFILE_IMAGE from client/src/lib/agentProfileImages.ts
-// (the backend's single source of truth). Worker ids, names, departments and
-// portraits match the backend WORKER_REGISTRY in shared/workflows/workers.ts
-// exactly — this file does not invent a second taxonomy.
+// Worker profile card manifest (images, marketing summary, output) for the
+// /workers/ and /workers/seo/ directory pages. Worker ids, names, departments
+// and portraits match the backend WORKER_REGISTRY in shared/workflows/workers.ts.
 //
-// The homepage worker grid renders the `workers` array only (content and
-// governance). SEO workers live in their own `seoWorkers` array so they appear
-// on the /workers/ directory and get profile pages, but never leak into the
-// homepage grid or the homepage's writer-led, embedded-SEO positioning.
+// `team` here is a page-grouping split (which directory a card appears in),
+// kept separate from the real org team assignment. For the authoritative
+// team/department roster used site-wide (homepage specialist bench, /specialists/
+// pages, counts), see `workerRegistry.ts`, which mirrors the backend's
+// WORKER_TEAM mapping.
+//
+// Only a subset of the full 41-worker roster has a rich marketing card here;
+// the rest are listed lean via `workerRegistry.ts` until profile pages exist.
 //
 // Image path pattern: /agents/profiles/profile-{n}-{size}.webp
 // Sizes: 192 (1×), 384 (2× srcset)
@@ -123,13 +125,13 @@ export const workers: WorkerData[] = [
     name: 'Audrey',
     role: 'Approval Report Worker',
     department: 'Approval Reporting',
-    team: 'governance',
+    team: 'content',
     stage: 'Approve',
     summary: 'Summarises what is ready, what needs attention and what should not move forward so humans can make a confident sign-off decision.',
     output: 'Approval report',
     image: '/agents/profiles/profile-21-192.webp',
     image2x: '/agents/profiles/profile-21-384.webp',
-    teamColor: 'var(--team-governance)',
+    teamColor: 'var(--team-content)',
   },
   {
     id: 'readability',
@@ -175,13 +177,13 @@ export const workers: WorkerData[] = [
     name: 'Vera',
     role: 'Editorial Risk & Claims Compliance Worker',
     department: 'Editorial Compliance',
-    team: 'governance',
+    team: 'content',
     stage: 'Review',
     summary: 'Flags unsupported claims, risky statements and compliance issues in content before it is approved or published.',
     output: 'Risk & compliance report',
     image: '/agents/profiles/profile-34-192.webp',
     image2x: '/agents/profiles/profile-34-384.webp',
-    teamColor: 'var(--team-governance)',
+    teamColor: 'var(--team-content)',
   },
   {
     id: 'content_refresh_brief',
@@ -226,13 +228,13 @@ export const seoWorkers: WorkerData[] = [
     name: 'Nadia',
     role: 'SEO Title & Metadata Worker',
     department: 'SEO Metadata',
-    team: 'seo',
+    team: 'content',
     stage: 'Metadata',
     summary: 'Reviews the SEO title, meta description and H1 against search intent, then drafts clearer options for the writer to approve.',
     output: 'Metadata drafts',
     image: '/agents/profiles/profile-22-192.webp',
     image2x: '/agents/profiles/profile-22-384.webp',
-    teamColor: 'var(--team-seo)',
+    teamColor: 'var(--team-content)',
   },
   {
     id: 'serp_snippet_opportunity',
@@ -278,26 +280,26 @@ export const seoWorkers: WorkerData[] = [
     name: 'Alex',
     role: 'Trust & Author Credibility Worker',
     department: 'Trust & Credibility',
-    team: 'seo',
+    team: 'content',
     stage: 'Trust',
     summary: 'Reviews the trust and authorship signals around a page so readers, and search engines, can see who stands behind the content.',
     output: 'Trust review',
     image: '/agents/profiles/profile-39-192.webp',
     image2x: '/agents/profiles/profile-39-384.webp',
-    teamColor: 'var(--team-seo)',
+    teamColor: 'var(--team-content)',
   },
   {
     id: 'evidence_gap',
     name: 'Theo',
     role: 'Evidence Gap Worker',
     department: 'Evidence Assurance',
-    team: 'seo',
+    team: 'governance',
     stage: 'Evidence',
     summary: 'Turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off.',
     output: 'Evidence checklist',
     image: '/agents/profiles/profile-23-192.webp',
     image2x: '/agents/profiles/profile-23-384.webp',
-    teamColor: 'var(--team-seo)',
+    teamColor: 'var(--team-governance)',
   },
 ];
 
