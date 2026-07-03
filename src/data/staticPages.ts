@@ -22,24 +22,6 @@ export interface StaticPageMeta {
   intro: string;
 }
 
-export const workersDirectory: StaticPageMeta = {
-  seoTitle: 'Content workflow Workers | WordPresto',
-  metaDescription:
-    'Meet the specialist Workers in the WordPresto content workflow, from content analysis and brief building to voice review, approval reporting and CMS handoff.',
-  h1: 'Specialist Workers for every stage of the content workflow.',
-  intro:
-    'WordPresto brings in the right specialists for the stage you are at, so each piece of content gets the support it actually needs.',
-};
-
-export const seoWorkersDirectory: StaticPageMeta = {
-  seoTitle: 'SEO Workers for search, structure and authority | WordPresto',
-  metaDescription:
-    'Meet the SEO Workers in the WordPresto workflow, covering SEO title and metadata, search snippets, schema, technical health, trust and author credibility, and evidence gaps. Review-led and human-approved.',
-  h1: 'SEO Workers for search, structure and authority.',
-  intro:
-    'The SEO Workers help writers and editorial teams make content easier to understand, structure, retrieve and approve. They review metadata, search snippets, schema, technical health, trust and evidence, and surface what matters while the writer is still shaping the work. Every output is for human review.',
-};
-
 export const prestobot: StaticPageMeta = {
   seoTitle: 'WordPrestoBot, the Word Presto web crawler | Word Presto',
   metaDescription:

@@ -41,7 +41,7 @@ const canonical = locale === 'en'
       </a>
       <nav class="masthead-nav masthead-nav--right">
         <a href={`${localeHref(locale, '/')}#use-cases`} class="nav-link">{c.useCases}</a>
-        <a href="/workers/" class="nav-link">{c.workers}</a>
+        <a href={localeHref(locale, '/workers/')} class="nav-link">{c.workers}</a>
         <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
       </nav>
     </div>
@@ -103,7 +103,7 @@ const canonical = locale === 'en'
         <span class="footer-col-heading">{c.product}</span>
         <a href={`${localeHref(locale, '/')}#product`} class="footer-link">How it works</a>
         <a href={`${localeHref(locale, '/')}#capabilities`} class="footer-link">{c.workflow}</a>
-        <a href="/workers/" class="footer-link">{c.workers}</a>
+        <a href={localeHref(locale, '/workers/')} class="footer-link">{c.workers}</a>
       </div>
       <div class="footer-col">
         <span class="footer-col-heading">{c.useCases}</span>
