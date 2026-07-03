@@ -109,6 +109,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-format-serp-fit.md
 - Focus: Ivan reviews whether the current content format matches the likely intent and expected page shape, flagging format conflicts and metadata that promises a different experience.
 
+### Decide whether weak content should be improved, merged or left alone.
+
+- HTML: https://wordpresto.com/workers/content-pruning-consolidation/
+- Markdown: https://wordpresto.com/workers/content-pruning-consolidation/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-pruning-consolidation.md
+- Focus: Hugo reviews content maintenance signals: overlap risk, thin content, decay, unclear role, weak pathways and consolidation prompts, helping editors decide the safest next maintenance action.
+
 ### Refresh content with a clearer reason.
 
 - HTML: https://wordpresto.com/workers/content-refresh-brief/
