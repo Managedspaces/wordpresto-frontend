@@ -431,6 +431,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-43-384.webp',
     teamColor: 'var(--team-seo)',
   },
+  {
+    id: 'competitor_intel',
+    name: 'Cassius',
+    role: 'Competitor Intelligence Worker',
+    department: 'Competitive Intelligence',
+    team: 'seo',
+    stage: 'Competitive intelligence',
+    summary: 'Reviews competitor coverage from stored SERP competitor data, surfacing the subtopics, entities and angles competitors appear to cover that your content may be missing.',
+    output: 'Competitor coverage review',
+    image: '/agents/profiles/profile-44-192.webp',
+    image2x: '/agents/profiles/profile-44-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).

@@ -203,7 +203,7 @@ export const WORKERS: WorkerEntry[] = [
   { id: 'serp_snippet_opportunity', name: 'Morgan', roleTitle: 'SERP snippet specialist', department: 'SERP Optimisation', team: 'seo', status: 'available', slug: 'serp-snippet-opportunity', portrait: 38 },
   { id: 'site_discovery', name: 'Claire', roleTitle: 'Site discovery specialist', department: 'Site Discovery', team: 'seo', status: 'planned', slug: null, portrait: 17 },
   { id: 'semantic_search_analyzer', name: 'Sema', roleTitle: 'Semantic coverage analyst', department: 'Semantic Intelligence', team: 'seo', status: 'available', slug: 'semantic-search-analyzer', portrait: 43 },
-  { id: 'competitor_intel', name: 'Cassius', roleTitle: 'Competitive analyst', department: 'Competitive Intelligence', team: 'seo', status: 'available', slug: null, portrait: 44 },
+  { id: 'competitor_intel', name: 'Cassius', roleTitle: 'Competitive analyst', department: 'Competitive Intelligence', team: 'seo', status: 'available', slug: 'competitor-intel', portrait: 44 },
 
   // ---- Operations / Management ----
   { id: 'review_queue', name: 'Riley', roleTitle: 'Review queue coordinator', department: 'Change Planning', team: 'operations', status: 'available', slug: null, portrait: 16 },

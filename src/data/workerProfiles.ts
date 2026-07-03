@@ -4712,6 +4712,167 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'SEMANTIC STATUS',
     guidanceFooterValue: 'Coverage gaps found · review needed',
   },
+
+  // 31. Cassius - Competitor Intelligence Worker
+  {
+    id: 'competitor_intel',
+    slug: 'competitor-intel',
+    name: 'Cassius',
+    role: 'Competitor Intelligence Worker',
+    roleTitle: 'Competitive Analyst',
+    department: 'Competitive Intelligence',
+    team: 'seo',
+    stage: 'Competitive intelligence',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-44-192.webp',
+    portrait2x: '/agents/profiles/profile-44-384.webp',
+    seoTitle: 'Competitor Intelligence Worker | WordPresto',
+    metaDescription:
+      'Cassius reviews competitor coverage from stored SERP competitor data, surfacing the subtopics, entities and angles competitors appear to cover that your content may be missing.',
+    h1: 'See what ranking competitors cover that you do not.',
+    heroPara1:
+      'Competitor analysis is useful only when it is grounded in real search evidence. Cassius reviews competitor coverage from stored SERP competitor data and compares it with the page or draft under review. He surfaces the subtopics, entities and angles competitors appear to cover that your content may be missing.',
+    heroPara2:
+      'For competitive SEO reviews, content-gap analysis, keyword-led planning and pages being improved for a known search opportunity.',
+    heroWorksAlongside: ['Sema', 'Yuna', 'Kenji'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Competitive intelligence',
+      output: 'Output · Competitor coverage review',
+    },
+    problemEyebrow: 'Where competitor analysis goes wrong',
+    problemH2: 'Teams copy competitors instead of understanding the gap.',
+    problemPara:
+      'Competitive review should not mean scraping ideas and imitating another page. It should help editors understand what the ranking landscape appears to cover, what the current draft misses, and which gaps are genuinely relevant. Cassius turns competitor evidence into reviewable content intelligence.',
+    problemAnnotation: '↘ compare coverage without copying',
+    beforeStamp: 'Shallow competitor check',
+    beforeHtml: `<p>Competitors mention several decision factors, but the draft only covers the basic definition.</p>`,
+    beforeTags: ['Missing angles', 'Thin comparison', 'SERP evidence needed', 'No copy strategy'],
+    beforeNote: 'the page lacks competitive context',
+    afterStamp: 'Coverage compared',
+    afterHtml: `<p>Cassius lists competitor-covered subtopics and entities that the editor should review.</p>`,
+    afterTags: ['Real SERP basis', 'Gap list', 'Human judgement', 'No imitation'],
+    afterNote: 'the editor can decide what belongs',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Competitor coverage review from real SERP evidence.',
+    helpsPara:
+      'Cassius uses existing competitor SERP data where available. If there is no stored SERP data, he shows an honest gated state rather than inventing competitor findings.',
+    checks: [
+      'Competitor-covered subtopics',
+      'Missing entities and angles',
+      'Draft versus SERP competitor coverage',
+      'Repeated competitor themes',
+      'Evidence limitations',
+      'No-data states when SERP evidence is missing',
+    ],
+    improves: [
+      'Competitive content planning',
+      'Gap-led brief quality',
+      'Search opportunity review',
+      'Awareness of what ranking pages appear to address',
+    ],
+    prepares: [
+      'Competitor coverage review',
+      'SERP-grounded gap list',
+      'Content angle prompts',
+      'Evidence limitation notes',
+    ],
+    surfaces: [
+      'Relevant competitor-covered topics',
+      'Missing decision factors',
+      'SERP themes worth considering',
+      'Areas where competitor evidence is too thin or unavailable',
+    ],
+    ioH2: 'What Cassius works from, and what he produces.',
+    worksFrom: [
+      'Draft or page content',
+      'Stored SERP competitor data',
+      'Keyword or search opportunity context',
+      'Semantic coverage signals',
+      'Evidence review signals',
+    ],
+    produces: [
+      'Competitor coverage review',
+      'SERP-grounded gap list',
+      'Missing entity notes',
+      'Competitive angle prompts',
+      'No-data state when required',
+    ],
+    scenarios: [
+      {
+        title: 'A page is targeting a competitive keyword.',
+        description:
+          'Cassius checks what ranking competitors appear to cover that the page may miss.',
+      },
+      {
+        title: 'A content brief needs competitor context.',
+        description:
+          'He provides gap-led prompts without turning the brief into imitation.',
+      },
+      {
+        title: 'A draft feels weaker than the SERP.',
+        description:
+          'Cassius identifies missing angles and entities for human review.',
+      },
+      {
+        title: 'A keyword research action has produced SERP data.',
+        description:
+          'He uses that stored data to ground competitor coverage findings.',
+      },
+      {
+        title: 'A page is being refreshed for SEO performance.',
+        description:
+          'Cassius helps editors see whether competitor coverage has moved ahead.',
+      },
+      {
+        title: 'The team needs honest competitive evidence.',
+        description:
+          'He shows no-data states when competitor SERP evidence is not available.',
+      },
+    ],
+    boundaryH2: 'Cassius compares coverage. Editors decide what to use.',
+    boundaryPara:
+      'Cassius does not copy competitor content, fetch hidden competitor pages, invent SERP data or guarantee ranking improvements. He turns available competitor evidence into reviewable gaps.',
+    boundaryChecklist: [
+      'Cassius compares coverage, he never copies competitor content.',
+      'Findings are grounded in stored SERP data, not invented competitor claims.',
+      'A no-data state is shown honestly when SERP evidence is missing.',
+      'No ranking improvement is guaranteed.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Copy competitor content' },
+      { color: 'red', text: 'Invent competitor findings without SERP data' },
+      { color: 'red', text: 'Fetch live competitor pages unless a future workflow explicitly supports it' },
+      { color: 'red', text: 'Rewrite the page automatically' },
+      { color: 'red', text: 'Publish or write to any CMS' },
+    ],
+    relatedH2: 'Workers Cassius works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'semantic_search_analyzer',
+        description: 'Finds semantic gaps from the knowledge layer and project context.',
+        outputLabel: 'Semantic coverage review',
+        ctaLabel: 'How Sema finds gaps',
+      },
+      {
+        id: 'intent_analyst',
+        description: 'Clarifies the intent behind the competitive search opportunity.',
+        outputLabel: 'Intent assessment',
+        ctaLabel: 'How Yuna clarifies',
+      },
+      {
+        id: 'evidence',
+        description: 'Reviews whether competitor-led findings are properly supported.',
+        outputLabel: 'Evidence bundle',
+        ctaLabel: 'How Kenji reviews',
+      },
+    ],
+    ctaH2: 'Understand the gap before you compete.',
+    ctaPara:
+      'Cassius helps editors compare coverage against real SERP competitor evidence without copying, guessing or fabricating data.',
+    guidanceFooterLabel: 'COMPETITOR STATUS',
+    guidanceFooterValue: 'Gaps found · evidence required',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {
