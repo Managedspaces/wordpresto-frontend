@@ -74,7 +74,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {
     body = await request.json();
   } catch {
-    return json(400, { ok: false, error: 'Invalid request.' });
+    return json(400, { ok: false, error: 'Invalid request.', errorCode: 'invalid_request' });
   }
 
   // Honeypot — bots fill this, humans don't see it
@@ -136,7 +136,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   if (!consentToContact)               missing.push('consent_to_contact');
 
   if (missing.length > 0) {
-    return json(422, { ok: false, error: 'Please complete all required fields.' });
+    return json(422, { ok: false, error: 'Please complete all required fields.', errorCode: 'missing_fields' });
   }
 
   // IP hash — Web Crypto API (works in Node.js + Edge runtimes)
@@ -144,7 +144,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
   // --- Database insert ---
   if (!process.env.DATABASE_URL) {
-    return json(503, { ok: false, error: 'Service temporarily unavailable. Please try again shortly.' });
+    return json(503, { ok: false, error: 'Service temporarily unavailable. Please try again shortly.', errorCode: 'service_unavailable' });
   }
 
   try {
@@ -185,10 +185,10 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
     // Table missing — db:setup not run
     if (pgCode === '42P01') {
-      return json(503, { ok: false, error: 'Service temporarily unavailable. Please try again shortly.' });
+      return json(503, { ok: false, error: 'Service temporarily unavailable. Please try again shortly.', errorCode: 'service_unavailable' });
     }
 
-    return json(500, { ok: false, error: 'Something went wrong. Please try again.' });
+    return json(500, { ok: false, error: 'Something went wrong. Please try again.', errorCode: 'server_error' });
   }
 
   // --- Optional Resend notification ---

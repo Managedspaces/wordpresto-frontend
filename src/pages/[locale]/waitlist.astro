@@ -1,0 +1,17 @@
+---
+import WaitlistPage from '@/components/WaitlistPage.astro';
+import { LOCALES, DEFAULT_LOCALE } from '@/i18n/locales';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({
+    params: { locale: l.path },
+    props: { locale: l.code },
+  }));
+}
+
+const { locale } = Astro.props;
+---
+
+<WaitlistPage locale={locale} />

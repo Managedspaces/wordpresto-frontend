@@ -156,6 +156,14 @@ export const siteRoutes: SiteRoute[] = [
     group: 'main',
     inXml: false,
   },
+  // Waitlist locale variants (src/data/i18n/waitlist.ts).
+  ...LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({
+    path: `/${l.path}/waitlist/`,
+    label: `Join the waitlist (${l.label})`,
+    description: 'Early access application.',
+    group: 'main' as const,
+    inXml: false,
+  })),
   {
     path: '/prestobot/',
     label: 'WordPrestoBot',

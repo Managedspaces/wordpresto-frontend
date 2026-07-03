@@ -1,0 +1,1216 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { COUNTRIES } from '@/lib/countries';
+import { waitlistContent } from '@/data/i18n/waitlist';
+import { localeHref, type Locale } from '@/i18n/locales';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = waitlistContent[locale];
+
+const canonical = locale === 'en'
+  ? 'https://wordpresto.com/waitlist'
+  : `https://wordpresto.com${localeHref(locale, '/waitlist')}`;
+
+const TOTAL_STEPS = t.steps.length;
+
+// Strings the client-side step/validation script needs, serialised into a
+// JSON <script> tag below and parsed at script init — keeps the substantial
+// step/validation logic untouched while making it locale-aware.
+const i18nPayload = {
+  stepNames: ['', ...t.steps.map((s) => s.name)],
+  totalSteps: TOTAL_STEPS,
+  stepOfTemplate: t.stepOfTemplate,
+  nextButton: t.nextButton,
+  submitButton: t.submitButton,
+  sendingButton: t.sendingButton,
+  validationBannerMsg: t.validationBannerMsg,
+  networkErrorMsg: t.networkErrorMsg,
+  errorMessages: t.errorMessages,
+  countryDetected: t.countryDetected,
+  pricingBands: t.pricingBands,
+};
+---
+
+<BaseLayout
+  pageTitle={t.pageTitle}
+  seoTitle={t.seoTitle}
+  description={t.metaDescription}
+  canonical={canonical}
+  noindex={true}
+>
+
+<main class="wl-main">
+
+  <!-- Page header -->
+  <div class="wl-page-header">
+    <div class="wl-container">
+      <a href={localeHref(locale, '/')} class="wl-back-home" aria-label={t.backHomeAriaLabel}>
+        <img src="/brand/main-logo.png" alt="Word Presto" class="wl-logo" width="auto" height="72" />
+      </a>
+      <div class="wl-eyebrow">{t.eyebrow}</div>
+      <h1 class="wl-page-title">{t.h1}</h1>
+      <p class="wl-page-intro">{t.intro}</p>
+      <p class="wl-page-support">{t.support}</p>
+    </div>
+  </div>
+
+  <!-- Form section -->
+  <div class="wl-form-section">
+    <div class="wl-container">
+
+      <!-- Success state (hidden until submitted) -->
+      <div class="wl-success" id="wl-success" hidden>
+        <div class="wl-success-icon" aria-hidden="true">✓</div>
+        <h2 class="wl-success-heading">{t.successHeading}</h2>
+        <p class="wl-success-body">{t.successBody}</p>
+        <a href={localeHref(locale, '/')} class="btn btn--secondary wl-success-link">{t.successLink}</a>
+      </div>
+
+      <!-- Form card -->
+      <div class="wl-card" id="wl-card">
+
+        <!-- Progress -->
+        <div class="wl-progress-wrap">
+          <div class="wl-progress-track">
+            <div class="wl-progress-fill" id="wl-progress-fill" style="width: 14.28%"></div>
+          </div>
+          <div class="wl-progress-meta">
+            <span class="wl-step-label" id="wl-step-label">{t.stepOfTemplate.replace('{n}', '1').replace('{total}', String(TOTAL_STEPS))}</span>
+            <span class="wl-step-name" id="wl-step-name">{t.steps[0].name}</span>
+          </div>
+        </div>
+
+        <!-- Error banner -->
+        <div class="wl-error-banner" id="wl-error-banner" hidden></div>
+
+        <!-- Honeypot (hidden from humans, visible to bots) -->
+        <div class="wl-hp" aria-hidden="true">
+          <label for="hp_field">{t.honeypotLabel}</label>
+          <input type="text" id="hp_field" name="hp_field" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <!-- ===== STEP 1: About You ===== -->
+        <div class="wl-step is-active" data-step="1">
+          <h2 class="wl-step-heading">{t.steps[0].heading}</h2>
+          <p class="wl-step-subhead">{t.steps[0].subhead}</p>
+
+          <div class="wl-field">
+            <label class="wl-label wl-label--required" for="full_name">{t.fullNameLabel}</label>
+            <input class="wl-input" type="text" id="full_name" name="full_name" autocomplete="name" placeholder={t.fullNamePlaceholder} />
+            <span class="wl-field-error" id="err-full_name">{t.fullNameError}</span>
+          </div>
+
+          <div class="wl-field">
+            <label class="wl-label wl-label--required" for="email">{t.emailLabel}</label>
+            <input class="wl-input" type="email" id="email" name="email" autocomplete="email" placeholder={t.emailPlaceholder} />
+            <span class="wl-field-error" id="err-email">{t.emailError}</span>
+          </div>
+
+          <div class="wl-row">
+            <div class="wl-field">
+              <label class="wl-label" for="company_name">{t.companyLabel}</label>
+              <input class="wl-input" type="text" id="company_name" name="company_name" autocomplete="organization" placeholder={t.companyPlaceholder} />
+            </div>
+            <div class="wl-field">
+              <label class="wl-label" for="website_url">{t.websiteLabel}</label>
+              <input class="wl-input" type="url" id="website_url" name="website_url" autocomplete="url" placeholder={t.websitePlaceholder} />
+            </div>
+          </div>
+
+          <div class="wl-field">
+            <label class="wl-label wl-label--required" for="role">{t.roleLabel}</label>
+            <select class="wl-select" id="role" name="role">
+              <option value="">{t.roleSelectPlaceholder}</option>
+              {t.roleOptions.map((opt) => (
+                <option value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
+            <span class="wl-field-error" id="err-role">{t.roleError}</span>
+          </div>
+
+          <div class="wl-field">
+            <label class="wl-label wl-label--required" for="country_code">{t.countryLabel}</label>
+            <span class="wl-hint" id="wl-country-detect-status"></span>
+            <select class="wl-select" id="country_code" name="country_code">
+              <option value="">{t.countrySelectPlaceholder}</option>
+              {COUNTRIES.map((c) => (
+                <option value={c.code} data-pricing={c.pricingRegion} data-currency={c.currencyCode} data-symbol={c.currencySymbol}>{c.name}</option>
+              ))}
+              <option value="OTHER">{t.countryOtherOption}</option>
+            </select>
+            <span class="wl-field-error" id="err-country_code">{t.countryError}</span>
+          </div>
+        </div>
+
+        <!-- ===== STEP 2: Industry & Context ===== -->
+        <div class="wl-step" data-step="2" hidden>
+          <h2 class="wl-step-heading">{t.steps[1].heading}</h2>
+          <p class="wl-step-subhead">{t.steps[1].subhead}</p>
+
+          <div class="wl-field">
+            <div class="wl-options wl-options--single" id="industry-options">
+              {t.industryOptions.map((opt) => (
+                <label class="wl-option" data-group="industry">
+                  <input class="wl-check-input" type="radio" name="industry" value={opt.value} />
+                  <span class="wl-check-box wl-radio-box"></span>
+                  <span class="wl-option-text">{opt.label}</span>
+                </label>
+              ))}
+            </div>
+            <span class="wl-field-error" id="err-industry">{t.industryError}</span>
+          </div>
+
+          <div class="wl-field">
+            <label class="wl-label" for="industry_context">{t.industryContextLabel}</label>
+            <textarea class="wl-textarea" id="industry_context" name="industry_context" placeholder={t.industryContextPlaceholder} rows="3"></textarea>
+          </div>
+        </div>
+
+        <!-- ===== STEP 3: Writing Needs ===== -->
+        <div class="wl-step" data-step="3" hidden>
+          <h2 class="wl-step-heading">{t.steps[2].heading}</h2>
+          <p class="wl-step-subhead">{t.steps[2].subhead}</p>
+
+          <div class="wl-field">
+            <div class="wl-options" id="writing-needs-options">
+              {t.writingNeedsOptions.map((opt) => (
+                <label class="wl-option" data-group="writing_needs">
+                  <input class="wl-check-input" type="checkbox" name="writing_needs" value={opt.value} />
+                  <span class="wl-check-box"></span>
+                  <span class="wl-option-text">{opt.label}</span>
+                </label>
+              ))}
+            </div>
+            <span class="wl-field-error" id="err-writing_needs">{t.writingNeedsError}</span>
+          </div>
+
+          <div class="wl-field">
+            <label class="wl-label" for="current_frustration">{t.frustrationLabel}</label>
+            <textarea class="wl-textarea" id="current_frustration" name="current_frustration" placeholder={t.frustrationPlaceholder} rows="3"></textarea>
+          </div>
+        </div>
+
+        <!-- ===== STEP 4: Workflow Pain ===== -->
+        <div class="wl-step" data-step="4" hidden>
+          <h2 class="wl-step-heading">{t.steps[3].heading}</h2>
+          <p class="wl-step-subhead">{t.steps[3].subhead}</p>
+
+          <div class="wl-field">
+            <div class="wl-options" id="pain-options">
+              {t.painOptions.map((opt) => (
+                <label class="wl-option" data-group="workflow_pain_points">
+                  <input class="wl-check-input" type="checkbox" name="workflow_pain_points" value={opt.value} />
+                  <span class="wl-check-box"></span>
+                  <span class="wl-option-text">{opt.label}</span>
+                </label>
+              ))}
+            </div>
+            <span class="wl-field-error" id="err-workflow_pain_points">{t.painError}</span>
+          </div>
+
+          <div class="wl-field">
+            <label class="wl-label" for="workflow_notes">{t.workflowNotesLabel}</label>
+            <textarea class="wl-textarea" id="workflow_notes" name="workflow_notes" placeholder={t.workflowNotesPlaceholder} rows="3"></textarea>
+          </div>
+        </div>
+
+        <!-- ===== STEP 5: Current Stack ===== -->
+        <div class="wl-step" data-step="5" hidden>
+          <h2 class="wl-step-heading">{t.steps[4].heading}</h2>
+          <p class="wl-step-subhead">{t.steps[4].subhead}</p>
+
+          <div class="wl-field">
+            <div class="wl-options" id="stack-options">
+              {t.stackOptions.map((opt) => (
+                <label class="wl-option" data-group="current_stack">
+                  <input class="wl-check-input" type="checkbox" name="current_stack" value={opt.value} />
+                  <span class="wl-check-box"></span>
+                  <span class="wl-option-text">{opt.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div class="wl-row">
+            <div class="wl-field">
+              <label class="wl-label" for="monthly_volume">{t.monthlyVolumeLabel}</label>
+              <select class="wl-select" id="monthly_volume" name="monthly_volume">
+                <option value="">{t.monthlyVolumeSelectPlaceholder}</option>
+                {t.monthlyVolumeOptions.map((opt) => (
+                  <option value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
+            </div>
+            <div class="wl-field">
+              <label class="wl-label" for="team_setup">{t.teamSetupLabel}</label>
+              <select class="wl-select" id="team_setup" name="team_setup">
+                <option value="">{t.teamSetupSelectPlaceholder}</option>
+                {t.teamSetupOptions.map((opt) => (
+                  <option value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== STEP 6: Value & Priority ===== -->
+        <div class="wl-step" data-step="6" hidden>
+          <h2 class="wl-step-heading">{t.steps[5].heading}</h2>
+          <p class="wl-step-subhead">{t.steps[5].subhead}</p>
+
+          <div class="wl-field">
+            <label class="wl-label wl-label--required">{t.valueLevelLabel}</label>
+            <div class="wl-options wl-options--single" id="value-level-options">
+              {t.valueLevelOptions.map(({ value, label }) => (
+                <label class="wl-option" data-group="value_level">
+                  <input class="wl-check-input" type="radio" name="value_level" value={value} />
+                  <span class="wl-check-box wl-radio-box"></span>
+                  <span class="wl-option-text">{label}</span>
+                </label>
+              ))}
+            </div>
+            <span class="wl-field-error" id="err-value_level">{t.valueLevelError}</span>
+          </div>
+
+          <div class="wl-field">
+            <label class="wl-label wl-label--required">{t.valueBandLabel}</label>
+            <div class="wl-options wl-options--single" id="value-band-options">
+              <!-- Rendered by JS based on country currency -->
+            </div>
+            <span class="wl-field-error" id="err-monthly_value_band">{t.valueBandError}</span>
+          </div>
+
+          <div class="wl-field">
+            <label class="wl-label wl-label--required">{t.timelineLabel}</label>
+            <div class="wl-options wl-options--single" id="timeline-options">
+              {t.timelineOptions.map(({ value, label }) => (
+                <label class="wl-option" data-group="timeline">
+                  <input class="wl-check-input" type="radio" name="timeline" value={value} />
+                  <span class="wl-check-box wl-radio-box"></span>
+                  <span class="wl-option-text">{label}</span>
+                </label>
+              ))}
+            </div>
+            <span class="wl-field-error" id="err-timeline">{t.timelineError}</span>
+          </div>
+        </div>
+
+        <!-- ===== STEP 7: Final Notes & Consent ===== -->
+        <div class="wl-step" data-step="7" hidden>
+          <h2 class="wl-step-heading">{t.steps[6].heading}</h2>
+          <p class="wl-step-subhead">{t.steps[6].subhead}</p>
+
+          <div class="wl-field">
+            <label class="wl-label" for="final_notes">{t.finalNotesLabel}</label>
+            <textarea class="wl-textarea" id="final_notes" name="final_notes" placeholder={t.finalNotesPlaceholder} rows="4"></textarea>
+          </div>
+
+          <div class="wl-field wl-field--consent">
+            <label class="wl-option wl-option--consent" id="consent-label">
+              <input class="wl-check-input" type="checkbox" id="consent_to_contact" name="consent_to_contact" />
+              <span class="wl-check-box"></span>
+              <span class="wl-option-text">{t.consentLabel} <span class="wl-required-mark">*</span></span>
+            </label>
+            <span class="wl-field-error" id="err-consent_to_contact">{t.consentError}</span>
+          </div>
+
+          <div class="wl-field">
+            <label class="wl-option wl-option--consent">
+              <input class="wl-check-input" type="checkbox" id="open_to_call" name="open_to_call" />
+              <span class="wl-check-box"></span>
+              <span class="wl-option-text">{t.callLabel}</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="wl-nav">
+          <button type="button" class="btn btn--secondary wl-btn-back" id="wl-back" hidden>{t.backButton}</button>
+          <div></div>
+          <button type="button" class="btn btn--primary wl-btn-next" id="wl-next">
+            <span id="wl-next-label">{t.nextButton}</span>
+            <span class="wl-spinner" id="wl-spinner" hidden aria-hidden="true"></span>
+          </button>
+        </div>
+
+      </div><!-- /.wl-card -->
+    </div><!-- /.wl-container -->
+  </div><!-- /.wl-form-section -->
+
+</main>
+
+<script type="application/json" id="wl-i18n" set:html={JSON.stringify(i18nPayload)} />
+
+</BaseLayout>
+
+<style>
+  /* ===== Page Layout ===== */
+  .wl-main {
+    min-height: 100vh;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+  }
+
+  .wl-container {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ===== Page Header ===== */
+  .wl-page-header {
+    padding: 40px 0 48px;
+    border-bottom: 2px solid var(--wp-ink);
+  }
+
+  .wl-back-home { display: inline-block; margin-bottom: 28px; }
+  .wl-logo { display: block; height: 60px; width: auto; }
+
+  .wl-eyebrow {
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.12em;
+    color: var(--wp-text-muted);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .wl-page-title {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    color: var(--wp-ink);
+    margin: 0 0 20px;
+  }
+
+  .wl-page-intro {
+    font-size: var(--wp-text-lg);
+    color: var(--wp-text-secondary);
+    line-height: 1.55;
+    margin: 0 0 12px;
+    max-width: 560px;
+  }
+
+  .wl-page-support {
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-tertiary);
+    font-family: var(--wp-font-mono);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 520px;
+  }
+
+  /* ===== Form Section ===== */
+  .wl-form-section {
+    padding: 52px 0 80px;
+  }
+
+  /* ===== Success State ===== */
+  .wl-success {
+    text-align: center;
+    padding: 56px 28px;
+    background: #fff;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 6px rgba(17,19,24,0.05), 0 20px 40px -16px rgba(17,19,24,0.14);
+  }
+
+  .wl-success-icon {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--wp-signal);
+    color: #fff;
+    font-size: 22px;
+    line-height: 48px;
+    margin: 0 auto 20px;
+  }
+
+  .wl-success-heading {
+    font-size: var(--wp-text-2xl);
+    font-weight: 700;
+    margin: 0 0 14px;
+  }
+
+  .wl-success-body {
+    font-size: var(--wp-text-lg);
+    color: var(--wp-text-secondary);
+    line-height: 1.55;
+    margin: 0 auto 28px;
+    max-width: 440px;
+  }
+
+  /* ===== Form Card ===== */
+  .wl-card {
+    background: #fff;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 6px rgba(17,19,24,0.05), 0 20px 40px -16px rgba(17,19,24,0.14);
+    padding: 36px 40px 40px;
+  }
+
+  /* ===== Progress ===== */
+  .wl-progress-wrap { margin-bottom: 34px; }
+
+  .wl-progress-track {
+    height: 3px;
+    background: var(--wp-line);
+    border-radius: 2px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .wl-progress-fill {
+    height: 100%;
+    background: var(--wp-ink);
+    border-radius: 2px;
+    transition: width 350ms ease;
+  }
+
+  .wl-progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .wl-step-label {
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    color: var(--wp-text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  .wl-step-name {
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    color: var(--wp-text-tertiary);
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== Error Banner ===== */
+  .wl-error-banner {
+    padding: 12px 16px;
+    background: var(--wp-red-soft);
+    border: 1px solid var(--wp-red);
+    border-radius: 4px;
+    font-size: var(--wp-text-sm);
+    color: var(--wp-red);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  /* ===== Honeypot ===== */
+  .wl-hp {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
+  }
+
+  /* ===== Steps ===== */
+  .wl-step { display: none; }
+  .wl-step.is-active { display: block; }
+
+  .wl-step-heading {
+    font-size: var(--wp-text-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 6px;
+    color: var(--wp-ink);
+  }
+
+  .wl-step-subhead {
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+    margin: 0 0 28px;
+    line-height: 1.55;
+  }
+
+  /* ===== Fields ===== */
+  .wl-field { margin-bottom: 22px; }
+  .wl-field:last-child { margin-bottom: 0; }
+  .wl-field--consent { margin-bottom: 12px; }
+
+  .wl-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .wl-label {
+    display: block;
+    font-size: var(--wp-text-sm);
+    font-weight: 600;
+    color: var(--wp-text-primary);
+    margin-bottom: 7px;
+    line-height: 1.4;
+  }
+
+  .wl-label--required::after {
+    content: ' *';
+    color: var(--wp-red);
+  }
+
+  .wl-hint {
+    display: block;
+    font-size: var(--wp-text-xs);
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-muted);
+    margin-bottom: 7px;
+    min-height: 14px;
+  }
+
+  .wl-input,
+  .wl-select,
+  .wl-textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--wp-border-secondary);
+    border-radius: 4px;
+    font-family: var(--wp-font-sans);
+    font-size: var(--wp-text-md);
+    color: var(--wp-text-primary);
+    background: var(--wp-white);
+    line-height: 1.5;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color 150ms;
+    box-sizing: border-box;
+  }
+
+  .wl-input:focus,
+  .wl-select:focus,
+  .wl-textarea:focus {
+    outline: none;
+    border-color: var(--wp-ink);
+  }
+
+  .wl-input.is-error,
+  .wl-select.is-error {
+    border-color: var(--wp-red);
+  }
+
+  .wl-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23626B78' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+    cursor: pointer;
+  }
+
+  .wl-textarea { resize: vertical; min-height: 88px; }
+
+  .wl-field-error {
+    display: none;
+    font-size: var(--wp-text-xs);
+    color: var(--wp-red);
+    margin-top: 5px;
+    font-family: var(--wp-font-mono);
+  }
+
+  .wl-field-error.is-visible { display: block; }
+
+  /* ===== Options (checkboxes / radios) ===== */
+  .wl-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .wl-options--single { grid-template-columns: 1fr; }
+
+  .wl-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 13px;
+    border: 1.5px solid var(--wp-line);
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 150ms, background-color 150ms;
+    line-height: 1;
+  }
+
+  .wl-option:hover { border-color: var(--wp-border-strong); }
+
+  .wl-option.is-selected {
+    border-color: var(--wp-ink);
+    background: var(--wp-bg-secondary);
+  }
+
+  .wl-option--consent {
+    border: none;
+    padding: 6px 0;
+  }
+
+  .wl-option--consent:hover { background: none; border-color: transparent; }
+  .wl-option--consent.is-selected { background: none; border-color: transparent; }
+
+  .wl-check-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .wl-check-box {
+    flex-shrink: 0;
+    width: 17px;
+    height: 17px;
+    border: 1.5px solid var(--wp-border-secondary);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    transition: background-color 150ms, border-color 150ms;
+    background: #fff;
+    box-sizing: border-box;
+  }
+
+  .wl-radio-box { border-radius: 50%; }
+
+  .wl-option.is-selected .wl-check-box {
+    background: var(--wp-ink);
+    border-color: var(--wp-ink);
+  }
+
+  /* Checkbox checkmark */
+  .wl-option.is-selected .wl-check-box:not(.wl-radio-box)::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 7px;
+    border: 1.5px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(42deg) translateY(-1px);
+  }
+
+  /* Radio dot */
+  .wl-option.is-selected .wl-radio-box::after {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  .wl-option-text {
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-primary);
+    line-height: 1.45;
+  }
+
+  .wl-required-mark { color: var(--wp-red); }
+
+  /* ===== Navigation ===== */
+  .wl-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--wp-line);
+    gap: 12px;
+  }
+
+  .wl-btn-next {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  /* ===== Spinner ===== */
+  .wl-spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: wl-spin 700ms linear infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes wl-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 640px) {
+    .wl-container { padding: 0 18px; }
+    .wl-card { padding: 24px 20px 28px; }
+    .wl-options { grid-template-columns: 1fr; }
+    .wl-row { grid-template-columns: 1fr; gap: 0; }
+    .wl-page-header { padding: 28px 0 36px; }
+    .wl-form-section { padding: 32px 0 56px; }
+    .wl-page-title { font-size: 1.9rem; }
+  }
+</style>
+
+<script>
+  // ===== Locale strings, injected server-side via #wl-i18n =====
+  interface I18nPayload {
+    stepNames: string[];
+    totalSteps: number;
+    stepOfTemplate: string;
+    nextButton: string;
+    submitButton: string;
+    sendingButton: string;
+    validationBannerMsg: string;
+    networkErrorMsg: string;
+    errorMessages: Record<string, string>;
+    countryDetected: string;
+    pricingBands: Record<string, Array<{ value: string; label: string }>>;
+  }
+
+  const I18N = JSON.parse(
+    document.getElementById('wl-i18n')!.textContent!
+  ) as I18nPayload;
+
+  function stepOfLabel(n: number): string {
+    return I18N.stepOfTemplate.replace('{n}', String(n)).replace('{total}', String(I18N.totalSteps));
+  }
+
+  // ===== State =====
+  const state = {
+    currentStep: 1,
+    totalSteps: I18N.totalSteps,
+    currency_symbol: '$',
+    currency_code: 'USD',
+    pricing_region: 'global_dollar' as string,
+    detected_country_code: '' as string,
+    // collected values
+    data: {} as Record<string, unknown>,
+  };
+
+  // ===== DOM refs =====
+  const progressFill    = document.getElementById('wl-progress-fill') as HTMLElement;
+  const stepLabel       = document.getElementById('wl-step-label') as HTMLElement;
+  const stepName        = document.getElementById('wl-step-name') as HTMLElement;
+  const errorBanner     = document.getElementById('wl-error-banner') as HTMLElement;
+  const backBtn         = document.getElementById('wl-back') as HTMLButtonElement;
+  const nextBtn         = document.getElementById('wl-next') as HTMLButtonElement;
+  const nextLabel       = document.getElementById('wl-next-label') as HTMLElement;
+  const spinner         = document.getElementById('wl-spinner') as HTMLElement;
+  const wlCard          = document.getElementById('wl-card') as HTMLElement;
+  const wlSuccess       = document.getElementById('wl-success') as HTMLElement;
+  const countrySelect   = document.getElementById('country_code') as HTMLSelectElement;
+  const detectStatus    = document.getElementById('wl-country-detect-status') as HTMLElement;
+
+  // ===== Country detection =====
+  async function detectCountry() {
+    try {
+      const res = await fetch('https://api.country.is/', { signal: AbortSignal.timeout(3000) });
+      if (!res.ok) return;
+      const { country } = await res.json() as { country?: string };
+      if (!country) return;
+      state.detected_country_code = country;
+      // Pre-select if option exists
+      const opt = countrySelect.querySelector(`option[value="${country}"]`) as HTMLOptionElement | null;
+      if (opt) {
+        countrySelect.value = country;
+        updateCurrencyFromCountry(country);
+        detectStatus.textContent = I18N.countryDetected;
+      }
+    } catch {
+      // Detection failed silently — dropdown is still shown
+    }
+  }
+
+  function updateCurrencyFromCountry(code: string) {
+    const opt = countrySelect.querySelector(`option[value="${code}"]`) as HTMLOptionElement | null;
+    if (!opt) return;
+    state.currency_symbol  = opt.dataset.symbol  ?? '$';
+    state.currency_code    = opt.dataset.currency ?? 'USD';
+    state.pricing_region   = opt.dataset.pricing  ?? 'global_dollar';
+  }
+
+  countrySelect.addEventListener('change', () => {
+    updateCurrencyFromCountry(countrySelect.value);
+  });
+
+  // ===== Render pricing bands =====
+  function renderPricingBands() {
+    const container = document.getElementById('value-band-options')!;
+    const bands = I18N.pricingBands[state.currency_symbol] ?? I18N.pricingBands['$'];
+    const saved = state.data.monthly_value_band as string | undefined;
+
+    container.innerHTML = bands.map(({ value, label }) => {
+      const isSelected = saved === value;
+      return `
+        <label class="wl-option${isSelected ? ' is-selected' : ''}" data-group="monthly_value_band">
+          <input class="wl-check-input" type="radio" name="monthly_value_band" value="${value}" ${isSelected ? 'checked' : ''} />
+          <span class="wl-check-box wl-radio-box"></span>
+          <span class="wl-option-text">${label}</span>
+        </label>
+      `;
+    }).join('');
+
+    // Attach listeners to new elements
+    container.querySelectorAll('.wl-option').forEach(attachOptionListener);
+  }
+
+  // ===== Option toggle (shared for checkboxes + radios) =====
+  function attachOptionListener(el: Element) {
+    el.addEventListener('click', () => {
+      const input = el.querySelector('.wl-check-input') as HTMLInputElement;
+      if (!input) return;
+
+      if (input.type === 'radio') {
+        // Deselect siblings in same group
+        const group = (el as HTMLElement).dataset.group!;
+        document.querySelectorAll(`[data-group="${group}"] .wl-check-input`).forEach((inp) => {
+          (inp as HTMLInputElement).checked = false;
+          inp.closest('.wl-option')?.classList.remove('is-selected');
+        });
+        input.checked = true;
+        el.classList.add('is-selected');
+      } else {
+        input.checked = !input.checked;
+        el.classList.toggle('is-selected', input.checked);
+      }
+
+      // Hide error for this group
+      const group = (el as HTMLElement).dataset.group;
+      if (group) {
+        const errEl = document.getElementById(`err-${group}`);
+        if (errEl) errEl.classList.remove('is-visible');
+      }
+    });
+  }
+
+  // Attach to all static options
+  document.querySelectorAll('.wl-option[data-group]').forEach(attachOptionListener);
+
+  // Restore saved option state
+  function restoreOptions() {
+    document.querySelectorAll<HTMLElement>('.wl-option[data-group]').forEach((el) => {
+      const input = el.querySelector('.wl-check-input') as HTMLInputElement;
+      if (!input) return;
+      const group = el.dataset.group!;
+      const saved = state.data[group];
+
+      if (input.type === 'radio') {
+        const active = input.value === saved;
+        input.checked = active;
+        el.classList.toggle('is-selected', active);
+      } else {
+        const arr = (saved as string[] | undefined) ?? [];
+        const active = arr.includes(input.value);
+        input.checked = active;
+        el.classList.toggle('is-selected', active);
+      }
+    });
+  }
+
+  // ===== Collect current step data =====
+  function collectStep(step: number) {
+    switch (step) {
+      case 1: {
+        state.data.full_name   = (document.getElementById('full_name') as HTMLInputElement).value.trim();
+        state.data.email       = (document.getElementById('email') as HTMLInputElement).value.trim();
+        state.data.company_name = (document.getElementById('company_name') as HTMLInputElement).value.trim();
+        state.data.website_url  = (document.getElementById('website_url') as HTMLInputElement).value.trim();
+        state.data.role         = (document.getElementById('role') as HTMLSelectElement).value;
+        state.data.country_code = countrySelect.value;
+        state.data.country_name = (countrySelect.selectedOptions[0]?.text ?? '').trim();
+        state.data.detected_country_code = state.detected_country_code;
+        state.data.currency_shown = state.currency_symbol;
+        state.data.currency_code  = state.currency_code;
+        state.data.pricing_region = state.pricing_region;
+        break;
+      }
+      case 2: {
+        const industryChecked = document.querySelector<HTMLInputElement>('input[name="industry"]:checked');
+        state.data.industry         = industryChecked?.value ?? '';
+        state.data.industry_context = (document.getElementById('industry_context') as HTMLTextAreaElement).value.trim();
+        break;
+      }
+      case 3: {
+        state.data.writing_needs        = Array.from(document.querySelectorAll<HTMLInputElement>('input[name="writing_needs"]:checked')).map((i) => i.value);
+        state.data.current_frustration  = (document.getElementById('current_frustration') as HTMLTextAreaElement).value.trim();
+        break;
+      }
+      case 4: {
+        state.data.workflow_pain_points = Array.from(document.querySelectorAll<HTMLInputElement>('input[name="workflow_pain_points"]:checked')).map((i) => i.value);
+        state.data.workflow_notes       = (document.getElementById('workflow_notes') as HTMLTextAreaElement).value.trim();
+        break;
+      }
+      case 5: {
+        state.data.current_stack   = Array.from(document.querySelectorAll<HTMLInputElement>('input[name="current_stack"]:checked')).map((i) => i.value);
+        state.data.monthly_volume  = (document.getElementById('monthly_volume') as HTMLSelectElement).value;
+        state.data.team_setup      = (document.getElementById('team_setup') as HTMLSelectElement).value;
+        break;
+      }
+      case 6: {
+        const vlChecked = document.querySelector<HTMLInputElement>('input[name="value_level"]:checked');
+        state.data.value_level = vlChecked?.value ?? '';
+
+        const vbChecked = document.querySelector<HTMLInputElement>('input[name="monthly_value_band"]:checked');
+        state.data.monthly_value_band  = vbChecked?.value ?? '';
+        state.data.monthly_value_label = vbChecked?.closest('.wl-option')?.querySelector('.wl-option-text')?.textContent?.trim() ?? '';
+
+        const tlChecked = document.querySelector<HTMLInputElement>('input[name="timeline"]:checked');
+        state.data.timeline = tlChecked?.value ?? '';
+        break;
+      }
+      case 7: {
+        state.data.final_notes        = (document.getElementById('final_notes') as HTMLTextAreaElement).value.trim();
+        state.data.consent_to_contact = (document.getElementById('consent_to_contact') as HTMLInputElement).checked;
+        state.data.open_to_call       = (document.getElementById('open_to_call') as HTMLInputElement).checked;
+        break;
+      }
+    }
+  }
+
+  // ===== Restore text inputs from state =====
+  function restoreTextInputs(step: number) {
+    const set = (id: string, val: unknown) => {
+      const el = document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null;
+      if (el && val !== undefined && val !== null) el.value = String(val);
+    };
+
+    switch (step) {
+      case 1:
+        set('full_name', state.data.full_name);
+        set('email', state.data.email);
+        set('company_name', state.data.company_name);
+        set('website_url', state.data.website_url);
+        set('role', state.data.role);
+        set('country_code', state.data.country_code);
+        break;
+      case 2:
+        set('industry_context', state.data.industry_context);
+        break;
+      case 3:
+        set('current_frustration', state.data.current_frustration);
+        break;
+      case 4:
+        set('workflow_notes', state.data.workflow_notes);
+        break;
+      case 5:
+        set('monthly_volume', state.data.monthly_volume);
+        set('team_setup', state.data.team_setup);
+        break;
+      case 7:
+        set('final_notes', state.data.final_notes);
+        (document.getElementById('consent_to_contact') as HTMLInputElement).checked = !!state.data.consent_to_contact;
+        (document.getElementById('open_to_call') as HTMLInputElement).checked = !!state.data.open_to_call;
+        // Restore consent option visual state
+        document.querySelectorAll<HTMLElement>('.wl-option--consent').forEach((el) => {
+          const inp = el.querySelector('.wl-check-input') as HTMLInputElement;
+          if (inp) el.classList.toggle('is-selected', inp.checked);
+        });
+        break;
+    }
+  }
+
+  // ===== Validate step =====
+  function validateStep(step: number): boolean {
+    let ok = true;
+
+    const showErr = (id: string) => {
+      document.getElementById(id)?.classList.add('is-visible');
+      ok = false;
+    };
+    const hideErr = (id: string) => document.getElementById(id)?.classList.remove('is-visible');
+    const markInput = (id: string, invalid: boolean) => document.getElementById(id)?.classList.toggle('is-error', invalid);
+
+    const val = (id: string) => (document.getElementById(id) as HTMLInputElement | HTMLSelectElement | null)?.value?.trim() ?? '';
+
+    switch (step) {
+      case 1: {
+        const name = val('full_name');
+        if (!name) { showErr('err-full_name'); markInput('full_name', true); }
+        else        { hideErr('err-full_name'); markInput('full_name', false); }
+
+        const email = val('email');
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!emailOk) { showErr('err-email'); markInput('email', true); }
+        else           { hideErr('err-email'); markInput('email', false); }
+
+        const role = val('role');
+        if (!role) { showErr('err-role'); markInput('role', true); }
+        else        { hideErr('err-role'); markInput('role', false); }
+
+        const country = val('country_code');
+        if (!country) { showErr('err-country_code'); markInput('country_code', true); }
+        else           { hideErr('err-country_code'); markInput('country_code', false); }
+        break;
+      }
+      case 2: {
+        const checked = document.querySelector<HTMLInputElement>('input[name="industry"]:checked');
+        if (!checked) showErr('err-industry'); else hideErr('err-industry');
+        break;
+      }
+      case 3: {
+        const checked = document.querySelectorAll<HTMLInputElement>('input[name="writing_needs"]:checked');
+        if (checked.length === 0) showErr('err-writing_needs'); else hideErr('err-writing_needs');
+        break;
+      }
+      case 4: {
+        const checked = document.querySelectorAll<HTMLInputElement>('input[name="workflow_pain_points"]:checked');
+        if (checked.length === 0) showErr('err-workflow_pain_points'); else hideErr('err-workflow_pain_points');
+        break;
+      }
+      case 5:
+        // Step 5 has no required fields
+        break;
+      case 6: {
+        if (!document.querySelector<HTMLInputElement>('input[name="value_level"]:checked'))       { showErr('err-value_level'); }       else { hideErr('err-value_level'); }
+        if (!document.querySelector<HTMLInputElement>('input[name="monthly_value_band"]:checked')) { showErr('err-monthly_value_band'); } else { hideErr('err-monthly_value_band'); }
+        if (!document.querySelector<HTMLInputElement>('input[name="timeline"]:checked'))           { showErr('err-timeline'); }           else { hideErr('err-timeline'); }
+        break;
+      }
+      case 7: {
+        const consent = (document.getElementById('consent_to_contact') as HTMLInputElement).checked;
+        if (!consent) showErr('err-consent_to_contact'); else hideErr('err-consent_to_contact');
+        break;
+      }
+    }
+
+    return ok;
+  }
+
+  // ===== Show step =====
+  function showStep(n: number) {
+    document.querySelectorAll('.wl-step').forEach((el) => {
+      el.classList.toggle('is-active', (el as HTMLElement).dataset.step === String(n));
+      (el as HTMLElement).hidden = (el as HTMLElement).dataset.step !== String(n);
+    });
+
+    // Progress
+    const pct = (n / state.totalSteps) * 100;
+    progressFill.style.width = `${pct}%`;
+    stepLabel.textContent = stepOfLabel(n);
+    stepName.textContent = I18N.stepNames[n] ?? '';
+
+    // Nav buttons
+    backBtn.hidden = n === 1;
+    nextLabel.textContent = n === state.totalSteps ? I18N.submitButton : I18N.nextButton;
+
+    // Render pricing bands fresh when showing step 6
+    if (n === 6) renderPricingBands();
+
+    // Restore inputs
+    restoreTextInputs(n);
+    restoreOptions();
+
+    // Hide error banner
+    errorBanner.hidden = true;
+
+    // Scroll to top of card
+    wlCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ===== Navigation =====
+  nextBtn.addEventListener('click', async () => {
+    const step = state.currentStep;
+    collectStep(step);
+
+    if (!validateStep(step)) {
+      showBanner(I18N.validationBannerMsg);
+      return;
+    }
+
+    hideBanner();
+
+    if (step < state.totalSteps) {
+      state.currentStep++;
+      showStep(state.currentStep);
+    } else {
+      await submitForm();
+    }
+  });
+
+  backBtn.addEventListener('click', () => {
+    if (state.currentStep > 1) {
+      collectStep(state.currentStep);
+      state.currentStep--;
+      showStep(state.currentStep);
+    }
+  });
+
+  // ===== Banner =====
+  function showBanner(msg: string) {
+    errorBanner.textContent = msg;
+    errorBanner.hidden = false;
+  }
+
+  function hideBanner() {
+    errorBanner.hidden = true;
+  }
+
+  // ===== Consent option click handling =====
+  document.querySelectorAll<HTMLElement>('.wl-option--consent').forEach((el) => {
+    el.addEventListener('click', () => {
+      const inp = el.querySelector('.wl-check-input') as HTMLInputElement;
+      if (!inp) return;
+      inp.checked = !inp.checked;
+      el.classList.toggle('is-selected', inp.checked);
+      if (inp.id === 'consent_to_contact' && inp.checked) {
+        document.getElementById('err-consent_to_contact')?.classList.remove('is-visible');
+      }
+    });
+  });
+
+  // ===== Submit =====
+  async function submitForm() {
+    collectStep(state.totalSteps);
+
+    const hp = (document.getElementById('hp_field') as HTMLInputElement)?.value ?? '';
+
+    const payload = {
+      ...state.data,
+      hp_field: hp,
+    };
+
+    // Loading state
+    nextBtn.disabled = true;
+    nextLabel.textContent = I18N.sendingButton;
+    spinner.hidden = false;
+    hideBanner();
+
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const json = await res.json() as { ok: boolean; error?: string; errorCode?: string };
+
+      if (json.ok) {
+        wlCard.hidden = true;
+        wlSuccess.hidden = false;
+        wlSuccess.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        const msg = I18N.errorMessages[json.errorCode ?? 'unknown'] ?? json.error ?? I18N.errorMessages.unknown;
+        showBanner(msg);
+        nextBtn.disabled = false;
+        nextLabel.textContent = I18N.submitButton;
+        spinner.hidden = true;
+      }
+    } catch {
+      showBanner(I18N.networkErrorMsg);
+      nextBtn.disabled = false;
+      nextLabel.textContent = I18N.submitButton;
+      spinner.hidden = true;
+    }
+  }
+
+  // ===== Init =====
+  detectCountry();
+  showStep(1);
+</script>

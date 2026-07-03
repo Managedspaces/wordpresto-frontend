@@ -40,14 +40,40 @@ locales, including correct singular/plural on the "N SPECIALIST(S)" count
 label. `TEAM_META` (English) stays as the untranslated default for the
 `/specialists/*` pages, which don't take a locale yet — see below.
 
+**Also done:** `/waitlist` — the multi-step application form is now fully
+localised in all 6 locales. `src/data/i18n/waitlist.ts` covers every visible
+string (page meta, success state, all 7 step headings/subheads, every field
+label/placeholder/error message, and every option array). Option `value`s
+stay in English across locales (only the `label` translates) so the data
+written to Postgres and the Resend notification email stay analysable in
+one language regardless of which locale a lead applied from. The page was
+extracted into `src/components/WaitlistPage.astro`, parameterised by
+`locale`, with `src/pages/waitlist.astro` (English) and
+`src/pages/[locale]/waitlist.astro` (the other 5) as thin wrappers,
+following the same pattern as the homepage. The client-side step/validation
+script (progress label, pricing bands, button/banner text, API error
+messages) reads its strings from a `<script type="application/json"
+id="wl-i18n">` tag rendered server-side, rather than being rewritten
+per-locale. `src/pages/api/waitlist.ts` now returns a stable `errorCode`
+field (`invalid_request` / `missing_fields` / `service_unavailable` /
+`server_error`) alongside its English `error` message, so the client can
+show a localised message without server-side i18n. All 4 waitlist CTAs on
+the homepage now use `localeHref(locale, '/waitlist')` again — they'd been
+temporarily hardcoded to the plain English path since the route didn't
+exist yet (see the PR that fixed the resulting 404s on every translated
+page). Verified with `tsc --noEmit`, `astro build`, a full internal-link
+sweep of the built output, and a Playwright pass through the German and
+French forms (multi-step navigation, translated pricing bands in the
+right currency, no mobile overflow).
+
 **Next up:** the rest of the site (`/workers/`, `/workers/seo/`,
-`/workers/[slug]/`, `/specialists/*`, `/waitlist`, `/workflow-demo/`,
-`/prestobot/`, `/sitemap/`) following the same pattern established here —
-extract copy to a locale dictionary, parameterise a shared component, add a
-`[locale]` route. Worker profile pages (`workerProfiles.ts`, 3,100+ lines
-for the 20 that exist) are by far the largest remaining piece and should be
-tackled as its own dedicated pass, most likely with translation work
-parallelised per locale rather than done serially.
+`/workers/[slug]/`, `/specialists/*`, `/workflow-demo/`, `/prestobot/`,
+`/sitemap/`) following the same pattern established here — extract copy to
+a locale dictionary, parameterise a shared component, add a `[locale]`
+route. Worker profile pages (`workerProfiles.ts`, 3,100+ lines for the 20
+that exist) are by far the largest remaining piece and should be tackled as
+its own dedicated pass, most likely with translation work parallelised per
+locale rather than done serially.
 
 hreflang tags and hreflang-aware hreflang/canonical linking between locale
 variants are not wired up yet — each locale page has its own correct
