@@ -19,6 +19,7 @@ export interface CommonStrings {
   home: string;
   siteMap: string;
   contact: string;
+  howItWorks: string;
   astroCms: string;
   cmsConnected: string;
   standaloneEngine: string;
@@ -42,6 +43,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     home: 'Home',
     siteMap: 'Sitemap',
     contact: 'Contact',
+    howItWorks: 'How it works',
     astroCms: 'Astro + CMS builds',
     cmsConnected: 'CMS-connected',
     standaloneEngine: 'Standalone engine',
@@ -63,6 +65,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     home: 'Início',
     siteMap: 'Mapa do site',
     contact: 'Contacto',
+    howItWorks: 'Como funciona',
     astroCms: 'Projetos Astro + CMS',
     cmsConnected: 'Ligado ao CMS',
     standaloneEngine: 'Motor autónomo',
@@ -84,6 +87,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     home: 'Início',
     siteMap: 'Mapa do site',
     contact: 'Contato',
+    howItWorks: 'Como funciona',
     astroCms: 'Projetos Astro + CMS',
     cmsConnected: 'Conectado ao CMS',
     standaloneEngine: 'Motor autônomo',
@@ -105,6 +109,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     home: 'Inicio',
     siteMap: 'Mapa del sitio',
     contact: 'Contacto',
+    howItWorks: 'Cómo funciona',
     astroCms: 'Proyectos Astro + CMS',
     cmsConnected: 'Conectado a un CMS',
     standaloneEngine: 'Motor independiente',
@@ -126,6 +131,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     home: 'Start',
     siteMap: 'Sitemap',
     contact: 'Kontakt',
+    howItWorks: 'So funktioniert es',
     astroCms: 'Astro + CMS-Projekte',
     cmsConnected: 'CMS-angebunden',
     standaloneEngine: 'Eigenständige Engine',
@@ -147,6 +153,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     home: 'Accueil',
     siteMap: 'Plan du site',
     contact: 'Contact',
+    howItWorks: 'Comment ça marche',
     astroCms: 'Projets Astro + CMS',
     cmsConnected: 'Connecté à un CMS',
     standaloneEngine: 'Moteur autonome',

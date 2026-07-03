@@ -64,7 +64,7 @@ const canonical = locale === 'en'
       </div>
       <div class="workers-grid">
         {seoWorkers.map((w) => (
-          <a href={`/workers/${w.id.replace(/_/g, '-')}/`} class="worker-card">
+          <a href={localeHref(locale, `/workers/${w.id.replace(/_/g, '-')}/`)} class="worker-card">
             <div class="worker-card-top">
               <img
                 src={w.image}
@@ -123,7 +123,7 @@ const canonical = locale === 'en'
       </div>
       <div class="footer-col">
         <span class="footer-col-heading">{c.product}</span>
-        <a href={`${localeHref(locale, '/')}#product`} class="footer-link">How it works</a>
+        <a href={`${localeHref(locale, '/')}#product`} class="footer-link">{c.howItWorks}</a>
         <a href={`${localeHref(locale, '/')}#capabilities`} class="footer-link">{c.workflow}</a>
         <a href={localeHref(locale, '/workers/')} class="footer-link">{c.workers}</a>
       </div>

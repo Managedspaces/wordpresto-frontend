@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { workerProfiles } from '../data/workerProfiles';
 import { xmlRoutes } from '../data/siteRoutes';
+import { LOCALES, DEFAULT_LOCALE, localeHref } from '../i18n/locales';
 
 export const prerender = true;
 
@@ -27,9 +28,14 @@ export const GET: APIRoute = () => {
     urlEntry(`/workers/${p.slug}/`, 'monthly', 0.7),
   );
 
+  // Worker profile locale variants (src/data/i18n/workerProfiles/).
+  const workerLocaleUrls = LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).flatMap((l) =>
+    workerProfiles.map((p) => urlEntry(localeHref(l.code, `/workers/${p.slug}/`), 'monthly', 0.6)),
+  );
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${[...staticUrls, ...workerUrls].join('\n')}
+${[...staticUrls, ...workerUrls, ...workerLocaleUrls].join('\n')}
 </urlset>`;
 
   return new Response(xml, {
