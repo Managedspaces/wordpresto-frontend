@@ -37,10 +37,14 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
 >
 
   <!-- ===================== MASTHEAD ===================== -->
+  <!-- All waitlist CTAs deliberately link to the plain, unprefixed "/waitlist"
+       regardless of locale: that page has no [locale] route yet, so
+       localeHref(locale, '/waitlist') would 404 on every non-English page.
+       Point these at the real localised route once /waitlist is translated. -->
   <header class="masthead">
     <div class="masthead-inner">
       <nav class="masthead-nav masthead-nav--left">
-        <a href={localeHref(locale, '/waitlist')} class="nav-link">{c.signIn}</a>
+        <a href="/waitlist" class="nav-link">{c.signIn}</a>
         <a href={`${localeHref(locale, '/')}#emma-desk`} class="nav-link">{c.theDesk}</a>
         <a href={`${localeHref(locale, '/')}#canvas`} class="nav-link">{c.canvas}</a>
       </nav>
@@ -69,7 +73,7 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
             ))}
           </div>
         </div>
-        <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
+        <a href="/waitlist" class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
       </nav>
     </div>
   </header>
@@ -86,7 +90,7 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
           <p>{t.hero.approvalNoteLine1}<br />{t.hero.approvalNoteLine2}</p>
         </div>
         <div class="hero-ctas">
-          <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--lg">
+          <a href="/waitlist" class="btn btn--primary btn--lg">
             {t.hero.ctaPrimary}
             <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -519,7 +523,7 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
       <h2 class="cta-h2">{t.cta.h2}</h2>
       <p class="cta-body">{t.cta.body}</p>
       <div class="cta-buttons">
-        <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--lg">
+        <a href="/waitlist" class="btn btn--primary btn--lg">
           {t.cta.ctaPrimary}
           <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
