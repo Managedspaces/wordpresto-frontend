@@ -242,6 +242,42 @@ export const siteRoutes: SiteRoute[] = [
     priority: 0.3,
     markdown: '/sitemap.md',
   },
+  {
+    path: '/privacy/',
+    label: 'Privacy Policy',
+    description: 'How Word Presto collects, uses and protects personal data.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'yearly',
+    priority: 0.2,
+  },
+  {
+    path: '/terms/',
+    label: 'Terms & Conditions',
+    description: 'The terms that govern use of wordpresto.com and the Word Presto application.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'yearly',
+    priority: 0.2,
+  },
+  {
+    path: '/cookies/',
+    label: 'Cookie Policy',
+    description: 'What cookies wordpresto.com uses, why, and how to control them.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'yearly',
+    priority: 0.2,
+  },
+  {
+    path: '/fair-use/',
+    label: 'Fair Use Policy',
+    description: 'What is and is not acceptable use of the Word Presto content workflow platform.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'yearly',
+    priority: 0.2,
+  },
 
   // Machine-readable resources: surfaced on the HTML sitemap, not in sitemap.xml.
   {
