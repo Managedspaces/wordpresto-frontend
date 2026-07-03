@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (13 specialist roles)
+## SEO Worker directory (14 specialist roles)
 
 ### Nadia — SEO Title & Metadata Worker
 
@@ -143,3 +143,13 @@ Felix reviews internal link pathway health: orphan risk, anchor text quality, hu
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-pruning-consolidation.md
 
 Hugo reviews content maintenance signals: overlap risk, thin content, decay, unclear role, weak pathways and consolidation prompts, helping editors decide the safest next maintenance action.
+
+### Sema — Semantic Coverage Analyser
+
+- Stage: Semantic intelligence
+- Output: Semantic coverage review
+- URL: https://wordpresto.com/workers/semantic-search-analyzer/
+- Markdown: https://wordpresto.com/workers/semantic-search-analyzer/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/semantic-search-analyzer.md
+
+Sema reviews semantic coverage by comparing content against Word Presto's knowledge layer and project context, surfacing missing subtopics and thinly covered entities.

@@ -4551,6 +4551,167 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'INVENTORY STATUS',
     guidanceFooterValue: 'Asset reviewed · gaps found',
   },
+
+  // 30. Sema - Semantic Coverage Analyser
+  {
+    id: 'semantic_search_analyzer',
+    slug: 'semantic-search-analyzer',
+    name: 'Sema',
+    role: 'Semantic Coverage Analyser',
+    roleTitle: 'Semantic Coverage Analyst',
+    department: 'Semantic Intelligence',
+    team: 'seo',
+    stage: 'Semantic intelligence',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-43-192.webp',
+    portrait2x: '/agents/profiles/profile-43-384.webp',
+    seoTitle: 'Semantic Coverage Analyser | WordPresto',
+    metaDescription:
+      "Sema reviews semantic coverage by comparing content against Word Presto's knowledge layer and project context, surfacing missing subtopics and thinly covered entities.",
+    h1: 'Find the concepts the page is missing.',
+    heroPara1:
+      "Good content does not just mention the target keyword. It covers the entities, subtopics, relationships and supporting ideas that make the page genuinely useful. Sema reviews semantic coverage by comparing the content against Word Presto's knowledge layer and project context. She surfaces missing subtopics, thinly covered entities and coverage gaps that should be reviewed before the page is approved.",
+    heroPara2:
+      'For advanced SEO reviews, content briefs, topical authority work and pages that need deeper semantic coverage.',
+    heroWorksAlongside: ['Zara', 'Kenji', 'Cassius'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Semantic intelligence',
+      output: 'Output · Semantic coverage review',
+    },
+    problemEyebrow: 'Where semantic SEO goes wrong',
+    problemH2: 'Pages mention the topic but miss the surrounding meaning.',
+    problemPara:
+      'A page can include the right keyword and still fail to cover the subject properly. It may skip key entities, avoid important comparisons, miss supporting concepts or leave questions unanswered. Sema looks beyond keyword presence. She reviews whether the page has enough semantic depth to deserve confidence.',
+    problemAnnotation: '↘ cover the topic, not just the term',
+    beforeStamp: 'Thin coverage',
+    beforeHtml: `<p>The page mentions the service but misses key conditions, decision factors, supporting evidence and related entities.</p>`,
+    beforeTags: ['Keyword present', 'Entities missing', 'Thin subtopics', 'Weak depth'],
+    beforeNote: 'the page sounds relevant but feels incomplete',
+    afterStamp: 'Coverage reviewed',
+    afterHtml: `<p>Sema lists missing entities, thin subtopics and evidence-backed gaps for the editor to review.</p>`,
+    afterTags: ['Entity gaps', 'Topic depth', 'Source-linked findings', 'Review-safe'],
+    afterNote: 'the editor knows what is missing',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Semantic coverage review with evidence boundaries.',
+    helpsPara:
+      'Sema compares content against available knowledge and project context, then produces reviewable coverage gaps. She does not stuff keywords, fabricate entities or rewrite the page automatically.',
+    checks: [
+      'Missing subtopics',
+      'Thinly covered entities',
+      'Semantic depth',
+      'Term distribution health',
+      'Coverage gaps against retrieved knowledge',
+      'Evidence support for suggested additions',
+    ],
+    improves: [
+      'Topic depth',
+      'Brief quality',
+      'Authority-building content plans',
+      'Confidence before content approval',
+    ],
+    prepares: [
+      'Semantic coverage review',
+      'Entity and subtopic gap list',
+      'Evidence-linked findings',
+      'Review prompts for editors',
+    ],
+    surfaces: [
+      'Important concepts missing from the draft',
+      'Overused or underdeveloped terms',
+      'Coverage gaps that need source support',
+      'Areas where the page is semantically thin',
+    ],
+    ioH2: 'What Sema works from, and what she produces.',
+    worksFrom: [
+      'Draft or page content',
+      'Project context',
+      'Knowledge neighbours',
+      'Evidence signals',
+      'Topic and entity candidates',
+    ],
+    produces: [
+      'Semantic coverage review',
+      'Entity gap list',
+      'Subtopic findings',
+      'Term-distribution signal',
+      'Evidence-linked recommendations',
+    ],
+    scenarios: [
+      {
+        title: 'A page needs deeper topical authority.',
+        description:
+          'Sema identifies what the content is missing beyond obvious keywords.',
+      },
+      {
+        title: 'A draft feels shallow.',
+        description:
+          'She finds missing entities, subtopics and supporting concepts.',
+      },
+      {
+        title: 'A brief needs richer context.',
+        description:
+          'Sema gives editors coverage gaps to consider before drafting.',
+      },
+      {
+        title: 'A page competes in a complex topic.',
+        description:
+          'She helps surface the concepts stronger pages usually cover.',
+      },
+      {
+        title: 'A content update needs evidence-led expansion.',
+        description:
+          'Sema lists gaps that should be reviewed with supporting context.',
+      },
+      {
+        title: 'You want semantic SEO without keyword stuffing.',
+        description:
+          'She focuses on meaning, coverage and source-linked gaps.',
+      },
+    ],
+    boundaryH2: 'Sema identifies gaps. Editors decide what belongs in the page.',
+    boundaryPara:
+      'Sema does not automatically add topics, stuff keywords, rewrite copy or publish. Her findings are review-only and should be judged by an editor.',
+    boundaryChecklist: [
+      'Sema flags gaps, she never adds topics or rewrites copy herself.',
+      'Coverage findings are compared against retrieved knowledge, not invented from nothing.',
+      'Suggested additions are prompts for editorial review, not automatic insertions.',
+      'Retrieved neighbours are treated as signals for review, not unquestionable truth.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Stuff keywords into content' },
+      { color: 'red', text: 'Invent unsupported entities' },
+      { color: 'red', text: 'Rewrite or expand the page automatically' },
+      { color: 'red', text: 'Publish or write to any CMS' },
+      { color: 'red', text: 'Treat retrieved neighbours as unquestionable truth' },
+    ],
+    relatedH2: 'Workers Sema works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'topical_authority',
+        description: 'Reviews page-level topic support and cluster gaps.',
+        outputLabel: 'Coverage review',
+        ctaLabel: 'How Zara reviews',
+      },
+      {
+        id: 'evidence',
+        description: 'Reviews whether suggested additions are supported.',
+        outputLabel: 'Evidence bundle',
+        ctaLabel: 'How Kenji reviews',
+      },
+      {
+        id: 'competitor_intel',
+        description: 'Compares coverage against real competitor SERP evidence when available.',
+        outputLabel: 'Competitor coverage review',
+        ctaLabel: 'How Cassius compares',
+      },
+    ],
+    ctaH2: 'Find the meaning the page has not covered yet.',
+    ctaPara:
+      'Sema helps editors strengthen topical depth with reviewable semantic gaps, not keyword stuffing.',
+    guidanceFooterLabel: 'SEMANTIC STATUS',
+    guidanceFooterValue: 'Coverage gaps found · review needed',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {
