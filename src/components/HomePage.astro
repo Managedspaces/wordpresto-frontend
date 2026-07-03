@@ -1701,21 +1701,27 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
     .section { padding: 60px 0; }
 
     /* --- Masthead --- */
-    /* Desktop centres the logo absolutely over the gap between two flex
-       items (nav-left, nav-right). Mobile hides nav-left and adds the
-       language switcher to nav-right, which no longer reliably fits beside
-       a centred logo on narrow phones — so the logo goes back into flow
-       on the left and nav-right sits on the right via space-between. The
-       ink rule's centre gap (cut for the centred logo) becomes solid to
-       match, since nothing sits over its middle any more. */
-    .masthead-inner { padding: 10px 24px; justify-content: space-between; }
+    /* The logo stays centred (as on desktop). With nav-left hidden,
+       nav-right is the only flex item left, so flex-end pins it to the
+       true right edge instead of space-between packing it to the left.
+       nav-right itself is kept tight (smaller gap, compact CTA) so it
+       clears the centred logo instead of overlapping it. */
+    .masthead-inner { padding: 10px 24px; justify-content: flex-end; }
     .masthead-nav--left { display: none; }
+    .masthead-nav--right { gap: 12px; }
     .masthead-nav--right .nav-link { display: none; }
     .locale-switcher { display: none; }
     .locale-switcher-mobile { display: block; }
-    .masthead-logo { position: static; left: auto; top: auto; transform: none; }
-    .masthead-logo img { height: 60px; }
-    .masthead::after { background: var(--wp-ink); }
+    .masthead-logo img { height: 64px; }
+    .masthead::after {
+      background: linear-gradient(
+        to right,
+        var(--wp-ink) calc(50% - 62px),
+        transparent calc(50% - 62px),
+        transparent calc(50% + 62px),
+        var(--wp-ink) calc(50% + 62px)
+      );
+    }
 
     /* --- Hero --- */
     .section--hero { padding: 48px 0 56px; }
@@ -1779,9 +1785,19 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
     .section { padding: 44px 0; }
 
     /* --- Masthead --- */
-    .masthead-inner { padding: 8px 18px; }
-    .masthead-logo img { height: 54px; }
-    .btn--sm { font-size: 12px; padding: 7px 12px; }
+    .masthead-inner { padding: 8px 16px; }
+    .masthead-nav--right { gap: 6px; }
+    .masthead-logo img { height: 44px; }
+    .masthead::after {
+      background: linear-gradient(
+        to right,
+        var(--wp-ink) calc(50% - 42px),
+        transparent calc(50% - 42px),
+        transparent calc(50% + 42px),
+        var(--wp-ink) calc(50% + 42px)
+      );
+    }
+    .btn--sm { font-size: 10.5px; padding: 5px 8px; }
 
     /* --- Hero --- */
     .section--hero { padding: 36px 0 48px; }
