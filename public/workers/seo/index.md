@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (8 specialist roles)
+## SEO Worker directory (9 specialist roles)
 
 ### Nadia — SEO Title & Metadata Worker
 
@@ -93,3 +93,13 @@ Cleo reviews a page for intent conflict, overlap risk and unclear content role, 
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-decay.md
 
 Faye reviews freshness signals and content decay risk, helping editors decide whether a page is still current, needs monitoring, should be refreshed, or requires urgent review.
+
+### Zara — Topical Authority & Coverage Gap Worker
+
+- Stage: Topical coverage
+- Output: Coverage gap review
+- URL: https://wordpresto.com/workers/topical-authority/
+- Markdown: https://wordpresto.com/workers/topical-authority/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/topical-authority.md
+
+Zara reviews topical coverage signals and content gaps, helping editors see whether a page looks strong, needs support, is incomplete, or requires a wider content plan.

@@ -120,5 +120,5 @@ Cleo does not merge pages, redirect URLs, delete content or declare confirmed si
 ## Workers Cleo works alongside.
 
 - **intent_analyst**: Identifies the reader intent Cleo checks for conflict. Output: Intent assessment.
-- **topical_authority**: Reviews topic-cluster depth and support. Output: Coverage review.
+- **Zara — Topical Authority & Coverage Gap Worker**: Reviews topic-cluster depth and support. Output: Coverage review.
 - **content_pruning_consolidation**: Helps turn overlap findings into maintenance recommendations. Output: Maintenance review.

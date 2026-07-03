@@ -3585,6 +3585,167 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'FRESHNESS STATUS',
     guidanceFooterValue: 'Refresh recommended · review needed',
   },
+
+  // 24. Zara - Topical Authority & Coverage Gap Worker
+  {
+    id: 'topical_authority',
+    slug: 'topical-authority',
+    name: 'Zara',
+    role: 'Topical Authority & Coverage Gap Worker',
+    roleTitle: 'Topical Coverage Analyst',
+    department: 'Topical Coverage',
+    team: 'seo',
+    stage: 'Topical coverage',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-28-192.webp',
+    portrait2x: '/agents/profiles/profile-28-384.webp',
+    seoTitle: 'Topical Authority & Coverage Gap Worker | WordPresto',
+    metaDescription:
+      'Zara reviews topical coverage signals and content gaps, helping editors see whether a page looks strong, needs support, is incomplete, or requires a wider content plan.',
+    h1: 'See whether the page has enough topical support.',
+    heroPara1:
+      'A page may cover its subject clearly but still sit in a weak content cluster. It may lack supporting pages, miss related subtopics, sit too far from its hub, or carry a topic role that the site has not properly built around. Zara reviews topical coverage signals and content gaps. She helps editors see whether a page looks strong, needs support, is incomplete, or requires a wider content plan.',
+    heroPara2:
+      'For SEO audits, topic-cluster planning, content briefs and pages that need stronger authority signals.',
+    heroWorksAlongside: ['Yuna', 'Leo', 'Sema'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Topical coverage',
+      output: 'Output · Coverage gap review',
+    },
+    problemEyebrow: 'Where topical authority weakens',
+    problemH2: 'One good page does not always make a strong topic.',
+    problemPara:
+      'Search performance often depends on the surrounding content system. A page may need supporting explainers, comparison pages, service pages, evidence-led resources, internal links or clearer topic-cluster placement. Zara reviews whether the page appears well-supported or whether it is carrying too much topic responsibility on its own.',
+    problemAnnotation: '↘ build the topic around the page',
+    beforeStamp: 'Weak support',
+    beforeHtml: `<p>The page covers the main subject, but there are no obvious supporting resources, internal pathways or related subtopic coverage.</p>`,
+    beforeTags: ['Thin cluster', 'Missing support', 'Weak internal context', 'Manual checks needed'],
+    beforeNote: 'the page is working alone',
+    afterStamp: 'Coverage improved',
+    afterHtml: `<p>The page role is clarified and supporting content needs are listed for planning.</p>`,
+    afterTags: ['Clear page role', 'Gap list', 'Better cluster plan', 'Human decision'],
+    afterNote: 'the editor knows what to build next',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Topical coverage review before expanding content.',
+    helpsPara:
+      'Zara reviews topic depth, cluster support and missing coverage signals from the page evidence available. She does not create new pages or claim a complete site-wide topic map without crawl and project data.',
+    checks: [
+      'Topic role and page purpose',
+      'Supporting subtopic gaps',
+      'Internal link and cluster support',
+      'Intent coverage',
+      'Orphan-risk signals',
+      'Manual topic-cluster checks needed',
+    ],
+    improves: [
+      'Content planning quality',
+      'Topic-cluster structure',
+      'Internal support decisions',
+      'Confidence before building briefs or new pages',
+    ],
+    prepares: [
+      'Coverage gap review',
+      'Recommended page role',
+      'Supporting content ideas',
+      'Manual cluster checks',
+    ],
+    surfaces: [
+      'Missing supporting pages',
+      'Thin topic coverage',
+      'Weak internal link support',
+      'Cluster conflicts or gaps that need confirmation',
+    ],
+    ioH2: 'What Zara works from, and what she produces.',
+    worksFrom: [
+      'Intent assessment',
+      'Content relationship signals',
+      'Content inventory review',
+      'Page structure and depth',
+      'Evidence gap signals',
+    ],
+    produces: [
+      'Coverage review',
+      'Topic gap list',
+      'Recommended page role',
+      'Supporting content prompts',
+      'Manual cluster checks',
+    ],
+    scenarios: [
+      {
+        title: 'A page needs stronger topic authority.',
+        description:
+          'Zara checks whether the surrounding content support appears strong enough.',
+      },
+      {
+        title: 'You are planning a content cluster.',
+        description:
+          "She identifies supporting content gaps from the page's topic role.",
+      },
+      {
+        title: 'A page seems too broad.',
+        description:
+          'Zara flags whether subtopics may need separate supporting assets.',
+      },
+      {
+        title: 'Internal linking feels weak.',
+        description:
+          'She checks whether the page has enough topic relationship support.',
+      },
+      {
+        title: 'A brief needs better topical context.',
+        description:
+          'Zara helps define what else the article or page should cover or connect to.',
+      },
+      {
+        title: 'Search performance depends on authority.',
+        description:
+          'She gives editors a clearer view of topic depth and coverage gaps.',
+      },
+    ],
+    boundaryH2: 'Zara reviews coverage. Editors decide the content plan.',
+    boundaryPara:
+      'Zara does not create pages, build clusters automatically, publish new content or claim complete site-wide authority from one page review. She flags coverage signals and planning gaps.',
+    boundaryChecklist: [
+      'Zara flags coverage gaps, she never creates or publishes pages herself.',
+      'Supporting content ideas are prompts for planning, not automatic briefs.',
+      'Site-wide cluster claims are only made with supporting project or crawl data.',
+      'Manual checks are listed clearly so editors know what still needs confirming.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Create or publish supporting pages' },
+      { color: 'red', text: 'Invent a complete topic map' },
+      { color: 'red', text: 'Confirm site-wide cluster coverage without project data' },
+      { color: 'red', text: 'Rewrite the page automatically' },
+      { color: 'red', text: 'Apply changes to a CMS' },
+    ],
+    relatedH2: 'Workers Zara works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'intent_analyst',
+        description: 'Clarifies the reader intent Zara checks against topical coverage.',
+        outputLabel: 'Intent assessment',
+        ctaLabel: 'How Yuna clarifies',
+      },
+      {
+        id: 'internal_linking',
+        description: 'Reviews links and reader pathways that support topic connection.',
+        outputLabel: 'Link assessment',
+        ctaLabel: 'How Leo reviews',
+      },
+      {
+        id: 'semantic_search_analyzer',
+        description: 'Uses vector-grounded retrieval to find deeper semantic coverage gaps.',
+        outputLabel: 'Semantic coverage review',
+        ctaLabel: 'How Sema finds gaps',
+      },
+    ],
+    ctaH2: 'Build stronger content around the page.',
+    ctaPara:
+      'Zara helps editors see where a page needs topical support, related assets or better cluster planning.',
+    guidanceFooterLabel: 'COVERAGE STATUS',
+    guidanceFooterValue: 'Needs support · gaps found',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {
