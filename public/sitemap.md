@@ -186,6 +186,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/technical-health.md
 - Focus: Maya checks the technical signals behind a page, metadata, headings, indexability and structure, and reports what needs a closer look. Standards-backed and review-only.
 
+### See whether the page has enough topical support.
+
+- HTML: https://wordpresto.com/workers/topical-authority/
+- Markdown: https://wordpresto.com/workers/topical-authority/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/topical-authority.md
+- Focus: Zara reviews topical coverage signals and content gaps, helping editors see whether a page looks strong, needs support, is incomplete, or requires a wider content plan.
+
 ### Show who stands behind the content.
 
 - HTML: https://wordpresto.com/workers/trust-author-credibility/

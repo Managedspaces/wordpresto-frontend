@@ -340,6 +340,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-27-384.webp',
     teamColor: 'var(--team-seo)',
   },
+  {
+    id: 'topical_authority',
+    name: 'Zara',
+    role: 'Topical Authority & Coverage Gap Worker',
+    department: 'Topical Coverage',
+    team: 'seo',
+    stage: 'Topical coverage',
+    summary: 'Reviews topical coverage signals and content gaps, helping editors see whether a page looks strong, needs support, is incomplete, or requires a wider content plan.',
+    output: 'Coverage gap review',
+    image: '/agents/profiles/profile-28-192.webp',
+    image2x: '/agents/profiles/profile-28-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).
