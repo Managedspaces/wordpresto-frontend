@@ -13,11 +13,9 @@ interface Props {
 const { locale } = Astro.props;
 const t = homeContent[locale];
 const c = commonStrings[locale];
-const teamGroups = getTeamGroups(6);
+const teamGroups = getTeamGroups(6, locale);
 
-// Flag/accent per language-editor tile. Team names/summaries in the
-// specialist bench below still come from workerRegistry.ts (English only
-// for now — see context.md, "Phase 2").
+// Flag/accent per language-editor tile.
 const EDITOR_META = [
   { code: 'IE', image: 'emma', lead: true, accent: '#169B62' },
   { code: 'PT', image: 'aurora', lead: false, accent: '#046A38' },
@@ -413,7 +411,7 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
           <div class="team-card">
             <span class="team-card-bar" style={`background: ${color}`}></span>
             <div class="team-card-head">
-              <div class="team-card-eyebrow"><span class="team-card-dot" style={`background: ${color}`}></span><span class="mono-label">TEAM · {count} SPECIALIST{count === 1 ? "" : "S"}</span></div>
+              <div class="team-card-eyebrow"><span class="team-card-dot" style={`background: ${color}`}></span><span class="mono-label">{t.specialists.teamLabel} · {count} {count === 1 ? t.specialists.specialistSingular : t.specialists.specialistPlural}</span></div>
               <div class="team-card-name">{name}</div>
             </div>
             <p class="team-card-summary">{summary}</p>

@@ -31,19 +31,23 @@ bottom of this doc, not built yet.
   Accept:-negotiation, mirror-drift checking and sitemap entries the same
   as every other page.
 
-**Known gap, next up:** the specialist-bench team names/summaries
-(`src/data/workerRegistry.ts` — "Content Production Team", "SEO Team", etc.
-and their one-line descriptions) are still English-only, so they render in
-English even on translated homepage variants. That's a small, contained
-follow-up (4 teams × short summary × 5 locales). After that: the rest of
-the site (`/workers/`, `/workers/seo/`, `/workers/[slug]/`, `/specialists/*`,
-`/waitlist`, `/workflow-demo/`, `/prestobot/`, `/sitemap/`) following the
-same pattern established here — extract copy to a locale dictionary,
-parameterise a shared component, add a `[locale]` route. Worker profile
-pages (`workerProfiles.ts`, 3,100+ lines for the 20 that exist) are by far
-the largest remaining piece and should be tackled as its own dedicated pass,
-most likely with translation work parallelised per locale rather than done
-serially.
+**Also done:** the specialist-bench team names/summaries/CTAs
+(`src/data/workerRegistry.ts` — "Content Production Team", "SEO Team", etc.,
+their one-line descriptions, and the "Browse ... Workers" buttons) are now
+translated too, via `getTeamMeta(id, locale)` / `getTeamGroups(max, locale)`.
+The homepage's specialist bench section is fully localised in all 6
+locales, including correct singular/plural on the "N SPECIALIST(S)" count
+label. `TEAM_META` (English) stays as the untranslated default for the
+`/specialists/*` pages, which don't take a locale yet — see below.
+
+**Next up:** the rest of the site (`/workers/`, `/workers/seo/`,
+`/workers/[slug]/`, `/specialists/*`, `/waitlist`, `/workflow-demo/`,
+`/prestobot/`, `/sitemap/`) following the same pattern established here —
+extract copy to a locale dictionary, parameterise a shared component, add a
+`[locale]` route. Worker profile pages (`workerProfiles.ts`, 3,100+ lines
+for the 20 that exist) are by far the largest remaining piece and should be
+tackled as its own dedicated pass, most likely with translation work
+parallelised per locale rather than done serially.
 
 hreflang tags and hreflang-aware hreflang/canonical linking between locale
 variants are not wired up yet — each locale page has its own correct

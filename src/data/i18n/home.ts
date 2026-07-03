@@ -87,6 +87,9 @@ export interface HomeContent {
     editorApprovalRequired: string;
     chipsLabel: string;
     browseProfiles: string;
+    teamLabel: string;
+    specialistSingular: string;
+    specialistPlural: string;
   };
   languages: {
     eyebrow: string;
@@ -252,6 +255,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       editorApprovalRequired: 'Editor approval required',
       chipsLabel: 'A few of the specialists Emma can bring in:',
       browseProfiles: 'Browse specialist profiles',
+      teamLabel: 'TEAM',
+      specialistSingular: 'SPECIALIST',
+      specialistPlural: 'SPECIALISTS',
     },
     languages: {
       eyebrow: 'Native voice',
@@ -423,6 +429,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       editorApprovalRequired: 'Aprovação do Editor necessária',
       chipsLabel: 'Alguns dos especialistas que a Emma pode chamar:',
       browseProfiles: 'Ver perfis de especialistas',
+      teamLabel: 'EQUIPA',
+      specialistSingular: 'ESPECIALISTA',
+      specialistPlural: 'ESPECIALISTAS',
     },
     languages: {
       eyebrow: 'Voz nativa',
@@ -594,6 +603,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       editorApprovalRequired: 'Aprovação do Editor necessária',
       chipsLabel: 'Alguns dos especialistas que a Emma pode chamar:',
       browseProfiles: 'Ver perfis de especialistas',
+      teamLabel: 'EQUIPE',
+      specialistSingular: 'ESPECIALISTA',
+      specialistPlural: 'ESPECIALISTAS',
     },
     languages: {
       eyebrow: 'Voz nativa',
@@ -765,6 +777,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       editorApprovalRequired: 'Aprobación del Editor requerida',
       chipsLabel: 'Algunos de los especialistas que Emma puede convocar:',
       browseProfiles: 'Ver perfiles de especialistas',
+      teamLabel: 'EQUIPO',
+      specialistSingular: 'ESPECIALISTA',
+      specialistPlural: 'ESPECIALISTAS',
     },
     languages: {
       eyebrow: 'Voz nativa',
@@ -936,6 +951,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       editorApprovalRequired: 'Freigabe durch Editor erforderlich',
       chipsLabel: 'Ein paar der Spezialist:innen, die Emma hinzuziehen kann:',
       browseProfiles: 'Alle Spezialist:innen-Profile ansehen',
+      teamLabel: 'TEAM',
+      specialistSingular: 'SPEZIALIST:IN',
+      specialistPlural: 'SPEZIALIST:INNEN',
     },
     languages: {
       eyebrow: 'Muttersprachliche Stimme',
@@ -1107,6 +1125,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       editorApprovalRequired: 'Validation de l’Éditeur requise',
       chipsLabel: 'Quelques-uns des spécialistes qu’Emma peut mobiliser :',
       browseProfiles: 'Voir les profils des spécialistes',
+      teamLabel: 'ÉQUIPE',
+      specialistSingular: 'SPÉCIALISTE',
+      specialistPlural: 'SPÉCIALISTES',
     },
     languages: {
       eyebrow: 'Voix native',
