@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (12 specialist roles)
+## SEO Worker directory (13 specialist roles)
 
 ### Morgan — SERP Snippet Worker
 
@@ -133,3 +133,13 @@ Sema reviews semantic coverage by comparing content against Word Presto's knowle
 - Legacy Markdown: https://wordpresto.com/pages/workers/competitor-intel.md
 
 Cassius reviews competitor coverage from stored SERP competitor data, surfacing the subtopics, entities and angles competitors appear to cover that your content may be missing.
+
+### Claire — Site Discovery Worker
+
+- Stage: Site discovery
+- Output: Planned discovery review
+- URL: https://wordpresto.com/workers/site-discovery/
+- Markdown: https://wordpresto.com/workers/site-discovery/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/site-discovery.md
+
+Claire is the planned site discovery specialist for Word Presto: a bounded, owner-scoped discovery of a domain's URLs and a crawl-limited internal link picture. Not yet live.
