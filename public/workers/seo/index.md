@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (12 specialist roles)
+## SEO Worker directory (13 specialist roles)
 
 ### Nadia — SEO Title & Metadata Worker
 
@@ -133,3 +133,13 @@ Ivan reviews whether the current content format matches the likely intent and ex
 - Legacy Markdown: https://wordpresto.com/pages/workers/internal-link-pathway.md
 
 Felix reviews internal link pathway health: orphan risk, anchor text quality, hub-and-spoke relationships, missing next-step links, competing links and pathway coherence.
+
+### Hugo — Content Pruning & Consolidation Worker
+
+- Stage: Content maintenance
+- Output: Maintenance review
+- URL: https://wordpresto.com/workers/content-pruning-consolidation/
+- Markdown: https://wordpresto.com/workers/content-pruning-consolidation/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-pruning-consolidation.md
+
+Hugo reviews content maintenance signals: overlap risk, thin content, decay, unclear role, weak pathways and consolidation prompts, helping editors decide the safest next maintenance action.

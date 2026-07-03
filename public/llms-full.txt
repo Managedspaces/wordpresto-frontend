@@ -19,6 +19,7 @@ This file consolidates the main public WordPresto marketing and Worker content f
 - Know when a page is starting to lose its edge.: https://wordpresto.com/workers/content-decay/index.md
 - Plan where approved content should go next.: https://wordpresto.com/workers/content-distribution-brief/index.md
 - Check whether the page is in the right shape for the job.: https://wordpresto.com/workers/content-format-serp-fit/index.md
+- Decide whether weak content should be improved, merged or left alone.: https://wordpresto.com/workers/content-pruning-consolidation/index.md
 - Refresh content with a clearer reason.: https://wordpresto.com/workers/content-refresh-brief/index.md
 - Check whether the page gives the reader a clear next step.: https://wordpresto.com/workers/conversion-alignment/index.md
 - Review the draft before it moves forward.: https://wordpresto.com/workers/draft-quality-reviewer/index.md
@@ -338,7 +339,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (12 specialist roles)
+## SEO Worker directory (13 specialist roles)
 
 ### Nadia — SEO Title & Metadata Worker
 
@@ -459,6 +460,16 @@ Ivan reviews whether the current content format matches the likely intent and ex
 - Legacy Markdown: https://wordpresto.com/pages/workers/internal-link-pathway.md
 
 Felix reviews internal link pathway health: orphan risk, anchor text quality, hub-and-spoke relationships, missing next-step links, competing links and pathway coherence.
+
+### Hugo — Content Pruning & Consolidation Worker
+
+- Stage: Content maintenance
+- Output: Maintenance review
+- URL: https://wordpresto.com/workers/content-pruning-consolidation/
+- Markdown: https://wordpresto.com/workers/content-pruning-consolidation/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-pruning-consolidation.md
+
+Hugo reviews content maintenance signals: overlap risk, thin content, decay, unclear role, weak pathways and consolidation prompts, helping editors decide the safest next maintenance action.
 
 ---
 
@@ -890,7 +901,7 @@ Cleo does not merge pages, redirect URLs, delete content or declare confirmed si
 
 - **intent_analyst**: Identifies the reader intent Cleo checks for conflict. Output: Intent assessment.
 - **Zara — Topical Authority & Coverage Gap Worker**: Reviews topic-cluster depth and support. Output: Coverage review.
-- **content_pruning_consolidation**: Helps turn overlap findings into maintenance recommendations. Output: Maintenance review.
+- **Hugo — Content Pruning & Consolidation Worker**: Helps turn overlap findings into maintenance recommendations. Output: Maintenance review.
 
 ---
 
@@ -1472,7 +1483,7 @@ Faye does not update facts, rewrite sections, schedule refreshes or publish chan
 ## Workers Faye works alongside.
 
 - **content_inventory**: Classifies the page as a content asset and identifies useful inventory signals. Output: Inventory review.
-- **content_pruning_consolidation**: Reviews whether weak or ageing content should be refreshed, consolidated or pruned. Output: Maintenance review.
+- **Hugo — Content Pruning & Consolidation Worker**: Reviews whether weak or ageing content should be refreshed, consolidated or pruned. Output: Maintenance review.
 - **Iris — Content Refresh Brief Worker**: Turns refresh findings into a structured content refresh brief. Output: Refresh brief.
 
 ---
@@ -1710,6 +1721,128 @@ Ivan does not fetch live SERPs, rewrite the page, create schema or publish chang
 - **intent_analyst**: Clarifies the reader intent Ivan uses to assess format fit. Output: Intent assessment.
 - **Zara — Topical Authority & Coverage Gap Worker**: Checks whether the format has enough topical support. Output: Coverage review.
 - **Diane — Conversion & CTA Alignment Worker**: Checks whether the chosen format supports the next step. Output: Conversion review.
+
+---
+
+# Decide whether weak content should be improved, merged or left alone.
+
+Canonical: https://wordpresto.com/workers/content-pruning-consolidation/
+Markdown: https://wordpresto.com/workers/content-pruning-consolidation/index.md
+
+# Decide whether weak content should be improved, merged or left alone.
+
+Hugo reviews content maintenance signals: overlap risk, thin content, decay, unclear role, weak pathways and consolidation prompts, helping editors decide the safest next maintenance action.
+
+---
+
+Not every underperforming page needs a rewrite. Some pages need refreshing. Some need consolidating. Some should be kept because they serve a narrow but valid purpose. Some need a careful pruning discussion before the site becomes bloated and confusing. Hugo reviews content maintenance signals: overlap risk, thin content, decay, unclear role, weak pathways and consolidation prompts. He helps editors decide the safest next maintenance action.
+
+## Teams either keep everything or cut too quickly.
+
+Content pruning is risky when it is based on shallow signals. A page may look weak but still support a niche journey, internal pathway, compliance need or long-tail topic. Another page may look harmless while causing overlap, decay or cluster confusion. Hugo helps make maintenance decisions more careful.
+
+## Maintenance review without destructive action.
+
+Hugo combines already-available signals and turns them into a reviewable maintenance recommendation. He does not delete pages, merge content, create redirects or publish changes.
+
+### Checks
+
+- Thin or weak content signals
+- Content decay and freshness risk
+- Cannibalisation and overlap risk
+- Page role clarity
+- Internal link/pathway value
+- Manual checks before pruning or consolidation
+
+### Improves
+
+- Content maintenance planning
+- Safer pruning decisions
+- Consolidation review quality
+- Visibility of pages that need action or protection
+
+### Prepares
+
+- Maintenance recommendation
+- Consolidation candidate review
+- Pruning caution notes
+- Manual verification checklist
+
+### Surfaces for human review
+
+- Pages that may need refresh instead of pruning
+- Pages that may belong inside another asset
+- Risks before deleting or consolidating
+- Missing data needed before a final decision
+
+## What Hugo works from, and what he produces.
+
+### Works from
+
+- Content inventory signals
+- Cannibalisation review
+- Freshness review
+- Internal pathway signals
+- Topical coverage signals
+
+### Produces
+
+- Maintenance review
+- Recommended action
+- Consolidation prompts
+- Pruning cautions
+- Manual checks
+
+## When to use Hugo
+
+### A page looks weak but might still matter.
+
+Hugo checks whether the page has value before anyone considers pruning.
+
+### Content overlap is suspected.
+
+He helps decide whether to consolidate, sharpen or manually review.
+
+### A page is old and thin.
+
+Hugo separates refresh opportunities from consolidation candidates.
+
+### A site has too many similar pages.
+
+He gives editors a safer maintenance path than blind deletion.
+
+### Internal links depend on the page.
+
+Hugo flags pathway risk before removal or consolidation.
+
+### A maintenance plan needs reviewable actions.
+
+He turns messy signals into a structured recommendation.
+
+## Hugo recommends maintenance. Editors decide the action.
+
+Hugo does not delete, merge, redirect, rewrite or publish. He only recommends a maintenance direction and lists the manual checks needed before action.
+
+### Boundary checklist
+
+- Hugo recommends a direction, he never deletes or merges pages himself.
+- Findings combine existing review signals, not fresh destructive analysis.
+- Manual checks are always listed before any pruning or consolidation.
+- Weak signals alone are never treated as enough for destructive action.
+
+### Will not
+
+- Delete or prune pages
+- Merge content automatically
+- Create redirects
+- Rewrite or republish content
+- Treat weak signals as enough for destructive action
+
+## Workers Hugo works alongside.
+
+- **Cleo — Cannibalisation & Overlap Worker**: Flags overlap and unclear page-role risks. Output: Overlap review.
+- **Faye — Content Decay & Refresh Priority Worker**: Reviews whether the page needs refreshing or urgent review. Output: Freshness review.
+- **content_inventory**: Classifies the page as a content asset before maintenance decisions. Output: Inventory review.
 
 ---
 

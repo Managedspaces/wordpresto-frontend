@@ -392,6 +392,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-31-384.webp',
     teamColor: 'var(--team-seo)',
   },
+  {
+    id: 'content_pruning_consolidation',
+    name: 'Hugo',
+    role: 'Content Pruning & Consolidation Worker',
+    department: 'Content Maintenance',
+    team: 'seo',
+    stage: 'Content maintenance',
+    summary: 'Reviews content maintenance signals: overlap risk, thin content, decay, unclear role and weak pathways, helping editors decide the safest next maintenance action.',
+    output: 'Maintenance review',
+    image: '/agents/profiles/profile-36-192.webp',
+    image2x: '/agents/profiles/profile-36-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).

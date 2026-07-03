@@ -4229,6 +4229,167 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'PATHWAY STATUS',
     guidanceFooterValue: 'Needs review · weak pathways',
   },
+
+  // 28. Hugo - Content Pruning & Consolidation Worker
+  {
+    id: 'content_pruning_consolidation',
+    slug: 'content-pruning-consolidation',
+    name: 'Hugo',
+    role: 'Content Pruning & Consolidation Worker',
+    roleTitle: 'Content Maintenance Specialist',
+    department: 'Content Maintenance',
+    team: 'seo',
+    stage: 'Content maintenance',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-36-192.webp',
+    portrait2x: '/agents/profiles/profile-36-384.webp',
+    seoTitle: 'Content Pruning & Consolidation Worker | WordPresto',
+    metaDescription:
+      'Hugo reviews content maintenance signals: overlap risk, thin content, decay, unclear role, weak pathways and consolidation prompts, helping editors decide the safest next maintenance action.',
+    h1: 'Decide whether weak content should be improved, merged or left alone.',
+    heroPara1:
+      'Not every underperforming page needs a rewrite. Some pages need refreshing. Some need consolidating. Some should be kept because they serve a narrow but valid purpose. Some need a careful pruning discussion before the site becomes bloated and confusing. Hugo reviews content maintenance signals: overlap risk, thin content, decay, unclear role, weak pathways and consolidation prompts. He helps editors decide the safest next maintenance action.',
+    heroPara2:
+      'For content audits, pruning reviews, consolidation planning and long-term site maintenance.',
+    heroWorksAlongside: ['Cleo', 'Faye', 'Nora'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Content maintenance',
+      output: 'Output · Maintenance review',
+    },
+    problemEyebrow: 'Where content maintenance goes wrong',
+    problemH2: 'Teams either keep everything or cut too quickly.',
+    problemPara:
+      'Content pruning is risky when it is based on shallow signals. A page may look weak but still support a niche journey, internal pathway, compliance need or long-tail topic. Another page may look harmless while causing overlap, decay or cluster confusion. Hugo helps make maintenance decisions more careful.',
+    problemAnnotation: '↘ improve, consolidate or review before cutting',
+    beforeStamp: 'Unsafe pruning',
+    beforeHtml: `<p>The page is thin and old, so the team deletes it without checking links, overlap, page role or supporting value.</p>`,
+    beforeTags: ['Thin signal only', 'No pathway check', 'No role review', 'Risky deletion'],
+    beforeNote: 'maintenance becomes guesswork',
+    afterStamp: 'Careful review',
+    afterHtml: `<p>The page is marked as a consolidation candidate with manual checks before any action.</p>`,
+    afterTags: ['Review-safe', 'Role-aware', 'Checks listed', 'No auto-delete'],
+    afterNote: 'the editor decides with context',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Maintenance review without destructive action.',
+    helpsPara:
+      'Hugo combines already-available signals and turns them into a reviewable maintenance recommendation. He does not delete pages, merge content, create redirects or publish changes.',
+    checks: [
+      'Thin or weak content signals',
+      'Content decay and freshness risk',
+      'Cannibalisation and overlap risk',
+      'Page role clarity',
+      'Internal link/pathway value',
+      'Manual checks before pruning or consolidation',
+    ],
+    improves: [
+      'Content maintenance planning',
+      'Safer pruning decisions',
+      'Consolidation review quality',
+      'Visibility of pages that need action or protection',
+    ],
+    prepares: [
+      'Maintenance recommendation',
+      'Consolidation candidate review',
+      'Pruning caution notes',
+      'Manual verification checklist',
+    ],
+    surfaces: [
+      'Pages that may need refresh instead of pruning',
+      'Pages that may belong inside another asset',
+      'Risks before deleting or consolidating',
+      'Missing data needed before a final decision',
+    ],
+    ioH2: 'What Hugo works from, and what he produces.',
+    worksFrom: [
+      'Content inventory signals',
+      'Cannibalisation review',
+      'Freshness review',
+      'Internal pathway signals',
+      'Topical coverage signals',
+    ],
+    produces: [
+      'Maintenance review',
+      'Recommended action',
+      'Consolidation prompts',
+      'Pruning cautions',
+      'Manual checks',
+    ],
+    scenarios: [
+      {
+        title: 'A page looks weak but might still matter.',
+        description:
+          'Hugo checks whether the page has value before anyone considers pruning.',
+      },
+      {
+        title: 'Content overlap is suspected.',
+        description:
+          'He helps decide whether to consolidate, sharpen or manually review.',
+      },
+      {
+        title: 'A page is old and thin.',
+        description:
+          'Hugo separates refresh opportunities from consolidation candidates.',
+      },
+      {
+        title: 'A site has too many similar pages.',
+        description:
+          'He gives editors a safer maintenance path than blind deletion.',
+      },
+      {
+        title: 'Internal links depend on the page.',
+        description:
+          'Hugo flags pathway risk before removal or consolidation.',
+      },
+      {
+        title: 'A maintenance plan needs reviewable actions.',
+        description:
+          'He turns messy signals into a structured recommendation.',
+      },
+    ],
+    boundaryH2: 'Hugo recommends maintenance. Editors decide the action.',
+    boundaryPara:
+      'Hugo does not delete, merge, redirect, rewrite or publish. He only recommends a maintenance direction and lists the manual checks needed before action.',
+    boundaryChecklist: [
+      'Hugo recommends a direction, he never deletes or merges pages himself.',
+      'Findings combine existing review signals, not fresh destructive analysis.',
+      'Manual checks are always listed before any pruning or consolidation.',
+      'Weak signals alone are never treated as enough for destructive action.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Delete or prune pages' },
+      { color: 'red', text: 'Merge content automatically' },
+      { color: 'red', text: 'Create redirects' },
+      { color: 'red', text: 'Rewrite or republish content' },
+      { color: 'red', text: 'Treat weak signals as enough for destructive action' },
+    ],
+    relatedH2: 'Workers Hugo works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'cannibalisation_overlap',
+        description: 'Flags overlap and unclear page-role risks.',
+        outputLabel: 'Overlap review',
+        ctaLabel: 'How Cleo reviews',
+      },
+      {
+        id: 'content_decay',
+        description: 'Reviews whether the page needs refreshing or urgent review.',
+        outputLabel: 'Freshness review',
+        ctaLabel: 'How Faye reviews',
+      },
+      {
+        id: 'content_inventory',
+        description: 'Classifies the page as a content asset before maintenance decisions.',
+        outputLabel: 'Inventory review',
+        ctaLabel: 'How Nora classifies',
+      },
+    ],
+    ctaH2: 'Make content maintenance safer.',
+    ctaPara:
+      'Hugo helps editors decide whether a page should be refreshed, consolidated, protected or reviewed before any destructive action is considered.',
+    guidanceFooterLabel: 'MAINTENANCE STATUS',
+    guidanceFooterValue: 'Needs review · consolidate candidate',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {
