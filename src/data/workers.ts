@@ -211,6 +211,19 @@ export const workers: WorkerData[] = [
     image2x: '/agents/profiles/profile-37-384.webp',
     teamColor: 'var(--team-content)',
   },
+  {
+    id: 'clarity_proofing',
+    name: 'Esme',
+    role: 'Creative Writing Worker',
+    department: 'Clarity & Proofing',
+    team: 'content',
+    stage: 'Proofing',
+    summary: 'Proofs grammar, clarity, tone and risk-aware wording, tightening the writing so it is polished and consistent before it reaches review.',
+    output: 'Clarity review',
+    image: '/agents/profiles/profile-42-192.webp',
+    image2x: '/agents/profiles/profile-42-384.webp',
+    teamColor: 'var(--team-content)',
+  },
 ];
 
 // SEO Workers. These sit alongside the content Workers in the same workflow and

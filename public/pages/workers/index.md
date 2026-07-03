@@ -12,7 +12,7 @@ See also the [SEO Workers directory](https://wordpresto.com/workers/seo/).
 
 ---
 
-## Content Worker directory (14 specialist roles)
+## Content Worker directory (15 specialist roles)
 
 ### Helena — Voice & Style Worker
 
@@ -153,3 +153,13 @@ Iris produces a structured brief for refreshing existing content: what to update
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-distribution-brief.md
 
 Nina creates a distribution brief that maps where approved content should go and how it should be adapted for each channel.
+
+### Esme — Creative Writing Worker
+
+- Stage: Proofing
+- Output: Clarity review
+- URL: https://wordpresto.com/workers/clarity-proofing/
+- Markdown: https://wordpresto.com/workers/clarity-proofing/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/clarity-proofing.md
+
+Esme proofs grammar, clarity, tone and risk-aware wording, producing review-only suggestions so editors can improve the copy without handing control to automation.

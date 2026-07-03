@@ -183,7 +183,7 @@ export const WORKERS: WorkerEntry[] = [
   { id: 'trust_author_credibility', name: 'Alex', roleTitle: 'Trust & credibility specialist', department: 'Trust & Credibility', team: 'content', status: 'available', slug: 'trust-author-credibility', portrait: 39 },
   { id: 'content_refresh_brief', name: 'Iris', roleTitle: 'Content refresh specialist', department: 'Content Refresh', team: 'content', status: 'available', slug: 'content-refresh-brief', portrait: 35 },
   { id: 'content_distribution_brief', name: 'Nina', roleTitle: 'Distribution brief specialist', department: 'Content Distribution', team: 'content', status: 'available', slug: 'content-distribution-brief', portrait: 37 },
-  { id: 'clarity_proofing', name: 'Esme', roleTitle: 'Clarity & proofing specialist', department: 'Clarity & Proofing', team: 'content', status: 'available', slug: null, portrait: 42 },
+  { id: 'clarity_proofing', name: 'Esme', roleTitle: 'Clarity & proofing specialist', department: 'Clarity & Proofing', team: 'content', status: 'available', slug: 'clarity-proofing', portrait: 42 },
 
   // ---- SEO Team ----
   { id: 'page_inspector', name: 'Patrick', roleTitle: 'Source examiner', department: 'Discovery', team: 'seo', status: 'available', slug: null, portrait: 1 },
