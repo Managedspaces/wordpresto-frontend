@@ -3746,6 +3746,167 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'COVERAGE STATUS',
     guidanceFooterValue: 'Needs support · gaps found',
   },
+
+  // 25. Diane - Conversion & CTA Alignment Worker
+  {
+    id: 'conversion_alignment',
+    slug: 'conversion-alignment',
+    name: 'Diane',
+    role: 'Conversion & CTA Alignment Worker',
+    roleTitle: 'Conversion Alignment Analyst',
+    department: 'Conversion Review',
+    team: 'seo',
+    stage: 'Conversion review',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-29-192.webp',
+    portrait2x: '/agents/profiles/profile-29-384.webp',
+    seoTitle: 'Conversion & CTA Alignment Worker | WordPresto',
+    metaDescription:
+      'Diane reviews conversion alignment: CTA clarity, trust signals, proof gaps, metadata promise match and whether the next step makes sense for the page intent.',
+    h1: 'Check whether the page gives the reader a clear next step.',
+    heroPara1:
+      "Content can satisfy search intent and still fail commercially. The page may explain the topic well but bury the call to action, miss trust signals, ask for the wrong action, or create a conversion path that does not match the reader's stage. Diane reviews conversion alignment: CTA clarity, trust signals, proof gaps, metadata promise match and whether the next step makes sense for the page intent.",
+    heroPara2:
+      'For service pages, landing pages, commercial content, lead-generation pages and final page reviews before handoff.',
+    heroWorksAlongside: ['Yuna', 'Ivan', 'Leo'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Conversion review',
+      output: 'Output · Conversion alignment review',
+    },
+    problemEyebrow: 'Where conversion alignment breaks',
+    problemH2: 'A page can be useful and still leave the reader stranded.',
+    problemPara:
+      'The problem is often not the lack of a button. It is the wrong action, weak proof, vague trust signals, unclear timing or a next step that does not match why the reader arrived. Diane reviews whether the page leads somewhere sensible.',
+    problemAnnotation: '↘ align intent with action',
+    beforeStamp: 'Weak path',
+    beforeHtml: `<p>The page explains the service, but the CTA is generic, proof is thin and the next step appears too late.</p>`,
+    beforeTags: ['Weak CTA', 'Missing proof', 'Low trust', 'Poor timing'],
+    beforeNote: 'the reader has no clear reason to act',
+    afterStamp: 'Path clarified',
+    afterHtml: `<p>The page gives relevant proof, a clearer next step and a CTA that matches the reader's decision stage.</p>`,
+    afterTags: ['Better trust', 'Clear action', 'Intent fit', 'Human review'],
+    afterNote: 'the editor can improve the path',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Conversion review without pretending to run experiments.',
+    helpsPara:
+      'Diane reviews conversion signals already visible in the page evidence. She does not run A/B tests, access analytics or rewrite sales copy automatically. She gives editors a practical review of whether the page supports action.',
+    checks: [
+      'CTA presence and clarity',
+      'Intent-to-action alignment',
+      'Trust and proof signals',
+      'Metadata promise match',
+      'Reader decision path',
+      'Conversion distractions or weak next steps',
+    ],
+    improves: [
+      'Commercial page clarity',
+      'CTA placement and relevance',
+      'Trust-building before action',
+      'Editorial visibility of weak conversion paths',
+    ],
+    prepares: [
+      'Conversion alignment review',
+      'CTA improvement prompts',
+      'Trust signal gap list',
+      'Recommended next action',
+    ],
+    surfaces: [
+      'Missing or weak CTAs',
+      'Proof gaps',
+      'CTA mismatch with page intent',
+      'Links or sections that distract from conversion',
+    ],
+    ioH2: 'What Diane works from, and what she produces.',
+    worksFrom: [
+      'Intent assessment',
+      'Page structure',
+      'Metadata review',
+      'Evidence and trust signals',
+      'Link pathway signals',
+    ],
+    produces: [
+      'Conversion alignment review',
+      'CTA clarity notes',
+      'Trust gap list',
+      'Recommended next step',
+      'Decision-path findings',
+    ],
+    scenarios: [
+      {
+        title: 'A service page is not creating action.',
+        description:
+          'Diane checks whether the page has a clear, believable route to enquiry or booking.',
+      },
+      {
+        title: 'A page has traffic but weak leads.',
+        description:
+          "She reviews whether the next step matches the reader's likely stage.",
+      },
+      {
+        title: 'A CTA feels generic.',
+        description:
+          'Diane checks whether the action is specific enough for the page purpose.',
+      },
+      {
+        title: 'Trust signals are thin.',
+        description:
+          'She flags missing proof, reassurance or credibility context.',
+      },
+      {
+        title: 'A page mixes information and sales.',
+        description:
+          'Diane helps clarify whether the conversion path supports or interrupts the reader.',
+      },
+      {
+        title: 'A page is going to final review.',
+        description:
+          'She checks whether the editor should improve the path before approval.',
+      },
+    ],
+    boundaryH2: 'Diane reviews the path. Editors decide the change.',
+    boundaryPara:
+      'Diane does not run experiments, access analytics, rewrite CTAs automatically or guarantee conversion improvement. She reviews alignment and gives human editors practical findings.',
+    boundaryChecklist: [
+      'Diane flags conversion risk, she never rewrites CTAs or copy herself.',
+      'Findings come from page-level evidence, not analytics access or live experiments.',
+      'Recommended next steps are prompts for editorial review, not automatic changes.',
+      'No claim of guaranteed conversion improvement is made.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Run A/B tests' },
+      { color: 'red', text: 'Access analytics or claim conversion uplift' },
+      { color: 'red', text: 'Rewrite calls to action automatically' },
+      { color: 'red', text: 'Add forms, buttons or tracking' },
+      { color: 'red', text: 'Publish or apply changes to a CMS' },
+    ],
+    relatedH2: 'Workers Diane works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'intent_analyst',
+        description: 'Clarifies the reader intent Diane aligns with the page action.',
+        outputLabel: 'Intent assessment',
+        ctaLabel: 'How Yuna clarifies',
+      },
+      {
+        id: 'content_format_serp_fit',
+        description: 'Checks whether the page format supports the expected search shape.',
+        outputLabel: 'Format review',
+        ctaLabel: 'How Ivan checks',
+      },
+      {
+        id: 'internal_linking',
+        description: 'Reviews links and pathways around the next step.',
+        outputLabel: 'Link assessment',
+        ctaLabel: 'How Leo reviews',
+      },
+    ],
+    ctaH2: 'Turn useful pages into clearer journeys.',
+    ctaPara:
+      'Diane helps editors see whether the page gives readers enough trust, clarity and direction to take the next step.',
+    guidanceFooterLabel: 'CONVERSION STATUS',
+    guidanceFooterValue: 'Needs review · weak path',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {

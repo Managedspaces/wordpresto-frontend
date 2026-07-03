@@ -196,7 +196,7 @@ export const WORKERS: WorkerEntry[] = [
   { id: 'cannibalisation_overlap', name: 'Cleo', roleTitle: 'Content cannibalisation analyst', department: 'Content Cannibalisation', team: 'seo', status: 'available', slug: 'cannibalisation-overlap', portrait: 26 },
   { id: 'content_decay', name: 'Faye', roleTitle: 'Content freshness analyst', department: 'Content Freshness', team: 'seo', status: 'available', slug: 'content-decay', portrait: 27 },
   { id: 'topical_authority', name: 'Zara', roleTitle: 'Topical coverage analyst', department: 'Topical Coverage', team: 'seo', status: 'available', slug: 'topical-authority', portrait: 28 },
-  { id: 'conversion_alignment', name: 'Diane', roleTitle: 'Conversion alignment analyst', department: 'Conversion Review', team: 'seo', status: 'available', slug: null, portrait: 29 },
+  { id: 'conversion_alignment', name: 'Diane', roleTitle: 'Conversion alignment analyst', department: 'Conversion Review', team: 'seo', status: 'available', slug: 'conversion-alignment', portrait: 29 },
   { id: 'content_format_serp_fit', name: 'Ivan', roleTitle: 'Content format analyst', department: 'Content Format', team: 'seo', status: 'available', slug: null, portrait: 30 },
   { id: 'internal_link_pathway', name: 'Felix', roleTitle: 'Internal link pathway analyst', department: 'Internal Linking', team: 'seo', status: 'available', slug: null, portrait: 31 },
   { id: 'content_pruning_consolidation', name: 'Hugo', roleTitle: 'Content maintenance specialist', department: 'Content Maintenance', team: 'seo', status: 'available', slug: null, portrait: 36 },

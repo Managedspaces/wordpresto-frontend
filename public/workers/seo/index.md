@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (9 specialist roles)
+## SEO Worker directory (10 specialist roles)
 
 ### Nadia — SEO Title & Metadata Worker
 
@@ -103,3 +103,13 @@ Faye reviews freshness signals and content decay risk, helping editors decide wh
 - Legacy Markdown: https://wordpresto.com/pages/workers/topical-authority.md
 
 Zara reviews topical coverage signals and content gaps, helping editors see whether a page looks strong, needs support, is incomplete, or requires a wider content plan.
+
+### Diane — Conversion & CTA Alignment Worker
+
+- Stage: Conversion review
+- Output: Conversion alignment review
+- URL: https://wordpresto.com/workers/conversion-alignment/
+- Markdown: https://wordpresto.com/workers/conversion-alignment/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/conversion-alignment.md
+
+Diane reviews conversion alignment: CTA clarity, trust signals, proof gaps, metadata promise match and whether the next step makes sense for the page intent.
