@@ -8,6 +8,8 @@ export interface WorkerProfile {
   roleTitle?: string;
   department: string;
   team: 'content' | 'governance' | 'seo';
+  /** True only for workers not yet live (matches workerRegistry.ts's status: 'planned'). Swaps the hero CTA to "Join the waitlist" and adds a Planned pill instead of implying the worker is runnable today. */
+  planned?: boolean;
   stage: string;
   teamColor: string;
   portrait: string;
@@ -5357,6 +5359,168 @@ export const workerProfiles: WorkerProfile[] = [
       'Dana helps editors see whether content is ready for human approval, needs revision, or should be blocked before handoff.',
     guidanceFooterLabel: 'GATE STATUS',
     guidanceFooterValue: 'Needs revision · editor decision required',
+  },
+
+  // 35. Claire - Site Discovery Worker (planned, not yet live)
+  {
+    id: 'site_discovery',
+    slug: 'site-discovery',
+    name: 'Claire',
+    role: 'Site Discovery Worker',
+    roleTitle: 'Site Discovery Specialist',
+    department: 'Site Discovery',
+    team: 'seo',
+    planned: true,
+    stage: 'Site discovery',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-17-192.webp',
+    portrait2x: '/agents/profiles/profile-17-384.webp',
+    seoTitle: 'Site Discovery Worker (planned) | WordPresto',
+    metaDescription:
+      'Claire is the planned site discovery specialist for Word Presto: a bounded, owner-scoped discovery of a domain\'s URLs and a crawl-limited internal link picture. Not yet live.',
+    h1: 'Planned: map the pages before deeper site intelligence begins.',
+    heroPara1:
+      "Claire is the planned site discovery specialist for Word Presto. Her role is to support a bounded, owner-scoped discovery of a single domain's URLs and a crawl-limited internal link picture. She is not live yet. This page describes the intended capability: a careful discovery layer that helps the platform understand which pages exist, how they may connect, and which URLs may need review, without pretending to produce a complete site inventory.",
+    heroPara2:
+      'For future site audits, content inventory expansion, internal link mapping and project intelligence setup.',
+    heroWorksAlongside: ['Patrick', 'Nora', 'Leo'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Site discovery',
+      output: 'Output · Planned discovery review',
+    },
+    problemEyebrow: 'Where site discovery can go wrong',
+    problemH2: 'A site map is only useful if it is honest about its limits.',
+    problemPara:
+      'Discovery can easily overpromise. A crawler may miss pages, hit limits, respect robots rules, fail on JavaScript-heavy routes, or see only part of the link graph. Treating that as a complete source of truth creates bad decisions. Claire is designed to keep discovery bounded, explicit and review-only.',
+    problemAnnotation: '↘ discover carefully, do not pretend to know everything',
+    beforeStamp: 'Unsafe discovery',
+    beforeHtml: `<p>The tool crawls a few URLs and claims to know the full site structure.</p>`,
+    beforeTags: ['Overconfident', 'Unbounded', 'False completeness', 'Risky inventory'],
+    beforeNote: 'the platform treats partial data as truth',
+    afterStamp: 'Planned Claire model',
+    afterHtml: `<p>Claire discovers known URLs within strict limits and labels the result as crawl-limited.</p>`,
+    afterTags: ['Bounded', 'Owner-scoped', 'Honest limits', 'Review-only'],
+    afterNote: 'the editor knows what was and was not discovered',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Planned discovery without fake completeness.',
+    helpsPara:
+      "Claire is intended to discover URLs from approved sources and produce a review-only picture of the site's crawl-limited structure. She should never claim a complete inventory or confirmed orphan status without enough evidence.",
+    checks: [
+      'Owned-domain URL discovery',
+      'Sitemap and crawl-limited URL signals',
+      'Internal link picture within strict limits',
+      'Candidate orphan signals',
+      'Discovery limitations',
+      'Manual checks required before treating data as complete',
+    ],
+    improves: [
+      'Project intelligence setup',
+      'Site-level content visibility',
+      'Early inventory planning',
+      'Internal link and orphan-risk review',
+    ],
+    prepares: [
+      'Discovered URL list',
+      'Crawl-limited link picture',
+      'Candidate orphan notes',
+      'Discovery limitation summary',
+    ],
+    surfaces: [
+      'Pages discovered during the bounded pass',
+      'URLs that may need inspection',
+      'Gaps requiring manual confirmation',
+      'Limits of what the discovery pass could see',
+    ],
+    ioH2: 'What Claire is planned to work from, and what she would produce.',
+    worksFrom: [
+      'Owned domain',
+      'Sitemap signals where available',
+      'Crawl-limited page discovery',
+      'Internal links found during discovery',
+      'Robots and safety constraints',
+    ],
+    produces: [
+      'Discovered URL list',
+      'Crawl-limited link picture',
+      'Candidate orphan notes',
+      'Discovery limitations',
+      'Manual follow-up checks',
+    ],
+    scenarios: [
+      {
+        title: 'A new website project is being set up.',
+        description:
+          'Claire will help discover the initial set of pages the project should know about.',
+      },
+      {
+        title: 'The content inventory needs more source data.',
+        description:
+          'She will support a bounded discovery pass before inventory expansion.',
+      },
+      {
+        title: 'Internal link planning needs a site picture.',
+        description:
+          'Claire will provide a limited link view that other workers can review.',
+      },
+      {
+        title: 'Candidate orphan pages need investigation.',
+        description:
+          'She will flag candidates without pretending they are confirmed.',
+      },
+      {
+        title: 'A site audit needs a starting URL set.',
+        description:
+          'Claire will help build the first review list.',
+      },
+      {
+        title: 'Editors need discovery limits made visible.',
+        description:
+          'She will show what was discovered, what was not, and what needs manual checking.',
+      },
+    ],
+    boundaryH2: 'Claire is planned, not live.',
+    boundaryPara:
+      'Claire must be presented as a planned capability until the site discovery workflow is actually built and wired. She should not be shown as runnable, and the page should not imply full-site discovery already exists.',
+    boundaryChecklist: [
+      'Claire does not run today — this page describes a planned capability only.',
+      'Discovery results, when built, will always be labelled crawl-limited, never complete.',
+      'Candidate orphan pages will be flagged for review, never confirmed automatically.',
+      'Robots, ownership and crawl limits will always be respected, not bypassed.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Run today as an active worker' },
+      { color: 'red', text: 'Claim a complete site inventory' },
+      { color: 'red', text: 'Ignore robots, ownership or crawl limits' },
+      { color: 'red', text: 'Confirm orphan pages from partial crawl data' },
+      { color: 'red', text: 'Publish, edit or write to any CMS' },
+    ],
+    relatedH2: 'Workers Claire is planned to work alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'page_inspector',
+        description: 'Inspects individual URLs discovered or supplied for review.',
+        outputLabel: 'Page signals',
+        ctaLabel: 'How Patrick inspects',
+      },
+      {
+        id: 'content_inventory',
+        description: 'Classifies discovered pages as content assets.',
+        outputLabel: 'Inventory review',
+        ctaLabel: 'How Nora classifies',
+      },
+      {
+        id: 'internal_linking',
+        description: 'Reviews page-level relationship signals after pages are inspected.',
+        outputLabel: 'Link assessment',
+        ctaLabel: 'How Leo reviews',
+      },
+    ],
+    ctaH2: 'Planned discovery for safer project intelligence.',
+    ctaPara:
+      'Claire is intended to help Word Presto discover site URLs honestly, within limits, before deeper project intelligence and content review begin.',
+    guidanceFooterLabel: 'DISCOVERY STATUS',
+    guidanceFooterValue: 'Planned · not available yet',
   },
 ];
 

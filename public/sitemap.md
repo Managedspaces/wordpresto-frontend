@@ -242,6 +242,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/serp-snippet-opportunity.md
 - Focus: Morgan reviews how a page is likely to appear in search results and points out snippet and rich-result opportunities worth shaping for. Review-only, never a guarantee.
 
+### Planned: map the pages before deeper site intelligence begins.
+
+- HTML: https://wordpresto.com/workers/site-discovery/
+- Markdown: https://wordpresto.com/workers/site-discovery/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/site-discovery.md
+- Focus: Claire is the planned site discovery specialist for Word Presto: a bounded, owner-scoped discovery of a domain's URLs and a crawl-limited internal link picture. Not yet live.
+
 ### Give every draft a clearer shape.
 
 - HTML: https://wordpresto.com/workers/structure/

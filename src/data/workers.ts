@@ -483,6 +483,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-40-384.webp',
     teamColor: 'var(--team-governance)',
   },
+  {
+    id: 'site_discovery',
+    name: 'Claire',
+    role: 'Site Discovery Worker',
+    department: 'Site Discovery',
+    team: 'seo',
+    stage: 'Site discovery',
+    summary: 'Planned: a bounded, owner-scoped discovery of a domain\'s URLs and a crawl-limited internal link picture. Not yet live.',
+    output: 'Planned discovery review',
+    image: '/agents/profiles/profile-17-192.webp',
+    image2x: '/agents/profiles/profile-17-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).
