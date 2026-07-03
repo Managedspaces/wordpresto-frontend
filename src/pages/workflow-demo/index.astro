@@ -1315,6 +1315,12 @@ import { workflowDemo as meta } from '@/data/staticPages';
     <div class="footer-bottom">
       <span>&copy; 2026 WordPresto</span>
       <span>Review-led publishing · Human approval</span>
+      <span class="footer-legal-links">
+        <a href="/privacy/" class="footer-link">Privacy</a> ·
+        <a href="/terms/" class="footer-link">Terms</a> ·
+        <a href="/cookies/" class="footer-link">Cookies</a> ·
+        <a href="/fair-use/" class="footer-link">Fair use</a>
+      </span>
     </div>
   </footer>
 
@@ -1717,6 +1723,7 @@ import { workflowDemo as meta } from '@/data/staticPages';
   .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); transition: color 150ms; }
   .footer-link:hover { color: var(--wp-ink); }
   .footer-bottom { width: 100%; max-width: 1200px; margin: 46px auto 0; padding: 22px 34px 0; border-top: 1px solid var(--wp-line); display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; font-size: var(--wp-text-sm); color: var(--wp-text-muted); }
+  .footer-legal-links .footer-link { font-size: var(--wp-text-sm); }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {

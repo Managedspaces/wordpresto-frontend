@@ -121,6 +121,41 @@ const governanceOpsWorkers = workerProfiles.filter((w) => w.team === 'governance
         </section>
       )}
 
+      <!-- Legal -->
+      <section class="sitemap-section">
+        <h2 class="section-heading">Legal</h2>
+        <ul class="sitemap-list sitemap-list--workers">
+          <li class="sitemap-item">
+            <a href="/privacy/" class="sitemap-link">
+              <span class="sitemap-label">Privacy Policy</span>
+              <span class="sitemap-url">/privacy/</span>
+            </a>
+            <p class="sitemap-desc">How we collect, use and protect personal data.</p>
+          </li>
+          <li class="sitemap-item">
+            <a href="/terms/" class="sitemap-link">
+              <span class="sitemap-label">Terms &amp; Conditions</span>
+              <span class="sitemap-url">/terms/</span>
+            </a>
+            <p class="sitemap-desc">The terms that govern use of the site and the app.</p>
+          </li>
+          <li class="sitemap-item">
+            <a href="/cookies/" class="sitemap-link">
+              <span class="sitemap-label">Cookie Policy</span>
+              <span class="sitemap-url">/cookies/</span>
+            </a>
+            <p class="sitemap-desc">What cookies we use, and how to control them.</p>
+          </li>
+          <li class="sitemap-item">
+            <a href="/fair-use/" class="sitemap-link">
+              <span class="sitemap-label">Fair Use Policy</span>
+              <span class="sitemap-url">/fair-use/</span>
+            </a>
+            <p class="sitemap-desc">What is and is not acceptable use of the platform.</p>
+          </li>
+        </ul>
+      </section>
+
       <!-- Machine-readable -->
       <section class="sitemap-section sitemap-section--minor">
         <h2 class="section-heading">Machine-readable</h2>
@@ -161,6 +196,12 @@ const governanceOpsWorkers = workerProfiles.filter((w) => w.team === 'governance
     <div class="footer-bottom container">
       <span>© 2026 Word Presto</span>
       <span>Review-led publishing · Human approval</span>
+      <span class="footer-legal-links">
+        <a href="/privacy/" class="footer-link">Privacy</a> ·
+        <a href="/terms/" class="footer-link">Terms</a> ·
+        <a href="/cookies/" class="footer-link">Cookies</a> ·
+        <a href="/fair-use/" class="footer-link">Fair use</a>
+      </span>
     </div>
   </footer>
 
@@ -333,11 +374,15 @@ const governanceOpsWorkers = workerProfiles.filter((w) => w.team === 'governance
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 16px;
     padding-top: 20px;
     border-top: 1px solid var(--wp-rule);
     font-size: var(--wp-text-sm);
     color: var(--wp-text-tertiary);
   }
+  .footer-legal-links { font-size: var(--wp-text-sm); }
+  .footer-legal-links .footer-link { font-size: var(--wp-text-sm); }
 
   @media (max-width: 768px) {
     .sitemap-list--workers {

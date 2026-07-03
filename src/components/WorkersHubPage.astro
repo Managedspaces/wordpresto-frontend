@@ -161,6 +161,12 @@ const canonical = locale === 'en'
       <span>&copy; 2026 WordPresto</span>
       <span>{c.reviewLed}</span>
       <a href="/sitemap/" class="footer-link footer-sitemap-link">{c.siteMap}</a>
+      <span class="footer-legal-links">
+        <a href="/privacy/" class="footer-link">Privacy</a> ·
+        <a href="/terms/" class="footer-link">Terms</a> ·
+        <a href="/cookies/" class="footer-link">Cookies</a> ·
+        <a href="/fair-use/" class="footer-link">Fair use</a>
+      </span>
     </div>
   </footer>
 
@@ -442,6 +448,7 @@ const canonical = locale === 'en'
   .footer-col-heading { font-size: var(--wp-text-sm); font-weight: 700; }
   .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); }
   .footer-link:hover { color: var(--wp-ink); }
+  .footer-legal-links .footer-link { font-size: var(--wp-text-sm); }
   .footer-bottom {
     width: 100%;
     max-width: 1200px;
