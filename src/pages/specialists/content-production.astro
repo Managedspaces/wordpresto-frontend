@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { contentProductionTeam as meta } from '@/data/staticPages';
-import { getWorkersByTeam, TEAM_META } from '@/data/workerRegistry';
+import { getWorkersByTeam, TEAM_META, workerImage, workerInitials } from '@/data/workerRegistry';
 
 const team = TEAM_META.content;
 const workers = getWorkersByTeam('content');
@@ -52,11 +52,29 @@ const workers = getWorkersByTeam('content');
       </div>
 
       <div class="specialists-grid">
-        {workers.map((w) => (
+        {workers.map((w) => {
+          const img = workerImage(w);
+          return (
           <div class="specialist-card">
             <div class="specialist-card-top">
-              <div class="specialist-card-name">{w.name}</div>
-              <div class="specialist-card-role">{w.roleTitle}</div>
+              {img ? (
+                <img
+                  src={img.src}
+                  srcset={`${img.src} 1x, ${img.src2x} 2x`}
+                  alt={`${w.name} · ${w.roleTitle}`}
+                  class="specialist-card-img"
+                  width="56"
+                  height="56"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <span class="specialist-card-initials" style={`background: ${team.color}`}>{workerInitials(w.name)}</span>
+              )}
+              <div class="specialist-card-names">
+                <div class="specialist-card-name">{w.name}</div>
+                <div class="specialist-card-role">{w.roleTitle}</div>
+              </div>
             </div>
             <div class="specialist-card-tags">
               <span class="specialist-tag">
@@ -74,7 +92,8 @@ const workers = getWorkersByTeam('content');
               <span class="specialist-card-pending">Profile page coming soon</span>
             )}
           </div>
-        ))}
+          );
+        })}
       </div>
 
       <div class="specialists-note">
@@ -250,6 +269,28 @@ const workers = getWorkersByTeam('content');
     box-shadow: 0 1px 2px rgba(54,44,24,0.05), 0 12px 24px -16px rgba(54,44,24,0.14);
     padding: 16px;
   }
+  .specialist-card-top { display: flex; align-items: center; gap: 12px; }
+  .specialist-card-img {
+    width: 56px; height: 56px;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 0 0 1px var(--wp-border-secondary);
+    flex-shrink: 0;
+  }
+  .specialist-card-initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px; height: 56px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-md);
+    font-weight: 700;
+    color: #FFF;
+    box-shadow: 0 0 0 1px var(--wp-border-secondary);
+  }
+  .specialist-card-names { min-width: 0; }
   .specialist-card-name { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
   .specialist-card-role { font-size: var(--wp-text-sm); color: var(--wp-text-tertiary); margin-top: 3px; }
   .specialist-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }

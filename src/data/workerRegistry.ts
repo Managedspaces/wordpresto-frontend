@@ -40,6 +40,28 @@ export interface WorkerEntry {
   status: WorkerStatus;
   /** Slug of an existing /workers/[slug]/ profile page, or null if not built yet. */
   slug: string | null;
+  /**
+   * Portrait number (1-40), per the app repo's canonical portrait map
+   * (docs/agent-profile-map.md, WORKER_PROFILE_IMAGE in agentProfileImages.ts).
+   * null for workers added after the 40-portrait set (Sema, Cassius) — they
+   * render with an initials avatar instead until a portrait is assigned.
+   */
+  portrait: number | null;
+}
+
+/** Deterministic asset path pattern from the app repo's portrait map: /agents/profiles/profile-{nn}-{size}.webp */
+export function workerImage(entry: WorkerEntry): { src: string; src2x: string } | null {
+  if (!entry.portrait) return null;
+  const nn = String(entry.portrait).padStart(2, '0');
+  return {
+    src: `/agents/profiles/profile-${nn}-192.webp`,
+    src2x: `/agents/profiles/profile-${nn}-384.webp`,
+  };
+}
+
+/** Upper-case initials fallback for workers without an assigned portrait. */
+export function workerInitials(name: string): string {
+  return name.slice(0, 2).toUpperCase();
 }
 
 // Public team order for the marketing site (distinct from the app's internal
@@ -86,53 +108,53 @@ export const TEAM_META: Record<TeamId, TeamMeta> = {
 // /workers/[slug]/ profile page exists in workerProfiles.ts.
 export const WORKERS: WorkerEntry[] = [
   // ---- Content Production Team ----
-  { id: 'content_analyst', name: 'Omar', roleTitle: 'Content reviewer', department: 'Content Review', team: 'content', status: 'available', slug: 'content-analyst' },
-  { id: 'structure', name: 'Marcus', roleTitle: 'Structure editor', department: 'Editorial Architecture', team: 'content', status: 'available', slug: 'structure' },
-  { id: 'content_inventory', name: 'Nora', roleTitle: 'Content inventory specialist', department: 'Content Inventory', team: 'content', status: 'available', slug: null },
-  { id: 'voice_style', name: 'Helena', roleTitle: 'Brand voice specialist', department: 'Brand Voice', team: 'content', status: 'available', slug: 'voice-style' },
-  { id: 'content_brief_builder', name: 'Luca', roleTitle: 'Editorial brief writer', department: 'Editorial Planning', team: 'content', status: 'available', slug: 'content-brief-builder' },
-  { id: 'draft_rewrite', name: 'Ellis', roleTitle: 'Draft copy specialist', department: 'Editorial Drafting', team: 'content', status: 'available', slug: 'draft-rewrite' },
-  { id: 'draft_quality_reviewer', name: 'Quinn', roleTitle: 'Draft quality specialist', department: 'Draft Quality', team: 'content', status: 'available', slug: 'draft-quality-reviewer' },
-  { id: 'section_rewrite', name: 'Rosa', roleTitle: 'Section rewrite specialist', department: 'Section Editing', team: 'content', status: 'available', slug: 'section-rewrite' },
-  { id: 'approval_report', name: 'Audrey', roleTitle: 'Approval report specialist', department: 'Approval Reporting', team: 'content', status: 'available', slug: 'approval-report' },
-  { id: 'seo_metadata', name: 'Nadia', roleTitle: 'SEO metadata specialist', department: 'SEO Metadata', team: 'content', status: 'available', slug: 'seo-metadata' },
-  { id: 'readability', name: 'Priya', roleTitle: 'Readability reviewer', department: 'Readability', team: 'content', status: 'available', slug: 'readability' },
-  { id: 'brief_draft_alignment', name: 'Ada', roleTitle: 'Brief alignment reviewer', department: 'Brief Alignment', team: 'content', status: 'available', slug: 'brief-draft-alignment' },
-  { id: 'cms_handoff', name: 'Ravi', roleTitle: 'CMS handoff reviewer', department: 'CMS Handoff', team: 'content', status: 'available', slug: 'cms-handoff' },
-  { id: 'editorial_risk_claims', name: 'Vera', roleTitle: 'Editorial compliance reviewer', department: 'Editorial Compliance', team: 'content', status: 'available', slug: 'editorial-risk-claims' },
-  { id: 'trust_author_credibility', name: 'Alex', roleTitle: 'Trust & credibility specialist', department: 'Trust & Credibility', team: 'content', status: 'available', slug: 'trust-author-credibility' },
-  { id: 'content_refresh_brief', name: 'Iris', roleTitle: 'Content refresh specialist', department: 'Content Refresh', team: 'content', status: 'available', slug: 'content-refresh-brief' },
-  { id: 'content_distribution_brief', name: 'Nina', roleTitle: 'Distribution brief specialist', department: 'Content Distribution', team: 'content', status: 'available', slug: 'content-distribution-brief' },
-  { id: 'clarity_proofing', name: 'Esme', roleTitle: 'Clarity & proofing specialist', department: 'Clarity & Proofing', team: 'content', status: 'available', slug: null },
+  { id: 'content_analyst', name: 'Omar', roleTitle: 'Content reviewer', department: 'Content Review', team: 'content', status: 'available', slug: 'content-analyst', portrait: 5 },
+  { id: 'structure', name: 'Marcus', roleTitle: 'Structure editor', department: 'Editorial Architecture', team: 'content', status: 'available', slug: 'structure', portrait: 7 },
+  { id: 'content_inventory', name: 'Nora', roleTitle: 'Content inventory specialist', department: 'Content Inventory', team: 'content', status: 'available', slug: null, portrait: 14 },
+  { id: 'voice_style', name: 'Helena', roleTitle: 'Brand voice specialist', department: 'Brand Voice', team: 'content', status: 'available', slug: 'voice-style', portrait: 8 },
+  { id: 'content_brief_builder', name: 'Luca', roleTitle: 'Editorial brief writer', department: 'Editorial Planning', team: 'content', status: 'available', slug: 'content-brief-builder', portrait: 13 },
+  { id: 'draft_rewrite', name: 'Ellis', roleTitle: 'Draft copy specialist', department: 'Editorial Drafting', team: 'content', status: 'available', slug: 'draft-rewrite', portrait: 18 },
+  { id: 'draft_quality_reviewer', name: 'Quinn', roleTitle: 'Draft quality specialist', department: 'Draft Quality', team: 'content', status: 'available', slug: 'draft-quality-reviewer', portrait: 19 },
+  { id: 'section_rewrite', name: 'Rosa', roleTitle: 'Section rewrite specialist', department: 'Section Editing', team: 'content', status: 'available', slug: 'section-rewrite', portrait: 20 },
+  { id: 'approval_report', name: 'Audrey', roleTitle: 'Approval report specialist', department: 'Approval Reporting', team: 'content', status: 'available', slug: 'approval-report', portrait: 21 },
+  { id: 'seo_metadata', name: 'Nadia', roleTitle: 'SEO metadata specialist', department: 'SEO Metadata', team: 'content', status: 'available', slug: 'seo-metadata', portrait: 22 },
+  { id: 'readability', name: 'Priya', roleTitle: 'Readability reviewer', department: 'Readability', team: 'content', status: 'available', slug: 'readability', portrait: 25 },
+  { id: 'brief_draft_alignment', name: 'Ada', roleTitle: 'Brief alignment reviewer', department: 'Brief Alignment', team: 'content', status: 'available', slug: 'brief-draft-alignment', portrait: 32 },
+  { id: 'cms_handoff', name: 'Ravi', roleTitle: 'CMS handoff reviewer', department: 'CMS Handoff', team: 'content', status: 'available', slug: 'cms-handoff', portrait: 33 },
+  { id: 'editorial_risk_claims', name: 'Vera', roleTitle: 'Editorial compliance reviewer', department: 'Editorial Compliance', team: 'content', status: 'available', slug: 'editorial-risk-claims', portrait: 34 },
+  { id: 'trust_author_credibility', name: 'Alex', roleTitle: 'Trust & credibility specialist', department: 'Trust & Credibility', team: 'content', status: 'available', slug: 'trust-author-credibility', portrait: 39 },
+  { id: 'content_refresh_brief', name: 'Iris', roleTitle: 'Content refresh specialist', department: 'Content Refresh', team: 'content', status: 'available', slug: 'content-refresh-brief', portrait: 35 },
+  { id: 'content_distribution_brief', name: 'Nina', roleTitle: 'Distribution brief specialist', department: 'Content Distribution', team: 'content', status: 'available', slug: 'content-distribution-brief', portrait: 37 },
+  { id: 'clarity_proofing', name: 'Esme', roleTitle: 'Clarity & proofing specialist', department: 'Clarity & Proofing', team: 'content', status: 'available', slug: null, portrait: null },
 
   // ---- SEO Team ----
-  { id: 'page_inspector', name: 'Patrick', roleTitle: 'Source examiner', department: 'Discovery', team: 'seo', status: 'available', slug: null },
-  { id: 'technical_health', name: 'Maya', roleTitle: 'Technical reviewer', department: 'Technical Review', team: 'seo', status: 'available', slug: 'technical-health' },
-  { id: 'intent_analyst', name: 'Yuna', roleTitle: 'Search intent specialist', department: 'Search Intelligence', team: 'seo', status: 'available', slug: null },
-  { id: 'evidence', name: 'Kenji', roleTitle: 'Evidence reviewer', department: 'Provenance', team: 'seo', status: 'available', slug: null },
-  { id: 'internal_linking', name: 'Leo', roleTitle: 'Content relationship specialist', department: 'Content Relationships', team: 'seo', status: 'available', slug: null },
-  { id: 'schema', name: 'Sofia', roleTitle: 'Structured-data reviewer', department: 'Structured Data', team: 'seo', status: 'available', slug: 'schema' },
-  { id: 'accessibility', name: 'Mara', roleTitle: 'Accessibility reviewer', department: 'Accessibility', team: 'seo', status: 'available', slug: null },
-  { id: 'cannibalisation_overlap', name: 'Cleo', roleTitle: 'Content cannibalisation analyst', department: 'Content Cannibalisation', team: 'seo', status: 'available', slug: null },
-  { id: 'content_decay', name: 'Faye', roleTitle: 'Content freshness analyst', department: 'Content Freshness', team: 'seo', status: 'available', slug: null },
-  { id: 'topical_authority', name: 'Zara', roleTitle: 'Topical coverage analyst', department: 'Topical Coverage', team: 'seo', status: 'available', slug: null },
-  { id: 'conversion_alignment', name: 'Diane', roleTitle: 'Conversion alignment analyst', department: 'Conversion Review', team: 'seo', status: 'available', slug: null },
-  { id: 'content_format_serp_fit', name: 'Ivan', roleTitle: 'Content format analyst', department: 'Content Format', team: 'seo', status: 'available', slug: null },
-  { id: 'internal_link_pathway', name: 'Felix', roleTitle: 'Internal link pathway analyst', department: 'Internal Linking', team: 'seo', status: 'available', slug: null },
-  { id: 'content_pruning_consolidation', name: 'Hugo', roleTitle: 'Content maintenance specialist', department: 'Content Maintenance', team: 'seo', status: 'available', slug: null },
-  { id: 'serp_snippet_opportunity', name: 'Morgan', roleTitle: 'SERP snippet specialist', department: 'SERP Optimisation', team: 'seo', status: 'available', slug: 'serp-snippet-opportunity' },
-  { id: 'site_discovery', name: 'Claire', roleTitle: 'Site discovery specialist', department: 'Site Discovery', team: 'seo', status: 'planned', slug: null },
-  { id: 'semantic_search_analyzer', name: 'Sema', roleTitle: 'Semantic coverage analyst', department: 'Semantic Intelligence', team: 'seo', status: 'available', slug: null },
-  { id: 'competitor_intel', name: 'Cassius', roleTitle: 'Competitive analyst', department: 'Competitive Intelligence', team: 'seo', status: 'available', slug: null },
+  { id: 'page_inspector', name: 'Patrick', roleTitle: 'Source examiner', department: 'Discovery', team: 'seo', status: 'available', slug: null, portrait: 1 },
+  { id: 'technical_health', name: 'Maya', roleTitle: 'Technical reviewer', department: 'Technical Review', team: 'seo', status: 'available', slug: 'technical-health', portrait: 2 },
+  { id: 'intent_analyst', name: 'Yuna', roleTitle: 'Search intent specialist', department: 'Search Intelligence', team: 'seo', status: 'available', slug: null, portrait: 6 },
+  { id: 'evidence', name: 'Kenji', roleTitle: 'Evidence reviewer', department: 'Provenance', team: 'seo', status: 'available', slug: null, portrait: 3 },
+  { id: 'internal_linking', name: 'Leo', roleTitle: 'Content relationship specialist', department: 'Content Relationships', team: 'seo', status: 'available', slug: null, portrait: 9 },
+  { id: 'schema', name: 'Sofia', roleTitle: 'Structured-data reviewer', department: 'Structured Data', team: 'seo', status: 'available', slug: 'schema', portrait: 10 },
+  { id: 'accessibility', name: 'Mara', roleTitle: 'Accessibility reviewer', department: 'Accessibility', team: 'seo', status: 'available', slug: null, portrait: 24 },
+  { id: 'cannibalisation_overlap', name: 'Cleo', roleTitle: 'Content cannibalisation analyst', department: 'Content Cannibalisation', team: 'seo', status: 'available', slug: null, portrait: 26 },
+  { id: 'content_decay', name: 'Faye', roleTitle: 'Content freshness analyst', department: 'Content Freshness', team: 'seo', status: 'available', slug: null, portrait: 27 },
+  { id: 'topical_authority', name: 'Zara', roleTitle: 'Topical coverage analyst', department: 'Topical Coverage', team: 'seo', status: 'available', slug: null, portrait: 28 },
+  { id: 'conversion_alignment', name: 'Diane', roleTitle: 'Conversion alignment analyst', department: 'Conversion Review', team: 'seo', status: 'available', slug: null, portrait: 29 },
+  { id: 'content_format_serp_fit', name: 'Ivan', roleTitle: 'Content format analyst', department: 'Content Format', team: 'seo', status: 'available', slug: null, portrait: 30 },
+  { id: 'internal_link_pathway', name: 'Felix', roleTitle: 'Internal link pathway analyst', department: 'Internal Linking', team: 'seo', status: 'available', slug: null, portrait: 31 },
+  { id: 'content_pruning_consolidation', name: 'Hugo', roleTitle: 'Content maintenance specialist', department: 'Content Maintenance', team: 'seo', status: 'available', slug: null, portrait: 36 },
+  { id: 'serp_snippet_opportunity', name: 'Morgan', roleTitle: 'SERP snippet specialist', department: 'SERP Optimisation', team: 'seo', status: 'available', slug: 'serp-snippet-opportunity', portrait: 38 },
+  { id: 'site_discovery', name: 'Claire', roleTitle: 'Site discovery specialist', department: 'Site Discovery', team: 'seo', status: 'planned', slug: null, portrait: 17 },
+  { id: 'semantic_search_analyzer', name: 'Sema', roleTitle: 'Semantic coverage analyst', department: 'Semantic Intelligence', team: 'seo', status: 'available', slug: null, portrait: null },
+  { id: 'competitor_intel', name: 'Cassius', roleTitle: 'Competitive analyst', department: 'Competitive Intelligence', team: 'seo', status: 'available', slug: null, portrait: null },
 
   // ---- Operations / Management ----
-  { id: 'review_queue', name: 'Riley', roleTitle: 'Review queue coordinator', department: 'Change Planning', team: 'operations', status: 'available', slug: null },
+  { id: 'review_queue', name: 'Riley', roleTitle: 'Review queue coordinator', department: 'Change Planning', team: 'operations', status: 'available', slug: null, portrait: 16 },
 
   // ---- Approval / Governance Team ----
-  { id: 'safe_change_planner', name: 'Sam', roleTitle: 'Change planning specialist', department: 'Change Planning', team: 'governance', status: 'available', slug: null },
-  { id: 'review', name: 'Helen', roleTitle: 'Review editor', department: 'Editorial Approval', team: 'governance', status: 'available', slug: null },
-  { id: 'evidence_gap', name: 'Theo', roleTitle: 'Evidence gap specialist', department: 'Evidence Assurance', team: 'governance', status: 'available', slug: 'evidence-gap' },
-  { id: 'editorial_approval_gate', name: 'Dana', roleTitle: 'Editorial gate reviewer', department: 'Editorial Approval Gate', team: 'governance', status: 'available', slug: null },
+  { id: 'safe_change_planner', name: 'Sam', roleTitle: 'Change planning specialist', department: 'Change Planning', team: 'governance', status: 'available', slug: null, portrait: 15 },
+  { id: 'review', name: 'Helen', roleTitle: 'Review editor', department: 'Editorial Approval', team: 'governance', status: 'available', slug: null, portrait: 4 },
+  { id: 'evidence_gap', name: 'Theo', roleTitle: 'Evidence gap specialist', department: 'Evidence Assurance', team: 'governance', status: 'available', slug: 'evidence-gap', portrait: 23 },
+  { id: 'editorial_approval_gate', name: 'Dana', roleTitle: 'Editorial gate reviewer', department: 'Editorial Approval Gate', team: 'governance', status: 'available', slug: null, portrait: 40 },
 ];
 
 export const TOTAL_SPECIALISTS = WORKERS.length;
