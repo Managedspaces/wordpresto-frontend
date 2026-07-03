@@ -457,6 +457,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-15-384.webp',
     teamColor: 'var(--team-governance)',
   },
+  {
+    id: 'review',
+    name: 'Helen',
+    role: 'Review Worker',
+    department: 'Editorial Approval',
+    team: 'governance',
+    stage: 'Editorial review',
+    summary: 'Collates findings and recommendations into a structured review summary for human action, making the review understandable without removing the nuance.',
+    output: 'Review summary',
+    image: '/agents/profiles/profile-04-192.webp',
+    image2x: '/agents/profiles/profile-04-384.webp',
+    teamColor: 'var(--team-governance)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).

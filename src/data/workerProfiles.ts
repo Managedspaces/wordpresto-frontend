@@ -5034,6 +5034,167 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'CHANGE STATUS',
     guidanceFooterValue: 'Proposed · awaiting review',
   },
+
+  // 33. Helen - Review Worker
+  {
+    id: 'review',
+    slug: 'review',
+    name: 'Helen',
+    role: 'Review Worker',
+    roleTitle: 'Review Editor',
+    department: 'Editorial Approval',
+    team: 'governance',
+    stage: 'Editorial review',
+    teamColor: 'var(--team-governance)',
+    portrait: '/agents/profiles/profile-04-192.webp',
+    portrait2x: '/agents/profiles/profile-04-384.webp',
+    seoTitle: 'Review Worker | WordPresto',
+    metaDescription:
+      'Helen collates findings and recommendations into a structured review summary for human action, making the review understandable without removing the nuance.',
+    h1: 'Turn complex findings into a clear editorial review.',
+    heroPara1:
+      'A page review can involve technical issues, content gaps, evidence concerns, readability notes, intent problems and approval blockers. Editors need a clear summary, not another pile of disconnected findings. Helen collates findings and recommendations into a structured review summary for human action. She makes the review understandable without removing the nuance.',
+    heroPara2:
+      'For page audits, content analysis, approval preparation and handoff between worker findings and editor decisions.',
+    heroWorksAlongside: ['Riley', 'Sam', 'Dana'],
+    heroTagPills: {
+      team: 'Approval & Governance',
+      stage: 'Stage · Editorial review',
+      output: 'Output · Review summary',
+    },
+    problemEyebrow: 'Where review summaries fail',
+    problemH2: 'A useful audit still fails if the editor cannot act on it.',
+    problemPara:
+      'Too many findings create fatigue. Too little detail hides risk. A good review summary needs to preserve the important signals while making the next action clear. Helen gives editors the version they can actually use.',
+    problemAnnotation: '↘ summarise without flattening the evidence',
+    beforeStamp: 'Unclear review',
+    beforeHtml: `<p>Technical, content and evidence findings appear separately with no clear action order.</p>`,
+    beforeTags: ['Scattered findings', 'No summary', 'Unclear priority', 'Hard to approve'],
+    beforeNote: 'the editor has to assemble the story',
+    afterStamp: 'Editorial summary',
+    afterHtml: `<p>Helen groups the findings, highlights blockers and lists review actions in order.</p>`,
+    afterTags: ['Clear summary', 'Prioritised', 'Reviewable', 'Human-led'],
+    afterNote: 'the editor knows what needs attention',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A review layer for human decision-making.',
+    helpsPara:
+      'Helen reads the available findings and turns them into a calm, structured summary. She does not approve, edit, apply or publish. She helps the editor understand what matters.',
+    checks: [
+      'Worker findings and recommendations',
+      'Manual review items',
+      'Priority and severity',
+      'Evidence limitations',
+      'Approval blockers',
+      'Action order',
+    ],
+    improves: [
+      'Editorial clarity',
+      'Human review speed',
+      'Approval preparation',
+      'Understanding across teams',
+    ],
+    prepares: [
+      'Review summary',
+      'Prioritised action list',
+      'Manual review notes',
+      'Blocker summary',
+    ],
+    surfaces: [
+      'Critical issues first',
+      'Items needing manual judgement',
+      'Conflicting or uncertain findings',
+      'Recommendations that should not proceed yet',
+    ],
+    ioH2: 'What Helen works from, and what she produces.',
+    worksFrom: [
+      'Worker results',
+      'Review queue items',
+      'Proposed changes',
+      'Evidence limitations',
+      'Approval signals',
+    ],
+    produces: [
+      'Editorial review summary',
+      'Priority action list',
+      'Manual review notes',
+      'Blocker summary',
+      'Decision-support context',
+    ],
+    scenarios: [
+      {
+        title: 'A page review has too many findings.',
+        description:
+          'Helen turns them into a clear summary.',
+      },
+      {
+        title: 'An editor needs the next action.',
+        description:
+          'She highlights what to review first.',
+      },
+      {
+        title: 'A handoff is needed.',
+        description:
+          'Helen makes the findings readable for someone who did not run the analysis.',
+      },
+      {
+        title: 'Approval is approaching.',
+        description:
+          'She surfaces blockers and unresolved review items.',
+      },
+      {
+        title: 'Findings are mixed across teams.',
+        description:
+          'Helen groups technical, content, evidence and governance issues into one review.',
+      },
+      {
+        title: 'The team needs a calm editorial view.',
+        description:
+          'She reduces noise without hiding important concerns.',
+      },
+    ],
+    boundaryH2: 'Helen summarises. Editors decide.',
+    boundaryPara:
+      'Helen does not approve content, edit copy, apply changes or publish. She prepares a review summary so humans can make better decisions.',
+    boundaryChecklist: [
+      'Helen summarises findings, she never approves or edits content herself.',
+      'Blockers are always surfaced, never hidden to make a page look ready.',
+      'Summaries preserve important nuance rather than flattening it away.',
+      'Specialist legal, compliance or accessibility review is never replaced.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Approve content automatically' },
+      { color: 'red', text: 'Rewrite or apply fixes' },
+      { color: 'red', text: 'Hide blockers to make a page look ready' },
+      { color: 'red', text: 'Publish or write to any CMS' },
+      { color: 'red', text: 'Replace specialist legal, compliance or accessibility review' },
+    ],
+    relatedH2: 'Workers Helen works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'review_queue',
+        description: 'Organises proposed changes into decision items.',
+        outputLabel: 'Review queue',
+        ctaLabel: 'How Riley organises',
+      },
+      {
+        id: 'safe_change_planner',
+        description: 'Turns findings into proposed changes.',
+        outputLabel: 'Change plan',
+        ctaLabel: 'How Sam plans',
+      },
+      {
+        id: 'editorial_approval_gate',
+        description: 'Uses the review state to assess readiness for approval.',
+        outputLabel: 'Approval gate',
+        ctaLabel: 'How Dana assesses',
+      },
+    ],
+    ctaH2: 'Give editors the review they can act on.',
+    ctaPara:
+      'Helen turns worker findings into a clear editorial summary so human reviewers can decide what happens next.',
+    guidanceFooterLabel: 'REVIEW STATUS',
+    guidanceFooterValue: 'Summary ready · editor action needed',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {
