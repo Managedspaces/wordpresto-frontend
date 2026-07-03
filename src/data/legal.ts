@@ -36,8 +36,8 @@ const p = (text: string): LegalBlock => ({ type: 'p', text });
 const ul = (items: string[]): LegalBlock => ({ type: 'ul', items });
 
 const EFFECTIVE_DATE = '3 July 2026';
-const CONTACT_EMAIL = 'hello@managedspaces.net';
-const COMPANY = 'Managed Spaces Ltd';
+const CONTACT_EMAIL = 'hello@wordpresto.com';
+const COMPANY = 'Aestute Ltd T/A Word Presto';
 
 export const privacyPolicy: LegalPageContent = {
   slug: 'privacy',
