@@ -109,6 +109,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-refresh-brief.md
 - Focus: Iris produces a structured brief for refreshing existing content: what to update, what to cut and what to add. For teams refreshing pages with clear direction rather than guesswork.
 
+### Check whether the page gives the reader a clear next step.
+
+- HTML: https://wordpresto.com/workers/conversion-alignment/
+- Markdown: https://wordpresto.com/workers/conversion-alignment/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/conversion-alignment.md
+- Focus: Diane reviews conversion alignment: CTA clarity, trust signals, proof gaps, metadata promise match and whether the next step makes sense for the page intent.
+
 ### Review the draft before it moves forward.
 
 - HTML: https://wordpresto.com/workers/draft-quality-reviewer/

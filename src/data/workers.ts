@@ -353,6 +353,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-28-384.webp',
     teamColor: 'var(--team-seo)',
   },
+  {
+    id: 'conversion_alignment',
+    name: 'Diane',
+    role: 'Conversion & CTA Alignment Worker',
+    department: 'Conversion Review',
+    team: 'seo',
+    stage: 'Conversion review',
+    summary: 'Reviews conversion alignment: CTA clarity, trust signals, proof gaps and whether the next step makes sense for the page intent.',
+    output: 'Conversion alignment review',
+    image: '/agents/profiles/profile-29-192.webp',
+    image2x: '/agents/profiles/profile-29-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).
