@@ -38,7 +38,7 @@ This file consolidates the main public WordPresto marketing and Worker content f
 - Find the concepts the page is missing.: https://wordpresto.com/workers/semantic-search-analyzer/index.md
 - Get the title, description and H1 right.: https://wordpresto.com/workers/seo-metadata/index.md
 - Shape how the page shows up in search.: https://wordpresto.com/workers/serp-snippet-opportunity/index.md
-- Planned: map the pages before deeper site intelligence begins.: https://wordpresto.com/workers/site-discovery/index.md
+- Find the pages before the work begins.: https://wordpresto.com/workers/site-discovery/index.md
 - Give every draft a clearer shape.: https://wordpresto.com/workers/structure/index.md
 - Check the technical signals behind the page.: https://wordpresto.com/workers/technical-health/index.md
 - See whether the page has enough topical support.: https://wordpresto.com/workers/topical-authority/index.md
@@ -501,12 +501,12 @@ Cassius reviews competitor coverage from stored SERP competitor data, surfacing 
 ### Claire — Site Discovery Worker
 
 - Stage: Site discovery
-- Output: Planned discovery review
+- Output: Site discovery review
 - URL: https://wordpresto.com/workers/site-discovery/
 - Markdown: https://wordpresto.com/workers/site-discovery/index.md
 - Legacy Markdown: https://wordpresto.com/pages/workers/site-discovery.md
 
-Claire is the planned site discovery specialist for Word Presto: a bounded, owner-scoped discovery of a domain's URLs and a crawl-limited internal link picture. Not yet live.
+Claire helps identify the pages in a website project so editors can see what needs review, where the content opportunities are and how the site begins to fit together.
 
 ---
 
@@ -3999,125 +3999,125 @@ No tool controls what a search engine shows. Morgan reviews and recommends, and 
 
 ---
 
-# Planned: map the pages before deeper site intelligence begins.
+# Find the pages before the work begins.
 
 Canonical: https://wordpresto.com/workers/site-discovery/
 Markdown: https://wordpresto.com/workers/site-discovery/index.md
 
-# Planned: map the pages before deeper site intelligence begins.
+# Find the pages before the work begins.
 
-Claire is the planned site discovery specialist for Word Presto: a bounded, owner-scoped discovery of a domain's URLs and a crawl-limited internal link picture. Not yet live.
+Claire helps identify the pages in a website project so editors can see what needs review, where the content opportunities are and how the site begins to fit together.
 
 ---
 
-Claire is the planned site discovery specialist for Word Presto. Her role is to support a bounded, owner-scoped discovery of a single domain's URLs and a crawl-limited internal link picture. She is not live yet. This page describes the intended capability: a careful discovery layer that helps the platform understand which pages exist, how they may connect, and which URLs may need review, without pretending to produce a complete site inventory.
+A strong content workflow starts with knowing what exists. Claire helps identify the pages in a website project so editors can see what needs review, where the content opportunities are and how the site begins to fit together. She gives the team an organised view of the site's pages, early content signals and discovery notes, so the rest of the Word Presto workers can start from a clearer project picture.
 
-## A site map is only useful if it is honest about its limits.
+## You cannot improve the content if you do not know what pages you are dealing with.
 
-Discovery can easily overpromise. A crawler may miss pages, hit limits, respect robots rules, fail on JavaScript-heavy routes, or see only part of the link graph. Treating that as a complete source of truth creates bad decisions. Claire is designed to keep discovery bounded, explicit and review-only.
+Most content work starts too late in the process. Teams jump into one page, one keyword or one draft before they understand the wider site. Important pages get missed. Weak pages stay hidden. Link opportunities are overlooked. The project starts with fragments instead of a map. Claire gives the workflow a clearer starting point.
 
-## Planned discovery without fake completeness.
+## A discovery layer for website projects.
 
-Claire is intended to discover URLs from approved sources and produce a review-only picture of the site's crawl-limited structure. She should never claim a complete inventory or confirmed orphan status without enough evidence.
+Claire helps the team understand the pages that make up a website project. She prepares the starting view for content inventory, page inspection, link review and deeper project intelligence.
 
 ### Checks
 
-- Owned-domain URL discovery
-- Sitemap and crawl-limited URL signals
-- Internal link picture within strict limits
-- Candidate orphan signals
-- Discovery limitations
-- Manual checks required before treating data as complete
+- Pages that should be part of the project
+- Site sections and page groups
+- Early content and structure signals
+- Pages that may need review
+- Internal relationship opportunities
+- Follow-up checks for editors
 
 ### Improves
 
-- Project intelligence setup
-- Site-level content visibility
-- Early inventory planning
-- Internal link and orphan-risk review
+- Project setup
+- Content audit planning
+- Page review prioritisation
+- Internal linking and site-structure visibility
 
 ### Prepares
 
-- Discovered URL list
-- Crawl-limited link picture
-- Candidate orphan notes
-- Discovery limitation summary
+- Site discovery review
+- Page list for inspection
+- Early site-structure notes
+- Follow-up review prompts
 
 ### Surfaces for human review
 
-- Pages discovered during the bounded pass
-- URLs that may need inspection
-- Gaps requiring manual confirmation
-- Limits of what the discovery pass could see
+- Pages worth inspecting
+- Sections that may be thin or unclear
+- Areas where the site structure needs attention
+- Pages that may need stronger internal links
 
-## What Claire is planned to work from, and what she would produce.
+## What Claire works from, and what she produces.
 
 ### Works from
 
-- Owned domain
-- Sitemap signals where available
-- Crawl-limited page discovery
-- Internal links found during discovery
-- Robots and safety constraints
+- Website project
+- Known site pages
+- Site sections
+- Page relationships
+- Project setup context
 
 ### Produces
 
-- Discovered URL list
-- Crawl-limited link picture
-- Candidate orphan notes
-- Discovery limitations
-- Manual follow-up checks
+- Site discovery review
+- Pages for review
+- Site section notes
+- Internal relationship prompts
+- Follow-up checks
 
 ## When to use Claire
 
-### A new website project is being set up.
+### A new website project is starting.
 
-Claire will help discover the initial set of pages the project should know about.
+Claire helps establish which pages should be part of the first review.
 
-### The content inventory needs more source data.
+### A site audit needs structure.
 
-She will support a bounded discovery pass before inventory expansion.
+She gives editors a clearer view of the pages and sections they are working with.
 
-### Internal link planning needs a site picture.
+### A content inventory needs a starting point.
 
-Claire will provide a limited link view that other workers can review.
+Claire prepares page discovery context before Nora classifies the assets.
 
-### Candidate orphan pages need investigation.
+### Internal linking work needs a site view.
 
-She will flag candidates without pretending they are confirmed.
+She surfaces page relationships and areas that may need link review.
 
-### A site audit needs a starting URL set.
+### The team does not know where to begin.
 
-Claire will help build the first review list.
+Claire helps turn a website into a reviewable project.
 
-### Editors need discovery limits made visible.
+### A project needs deeper intelligence.
 
-She will show what was discovered, what was not, and what needs manual checking.
+She gives other workers a cleaner starting map before analysis continues.
 
-## Claire is planned, not live.
+## Claire discovers pages. Editors decide what matters.
 
-Claire must be presented as a planned capability until the site discovery workflow is actually built and wired. She should not be shown as runnable, and the page should not imply full-site discovery already exists.
+Claire helps organise the site for review. She does not decide strategy, delete pages, rewrite copy or publish. Editors choose which pages to inspect, prioritise and improve.
 
 ### Boundary checklist
 
-- Claire does not run today — this page describes a planned capability only.
-- Discovery results, when built, will always be labelled crawl-limited, never complete.
-- Candidate orphan pages will be flagged for review, never confirmed automatically.
-- Robots, ownership and crawl limits will always be respected, not bypassed.
+- Claire organises pages for review, she never edits or deletes them herself.
+- Discovered pages are a starting list for editors, not an automatic priority order.
+- Site structure notes support planning, they do not replace human judgement on strategy.
+- Follow-up checks are listed clearly so editors know what still needs confirming.
 
 ### Will not
 
-- Run today as an active worker
-- Claim a complete site inventory
-- Ignore robots, ownership or crawl limits
-- Confirm orphan pages from partial crawl data
-- Publish, edit or write to any CMS
+- Rewrite or edit content
+- Delete, merge or redirect pages
+- Publish or write to any CMS
+- Treat every discovered page as automatically important
+- Replace human review of site priorities
 
-## Workers Claire is planned to work alongside.
+## Workers Claire works alongside.
 
-- **page_inspector**: Inspects individual URLs discovered or supplied for review. Output: Page signals.
-- **Nora — Content Inventory Worker**: Classifies discovered pages as content assets. Output: Inventory review.
-- **internal_linking**: Reviews page-level relationship signals after pages are inspected. Output: Link assessment.
+- **page_inspector**: Inspects individual pages once they are selected for review. Output: Page signals.
+- **Nora — Content Inventory Worker**: Classifies pages as content assets and records planning signals. Output: Inventory review.
+- **internal_linking**: Reviews how selected pages connect to related content. Output: Link assessment.
 
 ---
 
