@@ -120,5 +120,5 @@ Diane does not run experiments, access analytics, rewrite CTAs automatically or 
 ## Workers Diane works alongside.
 
 - **intent_analyst**: Clarifies the reader intent Diane aligns with the page action. Output: Intent assessment.
-- **content_format_serp_fit**: Checks whether the page format supports the expected search shape. Output: Format review.
+- **Ivan — Content Format & SERP Fit Worker**: Checks whether the page format supports the expected search shape. Output: Format review.
 - **internal_linking**: Reviews links and pathways around the next step. Output: Link assessment.

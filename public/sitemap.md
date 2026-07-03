@@ -102,6 +102,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-distribution-brief.md
 - Focus: Nina creates a distribution brief that maps where approved content should go and how it should be adapted for each channel.
 
+### Check whether the page is in the right shape for the job.
+
+- HTML: https://wordpresto.com/workers/content-format-serp-fit/
+- Markdown: https://wordpresto.com/workers/content-format-serp-fit/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-format-serp-fit.md
+- Focus: Ivan reviews whether the current content format matches the likely intent and expected page shape, flagging format conflicts and metadata that promises a different experience.
+
 ### Refresh content with a clearer reason.
 
 - HTML: https://wordpresto.com/workers/content-refresh-brief/

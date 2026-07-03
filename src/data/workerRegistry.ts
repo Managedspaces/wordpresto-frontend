@@ -197,7 +197,7 @@ export const WORKERS: WorkerEntry[] = [
   { id: 'content_decay', name: 'Faye', roleTitle: 'Content freshness analyst', department: 'Content Freshness', team: 'seo', status: 'available', slug: 'content-decay', portrait: 27 },
   { id: 'topical_authority', name: 'Zara', roleTitle: 'Topical coverage analyst', department: 'Topical Coverage', team: 'seo', status: 'available', slug: 'topical-authority', portrait: 28 },
   { id: 'conversion_alignment', name: 'Diane', roleTitle: 'Conversion alignment analyst', department: 'Conversion Review', team: 'seo', status: 'available', slug: 'conversion-alignment', portrait: 29 },
-  { id: 'content_format_serp_fit', name: 'Ivan', roleTitle: 'Content format analyst', department: 'Content Format', team: 'seo', status: 'available', slug: null, portrait: 30 },
+  { id: 'content_format_serp_fit', name: 'Ivan', roleTitle: 'Content format analyst', department: 'Content Format', team: 'seo', status: 'available', slug: 'content-format-serp-fit', portrait: 30 },
   { id: 'internal_link_pathway', name: 'Felix', roleTitle: 'Internal link pathway analyst', department: 'Internal Linking', team: 'seo', status: 'available', slug: null, portrait: 31 },
   { id: 'content_pruning_consolidation', name: 'Hugo', roleTitle: 'Content maintenance specialist', department: 'Content Maintenance', team: 'seo', status: 'available', slug: null, portrait: 36 },
   { id: 'serp_snippet_opportunity', name: 'Morgan', roleTitle: 'SERP snippet specialist', department: 'SERP Optimisation', team: 'seo', status: 'available', slug: 'serp-snippet-opportunity', portrait: 38 },
