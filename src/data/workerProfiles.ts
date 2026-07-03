@@ -3907,6 +3907,167 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'CONVERSION STATUS',
     guidanceFooterValue: 'Needs review · weak path',
   },
+
+  // 26. Ivan - Content Format & SERP Fit Worker
+  {
+    id: 'content_format_serp_fit',
+    slug: 'content-format-serp-fit',
+    name: 'Ivan',
+    role: 'Content Format & SERP Fit Worker',
+    roleTitle: 'Content Format Analyst',
+    department: 'Content Format',
+    team: 'seo',
+    stage: 'Content format',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-30-192.webp',
+    portrait2x: '/agents/profiles/profile-30-384.webp',
+    seoTitle: 'Content Format & SERP Fit Worker | WordPresto',
+    metaDescription:
+      'Ivan reviews whether the current content format matches the likely intent and expected page shape, flagging format conflicts and metadata that promises a different experience.',
+    h1: 'Check whether the page is in the right shape for the job.',
+    heroPara1:
+      'A page can target the right topic and still use the wrong format. The searcher may need a guide, comparison, checklist, service page, explainer, FAQ, product-style page or decision page, while the content gives them something else. Ivan reviews whether the current content format matches the likely intent and expected page shape. He flags format conflicts, missing structural elements and places where metadata promises a different experience from the page itself.',
+    heroPara2:
+      'For SEO reviews, content briefs, page rewrites and format decisions before drafting.',
+    heroWorksAlongside: ['Yuna', 'Zara', 'Diane'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Content format',
+      output: 'Output · Format fit review',
+    },
+    problemEyebrow: 'Where content format goes wrong',
+    problemH2: 'The page answers the topic in the wrong shape.',
+    problemPara:
+      'A "guide" that behaves like a sales page. A service page that reads like a blog post. A comparison page with no comparison structure. An FAQ page with no real questions. These format mismatches make the page harder for readers and search engines to understand. Ivan checks whether the page format fits the promise.',
+    problemAnnotation: '↘ match the shape to the intent',
+    beforeStamp: 'Poor fit',
+    beforeHtml: `<p>The title promises a practical guide, but the page is mostly a company overview with no steps, examples or decision support.</p>`,
+    beforeTags: ['Format mismatch', 'Missing sections', 'Weak SERP fit', 'Poor reader expectation match'],
+    beforeNote: 'the page feels like the wrong result',
+    afterStamp: 'Format clarified',
+    afterHtml: `<p>The page is marked as a service decision page, with guide content moved into a supporting brief.</p>`,
+    afterTags: ['Clear format', 'Better expectations', 'Useful structure', 'Review-ready'],
+    afterNote: 'the editor knows what shape to build',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Format review before writing more copy.',
+    helpsPara:
+      'Ivan reviews the current page shape and compares it with the likely expected format. He does not fetch live SERPs or rewrite the page. He gives editors a structured format assessment.',
+    checks: [
+      'Current page format',
+      'Expected format based on intent',
+      'Format-specific missing sections',
+      'Metadata promise alignment',
+      'Structure and content-type mismatch',
+      'Reader expectation gaps',
+    ],
+    improves: [
+      'Page planning before rewrite',
+      'Brief quality',
+      'Search-intent alignment',
+      'Structural decisions before copy is written',
+    ],
+    prepares: [
+      'Format fit review',
+      'Recommended page format',
+      'Missing section list',
+      'Rewrite guidance for editors',
+    ],
+    surfaces: [
+      'Wrong-format pages',
+      'Mixed page types',
+      'Missing comparison, guide, FAQ or service elements',
+      'Metadata that promises a different content experience',
+    ],
+    ioH2: 'What Ivan works from, and what he produces.',
+    worksFrom: [
+      'Intent assessment',
+      'Page structure',
+      'Metadata review',
+      'Content inventory signals',
+      'Schema and SERP snippet signals',
+    ],
+    produces: [
+      'Format fit review',
+      'Recommended format',
+      'Missing structure notes',
+      'SERP-fit concerns',
+      'Human rewrite prompts',
+    ],
+    scenarios: [
+      {
+        title: 'A page targets the right topic but feels wrong.',
+        description:
+          'Ivan checks whether the issue is format, not just copy.',
+      },
+      {
+        title: 'A brief needs a clearer page type.',
+        description:
+          'He helps decide whether the page should be a guide, service page, comparison, explainer or FAQ.',
+      },
+      {
+        title: 'A title promises a format the page does not deliver.',
+        description:
+          'Ivan flags the mismatch before metadata or copy changes go further.',
+      },
+      {
+        title: 'A rewrite is about to start.',
+        description:
+          'He gives the editor a better structure before drafting.',
+      },
+      {
+        title: 'Search intent and conversion needs conflict.',
+        description:
+          'Ivan helps clarify the shape that can serve both.',
+      },
+      {
+        title: 'A page has missing expected sections.',
+        description:
+          'He lists format-specific gaps for human review.',
+      },
+    ],
+    boundaryH2: 'Ivan recommends the shape. Editors decide the structure.',
+    boundaryPara:
+      'Ivan does not fetch live SERPs, rewrite the page, create schema or publish changes. He reviews the page format and gives editors a structured recommendation.',
+    boundaryChecklist: [
+      'Ivan recommends format, he never rewrites the page himself.',
+      'Format assessments come from page evidence, not live SERP fetches.',
+      'Recommended structure is a prompt for editorial review, not an automatic change.',
+      'No ranking improvement is guaranteed.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Fetch or fabricate SERP layouts' },
+      { color: 'red', text: 'Rewrite the page automatically' },
+      { color: 'red', text: 'Create or apply schema' },
+      { color: 'red', text: 'Guarantee ranking improvement' },
+      { color: 'red', text: 'Publish or write to any CMS' },
+    ],
+    relatedH2: 'Workers Ivan works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'intent_analyst',
+        description: 'Clarifies the reader intent Ivan uses to assess format fit.',
+        outputLabel: 'Intent assessment',
+        ctaLabel: 'How Yuna clarifies',
+      },
+      {
+        id: 'topical_authority',
+        description: 'Checks whether the format has enough topical support.',
+        outputLabel: 'Coverage review',
+        ctaLabel: 'How Zara reviews',
+      },
+      {
+        id: 'conversion_alignment',
+        description: 'Checks whether the chosen format supports the next step.',
+        outputLabel: 'Conversion review',
+        ctaLabel: 'How Diane checks',
+      },
+    ],
+    ctaH2: 'Put the page in the right shape before improving it.',
+    ctaPara:
+      'Ivan helps editors choose the format that matches the search intent, reader expectation and page purpose.',
+    guidanceFooterLabel: 'FORMAT STATUS',
+    guidanceFooterValue: 'Poor fit · review needed',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {

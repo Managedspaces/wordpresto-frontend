@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (10 specialist roles)
+## SEO Worker directory (11 specialist roles)
 
 ### Nadia — SEO Title & Metadata Worker
 
@@ -113,3 +113,13 @@ Zara reviews topical coverage signals and content gaps, helping editors see whet
 - Legacy Markdown: https://wordpresto.com/pages/workers/conversion-alignment.md
 
 Diane reviews conversion alignment: CTA clarity, trust signals, proof gaps, metadata promise match and whether the next step makes sense for the page intent.
+
+### Ivan — Content Format & SERP Fit Worker
+
+- Stage: Content format
+- Output: Format fit review
+- URL: https://wordpresto.com/workers/content-format-serp-fit/
+- Markdown: https://wordpresto.com/workers/content-format-serp-fit/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-format-serp-fit.md
+
+Ivan reviews whether the current content format matches the likely intent and expected page shape, flagging format conflicts and metadata that promises a different experience.

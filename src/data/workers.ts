@@ -366,6 +366,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-29-384.webp',
     teamColor: 'var(--team-seo)',
   },
+  {
+    id: 'content_format_serp_fit',
+    name: 'Ivan',
+    role: 'Content Format & SERP Fit Worker',
+    department: 'Content Format',
+    team: 'seo',
+    stage: 'Content format',
+    summary: 'Reviews whether the current content format matches the likely intent and expected page shape, flagging format conflicts and missing structural elements.',
+    output: 'Format fit review',
+    image: '/agents/profiles/profile-30-192.webp',
+    image2x: '/agents/profiles/profile-30-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).
