@@ -30,6 +30,7 @@ This file consolidates the main public WordPresto marketing and Worker content f
 - Back up the claims before they go live.: https://wordpresto.com/workers/evidence-gap/index.md
 - Review the paths readers and crawlers can actually follow.: https://wordpresto.com/workers/internal-link-pathway/index.md
 - Make good content easier to read.: https://wordpresto.com/workers/readability/index.md
+- Turn findings into changes that can be reviewed safely.: https://wordpresto.com/workers/safe-change-planner/index.md
 - Describe the page so machines understand it too.: https://wordpresto.com/workers/schema/index.md
 - Fix the weak section without rewriting the whole page.: https://wordpresto.com/workers/section-rewrite/index.md
 - Find the concepts the page is missing.: https://wordpresto.com/workers/semantic-search-analyzer/index.md
@@ -175,7 +176,7 @@ See also the [SEO Workers directory](https://wordpresto.com/workers/seo/).
 
 ---
 
-## Content Worker directory (16 specialist roles)
+## Content Worker directory (18 specialist roles)
 
 ### Helena — Voice & Style Worker
 
@@ -317,6 +318,26 @@ Iris produces a structured brief for refreshing existing content: what to update
 
 Nina creates a distribution brief that maps where approved content should go and how it should be adapted for each channel.
 
+### Nadia — SEO Title & Metadata Worker
+
+- Stage: Metadata
+- Output: Metadata drafts
+- URL: https://wordpresto.com/workers/seo-metadata/
+- Markdown: https://wordpresto.com/workers/seo-metadata/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/seo-metadata.md
+
+Nadia reviews the SEO title, meta description and H1 against search intent, then drafts clearer options for the writer to approve. Metadata that reads well for people and search.
+
+### Alex — Trust & Author Credibility Worker
+
+- Stage: Trust
+- Output: Trust review
+- URL: https://wordpresto.com/workers/trust-author-credibility/
+- Markdown: https://wordpresto.com/workers/trust-author-credibility/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/trust-author-credibility.md
+
+Alex reviews the trust, authorship and credibility signals around a page so readers and search engines can see who stands behind the content. Review-only, never invented.
+
 ### Esme — Creative Writing Worker
 
 - Stage: Proofing
@@ -352,17 +373,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (15 specialist roles)
-
-### Nadia — SEO Title & Metadata Worker
-
-- Stage: Metadata
-- Output: Metadata drafts
-- URL: https://wordpresto.com/workers/seo-metadata/
-- Markdown: https://wordpresto.com/workers/seo-metadata/index.md
-- Legacy Markdown: https://wordpresto.com/pages/workers/seo-metadata.md
-
-Nadia reviews the SEO title, meta description and H1 against search intent, then drafts clearer options for the writer to approve. Metadata that reads well for people and search.
+## SEO Worker directory (12 specialist roles)
 
 ### Morgan — SERP Snippet Worker
 
@@ -393,26 +404,6 @@ Sofia reviews the structured data on a page and recommends the schema types that
 - Legacy Markdown: https://wordpresto.com/pages/workers/technical-health.md
 
 Maya checks the technical signals behind a page, metadata, headings, indexability and structure, and reports what needs a closer look. Standards-backed and review-only.
-
-### Alex — Trust & Author Credibility Worker
-
-- Stage: Trust
-- Output: Trust review
-- URL: https://wordpresto.com/workers/trust-author-credibility/
-- Markdown: https://wordpresto.com/workers/trust-author-credibility/index.md
-- Legacy Markdown: https://wordpresto.com/pages/workers/trust-author-credibility.md
-
-Alex reviews the trust, authorship and credibility signals around a page so readers and search engines can see who stands behind the content. Review-only, never invented.
-
-### Theo — Evidence Gap Worker
-
-- Stage: Evidence
-- Output: Evidence checklist
-- URL: https://wordpresto.com/workers/evidence-gap/
-- Markdown: https://wordpresto.com/workers/evidence-gap/index.md
-- Legacy Markdown: https://wordpresto.com/pages/workers/evidence-gap.md
-
-Theo turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off. What to back up, where to source it, what to hold.
 
 ### Cleo — Cannibalisation & Overlap Worker
 
@@ -3047,6 +3038,128 @@ A readability pass improves flow without changing meaning or overriding voice de
 - **Ellis — Draft Rewrite Worker**: Produces the shaped draft that the readability pass follows. Output: Shaped draft.
 - **Quinn — Draft Quality Reviewer**: Reviews the improved draft for clarity and readiness. Output: Review notes.
 - **Rosa — Section Rewrite Worker**: Rewrites sections that need more than a readability pass. Output: Rewritten sections.
+
+---
+
+# Turn findings into changes that can be reviewed safely.
+
+Canonical: https://wordpresto.com/workers/safe-change-planner/
+Markdown: https://wordpresto.com/workers/safe-change-planner/index.md
+
+# Turn findings into changes that can be reviewed safely.
+
+Sam converts worker findings into structured proposed changes, labelling affected area, risk and expected benefit, without editing the page or applying anything.
+
+---
+
+A finding is not yet a change. "The page needs clearer structure" is useful, but an editor still needs to know what might change, where, why, what risk is involved and whether the change should move forward. Sam converts worker findings into structured proposed changes. He prepares the review layer without editing the page or applying anything.
+
+## Teams jump from finding to edit too quickly.
+
+A worker may identify a real issue, but the next step should not be automatic editing. The proposed change needs context: what area is affected, why the change matters, how risky it is and what benefit is expected. Sam creates that decision layer.
+
+## A structured plan before any content change.
+
+Sam maps findings to proposed changes. He does not rewrite, apply or publish. He prepares a human-reviewable plan that can move into Riley's queue or a later approval workflow.
+
+### Checks
+
+- Worker findings and recommendations
+- Affected content area
+- Change type
+- Priority and expected benefit
+- Risk level
+- Evidence or approval requirements
+
+### Improves
+
+- Safety of content workflows
+- Quality of review decisions
+- Clarity before edits begin
+- Separation between recommendation and action
+
+### Prepares
+
+- Proposed change plan
+- Affected-area labels
+- Risk and benefit notes
+- Approval-ready review items
+
+### Surfaces for human review
+
+- Changes that need approval
+- High-risk edits
+- Items needing more evidence
+- Recommendations that are not safe-edit ready
+
+## What Sam works from, and what he produces.
+
+### Works from
+
+- Worker findings
+- Evidence review
+- Content analysis outputs
+- Risk and claims signals
+- Page context
+
+### Produces
+
+- Change plan
+- Proposed changes
+- Affected-area notes
+- Risk labels
+- Expected benefit
+
+## When to use Sam
+
+### A review has produced several findings.
+
+Sam turns them into proposed changes the editor can evaluate.
+
+### The team needs to avoid automatic edits.
+
+He creates a planning layer before any content is touched.
+
+### A recommendation may be risky.
+
+Sam flags risk and evidence needs before it moves forward.
+
+### A page is entering the review queue.
+
+He prepares the structured items Riley can organise.
+
+### The editor needs clearer priorities.
+
+Sam labels what matters most and why.
+
+### A change should not be safe-edit ready yet.
+
+He keeps proposed changes in review-only state until approved.
+
+## Sam plans changes. Editors approve or reject them.
+
+Sam does not edit the page, draft safe edits, apply changes or publish. He prepares proposed changes for human decision.
+
+### Boundary checklist
+
+- Sam plans changes, he never edits or applies them himself.
+- Proposed changes stay review-only until an editor approves them.
+- Risk and evidence needs are flagged, not skipped or assumed safe.
+- A finding is never treated as already approved.
+
+### Will not
+
+- Rewrite content automatically
+- Apply proposed changes
+- Treat a finding as approved
+- Publish or write to any CMS
+- Bypass evidence or risk checks
+
+## Workers Sam works alongside.
+
+- **review_queue**: Turns Sam's proposed changes into a decision queue. Output: Review queue.
+- **review**: Summarises review actions for human editors. Output: Review summary.
+- **editorial_approval_gate**: Checks whether proposed changes block approval. Output: Approval gate.
 
 ---
 

@@ -1,18 +1,20 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { workerProfiles } from '@/data/workerProfiles';
-import { seoWorkers as seoWorkerRoster } from '@/data/workers';
 import { mainRoutes, machineRoutes } from '@/data/siteRoutes';
 
 const seoTitle = 'Site map | WordPresto';
 const metaDescription = 'A complete map of the WordPresto site — main pages, Workers and resources.';
 
-// Worker profiles are split to mirror the two directory pages they live under
-// (by id membership in the `seoWorkers` page-grouping array, not the org
-// `team` field, which can now differ — see workers.ts's header comment).
-const seoWorkerIds = new Set(seoWorkerRoster.map((w) => w.id));
-const contentWorkers = workerProfiles.filter((w) => !seoWorkerIds.has(w.id));
-const seoWorkers = workerProfiles.filter((w) => seoWorkerIds.has(w.id));
+// Worker profiles are split to mirror the two directory pages they live under:
+// /workers/ and /workers/seo/ both render getWorkersByTeam() from
+// workerRegistry.ts (the real org team), so the split here matches by
+// `profile.team` too. Governance and operations profiles have no equivalent
+// /workers/{team}/ directory page (only /specialists/{team}/), so they get
+// their own sitemap section below instead of being silently omitted.
+const contentWorkers = workerProfiles.filter((w) => w.team === 'content');
+const seoWorkers = workerProfiles.filter((w) => w.team === 'seo');
+const governanceOpsWorkers = workerProfiles.filter((w) => w.team === 'governance' || w.team === 'operations');
 ---
 
 <BaseLayout
@@ -99,6 +101,25 @@ const seoWorkers = workerProfiles.filter((w) => seoWorkerIds.has(w.id));
           ))}
         </ul>
       </section>
+
+      <!-- Approval, Governance & Operations Workers -->
+      {governanceOpsWorkers.length > 0 && (
+        <section class="sitemap-section">
+          <h2 class="section-heading">Approval, Governance &amp; Operations Workers</h2>
+          <p class="section-intro">See the <a href="/specialists/approval-governance/" class="sitemap-inline-link">Approval / Governance</a> and <a href="/specialists/operations-management/" class="sitemap-inline-link">Operations / Management</a> team pages.</p>
+          <ul class="sitemap-list sitemap-list--workers">
+            {governanceOpsWorkers.map(w => (
+              <li class="sitemap-item">
+                <a href={`/workers/${w.slug}/`} class="sitemap-link">
+                  <span class="sitemap-label">{w.role}</span>
+                  <span class="sitemap-url">/workers/{w.slug}/</span>
+                </a>
+                <p class="sitemap-desc">{w.name} &middot; {w.department}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <!-- Machine-readable -->
       <section class="sitemap-section sitemap-section--minor">

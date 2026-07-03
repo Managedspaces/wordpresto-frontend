@@ -209,7 +209,7 @@ export const WORKERS: WorkerEntry[] = [
   { id: 'review_queue', name: 'Riley', roleTitle: 'Review queue coordinator', department: 'Change Planning', team: 'operations', status: 'available', slug: null, portrait: 16 },
 
   // ---- Approval / Governance Team ----
-  { id: 'safe_change_planner', name: 'Sam', roleTitle: 'Change planning specialist', department: 'Change Planning', team: 'governance', status: 'available', slug: null, portrait: 15 },
+  { id: 'safe_change_planner', name: 'Sam', roleTitle: 'Change planning specialist', department: 'Change Planning', team: 'governance', status: 'available', slug: 'safe-change-planner', portrait: 15 },
   { id: 'review', name: 'Helen', roleTitle: 'Review editor', department: 'Editorial Approval', team: 'governance', status: 'available', slug: null, portrait: 4 },
   { id: 'evidence_gap', name: 'Theo', roleTitle: 'Evidence gap specialist', department: 'Evidence Assurance', team: 'governance', status: 'available', slug: 'evidence-gap', portrait: 23 },
   { id: 'editorial_approval_gate', name: 'Dana', roleTitle: 'Editorial gate reviewer', department: 'Editorial Approval Gate', team: 'governance', status: 'available', slug: null, portrait: 40 },

@@ -444,6 +444,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-44-384.webp',
     teamColor: 'var(--team-seo)',
   },
+  {
+    id: 'safe_change_planner',
+    name: 'Sam',
+    role: 'Safe Change Planner',
+    department: 'Change Planning',
+    team: 'governance',
+    stage: 'Change planning',
+    summary: 'Converts worker findings into structured proposed changes, labelling affected area, risk and expected benefit, without editing the page or applying anything.',
+    output: 'Change plan',
+    image: '/agents/profiles/profile-15-192.webp',
+    image2x: '/agents/profiles/profile-15-384.webp',
+    teamColor: 'var(--team-governance)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).
