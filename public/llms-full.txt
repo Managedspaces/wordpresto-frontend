@@ -16,6 +16,7 @@ This file consolidates the main public WordPresto marketing and Worker content f
 - Prepare approved content for a cleaner handoff.: https://wordpresto.com/workers/cms-handoff/index.md
 - Understand the page before you rewrite it.: https://wordpresto.com/workers/content-analyst/index.md
 - Start with a brief that writers can actually use.: https://wordpresto.com/workers/content-brief-builder/index.md
+- Know when a page is starting to lose its edge.: https://wordpresto.com/workers/content-decay/index.md
 - Plan where approved content should go next.: https://wordpresto.com/workers/content-distribution-brief/index.md
 - Refresh content with a clearer reason.: https://wordpresto.com/workers/content-refresh-brief/index.md
 - Review the draft before it moves forward.: https://wordpresto.com/workers/draft-quality-reviewer/index.md
@@ -333,7 +334,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (7 specialist roles)
+## SEO Worker directory (8 specialist roles)
 
 ### Nadia — SEO Title & Metadata Worker
 
@@ -404,6 +405,16 @@ Theo turns weak or missing evidence into a clear checklist, so claims are suppor
 - Legacy Markdown: https://wordpresto.com/pages/workers/cannibalisation-overlap.md
 
 Cleo reviews a page for intent conflict, overlap risk and unclear content role, helping editors decide whether to sharpen, support, consolidate or manually check a page against others.
+
+### Faye — Content Decay & Refresh Priority Worker
+
+- Stage: Content freshness
+- Output: Refresh priority review
+- URL: https://wordpresto.com/workers/content-decay/
+- Markdown: https://wordpresto.com/workers/content-decay/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-decay.md
+
+Faye reviews freshness signals and content decay risk, helping editors decide whether a page is still current, needs monitoring, should be refreshed, or requires urgent review.
 
 ---
 
@@ -1297,6 +1308,128 @@ A brief is a starting point, not a script. Luca structures the brief so the dire
 - **Ellis — Draft Rewrite Worker**: Takes the brief and builds the shaped draft. Output: Shaped draft.
 - **Ada — Brief-to-Draft Alignment Worker**: Checks the draft actually matches the brief. Output: Alignment report.
 - **Helena — Voice & Style Worker**: Applies voice rules against the brief direction. Output: Voice & style guidance.
+
+---
+
+# Know when a page is starting to lose its edge.
+
+Canonical: https://wordpresto.com/workers/content-decay/
+Markdown: https://wordpresto.com/workers/content-decay/index.md
+
+# Know when a page is starting to lose its edge.
+
+Faye reviews freshness signals and content decay risk, helping editors decide whether a page is still current, needs monitoring, should be refreshed, or requires urgent review.
+
+---
+
+Some pages fail slowly. The copy still exists, the URL still loads, but the evidence is old, the title promises something current, the examples feel dated, or the topic has moved on. Faye reviews freshness signals and content decay risk. She helps editors decide whether a page is still current, needs monitoring, should be refreshed, or requires urgent review.
+
+## A page can look finished while its usefulness is fading.
+
+Content decay is often subtle. A date in the title, an old example, an unsupported claim, a stale comparison, or a page type that needs regular updates can slowly reduce trust and performance. Faye looks for the signals that tell editors a page needs attention before it becomes a bigger ranking or credibility problem.
+
+## Freshness review without pretending to update the page.
+
+Faye reviews in-memory page signals and identifies content that may need refreshing. She does not edit, schedule, publish or invent updated facts. She gives the editor a clear maintenance signal.
+
+### Checks
+
+- Temporal language in titles, metadata and copy
+- Evidence freshness
+- Content type sensitivity to age
+- SERP promise mismatch
+- Maintenance cadence indicators
+- Trust risks from outdated information
+
+### Improves
+
+- Content maintenance planning
+- Refresh prioritisation
+- Editorial visibility of ageing pages
+- Confidence before updating or leaving a page alone
+
+### Prepares
+
+- Refresh priority review
+- Recommended maintenance cadence
+- Stale-signal checklist
+- Human review prompts
+
+### Surfaces for human review
+
+- Dated claims or examples
+- Current-year promises that need confirmation
+- Pages that should be monitored
+- Content that may need urgent review
+
+## What Faye works from, and what she produces.
+
+### Works from
+
+- Page title and metadata
+- Page copy
+- Evidence review signals
+- Content inventory signals
+- Intent and format signals
+
+### Produces
+
+- Freshness review
+- Decay risk status
+- Refresh priority
+- Maintenance cadence
+- Manual checks
+
+## When to use Faye
+
+### A page contains dates, trends or current advice.
+
+Faye checks whether the page still feels current enough to trust.
+
+### A page has slipped in performance.
+
+She helps identify whether freshness may be part of the problem.
+
+### A content audit needs refresh priorities.
+
+Faye helps separate pages that are fine from pages that need attention.
+
+### A title promises something up to date.
+
+She checks whether the body actually supports that promise.
+
+### A page includes evidence, examples or statistics.
+
+Faye flags items that may need verification or replacement.
+
+### A maintenance workflow needs structure.
+
+She recommends whether to monitor, refresh or urgently review the page.
+
+## Faye flags freshness risk. Editors decide the update.
+
+Faye does not update facts, rewrite sections, schedule refreshes or publish changes. She reviews the available signals and tells the editor what needs attention.
+
+### Boundary checklist
+
+- Faye flags freshness risk, she never rewrites or updates content herself.
+- Freshness signals are reviewed from what already exists, not invented facts or dates.
+- Refresh priority is a recommendation for editorial planning, not an automatic schedule.
+- Inferred decay risk is flagged for review, not treated as confirmed ranking loss.
+
+### Will not
+
+- Rewrite outdated content automatically
+- Invent fresh examples, dates or evidence
+- Schedule updates
+- Publish or apply changes to a CMS
+- Treat inferred freshness risk as confirmed ranking loss
+
+## Workers Faye works alongside.
+
+- **content_inventory**: Classifies the page as a content asset and identifies useful inventory signals. Output: Inventory review.
+- **content_pruning_consolidation**: Reviews whether weak or ageing content should be refreshed, consolidated or pruned. Output: Maintenance review.
+- **Iris — Content Refresh Brief Worker**: Turns refresh findings into a structured content refresh brief. Output: Refresh brief.
 
 ---
 

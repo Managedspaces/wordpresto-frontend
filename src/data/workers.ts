@@ -327,6 +327,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-26-384.webp',
     teamColor: 'var(--team-seo)',
   },
+  {
+    id: 'content_decay',
+    name: 'Faye',
+    role: 'Content Decay & Refresh Priority Worker',
+    department: 'Content Freshness',
+    team: 'seo',
+    stage: 'Content freshness',
+    summary: 'Reviews freshness signals and content decay risk, helping editors decide whether a page is still current, needs monitoring, should be refreshed, or requires urgent review.',
+    output: 'Refresh priority review',
+    image: '/agents/profiles/profile-27-192.webp',
+    image2x: '/agents/profiles/profile-27-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).

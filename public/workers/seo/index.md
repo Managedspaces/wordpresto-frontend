@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (7 specialist roles)
+## SEO Worker directory (8 specialist roles)
 
 ### Nadia — SEO Title & Metadata Worker
 
@@ -83,3 +83,13 @@ Theo turns weak or missing evidence into a clear checklist, so claims are suppor
 - Legacy Markdown: https://wordpresto.com/pages/workers/cannibalisation-overlap.md
 
 Cleo reviews a page for intent conflict, overlap risk and unclear content role, helping editors decide whether to sharpen, support, consolidate or manually check a page against others.
+
+### Faye — Content Decay & Refresh Priority Worker
+
+- Stage: Content freshness
+- Output: Refresh priority review
+- URL: https://wordpresto.com/workers/content-decay/
+- Markdown: https://wordpresto.com/workers/content-decay/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-decay.md
+
+Faye reviews freshness signals and content decay risk, helping editors decide whether a page is still current, needs monitoring, should be refreshed, or requires urgent review.

@@ -3424,6 +3424,167 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'OVERLAP STATUS',
     guidanceFooterValue: 'Needs review · role unclear',
   },
+
+  // 23. Faye - Content Decay & Refresh Priority Worker
+  {
+    id: 'content_decay',
+    slug: 'content-decay',
+    name: 'Faye',
+    role: 'Content Decay & Refresh Priority Worker',
+    roleTitle: 'Content Freshness Analyst',
+    department: 'Content Freshness',
+    team: 'seo',
+    stage: 'Content freshness',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-27-192.webp',
+    portrait2x: '/agents/profiles/profile-27-384.webp',
+    seoTitle: 'Content Decay & Refresh Priority Worker | WordPresto',
+    metaDescription:
+      'Faye reviews freshness signals and content decay risk, helping editors decide whether a page is still current, needs monitoring, should be refreshed, or requires urgent review.',
+    h1: 'Know when a page is starting to lose its edge.',
+    heroPara1:
+      'Some pages fail slowly. The copy still exists, the URL still loads, but the evidence is old, the title promises something current, the examples feel dated, or the topic has moved on. Faye reviews freshness signals and content decay risk. She helps editors decide whether a page is still current, needs monitoring, should be refreshed, or requires urgent review.',
+    heroPara2:
+      'For content audits, refresh planning, SEO maintenance and pages where age, accuracy or timeliness matters.',
+    heroWorksAlongside: ['Nora', 'Hugo', 'Iris'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Content freshness',
+      output: 'Output · Refresh priority review',
+    },
+    problemEyebrow: 'Where content decay starts',
+    problemH2: 'A page can look finished while its usefulness is fading.',
+    problemPara:
+      'Content decay is often subtle. A date in the title, an old example, an unsupported claim, a stale comparison, or a page type that needs regular updates can slowly reduce trust and performance. Faye looks for the signals that tell editors a page needs attention before it becomes a bigger ranking or credibility problem.',
+    problemAnnotation: '↘ find decay before the page slips',
+    beforeStamp: 'Stale content',
+    beforeHtml: `<p>The title promises a current guide, but the examples, evidence and recommendations have not been reviewed recently.</p>`,
+    beforeTags: ['Temporal promise', 'Old examples', 'Weak evidence freshness', 'No maintenance cadence'],
+    beforeNote: 'the page may no longer deserve trust',
+    afterStamp: 'Refresh planned',
+    afterHtml: `<p>The page is marked for review, outdated examples are flagged, and a practical maintenance cadence is recommended.</p>`,
+    afterTags: ['Clear status', 'Useful priority', 'Human review', 'No fake update'],
+    afterNote: 'the editor knows what needs attention',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Freshness review without pretending to update the page.',
+    helpsPara:
+      'Faye reviews in-memory page signals and identifies content that may need refreshing. She does not edit, schedule, publish or invent updated facts. She gives the editor a clear maintenance signal.',
+    checks: [
+      'Temporal language in titles, metadata and copy',
+      'Evidence freshness',
+      'Content type sensitivity to age',
+      'SERP promise mismatch',
+      'Maintenance cadence indicators',
+      'Trust risks from outdated information',
+    ],
+    improves: [
+      'Content maintenance planning',
+      'Refresh prioritisation',
+      'Editorial visibility of ageing pages',
+      'Confidence before updating or leaving a page alone',
+    ],
+    prepares: [
+      'Refresh priority review',
+      'Recommended maintenance cadence',
+      'Stale-signal checklist',
+      'Human review prompts',
+    ],
+    surfaces: [
+      'Dated claims or examples',
+      'Current-year promises that need confirmation',
+      'Pages that should be monitored',
+      'Content that may need urgent review',
+    ],
+    ioH2: 'What Faye works from, and what she produces.',
+    worksFrom: [
+      'Page title and metadata',
+      'Page copy',
+      'Evidence review signals',
+      'Content inventory signals',
+      'Intent and format signals',
+    ],
+    produces: [
+      'Freshness review',
+      'Decay risk status',
+      'Refresh priority',
+      'Maintenance cadence',
+      'Manual checks',
+    ],
+    scenarios: [
+      {
+        title: 'A page contains dates, trends or current advice.',
+        description:
+          'Faye checks whether the page still feels current enough to trust.',
+      },
+      {
+        title: 'A page has slipped in performance.',
+        description:
+          'She helps identify whether freshness may be part of the problem.',
+      },
+      {
+        title: 'A content audit needs refresh priorities.',
+        description:
+          'Faye helps separate pages that are fine from pages that need attention.',
+      },
+      {
+        title: 'A title promises something up to date.',
+        description:
+          'She checks whether the body actually supports that promise.',
+      },
+      {
+        title: 'A page includes evidence, examples or statistics.',
+        description:
+          'Faye flags items that may need verification or replacement.',
+      },
+      {
+        title: 'A maintenance workflow needs structure.',
+        description:
+          'She recommends whether to monitor, refresh or urgently review the page.',
+      },
+    ],
+    boundaryH2: 'Faye flags freshness risk. Editors decide the update.',
+    boundaryPara:
+      'Faye does not update facts, rewrite sections, schedule refreshes or publish changes. She reviews the available signals and tells the editor what needs attention.',
+    boundaryChecklist: [
+      'Faye flags freshness risk, she never rewrites or updates content herself.',
+      'Freshness signals are reviewed from what already exists, not invented facts or dates.',
+      'Refresh priority is a recommendation for editorial planning, not an automatic schedule.',
+      'Inferred decay risk is flagged for review, not treated as confirmed ranking loss.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Rewrite outdated content automatically' },
+      { color: 'red', text: 'Invent fresh examples, dates or evidence' },
+      { color: 'red', text: 'Schedule updates' },
+      { color: 'red', text: 'Publish or apply changes to a CMS' },
+      { color: 'red', text: 'Treat inferred freshness risk as confirmed ranking loss' },
+    ],
+    relatedH2: 'Workers Faye works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'content_inventory',
+        description: 'Classifies the page as a content asset and identifies useful inventory signals.',
+        outputLabel: 'Inventory review',
+        ctaLabel: 'How Nora classifies',
+      },
+      {
+        id: 'content_pruning_consolidation',
+        description: 'Reviews whether weak or ageing content should be refreshed, consolidated or pruned.',
+        outputLabel: 'Maintenance review',
+        ctaLabel: 'How Hugo reviews',
+      },
+      {
+        id: 'content_refresh_brief',
+        description: 'Turns refresh findings into a structured content refresh brief.',
+        outputLabel: 'Refresh brief',
+        ctaLabel: 'How Iris plans',
+      },
+    ],
+    ctaH2: 'Keep ageing pages visible before they become problems.',
+    ctaPara:
+      'Faye helps editors spot content decay, review priority and maintenance cadence before the page loses trust.',
+    guidanceFooterLabel: 'FRESHNESS STATUS',
+    guidanceFooterValue: 'Refresh recommended · review needed',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {
