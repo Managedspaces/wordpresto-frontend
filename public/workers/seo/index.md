@@ -12,17 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (15 specialist roles)
-
-### Nadia — SEO Title & Metadata Worker
-
-- Stage: Metadata
-- Output: Metadata drafts
-- URL: https://wordpresto.com/workers/seo-metadata/
-- Markdown: https://wordpresto.com/workers/seo-metadata/index.md
-- Legacy Markdown: https://wordpresto.com/pages/workers/seo-metadata.md
-
-Nadia reviews the SEO title, meta description and H1 against search intent, then drafts clearer options for the writer to approve. Metadata that reads well for people and search.
+## SEO Worker directory (12 specialist roles)
 
 ### Morgan — SERP Snippet Worker
 
@@ -53,26 +43,6 @@ Sofia reviews the structured data on a page and recommends the schema types that
 - Legacy Markdown: https://wordpresto.com/pages/workers/technical-health.md
 
 Maya checks the technical signals behind a page, metadata, headings, indexability and structure, and reports what needs a closer look. Standards-backed and review-only.
-
-### Alex — Trust & Author Credibility Worker
-
-- Stage: Trust
-- Output: Trust review
-- URL: https://wordpresto.com/workers/trust-author-credibility/
-- Markdown: https://wordpresto.com/workers/trust-author-credibility/index.md
-- Legacy Markdown: https://wordpresto.com/pages/workers/trust-author-credibility.md
-
-Alex reviews the trust, authorship and credibility signals around a page so readers and search engines can see who stands behind the content. Review-only, never invented.
-
-### Theo — Evidence Gap Worker
-
-- Stage: Evidence
-- Output: Evidence checklist
-- URL: https://wordpresto.com/workers/evidence-gap/
-- Markdown: https://wordpresto.com/workers/evidence-gap/index.md
-- Legacy Markdown: https://wordpresto.com/pages/workers/evidence-gap.md
-
-Theo turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off. What to back up, where to source it, what to hold.
 
 ### Cleo — Cannibalisation & Overlap Worker
 

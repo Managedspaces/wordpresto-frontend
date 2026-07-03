@@ -186,6 +186,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/readability.md
 - Focus: Priya tightens sentences, simplifies structure and improves flow so content reads clearly for its intended audience. For drafts that are correct but harder to read than they need to be.
 
+### Turn findings into changes that can be reviewed safely.
+
+- HTML: https://wordpresto.com/workers/safe-change-planner/
+- Markdown: https://wordpresto.com/workers/safe-change-planner/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/safe-change-planner.md
+- Focus: Sam converts worker findings into structured proposed changes, labelling affected area, risk and expected benefit, without editing the page or applying anything.
+
 ### Describe the page so machines understand it too.
 
 - HTML: https://wordpresto.com/workers/schema/

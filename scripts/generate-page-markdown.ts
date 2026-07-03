@@ -19,7 +19,6 @@ import { homeContent, type HomeContent } from '../src/data/i18n/home';
 import { LOCALES, DEFAULT_LOCALE, localeHref, type Locale } from '../src/i18n/locales';
 import { TOTAL_SPECIALISTS } from '../src/data/workerRegistry';
 import { workerProfiles } from '../src/data/workerProfiles';
-import { seoWorkers } from '../src/data/workers';
 import { workflowDemo } from '../src/data/staticPages';
 import { workersHubContent, seoWorkersContent } from '../src/data/i18n/workersDirectory';
 import { prestobotContent } from '../src/data/i18n/prestobot';
@@ -340,14 +339,12 @@ function renderWorkerMarkdown(w: (typeof workerProfiles)[number]) {
 /* ------------------------------------------------------------------ */
 /*  Render workers index as Markdown                                    */
 /* ------------------------------------------------------------------ */
-// Directory placement mirrors the HTML pages exactly: /workers/seo/ renders
-// `seoWorkers` from workers.ts (a page-grouping, not the real org team — see
-// that file's header comment), so the split here matches by id membership in
-// that array rather than by `profile.team`, which now reflects the corrected
-// org team from workerRegistry.ts and can differ from directory placement.
-const seoWorkerIds = new Set(seoWorkers.map((w) => w.id));
-const contentProfiles = workerProfiles.filter((w) => !seoWorkerIds.has(w.id));
-const seoProfiles = workerProfiles.filter((w) => seoWorkerIds.has(w.id));
+// Directory placement mirrors the HTML pages exactly: /workers/ and
+// /workers/seo/ both render getWorkersByTeam() from workerRegistry.ts (the
+// real org team), so the split here matches by `profile.team` too. Governance
+// and operations profiles appear in neither list, matching the live pages.
+const contentProfiles = workerProfiles.filter((w) => w.team === 'content');
+const seoProfiles = workerProfiles.filter((w) => w.team === 'seo');
 
 function renderWorkersIndexMarkdown() {
   const lines: string[] = [

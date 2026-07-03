@@ -4873,6 +4873,167 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'COMPETITOR STATUS',
     guidanceFooterValue: 'Gaps found · evidence required',
   },
+
+  // 32. Sam - Safe Change Planner
+  {
+    id: 'safe_change_planner',
+    slug: 'safe-change-planner',
+    name: 'Sam',
+    role: 'Safe Change Planner',
+    roleTitle: 'Change Planning Specialist',
+    department: 'Change Planning',
+    team: 'governance',
+    stage: 'Change planning',
+    teamColor: 'var(--team-governance)',
+    portrait: '/agents/profiles/profile-15-192.webp',
+    portrait2x: '/agents/profiles/profile-15-384.webp',
+    seoTitle: 'Safe Change Planner | WordPresto',
+    metaDescription:
+      'Sam converts worker findings into structured proposed changes, labelling affected area, risk and expected benefit, without editing the page or applying anything.',
+    h1: 'Turn findings into changes that can be reviewed safely.',
+    heroPara1:
+      'A finding is not yet a change. "The page needs clearer structure" is useful, but an editor still needs to know what might change, where, why, what risk is involved and whether the change should move forward. Sam converts worker findings into structured proposed changes. He prepares the review layer without editing the page or applying anything.',
+    heroPara2:
+      'For content analysis, approval preparation, review queues and safe-edit planning.',
+    heroWorksAlongside: ['Riley', 'Helen', 'Dana'],
+    heroTagPills: {
+      team: 'Approval & Governance',
+      stage: 'Stage · Change planning',
+      output: 'Output · Change plan',
+    },
+    problemEyebrow: 'Where change planning goes wrong',
+    problemH2: 'Teams jump from finding to edit too quickly.',
+    problemPara:
+      'A worker may identify a real issue, but the next step should not be automatic editing. The proposed change needs context: what area is affected, why the change matters, how risky it is and what benefit is expected. Sam creates that decision layer.',
+    problemAnnotation: '↘ plan the change before editing',
+    beforeStamp: 'Raw finding',
+    beforeHtml: `<p>The page needs a stronger introduction and clearer next step.</p>`,
+    beforeTags: ['No affected area', 'No risk label', 'No priority', 'No approval state'],
+    beforeNote: 'the editor still has to interpret the finding',
+    afterStamp: 'Planned change',
+    afterHtml: `<p>Revise the introduction to clarify the page promise and add a relevant next step after the first section.</p>`,
+    afterTags: ['Affected area', 'Expected benefit', 'Risk noted', 'Approval required'],
+    afterNote: 'the change is ready for review',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A structured plan before any content change.',
+    helpsPara:
+      "Sam maps findings to proposed changes. He does not rewrite, apply or publish. He prepares a human-reviewable plan that can move into Riley's queue or a later approval workflow.",
+    checks: [
+      'Worker findings and recommendations',
+      'Affected content area',
+      'Change type',
+      'Priority and expected benefit',
+      'Risk level',
+      'Evidence or approval requirements',
+    ],
+    improves: [
+      'Safety of content workflows',
+      'Quality of review decisions',
+      'Clarity before edits begin',
+      'Separation between recommendation and action',
+    ],
+    prepares: [
+      'Proposed change plan',
+      'Affected-area labels',
+      'Risk and benefit notes',
+      'Approval-ready review items',
+    ],
+    surfaces: [
+      'Changes that need approval',
+      'High-risk edits',
+      'Items needing more evidence',
+      'Recommendations that are not safe-edit ready',
+    ],
+    ioH2: 'What Sam works from, and what he produces.',
+    worksFrom: [
+      'Worker findings',
+      'Evidence review',
+      'Content analysis outputs',
+      'Risk and claims signals',
+      'Page context',
+    ],
+    produces: [
+      'Change plan',
+      'Proposed changes',
+      'Affected-area notes',
+      'Risk labels',
+      'Expected benefit',
+    ],
+    scenarios: [
+      {
+        title: 'A review has produced several findings.',
+        description:
+          'Sam turns them into proposed changes the editor can evaluate.',
+      },
+      {
+        title: 'The team needs to avoid automatic edits.',
+        description:
+          'He creates a planning layer before any content is touched.',
+      },
+      {
+        title: 'A recommendation may be risky.',
+        description:
+          'Sam flags risk and evidence needs before it moves forward.',
+      },
+      {
+        title: 'A page is entering the review queue.',
+        description:
+          'He prepares the structured items Riley can organise.',
+      },
+      {
+        title: 'The editor needs clearer priorities.',
+        description:
+          'Sam labels what matters most and why.',
+      },
+      {
+        title: 'A change should not be safe-edit ready yet.',
+        description:
+          'He keeps proposed changes in review-only state until approved.',
+      },
+    ],
+    boundaryH2: 'Sam plans changes. Editors approve or reject them.',
+    boundaryPara:
+      'Sam does not edit the page, draft safe edits, apply changes or publish. He prepares proposed changes for human decision.',
+    boundaryChecklist: [
+      'Sam plans changes, he never edits or applies them himself.',
+      'Proposed changes stay review-only until an editor approves them.',
+      'Risk and evidence needs are flagged, not skipped or assumed safe.',
+      'A finding is never treated as already approved.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Rewrite content automatically' },
+      { color: 'red', text: 'Apply proposed changes' },
+      { color: 'red', text: 'Treat a finding as approved' },
+      { color: 'red', text: 'Publish or write to any CMS' },
+      { color: 'red', text: 'Bypass evidence or risk checks' },
+    ],
+    relatedH2: 'Workers Sam works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'review_queue',
+        description: "Turns Sam's proposed changes into a decision queue.",
+        outputLabel: 'Review queue',
+        ctaLabel: 'How Riley organises',
+      },
+      {
+        id: 'review',
+        description: 'Summarises review actions for human editors.',
+        outputLabel: 'Review summary',
+        ctaLabel: 'How Helen summarises',
+      },
+      {
+        id: 'editorial_approval_gate',
+        description: 'Checks whether proposed changes block approval.',
+        outputLabel: 'Approval gate',
+        ctaLabel: 'How Dana decides',
+      },
+    ],
+    ctaH2: 'Plan the change before the edit.',
+    ctaPara:
+      'Sam turns findings into structured proposed changes so human editors can approve, reject or defer with context.',
+    guidanceFooterLabel: 'CHANGE STATUS',
+    guidanceFooterValue: 'Proposed · awaiting review',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {

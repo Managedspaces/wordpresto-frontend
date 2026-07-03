@@ -12,7 +12,7 @@ See also the [SEO Workers directory](https://wordpresto.com/workers/seo/).
 
 ---
 
-## Content Worker directory (16 specialist roles)
+## Content Worker directory (18 specialist roles)
 
 ### Helena — Voice & Style Worker
 
@@ -153,6 +153,26 @@ Iris produces a structured brief for refreshing existing content: what to update
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-distribution-brief.md
 
 Nina creates a distribution brief that maps where approved content should go and how it should be adapted for each channel.
+
+### Nadia — SEO Title & Metadata Worker
+
+- Stage: Metadata
+- Output: Metadata drafts
+- URL: https://wordpresto.com/workers/seo-metadata/
+- Markdown: https://wordpresto.com/workers/seo-metadata/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/seo-metadata.md
+
+Nadia reviews the SEO title, meta description and H1 against search intent, then drafts clearer options for the writer to approve. Metadata that reads well for people and search.
+
+### Alex — Trust & Author Credibility Worker
+
+- Stage: Trust
+- Output: Trust review
+- URL: https://wordpresto.com/workers/trust-author-credibility/
+- Markdown: https://wordpresto.com/workers/trust-author-credibility/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/trust-author-credibility.md
+
+Alex reviews the trust, authorship and credibility signals around a page so readers and search engines can see who stands behind the content. Review-only, never invented.
 
 ### Esme — Creative Writing Worker
 
