@@ -151,6 +151,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/evidence-gap.md
 - Focus: Theo turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off. What to back up, where to source it, what to hold.
 
+### Review the paths readers and crawlers can actually follow.
+
+- HTML: https://wordpresto.com/workers/internal-link-pathway/
+- Markdown: https://wordpresto.com/workers/internal-link-pathway/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/internal-link-pathway.md
+- Focus: Felix reviews internal link pathway health: orphan risk, anchor text quality, hub-and-spoke relationships, missing next-step links, competing links and pathway coherence.
+
 ### Make good content easier to read.
 
 - HTML: https://wordpresto.com/workers/readability/
