@@ -137,9 +137,9 @@ Cassius reviews competitor coverage from stored SERP competitor data, surfacing 
 ### Claire — Site Discovery Worker
 
 - Stage: Site discovery
-- Output: Planned discovery review
+- Output: Site discovery review
 - URL: https://wordpresto.com/workers/site-discovery/
 - Markdown: https://wordpresto.com/workers/site-discovery/index.md
 - Legacy Markdown: https://wordpresto.com/pages/workers/site-discovery.md
 
-Claire is the planned site discovery specialist for Word Presto: a bounded, owner-scoped discovery of a domain's URLs and a crawl-limited internal link picture. Not yet live.
+Claire helps identify the pages in a website project so editors can see what needs review, where the content opportunities are and how the site begins to fit together.
