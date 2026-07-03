@@ -89,16 +89,39 @@ Verified with `tsc --noEmit`, `astro build` (25 new pages: 5 hub + 20 team),
 a full internal-link sweep, and Playwright screenshots of the German hub
 and French SEO team page (including a 375px mobile pass).
 
-**Next up:** the rest of the site (`/workers/`, `/workers/seo/`,
-`/workers/[slug]/`, `/workflow-demo/`, `/prestobot/`, `/sitemap/`)
-following the same pattern established here — extract copy to a locale
-dictionary, parameterise a shared component, add a `[locale]` route.
-Worker profile pages (`workerProfiles.ts`, 3,100+ lines for the 20 that
-exist) are by far the largest remaining piece and should be tackled as its
-own dedicated pass, most likely with translation work parallelised per
-locale rather than done serially. Once `/workers/` and `/sitemap/` get
-locale routes, revisit the specialists pages (and the waitlist page) to
-point their now-hardcoded English links at `localeHref()` instead.
+**Also done:** `/workers/` and `/workers/seo/` — the two Worker directory
+pages are localised in all 6 locales, via `src/data/i18n/workersDirectory.ts`
+and two new components (`WorkersHubPage.astro`, `SeoWorkersPage.astro`).
+Only the page chrome translates (hero, directory header, stage/output
+labels, "View profile", the cross-link block, footer): the Worker cards
+themselves (name, role, department, stage, summary, output — from
+`src/data/workers.ts`) stay English, same scoping decision as the
+`/specialists/*` pages, since individual Worker profile pages
+(`/workers/[slug]/`) aren't translated yet. No Markdown mirror per locale
+either, for the same reason: these pages are mostly a list of English
+Worker profiles, so a translated mirror would be mostly-English until the
+profile pages themselves translate. Fixed a latent two-sources-of-truth bug
+found while doing this: `scripts/generate-page-markdown.ts` was still
+reading the English intro copy for these two pages from
+`src/data/staticPages.ts`'s `workersDirectory`/`seoWorkersDirectory`
+exports, a leftover duplicate of what's now in `workersDirectory.ts` —
+removed those two exports and pointed the generator at
+`workersHubContent.en` / `seoWorkersContent.en` instead, so there is exactly
+one source of English copy for these pages, same as the homepage. Now that
+`/workers/` and `/workers/seo/` have locale routes, also restored
+`localeHref()` for the `/workers/` links inside `SpecialistsHubPage.astro`
+and `SpecialistTeamPage.astro` (previously pinned to plain English per the
+"don't localise into a 404" rule) — the individual Worker *profile* links
+(`/workers/{slug}/`) stay plain English, since those pages are still
+English-only.
+
+**Next up:** the rest of the site (`/workers/[slug]/` — 20 profile pages,
+by far the largest remaining piece — `/workflow-demo/`, `/prestobot/`,
+`/sitemap/`) following the same pattern established here. Worker profile
+pages should be tackled as their own dedicated pass, most likely with
+translation work parallelised per locale rather than done serially. Once
+`/sitemap/` gets a locale route, revisit the specialists/workers/waitlist
+pages' `/sitemap/` footer links to use `localeHref()` too.
 
 hreflang tags and hreflang-aware hreflang/canonical linking between locale
 variants are not wired up yet — each locale page has its own correct

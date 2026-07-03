@@ -92,6 +92,29 @@ export const siteRoutes: SiteRoute[] = [
     priority: 0.9,
     markdown: '/workers/seo/index.md',
   },
+  // Workers directory locale variants (src/data/i18n/workersDirectory.ts).
+  // No Markdown mirror yet: these pages mostly list Worker profiles, which
+  // stay English-only until the dedicated Worker-profile translation pass.
+  ...LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).flatMap((l) => [
+    {
+      path: localeHref(l.code, '/workers/'),
+      label: `Workers (${l.label})`,
+      description: 'All specialist Workers in the content workflow.',
+      group: 'main' as const,
+      inXml: true,
+      changefreq: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      path: localeHref(l.code, '/workers/seo/'),
+      label: `SEO Workers (${l.label})`,
+      description: 'The SEO Workers directory: search, structure, schema, trust and evidence.',
+      group: 'main' as const,
+      inXml: true,
+      changefreq: 'weekly' as const,
+      priority: 0.8,
+    },
+  ]),
   {
     path: '/specialists/',
     label: 'Specialists',

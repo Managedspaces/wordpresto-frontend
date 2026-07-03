@@ -1,25 +1,22 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { specialistTeamContent, specialistsSharedContent } from '@/data/i18n/specialists';
+import { workers } from '@/data/workers';
+import { workersHubContent, workersSharedContent } from '@/data/i18n/workersDirectory';
 import { commonStrings } from '@/data/i18n/common';
-import { getWorkersByTeam, getTeamMeta, workerImage, workerInitials, type TeamId } from '@/data/workerRegistry';
 import { localeHref, type Locale } from '@/i18n/locales';
 
 interface Props {
   locale: Locale;
-  teamId: TeamId;
 }
 
-const { locale, teamId } = Astro.props;
-const meta = specialistTeamContent[locale][teamId];
-const shared = specialistsSharedContent[locale];
+const { locale } = Astro.props;
+const meta = workersHubContent[locale];
+const shared = workersSharedContent[locale];
 const c = commonStrings[locale];
-const team = getTeamMeta(teamId, locale);
-const workers = getWorkersByTeam(teamId);
 
 const canonical = locale === 'en'
-  ? `https://wordpresto.com${team.href}`
-  : `https://wordpresto.com${localeHref(locale, team.href)}`;
+  ? 'https://wordpresto.com/workers/'
+  : `https://wordpresto.com${localeHref(locale, '/workers/')}`;
 ---
 
 <BaseLayout
@@ -42,7 +39,7 @@ const canonical = locale === 'en'
       </a>
       <nav class="masthead-nav masthead-nav--right">
         <a href={`${localeHref(locale, '/')}#use-cases`} class="nav-link">{c.useCases}</a>
-        <a href={localeHref(locale, '/workers/')} class="nav-link">{c.workers}</a>
+        <a href={localeHref(locale, '/workers/')} class="nav-link nav-link--active">{c.workers}</a>
         <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
       </nav>
     </div>
@@ -51,69 +48,62 @@ const canonical = locale === 'en'
   <!-- HERO -->
   <section class="section section--hero">
     <div class="container">
-      <nav class="wp-breadcrumb" aria-label="Breadcrumb">
-        <a href={localeHref(locale, '/specialists/')} class="wp-breadcrumb-back">&#8592;</a>
-        <a href={localeHref(locale, '/specialists/')} class="wp-breadcrumb-link">{shared.breadcrumbHub}</a>
-        <span class="wp-breadcrumb-sep">/</span>
-        <span class="wp-breadcrumb-current">{meta.breadcrumbLabel}</span>
-      </nav>
-
-      <div class="eyebrow" style={`color: ${team.color}`}>{team.name}</div>
+      <div class="eyebrow eyebrow--strategy">{meta.eyebrow}</div>
       <h1 class="page-h1">{meta.h1}</h1>
       <p class="page-intro">{meta.intro}</p>
       <div class="worker-directory-header">
-        <span>{shared.teamDirectoryLabel}</span>
-        <span>{workers.length} {workers.length === 1 ? shared.specialistRoleSingular : shared.specialistRolePlural}</span>
+        <span>{meta.directoryLabel}</span>
+        <span>{workers.length}{meta.rolesCountSuffix}</span>
       </div>
-
-      <div class="specialists-grid">
-        {workers.map((w) => {
-          const img = workerImage(w);
-          return (
-          <div class="specialist-card">
-            <div class="specialist-card-top">
-              {img ? (
-                <img
-                  src={img.src}
-                  srcset={`${img.src} 1x, ${img.src2x} 2x`}
-                  alt={`${w.name} · ${w.roleTitle}`}
-                  class="specialist-card-img"
-                  width="56"
-                  height="56"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
-                <span class="specialist-card-initials" style={`background: ${team.color}`}>{workerInitials(w.name)}</span>
-              )}
-              <div class="specialist-card-names">
-                <div class="specialist-card-name">{w.name}</div>
-                <div class="specialist-card-role">{w.roleTitle}</div>
+      <div class="workers-grid">
+        {workers.map((w) => (
+          <a href={`/workers/${w.id.replace(/_/g, '-')}/`} class="worker-card">
+            <div class="worker-card-top">
+              <img
+                src={w.image}
+                srcset={`${w.image} 1x, ${w.image2x} 2x`}
+                alt={`${w.name} · ${w.role}`}
+                class="worker-card-img"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="worker-card-info">
+                <div class="worker-card-name">{w.name}</div>
+                <div class="worker-card-role">{w.role}</div>
               </div>
             </div>
-            <div class="specialist-card-tags">
-              <span class="specialist-tag">
-                <span class="specialist-tag-dot" style={`background: ${team.color}`}></span>
+            <div class="worker-card-tags">
+              <span class="worker-tag">
+                <span class="worker-tag-dot" style={`background: ${w.teamColor}`}></span>
                 {w.department}
               </span>
-              {w.status === 'planned' && <span class="specialist-tag specialist-tag--planned">{shared.planned}</span>}
+              <span class="worker-tag">{shared.stagePrefix}{w.stage}</span>
             </div>
-            {w.slug ? (
-              <a href={`/workers/${w.slug}/`} class="specialist-card-link">
+            <p class="worker-card-summary">{w.summary}</p>
+            <div class="worker-card-footer">
+              <div class="worker-output">
+                <span class="worker-output-label">{shared.outputLabel}</span>
+                <span class="worker-output-value">{w.output}</span>
+              </div>
+              <span class="worker-view-link">
                 {shared.viewProfile}
                 <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            ) : (
-              <span class="specialist-card-pending">{shared.profileComingSoon}</span>
-            )}
-          </div>
-          );
-        })}
+              </span>
+            </div>
+          </a>
+        ))}
       </div>
 
-      <div class="specialists-note">
-        <p>{meta.note}</p>
-      </div>
+      <a href={localeHref(locale, '/workers/seo/')} class="workers-crosslink">
+        <span class="workers-crosslink-label">{meta.crosslinkLabel}</span>
+        <span class="workers-crosslink-title">{meta.crosslinkTitle}</span>
+        <span class="workers-crosslink-cta">
+          {meta.crosslinkCta}
+          <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
     </div>
   </section>
 
@@ -177,6 +167,7 @@ const canonical = locale === 'en'
   .masthead-nav--right { justify-content: flex-end; }
   .nav-link { font-size: var(--wp-text-md); font-weight: 500; color: var(--wp-text-secondary); }
   .nav-link:hover { color: var(--wp-ink); }
+  .nav-link--active { color: var(--wp-ink); font-weight: 600; }
   .btn {
     display: inline-flex;
     align-items: center;
@@ -209,29 +200,6 @@ const canonical = locale === 'en'
     margin: 0 auto;
     padding: 0 34px;
   }
-  .wp-breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 22px;
-    font-family: var(--wp-font-mono);
-    font-size: var(--wp-text-xs);
-    letter-spacing: 0.06em;
-    color: var(--wp-text-tertiary);
-  }
-  .wp-breadcrumb-back {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px; height: 22px;
-    border: 1px solid var(--wp-line);
-    border-radius: 4px;
-    color: var(--wp-text-secondary);
-  }
-  .wp-breadcrumb-link { color: var(--wp-text-secondary); }
-  .wp-breadcrumb-link:hover { color: var(--wp-ink); }
-  .wp-breadcrumb-sep { color: var(--wp-text-muted); }
-  .wp-breadcrumb-current { color: var(--wp-ink); font-weight: 700; }
   .eyebrow {
     font-size: var(--wp-text-sm);
     font-family: var(--wp-font-mono);
@@ -239,6 +207,7 @@ const canonical = locale === 'en'
     text-transform: uppercase;
     margin-bottom: 16px;
   }
+  .eyebrow--strategy { color: var(--team-strategy); }
   .page-h1 {
     font-size: clamp(2.4rem, 5vw, 3.75rem);
     font-weight: 700;
@@ -256,7 +225,7 @@ const canonical = locale === 'en'
     max-width: 600px;
   }
 
-  /* ===== SPECIALIST DIRECTORY ===== */
+  /* ===== WORKER DIRECTORY ===== */
   .worker-directory-header {
     display: flex;
     align-items: center;
@@ -270,46 +239,85 @@ const canonical = locale === 'en'
     letter-spacing: 0.08em;
     color: var(--wp-text-tertiary);
   }
-  .specialists-grid {
+  .workers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
   }
-  .specialist-card {
+  .workers-crosslink {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 16px;
+    margin-top: 28px;
+    padding: 18px 22px;
+    background: #FFF;
+    border: 1px dashed var(--wp-border-strong);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 200ms, box-shadow 200ms;
+  }
+  .workers-crosslink:hover {
+    border-color: var(--wp-ink);
+    box-shadow: 0 3px 7px rgba(54,44,24,0.08), 0 16px 30px -18px rgba(54,44,24,0.2);
+  }
+  .workers-crosslink-label {
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--team-seo);
+  }
+  .workers-crosslink-title { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.01em; }
+  .workers-crosslink-cta {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--wp-text-sm);
+    font-weight: 600;
+    color: var(--wp-ink);
+    white-space: nowrap;
+  }
+  .worker-card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    height: 100%;
     background: #FFF;
     border: 1px solid var(--wp-line);
     box-shadow: 0 1px 2px rgba(54,44,24,0.05), 0 12px 24px -16px rgba(54,44,24,0.14);
-    padding: 16px;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition: border-color 200ms, box-shadow 200ms;
   }
-  .specialist-card-top { display: flex; align-items: center; gap: 12px; }
-  .specialist-card-img {
-    width: 56px; height: 56px;
+  .worker-card:hover {
+    border-color: var(--wp-border-strong);
+    box-shadow: 0 3px 7px rgba(17,19,24,0.1), 0 20px 36px -16px rgba(17,19,24,0.24);
+  }
+  .worker-card-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 16px 12px;
+  }
+  .worker-card-img {
+    width: 64px; height: 64px;
     border-radius: 4px;
     object-fit: cover;
     box-shadow: 0 0 0 1px var(--wp-border-secondary);
     flex-shrink: 0;
   }
-  .specialist-card-initials {
+  .worker-card-name { font-size: var(--wp-text-xl); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+  .worker-card-role { font-size: var(--wp-text-sm); color: var(--wp-text-tertiary); margin-top: 3px; }
+  .worker-card-tags {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px; height: 56px;
-    border-radius: 4px;
-    flex-shrink: 0;
-    font-family: var(--wp-font-mono);
-    font-size: var(--wp-text-md);
-    font-weight: 700;
-    color: #FFF;
-    box-shadow: 0 0 0 1px var(--wp-border-secondary);
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 16px 6px;
   }
-  .specialist-card-names { min-width: 0; }
-  .specialist-card-name { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
-  .specialist-card-role { font-size: var(--wp-text-sm); color: var(--wp-text-tertiary); margin-top: 3px; }
-  .specialist-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .specialist-tag {
+  .worker-tag {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -321,32 +329,48 @@ const canonical = locale === 'en'
     color: var(--wp-text-tertiary);
     letter-spacing: 0.04em;
   }
-  .specialist-tag-dot { width: 6px; height: 6px; border-radius: 50%; }
-  .specialist-tag--planned { color: var(--wp-text-tertiary); border-style: dashed; }
-  .specialist-card-link {
+  .worker-tag-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .worker-card-summary {
+    margin: 0;
+    padding: 8px 16px 16px;
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+  }
+  .worker-card-footer {
     margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px 16px;
+    border-top: 1px dashed var(--wp-line);
+  }
+  .worker-output { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .worker-output-label {
+    font-size: 10px;
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.08em;
+    color: var(--wp-text-muted);
+  }
+  .worker-output-value {
+    font-size: var(--wp-text-xs);
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .worker-view-link {
     display: inline-flex;
     align-items: center;
     gap: 5px;
     font-size: var(--wp-text-xs);
     font-weight: 600;
     color: var(--wp-ink);
+    white-space: nowrap;
+    flex: 0 0 auto;
   }
-  .specialist-card-pending {
-    margin-top: auto;
-    font-size: var(--wp-text-xs);
-    font-style: italic;
-    color: var(--wp-text-muted);
-  }
-
-  .specialists-note {
-    margin-top: 30px;
-    padding: 18px 22px;
-    background: #FFF;
-    border: 1px dashed var(--wp-border-strong);
-    max-width: 720px;
-  }
-  .specialists-note p { margin: 0; font-size: var(--wp-text-base); color: var(--wp-text-secondary); line-height: 1.6; }
 
   /* ===== FOOTER ===== */
   .footer {
@@ -393,7 +417,7 @@ const canonical = locale === 'en'
   }
   @media (max-width: 480px) {
     .container { padding: 0 20px; }
-    .specialists-grid { grid-template-columns: 1fr; }
+    .workers-grid { grid-template-columns: 1fr; }
     .worker-directory-header { flex-direction: column; align-items: flex-start; gap: 2px; }
     .footer-inner { grid-template-columns: 1fr; }
   }
