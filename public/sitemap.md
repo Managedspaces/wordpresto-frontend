@@ -74,6 +74,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/cms-handoff.md
 - Focus: Ravi packages approved content with the structure, metadata and notes needed for clean handoff to a CMS, website or client. For teams that need a publishing-ready content package.
 
+### See what ranking competitors cover that you do not.
+
+- HTML: https://wordpresto.com/workers/competitor-intel/
+- Markdown: https://wordpresto.com/workers/competitor-intel/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/competitor-intel.md
+- Focus: Cassius reviews competitor coverage from stored SERP competitor data, surfacing the subtopics, entities and angles competitors appear to cover that your content may be missing.
+
 ### Understand the page before you rewrite it.
 
 - HTML: https://wordpresto.com/workers/content-analyst/

@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (14 specialist roles)
+## SEO Worker directory (15 specialist roles)
 
 ### Nadia — SEO Title & Metadata Worker
 
@@ -153,3 +153,13 @@ Hugo reviews content maintenance signals: overlap risk, thin content, decay, unc
 - Legacy Markdown: https://wordpresto.com/pages/workers/semantic-search-analyzer.md
 
 Sema reviews semantic coverage by comparing content against Word Presto's knowledge layer and project context, surfacing missing subtopics and thinly covered entities.
+
+### Cassius — Competitor Intelligence Worker
+
+- Stage: Competitive intelligence
+- Output: Competitor coverage review
+- URL: https://wordpresto.com/workers/competitor-intel/
+- Markdown: https://wordpresto.com/workers/competitor-intel/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/competitor-intel.md
+
+Cassius reviews competitor coverage from stored SERP competitor data, surfacing the subtopics, entities and angles competitors appear to cover that your content may be missing.
