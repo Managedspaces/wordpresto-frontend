@@ -71,6 +71,23 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
             </div>
           </div>
         </div>
+        <details class="locale-switcher-mobile">
+          <summary
+            class="locale-switcher-current"
+            aria-label={LOCALES.find((l) => l.code === locale)?.label}
+            set:html={FLAG_SVG[LOCALES.find((l) => l.code === locale)?.countryCode ?? 'IE']}
+          ></summary>
+          <div class="locale-switcher-menu-inner locale-switcher-mobile-menu">
+            {LOCALES.filter((l) => l.code !== locale).map((l) => (
+              <a
+                href={localeHref(l.code, '/')}
+                class="locale-switcher-flag"
+                aria-label={l.label}
+                set:html={FLAG_SVG[l.countryCode]}
+              />
+            ))}
+          </div>
+        </details>
         <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
       </nav>
     </div>
@@ -696,6 +713,35 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+  }
+
+  /* Touch has no hover, so mobile gets a tap-driven <details> disclosure
+     instead of the desktop hover dropdown — no JS, no hover-chain gap to
+     get wrong. Hidden above the tablet breakpoint where .locale-switcher
+     (the hover version) takes over; see the ≤768px block below. */
+  .locale-switcher-mobile { display: none; position: relative; }
+  .locale-switcher-mobile summary {
+    list-style: none;
+    cursor: pointer;
+    display: block;
+    width: 20px;
+    height: 15px;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1.5px var(--wp-ink);
+  }
+  .locale-switcher-mobile summary::-webkit-details-marker { display: none; }
+  .locale-switcher-mobile summary :global(svg) { display: block; width: 100%; height: 100%; }
+  .locale-switcher-mobile-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 62;
+  }
+  .locale-switcher-mobile-menu .locale-switcher-flag {
+    width: 22px;
+    height: 16px;
+    opacity: 1;
   }
 
   /* ===== BUTTONS ===== */
@@ -1655,20 +1701,21 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
     .section { padding: 60px 0; }
 
     /* --- Masthead --- */
-    .masthead-inner { padding: 10px 24px; }
+    /* Desktop centres the logo absolutely over the gap between two flex
+       items (nav-left, nav-right). Mobile hides nav-left and adds the
+       language switcher to nav-right, which no longer reliably fits beside
+       a centred logo on narrow phones — so the logo goes back into flow
+       on the left and nav-right sits on the right via space-between. The
+       ink rule's centre gap (cut for the centred logo) becomes solid to
+       match, since nothing sits over its middle any more. */
+    .masthead-inner { padding: 10px 24px; justify-content: space-between; }
     .masthead-nav--left { display: none; }
     .masthead-nav--right .nav-link { display: none; }
     .locale-switcher { display: none; }
-    .masthead-logo img { height: 78px; }
-    .masthead::after {
-      background: linear-gradient(
-        to right,
-        var(--wp-ink) calc(50% - 72px),
-        transparent calc(50% - 72px),
-        transparent calc(50% + 72px),
-        var(--wp-ink) calc(50% + 72px)
-      );
-    }
+    .locale-switcher-mobile { display: block; }
+    .masthead-logo { position: static; left: auto; top: auto; transform: none; }
+    .masthead-logo img { height: 60px; }
+    .masthead::after { background: var(--wp-ink); }
 
     /* --- Hero --- */
     .section--hero { padding: 48px 0 56px; }
@@ -1733,16 +1780,7 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
 
     /* --- Masthead --- */
     .masthead-inner { padding: 8px 18px; }
-    .masthead-logo img { height: 62px; }
-    .masthead::after {
-      background: linear-gradient(
-        to right,
-        var(--wp-ink) calc(50% - 56px),
-        transparent calc(50% - 56px),
-        transparent calc(50% + 56px),
-        var(--wp-ink) calc(50% + 56px)
-      );
-    }
+    .masthead-logo img { height: 54px; }
     .btn--sm { font-size: 12px; padding: 7px 12px; }
 
     /* --- Hero --- */
