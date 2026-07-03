@@ -78,6 +78,51 @@ export const siteRoutes: SiteRoute[] = [
     markdown: '/workers/seo/index.md',
   },
   {
+    path: '/specialists/',
+    label: 'Specialists',
+    description: 'The four specialist teams behind Emma: Content Production, SEO, Operations and Approval / Governance.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'weekly',
+    priority: 0.8,
+  },
+  {
+    path: '/specialists/content-production/',
+    label: 'Content Production Team',
+    description: 'Plans, drafts, rewrites and proofs the copy, turning briefs into structured, ready content.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'weekly',
+    priority: 0.7,
+  },
+  {
+    path: '/specialists/seo/',
+    label: 'SEO Team',
+    description: 'Works search intent, structure, technical signals, evidence and internal relationships into the content.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'weekly',
+    priority: 0.7,
+  },
+  {
+    path: '/specialists/operations-management/',
+    label: 'Operations / Management',
+    description: 'Coordinates the review flow and keeps every piece of work ready for a human decision.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'weekly',
+    priority: 0.6,
+  },
+  {
+    path: '/specialists/approval-governance/',
+    label: 'Approval / Governance Team',
+    description: 'Checks risk, evidence, approval state and whether proposed changes are ready for the Editor.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'weekly',
+    priority: 0.6,
+  },
+  {
     // noindex (see src/pages/workflow-demo/index.astro): listed for humans on
     // the HTML sitemap, but kept out of sitemap.xml so search engines are not
     // asked to index a page marked noindex.

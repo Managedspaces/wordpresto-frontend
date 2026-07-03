@@ -1,0 +1,329 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { specialistsDirectory as meta } from '@/data/staticPages';
+import { getTeamGroups, TOTAL_SPECIALISTS, TOTAL_TEAMS } from '@/data/workerRegistry';
+
+const teamGroups = getTeamGroups(6);
+---
+
+<BaseLayout
+  pageTitle={meta.h1}
+  seoTitle={meta.seoTitle}
+  description={meta.metaDescription}
+  canonical="https://wordpresto.com/specialists/"
+>
+
+  <!-- ===================== MASTHEAD ===================== -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <nav class="masthead-nav masthead-nav--left">
+        <a href="/waitlist" class="nav-link">Sign in</a>
+        <a href="/#product" class="nav-link">Product</a>
+        <a href="/#capabilities" class="nav-link">Workflow</a>
+      </nav>
+      <a href="/" class="masthead-logo">
+        <img src="/brand/main-logo.png" alt="Word Presto — the content engine behind publishing" height="110" />
+      </a>
+      <nav class="masthead-nav masthead-nav--right">
+        <a href="/#use-cases" class="nav-link">Use cases</a>
+        <a href="/workers/" class="nav-link">Workers</a>
+        <a href="/waitlist" class="btn btn--primary btn--sm">Join the waitlist</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="section section--hero">
+    <div class="container">
+      <div class="eyebrow eyebrow--strategy">The specialist bench</div>
+      <h1 class="page-h1">{meta.h1}</h1>
+      <p class="page-intro">{meta.intro}</p>
+
+      <div class="scale-strip">
+        <span class="scale-strip-strong">{TOTAL_SPECIALISTS} specialists</span>
+        <span class="scale-strip-dot"></span>
+        <span>{TOTAL_TEAMS} teams</span>
+        <span class="scale-strip-dot"></span>
+        <span>coordinated through Emma</span>
+        <span class="scale-strip-dot"></span>
+        <span>Editor approval required</span>
+      </div>
+
+      <div class="team-cards-grid">
+        {teamGroups.map(({ name, color, summary, examples, moreCount, count, href, cta }) => (
+          <div class="team-card">
+            <span class="team-card-bar" style={`background: ${color}`}></span>
+            <div class="team-card-head">
+              <div class="team-card-eyebrow"><span class="team-card-dot" style={`background: ${color}`}></span><span class="mono-label">TEAM · {count} SPECIALIST{count === 1 ? "" : "S"}</span></div>
+              <div class="team-card-name">{name}</div>
+            </div>
+            <p class="team-card-summary">{summary}</p>
+            <div class="team-card-chips-label">A few of the specialists Emma can bring in:</div>
+            <div class="team-card-chips">
+              {examples.map((w) => <span class="team-chip">{w.name}</span>)}
+              {moreCount > 0 && <span class="team-chip team-chip--more">+ {moreCount} more</span>}
+            </div>
+            <a href={href} class="team-card-cta">
+              {cta}
+              <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div class="specialists-note">
+        <p>Emma coordinates all four teams from one editorial desk. Specialists review, draft, check and prepare, but nothing moves forward, and nothing publishes, without the Editor&rsquo;s approval.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/brand/main-logo.png" alt="Word Presto" class="footer-logo" loading="lazy" />
+        <p class="footer-tagline">The content engine behind better publishing workflows.</p>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-heading">Product</span>
+        <a href="/#product" class="footer-link">How it works</a>
+        <a href="/#capabilities" class="footer-link">Workflow</a>
+        <a href="/workers/" class="footer-link">Workers</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-heading">Use cases</span>
+        <a href="/#use-cases" class="footer-link">Astro + CMS builds</a>
+        <a href="/#use-cases" class="footer-link">CMS-connected</a>
+        <a href="/#use-cases" class="footer-link">Standalone engine</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-heading">Company</span>
+        <a href="/waitlist" class="footer-link">Join the waitlist</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 WordPresto</span>
+      <span>Review-led publishing · Human approval</span>
+      <a href="/sitemap/" class="footer-link footer-sitemap-link">Sitemap</a>
+    </div>
+  </footer>
+
+</BaseLayout>
+
+<style>
+  /* ===== MASTHEAD ===== */
+  .masthead {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+    border-bottom: 2px solid var(--wp-ink);
+    transform: translateZ(0);
+  }
+  .masthead-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 34px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 28px;
+  }
+  .masthead-logo img { display: block; height: 48px; width: auto; mix-blend-mode: multiply; }
+  .masthead-nav { display: flex; align-items: center; gap: 24px; }
+  .masthead-nav--left { justify-content: flex-start; }
+  .masthead-nav--right { justify-content: flex-end; }
+  .nav-link { font-size: var(--wp-text-md); font-weight: 500; color: var(--wp-text-secondary); }
+  .nav-link:hover { color: var(--wp-ink); }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--wp-text-md);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  .btn--primary {
+    padding: 14px 24px;
+    background: var(--wp-ink);
+    color: #FAF7F0;
+    border: 1px solid var(--wp-ink);
+    box-shadow: 0 2px 4px rgba(54,44,24,0.12), 0 10px 18px -8px rgba(54,44,24,0.22);
+  }
+  .btn--sm { padding: 8px 16px; font-size: var(--wp-text-sm); }
+
+  /* ===== LAYOUT ===== */
+  .section {
+    padding: 92px 0;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+  }
+  .section--hero { padding: 56px 0 80px; }
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 34px;
+  }
+  .eyebrow {
+    font-size: var(--wp-text-sm);
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .eyebrow--strategy { color: var(--team-strategy); }
+  .page-h1 {
+    font-size: clamp(2.4rem, 5vw, 3.75rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    color: var(--wp-ink);
+    margin: 0 0 20px;
+    max-width: 720px;
+  }
+  .page-intro {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+    margin: 0 0 36px;
+    max-width: 600px;
+  }
+
+  /* ===== SCALE STRIP / TEAM CARDS ===== */
+  .scale-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    border-top: 1px solid var(--wp-border-strong);
+    border-bottom: 1px solid var(--wp-border-strong);
+    padding: 13px 2px;
+    margin-bottom: 32px;
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-sm);
+    letter-spacing: 0.04em;
+    color: var(--wp-text-tertiary);
+  }
+  .scale-strip-strong { font-weight: 700; color: var(--wp-ink); }
+  .scale-strip-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--wp-border-strong); }
+
+  .team-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .team-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #FFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 14px 28px -18px rgba(17,19,24,0.16);
+    overflow: hidden;
+    height: 100%;
+  }
+  .team-card-bar { position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+  .team-card-head { padding: 20px 20px 14px; border-bottom: 1px solid var(--wp-line); }
+  .team-card-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+  .team-card-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .mono-label { font-size: 11px; font-family: var(--wp-font-mono); letter-spacing: 0.08em; color: var(--wp-text-tertiary); }
+  .team-card-name { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; color: var(--wp-ink); }
+  .team-card-summary { margin: 0; padding: 14px 20px 14px; font-size: var(--wp-text-sm); color: var(--wp-text-secondary); line-height: 1.5; }
+  .team-card-chips-label {
+    padding: 0 20px 8px;
+    font-size: 11px;
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+  }
+  .team-card-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 20px 18px; }
+  .team-chip {
+    padding: 3px 10px;
+    border: 1px solid var(--wp-line);
+    border-radius: var(--wp-radius-pill);
+    font-size: 11px;
+    font-family: var(--wp-font-mono);
+    color: var(--wp-text-secondary);
+    letter-spacing: 0.02em;
+  }
+  .team-chip--more { color: var(--wp-text-tertiary); font-style: italic; border-style: dashed; }
+  .team-card-cta {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 20px;
+    border-top: 1px dashed var(--wp-line);
+    font-size: var(--wp-text-sm);
+    font-weight: 600;
+    color: var(--wp-ink);
+    text-decoration: none;
+  }
+
+  .specialists-note {
+    margin-top: 30px;
+    padding: 18px 22px;
+    background: #FFF;
+    border: 1px dashed var(--wp-border-strong);
+    max-width: 720px;
+  }
+  .specialists-note p { margin: 0; font-size: var(--wp-text-base); color: var(--wp-text-secondary); line-height: 1.6; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background-color: var(--wp-paper-dark);
+    background-image: var(--wp-texture-paper);
+    border-top: 2px solid var(--wp-ink);
+    padding: 58px 0 42px;
+  }
+  .footer-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 34px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
+  .footer-logo { display: block; height: 90px; width: auto; align-self: flex-start; mix-blend-mode: multiply; }
+  .footer-tagline { margin: 6px 0 0; font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; }
+  .footer-col { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col-heading { font-size: var(--wp-text-sm); font-weight: 700; }
+  .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); }
+  .footer-link:hover { color: var(--wp-ink); }
+  .footer-bottom {
+    width: 100%;
+    max-width: 1200px;
+    margin: 46px auto 0;
+    padding: 22px 34px 0;
+    border-top: 1px solid var(--wp-border-strong);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-muted);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 940px) {
+    .masthead-nav { display: none; }
+    .masthead-inner { grid-template-columns: 1fr; justify-items: center; padding: 10px 20px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px) {
+    .team-cards-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .container { padding: 0 20px; }
+    .footer-inner { grid-template-columns: 1fr; }
+  }
+</style>

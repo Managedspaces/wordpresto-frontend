@@ -55,9 +55,9 @@ Emma is not working alone. Behind her is the full Word Presto specialist bench: 
 > Emma brings in the right specialist at the right moment, then returns the findings that need the Editor's judgement.
 
 - Content Production Team: Plans, drafts, rewrites and proofs the copy, turning briefs into structured, ready content.
-- SEO Team: Works search intent, structure and technical signals into the draft, not bolted on at the end.
+- SEO Team: Works search intent, structure, technical signals, evidence and internal relationships into the content, not bolted on at the end.
 - Operations / Management: Coordinates the review flow and keeps every piece of work ready for a human decision.
-- Approval / Governance: Checks risk, evidence and readiness, and whether a change is ready for the Editor.
+- Approval / Governance Team: Checks risk, evidence, approval state and whether proposed changes are ready for the Editor.
 
 ## Same standard. Native voice.
 

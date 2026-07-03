@@ -16,6 +16,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { homePage } from '../src/data/pages';
 import { workerProfiles } from '../src/data/workerProfiles';
+import { seoWorkers } from '../src/data/workers';
 import { workersDirectory, seoWorkersDirectory, workflowDemo, prestobot } from '../src/data/staticPages';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -291,10 +292,14 @@ function renderWorkerMarkdown(w: (typeof workerProfiles)[number]) {
 /* ------------------------------------------------------------------ */
 /*  Render workers index as Markdown                                    */
 /* ------------------------------------------------------------------ */
-// Content Workers are every profile that is not on the SEO team. SEO Workers
-// are listed separately so each directory mirror matches its HTML page.
-const contentProfiles = workerProfiles.filter((w) => w.team !== 'seo');
-const seoProfiles = workerProfiles.filter((w) => w.team === 'seo');
+// Directory placement mirrors the HTML pages exactly: /workers/seo/ renders
+// `seoWorkers` from workers.ts (a page-grouping, not the real org team — see
+// that file's header comment), so the split here matches by id membership in
+// that array rather than by `profile.team`, which now reflects the corrected
+// org team from workerRegistry.ts and can differ from directory placement.
+const seoWorkerIds = new Set(seoWorkers.map((w) => w.id));
+const contentProfiles = workerProfiles.filter((w) => !seoWorkerIds.has(w.id));
+const seoProfiles = workerProfiles.filter((w) => seoWorkerIds.has(w.id));
 
 function renderWorkersIndexMarkdown() {
   const lines: string[] = [

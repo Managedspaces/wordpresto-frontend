@@ -1,3 +1,5 @@
+import { TEAM_ORDER, TEAM_META, TOTAL_SPECIALISTS } from './workerRegistry';
+
 export interface PageSection {
   id: string;
   eyebrow?: string;
@@ -83,15 +85,10 @@ export const homePage: PageData = {
     {
       id: 'specialists',
       eyebrow: 'The specialist bench',
-      heading: '41 specialists. One managing editor.',
+      heading: `${TOTAL_SPECIALISTS} specialists. One managing editor.`,
       body: 'Emma is not working alone. Behind her is the full Word Presto specialist bench: content production, SEO, operations and approval governance workers, each with a defined role and place in the workflow.',
       note: "Emma brings in the right specialist at the right moment, then returns the findings that need the Editor's judgement.",
-      items: [
-        { title: 'Content Production Team', body: 'Plans, drafts, rewrites and proofs the copy, turning briefs into structured, ready content.' },
-        { title: 'SEO Team', body: 'Works search intent, structure and technical signals into the draft, not bolted on at the end.' },
-        { title: 'Operations / Management', body: 'Coordinates the review flow and keeps every piece of work ready for a human decision.' },
-        { title: 'Approval / Governance', body: 'Checks risk, evidence and readiness, and whether a change is ready for the Editor.' },
-      ],
+      items: TEAM_ORDER.map((team) => ({ title: TEAM_META[team].name, body: TEAM_META[team].summary })),
     },
     {
       id: 'languages',

@@ -1,14 +1,18 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { workerProfiles } from '@/data/workerProfiles';
+import { seoWorkers as seoWorkerRoster } from '@/data/workers';
 import { mainRoutes, machineRoutes } from '@/data/siteRoutes';
 
 const seoTitle = 'Site map | WordPresto';
 const metaDescription = 'A complete map of the WordPresto site — main pages, Workers and resources.';
 
-// Worker profiles are split to mirror the two directory pages they live under.
-const contentWorkers = workerProfiles.filter((w) => w.team !== 'seo');
-const seoWorkers = workerProfiles.filter((w) => w.team === 'seo');
+// Worker profiles are split to mirror the two directory pages they live under
+// (by id membership in the `seoWorkers` page-grouping array, not the org
+// `team` field, which can now differ — see workers.ts's header comment).
+const seoWorkerIds = new Set(seoWorkerRoster.map((w) => w.id));
+const contentWorkers = workerProfiles.filter((w) => !seoWorkerIds.has(w.id));
+const seoWorkers = workerProfiles.filter((w) => seoWorkerIds.has(w.id));
 ---
 
 <BaseLayout
