@@ -26,10 +26,10 @@ Most content work does not fall apart because people cannot write. It falls apar
 
 ## Meet Emma, your managing editor.
 
-- She keeps the project in view: Emma reads the living context behind the work: pages, queries, metrics, gaps, voice, previous decisions and what the Editor has already approved.
-- She keeps the work moving: From brief to draft, proofing, review and approval, Emma keeps the next right step clear.
-- She brings in the specialists: Claims, voice, SEO, evidence, links, risk and handoff all come through the right desk at the right time.
-- She knows the line: Emma can recommend, route and prepare. Only the Editor can approve.
+- She holds the brief: Keeps the goal, audience, voice, context and previous decisions in view, so the work does not drift.
+- She runs the desk: Moves each piece from brief to draft, proofing, review and approval without losing the thread.
+- She calls in the specialists: Sends claims, SEO, evidence, voice, links, risk and handoff work to the right specialist at the right time.
+- She protects your authority: Emma can recommend and prepare. Only the Editor can approve.
 
 ## Emma's four commitments.
 

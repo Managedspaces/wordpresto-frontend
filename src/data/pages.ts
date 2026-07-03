@@ -53,10 +53,10 @@ export const homePage: PageData = {
       eyebrow: 'At the centre of the desk',
       heading: 'Meet Emma, your managing editor.',
       items: [
-        { title: 'She keeps the project in view', body: 'Emma reads the living context behind the work: pages, queries, metrics, gaps, voice, previous decisions and what the Editor has already approved.' },
-        { title: 'She keeps the work moving', body: 'From brief to draft, proofing, review and approval, Emma keeps the next right step clear.' },
-        { title: 'She brings in the specialists', body: 'Claims, voice, SEO, evidence, links, risk and handoff all come through the right desk at the right time.' },
-        { title: 'She knows the line', body: 'Emma can recommend, route and prepare. Only the Editor can approve.' },
+        { title: 'She holds the brief', body: 'Keeps the goal, audience, voice, context and previous decisions in view, so the work does not drift.' },
+        { title: 'She runs the desk', body: 'Moves each piece from brief to draft, proofing, review and approval without losing the thread.' },
+        { title: 'She calls in the specialists', body: 'Sends claims, SEO, evidence, voice, links, risk and handoff work to the right specialist at the right time.' },
+        { title: 'She protects your authority', body: 'Emma can recommend and prepare. Only the Editor can approve.' },
       ],
     },
     {
