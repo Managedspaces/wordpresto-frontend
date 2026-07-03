@@ -26,6 +26,7 @@ This file consolidates the main public WordPresto marketing and Worker content f
 - Check whether the page gives the reader a clear next step.: https://wordpresto.com/workers/conversion-alignment/index.md
 - Review the draft before it moves forward.: https://wordpresto.com/workers/draft-quality-reviewer/index.md
 - Rewrite drafts without losing the point.: https://wordpresto.com/workers/draft-rewrite/index.md
+- Check whether the work is ready for human approval.: https://wordpresto.com/workers/editorial-approval-gate/index.md
 - Flag risky claims before they move forward.: https://wordpresto.com/workers/editorial-risk-claims/index.md
 - Back up the claims before they go live.: https://wordpresto.com/workers/evidence-gap/index.md
 - Review the paths readers and crawlers can actually follow.: https://wordpresto.com/workers/internal-link-pathway/index.md
@@ -1045,7 +1046,7 @@ A clarity review is not an automatic rewrite. Esme produces suggestions, flags a
 
 - **Helena — Voice & Style Worker**: Checks whether the copy fits the configured voice before proofing tightens the language. Output: Voice review.
 - **Quinn — Draft Quality Reviewer**: Checks whether the draft covers the approved changes and has quality risks. Output: Draft quality review.
-- **editorial_approval_gate**: Reviews whether the content is ready for human editorial approval. Output: Approval gate.
+- **Dana — Editorial Approval Gate Worker**: Reviews whether the content is ready for human editorial approval. Output: Approval gate.
 
 ---
 
@@ -2579,6 +2580,130 @@ A shaped draft is an input to editorial, not the finished product. Ellis rewrite
 
 ---
 
+# Check whether the work is ready for human approval.
+
+Canonical: https://wordpresto.com/workers/editorial-approval-gate/
+Markdown: https://wordpresto.com/workers/editorial-approval-gate/index.md
+
+# Check whether the work is ready for human approval.
+
+Dana reads the existing worker outputs and produces a conservative approval gate, telling the human reviewer whether content appears ready for review, needs revision, or is blocked.
+
+---
+
+Approval should not be a feeling. Before content moves forward, the editor needs to know whether the key checks are clean, whether blockers remain, and whether anything still needs revision, evidence or specialist review. Dana reads the existing worker outputs and produces a conservative approval gate. She does not approve automatically. She tells the human reviewer whether the content appears ready for review, needs revision, or is blocked.
+
+## Content moves forward because everyone assumes someone else checked it.
+
+A page may have good copy, but still contain unresolved evidence gaps, accessibility issues, metadata problems, trust concerns, CMS handoff blockers or editorial risk. If those issues are scattered across worker outputs, they are easy to miss. Dana brings the final review state into one gate.
+
+## A conservative final gate before content moves forward.
+
+Dana reviews already-computed worker outputs and determines whether the content appears ready for human editorial review. She does not certify compliance, publish content, or approve automatically.
+
+### Checks
+
+- Approval report state
+- Editorial risk and claims issues
+- Evidence gaps
+- Accessibility status
+- SEO metadata and SERP snippet readiness
+- Schema and trust signals
+- CMS handoff blockers
+- Draft quality and review status
+
+### Improves
+
+- Approval confidence
+- Editorial governance
+- Visibility of blockers
+- Readiness before handoff or publishing workflow
+
+### Prepares
+
+- Approval gate decision
+- Readiness score
+- Blocker list
+- Prioritised recommendations
+
+### Surfaces for human review
+
+- Hard blockers
+- Revision items
+- Missing review evidence
+- Reasons content should not move forward yet
+
+## What Dana works from, and what she produces.
+
+### Works from
+
+- Review summary
+- Review queue
+- Evidence gap review
+- Editorial risk findings
+- Accessibility, metadata, schema and trust outputs
+
+### Produces
+
+- Approval gate review
+- Gate decision
+- Readiness score
+- Blocker list
+- Prioritised recommendations
+
+## When to use Dana
+
+### A page is close to final approval.
+
+Dana checks whether unresolved worker findings still block progress.
+
+### Multiple review workers have run.
+
+She combines the state into one clear readiness gate.
+
+### A draft is moving towards CMS handoff.
+
+Dana flags blockers before handoff creates operational risk.
+
+### The editor needs a conservative decision point.
+
+She gives approved-for-review only when the checks are clean enough.
+
+### Governance matters.
+
+Dana keeps risk, evidence and accessibility issues visible before sign-off.
+
+### A page should not move forward yet.
+
+She explains why and lists the highest-priority actions.
+
+## Dana gates readiness. Humans approve.
+
+Dana does not approve content automatically, certify compliance, publish, or write to a CMS. Her job is to make the approval state visible so a human reviewer can decide.
+
+### Boundary checklist
+
+- Dana gates readiness, she never approves content herself.
+- Compliance (legal, medical, financial, accessibility) is never certified by Dana.
+- Blockers are always surfaced, never hidden to make content look ready.
+- The gate decision is conservative — unclear or unresolved items default to needing revision.
+
+### Will not
+
+- Approve content automatically
+- Certify legal, medical, financial or accessibility compliance
+- Publish or hand off content by herself
+- Hide blockers to make content appear ready
+- Rewrite or apply fixes
+
+## Workers Dana works alongside.
+
+- **Helen — Review Worker**: Summarises findings and review actions before the final gate. Output: Review summary.
+- **Sam — Safe Change Planner**: Turns findings into proposed changes Dana can assess for blockers. Output: Change plan.
+- **review_queue**: Organises unresolved items Dana can treat as approval blockers. Output: Review queue.
+
+---
+
 # Flag risky claims before they move forward.
 
 Canonical: https://wordpresto.com/workers/editorial-risk-claims/
@@ -3160,7 +3285,7 @@ Helen does not approve content, edit copy, apply changes or publish. She prepare
 
 - **review_queue**: Organises proposed changes into decision items. Output: Review queue.
 - **Sam — Safe Change Planner**: Turns findings into proposed changes. Output: Change plan.
-- **editorial_approval_gate**: Uses the review state to assess readiness for approval. Output: Approval gate.
+- **Dana — Editorial Approval Gate Worker**: Uses the review state to assess readiness for approval. Output: Approval gate.
 
 ---
 
@@ -3282,7 +3407,7 @@ Sam does not edit the page, draft safe edits, apply changes or publish. He prepa
 
 - **review_queue**: Turns Sam's proposed changes into a decision queue. Output: Review queue.
 - **Helen — Review Worker**: Summarises review actions for human editors. Output: Review summary.
-- **editorial_approval_gate**: Checks whether proposed changes block approval. Output: Approval gate.
+- **Dana — Editorial Approval Gate Worker**: Checks whether proposed changes block approval. Output: Approval gate.
 
 ---
 
