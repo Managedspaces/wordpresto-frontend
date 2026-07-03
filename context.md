@@ -115,13 +115,35 @@ and `SpecialistTeamPage.astro` (previously pinned to plain English per the
 (`/workers/{slug}/`) stay plain English, since those pages are still
 English-only.
 
-**Next up:** the rest of the site (`/workers/[slug]/` — 20 profile pages,
-by far the largest remaining piece — `/workflow-demo/`, `/prestobot/`,
-`/sitemap/`) following the same pattern established here. Worker profile
-pages should be tackled as their own dedicated pass, most likely with
-translation work parallelised per locale rather than done serially. Once
-`/sitemap/` gets a locale route, revisit the specialists/workers/waitlist
-pages' `/sitemap/` footer links to use `localeHref()` too.
+**Also done:** `/prestobot/` (the WordPrestoBot crawler explainer) is fully
+localised in all 6 locales via `src/data/i18n/prestobot.ts` and
+`PrestobotPage.astro`. Technical literals — the User-Agent string,
+robots.txt syntax, the `WordPrestoBot` name, internal action tokens like
+`read-only single page` — stay untranslated by design; they're
+identifiers, not prose. Along the way, removed 5 more now-unused
+`StaticPageMeta` exports from `src/data/staticPages.ts`
+(`specialistsDirectory`, `contentProductionTeam`, `seoTeam`,
+`operationsManagementTeam`, `approvalGovernanceTeam`, `prestobot`) that
+were leftover duplicates from the specialists and prestobot translation
+passes — only `workflowDemo` remains there now, still English-only.
+
+**Decision: `/sitemap/` stays English-only.** It's a machine-oriented
+route index built from `siteRoutes.ts`, which already lists every locale's
+URLs (that's the whole point of the file — one list feeds both the XML
+and HTML sitemaps for every page in every locale). Translating the page
+chrome would be quick, but the bulk of the page is ~75 route labels and
+descriptions, most of them locale-variant duplicates of the same handful
+of English pages ("Specialists (Deutsch)", "Specialists (Français)"...).
+There's no real reader value in 5 more copies of that same list with a
+translated heading, so it's left as a single English page that already
+surfaces every locale's URLs for discovery. Revisit only if this
+reasoning changes.
+
+**Next up:** `/workers/[slug]/` (20 profile pages, by far the largest
+remaining piece) and `/workflow-demo/` (1,937 lines, the largest
+still-English page after the profiles). Worker profile pages should be
+tackled as their own dedicated pass, most likely with translation work
+parallelised per locale rather than done serially.
 
 hreflang tags and hreflang-aware hreflang/canonical linking between locale
 variants are not wired up yet — each locale page has its own correct

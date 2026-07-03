@@ -22,60 +22,6 @@ export interface StaticPageMeta {
   intro: string;
 }
 
-export const prestobot: StaticPageMeta = {
-  seoTitle: 'WordPrestoBot, the Word Presto web crawler | Word Presto',
-  metaDescription:
-    'What WordPrestoBot is, why it visited your site, and how to control it with robots.txt. The read-only web crawler operated by Word Presto.',
-  h1: 'WordPrestoBot, our web crawler',
-  intro:
-    'If you found this page from a line in your server logs, hello, and thanks for checking. WordPrestoBot is the web crawler operated by Word Presto, an agentic content and SEO workflow tool. It reads public HTML to extract SEO and content signals on behalf of a Word Presto user, and nothing more.',
-};
-
-export const specialistsDirectory: StaticPageMeta = {
-  seoTitle: 'The Word Presto specialist bench | WordPresto',
-  metaDescription:
-    'Meet the four teams behind Emma: Content Production, SEO, Operations and Approval / Governance. Every specialist has a defined role, and every change still needs the Editor to approve it.',
-  h1: 'The specialist bench behind Emma.',
-  intro:
-    'Word Presto is not one generic AI writer. It is a bench of specialist Workers, organised into four teams, that Emma brings in at the right moment. Specialists review, draft and prepare. Only the Editor approves.',
-};
-
-export const contentProductionTeam: StaticPageMeta = {
-  seoTitle: 'Content Production Team | WordPresto specialists',
-  metaDescription:
-    'The Content Production Team plans, drafts, rewrites and proofs the copy, turning briefs into structured, ready content for the Editor to review.',
-  h1: 'Content Production Team',
-  intro:
-    'Plans, drafts, rewrites and proofs the copy, turning briefs into structured, ready content.',
-};
-
-export const seoTeam: StaticPageMeta = {
-  seoTitle: 'SEO Team | WordPresto specialists',
-  metaDescription:
-    'The SEO Team works search intent, structure, technical signals, evidence and internal relationships into the content, not bolted on at the end.',
-  h1: 'SEO Team',
-  intro:
-    'Works search intent, structure, technical signals, evidence and internal relationships into the content, not bolted on at the end.',
-};
-
-export const operationsManagementTeam: StaticPageMeta = {
-  seoTitle: 'Operations / Management | WordPresto specialists',
-  metaDescription:
-    'Operations / Management coordinates the review flow and keeps every piece of work ready for a human decision.',
-  h1: 'Operations / Management',
-  intro:
-    'Coordinates the review flow and keeps every piece of work ready for a human decision.',
-};
-
-export const approvalGovernanceTeam: StaticPageMeta = {
-  seoTitle: 'Approval / Governance Team | WordPresto specialists',
-  metaDescription:
-    'The Approval / Governance Team checks risk, evidence, approval state and whether proposed changes are ready for the Editor.',
-  h1: 'Approval / Governance Team',
-  intro:
-    'Checks risk, evidence, approval state and whether proposed changes are ready for the Editor.',
-};
-
 export const workflowDemo: StaticPageMeta = {
   seoTitle: 'WordPresto workflow demo, editorial and search intelligence in one workflow',
   metaDescription:
