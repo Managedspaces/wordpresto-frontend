@@ -66,14 +66,39 @@ sweep of the built output, and a Playwright pass through the German and
 French forms (multi-step navigation, translated pricing bands in the
 right currency, no mobile overflow).
 
+**Also done:** `/specialists/*` — the hub page and all four team pages
+(`content-production`, `seo`, `operations-management`, `approval-governance`)
+are localised in all 6 locales. The four team pages were near-byte-identical
+duplicates of each other (same layout, differing only by team id, breadcrumb
+label and one note paragraph), so this pass also consolidated them into a
+single `src/components/SpecialistTeamPage.astro`, parameterised by `locale`
+and `teamId`, replacing four separate `.astro` files that would otherwise
+have needed to become 20 (4 teams × 5 locales). The hub reuses
+`src/data/i18n/home.ts`'s `specialists` section (eyebrow, team/specialist
+labels, chip copy) rather than duplicating those strings a second time;
+page-specific copy (h1/intro/meta, breadcrumb labels, note paragraphs) lives
+in the new `src/data/i18n/specialists.ts`. Non-English team pages route
+through a single dynamic `src/pages/[locale]/specialists/[team].astro`
+(`getStaticPaths` fans out over all 5 locales × 4 teams), while English
+keeps its four literal wrapper files for consistency with the rest of the
+site's routing. Worker profile links, the `/workers/` nav links and the
+footer's `/sitemap/` link deliberately stay unprefixed English URLs on
+these pages, same reasoning as the waitlist CTA fix in #61: `/workers/*`
+and `/sitemap/` don't have locale routes yet, so `localeHref()` would 404.
+Verified with `tsc --noEmit`, `astro build` (25 new pages: 5 hub + 20 team),
+a full internal-link sweep, and Playwright screenshots of the German hub
+and French SEO team page (including a 375px mobile pass).
+
 **Next up:** the rest of the site (`/workers/`, `/workers/seo/`,
-`/workers/[slug]/`, `/specialists/*`, `/workflow-demo/`, `/prestobot/`,
-`/sitemap/`) following the same pattern established here — extract copy to
-a locale dictionary, parameterise a shared component, add a `[locale]`
-route. Worker profile pages (`workerProfiles.ts`, 3,100+ lines for the 20
-that exist) are by far the largest remaining piece and should be tackled as
-its own dedicated pass, most likely with translation work parallelised per
-locale rather than done serially.
+`/workers/[slug]/`, `/workflow-demo/`, `/prestobot/`, `/sitemap/`)
+following the same pattern established here — extract copy to a locale
+dictionary, parameterise a shared component, add a `[locale]` route.
+Worker profile pages (`workerProfiles.ts`, 3,100+ lines for the 20 that
+exist) are by far the largest remaining piece and should be tackled as its
+own dedicated pass, most likely with translation work parallelised per
+locale rather than done serially. Once `/workers/` and `/sitemap/` get
+locale routes, revisit the specialists pages (and the waitlist page) to
+point their now-hardcoded English links at `localeHref()` instead.
 
 hreflang tags and hreflang-aware hreflang/canonical linking between locale
 variants are not wired up yet — each locale page has its own correct
