@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { workers } from '@/data/workers';
+import { allWorkers } from '@/data/workers';
+import { getWorkersByTeam, workerImage, workerInitials } from '@/data/workerRegistry';
 import { workersHubContent, workersSharedContent } from '@/data/i18n/workersDirectory';
 import { commonStrings } from '@/data/i18n/common';
 import { localeHref, type Locale } from '@/i18n/locales';
@@ -13,6 +14,14 @@ const { locale } = Astro.props;
 const meta = workersHubContent[locale];
 const shared = workersSharedContent[locale];
 const c = commonStrings[locale];
+
+// The full Content Production Team (18) from the canonical registry, not the
+// 14-worker legacy subset in workers.ts. Workers that already have hand-written
+// marketing copy in workers.ts (summary, output, stage) keep the richer card;
+// the rest render lean, matching /specialists/content-production/.
+const legacyById = new Map(allWorkers.map((w) => [w.id, w]));
+const teamWorkers = getWorkersByTeam('content');
+const teamColor = 'var(--team-content)';
 
 const canonical = locale === 'en'
   ? 'https://wordpresto.com/workers/'
@@ -53,47 +62,64 @@ const canonical = locale === 'en'
       <p class="page-intro">{meta.intro}</p>
       <div class="worker-directory-header">
         <span>{meta.directoryLabel}</span>
-        <span>{workers.length}{meta.rolesCountSuffix}</span>
+        <span>{teamWorkers.length}{meta.rolesCountSuffix}</span>
       </div>
       <div class="workers-grid">
-        {workers.map((w) => (
-          <a href={localeHref(locale, `/workers/${w.id.replace(/_/g, '-')}/`)} class="worker-card">
-            <div class="worker-card-top">
-              <img
-                src={w.image}
-                srcset={`${w.image} 1x, ${w.image2x} 2x`}
-                alt={`${w.name} · ${w.role}`}
-                class="worker-card-img"
-                width="64"
-                height="64"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="worker-card-info">
-                <div class="worker-card-name">{w.name}</div>
-                <div class="worker-card-role">{w.role}</div>
+        {teamWorkers.map((w) => {
+          const img = workerImage(w);
+          const rich = legacyById.get(w.id);
+          const href = w.slug ? localeHref(locale, `/workers/${w.slug}/`) : undefined;
+          const CardTag = href ? 'a' : 'div';
+          return (
+            <CardTag href={href} class="worker-card">
+              <div class="worker-card-top">
+                {img ? (
+                  <img
+                    src={img.src}
+                    srcset={`${img.src} 1x, ${img.src2x} 2x`}
+                    alt={`${w.name} · ${w.roleTitle}`}
+                    class="worker-card-img"
+                    width="64"
+                    height="64"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <span class="worker-card-initials" style={`background: ${teamColor}`}>{workerInitials(w.name)}</span>
+                )}
+                <div class="worker-card-info">
+                  <div class="worker-card-name">{w.name}</div>
+                  <div class="worker-card-role">{w.roleTitle}</div>
+                </div>
               </div>
-            </div>
-            <div class="worker-card-tags">
-              <span class="worker-tag">
-                <span class="worker-tag-dot" style={`background: ${w.teamColor}`}></span>
-                {w.department}
-              </span>
-              <span class="worker-tag">{shared.stagePrefix}{w.stage}</span>
-            </div>
-            <p class="worker-card-summary">{w.summary}</p>
-            <div class="worker-card-footer">
-              <div class="worker-output">
-                <span class="worker-output-label">{shared.outputLabel}</span>
-                <span class="worker-output-value">{w.output}</span>
+              <div class="worker-card-tags">
+                <span class="worker-tag">
+                  <span class="worker-tag-dot" style={`background: ${teamColor}`}></span>
+                  {w.department}
+                </span>
+                {rich && <span class="worker-tag">{shared.stagePrefix}{rich.stage}</span>}
+                {w.status === 'planned' && <span class="worker-tag worker-tag--planned">{shared.planned}</span>}
               </div>
-              <span class="worker-view-link">
-                {shared.viewProfile}
-                <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-            </div>
-          </a>
-        ))}
+              {rich && <p class="worker-card-summary">{rich.summary}</p>}
+              <div class="worker-card-footer">
+                {rich && (
+                  <div class="worker-output">
+                    <span class="worker-output-label">{shared.outputLabel}</span>
+                    <span class="worker-output-value">{rich.output}</span>
+                  </div>
+                )}
+                {href ? (
+                  <span class="worker-view-link">
+                    {shared.viewProfile}
+                    <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                ) : (
+                  <span class="worker-card-pending">{shared.profileComingSoon}</span>
+                )}
+              </div>
+            </CardTag>
+          );
+        })}
       </div>
 
       <a href={localeHref(locale, '/workers/seo/')} class="workers-crosslink">
@@ -309,6 +335,19 @@ const canonical = locale === 'en'
     box-shadow: 0 0 0 1px var(--wp-border-secondary);
     flex-shrink: 0;
   }
+  .worker-card-initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px; height: 64px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-md);
+    font-weight: 700;
+    color: #FFF;
+    box-shadow: 0 0 0 1px var(--wp-border-secondary);
+  }
   .worker-card-name { font-size: var(--wp-text-xl); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
   .worker-card-role { font-size: var(--wp-text-sm); color: var(--wp-text-tertiary); margin-top: 3px; }
   .worker-card-tags {
@@ -330,6 +369,7 @@ const canonical = locale === 'en'
     letter-spacing: 0.04em;
   }
   .worker-tag-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .worker-tag--planned { color: var(--wp-text-tertiary); border-style: dashed; }
   .worker-card-summary {
     margin: 0;
     padding: 8px 16px 16px;
@@ -341,7 +381,6 @@ const canonical = locale === 'en'
     margin-top: auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 10px;
     padding: 11px 16px;
     border-top: 1px dashed var(--wp-line);
@@ -365,11 +404,19 @@ const canonical = locale === 'en'
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    margin-left: auto;
     font-size: var(--wp-text-xs);
     font-weight: 600;
     color: var(--wp-ink);
     white-space: nowrap;
     flex: 0 0 auto;
+  }
+  .worker-card-pending {
+    margin-left: auto;
+    font-size: var(--wp-text-xs);
+    font-style: italic;
+    color: var(--wp-text-muted);
+    white-space: nowrap;
   }
 
   /* ===== FOOTER ===== */

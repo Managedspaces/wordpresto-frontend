@@ -43,6 +43,8 @@ export interface WorkersSharedContent {
   stagePrefix: string;
   outputLabel: string;
   viewProfile: string;
+  profileComingSoon: string;
+  planned: string;
 }
 
 export const workersHubContent: Record<Locale, WorkersHubContent> = {
@@ -225,35 +227,47 @@ export const workersSharedContent: Record<Locale, WorkersSharedContent> = {
     stagePrefix: 'Stage · ',
     outputLabel: 'OUTPUT',
     viewProfile: 'View profile',
+    profileComingSoon: 'Profile page coming soon',
+    planned: 'Planned',
   },
   pt: {
     breadcrumbWorkers: 'WORKERS',
     stagePrefix: 'Etapa · ',
     outputLabel: 'RESULTADO',
     viewProfile: 'Ver perfil',
+    profileComingSoon: 'Página de perfil brevemente',
+    planned: 'Planeado',
   },
   'pt-br': {
     breadcrumbWorkers: 'WORKERS',
     stagePrefix: 'Etapa · ',
     outputLabel: 'RESULTADO',
     viewProfile: 'Ver perfil',
+    profileComingSoon: 'Página de perfil em breve',
+    planned: 'Planejado',
   },
   es: {
     breadcrumbWorkers: 'WORKERS',
     stagePrefix: 'Etapa · ',
     outputLabel: 'RESULTADO',
     viewProfile: 'Ver perfil',
+    profileComingSoon: 'Página de perfil próximamente',
+    planned: 'Planificado',
   },
   de: {
     breadcrumbWorkers: 'WORKERS',
     stagePrefix: 'Phase · ',
     outputLabel: 'ERGEBNIS',
     viewProfile: 'Profil ansehen',
+    profileComingSoon: 'Profilseite folgt in Kürze',
+    planned: 'Geplant',
   },
   fr: {
     breadcrumbWorkers: 'WORKERS',
     stagePrefix: 'Étape · ',
     outputLabel: 'RÉSULTAT',
     viewProfile: 'Voir le profil',
+    profileComingSoon: 'Page de profil bientôt disponible',
+    planned: 'Prévu',
   },
 };
