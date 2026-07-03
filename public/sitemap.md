@@ -158,6 +158,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/draft-rewrite.md
 - Focus: Ellis builds and rewrites drafts that follow the brief: structured, on-purpose, and ready for review. For content that needs a shaped draft before editing or review starts.
 
+### Check whether the work is ready for human approval.
+
+- HTML: https://wordpresto.com/workers/editorial-approval-gate/
+- Markdown: https://wordpresto.com/workers/editorial-approval-gate/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/editorial-approval-gate.md
+- Focus: Dana reads the existing worker outputs and produces a conservative approval gate, telling the human reviewer whether content appears ready for review, needs revision, or is blocked.
+
 ### Flag risky claims before they move forward.
 
 - HTML: https://wordpresto.com/workers/editorial-risk-claims/

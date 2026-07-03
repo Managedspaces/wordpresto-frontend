@@ -118,4 +118,4 @@ A clarity review is not an automatic rewrite. Esme produces suggestions, flags a
 
 - **Helena — Voice & Style Worker**: Checks whether the copy fits the configured voice before proofing tightens the language. Output: Voice review.
 - **Quinn — Draft Quality Reviewer**: Checks whether the draft covers the approved changes and has quality risks. Output: Draft quality review.
-- **editorial_approval_gate**: Reviews whether the content is ready for human editorial approval. Output: Approval gate.
+- **Dana — Editorial Approval Gate Worker**: Reviews whether the content is ready for human editorial approval. Output: Approval gate.

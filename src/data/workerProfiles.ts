@@ -5195,6 +5195,169 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'REVIEW STATUS',
     guidanceFooterValue: 'Summary ready · editor action needed',
   },
+
+  // 34. Dana - Editorial Approval Gate Worker
+  {
+    id: 'editorial_approval_gate',
+    slug: 'editorial-approval-gate',
+    name: 'Dana',
+    role: 'Editorial Approval Gate Worker',
+    roleTitle: 'Editorial Gate Reviewer',
+    department: 'Editorial Approval Gate',
+    team: 'governance',
+    stage: 'Editorial approval gate',
+    teamColor: 'var(--team-governance)',
+    portrait: '/agents/profiles/profile-40-192.webp',
+    portrait2x: '/agents/profiles/profile-40-384.webp',
+    seoTitle: 'Editorial Approval Gate Worker | WordPresto',
+    metaDescription:
+      'Dana reads the existing worker outputs and produces a conservative approval gate, telling the human reviewer whether content appears ready for review, needs revision, or is blocked.',
+    h1: 'Check whether the work is ready for human approval.',
+    heroPara1:
+      'Approval should not be a feeling. Before content moves forward, the editor needs to know whether the key checks are clean, whether blockers remain, and whether anything still needs revision, evidence or specialist review. Dana reads the existing worker outputs and produces a conservative approval gate. She does not approve automatically. She tells the human reviewer whether the content appears ready for review, needs revision, or is blocked.',
+    heroPara2:
+      'For final editorial checks, approval workflows, CMS handoff preparation and content governance.',
+    heroWorksAlongside: ['Helen', 'Sam', 'Riley'],
+    heroTagPills: {
+      team: 'Approval & Governance',
+      stage: 'Stage · Editorial approval gate',
+      output: 'Output · Approval gate review',
+    },
+    problemEyebrow: 'Where approval workflows go wrong',
+    problemH2: 'Content moves forward because everyone assumes someone else checked it.',
+    problemPara:
+      'A page may have good copy, but still contain unresolved evidence gaps, accessibility issues, metadata problems, trust concerns, CMS handoff blockers or editorial risk. If those issues are scattered across worker outputs, they are easy to miss. Dana brings the final review state into one gate.',
+    problemAnnotation: '↘ check readiness before approval',
+    beforeStamp: 'Loose approval',
+    beforeHtml: `<p>The draft looks ready, but evidence, metadata and accessibility checks still contain unresolved items.</p>`,
+    beforeTags: ['Unresolved blockers', 'No final gate', 'Scattered risks', 'Approval unclear'],
+    beforeNote: 'the editor has to hunt for problems',
+    afterStamp: 'Gate reviewed',
+    afterHtml: `<p>Dana summarises readiness, blockers and next actions before the human editor approves.</p>`,
+    afterTags: ['Conservative gate', 'Clear status', 'Prioritised blockers', 'Human decision'],
+    afterNote: 'approval becomes safer',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A conservative final gate before content moves forward.',
+    helpsPara:
+      'Dana reviews already-computed worker outputs and determines whether the content appears ready for human editorial review. She does not certify compliance, publish content, or approve automatically.',
+    checks: [
+      'Approval report state',
+      'Editorial risk and claims issues',
+      'Evidence gaps',
+      'Accessibility status',
+      'SEO metadata and SERP snippet readiness',
+      'Schema and trust signals',
+      'CMS handoff blockers',
+      'Draft quality and review status',
+    ],
+    improves: [
+      'Approval confidence',
+      'Editorial governance',
+      'Visibility of blockers',
+      'Readiness before handoff or publishing workflow',
+    ],
+    prepares: [
+      'Approval gate decision',
+      'Readiness score',
+      'Blocker list',
+      'Prioritised recommendations',
+    ],
+    surfaces: [
+      'Hard blockers',
+      'Revision items',
+      'Missing review evidence',
+      'Reasons content should not move forward yet',
+    ],
+    ioH2: 'What Dana works from, and what she produces.',
+    worksFrom: [
+      'Review summary',
+      'Review queue',
+      'Evidence gap review',
+      'Editorial risk findings',
+      'Accessibility, metadata, schema and trust outputs',
+    ],
+    produces: [
+      'Approval gate review',
+      'Gate decision',
+      'Readiness score',
+      'Blocker list',
+      'Prioritised recommendations',
+    ],
+    scenarios: [
+      {
+        title: 'A page is close to final approval.',
+        description:
+          'Dana checks whether unresolved worker findings still block progress.',
+      },
+      {
+        title: 'Multiple review workers have run.',
+        description:
+          'She combines the state into one clear readiness gate.',
+      },
+      {
+        title: 'A draft is moving towards CMS handoff.',
+        description:
+          'Dana flags blockers before handoff creates operational risk.',
+      },
+      {
+        title: 'The editor needs a conservative decision point.',
+        description:
+          'She gives approved-for-review only when the checks are clean enough.',
+      },
+      {
+        title: 'Governance matters.',
+        description:
+          'Dana keeps risk, evidence and accessibility issues visible before sign-off.',
+      },
+      {
+        title: 'A page should not move forward yet.',
+        description:
+          'She explains why and lists the highest-priority actions.',
+      },
+    ],
+    boundaryH2: 'Dana gates readiness. Humans approve.',
+    boundaryPara:
+      'Dana does not approve content automatically, certify compliance, publish, or write to a CMS. Her job is to make the approval state visible so a human reviewer can decide.',
+    boundaryChecklist: [
+      'Dana gates readiness, she never approves content herself.',
+      'Compliance (legal, medical, financial, accessibility) is never certified by Dana.',
+      'Blockers are always surfaced, never hidden to make content look ready.',
+      'The gate decision is conservative — unclear or unresolved items default to needing revision.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Approve content automatically' },
+      { color: 'red', text: 'Certify legal, medical, financial or accessibility compliance' },
+      { color: 'red', text: 'Publish or hand off content by herself' },
+      { color: 'red', text: 'Hide blockers to make content appear ready' },
+      { color: 'red', text: 'Rewrite or apply fixes' },
+    ],
+    relatedH2: 'Workers Dana works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'review',
+        description: 'Summarises findings and review actions before the final gate.',
+        outputLabel: 'Review summary',
+        ctaLabel: 'How Helen summarises',
+      },
+      {
+        id: 'safe_change_planner',
+        description: 'Turns findings into proposed changes Dana can assess for blockers.',
+        outputLabel: 'Change plan',
+        ctaLabel: 'How Sam plans',
+      },
+      {
+        id: 'review_queue',
+        description: 'Organises unresolved items Dana can treat as approval blockers.',
+        outputLabel: 'Review queue',
+        ctaLabel: 'How Riley organises',
+      },
+    ],
+    ctaH2: 'Make readiness explicit before approval.',
+    ctaPara:
+      'Dana helps editors see whether content is ready for human approval, needs revision, or should be blocked before handoff.',
+    guidanceFooterLabel: 'GATE STATUS',
+    guidanceFooterValue: 'Needs revision · editor decision required',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {

@@ -470,6 +470,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-04-384.webp',
     teamColor: 'var(--team-governance)',
   },
+  {
+    id: 'editorial_approval_gate',
+    name: 'Dana',
+    role: 'Editorial Approval Gate Worker',
+    department: 'Editorial Approval Gate',
+    team: 'governance',
+    stage: 'Editorial approval gate',
+    summary: 'Reads existing worker outputs and produces a conservative approval gate, telling the human reviewer whether content is ready for review, needs revision, or is blocked.',
+    output: 'Approval gate review',
+    image: '/agents/profiles/profile-40-192.webp',
+    image2x: '/agents/profiles/profile-40-384.webp',
+    teamColor: 'var(--team-governance)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).

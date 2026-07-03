@@ -121,4 +121,4 @@ Sam does not edit the page, draft safe edits, apply changes or publish. He prepa
 
 - **review_queue**: Turns Sam's proposed changes into a decision queue. Output: Review queue.
 - **Helen — Review Worker**: Summarises review actions for human editors. Output: Review summary.
-- **editorial_approval_gate**: Checks whether proposed changes block approval. Output: Approval gate.
+- **Dana — Editorial Approval Gate Worker**: Checks whether proposed changes block approval. Output: Approval gate.
