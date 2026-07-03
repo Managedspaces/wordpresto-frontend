@@ -43,6 +43,7 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
         <a href={localeHref(locale, '/waitlist')} class="nav-link">{c.signIn}</a>
         <a href={`${localeHref(locale, '/')}#emma-desk`} class="nav-link">{c.theDesk}</a>
         <a href={`${localeHref(locale, '/')}#canvas`} class="nav-link">{c.canvas}</a>
+        <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--sm masthead-cta-mobile">{c.joinWaitlist}</a>
       </nav>
       <a href={localeHref(locale, '/')} class="masthead-logo">
         <img src="/brand/main-logo.png" alt="Word Presto — the content engine behind publishing" height="110" />
@@ -88,7 +89,7 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
             ))}
           </div>
         </details>
-        <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
+        <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--sm masthead-cta-desktop">{c.joinWaitlist}</a>
       </nav>
     </div>
   </header>
@@ -646,6 +647,15 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
   }
   .masthead-nav--left { justify-content: flex-start; }
   .masthead-nav--right { justify-content: flex-end; }
+  /* Mobile puts the CTA on the left and the switcher on the right, as two
+     real flex items flanking the centred logo — same shape as desktop's
+     nav-left/nav-right, just with different content. Both mobile-only
+     elements stay hidden above the tablet breakpoint. */
+  /* .btn.masthead-cta-mobile, not .masthead-cta-mobile alone: .btn sets
+     display: inline-flex later in this stylesheet, and same-specificity
+     rules resolve by source order, so a single-class selector here would
+     lose to .btn regardless of the display:none intent. */
+  .btn.masthead-cta-mobile { display: none; }
   .masthead-logo {
     position: absolute;
     left: 50%;
@@ -1701,15 +1711,18 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
     .section { padding: 60px 0; }
 
     /* --- Masthead --- */
-    /* The logo stays centred (as on desktop). With nav-left hidden,
-       nav-right is the only flex item left, so flex-end pins it to the
-       true right edge instead of space-between packing it to the left.
-       nav-right itself is kept tight (smaller gap, compact CTA) so it
-       clears the centred logo instead of overlapping it. */
-    .masthead-inner { padding: 10px 24px; justify-content: flex-end; }
-    .masthead-nav--left { display: none; }
-    .masthead-nav--right { gap: 12px; }
+    /* Logo stays centred, as on desktop. nav-left and nav-right are still
+       the two flex items flanking it via space-between — mobile just
+       swaps their content: nav-left shows only the CTA (its text nav
+       links hidden), nav-right shows only the language switcher (its
+       text nav links and the desktop CTA hidden). CTA-left,
+       logo-centre, switcher-right. */
+    .masthead-inner { padding: 10px 24px; }
+    .masthead-nav--left { display: flex; }
+    .masthead-nav--left .nav-link { display: none; }
+    .btn.masthead-cta-mobile { display: inline-flex; }
     .masthead-nav--right .nav-link { display: none; }
+    .btn.masthead-cta-desktop { display: none; }
     .locale-switcher { display: none; }
     .locale-switcher-mobile { display: block; }
     .masthead-logo img { height: 64px; }
@@ -1786,18 +1799,17 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
 
     /* --- Masthead --- */
     .masthead-inner { padding: 8px 16px; }
-    .masthead-nav--right { gap: 6px; }
-    .masthead-logo img { height: 44px; }
+    .masthead-logo img { height: 52px; }
     .masthead::after {
       background: linear-gradient(
         to right,
-        var(--wp-ink) calc(50% - 42px),
-        transparent calc(50% - 42px),
-        transparent calc(50% + 42px),
-        var(--wp-ink) calc(50% + 42px)
+        var(--wp-ink) calc(50% - 50px),
+        transparent calc(50% - 50px),
+        transparent calc(50% + 50px),
+        var(--wp-ink) calc(50% + 50px)
       );
     }
-    .btn--sm { font-size: 10.5px; padding: 5px 8px; }
+    .btn--sm { font-size: 12px; padding: 7px 12px; }
 
     /* --- Hero --- */
     .section--hero { padding: 36px 0 48px; }
