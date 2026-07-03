@@ -41,13 +41,19 @@ export interface WorkerEntry {
   /** Slug of an existing /workers/[slug]/ profile page, or null if not built yet. */
   slug: string | null;
   /**
-   * Portrait number (1-40), per the app repo's canonical portrait map
+   * Portrait number. 1-40 per the app repo's canonical portrait map
    * (docs/agent-profile-map.md, WORKER_PROFILE_IMAGE in agentProfileImages.ts).
-   * null for workers added after the 40-portrait set (Sema, Cassius) — they
-   * render with an initials avatar instead until a portrait is assigned.
+   * 42-44 are marketing-only portraits (profile50.zip) assigned locally to the
+   * three workers added after that 40-portrait set — the app repo has no
+   * portrait mapping for them yet. null renders an initials avatar instead.
    */
   portrait: number | null;
 }
+
+// Spare marketing-only portraits from profile50.zip, not yet assigned to a
+// worker. Use the next one here when a new worker needs a portrait, then
+// remove it from this list.
+export const SPARE_PORTRAITS = [45, 46, 47, 48, 49, 50, 51];
 
 /** Deterministic asset path pattern from the app repo's portrait map: /agents/profiles/profile-{nn}-{size}.webp */
 export function workerImage(entry: WorkerEntry): { src: string; src2x: string } | null {
@@ -125,7 +131,7 @@ export const WORKERS: WorkerEntry[] = [
   { id: 'trust_author_credibility', name: 'Alex', roleTitle: 'Trust & credibility specialist', department: 'Trust & Credibility', team: 'content', status: 'available', slug: 'trust-author-credibility', portrait: 39 },
   { id: 'content_refresh_brief', name: 'Iris', roleTitle: 'Content refresh specialist', department: 'Content Refresh', team: 'content', status: 'available', slug: 'content-refresh-brief', portrait: 35 },
   { id: 'content_distribution_brief', name: 'Nina', roleTitle: 'Distribution brief specialist', department: 'Content Distribution', team: 'content', status: 'available', slug: 'content-distribution-brief', portrait: 37 },
-  { id: 'clarity_proofing', name: 'Esme', roleTitle: 'Clarity & proofing specialist', department: 'Clarity & Proofing', team: 'content', status: 'available', slug: null, portrait: null },
+  { id: 'clarity_proofing', name: 'Esme', roleTitle: 'Clarity & proofing specialist', department: 'Clarity & Proofing', team: 'content', status: 'available', slug: null, portrait: 42 },
 
   // ---- SEO Team ----
   { id: 'page_inspector', name: 'Patrick', roleTitle: 'Source examiner', department: 'Discovery', team: 'seo', status: 'available', slug: null, portrait: 1 },
@@ -144,8 +150,8 @@ export const WORKERS: WorkerEntry[] = [
   { id: 'content_pruning_consolidation', name: 'Hugo', roleTitle: 'Content maintenance specialist', department: 'Content Maintenance', team: 'seo', status: 'available', slug: null, portrait: 36 },
   { id: 'serp_snippet_opportunity', name: 'Morgan', roleTitle: 'SERP snippet specialist', department: 'SERP Optimisation', team: 'seo', status: 'available', slug: 'serp-snippet-opportunity', portrait: 38 },
   { id: 'site_discovery', name: 'Claire', roleTitle: 'Site discovery specialist', department: 'Site Discovery', team: 'seo', status: 'planned', slug: null, portrait: 17 },
-  { id: 'semantic_search_analyzer', name: 'Sema', roleTitle: 'Semantic coverage analyst', department: 'Semantic Intelligence', team: 'seo', status: 'available', slug: null, portrait: null },
-  { id: 'competitor_intel', name: 'Cassius', roleTitle: 'Competitive analyst', department: 'Competitive Intelligence', team: 'seo', status: 'available', slug: null, portrait: null },
+  { id: 'semantic_search_analyzer', name: 'Sema', roleTitle: 'Semantic coverage analyst', department: 'Semantic Intelligence', team: 'seo', status: 'available', slug: null, portrait: 43 },
+  { id: 'competitor_intel', name: 'Cassius', roleTitle: 'Competitive analyst', department: 'Competitive Intelligence', team: 'seo', status: 'available', slug: null, portrait: 44 },
 
   // ---- Operations / Management ----
   { id: 'review_queue', name: 'Riley', roleTitle: 'Review queue coordinator', department: 'Change Planning', team: 'operations', status: 'available', slug: null, portrait: 16 },
