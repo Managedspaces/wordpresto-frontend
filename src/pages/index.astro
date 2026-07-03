@@ -5,6 +5,17 @@ import { getTeamGroups, TOTAL_SPECIALISTS, TOTAL_TEAMS } from '@/data/workerRegi
 
 const { pageTitle, seoTitle, metaDescription } = homePage;
 const teamGroups = getTeamGroups(6);
+
+// Small, simplified national flags for the language-editor tiles. Proportions
+// and emblems are trimmed for legibility at badge size (rendered ~20x14px).
+const FLAG_SVG: Record<string, string> = {
+  IE: '<svg viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="14" fill="#fff"/><rect width="6.67" height="14" fill="#169B62"/><rect x="13.33" width="6.67" height="14" fill="#FF883E"/></svg>',
+  PT: '<svg viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="14" fill="#D40000"/><rect width="8" height="14" fill="#046A38"/><circle cx="8" cy="7" r="2.5" fill="#FFCC00" stroke="#fff" stroke-width="0.4"/></svg>',
+  BR: '<svg viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="14" fill="#009739"/><polygon points="10,2 18,7 10,12 2,7" fill="#FEDD00"/><circle cx="10" cy="7" r="3" fill="#012169"/></svg>',
+  ES: '<svg viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="14" fill="#AA151B"/><rect y="3.5" width="20" height="7" fill="#F1BF00"/></svg>',
+  DE: '<svg viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="4.67" fill="#0A0A0A"/><rect y="4.67" width="20" height="4.67" fill="#DD0000"/><rect y="9.33" width="20" height="4.67" fill="#FFCE00"/></svg>',
+  FR: '<svg viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="14" fill="#fff"/><rect width="6.67" height="14" fill="#0055A4"/><rect x="13.33" width="6.67" height="14" fill="#EF4135"/></svg>',
+};
 ---
 
 <BaseLayout
@@ -415,19 +426,21 @@ const teamGroups = getTeamGroups(6);
 
       <div class="editors-grid">
         {[
-          { name: 'Emma', city: 'Dublin', lang: 'English', code: 'IE', image: 'emma', lead: true },
-          { name: 'Aurora', city: 'Lisbon', lang: 'Portuguese', code: 'PT', image: 'aurora', lead: false },
-          { name: 'Francisca', city: 'São Paulo', lang: 'Brazilian Portuguese', code: 'BR', image: 'francisca', lead: false },
-          { name: 'Sofía', city: 'Madrid', lang: 'Spanish', code: 'ES', image: 'sofia', lead: false },
-          { name: 'Sabine', city: 'Berlin', lang: 'German', code: 'DE', image: 'sabine', lead: false },
-          { name: 'Ambre', city: 'Paris', lang: 'French', code: 'FR', image: 'ambre', lead: false },
-        ].map(({ name, city, lang, code, image, lead }) => (
+          { name: 'Emma', city: 'Dublin', lang: 'English', code: 'IE', image: 'emma', lead: true, accent: '#169B62' },
+          { name: 'Aurora', city: 'Lisbon', lang: 'Portuguese', code: 'PT', image: 'aurora', lead: false, accent: '#046A38' },
+          { name: 'Francisca', city: 'São Paulo', lang: 'Brazilian Portuguese', code: 'BR', image: 'francisca', lead: false, accent: '#009739' },
+          { name: 'Sofía', city: 'Madrid', lang: 'Spanish', code: 'ES', image: 'sofia', lead: false, accent: '#AA151B' },
+          { name: 'Sabine', city: 'Berlin', lang: 'German', code: 'DE', image: 'sabine', lead: false, accent: '#DD0000' },
+          { name: 'Ambre', city: 'Paris', lang: 'French', code: 'FR', image: 'ambre', lead: false, accent: '#0055A4' },
+        ].map(({ name, city, lang, code, image, lead, accent }) => (
           <div class="editor-card">
+            <span class="editor-card-accent" style={`background: ${accent}`}></span>
+            <span class="editor-card-flag" set:html={FLAG_SVG[code]} />
             {lead && <span class="editor-card-lead">LEAD</span>}
             <img src={`/editors/${image}-192.webp`} srcset={`/editors/${image}-192.webp 1x, /editors/${image}-384.webp 2x`} alt={`${name}, managing editor`} class="editor-card-img" width="68" height="68" loading="lazy" decoding="async" />
             <div class="editor-card-name">{name}</div>
             <div class="editor-card-city">{city}</div>
-            <div class="editor-card-lang"><span class="mono-label">{code}</span><span class="mono-label editor-card-lang-name">{lang}</span></div>
+            <div class="editor-card-lang"><span class="mono-label" style={`color: ${accent}`}>{code}</span><span class="mono-label editor-card-lang-name">{lang}</span></div>
           </div>
         ))}
       </div>
@@ -1345,6 +1358,22 @@ const teamGroups = getTeamGroups(6);
     color: var(--wp-signal);
     letter-spacing: 0.06em;
   }
+  .editor-card-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    opacity: 0.75;
+  }
+  .editor-card-flag {
+    position: absolute;
+    top: 9px; left: 9px;
+    width: 20px;
+    height: 14px;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px var(--wp-border-secondary), 0 1px 2px rgba(17,19,24,0.12);
+  }
+  .editor-card-flag :global(svg) { display: block; width: 100%; height: 100%; }
   .editor-card-img { border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1.5px var(--wp-border-secondary); margin-bottom: 12px; }
   .editor-card-name { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
   .editor-card-city { font-size: var(--wp-text-xs); color: var(--wp-text-tertiary); margin-top: 4px; }
