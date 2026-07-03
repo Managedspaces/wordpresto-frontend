@@ -159,11 +159,15 @@ Each page should have a generated Markdown version.
 
 The Markdown mirror is generated from the shared data file, not from the `.astro` page:
 
-* `src/data/pages.ts` is the source of truth for the homepage Markdown mirror.
-* `scripts/generate-page-markdown.ts` renders the mirrors; it runs via `prebuild`.
-* `src/data/workerProfiles.ts` is the source of truth for Worker pages.
+* `src/data/i18n/home.ts` is the single source of truth for the homepage, in all locales — both the live page (`src/components/HomePage.astro`, rendered by `src/pages/index.astro` for English and `src/pages/[locale]/index.astro` for every other locale) and the generated Markdown mirrors read from it. There is no separate mirror-only copy of the homepage any more.
+* `scripts/generate-page-markdown.ts` renders the mirrors; it runs via `prebuild`. The homepage mirror is generated once per locale: English at the legacy `public/index.md` / `public/pages/index.md`, every other locale at `public/{locale}/index.md` (e.g. `public/pt/index.md`), matching its live route exactly.
+* `src/data/workerProfiles.ts` is the source of truth for Worker pages (English only for now).
 
-Important gotcha: `src/pages/index.astro` currently holds its visible copy **inline** (it only imports `pageTitle`, `seoTitle` and `metaDescription` from `pages.ts`). So homepage copy lives in two places. When you change homepage copy you must update **both** `src/pages/index.astro` (visible) and `src/data/pages.ts` (mirror source), then regenerate with `npm run generate:markdown` so `public/index.md`, `public/pages/index.md` and `public/llms-full.txt` stay in sync. Do not hand-edit the generated `.md` files.
+Do not hand-edit the generated `.md` files.
+
+### i18n
+
+The site is being translated into `pt`, `pt-br`, `es`, `de` and `fr` alongside English — see `context.md` for the full plan. Only the homepage is translated so far: `src/i18n/locales.ts` (locale list/helpers), `src/data/i18n/common.ts` (shared nav/footer strings) and `src/data/i18n/home.ts` (homepage copy) are the locale-keyed data files. The specialist-bench team names/summaries (`src/data/workerRegistry.ts`) are still English-only everywhere, including on translated homepage variants — that's the next piece of this work, not yet done. When translating a new page, follow the homepage's pattern: extract every visible string into a `Record<Locale, ...>` dictionary in `src/data/i18n/`, parameterise a shared component in `src/components/` by `locale`, and add a thin `src/pages/[locale]/{page}.astro` route alongside the existing English one.
 
 Generate:
 

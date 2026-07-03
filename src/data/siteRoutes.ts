@@ -16,6 +16,8 @@
  * omitted: they should not be advertised to crawlers or agents.
  */
 
+import { LOCALES, DEFAULT_LOCALE } from '@/i18n/locales';
+
 export type RouteGroup = 'main' | 'machine';
 
 export type ChangeFreq =
@@ -57,6 +59,18 @@ export const siteRoutes: SiteRoute[] = [
     priority: 1.0,
     markdown: '/index.md',
   },
+  // Homepage locale variants (src/data/i18n/home.ts) — only the homepage is
+  // translated so far; see context.md for the rest-of-site rollout plan.
+  ...LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({
+    path: `/${l.path}/`,
+    label: `Home (${l.label})`,
+    description: 'The content engine behind better publishing workflows.',
+    group: 'main' as const,
+    inXml: true,
+    changefreq: 'weekly' as const,
+    priority: 0.9,
+    markdown: `/${l.path}/index.md`,
+  })),
   {
     path: '/workers/',
     label: 'Workers',

@@ -1,20 +1,23 @@
 /**
  * Generates Markdown mirror files from the shared data sources.
  * Output:
- * - public/pages/{slug}.md  (legacy LLM resource paths)
+ * - public/pages/{slug}.md  (legacy LLM resource paths, English only)
  * - public/index.md, public/workers/index.md, public/workflow-demo/index.md  (direct URL mirrors)
+ * - public/{locale}/index.md  (homepage mirror per non-English locale, e.g. public/pt/index.md)
  * - public/workers/{slug}/index.md  (direct URL mirrors per worker)
  *
  * Run: npx tsx scripts/generate-page-markdown.ts  (or via prebuild)
  *
  * Single source of truth:
- * - Homepage: src/data/pages.ts
- * - Worker profiles: src/data/workerProfiles.ts
+ * - Homepage: src/data/i18n/home.ts (all locales) — see context.md for the i18n plan
+ * - Worker profiles: src/data/workerProfiles.ts (English only for now — see context.md, "Phase 2/3")
  */
 import { mkdirSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { homePage } from '../src/data/pages';
+import { homeContent, type HomeContent } from '../src/data/i18n/home';
+import { LOCALES, DEFAULT_LOCALE, localeHref, type Locale } from '../src/i18n/locales';
+import { TOTAL_SPECIALISTS } from '../src/data/workerRegistry';
 import { workerProfiles } from '../src/data/workerProfiles';
 import { seoWorkers } from '../src/data/workers';
 import { workersDirectory, seoWorkersDirectory, workflowDemo, prestobot } from '../src/data/staticPages';
@@ -36,41 +39,80 @@ function writeMirror(relativePath: string, content: string) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Render homepage as Markdown                                         */
+/*  Render homepage as Markdown, one per locale                        */
 /* ------------------------------------------------------------------ */
-function renderHomepageMarkdown() {
-  const p = homePage;
+// Note: the specialist-bench team names/summaries (workerRegistry.ts) are
+// still English-only (see context.md, "Phase 2"), so they render in English
+// inside every locale's mirror too, matching the live page for now.
+function renderHomepageMarkdown(locale: Locale, t: HomeContent) {
+  const canonical = locale === DEFAULT_LOCALE ? `${SITE_URL}/` : `${SITE_URL}${localeHref(locale, '/')}`;
+  const strip = (html: string) => html.replace(/&rsquo;/g, '’').replace(/&ndash;/g, '–').replace(/<[^>]+>/g, '');
+
   const lines: string[] = [
     `---`,
-    `title: "${p.seoTitle.replace(/"/g, '\\"')}"`,
-    `description: "${p.metaDescription.replace(/"/g, '\\"')}"`,
-    `canonical: "${SITE_URL}/"`,
-    `focus: "${p.focus}"`,
+    `title: "${t.seo.seoTitle.replace(/"/g, '\\"')}"`,
+    `description: "${t.seo.metaDescription.replace(/"/g, '\\"')}"`,
+    `canonical: "${canonical}"`,
+    `lang: "${locale}"`,
     `---`,
     ``,
-    `# ${p.pageTitle}`,
+    `# ${t.hero.h1Prefix}${t.hero.h1Agentic}${t.hero.h1Suffix}`,
     ``,
-    p.metaDescription,
+    t.seo.metaDescription,
     ``,
     `---`,
     ``,
-    p.summary,
+    t.hero.body,
+    ``,
+    `> ${t.hero.approvalNoteLine1} ${t.hero.approvalNoteLine2}`,
+    ``,
+    `## ${t.operatingModel.h2}`,
+    ``,
+    t.operatingModel.body,
+    ``,
+    `> ${t.operatingModel.note}`,
+    ``,
+    ...t.operatingModel.afterItems.map((item) => `- ${item}`),
+    ``,
+    `## ${t.emmaDesk.h2}`,
+    ``,
+    ...t.emmaDesk.cards.flatMap((c) => [`- **${c.title}**: ${c.body}`]),
+    ``,
+    `## ${strip(t.commitments.h2)}`,
+    ``,
+    t.commitments.body,
+    ``,
+    ...t.commitments.items.map((it) => `- **${it.title}**: ${strip(it.body)}`),
+    ``,
+    `## ${t.canvas.h2}`,
+    ``,
+    t.canvas.body,
+    ``,
+    ...t.canvas.points.map((pt) => `- ${pt}`),
+    ``,
+    `## ${TOTAL_SPECIALISTS}${t.specialists.h2Suffix}`,
+    ``,
+    t.specialists.body,
+    ``,
+    `> ${strip(t.specialists.note)}`,
+    ``,
+    `## ${t.languages.h2}`,
+    ``,
+    t.languages.body,
+    ``,
+    ...t.languages.editors.map((e) => `- **${e.name}** — ${e.city} · ${e.lang}`),
+    ``,
+    `## ${t.approval.h2}`,
+    ``,
+    t.approval.body,
+    ``,
+    `> ${t.approval.finalLine}`,
+    ``,
+    `## ${t.cta.h2}`,
+    ``,
+    t.cta.body,
     ``,
   ];
-
-  for (const section of p.sections) {
-    if (section.id === 'hero') continue;
-    lines.push(`## ${section.heading}`, ``);
-    if (section.body) lines.push(section.body, ``);
-    if (section.note) lines.push(`> ${section.note}`, ``);
-    if (section.items?.length) {
-      for (const item of section.items) {
-        const text = item.body ? `${item.title}: ${item.body}` : item.title;
-        lines.push(`- ${text}`);
-      }
-      lines.push(``);
-    }
-  }
 
   lines.push(
     `## Agent-readable resources`,
@@ -386,10 +428,17 @@ function renderSeoWorkersIndexMarkdown() {
 /*  Generate all files                                                  */
 /* ------------------------------------------------------------------ */
 
-// Homepage
-const homeMd = renderHomepageMarkdown();
-writeMirror('pages/index.md', homeMd);
-writeMirror('index.md', homeMd);
+// Homepage — English at the legacy root paths, every other locale at
+// public/{locale}/index.md (matching its live route exactly).
+for (const l of LOCALES) {
+  const md = renderHomepageMarkdown(l.code, homeContent[l.code]);
+  if (l.code === DEFAULT_LOCALE) {
+    writeMirror('pages/index.md', md);
+    writeMirror('index.md', md);
+  } else {
+    writeMirror(`${l.path}/index.md`, md);
+  }
+}
 
 // Workflow demo
 const workflowDemoMd = renderWorkflowDemoMarkdown();

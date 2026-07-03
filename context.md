@@ -1,8 +1,56 @@
 # Frontend Internationalisation (i18n) Plan
 
-Status: **proposed, not started**. This document is the plan only; no
-translation or routing code has been built yet. Update the Status line as
-phases land.
+Status: **Phase 0 + homepage (Phase 1a) shipped.** URL structure is
+subdirectory-prefixed (`/pt/`, `/pt-br/`, `/es/`, `/de/`, `/fr/`, English
+unprefixed at `/`), translation is done directly rather than via a paid MT
+provider + external reviewer pass, and full-site scope (every page, all 41
+workers) is confirmed rather than staged by traffic. Automatic translation
+of newly-added pages going forward is intentionally deferred — noted at the
+bottom of this doc, not built yet.
+
+**Done:**
+- Astro `i18n` config (manual routing) in `astro.config.mjs`.
+- `src/i18n/locales.ts` (locale list/helpers), `src/i18n/flags.ts` (shared flag SVGs).
+- `src/data/i18n/common.ts` — shared nav/footer strings, all 6 locales.
+- `src/data/i18n/home.ts` — full homepage copy, all 6 locales.
+- `src/components/HomePage.astro` — the homepage extracted into a single
+  locale-parameterised component (previously all copy lived inline in
+  `src/pages/index.astro`, undocumented and un-mirrored — see `CLAUDE.md`).
+  `src/pages/index.astro` (English) and `src/pages/[locale]/index.astro`
+  (the other 5) are now thin wrappers around it.
+- A hover-reveal locale switcher (flag icons) in the masthead. Kept to a
+  single inline flag + dropdown deliberately: 6 flags shown inline broke
+  the masthead layout once translated nav labels ran longer than English
+  (e.g. Portuguese "Especialistas" collided with the centred logo).
+- `scripts/generate-page-markdown.ts` now generates the homepage Markdown
+  mirror from `home.ts` per locale (`public/{locale}/index.md`), replacing
+  the old `src/data/pages.ts` (deleted — it was a second, un-synced copy of
+  homepage content used only by the mirror generator).
+- `scripts/inject-markdown-routes.mjs`, `scripts/check-mirror-sync.mjs` and
+  `src/data/siteRoutes.ts` extended so the 5 new locale homepages get
+  Accept:-negotiation, mirror-drift checking and sitemap entries the same
+  as every other page.
+
+**Known gap, next up:** the specialist-bench team names/summaries
+(`src/data/workerRegistry.ts` — "Content Production Team", "SEO Team", etc.
+and their one-line descriptions) are still English-only, so they render in
+English even on translated homepage variants. That's a small, contained
+follow-up (4 teams × short summary × 5 locales). After that: the rest of
+the site (`/workers/`, `/workers/seo/`, `/workers/[slug]/`, `/specialists/*`,
+`/waitlist`, `/workflow-demo/`, `/prestobot/`, `/sitemap/`) following the
+same pattern established here — extract copy to a locale dictionary,
+parameterise a shared component, add a `[locale]` route. Worker profile
+pages (`workerProfiles.ts`, 3,100+ lines for the 20 that exist) are by far
+the largest remaining piece and should be tackled as its own dedicated pass,
+most likely with translation work parallelised per locale rather than done
+serially.
+
+hreflang tags and hreflang-aware hreflang/canonical linking between locale
+variants are not wired up yet — each locale page has its own correct
+canonical URL, but pages don't yet cross-link to their sibling locales via
+`<link rel="alternate" hreflang="...">`. That's a quick follow-up once more
+of the site is translated (not much value in hreflang between just 6
+homepage variants when every other page is still English-only).
 
 ## Why now
 
@@ -183,32 +231,32 @@ worker-by-worker using actual traffic data once P0/P1 ship.
 - [ ] `astro-seo`'s `languageAlternates` prop used consistently via
       `BaseLayout.astro` rather than hand-added per page
 
-## Open questions (need your call before Phase 0 starts)
+## Decisions (resolve the former "open questions")
 
-1. **URL structure**: subdirectory prefix (`wordpresto.com/pt/`, what this
-   plan assumes) vs subdomain (`pt.wordpresto.com`) vs ccTLD. Subdirectory
-   is simplest for a single Vercel project and is what's assumed above —
-   flag if you want something else.
-2. **llms.txt / markdown mirrors**: should these exist per-locale, or stay
-   English-only with a note that they're the canonical machine-readable
-   source regardless of UI locale? (Affects LLM/agent discoverability more
-   than human SEO.)
-3. **Translation source**: DeepL API (paid, higher quality for these
-   language pairs) vs a cheaper/free MT option for the first draft. Native
-   review happens either way; this only affects draft quality and cost.
-4. **Reviewer sourcing**: do you already have native speakers lined up per
-   locale, or does that need arranging before Phase 1 can actually ship
-   (as opposed to just being built)?
-5. **Phase 3 scope**: translate all 41 worker profiles eventually, or
-   permanently keep the long-tail profile pages English-only and only
-   localise homepage/specialists/waitlist? This changes the total project
-   size substantially.
+1. **URL structure**: subdirectory prefix confirmed — `/pt/`, `/pt-br/`,
+   `/es/`, `/de/`, `/fr/`, English unprefixed at `/`. Implemented.
+2. **Translation source**: done directly rather than via a paid MT API. No
+   separate native-reviewer pass is planned for now — flag any specific
+   string that reads wrong and it'll be fixed directly.
+3. **Scope**: full site, all 41 workers, not staged by traffic. The
+   remaining work is sequenced by what's easiest to ship correctly next
+   (team names/summaries, then the rest of the site, then worker profiles
+   as the largest piece), not by cutting scope.
+4. **llms.txt / markdown mirrors**: per-locale, confirmed. Homepage mirrors
+   are live (`public/{locale}/index.md`); the rest of the site's mirrors
+   will follow the same page as its live route is translated. `llms.txt`
+   itself (the site-wide index) stays a single English file for now — it
+   links to the canonical (English) URLs; revisit once most of the site has
+   locale variants worth indexing separately.
+5. **Auto-translation of newly-added pages**: explicitly deferred, per your
+   note — "we can work on later." Nothing in this pass builds that pipeline;
+   every new page still needs its dictionary entries added by hand for now.
 
-## Explicitly out of scope for this plan
+## Explicitly out of scope for this pass
 
 - Adding a CMS or translation-management platform.
 - Localising the WordPresto product app itself (separate repo, separate
   effort — this plan is frontend-marketing-site only).
-- Automatic browser-language redirect (can be added later as a small
-  enhancement once locales exist; starting with it risks trapping users on
-  an incomplete locale before Phase 3 ships).
+- Automatic browser-language redirect.
+- Automatic translation pipeline for new pages (see decision 5 above).
+- hreflang cross-linking between locale variants (see "Known gap" above).
