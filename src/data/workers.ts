@@ -418,6 +418,19 @@ export const seoWorkers: WorkerData[] = [
     image2x: '/agents/profiles/profile-36-384.webp',
     teamColor: 'var(--team-seo)',
   },
+  {
+    id: 'semantic_search_analyzer',
+    name: 'Sema',
+    role: 'Semantic Coverage Analyser',
+    department: 'Semantic Intelligence',
+    team: 'seo',
+    stage: 'Semantic intelligence',
+    summary: "Reviews semantic coverage by comparing content against Word Presto's knowledge layer and project context, surfacing missing subtopics and thinly covered entities.",
+    output: 'Semantic coverage review',
+    image: '/agents/profiles/profile-43-192.webp',
+    image2x: '/agents/profiles/profile-43-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
 ];
 
 // Combined list for lookups (e.g. resolving related Workers across both teams).

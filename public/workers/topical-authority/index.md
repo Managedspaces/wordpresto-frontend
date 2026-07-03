@@ -121,4 +121,4 @@ Zara does not create pages, build clusters automatically, publish new content or
 
 - **intent_analyst**: Clarifies the reader intent Zara checks against topical coverage. Output: Intent assessment.
 - **internal_linking**: Reviews links and reader pathways that support topic connection. Output: Link assessment.
-- **semantic_search_analyzer**: Uses vector-grounded retrieval to find deeper semantic coverage gaps. Output: Semantic coverage review.
+- **Sema — Semantic Coverage Analyser**: Uses vector-grounded retrieval to find deeper semantic coverage gaps. Output: Semantic coverage review.

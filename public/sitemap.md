@@ -193,6 +193,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/section-rewrite.md
 - Focus: Rosa rewrites individual sections that are unclear, thin or off-brief without touching the rest of the piece. For targeted section-level improvements after review.
 
+### Find the concepts the page is missing.
+
+- HTML: https://wordpresto.com/workers/semantic-search-analyzer/
+- Markdown: https://wordpresto.com/workers/semantic-search-analyzer/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/semantic-search-analyzer.md
+- Focus: Sema reviews semantic coverage by comparing content against Word Presto's knowledge layer and project context, surfacing missing subtopics and thinly covered entities.
+
 ### Get the title, description and H1 right.
 
 - HTML: https://wordpresto.com/workers/seo-metadata/
