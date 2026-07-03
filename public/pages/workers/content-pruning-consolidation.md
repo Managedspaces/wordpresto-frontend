@@ -121,4 +121,4 @@ Hugo does not delete, merge, redirect, rewrite or publish. He only recommends a 
 
 - **Cleo — Cannibalisation & Overlap Worker**: Flags overlap and unclear page-role risks. Output: Overlap review.
 - **Faye — Content Decay & Refresh Priority Worker**: Reviews whether the page needs refreshing or urgent review. Output: Freshness review.
-- **content_inventory**: Classifies the page as a content asset before maintenance decisions. Output: Inventory review.
+- **Nora — Content Inventory Worker**: Classifies the page as a content asset before maintenance decisions. Output: Inventory review.

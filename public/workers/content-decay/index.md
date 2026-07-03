@@ -119,6 +119,6 @@ Faye does not update facts, rewrite sections, schedule refreshes or publish chan
 
 ## Workers Faye works alongside.
 
-- **content_inventory**: Classifies the page as a content asset and identifies useful inventory signals. Output: Inventory review.
+- **Nora — Content Inventory Worker**: Classifies the page as a content asset and identifies useful inventory signals. Output: Inventory review.
 - **Hugo — Content Pruning & Consolidation Worker**: Reviews whether weak or ageing content should be refreshed, consolidated or pruned. Output: Maintenance review.
 - **Iris — Content Refresh Brief Worker**: Turns refresh findings into a structured content refresh brief. Output: Refresh brief.
