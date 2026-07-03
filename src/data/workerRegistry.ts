@@ -186,7 +186,7 @@ export const WORKERS: WorkerEntry[] = [
   { id: 'clarity_proofing', name: 'Esme', roleTitle: 'Clarity & proofing specialist', department: 'Clarity & Proofing', team: 'content', status: 'available', slug: 'clarity-proofing', portrait: 42 },
 
   // ---- SEO Team ----
-  { id: 'page_inspector', name: 'Patrick', roleTitle: 'Source examiner', department: 'Discovery', team: 'seo', status: 'available', slug: null, portrait: 1 },
+  { id: 'page_inspector', name: 'Patrick', roleTitle: 'Source examiner', department: 'Discovery', team: 'seo', status: 'available', slug: 'page-inspector', portrait: 1 },
   { id: 'technical_health', name: 'Maya', roleTitle: 'Technical reviewer', department: 'Technical Review', team: 'seo', status: 'available', slug: 'technical-health', portrait: 2 },
   { id: 'intent_analyst', name: 'Yuna', roleTitle: 'Search intent specialist', department: 'Search Intelligence', team: 'seo', status: 'available', slug: null, portrait: 6 },
   { id: 'evidence', name: 'Kenji', roleTitle: 'Evidence reviewer', department: 'Provenance', team: 'seo', status: 'available', slug: null, portrait: 3 },

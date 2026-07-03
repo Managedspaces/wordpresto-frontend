@@ -186,6 +186,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/internal-link-pathway.md
 - Focus: Felix reviews internal link pathway health: orphan risk, anchor text quality, hub-and-spoke relationships, missing next-step links, competing links and pathway coherence.
 
+### Start with what the page actually says.
+
+- HTML: https://wordpresto.com/workers/page-inspector/
+- Markdown: https://wordpresto.com/workers/page-inspector/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/page-inspector.md
+- Focus: Patrick inspects the page and extracts the source signals the rest of the workflow depends on: title, meta description, headings, links, images, schema, word count and visible page structure.
+
 ### Make good content easier to read.
 
 - HTML: https://wordpresto.com/workers/readability/

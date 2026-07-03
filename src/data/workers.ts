@@ -250,6 +250,19 @@ export const workers: WorkerData[] = [
 // Safe Edit and Publishing are deliberately not exposed.
 export const seoWorkers: WorkerData[] = [
   {
+    id: 'page_inspector',
+    name: 'Patrick',
+    role: 'Page Inspector',
+    department: 'Discovery',
+    team: 'seo',
+    stage: 'Discovery',
+    summary: 'Inspects the live page and extracts the source signals the rest of the workflow depends on: title, meta description, headings, links, images, schema and word count.',
+    output: 'Page signals',
+    image: '/agents/profiles/profile-01-192.webp',
+    image2x: '/agents/profiles/profile-01-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
+  {
     id: 'seo_metadata',
     name: 'Nadia',
     role: 'SEO Title & Metadata Worker',
