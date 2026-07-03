@@ -88,6 +88,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/content-brief-builder.md
 - Focus: Luca turns a topic and goal into a structured content brief: purpose, audience, angle and sections, before any drafting starts.
 
+### Know when a page is starting to lose its edge.
+
+- HTML: https://wordpresto.com/workers/content-decay/
+- Markdown: https://wordpresto.com/workers/content-decay/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/content-decay.md
+- Focus: Faye reviews freshness signals and content decay risk, helping editors decide whether a page is still current, needs monitoring, should be refreshed, or requires urgent review.
+
 ### Plan where approved content should go next.
 
 - HTML: https://wordpresto.com/workers/content-distribution-brief/
