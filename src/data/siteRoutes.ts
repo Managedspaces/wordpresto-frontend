@@ -16,7 +16,8 @@
  * omitted: they should not be advertised to crawlers or agents.
  */
 
-import { LOCALES, DEFAULT_LOCALE } from '@/i18n/locales';
+import { LOCALES, DEFAULT_LOCALE, localeHref } from '@/i18n/locales';
+import { TEAM_ORDER, TEAM_META } from '@/data/workerRegistry';
 
 export type RouteGroup = 'main' | 'machine';
 
@@ -136,6 +137,27 @@ export const siteRoutes: SiteRoute[] = [
     changefreq: 'weekly',
     priority: 0.6,
   },
+  // Specialists hub + team page locale variants (src/data/i18n/specialists.ts).
+  ...LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).flatMap((l) => [
+    {
+      path: localeHref(l.code, '/specialists/'),
+      label: `Specialists (${l.label})`,
+      description: 'The four specialist teams behind Emma: Content Production, SEO, Operations and Approval / Governance.',
+      group: 'main' as const,
+      inXml: true,
+      changefreq: 'weekly' as const,
+      priority: 0.7,
+    },
+    ...TEAM_ORDER.map((id) => ({
+      path: localeHref(l.code, TEAM_META[id].href),
+      label: `${TEAM_META[id].name} (${l.label})`,
+      description: TEAM_META[id].summary,
+      group: 'main' as const,
+      inXml: true,
+      changefreq: 'weekly' as const,
+      priority: 0.6,
+    })),
+  ]),
   {
     // noindex (see src/pages/workflow-demo/index.astro): listed for humans on
     // the HTML sitemap, but kept out of sitemap.xml so search engines are not

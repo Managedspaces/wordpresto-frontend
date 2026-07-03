@@ -1,0 +1,23 @@
+---
+import SpecialistTeamPage from '@/components/SpecialistTeamPage.astro';
+import { LOCALES, DEFAULT_LOCALE } from '@/i18n/locales';
+import { TEAM_ORDER, TEAM_META } from '@/data/workerRegistry';
+
+export function getStaticPaths() {
+  const teamSlugs = TEAM_ORDER.map((id) => ({
+    id,
+    slug: TEAM_META[id].href.replace('/specialists/', '').replace(/\/$/, ''),
+  }));
+
+  return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).flatMap((l) =>
+    teamSlugs.map((t) => ({
+      params: { locale: l.path, team: t.slug },
+      props: { locale: l.code, teamId: t.id },
+    }))
+  );
+}
+
+const { locale, teamId } = Astro.props;
+---
+
+<SpecialistTeamPage locale={locale} teamId={teamId} />
