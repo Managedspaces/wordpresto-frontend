@@ -219,6 +219,19 @@ export const siteRoutes: SiteRoute[] = [
     priority: 0.4,
     markdown: '/prestobot/index.md',
   },
+  // Prestobot locale variants (src/data/i18n/prestobot.ts). No Markdown
+  // mirror per locale yet — the generator's prestobot renderer has a lot of
+  // hardcoded English prose beyond the StaticPageMeta fields; revisit in the
+  // same follow-up pass as /workers/, /workflow-demo/ and /sitemap/ mirrors.
+  ...LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({
+    path: localeHref(l.code, '/prestobot/'),
+    label: `WordPrestoBot (${l.label})`,
+    description: 'About WordPrestoBot, the Word Presto web crawler, and how to control it.',
+    group: 'main' as const,
+    inXml: true,
+    changefreq: 'monthly' as const,
+    priority: 0.3,
+  })),
   {
     path: '/sitemap/',
     label: 'Site map',

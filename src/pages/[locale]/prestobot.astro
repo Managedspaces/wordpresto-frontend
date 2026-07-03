@@ -1,0 +1,15 @@
+---
+import PrestobotPage from '@/components/PrestobotPage.astro';
+import { LOCALES, DEFAULT_LOCALE } from '@/i18n/locales';
+
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({
+    params: { locale: l.path },
+    props: { locale: l.code },
+  }));
+}
+
+const { locale } = Astro.props;
+---
+
+<PrestobotPage locale={locale} />

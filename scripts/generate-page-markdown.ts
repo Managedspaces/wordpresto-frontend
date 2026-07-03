@@ -20,11 +20,13 @@ import { LOCALES, DEFAULT_LOCALE, localeHref, type Locale } from '../src/i18n/lo
 import { TOTAL_SPECIALISTS } from '../src/data/workerRegistry';
 import { workerProfiles } from '../src/data/workerProfiles';
 import { seoWorkers } from '../src/data/workers';
-import { workflowDemo, prestobot } from '../src/data/staticPages';
+import { workflowDemo } from '../src/data/staticPages';
 import { workersHubContent, seoWorkersContent } from '../src/data/i18n/workersDirectory';
+import { prestobotContent } from '../src/data/i18n/prestobot';
 
 const workersDirectory = workersHubContent.en;
 const seoWorkersDirectory = seoWorkersContent.en;
+const prestobot = prestobotContent.en;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
