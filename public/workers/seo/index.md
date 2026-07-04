@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (15 specialist roles)
+## SEO Worker directory (16 specialist roles)
 
 ### Morgan — SERP Snippet Worker
 
@@ -163,3 +163,13 @@ Patrick inspects the page and extracts the source signals the rest of the workfl
 - Legacy Markdown: https://wordpresto.com/pages/workers/accessibility.md
 
 Mara reviews accessibility signals available in the page evidence, flagging weak heading structure, missing image alternatives, unclear link text, readability risks and checks that need human confirmation.
+
+### Yuna — Intent Analyst
+
+- Stage: Search intelligence
+- Output: Intent assessment
+- URL: https://wordpresto.com/workers/intent-analyst/
+- Markdown: https://wordpresto.com/workers/intent-analyst/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/intent-analyst.md
+
+Yuna reviews whether the content, structure, metadata and next step of a page line up with the likely search or reader intent.

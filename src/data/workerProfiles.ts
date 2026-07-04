@@ -5829,6 +5829,160 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'ACCESSIBILITY STATUS',
     guidanceFooterValue: 'Needs review · checks ready',
   },
+  // 38. Yuna - Intent Analyst
+  {
+    id: 'intent_analyst',
+    slug: 'intent-analyst',
+    name: 'Yuna',
+    role: 'Intent Analyst',
+    roleTitle: 'Search Intent Specialist',
+    department: 'Search Intelligence',
+    team: 'seo',
+    stage: 'Search intelligence',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-06-192.webp',
+    portrait2x: '/agents/profiles/profile-06-384.webp',
+    seoTitle: 'Intent Analyst Worker | WordPresto',
+    metaDescription:
+      'Yuna reviews whether the content, structure, metadata and next step of a page line up with the likely search or reader intent.',
+    h1: 'Check whether the page matches what the reader came to find.',
+    heroPara1:
+      'A page can be well-written and still miss the intent. It may answer the wrong question, promise more than it delivers, or mix several reader needs into one confused page. Yuna reviews whether the content, structure, metadata and next step line up with the likely search or reader intent.',
+    heroPara2:
+      'For page reviews, content briefs, SEO audits, page rewrites and search-led editorial planning.',
+    heroWorksAlongside: ['Patrick', 'Ivan', 'Diane'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Search intelligence',
+      output: 'Output · Intent assessment',
+    },
+    problemEyebrow: 'Where content strategy goes wrong',
+    problemH2: 'The page answers something, but not always the thing that matters.',
+    problemPara:
+      'Search intent is the reason behind the visit. A reader may want a definition, a comparison, proof, a guide, pricing clues, reassurance or a clear way to act. Yuna checks whether the page is serving that reason.',
+    problemAnnotation: '↘ check the reason before the rewrite',
+    beforeStamp: 'Intent unclear',
+    beforeHtml: `<p>The page reads well but mixes several reader needs into one section, so it is not clear which question it actually answers.</p>`,
+    beforeTags: ['Mixed reader needs', 'Metadata overpromises', 'No clear next step', 'Intent unconfirmed'],
+    beforeNote: 'the page is optimised before the intent is clear',
+    afterStamp: 'Intent assessment',
+    afterHtml: `<p>Yuna confirms the likely intent, flags the gaps between promise and delivery, and recommends a clearer page angle.</p>`,
+    afterTags: ['Intent confirmed', 'Reader gaps listed', 'Angle recommended', 'Ready for rewrite'],
+    afterNote: 'the rewrite is aimed at the right reason',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Intent review before optimisation.',
+    helpsPara:
+      'Yuna compares what the page appears to promise with what it actually delivers. She helps the editor see whether the page’s job is clear enough before rewriting, expanding or approving it.',
+    checks: [
+      'Likely reader or search intent',
+      'Metadata promise versus page delivery',
+      'Missing reader questions',
+      'Page format fit',
+      'Section order',
+      'Next-step alignment',
+    ],
+    improves: [
+      'Search-intent fit',
+      'Brief quality',
+      'Page purpose clarity',
+      'Rewrite direction',
+    ],
+    prepares: [
+      'Intent assessment',
+      'Reader-need gaps',
+      'Recommended page angle',
+      'Search-aligned next actions',
+    ],
+    surfaces: [
+      'Intent mismatch',
+      'Mixed or competing page goals',
+      'Missing decision information',
+      'Sections that distract from the page’s purpose',
+    ],
+    ioH2: 'What Yuna works from, and what she produces.',
+    worksFrom: [
+      'Page title and metadata',
+      'Page copy',
+      'Page structure',
+      'Source signals',
+      'Topic or keyword context where available',
+    ],
+    produces: [
+      'Intent assessment',
+      'Reader-need gaps',
+      'Search promise notes',
+      'Recommended page role',
+      'Intent-aligned next actions',
+    ],
+    scenarios: [
+      {
+        title: 'A page ranks but does not convert.',
+        description: 'Yuna checks whether the page is actually serving the intent it ranks for.',
+      },
+      {
+        title: 'A draft feels unfocused.',
+        description: 'She identifies which reader need the draft should be built around.',
+      },
+      {
+        title: 'Metadata promises something the page does not deliver.',
+        description: 'Yuna flags the gap between the search promise and the actual content.',
+      },
+      {
+        title: 'A content brief needs a clear reader need.',
+        description: 'She gives the brief writer a confirmed intent to plan around.',
+      },
+      {
+        title: 'A page format decision is needed.',
+        description: 'Yuna hands Ivan an intent assessment to check the format against.',
+      },
+      {
+        title: 'SEO recommendations are pulling in different directions.',
+        description: 'She grounds the review in what the reader actually came to find.',
+      },
+    ],
+    boundaryH2: 'Yuna clarifies intent. Editors decide the strategy.',
+    boundaryPara:
+      'Yuna does not rewrite the page, choose the business strategy or guarantee ranking improvement. She gives editors a reviewable intent assessment.',
+    boundaryChecklist: [
+      'Yuna assesses intent from the page and its context, she never rewrites content herself.',
+      'Her assessment is a starting point for planning, not a strategy decision.',
+      'Recommended page angles are suggestions for editors, not automatic changes.',
+      'Ranking outcomes are never promised or implied by her findings.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Fetch or fabricate live SERP data' },
+      { color: 'red', text: 'Rewrite content automatically' },
+      { color: 'red', text: 'Guarantee ranking improvement' },
+      { color: 'red', text: 'Choose strategy without human review' },
+      { color: 'red', text: 'Publish or write to any CMS' },
+    ],
+    relatedH2: 'Workers Yuna works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'page_inspector',
+        description: 'Extracts the source signals Yuna reviews.',
+        outputLabel: 'Page signals',
+        ctaLabel: 'How Patrick inspects',
+      },
+      {
+        id: 'content_format_serp_fit',
+        description: 'Checks whether the page format matches the expected search shape.',
+        outputLabel: 'Format review',
+        ctaLabel: 'How Ivan checks',
+      },
+      {
+        id: 'conversion_alignment',
+        description: 'Checks whether the next step fits the reader’s intent.',
+        outputLabel: 'Conversion review',
+        ctaLabel: 'How Diane checks',
+      },
+    ],
+    ctaH2: 'Match the page to the reader’s reason.',
+    ctaPara:
+      'Yuna helps make sure optimisation work is aimed at the right intent before the team rewrites or approves anything.',
+    guidanceFooterLabel: 'INTENT STATUS',
+    guidanceFooterValue: 'Needs review · gaps found',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {

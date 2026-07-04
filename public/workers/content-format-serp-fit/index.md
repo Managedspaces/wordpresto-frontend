@@ -119,6 +119,6 @@ Ivan does not fetch live SERPs, rewrite the page, create schema or publish chang
 
 ## Workers Ivan works alongside.
 
-- **intent_analyst**: Clarifies the reader intent Ivan uses to assess format fit. Output: Intent assessment.
+- **Yuna — Intent Analyst**: Clarifies the reader intent Ivan uses to assess format fit. Output: Intent assessment.
 - **Zara — Topical Authority & Coverage Gap Worker**: Checks whether the format has enough topical support. Output: Coverage review.
 - **Diane — Conversion & CTA Alignment Worker**: Checks whether the chosen format supports the next step. Output: Conversion review.

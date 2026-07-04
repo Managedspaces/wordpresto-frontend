@@ -120,5 +120,5 @@ Cassius does not copy competitor content, fetch hidden competitor pages, invent 
 ## Workers Cassius works alongside.
 
 - **Sema — Semantic Coverage Analyser**: Finds semantic gaps from the knowledge layer and project context. Output: Semantic coverage review.
-- **intent_analyst**: Clarifies the intent behind the competitive search opportunity. Output: Intent assessment.
+- **Yuna — Intent Analyst**: Clarifies the intent behind the competitive search opportunity. Output: Intent assessment.
 - **evidence**: Reviews whether competitor-led findings are properly supported. Output: Evidence bundle.

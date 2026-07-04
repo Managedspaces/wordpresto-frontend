@@ -186,6 +186,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/evidence-gap.md
 - Focus: Theo turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off. What to back up, where to source it, what to hold.
 
+### Check whether the page matches what the reader came to find.
+
+- HTML: https://wordpresto.com/workers/intent-analyst/
+- Markdown: https://wordpresto.com/workers/intent-analyst/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/intent-analyst.md
+- Focus: Yuna reviews whether the content, structure, metadata and next step of a page line up with the likely search or reader intent.
+
 ### Review the paths readers and crawlers can actually follow.
 
 - HTML: https://wordpresto.com/workers/internal-link-pathway/
