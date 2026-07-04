@@ -119,6 +119,6 @@ Sam does not edit the page, draft safe edits, apply changes or publish. He prepa
 
 ## Workers Sam works alongside.
 
-- **review_queue**: Turns Sam's proposed changes into a decision queue. Output: Review queue.
+- **Riley — Review Queue Worker**: Turns Sam's proposed changes into a decision queue. Output: Review queue.
 - **Helen — Review Worker**: Summarises review actions for human editors. Output: Review summary.
 - **Dana — Editorial Approval Gate Worker**: Checks whether proposed changes block approval. Output: Approval gate.

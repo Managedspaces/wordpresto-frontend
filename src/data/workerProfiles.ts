@@ -7,7 +7,7 @@ export interface WorkerProfile {
   /** The plain analyst/specialist title used on the worker-slip card, matching workerRegistry.ts's roleTitle. Falls back to `role` when not set. */
   roleTitle?: string;
   department: string;
-  team: 'content' | 'governance' | 'seo';
+  team: 'content' | 'governance' | 'seo' | 'operations';
   /** True only for workers not yet live (matches workerRegistry.ts's status: 'planned'). Swaps the hero CTA to "Join the waitlist" and adds a Planned pill instead of implying the worker is runnable today. */
   planned?: boolean;
   stage: string;
@@ -6289,6 +6289,159 @@ export const workerProfiles: WorkerProfile[] = [
       'Leo helps editors see whether the page has useful links, clear anchors and a reader pathway worth following.',
     guidanceFooterLabel: 'RELATIONSHIP STATUS',
     guidanceFooterValue: 'Needs review · pathway gaps found',
+  },
+  // 41. Riley - Review Queue Worker
+  {
+    id: 'review_queue',
+    slug: 'review-queue',
+    name: 'Riley',
+    role: 'Review Queue Worker',
+    roleTitle: 'Review Queue Coordinator',
+    department: 'Change Planning',
+    team: 'operations',
+    stage: 'Review coordination',
+    teamColor: 'var(--team-operations)',
+    portrait: '/agents/profiles/profile-16-192.webp',
+    portrait2x: '/agents/profiles/profile-16-384.webp',
+    seoTitle: 'Review Queue Worker | WordPresto',
+    metaDescription:
+      'Riley converts proposed changes into structured review items, showing what needs a human decision, why it matters and what action is available.',
+    h1: 'Turn proposed changes into decisions an editor can manage.',
+    heroPara1:
+      'A content review can produce dozens of findings. Without a queue, those findings become noise: unclear priority, no decision state, no ownership and no path to approval. Riley converts proposed changes into structured review items. Each item shows what needs a human decision, why it matters and what action is available.',
+    heroPara2:
+      'For content analysis, change review, approval workflows and any page where multiple workers have raised issues.',
+    heroWorksAlongside: ['Sam', 'Helen', 'Dana'],
+    heroTagPills: {
+      team: 'Operations / Management',
+      stage: 'Stage · Review coordination',
+      output: 'Output · Review queue',
+    },
+    problemEyebrow: 'Where review workflows go wrong',
+    problemH2: 'Findings are not the same as decisions.',
+    problemPara:
+      'A page audit can produce useful recommendations, but the editor still needs to know what to approve, reject, defer or investigate. Without that layer, the workflow feels busy but not operational. Riley turns findings into a queue the team can work through.',
+    problemAnnotation: '↘ organise the decisions, not just the findings',
+    beforeStamp: 'Findings pile',
+    beforeHtml: `<p>Several workers have raised issues on the page, but there is no shared view of what needs a decision, or in what order.</p>`,
+    beforeTags: ['No priority', 'No decision state', 'No ownership', 'Busy but stuck'],
+    beforeNote: 'the review feels active but produces nothing',
+    afterStamp: 'Review queue',
+    afterHtml: `<p>Riley organises the findings into decision items, each with rationale and the actions available to the editor.</p>`,
+    afterTags: ['Items prioritised', 'Decisions pending', 'No edits applied', 'Ready for editor action'],
+    afterNote: 'the team can work through it in order',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A queue layer between worker findings and human approval.',
+    helpsPara:
+      'Riley does not decide for the editor. He organises findings into reviewable items so editors can make decisions without losing context.',
+    checks: [
+      'Proposed changes from review workers',
+      'Decision type needed',
+      'Priority and affected area',
+      'Whether more evidence is needed',
+      'Whether an item should be approved, rejected, deferred or assigned',
+    ],
+    improves: [
+      'Review workflow clarity',
+      'Editorial throughput',
+      'Decision tracking',
+      'Human approval readiness',
+    ],
+    prepares: [
+      'Review queue',
+      'Pending decision items',
+      'Item rationale',
+      'Available editor actions',
+    ],
+    surfaces: [
+      'Items needing approval',
+      'Items needing more evidence',
+      'Items that should be deferred',
+      'Items with unclear ownership or priority',
+    ],
+    ioH2: 'What Riley works from, and what he produces.',
+    worksFrom: [
+      'Safe change plans',
+      'Worker findings',
+      'Proposed changes',
+      'Evidence and risk signals',
+      'Page review context',
+    ],
+    produces: [
+      'Review queue',
+      'Decision items',
+      'Priority labels',
+      'Review rationale',
+      'Pending action states',
+    ],
+    scenarios: [
+      {
+        title: 'A page has many recommendations.',
+        description: 'Riley organises them into a queue the editor can work through in order.',
+      },
+      {
+        title: 'The editor needs decision options.',
+        description: 'He shows what action is available for each item: approve, reject, defer or assign.',
+      },
+      {
+        title: 'A review session is becoming messy.',
+        description: 'Riley brings structure back by turning loose findings into tracked items.',
+      },
+      {
+        title: 'Multiple workers have raised related issues.',
+        description: 'He groups them so the editor sees the full picture, not scattered notes.',
+      },
+      {
+        title: 'A page is moving towards approval.',
+        description: 'Riley gives Dana a clear view of which queue items are still unresolved.',
+      },
+      {
+        title: 'The team needs a clean handoff.',
+        description: 'He keeps the queue state visible so nothing gets lost between sessions.',
+      },
+    ],
+    boundaryH2: 'Riley organises decisions. He does not make them.',
+    boundaryPara:
+      'Riley does not approve changes, edit content, apply fixes or publish. He coordinates the review queue so humans can decide.',
+    boundaryChecklist: [
+      'Riley organises proposed changes into a queue, he never approves or rejects them himself.',
+      'Priority labels are a starting point for editors, not a final ranking.',
+      'Unresolved items stay visible in the queue rather than being silently dropped.',
+      'Final decisions and content changes remain with the editor and the relevant Worker.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Approve or reject items automatically' },
+      { color: 'red', text: 'Apply content changes' },
+      { color: 'red', text: 'Publish or write to any CMS' },
+      { color: 'red', text: 'Hide unresolved review items' },
+      { color: 'red', text: 'Replace human decision-making' },
+    ],
+    relatedH2: 'Workers Riley works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'safe_change_planner',
+        description: 'Turns findings into proposed changes Riley can queue.',
+        outputLabel: 'Change plan',
+        ctaLabel: 'How Sam plans',
+      },
+      {
+        id: 'review',
+        description: 'Summarises findings and review actions for the editor.',
+        outputLabel: 'Review summary',
+        ctaLabel: 'How Helen reviews',
+      },
+      {
+        id: 'editorial_approval_gate',
+        description: 'Checks whether unresolved queue items block approval.',
+        outputLabel: 'Approval gate',
+        ctaLabel: 'How Dana decides',
+      },
+    ],
+    ctaH2: 'Make review work manageable.',
+    ctaPara:
+      'Riley turns worker findings into structured decisions so editors can move from analysis to action.',
+    guidanceFooterLabel: 'QUEUE STATUS',
+    guidanceFooterValue: 'Pending review · decisions required',
   },
 ];
 

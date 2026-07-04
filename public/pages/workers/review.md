@@ -119,6 +119,6 @@ Helen does not approve content, edit copy, apply changes or publish. She prepare
 
 ## Workers Helen works alongside.
 
-- **review_queue**: Organises proposed changes into decision items. Output: Review queue.
+- **Riley — Review Queue Worker**: Organises proposed changes into decision items. Output: Review queue.
 - **Sam — Safe Change Planner**: Turns findings into proposed changes. Output: Change plan.
 - **Dana — Editorial Approval Gate Worker**: Uses the review state to assess readiness for approval. Output: Approval gate.

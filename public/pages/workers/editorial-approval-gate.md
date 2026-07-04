@@ -123,4 +123,4 @@ Dana does not approve content automatically, certify compliance, publish, or wri
 
 - **Helen — Review Worker**: Summarises findings and review actions before the final gate. Output: Review summary.
 - **Sam — Safe Change Planner**: Turns findings into proposed changes Dana can assess for blockers. Output: Change plan.
-- **review_queue**: Organises unresolved items Dana can treat as approval blockers. Output: Review queue.
+- **Riley — Review Queue Worker**: Organises unresolved items Dana can treat as approval blockers. Output: Review queue.
