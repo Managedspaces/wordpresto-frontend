@@ -13,7 +13,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
     problemEyebrow: 'Wo die Stimme zu driften beginnt',
     problemH2: 'Die Markenstimme ist das Erste, was in einem KI-unterstützten Workflow zerbricht.',
     problemPara:
-      'Text zu erzeugen war nie der schwierige Teil. Schwierig ist, dass jeder Autor und jedes KI-Tool eine eigene Standardstimme mitbringt. Auf einer echten Website macht diese Drift den Unterschied zwischen einer Marke und einem Haufen Seiten aus.',
+      'Text zu erzeugen war nie der schwierige Teil. Schwierig ist, dass jede Autorin, jeder Autor und jedes KI-Tool eine eigene Standardstimme mitbringt. Auf einer echten Website macht diese Drift den Unterschied zwischen einer Marke und einem Haufen Seiten aus.',
     problemAnnotation: '↘ derselbe Absatz, zwei Stimmen',
     beforeStamp: 'Nicht auf Stimme',
     beforeHtml: `<p>In der heutigen <span class="ba-strike">schnelllebigen digitalen Welt</span> kann der <span class="ba-strike">Einsatz hochmoderner KI-Lösungen</span> Ihre Content-Strategie <span class="ba-strike">revolutionieren</span> und <span class="ba-strike">bahnbrechende</span> Ergebnisse freisetzen.</p>`,
@@ -74,7 +74,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
           'Sie entfernt das generische KI-Register und zieht den Text vor der Prüfung zurück zu Ihrem Hausstil.',
       },
       {
-        title: 'Ein neuer Freelancer hat die Stimme noch nicht gefunden.',
+        title: 'Eine neue Freelancerin hat die Stimme noch nicht gefunden.',
         description:
           'Helena macht aus „nah dran, aber nicht ganz wir" konkrete Hinweise auf Satzebene, die sich umsetzen lassen.',
       },
@@ -99,13 +99,13 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       'Stimme ist eine Frage des Urteilsvermögens, keine Regel. Helena schlägt vor, prüft und bereitet vor. Sie ist bewusst so gebaut, dass sie dort aufhört, wo redaktionelles Urteilsvermögen beginnt, und nichts, was sie anfasst, wird veröffentlicht, ohne dass ein Mensch zustimmt.',
     boundaryChecklist: [
       'Helena schlägt stimmgerechte Umformulierungen vor, sie veröffentlicht nie.',
-      'Stimmentscheidungen sind so aufbereitet, dass ein Redakteur sie prüfen kann.',
+      'Stimmentscheidungen sind so aufbereitet, dass eine Redakteurin sie prüfen kann.',
       'Unsichere oder riskante Stellen werden sichtbar gemacht, nicht verborgen.',
       'Helena unterstützt redaktionelles Urteilsvermögen, sie ersetzt es nie.',
     ],
     willNot: [
       { color: 'red', text: 'Veröffentlichen oder ins CMS übertragen' },
-      { color: 'red', text: 'Einen Redakteur überstimmen' },
+      { color: 'red', text: 'Eine Redakteurin überstimmen' },
       { color: 'amber', text: 'Eine bewusste Entscheidung glattbügeln' },
     ],
     relatedH2: 'Workers, an die Helena übergibt.',
@@ -224,9 +224,9 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
           'Die Analyse zeigt oft, dass ein leichterer Eingriff reicht, was Budget spart und Bewährtes erhält.',
       },
       {
-        title: 'Vorbereitung für einen Autor, der neu beim Kunden ist.',
+        title: 'Vorbereitung für eine Autorin, die neu beim Kunden ist.',
         description:
-          'Eine Content-Analyse gibt jedem Autor ein echtes Briefing statt eines leeren Blatts.',
+          'Eine Content-Analyse gibt jeder Autorin ein echtes Briefing statt eines leeren Blatts.',
       },
     ],
     boundaryH2: 'Omar analysiert. Redaktion und Kunde entscheiden.',
@@ -234,7 +234,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       'Eine Content-Analyse ist ein Input, keine Anweisung. Omar bildet ab, was da ist, und markiert, was zählt. Was sich ändert, was bleibt und was gestrichen wird, ist eine Entscheidung der Redaktion oder des Kunden.',
     boundaryChecklist: [
       'Omar prüft und analysiert, er ändert Content nie direkt.',
-      'Seine Analyse ist so aufbereitet, dass ein Redakteur sie umsetzen kann.',
+      'Seine Analyse ist so aufbereitet, dass eine Redakteurin sie umsetzen kann.',
       'Unklare oder strittige Entscheidungen werden markiert, nicht gelöst.',
       'Die Analyse unterstützt redaktionelles Urteilsvermögen, sie ersetzt es nicht.',
     ],
@@ -308,7 +308,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       'Seitenfluss von der Eröffnung bis zum Schluss',
     ],
     prepares: [
-      'Eine strukturierte Gliederung für den Autor',
+      'Eine strukturierte Gliederung für die Autorin',
       'Überschriftenstruktur fürs CMS',
       'Abschnittsnotizen fürs Briefing',
     ],
@@ -329,14 +329,14 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       'Strukturierte Content-Gliederung',
       'Geordnete Überschriftenhierarchie',
       'Abschnittsplan',
-      'Flussnotizen für den Autor',
+      'Flussnotizen für die Autorin',
       'Strukturelle Empfehlungen',
     ],
     scenarios: [
       {
         title: 'Eine Long-Form-Seite, in einer Sitzung geschrieben, ohne Form.',
         description:
-          'Marcus ordnet die Abschnitte in eine klare Lesereihenfolge, ohne dass der Autor von vorn beginnen muss.',
+          'Marcus ordnet die Abschnitte in eine klare Lesereihenfolge, ohne dass die Autorin von vorn beginnen muss.',
       },
       {
         title: 'Ein Briefing, das vor dem Schreiben ein strukturelles Grundgerüst braucht.',
@@ -359,7 +359,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
           'Beweise vor die Preise zu stellen, ist oft schon alles, was eine Seite braucht, um besser zu performen.',
       },
       {
-        title: 'Ein Content-Team, in dem jeder Autor anders strukturiert.',
+        title: 'Ein Content-Team, in dem jede Autorin anders strukturiert.',
         description:
           'Eine Strukturphase schafft einen gemeinsamen Formstandard, bevor das Schreiben beginnt.',
       },
@@ -423,7 +423,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
     beforeStamp: 'Schwaches Briefing',
     beforeHtml: `<p>Schreib einen <span class="ba-strike">Blogbeitrag über unser Projektmanagement-Tool</span>. Mach ihn <span class="ba-strike">ansprechend und SEO-freundlich</span>. Etwa <span class="ba-strike">800 Wörter</span>. Mit <span class="ba-strike">Call-to-Action am Ende</span>.</p>`,
     beforeTags: ['Keine Zielgruppe', 'Kein Blickwinkel', 'Keine Strukturvorgabe'],
-    beforeNote: 'jeder Autor wird etwas anderes liefern',
+    beforeNote: 'jede Autorin wird etwas anderes liefern',
     afterStamp: 'Klares Briefing',
     afterHtml: `<p><span class="ba-hl">Ziel: Projektmanager in Agenturen</span> verstehen lassen, warum strukturierte Übergaben Überarbeitungsrunden reduzieren. Zielgruppe: Entscheider. Blickwinkel: Kosten schwacher Übergaben. Abschnitte: Problem, Ansatz, Beleg, nächster Schritt.</p>`,
     afterTags: ['Konkrete Zielgruppe', 'Klarer Blickwinkel', 'Strukturierte Abschnitte'],
@@ -440,7 +440,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
     improves: [
       'Briefingumfang, damit er handlungsfähig ist, nicht nur richtungsweisend',
       'Abschnittsstruktur, damit die Gliederung nutzbar ist',
-      'Ton- und Stimmrichtung, damit der Autor einen Startregister hat',
+      'Ton- und Stimmrichtung, damit die Autorin einen Startregister hat',
     ],
     prepares: [
       'Ein strukturiertes Content-Briefing',
@@ -465,7 +465,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       'Abschnittsgliederung',
       'Notizen zu Zielgruppe und Ton',
       'Schreibvorgaben',
-      'Übergabe an Autor oder Entwurfs-Worker',
+      'Übergabe an Autorin oder Entwurfs-Worker',
     ],
     scenarios: [
       {
@@ -481,7 +481,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       {
         title: 'Agenturbriefing für einen gerade erst onboardeten Kunden.',
         description:
-          'Luca macht aus den Intake-Notizen ein Briefing, mit dem ein Autor arbeiten kann, ohne bei Kundenvorlieben zu raten.',
+          'Luca macht aus den Intake-Notizen ein Briefing, mit dem eine Autorin arbeiten kann, ohne bei Kundenvorlieben zu raten.',
       },
       {
         title: 'Einen Content-Kalender mit echter Richtung aufbauen.',
@@ -494,19 +494,19 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
           'Eine durchgängig angewandte Briefingstruktur richtet alle Stücke aus, ohne ständige Abstimmungscalls.',
       },
       {
-        title: 'Ein Autor, der neu bei der Marke ist.',
+        title: 'Eine Autorin, die neu bei der Marke ist.',
         description:
           'Ein klares Briefing ersetzt wochenlange implizite Wissensvermittlung durch ein Dokument, auf das sie sich beziehen kann.',
       },
     ],
     boundaryH2: 'Luca brieft. Autoren und Redakteure treffen die kreativen Entscheidungen.',
     boundaryPara:
-      'Ein Briefing ist ein Ausgangspunkt, kein Drehbuch. Luca strukturiert das Briefing, damit die Richtung klar ist, aber das Schreiben, die Stimmentscheidungen und die kreativen Urteile liegen bei Autor und Redakteur.',
+      'Ein Briefing ist ein Ausgangspunkt, kein Drehbuch. Luca strukturiert das Briefing, damit die Richtung klar ist, aber das Schreiben, die Stimmentscheidungen und die kreativen Urteile liegen bei Autorin und Redaktion.',
     boundaryChecklist: [
       'Luca baut Briefings, er schreibt den Content nie selbst.',
       'Briefingentscheidungen sind dokumentiert, damit Redaktion oder Kunde sie prüfen können.',
       'Lücken in der Richtung werden markiert, bevor das Schreiben beginnt.',
-      'Das Briefing unterstützt den Autor, es ersetzt ihn nicht.',
+      'Das Briefing unterstützt die Autorin, es ersetzt sie nicht.',
     ],
     willNot: [
       { color: 'red', text: 'Content entwerfen oder schreiben' },
@@ -547,7 +547,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       'Ellis baut und überarbeitet Entwürfe entlang des Briefings: strukturiert, zielgerichtet und bereit fürs Review. Für Content, der vor der Bearbeitung oder dem Review einen geformten Entwurf braucht.',
     h1: 'Entwürfe überarbeiten, ohne den Punkt zu verlieren.',
     heroPara1:
-      'Ein Entwurf, der vom Briefing abweicht, den Hauptpunkt vergräbt oder doppelt so lang läuft wie nötig, ist nicht reviewbereit. Ellis überarbeitet Entwürfe, die der Briefingstruktur folgen, mit dem Wichtigsten voranstellen und sich gut genug lesen, damit ein Redakteur daraus Entscheidungen treffen kann.',
+      'Ein Entwurf, der vom Briefing abweicht, den Hauptpunkt vergräbt oder doppelt so lang läuft wie nötig, ist nicht reviewbereit. Ellis überarbeitet Entwürfe, die der Briefingstruktur folgen, mit dem Wichtigsten voranstellen und sich gut genug lesen, damit eine Redakteurin daraus Entscheidungen treffen kann.',
     heroPara2:
       'Für Erstentwürfe, KI-generierte Entwürfe, die Form brauchen, und Überarbeitungen, bei denen sich das Briefing geändert hat.',
     problemEyebrow: 'Wo Entwürfe zu kurz greifen',
@@ -562,11 +562,11 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
     afterStamp: 'Briefinggemäß',
     afterHtml: `<p>Gute Content-Übergaben brauchen <span class="ba-hl">zwei Überarbeitungsrunden statt fünf</span>. Der Unterschied liegt in einem Briefing, das jede und jeder im Projekt tatsächlich vor dem Schreiben gelesen hat.</p>`,
     afterTags: ['Vom Punkt geleitet', 'Briefinggemäß', 'Reviewbereit'],
-    afterNote: 'jetzt kann ein Redakteur damit arbeiten',
+    afterNote: 'jetzt kann eine Redakteurin damit arbeiten',
     helpsEyebrow: 'Wie dieser Worker hilft',
-    helpsH2: 'Ein Entwerfer, der dem Briefing folgt und etwas liefert, mit dem ein Redakteur arbeiten kann.',
+    helpsH2: 'Ein Entwerfer, der dem Briefing folgt und etwas liefert, mit dem eine Redakteurin arbeiten kann.',
     helpsPara:
-      'Ellis übernimmt das Entwerfen und Überarbeiten, das Content auf Reviewqualität bringt. Das Ziel ist kein fertiges Stück, sondern ein Entwurf mit klarer Form, der dem Briefing folgt und einem Redakteur etwas Echtes zum Arbeiten gibt.',
+      'Ellis übernimmt das Entwerfen und Überarbeiten, das Content auf Reviewqualität bringt. Das Ziel ist kein fertiges Stück, sondern ein Entwurf mit klarer Form, der dem Briefing folgt und einer Redakteurin etwas Echtes zum Arbeiten gibt.',
     checks: [
       'Ob der Entwurf der Briefingstruktur folgt',
       'Ob die Einleitung den Hauptpunkt setzt',
@@ -598,7 +598,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
     produces: [
       'Geformter Entwurf',
       'Überarbeitete Content-Abschnitte',
-      'Entwurfsnotizen für den Redakteur',
+      'Entwurfsnotizen für die Redakteurin',
       'Notizen zu Briefingabweichungen',
       'Reviewbereiter Entwurf',
     ],
@@ -609,7 +609,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
           'Ellis gibt ihm Struktur und einen Einstieg und macht aus Output einen reviewbereiten Entwurf.',
       },
       {
-        title: 'Ein Erstentwurf eines neuen Autors, der strukturelle Arbeit braucht.',
+        title: 'Ein Erstentwurf einer neuen Autorin, der strukturelle Arbeit braucht.',
         description:
           'Er formt um, ohne alles neu zu schreiben, und erhält, was funktioniert.',
       },
@@ -639,7 +639,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       'Ein geformter Entwurf ist ein Input für die Redaktion, kein fertiges Produkt. Ellis überarbeitet, bis Content Reviewqualität hat. Kreative Entscheidungen, Freigabe und letzte Änderungen sind redaktionelle und Kundenentscheidungen.',
     boundaryChecklist: [
       'Ellis entwirft und überarbeitet, er veröffentlicht nie.',
-      'Entwürfe sind so aufbereitet, dass ein Redakteur sie prüfen und freigeben kann.',
+      'Entwürfe sind so aufbereitet, dass eine Redakteurin sie prüfen und freigeben kann.',
       'Briefingabweichungen werden vermerkt, nicht stillschweigend korrigiert.',
       'Das Entwerfen unterstützt das Briefing, es setzt sich nicht darüber hinweg.',
     ],
@@ -688,7 +688,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
     problemEyebrow: 'Wo Entwürfe zu früh weitergehen',
     problemH2: 'Ein Entwurf, der zu früh ins Review kommt, kostet mehr, als zu warten.',
     problemPara:
-      'Einen Entwurf an einen Kunden oder einen leitenden Redakteur zu schicken, bevor er bereit ist, ist keine Effizienz; es ist eine rückwärtsgewandte Investition. Die Kosten einer strukturellen Überarbeitung nach Kundenfeedback sind höher als die einer Prüfung, bevor der Entwurf das Team verlässt.',
+      'Einen Entwurf an einen Kunden oder eine leitende Redakteurin zu schicken, bevor er bereit ist, ist keine Effizienz; es ist eine rückwärtsgewandte Investition. Die Kosten einer strukturellen Überarbeitung nach Kundenfeedback sind höher als die einer Prüfung, bevor der Entwurf das Team verlässt.',
     problemAnnotation: '↘ prüfen, bevor es weitergeht',
     beforeStamp: 'Nicht geprüft',
     beforeHtml: `<p>Hier ist der <span class="ba-strike">fertige Entwurf</span> zur Prüfung. Wir sind <span class="ba-strike">zufrieden damit</span>. Sagt uns Bescheid, <span class="ba-strike">falls ihr Änderungen wollt</span>. Wir denken, er deckt <span class="ba-strike">alles ab</span>, was ihr wolltet.</p>`,
@@ -713,13 +713,13 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       'Übergabenotizen, damit der nächste Schritt klar ist',
     ],
     prepares: [
-      'Strukturierte Review-Notizen für den Redakteur',
+      'Strukturierte Review-Notizen für die Redakteurin',
       'Eine klare Reifeentscheidung fürs Team',
       'Konkrete Probleme und vorgeschlagene Lösungen',
     ],
     surfaces: [
       'Strukturelle Probleme, die eine Überarbeitung brauchen',
-      'Briefinglücken oder -drift, die dem Autor entgangen sind',
+      'Briefinglücken oder -drift, die der Autorin entgangen sind',
       'Abschnitte, die Kunden- oder Fachinput brauchen',
     ],
     ioH2: 'Womit Quinn arbeitet und was er liefert.',
@@ -774,7 +774,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       'Ein Review ist ein strukturierter Input für die Redaktion, keine Anweisungsliste. Quinn erkennt Probleme und markiert sie klar. Was geändert wird, und wie, ist eine redaktionelle und Kundenentscheidung.',
     boundaryChecklist: [
       'Quinn prüft und markiert, er bearbeitet nie direkt.',
-      'Review-Notizen sind so aufbereitet, dass ein Redakteur sie umsetzen kann.',
+      'Review-Notizen sind so aufbereitet, dass eine Redakteurin sie umsetzen kann.',
       'Unsichere oder subjektive Einschätzungen werden als Fragen markiert, nicht als Entscheidungen.',
       'Das Review unterstützt redaktionelles Urteilsvermögen, es setzt sich nicht darüber hinweg.',
     ],
@@ -849,12 +849,12 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
     ],
     prepares: [
       'Einen überarbeiteten Abschnitt, bereit zum Einsetzen',
-      'Abschnittsnotizen für den Redakteur',
+      'Abschnittsnotizen für die Redakteurin',
       'Bestätigung der Briefingtreue',
     ],
     surfaces: [
       'Abschnitte, bei denen eine Überarbeitung nicht reicht und strukturelle Änderung nötig ist',
-      'Fehlende Informationen, die der Autor liefern muss',
+      'Fehlende Informationen, die die Autorin liefern muss',
       'Briefingkonflikte, die das Abschnittsproblem verursacht haben',
     ],
     ioH2: 'Womit Rosa arbeitet und was sie liefert.',
@@ -869,7 +869,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       'Überarbeiteter Abschnitt',
       'Notizen zur Abschnittsbearbeitung',
       'Briefingabgleich',
-      'Übergabenotizen für den Redakteur',
+      'Übergabenotizen für die Redakteurin',
     ],
     scenarios: [
       {
@@ -898,7 +898,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
           'Eine Überarbeitung auf Abschnittsebene der schwachen Mitte bringt das Stück zurück auf Kurs.',
       },
       {
-        title: 'Ein Autor, der einen starken Entwurf lieferte, aber mit dem CTA kämpfte.',
+        title: 'Eine Autorin, die einen starken Entwurf lieferte, aber mit dem CTA kämpfte.',
         description:
           'Eine Abschnittsüberarbeitung ist schneller und besser, als das ganze Stück zurückzuschicken.',
       },
@@ -1092,7 +1092,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
     problemEyebrow: 'Wo Lesbarkeit scheitert',
     problemH2: 'Dichter, korrekter Content verliert trotzdem Leser.',
     problemPara:
-      'Die meisten Lesbarkeitsprobleme liegen nicht an den Wörtern; sie liegen an der Satzlänge, der Absatzdichte und dem Verhältnis von Relativierung zu Aussage. Ein Leser, der nach dem dritten Absatz aufgibt, hat den Content nicht gelesen, wie akkurat er auch war.',
+      'Die meisten Lesbarkeitsprobleme liegen nicht an den Wörtern; sie liegen an der Satzlänge, der Absatzdichte und dem Verhältnis von Relativierung zu Aussage. Eine Leserin, die nach dem dritten Absatz aufgibt, hat den Content nicht gelesen, wie akkurat er auch war.',
     problemAnnotation: '↘ lesbar heißt tatsächlich gelesen',
     beforeStamp: 'Schwer lesbar',
     beforeHtml: `<p>Vor dem Hintergrund der <span class="ba-strike">aktuellen digitalen Landschaft, in der</span> viele Organisationen zunehmend darauf setzen, <span class="ba-strike">verfügbare Tools zu nutzen</span>, ist es wichtig, <span class="ba-strike">zu bedenken, dass</span> der gewählte Ansatz <span class="ba-strike">zwangsläufig</span> Auswirkungen auf die Ergebnisse hat.</p>`,
@@ -1105,7 +1105,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Eine Lesbarkeitsprüfung, die dafür sorgt, dass Content tatsächlich gelesen wird.',
     helpsPara:
-      'Priya leistet die Arbeit auf Satz- und Absatzebene, die aus technisch korrektem Content etwas macht, das ein Leser zu Ende liest. Keine Überarbeitung, sondern ein Straffungsdurchgang, der alles entfernt, was das Lesen schwerer macht.',
+      'Priya leistet die Arbeit auf Satz- und Absatzebene, die aus technisch korrektem Content etwas macht, das eine Leserin zu Ende liest. Keine Überarbeitung, sondern ein Straffungsdurchgang, der alles entfernt, was das Lesen schwerer macht.',
     checks: [
       'Satzlänge im Verhältnis zur Zielgruppe',
       'Absatzdichte und Überfliegbarkeit',
@@ -1118,7 +1118,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
     ],
     prepares: [
       'Einen verbesserten Entwurf mit angewandter Lesbarkeitsprüfung',
-      'Lesbarkeitsnotizen für den Redakteur',
+      'Lesbarkeitsnotizen für die Redakteurin',
       'Content, bereit fürs finale Review',
     ],
     surfaces: [
@@ -1138,11 +1138,11 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       'Verbesserter Entwurf',
       'Notizen zur Lesbarkeitsprüfung',
       'Konkrete Verbesserungen auf Satz- und Absatzebene',
-      'Übergabenotizen für den Redakteur',
+      'Übergabenotizen für die Redakteurin',
     ],
     scenarios: [
       {
-        title: 'Eine technische Produktseite, geschrieben von einem Ingenieur.',
+        title: 'Eine technische Produktseite, geschrieben von einer Ingenieurin.',
         description:
           'Priya überträgt, ohne zu verflachen: klar für die Zielgruppe, weiterhin akkurat.',
       },
@@ -1248,12 +1248,12 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
     improves: [
       'Berichterstattung zur Briefingtreue, damit Lücken konkret sind',
       'Überarbeitungshinweise, damit Korrekturen gezielt erfolgen',
-      'Entwurfsübergabenotizen, damit der Autor genau weiß, was zu adressieren ist',
+      'Entwurfsübergabenotizen, damit die Autorin genau weiß, was zu adressieren ist',
     ],
     prepares: [
       'Einen strukturierten Abgleichsbericht',
       'Einen Abschnitt-für-Abschnitt-Vergleich mit dem Briefing',
-      'Konkrete Korrekturnotizen für den Autor',
+      'Konkrete Korrekturnotizen für die Autorin',
     ],
     surfaces: [
       'Umfangsdrift, die sich während der Produktion eingeschlichen hat',
@@ -1272,7 +1272,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
       'Briefing-zu-Entwurf-Abgleichsbericht',
       'Abschnitt-für-Abschnitt-Vergleich',
       'Lücken- und Driftmarkierungen',
-      'Korrekturnotizen für den Autor',
+      'Korrekturnotizen für die Autorin',
       'Übergabe an Review oder Überarbeitung',
     ],
     scenarios: [
@@ -1309,7 +1309,7 @@ export const deBatch1: Record<string, WorkerProfileTranslatable> = {
     ],
     boundaryH2: 'Ada prüft die Briefingtreue. Autoren und Redakteure nehmen die Änderungen vor.',
     boundaryPara:
-      'Ein Abgleichsbericht ist ein strukturierter Input für die Überarbeitung, keine Liste erforderlicher Änderungen. Ada erkennt, was nicht zum Briefing passt; ob und wie das angegangen wird, ist eine Entscheidung von Autor und Redakteur.',
+      'Ein Abgleichsbericht ist ein strukturierter Input für die Überarbeitung, keine Liste erforderlicher Änderungen. Ada erkennt, was nicht zum Briefing passt; ob und wie das angegangen wird, ist eine Entscheidung von Autorin und Redaktion.',
     boundaryChecklist: [
       'Ada prüft die Briefingtreue, sie überarbeitet Content nie selbst.',
       'Abgleichsergebnisse sind für die redaktionelle Prüfung aufbereitet.',
