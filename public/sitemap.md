@@ -228,6 +228,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/readability.md
 - Focus: Priya tightens sentences, simplifies structure and improves flow so content reads clearly for its intended audience. For drafts that are correct but harder to read than they need to be.
 
+### Turn proposed changes into decisions an editor can manage.
+
+- HTML: https://wordpresto.com/workers/review-queue/
+- Markdown: https://wordpresto.com/workers/review-queue/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/review-queue.md
+- Focus: Riley converts proposed changes into structured review items, showing what needs a human decision, why it matters and what action is available.
+
 ### Turn complex findings into a clear editorial review.
 
 - HTML: https://wordpresto.com/workers/review/

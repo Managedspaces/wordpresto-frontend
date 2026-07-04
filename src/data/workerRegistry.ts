@@ -206,7 +206,7 @@ export const WORKERS: WorkerEntry[] = [
   { id: 'competitor_intel', name: 'Cassius', roleTitle: 'Competitive analyst', department: 'Competitive Intelligence', team: 'seo', status: 'available', slug: 'competitor-intel', portrait: 44 },
 
   // ---- Operations / Management ----
-  { id: 'review_queue', name: 'Riley', roleTitle: 'Review queue coordinator', department: 'Change Planning', team: 'operations', status: 'available', slug: null, portrait: 16 },
+  { id: 'review_queue', name: 'Riley', roleTitle: 'Review queue coordinator', department: 'Change Planning', team: 'operations', status: 'available', slug: 'review-queue', portrait: 16 },
 
   // ---- Approval / Governance Team ----
   { id: 'safe_change_planner', name: 'Sam', roleTitle: 'Change planning specialist', department: 'Change Planning', team: 'governance', status: 'available', slug: 'safe-change-planner', portrait: 15 },

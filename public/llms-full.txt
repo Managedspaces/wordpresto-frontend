@@ -36,6 +36,7 @@ This file consolidates the main public WordPresto marketing and Worker content f
 - Check whether the page connects to the rest of the site.: https://wordpresto.com/workers/internal-linking/index.md
 - Start with what the page actually says.: https://wordpresto.com/workers/page-inspector/index.md
 - Make good content easier to read.: https://wordpresto.com/workers/readability/index.md
+- Turn proposed changes into decisions an editor can manage.: https://wordpresto.com/workers/review-queue/index.md
 - Turn complex findings into a clear editorial review.: https://wordpresto.com/workers/review/index.md
 - Turn findings into changes that can be reviewed safely.: https://wordpresto.com/workers/safe-change-planner/index.md
 - Describe the page so machines understand it too.: https://wordpresto.com/workers/schema/index.md
@@ -2888,7 +2889,7 @@ Dana does not approve content automatically, certify compliance, publish, or wri
 
 - **Helen — Review Worker**: Summarises findings and review actions before the final gate. Output: Review summary.
 - **Sam — Safe Change Planner**: Turns findings into proposed changes Dana can assess for blockers. Output: Change plan.
-- **review_queue**: Organises unresolved items Dana can treat as approval blockers. Output: Review queue.
+- **Riley — Review Queue Worker**: Organises unresolved items Dana can treat as approval blockers. Output: Review queue.
 
 ---
 
@@ -3842,6 +3843,127 @@ A readability pass improves flow without changing meaning or overriding voice de
 
 ---
 
+# Turn proposed changes into decisions an editor can manage.
+
+Canonical: https://wordpresto.com/workers/review-queue/
+Markdown: https://wordpresto.com/workers/review-queue/index.md
+
+# Turn proposed changes into decisions an editor can manage.
+
+Riley converts proposed changes into structured review items, showing what needs a human decision, why it matters and what action is available.
+
+---
+
+A content review can produce dozens of findings. Without a queue, those findings become noise: unclear priority, no decision state, no ownership and no path to approval. Riley converts proposed changes into structured review items. Each item shows what needs a human decision, why it matters and what action is available.
+
+## Findings are not the same as decisions.
+
+A page audit can produce useful recommendations, but the editor still needs to know what to approve, reject, defer or investigate. Without that layer, the workflow feels busy but not operational. Riley turns findings into a queue the team can work through.
+
+## A queue layer between worker findings and human approval.
+
+Riley does not decide for the editor. He organises findings into reviewable items so editors can make decisions without losing context.
+
+### Checks
+
+- Proposed changes from review workers
+- Decision type needed
+- Priority and affected area
+- Whether more evidence is needed
+- Whether an item should be approved, rejected, deferred or assigned
+
+### Improves
+
+- Review workflow clarity
+- Editorial throughput
+- Decision tracking
+- Human approval readiness
+
+### Prepares
+
+- Review queue
+- Pending decision items
+- Item rationale
+- Available editor actions
+
+### Surfaces for human review
+
+- Items needing approval
+- Items needing more evidence
+- Items that should be deferred
+- Items with unclear ownership or priority
+
+## What Riley works from, and what he produces.
+
+### Works from
+
+- Safe change plans
+- Worker findings
+- Proposed changes
+- Evidence and risk signals
+- Page review context
+
+### Produces
+
+- Review queue
+- Decision items
+- Priority labels
+- Review rationale
+- Pending action states
+
+## When to use Riley
+
+### A page has many recommendations.
+
+Riley organises them into a queue the editor can work through in order.
+
+### The editor needs decision options.
+
+He shows what action is available for each item: approve, reject, defer or assign.
+
+### A review session is becoming messy.
+
+Riley brings structure back by turning loose findings into tracked items.
+
+### Multiple workers have raised related issues.
+
+He groups them so the editor sees the full picture, not scattered notes.
+
+### A page is moving towards approval.
+
+Riley gives Dana a clear view of which queue items are still unresolved.
+
+### The team needs a clean handoff.
+
+He keeps the queue state visible so nothing gets lost between sessions.
+
+## Riley organises decisions. He does not make them.
+
+Riley does not approve changes, edit content, apply fixes or publish. He coordinates the review queue so humans can decide.
+
+### Boundary checklist
+
+- Riley organises proposed changes into a queue, he never approves or rejects them himself.
+- Priority labels are a starting point for editors, not a final ranking.
+- Unresolved items stay visible in the queue rather than being silently dropped.
+- Final decisions and content changes remain with the editor and the relevant Worker.
+
+### Will not
+
+- Approve or reject items automatically
+- Apply content changes
+- Publish or write to any CMS
+- Hide unresolved review items
+- Replace human decision-making
+
+## Workers Riley works alongside.
+
+- **Sam — Safe Change Planner**: Turns findings into proposed changes Riley can queue. Output: Change plan.
+- **Helen — Review Worker**: Summarises findings and review actions for the editor. Output: Review summary.
+- **Dana — Editorial Approval Gate Worker**: Checks whether unresolved queue items block approval. Output: Approval gate.
+
+---
+
 # Turn complex findings into a clear editorial review.
 
 Canonical: https://wordpresto.com/workers/review/
@@ -3958,7 +4080,7 @@ Helen does not approve content, edit copy, apply changes or publish. She prepare
 
 ## Workers Helen works alongside.
 
-- **review_queue**: Organises proposed changes into decision items. Output: Review queue.
+- **Riley — Review Queue Worker**: Organises proposed changes into decision items. Output: Review queue.
 - **Sam — Safe Change Planner**: Turns findings into proposed changes. Output: Change plan.
 - **Dana — Editorial Approval Gate Worker**: Uses the review state to assess readiness for approval. Output: Approval gate.
 
@@ -4080,7 +4202,7 @@ Sam does not edit the page, draft safe edits, apply changes or publish. He prepa
 
 ## Workers Sam works alongside.
 
-- **review_queue**: Turns Sam's proposed changes into a decision queue. Output: Review queue.
+- **Riley — Review Queue Worker**: Turns Sam's proposed changes into a decision queue. Output: Review queue.
 - **Helen — Review Worker**: Summarises review actions for human editors. Output: Review summary.
 - **Dana — Editorial Approval Gate Worker**: Checks whether proposed changes block approval. Output: Approval gate.
 

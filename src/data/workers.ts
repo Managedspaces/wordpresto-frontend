@@ -19,7 +19,7 @@ export interface WorkerData {
   name: string;       // First name shown on card
   role: string;       // Worker display title
   department: string; // Department tag
-  team: 'content' | 'governance' | 'seo';
+  team: 'content' | 'governance' | 'seo' | 'operations';
   stage: string;
   summary: string;
   output: string;
@@ -547,6 +547,19 @@ export const seoWorkers: WorkerData[] = [
     image: '/agents/profiles/profile-40-192.webp',
     image2x: '/agents/profiles/profile-40-384.webp',
     teamColor: 'var(--team-governance)',
+  },
+  {
+    id: 'review_queue',
+    name: 'Riley',
+    role: 'Review Queue Worker',
+    department: 'Change Planning',
+    team: 'operations',
+    stage: 'Review coordination',
+    summary: 'Converts proposed changes into structured review items, showing what needs a human decision, why it matters and what action is available.',
+    output: 'Review queue',
+    image: '/agents/profiles/profile-16-192.webp',
+    image2x: '/agents/profiles/profile-16-384.webp',
+    teamColor: 'var(--team-operations)',
   },
   {
     id: 'site_discovery',
