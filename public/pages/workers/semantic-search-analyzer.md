@@ -120,5 +120,5 @@ Sema does not automatically add topics, stuff keywords, rewrite copy or publish.
 ## Workers Sema works alongside.
 
 - **Zara — Topical Authority & Coverage Gap Worker**: Reviews page-level topic support and cluster gaps. Output: Coverage review.
-- **evidence**: Reviews whether suggested additions are supported. Output: Evidence bundle.
+- **Kenji — Evidence Worker**: Reviews whether suggested additions are supported. Output: Evidence bundle.
 - **Cassius — Competitor Intelligence Worker**: Compares coverage against real competitor SERP evidence when available. Output: Competitor coverage review.
