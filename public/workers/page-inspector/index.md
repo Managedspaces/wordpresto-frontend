@@ -121,4 +121,4 @@ Patrick inspects and reports source signals. He does not rewrite the page, judge
 
 - **Maya — Technical Health Worker**: Takes the confirmed page signals and reviews the wider technical picture. Output: Technical findings.
 - **Yuna — Intent Analyst**: Uses the inspected page to assess how well it matches search intent. Output: Intent assessment.
-- **evidence**: Checks the claims on the inspected page against available evidence. Output: Evidence bundle.
+- **Kenji — Evidence Worker**: Checks the claims on the inspected page against available evidence. Output: Evidence bundle.

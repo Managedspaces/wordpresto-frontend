@@ -250,6 +250,19 @@ export const workers: WorkerData[] = [
 // Safe Edit and Publishing are deliberately not exposed.
 export const seoWorkers: WorkerData[] = [
   {
+    id: 'evidence',
+    name: 'Kenji',
+    role: 'Evidence Worker',
+    department: 'Provenance',
+    team: 'seo',
+    stage: 'Provenance',
+    summary: 'Reviews the evidence behind findings and recommendations, checking support strength, unsupported claims, provenance and limitations before approval.',
+    output: 'Evidence bundle',
+    image: '/agents/profiles/profile-03-192.webp',
+    image2x: '/agents/profiles/profile-03-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
+  {
     id: 'intent_analyst',
     name: 'Yuna',
     role: 'Intent Analyst',

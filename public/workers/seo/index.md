@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (16 specialist roles)
+## SEO Worker directory (17 specialist roles)
 
 ### Morgan — SERP Snippet Worker
 
@@ -173,3 +173,13 @@ Mara reviews accessibility signals available in the page evidence, flagging weak
 - Legacy Markdown: https://wordpresto.com/pages/workers/intent-analyst.md
 
 Yuna reviews whether the content, structure, metadata and next step of a page line up with the likely search or reader intent.
+
+### Kenji — Evidence Worker
+
+- Stage: Provenance
+- Output: Evidence bundle
+- URL: https://wordpresto.com/workers/evidence/
+- Markdown: https://wordpresto.com/workers/evidence/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/evidence.md
+
+Kenji reviews the evidence behind findings and recommendations, checking support strength, unsupported claims, provenance and limitations before approval.

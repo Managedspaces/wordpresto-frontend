@@ -5983,6 +5983,159 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'INTENT STATUS',
     guidanceFooterValue: 'Needs review · gaps found',
   },
+  // 39. Kenji - Evidence Worker
+  {
+    id: 'evidence',
+    slug: 'evidence',
+    name: 'Kenji',
+    role: 'Evidence Worker',
+    roleTitle: 'Evidence Reviewer',
+    department: 'Provenance',
+    team: 'seo',
+    stage: 'Provenance',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-03-192.webp',
+    portrait2x: '/agents/profiles/profile-03-384.webp',
+    seoTitle: 'Evidence Worker | WordPresto',
+    metaDescription:
+      'Kenji reviews the evidence behind findings and recommendations, checking support strength, unsupported claims, provenance and limitations before approval.',
+    h1: 'Know which recommendations are actually supported.',
+    heroPara1:
+      'Content workflows produce a lot of advice. Some of it is grounded. Some of it is weak. Some depends on missing data, partial retrieval or assumptions that need manual verification. Kenji reviews the evidence behind the findings. He checks support strength, unsupported recommendations, provenance and limitations.',
+    heroPara2:
+      'For content audits, approval workflows, evidence gap review, risk checks and any recommendation that needs to be defensible.',
+    heroWorksAlongside: ['Patrick', 'Vera', 'Dana'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Provenance',
+      output: 'Output · Evidence bundle',
+    },
+    problemEyebrow: 'Where recommendations go wrong',
+    problemH2: 'Advice is only useful if you know what supports it.',
+    problemPara:
+      'A recommendation can sound confident while resting on thin evidence. It may overreach from limited page signals, rely on missing retrieval, or imply certainty the workflow does not have. Kenji protects editors from false confidence.',
+    problemAnnotation: '↘ separate what is proven from what is assumed',
+    beforeStamp: 'False confidence',
+    beforeHtml: `<p>A recommendation reads as settled fact, but it actually rests on a single partial signal with no retrieval to back it up.</p>`,
+    beforeTags: ['Support unclear', 'Provenance missing', 'Confidence overstated', 'Unverified'],
+    beforeNote: 'the advice looks certain but is not',
+    afterStamp: 'Evidence bundle',
+    afterHtml: `<p>Kenji separates the supported findings from the weak ones and lists exactly what still needs manual verification.</p>`,
+    afterTags: ['Support strength shown', 'Weak findings flagged', 'Provenance noted', 'Ready for approval'],
+    afterNote: 'the confidence matches the evidence',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Evidence review before approval.',
+    helpsPara:
+      'Kenji reviews whether findings are supported by available source material, page signals, standards or retrieved context. He does not invent missing proof.',
+    checks: [
+      'Support strength behind findings',
+      'Unsupported recommendations',
+      'Evidence limitations',
+      'Retrieval provenance where it exists',
+      'Claims needing manual verification',
+      'Areas where data is missing',
+    ],
+    improves: [
+      'Trustworthiness of review outputs',
+      'Editorial confidence',
+      'Separation between evidence, inference and speculation',
+    ],
+    prepares: [
+      'Evidence reliability review',
+      'Unsupported-finding list',
+      'Provenance notes',
+      'Manual verification prompts',
+    ],
+    surfaces: [
+      'Claims needing stronger support',
+      'Recommendations based on partial evidence',
+      'Missing source material',
+      'Limits that should be visible before approval',
+    ],
+    ioH2: 'What Kenji works from, and what he produces.',
+    worksFrom: [
+      'Page signals',
+      'Worker findings',
+      'Available retrieval provenance',
+      'Standards attribution',
+      'Evidence gap and risk signals',
+    ],
+    produces: [
+      'Evidence bundle',
+      'Support-strength review',
+      'Unsupported finding list',
+      'Limitations summary',
+      'Manual verification notes',
+    ],
+    scenarios: [
+      {
+        title: 'A recommendation needs to be defensible.',
+        description: 'Kenji checks what actually supports it before it reaches approval.',
+      },
+      {
+        title: 'A page makes claims.',
+        description: 'He reviews whether those claims have adequate support behind them.',
+      },
+      {
+        title: 'A workflow uses retrieved context.',
+        description: 'Kenji checks the provenance of that context before it is relied on.',
+      },
+      {
+        title: 'A content approval is approaching.',
+        description: 'He gives Dana an evidence bundle to weigh as part of the readiness review.',
+      },
+      {
+        title: 'Workers disagree or produce uncertain findings.',
+        description: 'Kenji reviews the support behind each finding to help editors judge which to trust.',
+      },
+      {
+        title: 'The topic is sensitive or high-risk.',
+        description: 'He works alongside Vera to flag where evidence and compliance risk overlap.',
+      },
+    ],
+    boundaryH2: 'Kenji reviews the evidence. Editors decide what to do.',
+    boundaryPara:
+      'Kenji does not certify truth, compliance or ranking impact. If evidence is missing, he says it is missing.',
+    boundaryChecklist: [
+      'Kenji reviews the support behind findings, he never edits or approves content himself.',
+      'Missing or weak evidence is reported clearly, never quietly upgraded to certainty.',
+      'His review is an input to the approval decision, not the decision itself.',
+      'Claims outside what the available evidence supports are flagged for manual verification.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Invent citations, facts or proof' },
+      { color: 'red', text: 'Treat weak evidence as certainty' },
+      { color: 'red', text: 'Fetch unrelated sources as confirmed evidence' },
+      { color: 'red', text: 'Approve claims automatically' },
+      { color: 'red', text: 'Publish or edit content' },
+    ],
+    relatedH2: 'Workers Kenji works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'page_inspector',
+        description: 'Provides source facts for evidence review.',
+        outputLabel: 'Page signals',
+        ctaLabel: 'How Patrick inspects',
+      },
+      {
+        id: 'editorial_risk_claims',
+        description: 'Uses evidence and claims context to flag risk.',
+        outputLabel: 'Risk & compliance report',
+        ctaLabel: 'How Vera flags risks',
+      },
+      {
+        id: 'editorial_approval_gate',
+        description: 'Uses evidence state as part of final readiness review.',
+        outputLabel: 'Approval gate',
+        ctaLabel: 'How Dana decides',
+      },
+    ],
+    ctaH2: 'Make recommendations defensible.',
+    ctaPara:
+      'Kenji helps editors see which findings are grounded, which are weak and which need more evidence before approval.',
+    guidanceFooterLabel: 'EVIDENCE STATUS',
+    guidanceFooterValue: 'Limitations flagged · review required',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {

@@ -189,7 +189,7 @@ export const WORKERS: WorkerEntry[] = [
   { id: 'page_inspector', name: 'Patrick', roleTitle: 'Source examiner', department: 'Discovery', team: 'seo', status: 'available', slug: 'page-inspector', portrait: 1 },
   { id: 'technical_health', name: 'Maya', roleTitle: 'Technical reviewer', department: 'Technical Review', team: 'seo', status: 'available', slug: 'technical-health', portrait: 2 },
   { id: 'intent_analyst', name: 'Yuna', roleTitle: 'Search intent specialist', department: 'Search Intelligence', team: 'seo', status: 'available', slug: 'intent-analyst', portrait: 6 },
-  { id: 'evidence', name: 'Kenji', roleTitle: 'Evidence reviewer', department: 'Provenance', team: 'seo', status: 'available', slug: null, portrait: 3 },
+  { id: 'evidence', name: 'Kenji', roleTitle: 'Evidence reviewer', department: 'Provenance', team: 'seo', status: 'available', slug: 'evidence', portrait: 3 },
   { id: 'internal_linking', name: 'Leo', roleTitle: 'Content relationship specialist', department: 'Content Relationships', team: 'seo', status: 'available', slug: null, portrait: 9 },
   { id: 'schema', name: 'Sofia', roleTitle: 'Structured-data reviewer', department: 'Structured Data', team: 'seo', status: 'available', slug: 'schema', portrait: 10 },
   { id: 'accessibility', name: 'Mara', roleTitle: 'Accessibility reviewer', department: 'Accessibility', team: 'seo', status: 'available', slug: 'accessibility', portrait: 24 },

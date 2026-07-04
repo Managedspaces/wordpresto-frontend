@@ -186,6 +186,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/workers/evidence-gap.md
 - Focus: Theo turns weak or missing evidence into a clear checklist, so claims are supported before a page is approved or handed off. What to back up, where to source it, what to hold.
 
+### Know which recommendations are actually supported.
+
+- HTML: https://wordpresto.com/workers/evidence/
+- Markdown: https://wordpresto.com/workers/evidence/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/evidence.md
+- Focus: Kenji reviews the evidence behind findings and recommendations, checking support strength, unsupported claims, provenance and limitations before approval.
+
 ### Check whether the page matches what the reader came to find.
 
 - HTML: https://wordpresto.com/workers/intent-analyst/
