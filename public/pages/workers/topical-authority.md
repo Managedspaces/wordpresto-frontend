@@ -120,5 +120,5 @@ Zara does not create pages, build clusters automatically, publish new content or
 ## Workers Zara works alongside.
 
 - **Yuna — Intent Analyst**: Clarifies the reader intent Zara checks against topical coverage. Output: Intent assessment.
-- **internal_linking**: Reviews links and reader pathways that support topic connection. Output: Link assessment.
+- **Leo — Content Relationship Worker**: Reviews links and reader pathways that support topic connection. Output: Link assessment.
 - **Sema — Semantic Coverage Analyser**: Uses vector-grounded retrieval to find deeper semantic coverage gaps. Output: Semantic coverage review.

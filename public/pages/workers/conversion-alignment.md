@@ -121,4 +121,4 @@ Diane does not run experiments, access analytics, rewrite CTAs automatically or 
 
 - **Yuna — Intent Analyst**: Clarifies the reader intent Diane aligns with the page action. Output: Intent assessment.
 - **Ivan — Content Format & SERP Fit Worker**: Checks whether the page format supports the expected search shape. Output: Format review.
-- **internal_linking**: Reviews links and pathways around the next step. Output: Link assessment.
+- **Leo — Content Relationship Worker**: Reviews links and pathways around the next step. Output: Link assessment.

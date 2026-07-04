@@ -119,6 +119,6 @@ Felix does not add, remove or rewrite links automatically. He does not crawl the
 
 ## Workers Felix works alongside.
 
-- **internal_linking**: Reviews the broader page relationship layer. Output: Link assessment.
+- **Leo — Content Relationship Worker**: Reviews the broader page relationship layer. Output: Link assessment.
 - **Zara — Topical Authority & Coverage Gap Worker**: Checks whether link pathways support the topic cluster. Output: Coverage review.
 - **Diane — Conversion & CTA Alignment Worker**: Checks whether the pathway supports the intended action. Output: Conversion review.

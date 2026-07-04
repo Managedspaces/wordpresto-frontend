@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (17 specialist roles)
+## SEO Worker directory (18 specialist roles)
 
 ### Morgan — SERP Snippet Worker
 
@@ -183,3 +183,13 @@ Yuna reviews whether the content, structure, metadata and next step of a page li
 - Legacy Markdown: https://wordpresto.com/pages/workers/evidence.md
 
 Kenji reviews the evidence behind findings and recommendations, checking support strength, unsupported claims, provenance and limitations before approval.
+
+### Leo — Content Relationship Worker
+
+- Stage: Content relationships
+- Output: Link assessment
+- URL: https://wordpresto.com/workers/internal-linking/
+- Markdown: https://wordpresto.com/workers/internal-linking/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/internal-linking.md
+
+Leo reviews how a page connects to other content: internal links, external links, anchor quality, reader pathways and whether the page appears isolated or poorly connected.
