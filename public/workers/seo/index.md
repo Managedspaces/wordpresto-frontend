@@ -12,7 +12,7 @@ See also the [Content Workers directory](https://wordpresto.com/workers/).
 
 ---
 
-## SEO Worker directory (14 specialist roles)
+## SEO Worker directory (15 specialist roles)
 
 ### Morgan — SERP Snippet Worker
 
@@ -153,3 +153,13 @@ Claire helps identify the pages in a website project so editors can see what nee
 - Legacy Markdown: https://wordpresto.com/pages/workers/page-inspector.md
 
 Patrick inspects the page and extracts the source signals the rest of the workflow depends on: title, meta description, headings, links, images, schema, word count and visible page structure.
+
+### Mara — Accessibility Worker
+
+- Stage: Accessibility review
+- Output: Accessibility findings
+- URL: https://wordpresto.com/workers/accessibility/
+- Markdown: https://wordpresto.com/workers/accessibility/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/accessibility.md
+
+Mara reviews accessibility signals available in the page evidence, flagging weak heading structure, missing image alternatives, unclear link text, readability risks and checks that need human confirmation.
