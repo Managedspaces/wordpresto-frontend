@@ -900,7 +900,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       cards: [
         { title: 'Sie hält das Briefing fest', body: 'Behält Ziel, Zielgruppe, Stimme, Kontext und frühere Entscheidungen im Blick, damit die Arbeit nicht abdriftet.' },
         { title: 'Sie leitet die Redaktion', body: 'Bewegt jedes Stück vom Briefing über Entwurf, Korrektur, Review bis zur Freigabe, ohne den Faden zu verlieren.' },
-        { title: 'Sie holt die Spezialisten', body: 'Schickt Arbeit zu Behauptungen, SEO, Belegen, Stimme, Links, Risiko und Übergabe zur richtigen Zeit an den richtigen Spezialisten.' },
+        { title: 'Sie holt die Spezialisten', body: 'Schickt Arbeit zu Behauptungen, SEO, Belegen, Stimme, Links, Risiko und Übergabe zur richtigen Zeit an die richtige Spezialistin.' },
         { title: 'Sie schützt Ihre Entscheidungsgewalt', body: 'Emma kann empfehlen und vorbereiten. Nur der Editor kann freigeben.' },
       ],
     },
@@ -944,8 +944,8 @@ export const homeContent: Record<Locale, HomeContent> = {
     specialists: {
       eyebrow: 'Das Spezialisten-Team',
       h2Suffix: ' Spezialisten. Eine Chefredakteurin.',
-      body: 'Emma arbeitet nicht allein. Hinter ihr steht das gesamte Word-Presto-Spezialisten-Team: Content-Produktion, SEO, Betrieb und Freigabe-Governance, jeder mit klar definierter Rolle und Platz im Workflow.',
-      note: 'Emma holt zur richtigen Zeit den richtigen Spezialisten dazu und gibt dann die Erkenntnisse zurück, die das Urteil des Editors brauchen.',
+      body: 'Emma arbeitet nicht allein. Hinter ihr steht das gesamte Word-Presto-Spezialisten-Team: Content-Produktion, SEO, Betrieb und Freigabe-Governance, jede und jeder mit klar definierter Rolle und Platz im Workflow.',
+      note: 'Emma holt zur richtigen Zeit die richtige Spezialistin dazu und gibt dann die Erkenntnisse zurück, die das Urteil des Editors brauchen.',
       teamsSuffix: ' Teams',
       coordinatedThroughEmma: 'koordiniert über Emma',
       editorApprovalRequired: 'Freigabe durch Editor erforderlich',

@@ -24,9 +24,9 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     afterTags: ['Klarerer Satz', 'Weniger Wiederholung', 'Stärkerer Leserfokus', 'Klarerer Rhythmus'],
     afterNote: 'Redakteure können den Vorschlag prüfen, statt bei null neu zu schreiben',
     helpsEyebrow: 'Wie dieser Worker hilft',
-    helpsH2: 'Ein Lektoratsdurchgang, der den Text verbessert, ohne den Redakteuren die Kontrolle zu nehmen.',
+    helpsH2: 'Ein Lektoratsdurchgang, der den Text verbessert, ohne der Redaktion die Kontrolle zu nehmen.',
     helpsPara:
-      'Esme prüft die Sprache auf Satz-, Absatz- und Seitenebene. Sie hebt Probleme hervor, die die Copy schwerer lesbar, weniger konsistent, weniger geschliffen oder riskanter machen, als sie sein müsste. Sie schreibt die Seite nicht für den Redakteur um. Sie liefert konkrete, prüfbare Vorschläge, damit ein Mensch die Änderung annehmen, ablehnen oder anpassen kann.',
+      'Esme prüft die Sprache auf Satz-, Absatz- und Seitenebene. Sie hebt Probleme hervor, die die Copy schwerer lesbar, weniger konsistent, weniger geschliffen oder riskanter machen, als sie sein müsste. Sie schreibt die Seite nicht für die Redakteurin um. Sie liefert konkrete, prüfbare Vorschläge, damit ein Mensch die Änderung annehmen, ablehnen oder anpassen kann.',
     checks: [
       'Grammatik, Rechtschreibung und Zeichensetzung',
       'Klarheit, Prägnanz und Satzlänge',
@@ -84,7 +84,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
       {
         title: 'Eine Seite braucht einen Grammarly-artigen Lektoratsdurchgang innerhalb des Word-Presto-Workflows.',
         description:
-          'Sie gibt praktische Vorschläge auf Satzebene, während die Redakteure die Kontrolle behalten.',
+          'Sie gibt praktische Vorschläge auf Satzebene, während die Redaktion die Kontrolle behält.',
       },
       {
         title: 'Ein reguliertes oder heikles Thema braucht sorgfältige Formulierungen.',
@@ -99,7 +99,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     ],
     boundaryH2: 'Esme lektoriert den Text. Redakteure entscheiden, was sich ändert.',
     boundaryPara:
-      'Ein Klarheits-Review ist kein automatisches Umschreiben. Esme liefert Vorschläge, Markierungen und Review-Notizen. Der Redakteur entscheidet, was übernommen wird, was abgelehnt wird und was eine andere menschliche Bearbeitung braucht.',
+      'Ein Klarheits-Review ist kein automatisches Umschreiben. Esme liefert Vorschläge, Markierungen und Review-Notizen. Die Redakteurin entscheidet, was übernommen wird, was abgelehnt wird und was eine andere menschliche Bearbeitung braucht.',
     boundaryChecklist: [
       'Esme schlägt vor, sie wendet nie selbst an.',
       'Vorschläge sind für die Prüfung im redaktionellen Workflow gedacht.',
@@ -161,7 +161,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     afterStamp: 'Rolle geklärt',
     afterHtml: `<p>Die Seite wird als Service-Entscheidungsseite positioniert, Leitfaden-Inhalte wandern in unterstützende Assets.</p>`,
     afterTags: ['Klare Seitenrolle', 'Klarere Intention', 'Bessere Cluster-Planung', 'Manuelle Prüfungen aufgeführt'],
-    afterNote: 'der Redakteur weiß, wofür diese Seite da ist',
+    afterNote: 'die Redakteurin weiß, wofür diese Seite da ist',
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Ein Kannibalisierungs-Review, das ehrlich mit seinen Grenzen umgeht.',
     helpsPara:
@@ -236,7 +236,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     ],
     boundaryH2: 'Cleo markiert das Risiko. Redakteure entscheiden die Content-Strategie.',
     boundaryPara:
-      'Cleo führt keine Seiten zusammen, leitet keine URLs um, löscht keinen Content und erklärt keine bestätigte websiteweite Kannibalisierung allein aus seitenbezogenen Belegen. Sie gibt dem Redakteur ein strukturiertes Risiko-Review und manuelle Prüfungen.',
+      'Cleo führt keine Seiten zusammen, leitet keine URLs um, löscht keinen Content und erklärt keine bestätigte websiteweite Kannibalisierung allein aus seitenbezogenen Belegen. Sie gibt der Redakteurin ein strukturiertes Risiko-Review und manuelle Prüfungen.',
     boundaryChecklist: [
       'Cleo markiert Überschneidungsrisiken, sie führt Seiten nie zusammen oder löscht sie.',
       'Aussagen zu seitenübergreifender Kannibalisierung werden nur mit unterstützenden Crawl- oder Ranking-Daten getroffen.',
@@ -299,11 +299,11 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     afterStamp: 'Auffrischung geplant',
     afterHtml: `<p>Die Seite wird zur Prüfung markiert, veraltete Beispiele werden gekennzeichnet, und ein praktischer Pflegerhythmus wird empfohlen.</p>`,
     afterTags: ['Klarer Status', 'Nützliche Priorität', 'Menschliche Prüfung', 'Kein vorgetäuschtes Update'],
-    afterNote: 'der Redakteur weiß, was Aufmerksamkeit braucht',
+    afterNote: 'die Redakteurin weiß, was Aufmerksamkeit braucht',
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Aktualitäts-Review, ohne vorzutäuschen, die Seite zu aktualisieren.',
     helpsPara:
-      'Faye prüft die im Speicher vorhandenen Seitensignale und identifiziert Content, der aufgefrischt werden könnte. Sie bearbeitet, plant, veröffentlicht nichts und erfindet keine aktualisierten Fakten. Sie gibt dem Redakteur ein klares Pflegesignal.',
+      'Faye prüft die im Speicher vorhandenen Seitensignale und identifiziert Content, der aufgefrischt werden könnte. Sie bearbeitet, plant, veröffentlicht nichts und erfindet keine aktualisierten Fakten. Sie gibt der Redakteurin ein klares Pflegesignal.',
     checks: [
       'Zeitliche Sprache in Titeln, Metadaten und Text',
       'Aktualität der Belege',
@@ -373,7 +373,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     ],
     boundaryH2: 'Faye markiert Aktualitätsrisiken. Redakteure entscheiden über die Aktualisierung.',
     boundaryPara:
-      'Faye aktualisiert keine Fakten, schreibt keine Abschnitte um, plant keine Auffrischungen und veröffentlicht keine Änderungen. Sie prüft die verfügbaren Signale und sagt dem Redakteur, was Aufmerksamkeit braucht.',
+      'Faye aktualisiert keine Fakten, schreibt keine Abschnitte um, plant keine Auffrischungen und veröffentlicht keine Änderungen. Sie prüft die verfügbaren Signale und sagt der Redakteurin, was Aufmerksamkeit braucht.',
     boundaryChecklist: [
       'Faye markiert Aktualitätsrisiken, sie schreibt Content nie selbst um oder aktualisiert ihn.',
       'Aktualitätssignale werden aus dem Vorhandenen geprüft, nicht aus erfundenen Fakten oder Daten.',
@@ -436,7 +436,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     afterStamp: 'Abdeckung verbessert',
     afterHtml: `<p>Die Seitenrolle wird geklärt, und der Bedarf an unterstützendem Content wird für die Planung aufgelistet.</p>`,
     afterTags: ['Klare Seitenrolle', 'Lückenliste', 'Besserer Cluster-Plan', 'Menschliche Entscheidung'],
-    afterNote: 'der Redakteur weiß, was als Nächstes aufgebaut werden muss',
+    afterNote: 'die Redakteurin weiß, was als Nächstes aufgebaut werden muss',
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Review der thematischen Abdeckung, bevor Content erweitert wird.',
     helpsPara:
@@ -556,24 +556,24 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     seoTitle: 'Conversion & CTA-Ausrichtung-Worker | WordPresto',
     metaDescription:
       'Diane prüft die Conversion-Ausrichtung: CTA-Klarheit, Vertrauenssignale, Beleglücken, Übereinstimmung mit dem Metadaten-Versprechen und ob der nächste Schritt zur Seitenintention passt.',
-    h1: 'Prüfen, ob die Seite dem Leser einen klaren nächsten Schritt gibt.',
+    h1: 'Prüfen, ob die Seite der Leserin einen klaren nächsten Schritt gibt.',
     heroPara1:
-      "Content kann die Suchintention erfüllen und trotzdem kommerziell scheitern. Die Seite erklärt das Thema vielleicht gut, vergräbt aber den Call-to-Action, lässt Vertrauenssignale vermissen, fragt nach der falschen Handlung oder erzeugt einen Conversion-Pfad, der nicht zur Phase des Lesers passt. Diane prüft die Conversion-Ausrichtung: CTA-Klarheit, Vertrauenssignale, Beleglücken, Übereinstimmung mit dem Metadaten-Versprechen und ob der nächste Schritt zur Seitenintention passt.",
+      "Content kann die Suchintention erfüllen und trotzdem kommerziell scheitern. Die Seite erklärt das Thema vielleicht gut, vergräbt aber den Call-to-Action, lässt Vertrauenssignale vermissen, fragt nach der falschen Handlung oder erzeugt einen Conversion-Pfad, der nicht zur Phase der Leserin passt. Diane prüft die Conversion-Ausrichtung: CTA-Klarheit, Vertrauenssignale, Beleglücken, Übereinstimmung mit dem Metadaten-Versprechen und ob der nächste Schritt zur Seitenintention passt.",
     heroPara2:
       'Für Service-Seiten, Landingpages, kommerziellen Content, Lead-Generierungsseiten und finale Seiten-Reviews vor der Übergabe.',
     problemEyebrow: 'Wo die Conversion-Ausrichtung bricht',
-    problemH2: 'Eine Seite kann nützlich sein und den Leser trotzdem allein lassen.',
+    problemH2: 'Eine Seite kann nützlich sein und die Leserin trotzdem allein lassen.',
     problemPara:
-      'Das Problem ist oft nicht das Fehlen eines Buttons. Es ist die falsche Handlung, ein schwacher Beleg, vage Vertrauenssignale, unklares Timing oder ein nächster Schritt, der nicht zu dem passt, weshalb der Leser gekommen ist. Diane prüft, ob die Seite irgendwo Sinnvolles hinführt.',
+      'Das Problem ist oft nicht das Fehlen eines Buttons. Es ist die falsche Handlung, ein schwacher Beleg, vage Vertrauenssignale, unklares Timing oder ein nächster Schritt, der nicht zu dem passt, weshalb die Leserin gekommen ist. Diane prüft, ob die Seite irgendwo Sinnvolles hinführt.',
     problemAnnotation: '↘ Intention und Handlung ausrichten',
     beforeStamp: 'Schwacher Pfad',
     beforeHtml: `<p>Die Seite erklärt die Leistung, aber der CTA ist generisch, der Beleg ist dünn und der nächste Schritt erscheint zu spät.</p>`,
     beforeTags: ['Schwacher CTA', 'Fehlender Beleg', 'Geringes Vertrauen', 'Schlechtes Timing'],
-    beforeNote: 'der Leser hat keinen klaren Grund zu handeln',
+    beforeNote: 'die Leserin hat keinen klaren Grund zu handeln',
     afterStamp: 'Pfad geklärt',
-    afterHtml: `<p>Die Seite liefert relevanten Beleg, einen klareren nächsten Schritt und einen CTA, der zur Entscheidungsphase des Lesers passt.</p>`,
+    afterHtml: `<p>Die Seite liefert relevanten Beleg, einen klareren nächsten Schritt und einen CTA, der zur Entscheidungsphase der Leserin passt.</p>`,
     afterTags: ['Mehr Vertrauen', 'Klare Handlung', 'Intentionspassung', 'Menschliche Prüfung'],
-    afterNote: 'der Redakteur kann den Pfad verbessern',
+    afterNote: 'die Redakteurin kann den Pfad verbessern',
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Conversion-Review, ohne vorzutäuschen, Experimente durchzuführen.',
     helpsPara:
@@ -583,7 +583,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
       'Ausrichtung von Intention und Handlung',
       'Vertrauens- und Belegsignale',
       'Übereinstimmung mit dem Metadaten-Versprechen',
-      'Entscheidungspfad des Lesers',
+      'Entscheidungspfad der Leserin',
       'Ablenkungen von der Conversion oder schwache nächste Schritte',
     ],
     improves: [
@@ -626,7 +626,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
       },
       {
         title: 'Eine Seite hat Traffic, aber schwache Leads.',
-        description: "Sie prüft, ob der nächste Schritt zur wahrscheinlichen Phase des Lesers passt.",
+        description: "Sie prüft, ob der nächste Schritt zur wahrscheinlichen Phase der Leserin passt.",
       },
       {
         title: 'Ein CTA wirkt generisch.',
@@ -638,7 +638,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
       },
       {
         title: 'Eine Seite mischt Information und Verkauf.',
-        description: 'Diane hilft zu klären, ob der Conversion-Pfad den Leser unterstützt oder unterbricht.',
+        description: 'Diane hilft zu klären, ob der Conversion-Pfad die Leserin unterstützt oder unterbricht.',
       },
       {
         title: 'Eine Seite geht ins finale Review.',
@@ -709,7 +709,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     afterStamp: 'Format geklärt',
     afterHtml: `<p>Die Seite wird als Service-Entscheidungsseite markiert, Leitfaden-Inhalte wandern in ein unterstützendes Briefing.</p>`,
     afterTags: ['Klares Format', 'Bessere Erwartungen', 'Nützliche Struktur', 'Reviewbereit'],
-    afterNote: 'der Redakteur weiß, welche Form sie bauen muss',
+    afterNote: 'die Redakteurin weiß, welche Form sie bauen muss',
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Format-Review, bevor mehr Text geschrieben wird.',
     helpsPara:
@@ -771,7 +771,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
       },
       {
         title: 'Eine Überarbeitung steht bevor.',
-        description: 'Er gibt dem Redakteur eine bessere Struktur vor dem Entwurf.',
+        description: 'Er gibt der Redakteurin eine bessere Struktur vor dem Entwurf.',
       },
       {
         title: 'Suchintention und Conversion-Bedarf stehen im Konflikt.',
@@ -841,13 +841,13 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
       'Eine Seite kann interne Links haben, die vage, unverbunden, vergraben, ablenkend oder auf den falschen nächsten Schritt gerichtet sind. Sie kann es versäumen, sich mit ihrem Hub, Stützseiten oder dem Conversion-Pfad zu verbinden. Felix prüft, ob Links einen kohärenten Pfad ergeben, nicht nur, ob Links vorhanden sind.',
     problemAnnotation: '↘ Links in Reisen verwandeln',
     beforeStamp: 'Schwacher Pfad',
-    beforeHtml: `<p>Die Seite verlinkt auf drei unabhängige Beiträge und nutzt vage Anker, die nicht erklären, warum der Leser klicken sollte.</p>`,
+    beforeHtml: `<p>Die Seite verlinkt auf drei unabhängige Beiträge und nutzt vage Anker, die nicht erklären, warum die Leserin klicken sollte.</p>`,
     beforeTags: ['Lose Links', 'Schwache Anker', 'Keine Hub-Beziehung', 'Schwacher nächster Schritt'],
     beforeNote: 'die Website wirkt unverbunden',
     afterStamp: 'Pfad geklärt',
     afterHtml: `<p>Links unterstützen die Seitenrolle, nutzen beschreibende Anker und führen zu nützlichen Stütz- oder Conversion-Seiten.</p>`,
     afterTags: ['Klare Anker', 'Besserer Cluster-Pfad', 'Nützlicher nächster Schritt', 'Reviewsicher'],
-    afterNote: 'der Leser hat einen Weg nach vorn',
+    afterNote: 'die Leserin hat einen Weg nach vorn',
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Review interner Link-Pfade, bevor Links geändert werden.',
     helpsPara:
@@ -983,7 +983,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     afterStamp: 'Sorgfältiges Review',
     afterHtml: `<p>Die Seite wird als Konsolidierungskandidatin markiert, mit manuellen Prüfungen vor jeder Maßnahme.</p>`,
     afterTags: ['Reviewsicher', 'Rollenbewusst', 'Prüfungen aufgelistet', 'Keine automatische Löschung'],
-    afterNote: 'der Redakteur entscheidet mit Kontext',
+    afterNote: 'die Redakteurin entscheidet mit Kontext',
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Pflege-Review ohne destruktive Maßnahme.',
     helpsPara:
@@ -1119,7 +1119,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     afterStamp: 'Inventar geprüft',
     afterHtml: `<p>Die Seite wird als Service-Entscheidungsseite klassifiziert, der Beleg, FAQ-Tiefe und Stützung durch verwandte Seiten fehlen.</p>`,
     afterTags: ['Klarerer Typ', 'Planungslücken', 'Bessere Workflow-Steuerung', 'Reviewbereit'],
-    afterNote: 'der Redakteur weiß, um welche Art Asset es sich handelt',
+    afterNote: 'die Redakteurin weiß, um welche Art Asset es sich handelt',
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Inventar auf Seitenebene, ohne vorzutäuschen, die ganze Website zu crawlen.',
     helpsPara:
@@ -1254,9 +1254,9 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     beforeTags: ['Keyword vorhanden', 'Entitäten fehlen', 'Dünne Unterthemen', 'Schwache Tiefe'],
     beforeNote: 'die Seite klingt relevant, wirkt aber unvollständig',
     afterStamp: 'Abdeckung geprüft',
-    afterHtml: `<p>Sema listet fehlende Entitäten, dünne Unterthemen und beleggestützte Lücken zur Prüfung durch den Redakteur auf.</p>`,
+    afterHtml: `<p>Sema listet fehlende Entitäten, dünne Unterthemen und beleggestützte Lücken zur Prüfung durch die Redakteurin auf.</p>`,
     afterTags: ['Entitätslücken', 'Themen-Tiefe', 'Quellenverknüpfte Befunde', 'Reviewsicher'],
-    afterNote: 'der Redakteur weiß, was fehlt',
+    afterNote: 'die Redakteurin weiß, was fehlt',
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Semantisches Abdeckungs-Review mit klaren Belegsgrenzen.',
     helpsPara:
@@ -1330,7 +1330,7 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     ],
     boundaryH2: 'Sema identifiziert Lücken. Redakteure entscheiden, was auf die Seite gehört.',
     boundaryPara:
-      'Sema fügt keine Themen automatisch hinzu, stopft keine Keywords, schreibt keinen Text um und veröffentlicht nicht. Ihre Befunde sind reine Review-Vorschläge und sollten von einem Redakteur beurteilt werden.',
+      'Sema fügt keine Themen automatisch hinzu, stopft keine Keywords, schreibt keinen Text um und veröffentlicht nicht. Ihre Befunde sind reine Review-Vorschläge und sollten von einer Redakteurin beurteilt werden.',
     boundaryChecklist: [
       'Sema markiert Lücken, sie fügt Themen nie selbst hinzu oder schreibt Text um.',
       'Abdeckungsbefunde werden gegen abgerufenes Wissen abgeglichen, nicht aus dem Nichts erfunden.',
@@ -1391,9 +1391,9 @@ export const deBatch3: Record<string, WorkerProfileTranslatable> = {
     beforeTags: ['Fehlende Blickwinkel', 'Dünner Vergleich', 'SERP-Beleg nötig', 'Keine Textstrategie'],
     beforeNote: 'der Seite fehlt Wettbewerbskontext',
     afterStamp: 'Abdeckung verglichen',
-    afterHtml: `<p>Cassius listet von Wettbewerbern abgedeckte Unterthemen und Entitäten auf, die der Redakteur prüfen sollte.</p>`,
+    afterHtml: `<p>Cassius listet von Wettbewerbern abgedeckte Unterthemen und Entitäten auf, die die Redakteurin prüfen sollte.</p>`,
     afterTags: ['Echte SERP-Grundlage', 'Lückenliste', 'Menschliches Urteilsvermögen', 'Keine Nachahmung'],
-    afterNote: 'der Redakteur kann entscheiden, was dazugehört',
+    afterNote: 'die Redakteurin kann entscheiden, was dazugehört',
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Wettbewerber-Abdeckungs-Review aus echten SERP-Belegen.',
     helpsPara:
