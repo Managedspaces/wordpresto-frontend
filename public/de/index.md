@@ -1,13 +1,13 @@
 ---
-title: "Content-Workflow-Engine für Autor:innen und Publishing-Teams | Word Presto"
-description: "Planen, briefen, schreiben, prüfen, verbessern und Inhalte für Suche, Leser:innen und CMS-Übergabe vorbereiten."
+title: "Content-Workflow-Engine für Autoren und Publishing-Teams | Word Presto"
+description: "Planen, briefen, schreiben, prüfen, verbessern und Inhalte für Suche, Leser und CMS-Übergabe vorbereiten."
 canonical: "https://wordpresto.com/de/"
 lang: "de"
 ---
 
-# Word Presto ist die agentische Content-Engine für Autor:innen, Redakteur:innen und Publishing-Teams.
+# Word Presto ist die agentische Content-Engine für Autoren, Redakteure und Publishing-Teams.
 
-Planen, briefen, schreiben, prüfen, verbessern und Inhalte für Suche, Leser:innen und CMS-Übergabe vorbereiten.
+Planen, briefen, schreiben, prüfen, verbessern und Inhalte für Suche, Leser und CMS-Übergabe vorbereiten.
 
 ---
 
@@ -30,7 +30,7 @@ Die meiste Content-Arbeit scheitert nicht, weil Menschen nicht schreiben können
 
 - **Sie hält das Briefing fest**: Behält Ziel, Zielgruppe, Stimme, Kontext und frühere Entscheidungen im Blick, damit die Arbeit nicht abdriftet.
 - **Sie leitet die Redaktion**: Bewegt jedes Stück vom Briefing über Entwurf, Korrektur, Review bis zur Freigabe, ohne den Faden zu verlieren.
-- **Sie holt die Spezialist:innen**: Schickt Arbeit zu Behauptungen, SEO, Belegen, Stimme, Links, Risiko und Übergabe zur richtigen Zeit an die richtige Spezialistin.
+- **Sie holt die Spezialisten**: Schickt Arbeit zu Behauptungen, SEO, Belegen, Stimme, Links, Risiko und Übergabe zur richtigen Zeit an den richtigen Spezialisten.
 - **Sie schützt Ihre Entscheidungsgewalt**: Emma kann empfehlen und vorbereiten. Nur der Editor kann freigeben.
 
 ## Emmas vier Grundsätze.
@@ -44,17 +44,17 @@ Die Standards, an die sich Emma bei jedem Stück Arbeit hält: die Regeln, die d
 
 ## Eine Arbeitsfläche für den eigentlichen Text.
 
-Im Canvas bringt Emma die Arbeit zusammen: importierte Seiten, Entwürfe, Überarbeitungen, Korrekturnotizen, Erkenntnisse der Spezialist:innen und Freigabeentscheidungen.
+Im Canvas bringt Emma die Arbeit zusammen: importierte Seiten, Entwürfe, Überarbeitungen, Korrekturnotizen, Erkenntnisse der Spezialisten und Freigabeentscheidungen.
 
 - Importieren, entwerfen, überarbeiten, korrigieren und reviewen an einem Ort.
-- Erkenntnisse der Spezialist:innen kommen als Randnotizen, nicht als Meetings.
+- Erkenntnisse der Spezialisten kommen als Randnotizen, nicht als Meetings.
 - Die finale Freigabe bleibt immer erforderlich.
 
-## 41 Spezialist:innen. Eine Chefredakteurin.
+## 41 Spezialisten. Eine Chefredakteurin.
 
-Emma arbeitet nicht allein. Hinter ihr steht das gesamte Word-Presto-Spezialist:innen-Team: Content-Produktion, SEO, Betrieb und Freigabe-Governance, jede und jeder mit klar definierter Rolle und Platz im Workflow.
+Emma arbeitet nicht allein. Hinter ihr steht das gesamte Word-Presto-Spezialisten-Team: Content-Produktion, SEO, Betrieb und Freigabe-Governance, jeder mit klar definierter Rolle und Platz im Workflow.
 
-> Emma holt zur richtigen Zeit die richtige Spezialistin dazu und gibt dann die Erkenntnisse zurück, die das Urteil des Editors brauchen.
+> Emma holt zur richtigen Zeit den richtigen Spezialisten dazu und gibt dann die Erkenntnisse zurück, die das Urteil des Editors brauchen.
 
 ## Gleicher Standard. Muttersprachliche Stimme.
 
@@ -69,13 +69,13 @@ Wenn Sie in einer anderen Sprache arbeiten, bekommen Sie nicht Emma übersetzt. 
 
 ## Nur der Editor kann die Arbeit freigeben.
 
-Emma kann die Arbeit vorbereiten. Spezialist:innen können sie reviewen. Das Canvas kann sie organisieren. Aber nur der Editor kann sie freigeben.
+Emma kann die Arbeit vorbereiten. Spezialisten können sie reviewen. Das Canvas kann sie organisieren. Aber nur der Editor kann sie freigeben.
 
 > Nichts geht live, bevor die verantwortliche Person Ja sagt.
 
 ## Stellen Sie Emma ins Zentrum Ihrer Content-Arbeit.
 
-Für Autor:innen, Redakteur:innen und Publishing-Teams, die bessere Content-Arbeit wollen, ohne die redaktionelle Kontrolle abzugeben.
+Für Autoren, Redakteure und Publishing-Teams, die bessere Content-Arbeit wollen, ohne die redaktionelle Kontrolle abzugeben.
 
 ## Agent-readable resources
 

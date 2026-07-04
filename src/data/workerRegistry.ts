@@ -143,10 +143,10 @@ const TEAM_I18N: Record<Locale, TeamCopy> = {
     governance: { name: 'Equipo de Aprobación / Gobernanza', summary: 'Verifica el riesgo, la evidencia, el estado de aprobación y si los cambios propuestos están listos para el Editor.', cta: 'Ver especialistas de aprobación' },
   },
   de: {
-    content: { name: 'Content-Produktions-Team', summary: 'Plant, entwirft, überarbeitet und korrigiert den Text und macht aus Briefings strukturierten, fertigen Content.', cta: 'Content-Spezialist:innen ansehen' },
-    seo: { name: 'SEO-Team', summary: 'Arbeitet Suchintention, Struktur, technische Signale, Belege und interne Verknüpfungen in den Content ein, statt sie am Ende anzuflanschen.', cta: 'SEO-Spezialist:innen ansehen' },
+    content: { name: 'Content-Produktions-Team', summary: 'Plant, entwirft, überarbeitet und korrigiert den Text und macht aus Briefings strukturierten, fertigen Content.', cta: 'Content-Spezialisten ansehen' },
+    seo: { name: 'SEO-Team', summary: 'Arbeitet Suchintention, Struktur, technische Signale, Belege und interne Verknüpfungen in den Content ein, statt sie am Ende anzuflanschen.', cta: 'SEO-Spezialisten ansehen' },
     operations: { name: 'Operations / Management', summary: 'Koordiniert den Review-Fluss und hält jedes Stück Arbeit bereit für eine menschliche Entscheidung.', cta: 'Operations ansehen' },
-    governance: { name: 'Freigabe-/Governance-Team', summary: 'Prüft Risiko, Belege, Freigabestatus und ob vorgeschlagene Änderungen bereit für den Editor sind.', cta: 'Freigabe-Spezialist:innen ansehen' },
+    governance: { name: 'Freigabe-/Governance-Team', summary: 'Prüft Risiko, Belege, Freigabestatus und ob vorgeschlagene Änderungen bereit für den Editor sind.', cta: 'Freigabe-Spezialisten ansehen' },
   },
   fr: {
     content: { name: 'Équipe de Production de Contenu', summary: 'Planifie, rédige, réécrit et relit le texte, transformant les briefs en contenu structuré et prêt.', cta: 'Voir les spécialistes contenu' },
