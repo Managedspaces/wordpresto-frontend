@@ -7,7 +7,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       'Sam verwandelt Worker-Befunde in strukturierte vorgeschlagene Änderungen, mit Angaben zu betroffenem Bereich, Risiko und erwartetem Nutzen, ohne die Seite zu bearbeiten oder etwas anzuwenden.',
     h1: 'Aus Befunden Änderungen machen, die sich sicher prüfen lassen.',
     heroPara1:
-      'Ein Befund ist noch keine Änderung. „Die Seite braucht eine klarere Struktur" ist hilfreich, aber eine Redakteurin muss trotzdem wissen, was sich wo ändern könnte, warum, welches Risiko besteht und ob die Änderung weiterverfolgt werden sollte. Sam verwandelt Worker-Befunde in strukturierte vorgeschlagene Änderungen. Er bereitet die Review-Ebene vor, ohne die Seite zu bearbeiten oder etwas anzuwenden.',
+      'Ein Befund ist noch keine Änderung. „Die Seite braucht eine klarere Struktur" ist hilfreich, aber ein Redakteur muss trotzdem wissen, was sich wo ändern könnte, warum, welches Risiko besteht und ob die Änderung weiterverfolgt werden sollte. Sam verwandelt Worker-Befunde in strukturierte vorgeschlagene Änderungen. Er bereitet die Review-Ebene vor, ohne die Seite zu bearbeiten oder etwas anzuwenden.',
     heroPara2:
       'Für Content-Analyse, Freigabevorbereitung, Review-Queues und die Planung sicherer Bearbeitungen.',
     problemEyebrow: 'Wo die Änderungsplanung schiefgeht',
@@ -18,7 +18,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     beforeStamp: 'Roher Befund',
     beforeHtml: `<p>Die Seite braucht eine stärkere Einleitung und einen klareren nächsten Schritt.</p>`,
     beforeTags: ['Kein betroffener Bereich', 'Keine Risikokennzeichnung', 'Keine Priorität', 'Kein Freigabestatus'],
-    beforeNote: 'die Redakteurin muss den Befund noch selbst interpretieren',
+    beforeNote: 'der Redakteur muss den Befund noch selbst interpretieren',
     afterStamp: 'Geplante Änderung',
     afterHtml: `<p>Die Einleitung überarbeiten, um das Seitenversprechen zu klären, und nach dem ersten Abschnitt einen passenden nächsten Schritt ergänzen.</p>`,
     afterTags: ['Betroffener Bereich', 'Erwarteter Nutzen', 'Risiko vermerkt', 'Freigabe erforderlich'],
@@ -72,7 +72,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       {
         title: 'Ein Review hat mehrere Befunde ergeben.',
         description:
-          'Sam macht daraus vorgeschlagene Änderungen, die die Redakteurin bewerten kann.',
+          'Sam macht daraus vorgeschlagene Änderungen, die der Redakteur bewerten kann.',
       },
       {
         title: 'Das Team will automatische Bearbeitungen vermeiden.',
@@ -90,7 +90,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
           'Er bereitet die strukturierten Elemente vor, die Riley organisieren kann.',
       },
       {
-        title: 'Die Redakteurin braucht klarere Prioritäten.',
+        title: 'Der Redakteur braucht klarere Prioritäten.',
         description:
           'Sam kennzeichnet, was am wichtigsten ist und warum.',
       },
@@ -100,12 +100,12 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
           'Er hält vorgeschlagene Änderungen im reinen Review-Status, bis sie freigegeben sind.',
       },
     ],
-    boundaryH2: 'Sam plant Änderungen. Redakteur:innen geben sie frei oder lehnen sie ab.',
+    boundaryH2: 'Sam plant Änderungen. Redakteure geben sie frei oder lehnen sie ab.',
     boundaryPara:
       'Sam bearbeitet die Seite nicht, entwirft keine sicheren Bearbeitungen, wendet keine Änderungen an und veröffentlicht nicht. Er bereitet vorgeschlagene Änderungen für die menschliche Entscheidung vor.',
     boundaryChecklist: [
       'Sam plant Änderungen, er bearbeitet oder wendet sie nie selbst an.',
-      'Vorgeschlagene Änderungen bleiben im reinen Review-Status, bis eine Redakteurin sie freigibt.',
+      'Vorgeschlagene Änderungen bleiben im reinen Review-Status, bis ein Redakteur sie freigibt.',
       'Risiko- und Belegbedarf werden markiert, nicht übersprungen oder als unbedenklich angenommen.',
       'Ein Befund wird nie als bereits freigegeben behandelt.',
     ],
@@ -126,7 +126,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       },
       {
         id: 'review',
-        description: 'Fasst Review-Maßnahmen für menschliche Redakteur:innen zusammen.',
+        description: 'Fasst Review-Maßnahmen für menschliche Redakteure zusammen.',
         outputLabel: 'Review-Zusammenfassung',
         ctaLabel: 'Wie Helen zusammenfasst',
       },
@@ -139,7 +139,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     ],
     ctaH2: 'Die Änderung planen, bevor bearbeitet wird.',
     ctaPara:
-      'Sam verwandelt Befunde in strukturierte vorgeschlagene Änderungen, damit menschliche Redakteur:innen mit Kontext freigeben, ablehnen oder zurückstellen können.',
+      'Sam verwandelt Befunde in strukturierte vorgeschlagene Änderungen, damit menschliche Redakteure mit Kontext freigeben, ablehnen oder zurückstellen können.',
     guidanceFooterLabel: 'ÄNDERUNGSSTATUS',
     guidanceFooterValue: 'Vorgeschlagen · Review ausstehend',
   },
@@ -150,26 +150,26 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       'Helen fasst Befunde und Empfehlungen zu einer strukturierten Review-Zusammenfassung für menschliches Handeln zusammen und macht das Review verständlich, ohne die Nuancen zu verlieren.',
     h1: 'Komplexe Befunde in ein klares redaktionelles Review verwandeln.',
     heroPara1:
-      'Ein Seiten-Review kann technische Probleme, Content-Lücken, Bedenken zu Belegen, Lesbarkeitsnotizen, Intentionsprobleme und Freigabeblocker umfassen. Redakteur:innen brauchen eine klare Zusammenfassung, keinen weiteren Haufen unverbundener Befunde. Helen fasst Befunde und Empfehlungen zu einer strukturierten Review-Zusammenfassung für menschliches Handeln zusammen. Sie macht das Review verständlich, ohne die Nuancen zu verlieren.',
+      'Ein Seiten-Review kann technische Probleme, Content-Lücken, Bedenken zu Belegen, Lesbarkeitsnotizen, Intentionsprobleme und Freigabeblocker umfassen. Redakteure brauchen eine klare Zusammenfassung, keinen weiteren Haufen unverbundener Befunde. Helen fasst Befunde und Empfehlungen zu einer strukturierten Review-Zusammenfassung für menschliches Handeln zusammen. Sie macht das Review verständlich, ohne die Nuancen zu verlieren.',
     heroPara2:
       'Für Seiten-Audits, Content-Analyse, Freigabevorbereitung und die Übergabe zwischen Worker-Befunden und redaktionellen Entscheidungen.',
     problemEyebrow: 'Wo Review-Zusammenfassungen scheitern',
-    problemH2: 'Ein nützliches Audit scheitert trotzdem, wenn die Redakteurin nicht danach handeln kann.',
+    problemH2: 'Ein nützliches Audit scheitert trotzdem, wenn der Redakteur nicht danach handeln kann.',
     problemPara:
-      'Zu viele Befunde erzeugen Ermüdung. Zu wenig Detail verbirgt Risiko. Eine gute Review-Zusammenfassung muss die wichtigen Signale erhalten und gleichzeitig die nächste Handlung klar machen. Helen gibt Redakteur:innen die Version, mit der sie tatsächlich arbeiten können.',
+      'Zu viele Befunde erzeugen Ermüdung. Zu wenig Detail verbirgt Risiko. Eine gute Review-Zusammenfassung muss die wichtigen Signale erhalten und gleichzeitig die nächste Handlung klar machen. Helen gibt Redakteuren die Version, mit der sie tatsächlich arbeiten können.',
     problemAnnotation: '↘ zusammenfassen, ohne die Belege zu verflachen',
     beforeStamp: 'Unklares Review',
     beforeHtml: `<p>Technische Befunde, Content-Befunde und Belegbefunde erscheinen getrennt, ohne klare Reihenfolge für die nächsten Schritte.</p>`,
     beforeTags: ['Verstreute Befunde', 'Keine Zusammenfassung', 'Unklare Priorität', 'Schwer freizugeben'],
-    beforeNote: 'die Redakteurin muss sich das Gesamtbild selbst zusammensetzen',
+    beforeNote: 'der Redakteur muss sich das Gesamtbild selbst zusammensetzen',
     afterStamp: 'Redaktionelle Zusammenfassung',
     afterHtml: `<p>Helen gruppiert die Befunde, hebt Blocker hervor und listet die Review-Maßnahmen in der richtigen Reihenfolge auf.</p>`,
     afterTags: ['Klare Zusammenfassung', 'Priorisiert', 'Prüfbar', 'Menschengeführt'],
-    afterNote: 'die Redakteurin weiß, was Aufmerksamkeit braucht',
+    afterNote: 'der Redakteur weiß, was Aufmerksamkeit braucht',
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Eine Review-Ebene für menschliche Entscheidungen.',
     helpsPara:
-      'Helen liest die vorhandenen Befunde und macht daraus eine ruhige, strukturierte Zusammenfassung. Sie gibt nicht frei, bearbeitet nicht, wendet nichts an und veröffentlicht nicht. Sie hilft der Redakteurin zu verstehen, was zählt.',
+      'Helen liest die vorhandenen Befunde und macht daraus eine ruhige, strukturierte Zusammenfassung. Sie gibt nicht frei, bearbeitet nicht, wendet nichts an und veröffentlicht nicht. Sie hilft dem Redakteur zu verstehen, was zählt.',
     checks: [
       'Worker-Befunde und Empfehlungen',
       'Manuelle Review-Elemente',
@@ -217,7 +217,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
         description: 'Helen macht daraus eine klare Zusammenfassung.',
       },
       {
-        title: 'Eine Redakteurin braucht die nächste Handlung.',
+        title: 'Ein Redakteur braucht die nächste Handlung.',
         description: 'Sie hebt hervor, was zuerst geprüft werden sollte.',
       },
       {
@@ -239,7 +239,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
         description: 'Sie reduziert Rauschen, ohne wichtige Bedenken zu verbergen.',
       },
     ],
-    boundaryH2: 'Helen fasst zusammen. Redakteur:innen entscheiden.',
+    boundaryH2: 'Helen fasst zusammen. Redakteure entscheiden.',
     boundaryPara:
       'Helen gibt Content nicht frei, bearbeitet keinen Text, wendet keine Änderungen an und veröffentlicht nicht. Sie bereitet eine Review-Zusammenfassung vor, damit Menschen bessere Entscheidungen treffen können.',
     boundaryChecklist: [
@@ -276,9 +276,9 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
         ctaLabel: 'Wie Dana beurteilt',
       },
     ],
-    ctaH2: 'Redakteur:innen ein Review geben, nach dem sie handeln können.',
+    ctaH2: 'Redakteuren ein Review geben, nach dem sie handeln können.',
     ctaPara:
-      'Helen verwandelt Worker-Befunde in eine klare redaktionelle Zusammenfassung, damit menschliche Prüfer:innen entscheiden können, wie es weitergeht.',
+      'Helen verwandelt Worker-Befunde in eine klare redaktionelle Zusammenfassung, damit menschliche Prüfer entscheiden können, wie es weitergeht.',
     guidanceFooterLabel: 'REVIEWSTATUS',
     guidanceFooterValue: 'Zusammenfassung bereit · redaktionelle Handlung nötig',
   },
@@ -286,10 +286,10 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
   editorial_approval_gate: {
     seoTitle: 'Freigabe-Gate-Worker | WordPresto',
     metaDescription:
-      'Dana liest die vorhandenen Worker-Ergebnisse und erstellt ein konservatives Freigabe-Gate, das der menschlichen Prüferin sagt, ob Content bereit fürs Review erscheint, überarbeitet werden muss oder blockiert ist.',
+      'Dana liest die vorhandenen Worker-Ergebnisse und erstellt ein konservatives Freigabe-Gate, das dem menschlichen Prüfer sagt, ob Content bereit fürs Review erscheint, überarbeitet werden muss oder blockiert ist.',
     h1: 'Prüfen, ob die Arbeit bereit für die menschliche Freigabe ist.',
     heroPara1:
-      'Freigabe sollte kein Bauchgefühl sein. Bevor Content weitergeht, muss die Redakteurin wissen, ob die wichtigsten Prüfungen sauber sind, ob Blocker bestehen bleiben und ob noch etwas Überarbeitung, Belege oder ein spezialisiertes Review braucht. Dana liest die vorhandenen Worker-Ergebnisse und erstellt ein konservatives Freigabe-Gate. Sie gibt nicht automatisch frei. Sie sagt der menschlichen Prüferin, ob der Content bereit fürs Review erscheint, überarbeitet werden muss oder blockiert ist.',
+      'Freigabe sollte kein Bauchgefühl sein. Bevor Content weitergeht, muss der Redakteur wissen, ob die wichtigsten Prüfungen sauber sind, ob Blocker bestehen bleiben und ob noch etwas Überarbeitung, Belege oder ein spezialisiertes Review braucht. Dana liest die vorhandenen Worker-Ergebnisse und erstellt ein konservatives Freigabe-Gate. Sie gibt nicht automatisch frei. Sie sagt dem menschlichen Prüfer, ob der Content bereit fürs Review erscheint, überarbeitet werden muss oder blockiert ist.',
     heroPara2:
       'Für abschließende redaktionelle Prüfungen, Freigabe-Workflows, die Vorbereitung der CMS-Übergabe und Content-Governance.',
     problemEyebrow: 'Wo Freigabe-Workflows schiefgehen',
@@ -300,9 +300,9 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     beforeStamp: 'Lockere Freigabe',
     beforeHtml: `<p>Der Entwurf wirkt bereit, aber Beleg-, Metadaten- und Barrierefreiheitsprüfungen enthalten noch ungelöste Punkte.</p>`,
     beforeTags: ['Ungelöste Blocker', 'Kein finales Gate', 'Verstreute Risiken', 'Freigabe unklar'],
-    beforeNote: 'die Redakteurin muss Probleme selbst aufspüren',
+    beforeNote: 'der Redakteur muss Probleme selbst aufspüren',
     afterStamp: 'Gate geprüft',
-    afterHtml: `<p>Dana fasst Bereitschaft, Blocker und nächste Schritte zusammen, bevor die menschliche Redakteurin freigibt.</p>`,
+    afterHtml: `<p>Dana fasst Bereitschaft, Blocker und nächste Schritte zusammen, bevor der menschliche Redakteur freigibt.</p>`,
     afterTags: ['Konservatives Gate', 'Klarer Status', 'Priorisierte Blocker', 'Menschliche Entscheidung'],
     afterNote: 'die Freigabe wird sicherer',
     helpsEyebrow: 'Wie dieser Worker hilft',
@@ -367,7 +367,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
         description: 'Dana markiert Blocker, bevor die Übergabe operatives Risiko schafft.',
       },
       {
-        title: 'Die Redakteurin braucht einen konservativen Entscheidungspunkt.',
+        title: 'Der Redakteur braucht einen konservativen Entscheidungspunkt.',
         description:
           'Sie vergibt „freigegeben fürs Review" nur, wenn die Prüfungen sauber genug sind.',
       },
@@ -383,7 +383,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     ],
     boundaryH2: 'Dana prüft die Bereitschaft am Gate. Menschen geben frei.',
     boundaryPara:
-      'Dana gibt Content nicht automatisch frei, zertifiziert keine Compliance, veröffentlicht nicht und schreibt nicht in ein CMS. Ihre Aufgabe ist es, den Freigabestatus sichtbar zu machen, damit eine menschliche Prüferin entscheiden kann.',
+      'Dana gibt Content nicht automatisch frei, zertifiziert keine Compliance, veröffentlicht nicht und schreibt nicht in ein CMS. Ihre Aufgabe ist es, den Freigabestatus sichtbar zu machen, damit ein menschlicher Prüfer entscheiden kann.',
     boundaryChecklist: [
       'Dana prüft die Bereitschaft am Gate, sie gibt Content nie selbst frei.',
       'Compliance (rechtlich, medizinisch, finanziell, Barrierefreiheit) wird von Dana nie zertifiziert.',
@@ -420,7 +420,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     ],
     ctaH2: 'Bereitschaft vor der Freigabe explizit machen.',
     ctaPara:
-      'Dana hilft Redakteur:innen zu erkennen, ob Content bereit für die menschliche Freigabe ist, überarbeitet werden muss oder vor der Übergabe blockiert werden sollte.',
+      'Dana hilft Redakteuren zu erkennen, ob Content bereit für die menschliche Freigabe ist, überarbeitet werden muss oder vor der Übergabe blockiert werden sollte.',
     guidanceFooterLabel: 'GATE-STATUS',
     guidanceFooterValue: 'Überarbeitung nötig · redaktionelle Entscheidung erforderlich',
   },
@@ -428,10 +428,10 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
   site_discovery: {
     seoTitle: 'Site-Discovery-Worker | WordPresto',
     metaDescription:
-      'Claire hilft dabei, die Seiten eines Website-Projekts zu identifizieren, damit Redakteur:innen sehen, was geprüft werden muss, wo die Content-Chancen liegen und wie die Website als Ganzes zusammenpasst.',
+      'Claire hilft dabei, die Seiten eines Website-Projekts zu identifizieren, damit Redakteure sehen, was geprüft werden muss, wo die Content-Chancen liegen und wie die Website als Ganzes zusammenpasst.',
     h1: 'Die Seiten finden, bevor die Arbeit beginnt.',
     heroPara1:
-      'Ein starker Content-Workflow beginnt damit, zu wissen, was bereits existiert. Claire hilft dabei, die Seiten eines Website-Projekts zu identifizieren, damit Redakteur:innen sehen, was geprüft werden muss, wo die Content-Chancen liegen und wie die Website als Ganzes zusammenpasst. Sie gibt dem Team einen geordneten Blick auf die Seiten der Website, frühe Content-Signale und Entdeckungsnotizen, damit die übrigen Word-Presto-Workers von einem klareren Projektbild ausgehen können.',
+      'Ein starker Content-Workflow beginnt damit, zu wissen, was bereits existiert. Claire hilft dabei, die Seiten eines Website-Projekts zu identifizieren, damit Redakteure sehen, was geprüft werden muss, wo die Content-Chancen liegen und wie die Website als Ganzes zusammenpasst. Sie gibt dem Team einen geordneten Blick auf die Seiten der Website, frühe Content-Signale und Entdeckungsnotizen, damit die übrigen Word-Presto-Workers von einem klareren Projektbild ausgehen können.',
     heroPara2:
       'Für Website-Projekte, Content-Audits, die Planung von Seiten-Reviews, Prüfungen der internen Verlinkung und frühe Projektintelligenz.',
     problemEyebrow: 'Wo Website-Projekte unübersichtlich werden',
@@ -457,7 +457,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       'Frühe Content- und Struktursignale',
       'Seiten, die möglicherweise ein Review brauchen',
       'Chancen für interne Beziehungen',
-      'Anschlussprüfungen für Redakteur:innen',
+      'Anschlussprüfungen für Redakteure',
     ],
     improves: [
       'Projekt-Setup',
@@ -501,7 +501,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       {
         title: 'Ein Website-Audit braucht Struktur.',
         description:
-          'Sie gibt Redakteur:innen einen klareren Blick auf die Seiten und Bereiche, mit denen sie arbeiten.',
+          'Sie gibt Redakteuren einen klareren Blick auf die Seiten und Bereiche, mit denen sie arbeiten.',
       },
       {
         title: 'Ein Content-Inventar braucht einen Ausgangspunkt.',
@@ -523,14 +523,14 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
           'Sie gibt anderen Workers eine sauberere Ausgangskarte, bevor die Analyse weitergeht.',
       },
     ],
-    boundaryH2: 'Claire entdeckt Seiten. Redakteur:innen entscheiden, was zählt.',
+    boundaryH2: 'Claire entdeckt Seiten. Redakteure entscheiden, was zählt.',
     boundaryPara:
-      'Claire hilft, die Website fürs Review zu organisieren. Sie entscheidet keine Strategie, löscht keine Seiten, schreibt keinen Text um und veröffentlicht nicht. Redakteur:innen wählen, welche Seiten inspiziert, priorisiert und verbessert werden.',
+      'Claire hilft, die Website fürs Review zu organisieren. Sie entscheidet keine Strategie, löscht keine Seiten, schreibt keinen Text um und veröffentlicht nicht. Redakteure wählen, welche Seiten inspiziert, priorisiert und verbessert werden.',
     boundaryChecklist: [
       'Claire organisiert Seiten fürs Review, sie bearbeitet oder löscht sie nie selbst.',
-      'Entdeckte Seiten sind eine Ausgangsliste für Redakteur:innen, keine automatische Prioritätenreihenfolge.',
+      'Entdeckte Seiten sind eine Ausgangsliste für Redakteure, keine automatische Prioritätenreihenfolge.',
       'Notizen zur Website-Struktur unterstützen die Planung, sie ersetzen kein menschliches Urteilsvermögen zur Strategie.',
-      'Anschlussprüfungen werden klar aufgelistet, damit Redakteur:innen wissen, was noch bestätigt werden muss.',
+      'Anschlussprüfungen werden klar aufgelistet, damit Redakteure wissen, was noch bestätigt werden muss.',
     ],
     willNot: [
       { color: 'red', text: 'Content umschreiben oder bearbeiten' },
@@ -562,7 +562,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     ],
     ctaH2: 'Jedem Website-Projekt einen klareren Ausgangspunkt geben.',
     ctaPara:
-      'Claire hilft Word Presto, von verstreuten Seiten zu einem organisierten Review-Ablauf zu kommen, damit Redakteur:innen wissen, was existiert und wo die Arbeit beginnen sollte.',
+      'Claire hilft Word Presto, von verstreuten Seiten zu einem organisierten Review-Ablauf zu kommen, damit Redakteure wissen, was existiert und wo die Arbeit beginnen sollte.',
     guidanceFooterLabel: 'DISCOVERY-STATUS',
     guidanceFooterValue: 'Seiten bereit fürs Review',
   },
@@ -592,7 +592,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Eine Quellebene für das Review auf Seitenebene.',
     helpsPara:
-      'Patrick liest die Live-Seite und extrahiert ihre Quellsignale, sodass andere Workers und Redakteur:innen einen bestätigten statt einen angenommenen Ausgangspunkt haben.',
+      'Patrick liest die Live-Seite und extrahiert ihre Quellsignale, sodass andere Workers und Redakteure einen bestätigten statt einen angenommenen Ausgangspunkt haben.',
     checks: [
       'Seitentitel und Meta-Beschreibung',
       'Überschriftenstruktur und -hierarchie',
@@ -649,7 +649,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       },
       {
         title: 'Ein Content-Briefing braucht Quellfakten.',
-        description: 'Er gibt der Briefing-Autorin ein bestätigtes Bild davon, wie die Seite heute aussieht.',
+        description: 'Er gibt dem Briefing-Autor ein bestätigtes Bild davon, wie die Seite heute aussieht.',
       },
       {
         title: 'Ein Audit umfasst viele Seiten.',
@@ -660,14 +660,14 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
         description: 'Er übergibt Yuna und Kenji eine bestätigte Quellseite als Arbeitsgrundlage.',
       },
     ],
-    boundaryH2: 'Patrick meldet, was die Seite sagt. Redakteur:innen entscheiden, was zu tun ist.',
+    boundaryH2: 'Patrick meldet, was die Seite sagt. Redakteure entscheiden, was zu tun ist.',
     boundaryPara:
-      'Patrick inspiziert und meldet Quellsignale. Er schreibt die Seite nicht um, beurteilt keine Qualität, vergibt keine Priorität und veröffentlicht nicht. Redakteur:innen und andere Workers nutzen seine Befunde, um zu entscheiden, wie es weitergeht.',
+      'Patrick inspiziert und meldet Quellsignale. Er schreibt die Seite nicht um, beurteilt keine Qualität, vergibt keine Priorität und veröffentlicht nicht. Redakteure und andere Workers nutzen seine Befunde, um zu entscheiden, wie es weitergeht.',
     boundaryChecklist: [
       'Patrick meldet die Seite, wie sie existiert, er bearbeitet oder schreibt sie nie selbst um.',
       'Seine Befunde sind Quellfakten, keine Qualitätsurteile oder Prioritätsentscheidungen.',
       'Fehlende Elemente werden klar markiert, nicht stillschweigend als unbedenklich angenommen.',
-      'Tieferes technisches oder redaktionelles Urteilsvermögen bleibt beim zuständigen Worker oder der zuständigen Redakteurin.',
+      'Tieferes technisches oder redaktionelles Urteilsvermögen bleibt beim zuständigen Worker oder dem zuständigen Redakteur.',
     ],
     willNot: [
       { color: 'red', text: 'Seiteninhalt umschreiben oder bearbeiten' },
@@ -782,15 +782,15 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       },
       {
         title: 'Eine Seite enthält viele Bilder.',
-        description: 'Mara markiert Bilder ohne nützliche Alternativen, damit Redakteur:innen sie bearbeiten können.',
+        description: 'Mara markiert Bilder ohne nützliche Alternativen, damit Redakteure sie bearbeiten können.',
       },
       {
         title: 'Links sind vage oder repetitiv.',
-        description: 'Sie macht Linktext sichtbar, der für Leser:innen und assistive Technologien klarer sein muss.',
+        description: 'Sie macht Linktext sichtbar, der für Leser und assistive Technologien klarer sein muss.',
       },
       {
         title: 'Die Überschriftenstruktur wirkt unübersichtlich.',
-        description: 'Mara prüft die Überschriftenreihenfolge und markiert, wo sie Leser:innen oder Screenreader verwirren könnte.',
+        description: 'Mara prüft die Überschriftenreihenfolge und markiert, wo sie Leser oder Screenreader verwirren könnte.',
       },
       {
         title: 'Das Team braucht ehrliche Barrierefreiheitsnotizen.',
@@ -804,7 +804,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       'Mara markiert Probleme, die in den Seitenbelegen sichtbar sind, sie bearbeitet nie selbst Überschriften, Links oder Alt-Text.',
       'Ihre Befunde sind ein Ausgangspunkt fürs Review, keine Compliance-Zertifizierung.',
       'Prüfungen, die sie aus den vorhandenen Belegen nicht verifizieren kann, werden als manuelle Prüfungen aufgelistet, nicht stillschweigend übersprungen.',
-      'Formale Barrierefreiheits-Audits und juristische Compliance-Entscheidungen bleiben bei einer qualifizierten menschlichen Prüferin.',
+      'Formale Barrierefreiheits-Audits und juristische Compliance-Entscheidungen bleiben bei einem qualifizierten menschlichen Prüfer.',
     ],
     willNot: [
       { color: 'red', text: 'Barrierefreiheits-Compliance zertifizieren' },
@@ -836,7 +836,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     ],
     ctaH2: 'Barrierefreiheit vor der Freigabe sichtbar machen.',
     ctaPara:
-      'Mara hilft Redakteur:innen, Barrierefreiheitsprobleme früh, klar und ehrlich zu erkennen, bevor Content weitergeht.',
+      'Mara hilft Redakteuren, Barrierefreiheitsprobleme früh, klar und ehrlich zu erkennen, bevor Content weitergeht.',
     guidanceFooterLabel: 'BARRIEREFREIHEITSSTATUS',
     guidanceFooterValue: 'Review nötig · Prüfungen bereit',
   },
@@ -845,7 +845,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     seoTitle: 'Intentions-Analyse-Worker | WordPresto',
     metaDescription:
       'Yuna prüft, ob Content, Struktur, Metadaten und nächster Schritt einer Seite mit der wahrscheinlichen Such- oder Leserintention übereinstimmen.',
-    h1: 'Prüfen, ob die Seite dem entspricht, wonach die Leserin gesucht hat.',
+    h1: 'Prüfen, ob die Seite dem entspricht, wonach der Leser gesucht hat.',
     heroPara1:
       'Eine Seite kann gut geschrieben sein und trotzdem die Intention verfehlen. Sie beantwortet vielleicht die falsche Frage, verspricht mehr, als sie liefert, oder vermischt mehrere Leserbedürfnisse zu einer verwirrten Seite. Yuna prüft, ob Content, Struktur, Metadaten und nächster Schritt mit der wahrscheinlichen Such- oder Leserintention übereinstimmen.',
     heroPara2:
@@ -853,7 +853,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     problemEyebrow: 'Wo die Content-Strategie schiefgeht',
     problemH2: 'Die Seite beantwortet etwas, aber nicht immer das, worauf es ankommt.',
     problemPara:
-      'Suchintention ist der Grund hinter dem Besuch. Eine Leserin will vielleicht eine Definition, einen Vergleich, einen Beleg, eine Anleitung, Preishinweise, Beruhigung oder eine klare Handlungsmöglichkeit. Yuna prüft, ob die Seite diesem Grund dient.',
+      'Suchintention ist der Grund hinter dem Besuch. Ein Leser will vielleicht eine Definition, einen Vergleich, einen Beleg, eine Anleitung, Preishinweise, Beruhigung oder eine klare Handlungsmöglichkeit. Yuna prüft, ob die Seite diesem Grund dient.',
     problemAnnotation: '↘ erst den Grund prüfen, dann überarbeiten',
     beforeStamp: 'Intention unklar',
     beforeHtml: `<p>Die Seite liest sich gut, vermischt aber mehrere Leserbedürfnisse in einem Abschnitt, sodass unklar ist, welche Frage sie eigentlich beantwortet.</p>`,
@@ -866,7 +866,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Intentions-Review vor der Optimierung.',
     helpsPara:
-      'Yuna vergleicht, was die Seite zu versprechen scheint, mit dem, was sie tatsächlich liefert. Sie hilft der Redakteurin zu erkennen, ob die Aufgabe der Seite klar genug ist, bevor sie überarbeitet, erweitert oder freigegeben wird.',
+      'Yuna vergleicht, was die Seite zu versprechen scheint, mit dem, was sie tatsächlich liefert. Sie hilft dem Redakteur zu erkennen, ob die Aufgabe der Seite klar genug ist, bevor sie überarbeitet, erweitert oder freigegeben wird.',
     checks: [
       'Wahrscheinliche Leser- oder Suchintention',
       'Metadaten-Versprechen im Vergleich zur tatsächlichen Seite',
@@ -923,7 +923,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       },
       {
         title: 'Ein Content-Briefing braucht ein klares Leserbedürfnis.',
-        description: 'Sie gibt der Briefing-Autorin eine bestätigte Intention, um die herum sie planen kann.',
+        description: 'Sie gibt dem Briefing-Autor eine bestätigte Intention, um die herum er planen kann.',
       },
       {
         title: 'Eine Formatentscheidung für die Seite ist nötig.',
@@ -931,16 +931,16 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       },
       {
         title: 'SEO-Empfehlungen ziehen in verschiedene Richtungen.',
-        description: 'Sie verankert das Review in dem, wonach die Leserin tatsächlich gesucht hat.',
+        description: 'Sie verankert das Review in dem, wonach der Leser tatsächlich gesucht hat.',
       },
     ],
-    boundaryH2: 'Yuna klärt die Intention. Redakteur:innen entscheiden die Strategie.',
+    boundaryH2: 'Yuna klärt die Intention. Redakteure entscheiden die Strategie.',
     boundaryPara:
-      'Yuna schreibt die Seite nicht um, wählt keine Geschäftsstrategie und garantiert keine Ranking-Verbesserung. Sie gibt Redakteur:innen eine prüfbare Intentions-Einschätzung.',
+      'Yuna schreibt die Seite nicht um, wählt keine Geschäftsstrategie und garantiert keine Ranking-Verbesserung. Sie gibt Redakteuren eine prüfbare Intentions-Einschätzung.',
     boundaryChecklist: [
       'Yuna beurteilt die Intention anhand der Seite und ihres Kontexts, sie schreibt Content nie selbst um.',
       'Ihre Einschätzung ist ein Ausgangspunkt für die Planung, keine Strategieentscheidung.',
-      'Empfohlene Seitenblickwinkel sind Vorschläge für Redakteur:innen, keine automatischen Änderungen.',
+      'Empfohlene Seitenblickwinkel sind Vorschläge für Redakteure, keine automatischen Änderungen.',
       'Ranking-Ergebnisse werden von ihren Befunden nie versprochen oder impliziert.',
     ],
     willNot: [
@@ -966,12 +966,12 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       },
       {
         id: 'conversion_alignment',
-        description: 'Prüft, ob der nächste Schritt zur Intention der Leserin passt.',
+        description: 'Prüft, ob der nächste Schritt zur Intention des Lesers passt.',
         outputLabel: 'Conversion-Review',
         ctaLabel: 'Wie Diane prüft',
       },
     ],
-    ctaH2: 'Die Seite auf den Grund der Leserin ausrichten.',
+    ctaH2: 'Die Seite auf den Grund des Lesers ausrichten.',
     ctaPara:
       'Yuna hilft sicherzustellen, dass Optimierungsarbeit auf die richtige Intention zielt, bevor das Team etwas überarbeitet oder freigibt.',
     guidanceFooterLabel: 'INTENTIONSSTATUS',
@@ -990,7 +990,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     problemEyebrow: 'Wo Empfehlungen schiefgehen',
     problemH2: 'Ein Ratschlag ist nur nützlich, wenn man weiß, was ihn stützt.',
     problemPara:
-      'Eine Empfehlung kann selbstsicher klingen und trotzdem auf dünnen Belegen ruhen. Sie mag von begrenzten Seitensignalen zu weit ausholen, auf fehlendem Retrieval beruhen oder eine Sicherheit vortäuschen, die der Workflow nicht hat. Kenji schützt Redakteur:innen vor falscher Sicherheit.',
+      'Eine Empfehlung kann selbstsicher klingen und trotzdem auf dünnen Belegen ruhen. Sie mag von begrenzten Seitensignalen zu weit ausholen, auf fehlendem Retrieval beruhen oder eine Sicherheit vortäuschen, die der Workflow nicht hat. Kenji schützt Redakteure vor falscher Sicherheit.',
     problemAnnotation: '↘ trennen, was belegt ist, von dem, was angenommen wird',
     beforeStamp: 'Falsche Sicherheit',
     beforeHtml: `<p>Eine Empfehlung liest sich wie eine feststehende Tatsache, ruht aber tatsächlich auf einem einzigen unvollständigen Signal ohne stützendes Retrieval.</p>`,
@@ -1063,14 +1063,14 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       },
       {
         title: 'Workers sind uneins oder liefern unsichere Befunde.',
-        description: 'Kenji prüft die Belege hinter jedem Befund, damit Redakteur:innen beurteilen können, welchem sie vertrauen.',
+        description: 'Kenji prüft die Belege hinter jedem Befund, damit Redakteure beurteilen können, welchem sie vertrauen.',
       },
       {
         title: 'Das Thema ist sensibel oder risikoreich.',
         description: 'Er arbeitet mit Vera zusammen, um zu markieren, wo sich Beleg- und Compliance-Risiko überschneiden.',
       },
     ],
-    boundaryH2: 'Kenji prüft die Belege. Redakteur:innen entscheiden, was zu tun ist.',
+    boundaryH2: 'Kenji prüft die Belege. Redakteure entscheiden, was zu tun ist.',
     boundaryPara:
       'Kenji zertifiziert weder Wahrheit noch Compliance noch Ranking-Wirkung. Wenn Belege fehlen, sagt er, dass sie fehlen.',
     boundaryChecklist: [
@@ -1109,7 +1109,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     ],
     ctaH2: 'Empfehlungen verteidigbar machen.',
     ctaPara:
-      'Kenji hilft Redakteur:innen zu erkennen, welche Befunde fundiert sind, welche schwach sind und welche vor der Freigabe mehr Belege brauchen.',
+      'Kenji hilft Redakteuren zu erkennen, welche Befunde fundiert sind, welche schwach sind und welche vor der Freigabe mehr Belege brauchen.',
     guidanceFooterLabel: 'BELEGSTATUS',
     guidanceFooterValue: 'Einschränkungen markiert · Review erforderlich',
   },
@@ -1139,17 +1139,17 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Ein Beziehungs-Durchgang auf Seitenebene.',
     helpsPara:
-      'Leo prüft die auf der Seite sichtbaren Links und Pfade. Er crawlt nicht die gesamte Website und bestätigt nicht jede verwaiste Seite. Er gibt Redakteur:innen ein fundiertes Beziehungs-Review auf Seitenebene.',
+      'Leo prüft die auf der Seite sichtbaren Links und Pfade. Er crawlt nicht die gesamte Website und bestätigt nicht jede verwaiste Seite. Er gibt Redakteuren ein fundiertes Beziehungs-Review auf Seitenebene.',
     checks: [
       'Vorhandensein interner Links',
       'Nutzung externer Links',
       'Klarheit des Ankertexts',
-      'Nächste-Schritt-Pfade für die Leserin',
+      'Nächste-Schritt-Pfade für den Leser',
       'Verwaisungsrisiko auf Seitenebene',
       'Signale für stützenden Content',
     ],
     improves: [
-      'Bewegung der Leser:innen zwischen Seiten',
+      'Bewegung der Leser zwischen Seiten',
       'Nützlichkeit interner Links',
       'Kohärenz des Themenclusters',
       'Sichtbarkeit schwacher Pfade',
@@ -1187,7 +1187,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
         description: 'Leo prüft, ob sie die Links und Pfade hat, die eine verbundene Seite haben sollte.',
       },
       {
-        title: 'Links existieren, helfen der Leserin aber nicht.',
+        title: 'Links existieren, helfen dem Leser aber nicht.',
         description: 'Er prüft Ankertext und Platzierung auf echten Nutzen, nicht nur auf Vorhandensein.',
       },
       {
@@ -1196,7 +1196,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       },
       {
         title: 'Ein Conversion-Pfad ist unklar.',
-        description: 'Er markiert, wo der Seite ein klarer Link zum nächsten Schritt für die Leserin fehlt.',
+        description: 'Er markiert, wo der Seite ein klarer Link zum nächsten Schritt für den Leser fehlt.',
       },
       {
         title: 'Die Seite hat ablenkende Links.',
@@ -1207,13 +1207,13 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
         description: 'Er gibt Felix einen Ausgangspunkt auf Seitenebene, bevor ein tieferes Pfad-Review folgt.',
       },
     ],
-    boundaryH2: 'Leo prüft die Pfade. Redakteur:innen entscheiden, welche Links sich ändern.',
+    boundaryH2: 'Leo prüft die Pfade. Redakteure entscheiden, welche Links sich ändern.',
     boundaryPara:
       'Leo fügt keine Links hinzu, entfernt keine, schreibt keine Anker um und veröffentlicht keine Änderungen. Er zeigt, was ein Review braucht.',
     boundaryChecklist: [
       'Leo prüft die auf der Seite sichtbaren Links, er fügt nie selbst Links hinzu oder entfernt sie.',
       'Sein Review deckt die Seitenebene ab, nicht einen bestätigten websiteweiten Verwaisungs- oder Crawl-Status.',
-      'Vorschläge zu Ankern und Pfaden sind für Redakteur:innen zur Anwendung gedacht, keine automatischen Änderungen.',
+      'Vorschläge zu Ankern und Pfaden sind für Redakteure zur Anwendung gedacht, keine automatischen Änderungen.',
       'Verlinkte Seiten werden vermerkt, nicht abgerufen und geprüft, als hätte Leo sie gelesen.',
     ],
     willNot: [
@@ -1246,7 +1246,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     ],
     ctaH2: 'Die Seite mit dem größeren Content-System verbinden.',
     ctaPara:
-      'Leo hilft Redakteur:innen zu erkennen, ob die Seite nützliche Links, klare Anker und einen Leserpfad hat, dem es sich zu folgen lohnt.',
+      'Leo hilft Redakteuren zu erkennen, ob die Seite nützliche Links, klare Anker und einen Leserpfad hat, dem es sich zu folgen lohnt.',
     guidanceFooterLabel: 'BEZIEHUNGSSTATUS',
     guidanceFooterValue: 'Review nötig · Pfadlücken gefunden',
   },
@@ -1255,7 +1255,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     seoTitle: 'Review-Queue-Worker | WordPresto',
     metaDescription:
       'Riley verwandelt vorgeschlagene Änderungen in strukturierte Review-Elemente und zeigt, was eine menschliche Entscheidung braucht, warum es wichtig ist und welche Handlung möglich ist.',
-    h1: 'Aus vorgeschlagenen Änderungen Entscheidungen machen, die eine Redakteurin verwalten kann.',
+    h1: 'Aus vorgeschlagenen Änderungen Entscheidungen machen, die ein Redakteur verwalten kann.',
     heroPara1:
       'Ein Content-Review kann Dutzende Befunde erzeugen. Ohne Queue werden diese Befunde zu Rauschen: unklare Priorität, kein Entscheidungsstatus, keine Zuständigkeit und kein Weg zur Freigabe. Riley verwandelt vorgeschlagene Änderungen in strukturierte Review-Elemente. Jedes Element zeigt, was eine menschliche Entscheidung braucht, warum es wichtig ist und welche Handlung möglich ist.',
     heroPara2:
@@ -1263,20 +1263,20 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     problemEyebrow: 'Wo Review-Workflows schiefgehen',
     problemH2: 'Befunde sind nicht dasselbe wie Entscheidungen.',
     problemPara:
-      'Ein Seiten-Audit kann nützliche Empfehlungen erzeugen, aber die Redakteurin muss trotzdem wissen, was sie freigeben, ablehnen, zurückstellen oder untersuchen soll. Ohne diese Ebene wirkt der Workflow beschäftigt, aber nicht operativ. Riley macht aus Befunden eine Queue, die das Team abarbeiten kann.',
+      'Ein Seiten-Audit kann nützliche Empfehlungen erzeugen, aber der Redakteur muss trotzdem wissen, was er freigeben, ablehnen, zurückstellen oder untersuchen soll. Ohne diese Ebene wirkt der Workflow beschäftigt, aber nicht operativ. Riley macht aus Befunden eine Queue, die das Team abarbeiten kann.',
     problemAnnotation: '↘ die Entscheidungen organisieren, nicht nur die Befunde',
     beforeStamp: 'Befundhaufen',
     beforeHtml: `<p>Mehrere Workers haben Probleme auf der Seite angemerkt, aber es gibt keinen gemeinsamen Überblick, was eine Entscheidung braucht oder in welcher Reihenfolge.</p>`,
     beforeTags: ['Keine Priorität', 'Kein Entscheidungsstatus', 'Keine Zuständigkeit', 'Beschäftigt, aber festgefahren'],
     beforeNote: 'das Review wirkt aktiv, bringt aber nichts hervor',
     afterStamp: 'Review-Queue',
-    afterHtml: `<p>Riley organisiert die Befunde zu Entscheidungselementen, jedes mit Begründung und den für die Redakteurin verfügbaren Handlungen.</p>`,
+    afterHtml: `<p>Riley organisiert die Befunde zu Entscheidungselementen, jedes mit Begründung und den für den Redakteur verfügbaren Handlungen.</p>`,
     afterTags: ['Elemente priorisiert', 'Entscheidungen ausstehend', 'Keine Bearbeitungen angewandt', 'Bereit für redaktionelle Handlung'],
     afterNote: 'das Team kann es der Reihe nach abarbeiten',
     helpsEyebrow: 'Wie dieser Worker hilft',
     helpsH2: 'Eine Queue-Ebene zwischen Worker-Befunden und menschlicher Freigabe.',
     helpsPara:
-      'Riley entscheidet nicht für die Redakteurin. Er organisiert Befunde zu prüfbaren Elementen, damit Redakteur:innen Entscheidungen treffen können, ohne den Kontext zu verlieren.',
+      'Riley entscheidet nicht für den Redakteur. Er organisiert Befunde zu prüfbaren Elementen, damit Redakteure Entscheidungen treffen können, ohne den Kontext zu verlieren.',
     checks: [
       'Vorgeschlagene Änderungen von Review-Workers',
       'Benötigter Entscheidungstyp',
@@ -1320,10 +1320,10 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     scenarios: [
       {
         title: 'Eine Seite hat viele Empfehlungen.',
-        description: 'Riley organisiert sie zu einer Queue, die die Redakteurin der Reihe nach abarbeiten kann.',
+        description: 'Riley organisiert sie zu einer Queue, die der Redakteur der Reihe nach abarbeiten kann.',
       },
       {
-        title: 'Die Redakteurin braucht Entscheidungsoptionen.',
+        title: 'Der Redakteur braucht Entscheidungsoptionen.',
         description: 'Er zeigt, welche Handlung für jedes Element möglich ist: freigeben, ablehnen, zurückstellen oder zuweisen.',
       },
       {
@@ -1332,7 +1332,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       },
       {
         title: 'Mehrere Workers haben verwandte Probleme angemerkt.',
-        description: 'Er gruppiert sie, damit die Redakteurin das Gesamtbild sieht, nicht verstreute Notizen.',
+        description: 'Er gruppiert sie, damit der Redakteur das Gesamtbild sieht, nicht verstreute Notizen.',
       },
       {
         title: 'Eine Seite bewegt sich auf die Freigabe zu.',
@@ -1348,9 +1348,9 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       'Riley gibt Änderungen nicht frei, bearbeitet keinen Content, wendet keine Korrekturen an und veröffentlicht nicht. Er koordiniert die Review-Queue, damit Menschen entscheiden können.',
     boundaryChecklist: [
       'Riley organisiert vorgeschlagene Änderungen zu einer Queue, er gibt sie nie selbst frei oder lehnt sie ab.',
-      'Prioritätskennzeichnungen sind ein Ausgangspunkt für Redakteur:innen, keine endgültige Rangfolge.',
+      'Prioritätskennzeichnungen sind ein Ausgangspunkt für Redakteure, keine endgültige Rangfolge.',
       'Ungelöste Elemente bleiben in der Queue sichtbar, statt stillschweigend gestrichen zu werden.',
-      'Endgültige Entscheidungen und Content-Änderungen bleiben bei der Redakteurin und dem zuständigen Worker.',
+      'Endgültige Entscheidungen und Content-Änderungen bleiben beim Redakteur und dem zuständigen Worker.',
     ],
     willNot: [
       { color: 'red', text: 'Elemente automatisch freigeben oder ablehnen' },
@@ -1369,7 +1369,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
       },
       {
         id: 'review',
-        description: 'Fasst Befunde und Review-Maßnahmen für die Redakteurin zusammen.',
+        description: 'Fasst Befunde und Review-Maßnahmen für den Redakteur zusammen.',
         outputLabel: 'Review-Zusammenfassung',
         ctaLabel: 'Wie Helen zusammenfasst',
       },
@@ -1382,7 +1382,7 @@ export const deBatch4: Record<string, WorkerProfileTranslatable> = {
     ],
     ctaH2: 'Review-Arbeit handhabbar machen.',
     ctaPara:
-      'Riley verwandelt Worker-Befunde in strukturierte Entscheidungen, damit Redakteur:innen von der Analyse zur Handlung übergehen können.',
+      'Riley verwandelt Worker-Befunde in strukturierte Entscheidungen, damit Redakteure von der Analyse zur Handlung übergehen können.',
     guidanceFooterLabel: 'QUEUE-STATUS',
     guidanceFooterValue: 'Review ausstehend · Entscheidungen erforderlich',
   },
