@@ -39,6 +39,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/prestobot.md
 - Focus: About WordPrestoBot, the Word Presto web crawler, and how to control it with robots.txt.
 
+### Bring accessibility issues into the review workflow.
+
+- HTML: https://wordpresto.com/workers/accessibility/
+- Markdown: https://wordpresto.com/workers/accessibility/index.md
+- Legacy Markdown: https://wordpresto.com/pages/workers/accessibility.md
+- Focus: Mara reviews accessibility signals available in the page evidence, flagging weak heading structure, missing image alternatives, unclear link text, readability risks and checks that need human confirmation.
+
 ### Make approval easier to trust.
 
 - HTML: https://wordpresto.com/workers/approval-report/

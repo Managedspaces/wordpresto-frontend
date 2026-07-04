@@ -24,6 +24,7 @@ The product is review-led. Workers assist with structured content work, but huma
 
 ## Worker profiles
 
+- [Bring accessibility issues into the review workflow.](https://wordpresto.com/workers/accessibility/index.md): Mara reviews accessibility signals available in the page evidence, flagging weak heading structure, missing image alternatives, unclear link text, readability risks and checks that need human confirmation.
 - [Make approval easier to trust.](https://wordpresto.com/workers/approval-report/index.md): Audrey summarises what is ready, what needs attention and what should not move forward, so humans can make a confident sign-off decision.
 - [Check whether the draft actually follows the brief.](https://wordpresto.com/workers/brief-draft-alignment/index.md): Ada checks that the draft actually fulfils the brief, surfacing gaps, drift and misaligned sections before they go any further.
 - [Find pages that are trying to do too many jobs.](https://wordpresto.com/workers/cannibalisation-overlap/index.md): Cleo reviews a page for intent conflict, overlap risk and unclear content role, helping editors decide whether to sharpen, support, consolidate or manually check a page against others.

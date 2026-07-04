@@ -192,7 +192,7 @@ export const WORKERS: WorkerEntry[] = [
   { id: 'evidence', name: 'Kenji', roleTitle: 'Evidence reviewer', department: 'Provenance', team: 'seo', status: 'available', slug: null, portrait: 3 },
   { id: 'internal_linking', name: 'Leo', roleTitle: 'Content relationship specialist', department: 'Content Relationships', team: 'seo', status: 'available', slug: null, portrait: 9 },
   { id: 'schema', name: 'Sofia', roleTitle: 'Structured-data reviewer', department: 'Structured Data', team: 'seo', status: 'available', slug: 'schema', portrait: 10 },
-  { id: 'accessibility', name: 'Mara', roleTitle: 'Accessibility reviewer', department: 'Accessibility', team: 'seo', status: 'available', slug: null, portrait: 24 },
+  { id: 'accessibility', name: 'Mara', roleTitle: 'Accessibility reviewer', department: 'Accessibility', team: 'seo', status: 'available', slug: 'accessibility', portrait: 24 },
   { id: 'cannibalisation_overlap', name: 'Cleo', roleTitle: 'Content cannibalisation analyst', department: 'Content Cannibalisation', team: 'seo', status: 'available', slug: 'cannibalisation-overlap', portrait: 26 },
   { id: 'content_decay', name: 'Faye', roleTitle: 'Content freshness analyst', department: 'Content Freshness', team: 'seo', status: 'available', slug: 'content-decay', portrait: 27 },
   { id: 'topical_authority', name: 'Zara', roleTitle: 'Topical coverage analyst', department: 'Topical Coverage', team: 'seo', status: 'available', slug: 'topical-authority', portrait: 28 },

@@ -5675,6 +5675,160 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'INSPECTION STATUS',
     guidanceFooterValue: 'Page signals ready for review',
   },
+  // 37. Mara - Accessibility Worker
+  {
+    id: 'accessibility',
+    slug: 'accessibility',
+    name: 'Mara',
+    role: 'Accessibility Worker',
+    roleTitle: 'Accessibility Reviewer',
+    department: 'Accessibility',
+    team: 'seo',
+    stage: 'Accessibility review',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-24-192.webp',
+    portrait2x: '/agents/profiles/profile-24-384.webp',
+    seoTitle: 'Accessibility Worker | WordPresto',
+    metaDescription:
+      'Mara reviews accessibility signals available in the page evidence, flagging weak heading structure, missing image alternatives, unclear link text, readability risks and checks that need human confirmation.',
+    h1: 'Bring accessibility issues into the review workflow.',
+    heroPara1:
+      'Accessibility affects whether people can read, navigate, understand and use a page. It should be visible before content reaches approval. Mara reviews accessibility signals available in the page evidence. She flags issues such as weak heading structure, missing image alternatives, unclear link text, readability risks and manual checks that need human confirmation.',
+    heroPara2:
+      'For page reviews, technical audits, content quality checks and final review before approval.',
+    heroWorksAlongside: ['Patrick', 'Maya', 'Dana'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Accessibility review',
+      output: 'Output · Accessibility findings',
+    },
+    problemEyebrow: 'Where accessibility review goes wrong',
+    problemH2: 'Teams often check accessibility too late.',
+    problemPara:
+      'If heading logic is confusing, link text is vague or images lack useful alternatives, the issue should be visible during review, not after launch. Mara brings those signals into the editorial workflow early.',
+    problemAnnotation: '↘ surface it during review, not after launch',
+    beforeStamp: 'Checked too late',
+    beforeHtml: `<p>A page ships with confusing heading order, vague link text and missing image alternatives, none of it noticed until after launch.</p>`,
+    beforeTags: ['Heading order unclear', 'Vague link text', 'Missing alt text', 'Found after launch'],
+    beforeNote: 'the issue surfaces once it is already live',
+    afterStamp: 'Accessibility review',
+    afterHtml: `<p>Mara flags the heading, link text, image and readability issues before the page reaches approval.</p>`,
+    afterTags: ['Issues flagged early', 'Manual checks listed', 'Fix guidance ready', 'Reviewed before approval'],
+    afterNote: 'the issue is visible before launch',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'Accessibility review without false certification.',
+    helpsPara:
+      'Mara turns available page signals into reviewable accessibility findings. She does not claim compliance or replace manual testing.',
+    checks: [
+      'Heading structure',
+      'Image alt-text presence',
+      'Link text clarity',
+      'Readability signals',
+      'Manual accessibility checks needed',
+      'Accessibility risks visible from page evidence',
+    ],
+    improves: [
+      'Early visibility of accessibility issues',
+      'Editorial handoff quality',
+      'Common page-level accessibility review',
+      'Readiness before approval',
+    ],
+    prepares: [
+      'Accessibility findings',
+      'Manual verification checklist',
+      'Issue severity notes',
+      'Fix guidance for human review',
+    ],
+    surfaces: [
+      'Missing or weak image alternatives',
+      'Vague link text',
+      'Heading structure concerns',
+      'Checks needing a human or specialist audit',
+    ],
+    ioH2: 'What Mara works from, and what she produces.',
+    worksFrom: [
+      'Page structure',
+      'Image signals',
+      'Link and anchor text',
+      'Readability signals',
+      'Technical review findings',
+    ],
+    produces: [
+      'Accessibility review',
+      'Detected issues',
+      'Manual checks',
+      'Fix guidance',
+      'Review status',
+    ],
+    scenarios: [
+      {
+        title: 'A page is being reviewed before approval.',
+        description: 'Mara adds an accessibility pass to the review before the page moves forward.',
+      },
+      {
+        title: 'Technical review found structural issues.',
+        description: 'She checks whether those issues also affect heading logic or navigation.',
+      },
+      {
+        title: 'A page contains many images.',
+        description: 'Mara flags images missing useful alternatives for editors to address.',
+      },
+      {
+        title: 'Links are vague or repetitive.',
+        description: 'She surfaces link text that needs to be clearer for readers and assistive technology.',
+      },
+      {
+        title: 'Heading structure looks messy.',
+        description: 'Mara reviews the heading order and flags where it may confuse readers or screen readers.',
+      },
+      {
+        title: 'The team needs honest accessibility notes.',
+        description: 'She reports what the evidence supports, and lists what still needs a manual check.',
+      },
+    ],
+    boundaryH2: 'Mara flags accessibility issues. She does not certify compliance.',
+    boundaryPara:
+      'Mara provides a review-only accessibility pass based on available page evidence. She does not replace manual testing, screen-reader testing, legal review or a formal WCAG audit.',
+    boundaryChecklist: [
+      'Mara flags issues visible in the page evidence, she never edits headings, links or alt text herself.',
+      'Her findings are a starting point for review, not a compliance certification.',
+      'Checks she cannot verify from available evidence are listed as manual checks, not silently skipped.',
+      'Formal accessibility audits and legal compliance decisions stay with a qualified human reviewer.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Certify accessibility compliance' },
+      { color: 'red', text: 'Run full manual assistive-technology testing' },
+      { color: 'red', text: 'Edit headings, links or alt text automatically' },
+      { color: 'red', text: 'Publish accessibility fixes' },
+      { color: 'red', text: 'Invent issues not supported by page evidence' },
+    ],
+    relatedH2: 'Workers Mara works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'page_inspector',
+        description: 'Extracts the page structure, links and image signals Mara reviews.',
+        outputLabel: 'Page signals',
+        ctaLabel: 'How Patrick inspects',
+      },
+      {
+        id: 'technical_health',
+        description: 'Checks technical SEO and related page health signals.',
+        outputLabel: 'Technical findings',
+        ctaLabel: 'How Maya reviews',
+      },
+      {
+        id: 'editorial_approval_gate',
+        description: 'Uses accessibility status as part of readiness review.',
+        outputLabel: 'Approval gate',
+        ctaLabel: 'How Dana decides',
+      },
+    ],
+    ctaH2: 'Make accessibility visible before approval.',
+    ctaPara:
+      'Mara helps editors see accessibility issues early, clearly and honestly before content moves forward.',
+    guidanceFooterLabel: 'ACCESSIBILITY STATUS',
+    guidanceFooterValue: 'Needs review · checks ready',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {
