@@ -10,7 +10,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       'Quand plusieurs rédacteurs et outils d’IA touchent le même site, la voix de marque dérive page après page. Helena lit vos règles de voix et vos exemples validés, puis vérifie et façonne chaque brouillon, pour qu’il sonne encore comme vous au moment d’arriver en relecture.',
     heroPara2:
       'Pour les équipes qui ont besoin d’une voix cohérente sur les briefs, les brouillons, les relectures et le contenu assisté par IA.',
-    problemEyebrow: 'Où la voix commence à dériver',
+    problemEyebrow: 'Là où la voix commence à dériver',
     problemH2: 'La voix de marque est la première chose qui se casse dans un flux de travail assisté par IA.',
     problemPara:
       'Générer du texte n’a jamais été la partie difficile. La difficulté, c’est que chaque rédacteur, et chaque outil d’IA, a sa propre voix par défaut. Sur un vrai site, cette dérive fait toute la différence entre une marque et un empilement de pages.',
@@ -108,7 +108,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Passer outre un éditeur' },
       { color: 'amber', text: 'Aplatir un choix délibéré' },
     ],
-    relatedH2: 'Les Workers à qui Helena transmet le travail.',
+    relatedH2: 'Les Workers aux côtés desquels Helena travaille.',
     relatedWorkerIds: [
       {
         id: 'draft_rewrite',
@@ -144,7 +144,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       'La plupart des réécritures partent du mauvais endroit. Elles changent ce qui est facile à changer plutôt que ce qui doit vraiment changer. Omar lit d’abord la page existante : ce qu’elle cherche à faire, si ça fonctionne, et ce qui mérite d’être gardé. Cela donne au travail qui suit une base claire.',
     heroPara2:
       'Pour les revues de contenu, les migrations de site, et toute réécriture qui doit partir de preuves plutôt que d’instinct.',
-    problemEyebrow: 'Où les réécritures tournent mal',
+    problemEyebrow: 'Là où les réécritures tournent mal',
     problemH2: 'Réécrire sans lire, c’est la meilleure façon de perdre ce qui fonctionnait déjà.',
     problemPara:
       'Une page en ligne depuis deux ans contient quelque chose : une structure à laquelle les lecteurs ont répondu, un ton qui convenait, des sections bien positionnées. Réécrire à partir de zéro sans d’abord relire ce qui existe, c’est démarrer chaque projet plus loin en arrière que nécessaire.',
@@ -242,7 +242,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Trancher le périmètre final' },
       { color: 'amber', text: 'Passer outre les priorités du client' },
     ],
-    relatedH2: 'Les Workers à qui Omar transmet le travail.',
+    relatedH2: 'Les Workers aux côtés desquels Omar travaille.',
     relatedWorkerIds: [
       {
         id: 'structure',
@@ -278,7 +278,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       'Un contenu sans structure est difficile à relire, facile à mal lire, et frustrant à éditer. Marcus cartographie la hiérarchie des titres, l’ordre des sections et le fil du contenu, pour que chaque brouillon démarre ou se poursuive avec une forme qui a du sens éditorialement et pour le lecteur.',
     heroPara2:
       'Pour les pages qui ont besoin d’une passe structurelle avant la rédaction, d’un remodelage en cours de brouillon, ou d’une réorganisation après rédaction.',
-    problemEyebrow: 'Où la structure s’effondre',
+    problemEyebrow: 'Là où la structure s’effondre',
     problemH2: 'Un contenu mal structuré ne se répare pas avec une meilleure écriture.',
     problemPara:
       'Vous pouvez améliorer chaque phrase d’une page, elle échouera quand même si les sections sont dans le mauvais ordre, si les titres ne racontent pas une histoire, ou si le point le plus important est enterré au milieu. La structure n’est pas de la mise en forme, c’est de la logique éditoriale.',
@@ -376,7 +376,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Supprimer des sections sans instruction' },
       { color: 'amber', text: 'Imposer une structure contraire au brief' },
     ],
-    relatedH2: 'Les Workers à qui Marcus transmet le travail.',
+    relatedH2: 'Les Workers aux côtés desquels Marcus travaille.',
     relatedWorkerIds: [
       {
         id: 'content_brief_builder',
@@ -412,7 +412,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       'La plupart des briefs de contenu sont soit trop minces pour aider, soit trop directifs pour laisser de la place à l’écriture. Luca construit des briefs structurés qui donnent aux rédacteurs le contexte et la direction dont ils ont besoin sans écrire à leur place : objectif, audience, angle, direction de ton et un plan de sections clair.',
     heroPara2:
       'Pour les nouveaux projets de contenu, les briefs d’agence, les flux assistés par IA où le résultat a besoin d’un point de départ clair.',
-    problemEyebrow: 'Où les briefs laissent tomber les rédacteurs',
+    problemEyebrow: 'Là où les briefs laissent tomber les rédacteurs',
     problemH2: 'Un brief faible produit un brouillon qu’il faudra de toute façon réécrire.',
     problemPara:
       'Un brief qui dit « écrivez sur notre service pour nos clients » n’est pas un brief. C’est une invitation à deviner. Chaque heure qu’un rédacteur passe à travailler à partir d’un brief vague est une heure passée à produire un contenu qui devra être révisé structurellement avant de pouvoir servir.',
@@ -510,7 +510,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Prendre des décisions de positionnement de marque' },
       { color: 'amber', text: 'Passer outre un périmètre convenu' },
     ],
-    relatedH2: 'Les Workers à qui Luca transmet le travail.',
+    relatedH2: 'Les Workers aux côtés desquels Luca travaille.',
     relatedWorkerIds: [
       {
         id: 'draft_rewrite',
@@ -546,7 +546,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       'Un brouillon qui s’éloigne du brief, enterre le point principal ou fait deux fois la longueur nécessaire n’est pas prêt pour la relecture. Ellis réécrit des brouillons qui suivent la structure du brief, mettent en avant ce qui compte et se lisent assez bien pour qu’un éditeur puisse en tirer des décisions.',
     heroPara2:
       'Pour les premiers jets, les brouillons générés par IA qui ont besoin d’être façonnés, et les réécritures quand le brief a changé.',
-    problemEyebrow: 'Où les brouillons échouent',
+    problemEyebrow: 'Là où les brouillons échouent',
     problemH2: 'Un brouillon qui part dans tous les sens ne se corrige pas par petites touches. Il faut le réécrire.',
     problemPara:
       'La plupart des premiers jets, qu’ils viennent de rédacteurs ou d’IA, couvrent le bon terrain sans le couvrir dans le bon ordre. Le point principal est enterré. Les sections dérivent. L’introduction passe trois paragraphes à se mettre en jambes. Rendre un brouillon prêt pour la relecture demande plus que corriger des phrases.',
@@ -644,7 +644,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Passer outre le périmètre du brief' },
       { color: 'amber', text: 'Prendre des décisions de ton sans brief' },
     ],
-    relatedH2: 'Les Workers à qui Ellis transmet le travail.',
+    relatedH2: 'Les Workers aux côtés desquels Ellis travaille.',
     relatedWorkerIds: [
       {
         id: 'voice_style',
@@ -680,7 +680,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       'Un brouillon qui part vers un client ou une réunion de relecture avec des problèmes structurels, des sections floues ou un écart au brief fait perdre le temps de tout le monde. Quinn vérifie chaque brouillon avant qu’il n’avance : est-il clair, est-il structuré, suit-il le brief, et est-il prêt pour l’étape suivante.',
     heroPara2:
       'Pour les points de contrôle qualité avant la livraison client, avant le transfert au CMS, et avant toute approbation de contenu.',
-    problemEyebrow: 'Où les brouillons avancent trop tôt',
+    problemEyebrow: 'Là où les brouillons avancent trop tôt',
     problemH2: 'Un brouillon qui arrive en relecture trop tôt coûte plus cher que d’attendre.',
     problemPara:
       'Envoyer un brouillon à un client ou à un éditeur senior avant qu’il ne soit prêt n’est pas de l’efficacité ; c’est un investissement à rebours. Le coût d’une révision structurelle après un retour client est plus élevé qu’une passe de relecture avant que le brouillon ne quitte l’équipe.',
@@ -778,7 +778,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Prendre les décisions finales sur le contenu' },
       { color: 'amber', text: 'Approuver un contenu pour publication' },
     ],
-    relatedH2: 'Les Workers à qui Quinn transmet le travail.',
+    relatedH2: 'Les Workers aux côtés desquels Quinn travaille.',
     relatedWorkerIds: [
       {
         id: 'section_rewrite',
@@ -814,7 +814,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       'Quand les notes de relecture signalent une section précise comme mince, hors brief ou floue, la réponse n’est pas une réécriture complète de la page. Rosa réécrit la section précise qui a besoin d’être corrigée, en travaillant par rapport au brief et dans la voix du contenu environnant, sans perturber ce qui fonctionne.',
     heroPara2:
       'Pour les améliorations ciblées de sections après relecture de brouillon, les corrections en cours de production, et les demandes de révision précises des clients ou des éditeurs.',
-    problemEyebrow: 'Où les sections font défaut aux pages',
+    problemEyebrow: 'Là où les sections font défaut aux pages',
     problemH2: 'Une seule section faible peut compromettre une page qui fonctionne par ailleurs.',
     problemPara:
       'Ce n’est presque jamais toute la page qui a besoin d’être réécrite. C’est généralement la troisième section qui enterre le point clé, ou la section de preuve qui n’a pas assez de matière, ou la conclusion qui ne conclut pas. Réécrire toute la page pour corriger une section gâche le travail déjà bon.',
@@ -911,7 +911,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Publier des changements directement' },
       { color: 'amber', text: 'Modifier le périmètre du brief' },
     ],
-    relatedH2: 'Les Workers avec qui Rosa travaille.',
+    relatedH2: 'Les Workers aux côtés desquels Rosa travaille.',
     relatedWorkerIds: [
       {
         id: 'draft_quality_reviewer',
@@ -947,7 +947,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       'Les décisions d’approbation prises sans une image claire de ce qui est prêt tournent souvent mal de deux façons : on approuve ce qui n’aurait pas dû l’être, ou on bloque ce qui était prêt à avancer. Audrey assemble un rapport d’approbation structuré pour que la personne qui prend la décision de validation ait vraiment l’information dont elle a besoin.',
     heroPara2:
       'Pour les directeurs éditoriaux, les chefs de projet, les gestionnaires de compte et toute personne qui doit prendre une décision d’approbation en confiance sans lire chaque brouillon ligne par ligne.',
-    problemEyebrow: 'Où l’approbation s’effondre',
+    problemEyebrow: 'Là où l’approbation s’effondre',
     problemH2: 'L’approbation n’est fiable que lorsque celui qui approuve a la bonne information.',
     problemPara:
       'La plupart des problèmes d’approbation sont des problèmes d’information. La personne qui valide n’a pas de vue claire sur ce qui a été relu et ce qui ne l’a pas été, ou elle lit chaque brouillon elle-même faute de synthèse. Dans les deux cas, cela prend plus de temps que nécessaire et les décisions sont moins sûres qu’elles ne devraient l’être.',
@@ -1045,7 +1045,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Contourner des signalements de conformité' },
       { color: 'amber', text: 'Marquer un contenu comme prêt sans preuve' },
     ],
-    relatedH2: 'Les Workers avec qui Audrey travaille.',
+    relatedH2: 'Les Workers aux côtés desquels Audrey travaille.',
     relatedWorkerIds: [
       {
         id: 'draft_quality_reviewer',
@@ -1081,7 +1081,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       'Un contenu peut être factuellement exact, bien structuré et sur le brief, et rester plus difficile à lire que nécessaire. Priya resserre les phrases, découpe les paragraphes denses, retire les précautions oratoires inutiles et améliore le fil, sans changer le sens ni perdre la voix.',
     heroPara2:
       'Pour les brouillons prêts sur le fond mais qui ont besoin d’une passe de lisibilité avant la relecture ou la livraison.',
-    problemEyebrow: 'Où la lisibilité échoue',
+    problemEyebrow: 'Là où la lisibilité échoue',
     problemH2: 'Un contenu dense et correct perd quand même des lecteurs.',
     problemPara:
       'La plupart des problèmes de lisibilité ne viennent pas des mots ; ils viennent de la longueur des phrases, de la densité des paragraphes et du rapport entre précautions et affirmations. Un lecteur qui abandonne au troisième paragraphe n’a pas lu le contenu, aussi exact ait-il été.',
@@ -1178,7 +1178,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Passer outre des choix de style délibérés' },
       { color: 'amber', text: 'Simplifier un contenu spécialisé sans indication' },
     ],
-    relatedH2: 'Les Workers avec qui Priya travaille.',
+    relatedH2: 'Les Workers aux côtés desquels Priya travaille.',
     relatedWorkerIds: [
       {
         id: 'draft_rewrite',
@@ -1214,7 +1214,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       'Un brouillon qui a l’air bon mais ne suit pas le brief est un problème qui remontera en relecture ou, pire, à la livraison client. Ada compare le brouillon final au brief d’origine, section par section, et signale tout manque, écart de périmètre ou désalignement avant que le brouillon n’avance.',
     heroPara2:
       'Pour les étapes de relecture de brouillon, les programmes de contenu très cadrés par brief, et tout projet où l’adhésion au brief doit être vérifiée avant la livraison.',
-    problemEyebrow: 'Où les brouillons s’éloignent des briefs',
+    problemEyebrow: 'Là où les brouillons s’éloignent des briefs',
     problemH2: 'Un brouillon qui suit le brief est l’exception, pas la règle.',
     problemPara:
       'Les briefs dérivent pendant la production. Les rédacteurs interprètent différemment. Les outils IA comblent les manques avec leurs propres valeurs par défaut. Au moment où un brouillon arrive en relecture, il couvre souvent un terrain différent de celui du brief. La seule façon de le repérer, c’est de vérifier.',
@@ -1312,7 +1312,7 @@ export const frBatch1: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Passer outre des amendements au brief convenus avec le client' },
       { color: 'amber', text: 'Marquer des manques comme mineurs sans avis éditorial' },
     ],
-    relatedH2: 'Les Workers avec qui Ada travaille.',
+    relatedH2: 'Les Workers aux côtés desquels Ada travaille.',
     relatedWorkerIds: [
       {
         id: 'content_brief_builder',

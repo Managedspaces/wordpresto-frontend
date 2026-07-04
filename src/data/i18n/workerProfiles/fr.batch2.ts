@@ -102,7 +102,7 @@ export const frBatch2: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Approuver un contenu pour publication' },
       { color: 'amber', text: 'Deviner des métadonnées manquantes' },
     ],
-    relatedH2: 'Les Workers avec qui Ravi travaille.',
+    relatedH2: 'Les Workers aux côtés desquels Ravi travaille.',
     relatedWorkerIds: [
       {
         id: 'approval_report',
@@ -615,7 +615,7 @@ export const frBatch2: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Promettre un classement ou du trafic' },
       { color: 'amber', text: 'Bourrer de mots-clés pour tromper la recherche' },
     ],
-    relatedH2: 'Les Workers avec qui Nadia travaille.',
+    relatedH2: 'Les Workers aux côtés desquels Nadia travaille.',
     relatedWorkerIds: [
       {
         id: 'serp_snippet_opportunity',
@@ -743,7 +743,7 @@ export const frBatch2: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Promettre un classement ou du trafic' },
       { color: 'amber', text: 'Imposer une structure qui nuit à la lecture' },
     ],
-    relatedH2: 'Les Workers avec qui Morgan travaille.',
+    relatedH2: 'Les Workers aux côtés desquels Morgan travaille.',
     relatedWorkerIds: [
       {
         id: 'seo_metadata',
@@ -871,7 +871,7 @@ export const frBatch2: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Baliser une page comme ce qu’elle n’est pas' },
       { color: 'amber', text: 'Remplir des champs sans vraies données' },
     ],
-    relatedH2: 'Les Workers avec qui Sofia travaille.',
+    relatedH2: 'Les Workers aux côtés desquels Sofia travaille.',
     relatedWorkerIds: [
       {
         id: 'serp_snippet_opportunity',
@@ -999,7 +999,7 @@ export const frBatch2: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Publier ou mettre quoi que ce soit en ligne' },
       { color: 'amber', text: 'Revendiquer une correction sans relecture humaine' },
     ],
-    relatedH2: 'Les Workers avec qui Maya travaille.',
+    relatedH2: 'Les Workers aux côtés desquels Maya travaille.',
     relatedWorkerIds: [
       {
         id: 'schema',
@@ -1127,7 +1127,7 @@ export const frBatch2: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Revendiquer une relecture qui n’a pas eu lieu' },
       { color: 'amber', text: 'Présumer une autorité que la page n’a pas démontrée' },
     ],
-    relatedH2: 'Les Workers avec qui Alex travaille.',
+    relatedH2: 'Les Workers aux côtés desquels Alex travaille.',
     relatedWorkerIds: [
       {
         id: 'evidence_gap',
@@ -1255,7 +1255,7 @@ export const frBatch2: Record<string, WorkerProfileTranslatable> = {
       { color: 'red', text: 'Approuver une affirmation non étayée' },
       { color: 'amber', text: 'Laisser passer un énoncé à haut risque' },
     ],
-    relatedH2: 'Les Workers avec qui Theo travaille.',
+    relatedH2: 'Les Workers aux côtés desquels Theo travaille.',
     relatedWorkerIds: [
       {
         id: 'trust_author_credibility',
