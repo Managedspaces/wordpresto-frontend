@@ -250,6 +250,19 @@ export const workers: WorkerData[] = [
 // Safe Edit and Publishing are deliberately not exposed.
 export const seoWorkers: WorkerData[] = [
   {
+    id: 'intent_analyst',
+    name: 'Yuna',
+    role: 'Intent Analyst',
+    department: 'Search Intelligence',
+    team: 'seo',
+    stage: 'Search intelligence',
+    summary: 'Reviews whether the content, structure, metadata and next step of a page line up with the likely search or reader intent.',
+    output: 'Intent assessment',
+    image: '/agents/profiles/profile-06-192.webp',
+    image2x: '/agents/profiles/profile-06-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
+  {
     id: 'page_inspector',
     name: 'Patrick',
     role: 'Page Inspector',
