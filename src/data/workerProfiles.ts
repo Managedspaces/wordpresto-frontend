@@ -6136,6 +6136,160 @@ export const workerProfiles: WorkerProfile[] = [
     guidanceFooterLabel: 'EVIDENCE STATUS',
     guidanceFooterValue: 'Limitations flagged · review required',
   },
+  // 40. Leo - Content Relationship Worker
+  {
+    id: 'internal_linking',
+    slug: 'internal-linking',
+    name: 'Leo',
+    role: 'Content Relationship Worker',
+    roleTitle: 'Content Relationship Specialist',
+    department: 'Content Relationships',
+    team: 'seo',
+    stage: 'Content relationships',
+    teamColor: 'var(--team-seo)',
+    portrait: '/agents/profiles/profile-09-192.webp',
+    portrait2x: '/agents/profiles/profile-09-384.webp',
+    seoTitle: 'Content Relationship Worker | WordPresto',
+    metaDescription:
+      'Leo reviews how a page connects to other content: internal links, external links, anchor quality, reader pathways and whether the page appears isolated or poorly connected.',
+    h1: 'Check whether the page connects to the rest of the site.',
+    heroPara1:
+      'A page rarely works alone. It needs related pages, supporting resources, clear next steps and useful internal links. Leo reviews how the page connects to other content. He checks internal links, external links, anchor quality, reader pathways and whether the page appears isolated or poorly connected.',
+    heroPara2:
+      'For page reviews, internal linking checks, content improvement workflows and editorial planning.',
+    heroWorksAlongside: ['Patrick', 'Zara', 'Felix'],
+    heroTagPills: {
+      team: 'Search & SEO',
+      stage: 'Stage · Content relationships',
+      output: 'Output · Link assessment',
+    },
+    problemEyebrow: 'Where content relationships go wrong',
+    problemH2: 'A useful page can still sit outside the journey.',
+    problemPara:
+      'A page may have no clear next step, vague anchor text, weak supporting links, too many distractions or no obvious relationship to the surrounding topic cluster. Leo checks whether the page behaves like part of a connected site.',
+    problemAnnotation: '↘ check the connections, not just the copy',
+    beforeStamp: 'Isolated page',
+    beforeHtml: `<p>The page reads well on its own, but has no clear next step, vague anchor text and no obvious link to the surrounding topic cluster.</p>`,
+    beforeTags: ['No next step', 'Vague anchors', 'Weak cluster link', 'Feels isolated'],
+    beforeNote: 'the page sits outside the journey',
+    afterStamp: 'Relationship review',
+    afterHtml: `<p>Leo reviews the page’s links and pathways and flags where the connections need editorial attention.</p>`,
+    afterTags: ['Pathways reviewed', 'Weak anchors flagged', 'Manual checks listed', 'Ready for review'],
+    afterNote: 'the page’s connections are visible',
+    helpsEyebrow: 'How this Worker helps',
+    helpsH2: 'A page-level relationship pass.',
+    helpsPara:
+      'Leo reviews the links and pathways visible on the page. He does not crawl the whole site or confirm every orphan. He gives editors a grounded page-level relationship review.',
+    checks: [
+      'Internal link presence',
+      'External link use',
+      'Anchor text clarity',
+      'Reader next-step pathways',
+      'Page-level orphan risk',
+      'Supporting content signals',
+    ],
+    improves: [
+      'Reader movement between pages',
+      'Internal link usefulness',
+      'Topic-cluster coherence',
+      'Visibility of weak pathways',
+    ],
+    prepares: [
+      'Link assessment',
+      'Pathway review',
+      'Anchor-quality notes',
+      'Manual site-graph checks',
+    ],
+    surfaces: [
+      'Missing next-step links',
+      'Generic or weak anchors',
+      'Distracting links',
+      'Pages that may need stronger cluster support',
+    ],
+    ioH2: 'What Leo works from, and what he produces.',
+    worksFrom: [
+      'Page links',
+      'Anchor text',
+      'Page structure',
+      'Intent signals',
+      'Content inventory signals',
+    ],
+    produces: [
+      'Relationship review',
+      'Internal link assessment',
+      'Anchor-quality notes',
+      'Reader pathway gaps',
+      'Manual site-graph checks',
+    ],
+    scenarios: [
+      {
+        title: 'A page feels isolated.',
+        description: 'Leo checks whether it has the links and pathways a connected page should have.',
+      },
+      {
+        title: 'Links exist but do not help the reader.',
+        description: 'He reviews anchor text and placement for real usefulness, not just presence.',
+      },
+      {
+        title: 'A topic cluster needs stronger connections.',
+        description: 'Leo hands Zara a relationship review to check against cluster coverage.',
+      },
+      {
+        title: 'A conversion path is unclear.',
+        description: 'He flags where the page lacks a clear next-step link for the reader.',
+      },
+      {
+        title: 'The page has distracting links.',
+        description: 'Leo surfaces links that pull attention away from the page’s purpose.',
+      },
+      {
+        title: 'Link advice needs source context.',
+        description: 'He gives Felix a page-level starting point before a deeper pathway review.',
+      },
+    ],
+    boundaryH2: 'Leo reviews pathways. Editors decide what links change.',
+    boundaryPara:
+      'Leo does not add links, remove links, rewrite anchors or publish changes. He shows what needs review.',
+    boundaryChecklist: [
+      'Leo reviews the links visible on the page, he never adds or removes links himself.',
+      'His review covers the page level, not a confirmed full-site orphan or crawl status.',
+      'Anchor and pathway suggestions are for editors to apply, not automatic changes.',
+      'Linked pages are noted, not fetched and reviewed as if Leo had read them.',
+    ],
+    willNot: [
+      { color: 'red', text: 'Rewrite anchor text automatically' },
+      { color: 'red', text: 'Add or remove links' },
+      { color: 'red', text: 'Confirm full-site orphan status without site data' },
+      { color: 'red', text: 'Fetch linked pages as if they were reviewed' },
+      { color: 'red', text: 'Publish or write to any CMS' },
+    ],
+    relatedH2: 'Workers Leo works alongside.',
+    relatedWorkerIds: [
+      {
+        id: 'page_inspector',
+        description: 'Extracts links and page signals for Leo to review.',
+        outputLabel: 'Page signals',
+        ctaLabel: 'How Patrick inspects',
+      },
+      {
+        id: 'topical_authority',
+        description: 'Reviews topic-cluster support.',
+        outputLabel: 'Coverage review',
+        ctaLabel: 'How Zara reviews',
+      },
+      {
+        id: 'internal_link_pathway',
+        description: 'Reviews internal link pathways in more detail.',
+        outputLabel: 'Pathway review',
+        ctaLabel: 'How Felix reviews',
+      },
+    ],
+    ctaH2: 'Connect the page to the wider content system.',
+    ctaPara:
+      'Leo helps editors see whether the page has useful links, clear anchors and a reader pathway worth following.',
+    guidanceFooterLabel: 'RELATIONSHIP STATUS',
+    guidanceFooterValue: 'Needs review · pathway gaps found',
+  },
 ];
 
 export function getWorkerProfileBySlug(slug: string): WorkerProfile | undefined {

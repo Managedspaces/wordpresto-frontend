@@ -250,6 +250,19 @@ export const workers: WorkerData[] = [
 // Safe Edit and Publishing are deliberately not exposed.
 export const seoWorkers: WorkerData[] = [
   {
+    id: 'internal_linking',
+    name: 'Leo',
+    role: 'Content Relationship Worker',
+    department: 'Content Relationships',
+    team: 'seo',
+    stage: 'Content relationships',
+    summary: 'Reviews how a page connects to other content: internal links, external links, anchor quality, reader pathways and whether the page appears isolated or poorly connected.',
+    output: 'Link assessment',
+    image: '/agents/profiles/profile-09-192.webp',
+    image2x: '/agents/profiles/profile-09-384.webp',
+    teamColor: 'var(--team-seo)',
+  },
+  {
     id: 'evidence',
     name: 'Kenji',
     role: 'Evidence Worker',

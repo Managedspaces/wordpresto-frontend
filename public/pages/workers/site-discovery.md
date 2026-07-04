@@ -121,4 +121,4 @@ Claire helps organise the site for review. She does not decide strategy, delete 
 
 - **Patrick — Page Inspector**: Inspects individual pages once they are selected for review. Output: Page signals.
 - **Nora — Content Inventory Worker**: Classifies pages as content assets and records planning signals. Output: Inventory review.
-- **internal_linking**: Reviews how selected pages connect to related content. Output: Link assessment.
+- **Leo — Content Relationship Worker**: Reviews how selected pages connect to related content. Output: Link assessment.
