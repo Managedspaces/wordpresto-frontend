@@ -278,6 +278,15 @@ export const siteRoutes: SiteRoute[] = [
     changefreq: 'yearly',
     priority: 0.2,
   },
+  {
+    path: '/data-deletion/',
+    label: 'Data Deletion Instructions',
+    description: 'How to request deletion of the personal data Word Presto holds about you.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'yearly',
+    priority: 0.2,
+  },
 
   // Machine-readable resources: surfaced on the HTML sitemap, not in sitemap.xml.
   {
