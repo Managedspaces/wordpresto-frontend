@@ -37,6 +37,7 @@ const ul = (items: string[]): LegalBlock => ({ type: 'ul', items });
 
 const EFFECTIVE_DATE = '3 July 2026';
 const CONTACT_EMAIL = 'hello@wordpresto.com';
+const PRIVACY_EMAIL = 'privacy@wordpresto.com';
 const COMPANY = 'Aestute Ltd T/A Word Presto';
 
 export const privacyPolicy: LegalPageContent = {
@@ -368,9 +369,62 @@ export const fairUsePolicy: LegalPageContent = {
   ],
 };
 
+export const dataDeletionInstructions: LegalPageContent = {
+  slug: 'data-deletion',
+  navLabel: 'Data Deletion',
+  title: 'Data Deletion Instructions',
+  seoTitle: 'Data Deletion Instructions | Word Presto',
+  metaDescription:
+    'How to request deletion of the personal data Word Presto holds about you, including data linked to a connected Meta (Facebook) account.',
+  effectiveDate: EFFECTIVE_DATE,
+  intro: [
+    `This page explains how to request deletion of the personal data ${COMPANY} ("Word Presto", "we", "us", "our") holds about you across wordpresto.com and app.wordpresto.com, and applies to anyone who has used the waitlist, created an App account, or connected a third-party account such as Meta (Facebook) to the Service.`,
+  ],
+  sections: [
+    {
+      heading: '1. How to request deletion',
+      blocks: [
+        p(`Send a deletion request to ${PRIVACY_EMAIL} from the email address associated with your account or waitlist application. Include your name and, if you have one, your App account email, so we can locate your data.`),
+      ],
+    },
+    {
+      heading: '2. What we delete',
+      blocks: [
+        p('On a verified request, we delete or anonymise the personal data we hold about you, including:'),
+        ul([
+          'Waitlist application details (name, email, company, role, use case, country)',
+          'App account details (name, email, hashed password) and the project data associated with your account',
+          'Access tokens and data for any third-party integration you connected, including Meta (Facebook), Google, Bing Webmaster Tools, DataForSEO, GitHub, WordPress or Sanity',
+          'Support correspondence linked to your account',
+        ]),
+        p('Some information may be retained for a limited period where we are required to keep it for legal, tax or accounting reasons, or to prevent fraud, as described in our Privacy Policy.'),
+      ],
+    },
+    {
+      heading: '3. Deleting data from a connected Meta account',
+      blocks: [
+        p('If you connected a Meta (Facebook) account to Word Presto, deleting your Word Presto account or sending a request as above removes the data we hold from that connection, including any access token and any data retrieved through it. This does not delete your Meta account itself; manage that directly with Meta.'),
+      ],
+    },
+    {
+      heading: '4. Response time',
+      blocks: [
+        p('We aim to complete verified deletion requests within 30 days and will confirm by email once your data has been deleted.'),
+      ],
+    },
+    {
+      heading: '5. Contact us',
+      blocks: [
+        p(`Questions about this page, or a deletion request, can be sent to ${PRIVACY_EMAIL}.`),
+      ],
+    },
+  ],
+};
+
 export const legalPages: LegalPageContent[] = [
   privacyPolicy,
   termsAndConditions,
   cookiePolicy,
   fairUsePolicy,
+  dataDeletionInstructions,
 ];
