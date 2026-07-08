@@ -413,3 +413,12 @@ worker-by-worker using actual traffic data once P0/P1 ship.
 - Automatic browser-language redirect.
 - Automatic translation pipeline for new pages (see decision 5 above).
 - hreflang cross-linking between locale variants (see "Known gap" above).
+
+## Deploy pipeline check (2026-07-08)
+
+Confirmed via GitHub's API that the Word Presto tracking-tag change
+(PR #102) is merged into `main` and the file content on `main` HEAD
+includes it. This doc-only change (this paragraph) is a follow-up PR to
+isolate whether merges to `main` are reaching the live Vercel production
+deployment, since the Site Signals dashboard reported no events received
+after the tracking-tag merge.
