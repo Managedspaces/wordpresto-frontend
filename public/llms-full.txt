@@ -9,6 +9,7 @@ This file consolidates the main public WordPresto marketing and Worker content f
 - Workers directory: https://wordpresto.com/workers/index.md
 - SEO Workers directory: https://wordpresto.com/workers/seo/index.md
 - WordPrestoBot crawler: https://wordpresto.com/prestobot/index.md
+- Pricing: https://wordpresto.com/pricing/index.md
 - Bring accessibility issues into the review workflow.: https://wordpresto.com/workers/accessibility/index.md
 - Make approval easier to trust.: https://wordpresto.com/workers/approval-report/index.md
 - Check whether the draft actually follows the brief.: https://wordpresto.com/workers/brief-draft-alignment/index.md
@@ -645,6 +646,49 @@ If a request claims to be WordPrestoBot but does not link to this page, treat it
 ## Questions or concerns?
 
 If WordPrestoBot is causing problems, or you would like it to stop visiting, the fastest fix is the robots.txt rule above. You can also reach us at hello@wordpresto.com. Tell us the domain and we will help.
+
+---
+
+# Pricing
+
+Canonical: https://wordpresto.com/pricing/
+Markdown: https://wordpresto.com/pricing/index.md
+
+# One pool of credits for the whole workflow.
+
+Pick a monthly or annual plan, spend credits across planning, writing, review, SEO research, site analysis and publishing, and top up when a busy month needs more. Prices are served live from the Word Presto app.
+
+## How pricing works
+
+- Word Presto is priced as monthly or annual plans, each including a monthly pool of credits.
+- Credits are the one currency across the workflow: planning, briefs, drafting, review, SEO research, site crawling and analysis, publishing preparation and social publishing all draw from the same pool.
+- Annual billing is available on plans that offer it, at a saving over paying monthly.
+- One-time top-up packs add extra credits for heavier months without a second subscription.
+
+Current plan prices, included credits and top-up pack prices are served live from the Word Presto app on the pricing page itself: https://wordpresto.com/pricing/. They are not mirrored here because this file would go stale.
+
+## What a credit buys.
+
+Credits are the one currency across the workflow. Here is what typical work costs, so the plan sizes above make practical sense.
+
+- X post: 500 credits (1,500 with a link)
+- LinkedIn, Facebook or Instagram post: 300 credits
+- Keyword analysis run: 250 credits
+- Article workflow: 3,000 credits
+- SEO audit: 6,000 credits
+- Site crawl and analysis pack: 1,500 credits
+
+## Notes
+
+Example usage is illustrative. Credits can be mixed across writing, editing, SEO research, site analysis, crawling and social publishing. External data and publishing actions may use premium credits because they rely on third-party API costs.
+
+Prices exclude VAT.
+
+## Early access
+
+Word Presto is in early access. Join now and we will be in touch when your place is ready, with current pricing included.
+
+Join now: https://wordpresto.com/waitlist
 
 ---
 

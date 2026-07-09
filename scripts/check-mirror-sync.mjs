@@ -101,6 +101,7 @@ const contentPages = [
   { route: '/workflow-demo/', md: 'workflow-demo/index.md' },
   { route: '/workers/', md: 'workers/index.md' },
   { route: '/prestobot/', md: 'prestobot/index.md' },
+  { route: '/pricing/', md: 'pricing/index.md' },
   // Homepage locale mirrors (src/data/i18n/home.ts) — see context.md.
   { route: '/pt/', md: 'pt/index.md' },
   { route: '/pt-br/', md: 'pt-br/index.md' },

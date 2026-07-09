@@ -22,6 +22,7 @@ import { workerProfiles } from '../src/data/workerProfiles';
 import { workflowDemo } from '../src/data/staticPages';
 import { workersHubContent, seoWorkersContent } from '../src/data/i18n/workersDirectory';
 import { prestobotContent } from '../src/data/i18n/prestobot';
+import { pricingContent } from '../src/data/i18n/pricing';
 
 const workersDirectory = workersHubContent.en;
 const seoWorkersDirectory = seoWorkersContent.en;
@@ -264,6 +265,61 @@ function renderPrestobotMarkdown() {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Render pricing page as Markdown                                     */
+/* ------------------------------------------------------------------ */
+// Deliberately number-free for plan prices: the live page fetches plans and
+// top-up packs from the app's public pricing API at load time, so any prices
+// written here would go stale. The mirror describes the pricing model in
+// prose and points readers at the live page. The example workflow credit
+// costs ARE stable marketing copy (same source the page uses), so they stay.
+function renderPricingMarkdown() {
+  const pricing = pricingContent.en;
+  return [
+    `---`,
+    `title: "${pricing.seoTitle.replace(/"/g, '\\"')}"`,
+    `description: "${pricing.metaDescription.replace(/"/g, '\\"')}"`,
+    `canonical: "${SITE_URL}/pricing/"`,
+    `focus: "Pricing, credit plans and top-up packs"`,
+    `---`,
+    ``,
+    `# ${pricing.h1}`,
+    ``,
+    pricing.intro,
+    ``,
+    `## How pricing works`,
+    ``,
+    `- Word Presto is priced as monthly or annual plans, each including a monthly pool of credits.`,
+    `- Credits are the one currency across the workflow: planning, briefs, drafting, review, SEO research, site crawling and analysis, publishing preparation and social publishing all draw from the same pool.`,
+    `- Annual billing is available on plans that offer it, at a saving over paying monthly.`,
+    `- One-time top-up packs add extra credits for heavier months without a second subscription.`,
+    ``,
+    `Current plan prices, included credits and top-up pack prices are served live from the Word Presto app on the pricing page itself: ${SITE_URL}/pricing/. They are not mirrored here because this file would go stale.`,
+    ``,
+    `## ${pricing.rateH2}`,
+    ``,
+    pricing.rateBody,
+    ``,
+    ...pricing.exampleCosts.map(
+      (item) =>
+        `- ${item.label}: ${item.credits.toLocaleString('en-GB')} credits${item.note ? ` (${item.note})` : ''}`,
+    ),
+    ``,
+    `## Notes`,
+    ``,
+    pricing.footnoteUsage,
+    ``,
+    pricing.footnoteVat,
+    ``,
+    `## Early access`,
+    ``,
+    pricing.ctaBody,
+    ``,
+    `Join now: ${SITE_URL}/waitlist`,
+    ``,
+  ].join('\n');
+}
+
+/* ------------------------------------------------------------------ */
 /*  Render worker profile as Markdown                                   */
 /* ------------------------------------------------------------------ */
 function renderWorkerMarkdown(w: (typeof workerProfiles)[number]) {
@@ -452,6 +508,11 @@ writeMirror('workflow-demo/index.md', workflowDemoMd);
 const prestobotMd = renderPrestobotMarkdown();
 writeMirror('pages/prestobot.md', prestobotMd);
 writeMirror('prestobot/index.md', prestobotMd);
+
+// Pricing page
+const pricingMd = renderPricingMarkdown();
+writeMirror('pages/pricing.md', pricingMd);
+writeMirror('pricing/index.md', pricingMd);
 
 // Workers index (content)
 const workersIndexMd = renderWorkersIndexMarkdown();

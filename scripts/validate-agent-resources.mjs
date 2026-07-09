@@ -20,10 +20,12 @@ const requiredFiles = [
   'workflow-demo/index.md',
   'workers/index.md',
   'workers/seo/index.md',
+  'pricing/index.md',
   // Legacy mirrors (read by generate-llms.mjs)
   'pages/index.md',
   'pages/workflow-demo.md',
   'pages/workers/index.md',
+  'pages/pricing.md',
   // Discovery files
   '.well-known/mcp.json',
   '.well-known/webmcp.json',

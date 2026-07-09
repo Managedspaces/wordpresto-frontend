@@ -1,0 +1,1104 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { pricingContent } from '@/data/i18n/pricing';
+import { commonStrings } from '@/data/i18n/common';
+import { localeHref, type Locale } from '@/i18n/locales';
+import { absoluteUrl, breadcrumbList } from '@/lib/schema';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = pricingContent[locale] ?? pricingContent.en;
+const c = commonStrings[locale];
+
+const canonical = locale === 'en'
+  ? 'https://wordpresto.com/pricing/'
+  : `https://wordpresto.com${localeHref(locale, '/pricing/')}`;
+
+const waitlistHref = localeHref(locale, '/waitlist');
+
+// Everything the client-side script needs: the API base, the join link
+// and the locale strings. Serialised into #pricing-config server-side so the
+// script never duplicates copy (same pattern as WaitlistPage's #wl-i18n).
+// Plan prices and credits are NOT here: they come from the live API.
+const clientConfig = {
+  apiBase: import.meta.env.PUBLIC_APP_API_BASE || 'https://app.wordpresto.com',
+  waitlistHref,
+  usageItems: t.exampleCosts
+    .filter((item) => item.onCard)
+    .sort((a, b) => (a.cardOrder ?? 99) - (b.cardOrder ?? 99))
+    .map(({ credits, singular, plural }) => ({ credits, singular, plural })),
+  strings: {
+    billingMonthly: t.billingMonthly,
+    billingAnnual: t.billingAnnual,
+    perMonth: t.perMonth,
+    perYear: t.perYear,
+    billedMonthly: t.billedMonthly,
+    monthlyOnlyNote: t.monthlyOnlyNote,
+    oneTimeLabel: t.oneTimeLabel,
+    annualEquivalentTemplate: t.annualEquivalentTemplate,
+    annualSavingTemplate: t.annualSavingTemplate,
+    creditsTemplate: t.creditsTemplate,
+    usageHeading: t.usageHeading,
+    usageOrPrefix: t.usageOrPrefix,
+    topUpsAvailable: t.topUpsAvailable,
+    planCta: t.planCta,
+    packCreditsSuffix: t.packCreditsSuffix,
+    packKindLabel: t.packKindLabel,
+  },
+};
+
+const jsonLd = [
+  breadcrumbList([
+    { name: c.home, url: absoluteUrl(locale, '/') },
+    { name: t.breadcrumbCurrent, url: canonical },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: t.h1,
+    description: t.metaDescription,
+    url: canonical,
+  },
+];
+---
+
+<BaseLayout
+  pageTitle={t.h1}
+  seoTitle={t.seoTitle}
+  description={t.metaDescription}
+  canonical={canonical}
+  jsonLd={jsonLd}
+>
+
+  <!-- ===================== MASTHEAD ===================== -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <nav class="masthead-nav masthead-nav--left">
+        <a href={waitlistHref} class="nav-link">{c.signIn}</a>
+        <a href={`${localeHref(locale, '/')}#product`} class="nav-link">{c.product}</a>
+        <a href={`${localeHref(locale, '/')}#capabilities`} class="nav-link">{c.workflow}</a>
+      </nav>
+      <a href={localeHref(locale, '/')} class="masthead-logo">
+        <img src="/brand/main-logo.png" alt="Word Presto — the content engine behind publishing" height="110" />
+      </a>
+      <nav class="masthead-nav masthead-nav--right">
+        <a href={localeHref(locale, '/workers/')} class="nav-link">{c.workers}</a>
+        <a href="/pricing/" class="nav-link" aria-current="page">{c.pricing}</a>
+        <a href={waitlistHref} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== 1. HERO ===================== -->
+  <section class="section section--hero">
+    <div class="container">
+      <nav class="wp-breadcrumb" aria-label="Breadcrumb">
+        <a href={localeHref(locale, '/')} class="wp-breadcrumb-back">&#8592;</a>
+        <a href={localeHref(locale, '/')} class="wp-breadcrumb-link">{t.breadcrumbHome}</a>
+        <span class="wp-breadcrumb-sep">/</span>
+        <span class="wp-breadcrumb-current">{t.breadcrumbCurrent}</span>
+      </nav>
+
+      <div class="pricing-hero">
+        <div class="eyebrow eyebrow--pricing">{t.eyebrow}</div>
+        <h1 class="hero-h1">{t.h1}</h1>
+        <p class="hero-body">{t.intro}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 2. PLANS ===================== -->
+  <section class="section section--paper-dark section--border-top">
+    <div class="container">
+      <div class="section-intro section-intro--wide">
+        <div class="eyebrow eyebrow--pricing">{t.plansEyebrow}</div>
+        <h2 class="section-h2">{t.plansH2}</h2>
+        <p class="section-body">{t.plansBody}</p>
+      </div>
+
+      <div class="billing-toggle-wrap" id="billing-toggle-wrap" hidden>
+        <div class="billing-toggle" role="group" aria-label="Billing period">
+          <button type="button" class="billing-toggle-btn is-active" data-billing="monthly" aria-pressed="true">{t.billingMonthly}</button>
+          <button type="button" class="billing-toggle-btn" data-billing="annual" aria-pressed="false">{t.billingAnnual}</button>
+        </div>
+      </div>
+
+      <div class="plans-grid" id="plans-grid" aria-busy="true" aria-live="polite">
+        <span class="sr-only">{t.loadingLabel}</span>
+        {[0, 1, 2, 3].map(() => (
+          <div class="plan-card plan-card--skeleton" aria-hidden="true">
+            <span class="skel skel--sm"></span>
+            <span class="skel skel--lg"></span>
+            <span class="skel skel--md"></span>
+            <span class="skel skel--row"></span>
+            <span class="skel skel--row"></span>
+            <span class="skel skel--row"></span>
+            <span class="skel skel--btn"></span>
+          </div>
+        ))}
+      </div>
+
+      <div class="pricing-fallback" id="pricing-fallback" hidden>
+        <span class="fold-corner fold-corner--md"></span>
+        <span class="fold-corner-line fold-corner-line--md"></span>
+        <div class="mono-label pricing-fallback-label">{t.fallbackHeading}</div>
+        <p class="pricing-fallback-body">{t.fallbackBody}</p>
+        <a href={waitlistHref} class="btn btn--primary btn--lg pricing-fallback-cta">
+          {t.fallbackCta}
+          <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <noscript>
+        <p class="pricing-noscript">
+          {t.noscriptBody}
+          <a href={waitlistHref} class="text-link">{t.fallbackCta}</a>
+        </p>
+      </noscript>
+
+      <div class="pricing-footnotes">
+        <p class="pricing-footnote">{t.footnoteUsage}</p>
+        <p class="pricing-footnote">{t.footnoteVat}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3. TOP-UP PACKS ===================== -->
+  <section class="section section--border-top" id="packs-section" hidden>
+    <div class="container">
+      <div class="section-intro section-intro--wide">
+        <div class="eyebrow eyebrow--pricing">{t.packsEyebrow}</div>
+        <h2 class="section-h2">{t.packsH2}</h2>
+        <p class="section-body">{t.packsBody}</p>
+      </div>
+
+      <div class="packs-grid" id="packs-grid"></div>
+    </div>
+  </section>
+
+  <!-- ===================== 4. RATE CARD ===================== -->
+  <section class="section section--paper-dark section--border-top">
+    <div class="container">
+      <div class="rate-grid">
+        <div class="rate-intro">
+          <div class="eyebrow eyebrow--pricing">{t.rateEyebrow}</div>
+          <h2 class="section-h2">{t.rateH2}</h2>
+          <p class="section-body">{t.rateBody}</p>
+          <span class="hand-note rate-hand">{t.rateHandNote}</span>
+        </div>
+
+        <div class="rate-sheet-wrap">
+          <div class="rate-sheet">
+            <span class="folder-tab">{t.rateTab}</span>
+            <span class="fold-corner fold-corner--md"></span>
+            <span class="fold-corner-line fold-corner-line--md"></span>
+            <ul class="rate-list" role="list">
+              {t.exampleCosts.map((item) => (
+                <li class="rate-row">
+                  <span class="rate-label">{item.label}</span>
+                  <span class="rate-dots" aria-hidden="true"></span>
+                  <span class="rate-cost">
+                    {item.credits.toLocaleString('en-GB')} {t.rateCreditsSuffix}
+                    {item.note && <span class="rate-note">({item.note})</span>}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 5. CTA ===================== -->
+  <section class="section section--border-top cta-section">
+    <div class="cta-inner">
+      <img src="/brand/main-logo.png" alt="Word Presto" class="cta-logo" loading="lazy" />
+      <div class="eyebrow eyebrow--pricing">{t.ctaEyebrow}</div>
+      <h2 class="cta-h2">{t.ctaH2}</h2>
+      <p class="cta-body">{t.ctaBody}</p>
+      <div class="cta-actions">
+        <a href={waitlistHref} class="btn btn--primary btn--lg">
+          {t.ctaButton}
+          <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="cta-rule">
+        <span class="cta-rule-line"></span>
+        <span class="mono-label cta-rule-text">{t.ctaRuleText}</span>
+        <span class="cta-rule-line"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/brand/main-logo.png" alt="Word Presto" class="footer-logo" loading="lazy" />
+        <p class="footer-tagline">{c.footerTagline}</p>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-heading">{c.product}</span>
+        <a href={`${localeHref(locale, '/')}#product`} class="footer-link">{c.howItWorks}</a>
+        <a href={`${localeHref(locale, '/')}#capabilities`} class="footer-link">{c.workflow}</a>
+        <a href={localeHref(locale, '/workers/')} class="footer-link">{c.workers}</a>
+        <a href="/pricing/" class="footer-link">{c.pricing}</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-heading">{c.useCases}</span>
+        <a href={`${localeHref(locale, '/')}#use-cases`} class="footer-link">{c.astroCms}</a>
+        <a href={`${localeHref(locale, '/')}#use-cases`} class="footer-link">{c.cmsConnected}</a>
+        <a href={`${localeHref(locale, '/')}#use-cases`} class="footer-link">{c.standaloneEngine}</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-heading">{c.contact}</span>
+        <a href={waitlistHref} class="footer-link">{c.joinWaitlist}</a>
+        <a href="/sitemap/" class="footer-link">{c.siteMap}</a>
+        <a href="mailto:hello@wordpresto.com" class="footer-link">hello@wordpresto.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 WordPresto</span>
+      <span>{c.reviewLed}</span>
+      <a href="/sitemap/" class="footer-link footer-sitemap-link">{c.siteMap}</a>
+      <span class="footer-legal-links">
+        <a href="/privacy/" class="footer-link">Privacy</a> ·
+        <a href="/terms/" class="footer-link">Terms</a> ·
+        <a href="/cookies/" class="footer-link">Cookies</a> ·
+        <a href="/fair-use/" class="footer-link">Fair use</a> ·
+        <a href="/data-deletion/" class="footer-link">Data deletion</a>
+      </span>
+    </div>
+  </footer>
+
+  <script type="application/json" id="pricing-config" set:html={JSON.stringify(clientConfig)} />
+
+</BaseLayout>
+
+<script>
+  // ===== Live pricing loader ==========================================
+  // Plan prices, credits and top-up packs come from the app's public
+  // pricing API at page load, so pricing changes in the app reflect here
+  // without a site redeploy. Nothing on this page invents a number: if the
+  // API is unreachable or returns an unusable shape, the page shows an
+  // honest fallback and the join CTA (routed to /waitlist, the application form) instead.
+
+  interface UsageItem {
+    credits: number;
+    singular: string;
+    plural: string;
+  }
+
+  interface PricingConfig {
+    apiBase: string;
+    waitlistHref: string;
+    usageItems: UsageItem[];
+    strings: Record<string, string>;
+  }
+
+  interface ApiPlan {
+    tier?: string;
+    label: string;
+    monthlyCredits: number;
+    monthlyPriceEur: number;
+    annualPriceEur?: number | null;
+    oneTimePriceEur?: number | null;
+    oneTime?: boolean;
+    allowsOverage?: boolean;
+  }
+
+  interface ApiPack {
+    id?: string;
+    label?: string;
+    credits: number;
+    priceEur: number;
+  }
+
+  const CONFIG = JSON.parse(
+    document.getElementById('pricing-config')!.textContent!
+  ) as PricingConfig;
+  const S = CONFIG.strings;
+
+  const plansGrid = document.getElementById('plans-grid')!;
+  const packsGrid = document.getElementById('packs-grid')!;
+  const packsSection = document.getElementById('packs-section')!;
+  const toggleWrap = document.getElementById('billing-toggle-wrap')!;
+  const fallbackEl = document.getElementById('pricing-fallback')!;
+
+  let currency = 'EUR';
+  let billing: 'monthly' | 'annual' = 'monthly';
+  let livePlans: ApiPlan[] = [];
+
+  // ----- helpers ------------------------------------------------------
+
+  function isFiniteNumber(v: unknown): v is number {
+    return typeof v === 'number' && Number.isFinite(v);
+  }
+
+  function fmtMoney(value: number): string {
+    const wholeUnits = Math.round(value * 100) % 100 === 0;
+    return new Intl.NumberFormat('en-GB', {
+      style: 'currency',
+      currency,
+      minimumFractionDigits: wholeUnits ? 0 : 2,
+      maximumFractionDigits: 2,
+    }).format(value);
+  }
+
+  function fmtCredits(value: number): string {
+    return value.toLocaleString('en-GB');
+  }
+
+  function fill(template: string, params: Record<string, string>): string {
+    return template.replace(/\{(\w+)\}/g, (m, key) => params[key] ?? m);
+  }
+
+  function el(tag: string, className?: string, text?: string): HTMLElement {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  // Forward compatible: keeps only the fields this page understands and
+  // drops any plan the API did not describe fully enough to price honestly.
+  function isUsablePlan(p: unknown): p is ApiPlan {
+    if (!p || typeof p !== 'object') return false;
+    const plan = p as Record<string, unknown>;
+    if (typeof plan.label !== 'string' || !plan.label.trim()) return false;
+    if (!isFiniteNumber(plan.monthlyCredits) || plan.monthlyCredits <= 0) return false;
+    if (plan.oneTime === true) return isFiniteNumber(plan.oneTimePriceEur);
+    return isFiniteNumber(plan.monthlyPriceEur);
+  }
+
+  function isUsablePack(p: unknown): p is ApiPack {
+    if (!p || typeof p !== 'object') return false;
+    const pack = p as Record<string, unknown>;
+    return isFiniteNumber(pack.credits) && pack.credits > 0 && isFiniteNumber(pack.priceEur);
+  }
+
+  // ----- plan cards ----------------------------------------------------
+
+  function foldCorner(card: HTMLElement): void {
+    card.appendChild(el('span', 'fold-corner fold-corner--sm'));
+    card.appendChild(el('span', 'fold-corner-line fold-corner-line--sm'));
+  }
+
+  function planPriceBlock(plan: ApiPlan): HTMLElement {
+    const block = el('div', 'plan-price-block');
+    const row = el('div', 'plan-price-row');
+    const note = el('div', 'plan-price-note');
+
+    if (plan.oneTime === true && isFiniteNumber(plan.oneTimePriceEur)) {
+      row.appendChild(el('span', 'plan-price-figure', fmtMoney(plan.oneTimePriceEur)));
+      row.appendChild(el('span', 'plan-price-per', S.oneTimeLabel));
+    } else if (billing === 'annual' && isFiniteNumber(plan.annualPriceEur)) {
+      const annual = plan.annualPriceEur as number;
+      row.appendChild(el('span', 'plan-price-figure', fmtMoney(annual)));
+      row.appendChild(el('span', 'plan-price-per', S.perYear));
+      note.appendChild(
+        el('span', 'plan-note-line', fill(S.annualEquivalentTemplate, { price: fmtMoney(annual / 12) }))
+      );
+      const saving = plan.monthlyPriceEur * 12 - annual;
+      if (saving > 0) {
+        note.appendChild(
+          el('span', 'plan-note-line plan-note-line--saving', fill(S.annualSavingTemplate, { amount: fmtMoney(saving) }))
+        );
+      }
+    } else {
+      row.appendChild(el('span', 'plan-price-figure', fmtMoney(plan.monthlyPriceEur)));
+      row.appendChild(el('span', 'plan-price-per', S.perMonth));
+      note.appendChild(
+        el('span', 'plan-note-line', billing === 'annual' ? S.monthlyOnlyNote : S.billedMonthly)
+      );
+    }
+
+    block.appendChild(row);
+    if (note.childNodes.length) block.appendChild(note);
+    return block;
+  }
+
+  function planUsageList(plan: ApiPlan): HTMLElement | null {
+    const rows: string[] = [];
+    for (const item of CONFIG.usageItems) {
+      const count = Math.floor(plan.monthlyCredits / item.credits);
+      if (count < 1) continue;
+      const unit = count === 1 ? item.singular : item.plural;
+      const prefix = rows.length === 0 ? '' : `${S.usageOrPrefix} `;
+      rows.push(`${prefix}${fmtCredits(count)} ${unit}`);
+    }
+    if (!rows.length) return null;
+
+    const wrap = el('div', 'plan-usage');
+    wrap.appendChild(el('span', 'mono-label plan-usage-heading', S.usageHeading));
+    const list = el('ul', 'plan-usage-list');
+    list.setAttribute('role', 'list');
+    for (const row of rows) list.appendChild(el('li', 'plan-usage-row', row));
+    wrap.appendChild(list);
+    return wrap;
+  }
+
+  function planCard(plan: ApiPlan, index: number): HTMLElement {
+    const card = el('article', `plan-card plan-card--tilt-${index % 2 === 0 ? 'neg' : 'pos'}`);
+    foldCorner(card);
+
+    const head = el('div', 'plan-head');
+    head.appendChild(el('h3', 'plan-name', plan.label));
+    head.appendChild(el('span', 'mono-label plan-index', `PLAN ${String(index + 1).padStart(2, '0')}`));
+    card.appendChild(head);
+
+    card.appendChild(planPriceBlock(plan));
+    card.appendChild(el('div', 'plan-credits', fill(S.creditsTemplate, { credits: fmtCredits(plan.monthlyCredits) })));
+
+    const usage = planUsageList(plan);
+    if (usage) card.appendChild(usage);
+
+    const foot = el('div', 'plan-foot');
+    if (plan.allowsOverage === true) {
+      foot.appendChild(el('span', 'mono-label plan-overage', S.topUpsAvailable));
+    }
+    const cta = el('a', 'btn btn--secondary plan-cta', S.planCta) as HTMLAnchorElement;
+    cta.href = CONFIG.waitlistHref;
+    foot.appendChild(cta);
+    card.appendChild(foot);
+
+    return card;
+  }
+
+  function renderPlans(): void {
+    plansGrid.replaceChildren(...livePlans.map((plan, i) => planCard(plan, i)));
+    plansGrid.setAttribute('aria-busy', 'false');
+  }
+
+  // ----- packs ----------------------------------------------------------
+
+  function packSlip(pack: ApiPack): HTMLElement {
+    const slip = el('div', 'pack-slip');
+    slip.appendChild(el('span', 'fold-corner fold-corner--sm'));
+    slip.appendChild(el('span', 'fold-corner-line fold-corner-line--sm'));
+    const label = typeof pack.label === 'string' && pack.label.trim()
+      ? pack.label
+      : `${fmtCredits(pack.credits)} ${S.packCreditsSuffix}`;
+    slip.appendChild(el('span', 'pack-credits', label));
+    slip.appendChild(el('span', 'pack-price', fmtMoney(pack.priceEur)));
+    slip.appendChild(el('span', 'mono-label pack-kind', S.packKindLabel));
+    return slip;
+  }
+
+  function renderPacks(packs: ApiPack[]): void {
+    if (!packs.length) return; // API sent no usable packs: keep the section hidden.
+    packsGrid.replaceChildren(...packs.map(packSlip));
+    packsSection.hidden = false;
+  }
+
+  // ----- billing toggle --------------------------------------------------
+
+  function setupToggle(): void {
+    const hasAnnual = livePlans.some((p) => p.oneTime !== true && isFiniteNumber(p.annualPriceEur));
+    if (!hasAnnual) return; // no annual prices in the data: monthly only, no toggle.
+    toggleWrap.hidden = false;
+    const buttons = toggleWrap.querySelectorAll<HTMLButtonElement>('.billing-toggle-btn');
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const next = btn.dataset.billing === 'annual' ? 'annual' : 'monthly';
+        if (next === billing) return;
+        billing = next;
+        buttons.forEach((b) => {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', String(active));
+        });
+        renderPlans();
+      });
+    });
+  }
+
+  // ----- load ------------------------------------------------------------
+
+  function showFallback(): void {
+    plansGrid.replaceChildren();
+    plansGrid.setAttribute('aria-busy', 'false');
+    plansGrid.hidden = true;
+    toggleWrap.hidden = true;
+    packsSection.hidden = true;
+    fallbackEl.hidden = false;
+  }
+
+  async function loadPricing(): Promise<void> {
+    const base = CONFIG.apiBase.replace(/\/$/, '');
+    const res = await fetch(`${base}/api/public/pricing`, {
+      headers: { accept: 'application/json' },
+    });
+    if (!res.ok) throw new Error(`pricing_http_${res.status}`);
+    const data: unknown = await res.json();
+    const body = (data ?? {}) as Record<string, unknown>;
+
+    if (typeof body.currency === 'string' && /^[A-Z]{3}$/.test(body.currency)) {
+      currency = body.currency;
+    }
+
+    livePlans = Array.isArray(body.plans) ? body.plans.filter(isUsablePlan) : [];
+    if (!livePlans.length) throw new Error('pricing_no_plans');
+
+    renderPlans();
+    setupToggle();
+    renderPacks(Array.isArray(body.packs) ? body.packs.filter(isUsablePack) : []);
+  }
+
+  loadPricing().catch(() => showFallback());
+</script>
+
+<style>
+  /* ===== MASTHEAD ===== */
+  .masthead {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+    border-bottom: 2px solid var(--wp-ink);
+    transform: translateZ(0);
+  }
+  .masthead-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 34px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 28px;
+  }
+  .masthead-logo img { display: block; height: 48px; width: auto; mix-blend-mode: multiply; }
+  .masthead-nav { display: flex; align-items: center; gap: 24px; }
+  .masthead-nav--left { justify-content: flex-start; }
+  .masthead-nav--right { justify-content: flex-end; }
+  .nav-link { font-size: var(--wp-text-md); font-weight: 500; color: var(--wp-text-secondary); }
+  .nav-link:hover { color: var(--wp-ink); }
+  .nav-link[aria-current="page"] { color: var(--wp-ink); font-weight: 600; }
+
+  /* ===== SHARED ===== */
+  .section {
+    padding: 92px 0;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+  }
+  .section--hero { padding: 30px 0 72px; }
+  .section--paper-dark { background-color: var(--wp-paper-dark); }
+  .section--border-top { border-top: 2px solid var(--wp-ink); }
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 34px;
+  }
+
+  .eyebrow {
+    font-size: var(--wp-text-sm);
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .eyebrow--pricing { color: var(--wp-signal); }
+
+  .section-h2 {
+    font-size: clamp(2.1rem, 4.4vw, 3.15rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    margin: 0;
+    color: var(--wp-ink);
+  }
+  .section-body {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+    margin: 22px 0 0;
+  }
+  .section-intro--wide { max-width: 720px; margin-bottom: 40px; }
+
+  .text-link { color: var(--wp-ink); text-decoration: underline; text-underline-offset: 3px; }
+  .text-link:hover { color: var(--wp-signal); }
+
+  .mono-label {
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--wp-text-muted);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Breadcrumb */
+  .wp-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.06em;
+    color: var(--wp-text-muted);
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  .wp-breadcrumb-back { color: var(--wp-text-muted); }
+  .wp-breadcrumb-link { color: var(--wp-text-tertiary); }
+  .wp-breadcrumb-sep { color: var(--wp-border-strong); }
+  .wp-breadcrumb-current { color: var(--wp-text-secondary); }
+
+  /* ===== HERO ===== */
+  .pricing-hero { max-width: 680px; }
+  .hero-h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.032em;
+    margin: 0;
+    color: var(--wp-ink);
+  }
+  .hero-body {
+    font-size: var(--wp-text-xl);
+    color: var(--wp-text-secondary);
+    line-height: 1.55;
+    margin: 26px 0 0;
+    max-width: 580px;
+  }
+
+  /* Folder tabs + folds */
+  .folder-tab {
+    position: absolute;
+    top: -19px;
+    left: 22px;
+    padding: 7px 20px;
+    background: #E3D6B9;
+    border: 1px solid #C7B488;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    z-index: 4;
+    font-size: var(--wp-text-xs);
+    font-family: var(--wp-font-mono);
+    letter-spacing: 0.1em;
+    color: #5E4F2E;
+    white-space: nowrap;
+  }
+  .fold-corner, .fold-corner-line { position: absolute; top: 0; right: 0; pointer-events: none; }
+  .fold-corner--sm { width: 0; height: 0; border-top: 18px solid var(--wp-paper-dark); border-left: 18px solid transparent; z-index: 4; }
+  .fold-corner-line--sm { width: 18px; height: 18px; border-left: 1px solid var(--wp-line); border-bottom: 1px solid var(--wp-line); z-index: 3; }
+  .fold-corner--md { width: 0; height: 0; border-top: 22px solid var(--wp-paper-dark); border-left: 22px solid transparent; z-index: 4; }
+  .fold-corner-line--md { width: 22px; height: 22px; border-left: 1px solid var(--wp-line); border-bottom: 1px solid var(--wp-line); z-index: 3; }
+
+  /* ===== BILLING TOGGLE ===== */
+  .billing-toggle-wrap { display: flex; margin-bottom: 34px; }
+  .billing-toggle-wrap[hidden] { display: none; }
+  .billing-toggle {
+    display: inline-flex;
+    background: #FFFFFF;
+    border: 1.5px solid var(--wp-ink);
+    border-radius: 6px;
+    padding: 4px;
+    gap: 4px;
+    box-shadow: 0 2px 4px rgba(54,44,24,0.08);
+  }
+  .billing-toggle-btn {
+    appearance: none;
+    border: none;
+    background: transparent;
+    font-family: var(--wp-font-sans);
+    font-size: var(--wp-text-sm);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--wp-text-secondary);
+    padding: 8px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    min-height: 40px;
+  }
+  .billing-toggle-btn:hover { color: var(--wp-ink); }
+  .billing-toggle-btn.is-active {
+    background: var(--wp-ink);
+    color: #FAF7F0;
+  }
+
+  /* ===== PLAN CARDS ===== */
+  .plans-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+    align-items: stretch;
+  }
+  .plans-grid[hidden] { display: none; }
+
+  /* Rendered client-side, so plan-card styles must reach the injected DOM. */
+  .plans-grid :global(.plan-card) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(54,44,24,0.05), 0 14px 26px -16px rgba(54,44,24,0.16);
+    padding: 26px 26px 28px;
+    overflow: hidden;
+  }
+  .plans-grid :global(.plan-card--tilt-neg) { transform: rotate(-0.5deg); }
+  .plans-grid :global(.plan-card--tilt-pos) { transform: rotate(0.45deg); }
+  .plans-grid :global(.plan-head) {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--wp-ink);
+  }
+  .plans-grid :global(.plan-name) {
+    font-size: var(--wp-text-xl);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
+    line-height: 1.15;
+  }
+  .plans-grid :global(.plan-index) { flex: 0 0 auto; }
+  .plans-grid :global(.plan-price-block) { padding: 20px 0 4px; }
+  .plans-grid :global(.plan-price-row) { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .plans-grid :global(.plan-price-figure) {
+    font-size: 2.15rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--wp-ink);
+  }
+  .plans-grid :global(.plan-price-per) { font-size: var(--wp-text-md); color: var(--wp-text-tertiary); }
+  .plans-grid :global(.plan-price-note) {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 10px;
+    min-height: 38px;
+  }
+  .plans-grid :global(.plan-note-line) { font-size: var(--wp-text-sm); color: var(--wp-text-tertiary); line-height: 1.4; }
+  .plans-grid :global(.plan-note-line--saving) { color: var(--wp-signal); font-weight: 600; }
+  .plans-grid :global(.plan-credits) {
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-sm);
+    color: var(--wp-ink);
+    background: var(--wp-paper-soft);
+    border: 1px solid var(--wp-line);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-top: 14px;
+  }
+  .plans-grid :global(.plan-usage) { margin-top: 18px; }
+  .plans-grid :global(.plan-usage-heading) { display: block; margin-bottom: 8px; }
+  .plans-grid :global(.plan-usage-list) { list-style: none; margin: 0; padding: 0; }
+  .plans-grid :global(.plan-usage-row) {
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-secondary);
+    line-height: 1.45;
+    padding: 6px 0 6px 12px;
+    border-left: 3px solid var(--wp-signal);
+    border-bottom: 1px solid var(--wp-line);
+  }
+  .plans-grid :global(.plan-usage-row:last-child) { border-bottom: none; }
+  .plans-grid :global(.plan-foot) {
+    margin-top: auto;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .plans-grid :global(.plan-overage) { color: var(--wp-text-muted); }
+  .plans-grid :global(.plan-cta) { justify-content: center; text-align: center; }
+
+  /* Skeleton cards (server-rendered, replaced by live data) */
+  .plan-card--skeleton {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(54,44,24,0.05), 0 14px 26px -16px rgba(54,44,24,0.16);
+    padding: 26px;
+    min-height: 320px;
+  }
+  .skel {
+    display: block;
+    background: var(--wp-paper-dark);
+    border-radius: 3px;
+    animation: skel-pulse 1.4s ease-in-out infinite;
+  }
+  .skel--sm { width: 45%; height: 18px; }
+  .skel--lg { width: 60%; height: 34px; }
+  .skel--md { width: 75%; height: 16px; }
+  .skel--row { width: 90%; height: 12px; }
+  .skel--btn { width: 100%; height: 44px; margin-top: auto; }
+  @keyframes skel-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .skel { animation: none; }
+  }
+
+  /* ===== FALLBACK ===== */
+  .pricing-fallback {
+    position: relative;
+    max-width: 560px;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-amber);
+    box-shadow: 0 2px 5px rgba(54,44,24,0.06), 0 18px 34px -16px rgba(54,44,24,0.18);
+    padding: 26px 26px 30px;
+    transform: rotate(-0.6deg);
+    overflow: hidden;
+  }
+  .pricing-fallback[hidden] { display: none; }
+  .pricing-fallback-label { display: block; margin-bottom: 12px; color: var(--wp-amber); }
+  .pricing-fallback-body { font-size: var(--wp-text-lg); color: var(--wp-text-secondary); line-height: 1.55; margin: 0 0 22px; }
+  .pricing-fallback-cta { align-self: flex-start; }
+
+  .pricing-noscript {
+    max-width: 560px;
+    font-size: var(--wp-text-md);
+    color: var(--wp-text-secondary);
+    line-height: 1.6;
+    margin: 26px 0 0;
+  }
+
+  /* ===== FOOTNOTES ===== */
+  .pricing-footnotes {
+    margin-top: 38px;
+    padding-top: 20px;
+    border-top: 1px solid var(--wp-border-strong);
+    max-width: 760px;
+  }
+  .pricing-footnote {
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-tertiary);
+    line-height: 1.6;
+    margin: 0 0 8px;
+  }
+  .pricing-footnote:last-child { margin-bottom: 0; }
+
+  /* ===== PACKS ===== */
+  #packs-section[hidden] { display: none; }
+  .packs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .packs-grid :global(.pack-slip) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 1px 2px rgba(54,44,24,0.05), 0 12px 24px -14px rgba(54,44,24,0.15);
+    padding: 22px 22px 20px;
+    overflow: hidden;
+  }
+  .packs-grid :global(.pack-slip:nth-child(odd)) { transform: rotate(-0.5deg); }
+  .packs-grid :global(.pack-slip:nth-child(even)) { transform: rotate(0.45deg); }
+  .packs-grid :global(.pack-credits) {
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-md);
+    font-weight: 600;
+    color: var(--wp-ink);
+  }
+  .packs-grid :global(.pack-price) {
+    font-size: var(--wp-text-2xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--wp-ink);
+    line-height: 1.1;
+  }
+  .packs-grid :global(.pack-kind) { margin-top: 6px; }
+
+  /* ===== RATE CARD ===== */
+  .rate-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 44px;
+    align-items: start;
+  }
+  .rate-hand {
+    display: inline-block;
+    margin-top: 18px;
+    font-family: var(--wp-font-hand);
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--wp-signal);
+    transform: rotate(-2deg);
+  }
+  .rate-sheet-wrap { padding-top: 20px; }
+  .rate-sheet {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid var(--wp-line);
+    box-shadow: 0 2px 5px rgba(54,44,24,0.06), 0 22px 42px -18px rgba(54,44,24,0.2);
+    padding: 26px 24px;
+    transform: rotate(0.5deg);
+  }
+  .rate-list { list-style: none; margin: 0; padding: 0; }
+  .rate-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--wp-line);
+  }
+  .rate-row:last-child { border-bottom: none; }
+  .rate-label { font-size: var(--wp-text-md); color: var(--wp-ink); font-weight: 500; }
+  .rate-dots {
+    flex: 1;
+    min-width: 20px;
+    border-bottom: 2px dotted var(--wp-border-secondary);
+    transform: translateY(-4px);
+  }
+  .rate-cost {
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-sm);
+    color: var(--wp-ink);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .rate-note {
+    display: block;
+    font-size: var(--wp-text-xs);
+    color: var(--wp-text-muted);
+    white-space: nowrap;
+  }
+
+  /* ===== CTA ===== */
+  .cta-section { padding: 100px 0 108px; }
+  .cta-inner { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 34px; text-align: center; }
+  .cta-logo { display: block; height: 72px; width: auto; margin: 0 auto 26px; mix-blend-mode: multiply; }
+  .cta-h2 {
+    font-size: clamp(2.1rem, 4.4vw, 3.1rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 0;
+    line-height: 1.08;
+    color: var(--wp-ink);
+  }
+  .cta-body { font-size: var(--wp-text-xl); color: var(--wp-text-secondary); line-height: 1.5; margin: 22px auto 0; max-width: 560px; }
+  .cta-actions { display: flex; gap: 12px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+  .cta-rule { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 42px; }
+  .cta-rule-line { height: 1px; width: 50px; background: var(--wp-border-strong); }
+  .cta-rule-text { letter-spacing: 0.16em; color: var(--wp-text-muted); }
+
+  /* ===== BUTTONS ===== */
+  .btn, .plans-grid :global(.btn) {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--wp-text-md);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn--primary {
+    padding: 14px 24px;
+    background: var(--wp-ink);
+    color: #FAF7F0;
+    border: 1px solid var(--wp-ink);
+    box-shadow: 0 2px 4px rgba(54,44,24,0.12), 0 10px 18px -8px rgba(54,44,24,0.22);
+  }
+  .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 3px 6px rgba(54,44,24,0.16), 0 16px 26px -8px rgba(54,44,24,0.3); }
+  .plans-grid :global(.btn--secondary) {
+    padding: 13px 20px;
+    background: #FFFFFF;
+    color: var(--wp-ink);
+    border: 1.5px solid var(--wp-ink);
+    box-shadow: 0 2px 4px rgba(54,44,24,0.06), 0 8px 16px -10px rgba(54,44,24,0.16);
+  }
+  .plans-grid :global(.btn--secondary:hover) { transform: translateY(-2px); }
+  .btn--sm { padding: 8px 16px; font-size: var(--wp-text-sm); }
+  .btn--lg { padding: 14px 24px; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background-color: var(--wp-paper-dark);
+    background-image: var(--wp-texture-paper);
+    border-top: 2px solid var(--wp-ink);
+    padding: 58px 0 42px;
+  }
+  .footer-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 34px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
+  .footer-logo { display: block; height: 90px; width: auto; align-self: flex-start; mix-blend-mode: multiply; }
+  .footer-tagline { margin: 6px 0 0; font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; }
+  .footer-col { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col-heading { font-size: var(--wp-text-sm); font-weight: 700; }
+  .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); }
+  .footer-link:hover { color: var(--wp-ink); }
+  .footer-legal-links .footer-link { font-size: var(--wp-text-sm); }
+  .footer-bottom {
+    width: 100%;
+    max-width: 1200px;
+    margin: 46px auto 0;
+    padding: 22px 34px 0;
+    border-top: 1px solid var(--wp-border-strong);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-muted);
+  }
+
+  /* ===== RESPONSIVE (mobile-first: base is single column) ===== */
+  @media (min-width: 600px) {
+    .packs-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 700px) {
+    .plans-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 940px) {
+    .rate-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 52px; }
+    .packs-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (min-width: 1080px) {
+    .plans-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (max-width: 940px) {
+    .masthead-nav { display: none; }
+    .masthead-inner { grid-template-columns: 1fr; justify-items: center; padding: 10px 20px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .section { padding: 60px 0; }
+    .section--hero { padding: 20px 0 52px; }
+    .container { padding: 0 20px; }
+    .billing-toggle { width: 100%; }
+    .billing-toggle-btn { flex: 1; }
+    .cta-actions { flex-direction: column; align-items: stretch; }
+    .cta-inner { padding: 0 20px; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .cta-section { padding: 64px 0 72px; }
+    .rate-cost { white-space: normal; }
+  }
+</style>

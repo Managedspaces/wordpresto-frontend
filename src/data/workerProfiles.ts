@@ -8,7 +8,7 @@ export interface WorkerProfile {
   roleTitle?: string;
   department: string;
   team: 'content' | 'governance' | 'seo' | 'operations';
-  /** True only for workers not yet live (matches workerRegistry.ts's status: 'planned'). Swaps the hero CTA to "Join the waitlist" and adds a Planned pill instead of implying the worker is runnable today. */
+  /** True only for workers not yet live (matches workerRegistry.ts's status: 'planned'). Swaps the hero CTA to "Join now" and adds a Planned pill instead of implying the worker is runnable today. */
   planned?: boolean;
   stage: string;
   teamColor: string;

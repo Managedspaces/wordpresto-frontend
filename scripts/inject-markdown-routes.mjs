@@ -60,6 +60,12 @@ const markdownRoutes = [
     dest: '/prestobot/index.md',
     headers: MD_HEADERS,
   },
+  {
+    src: '^/pricing/?$',
+    has: [{ type: 'header', key: 'accept', value: ACCEPT_MD }],
+    dest: '/pricing/index.md',
+    headers: MD_HEADERS,
+  },
   // Homepage locale mirrors (src/data/i18n/home.ts) — see context.md.
   ...['pt', 'pt-br', 'es', 'de', 'fr'].map((locale) => ({
     src: `^/${locale}/?$`,
