@@ -86,6 +86,14 @@ const pageResources = [
     sourcePath: 'pages/prestobot.md',
     focus: 'About WordPrestoBot, the Word Presto web crawler, and how to control it with robots.txt.',
   },
+  {
+    title: 'Pricing',
+    htmlPath: '/pricing/',
+    markdownPath: '/pricing/index.md',
+    legacyMarkdownPath: '/pages/pricing.md',
+    sourcePath: 'pages/pricing.md',
+    focus: 'Pricing model, credit plans and top-up packs. Live plan prices are served on the pricing page from the app.',
+  },
 ];
 
 const workerResources = workerFiles.map((file) => {

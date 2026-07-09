@@ -39,6 +39,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/prestobot.md
 - Focus: About WordPrestoBot, the Word Presto web crawler, and how to control it with robots.txt.
 
+### Pricing
+
+- HTML: https://wordpresto.com/pricing/
+- Markdown: https://wordpresto.com/pricing/index.md
+- Legacy Markdown: https://wordpresto.com/pages/pricing.md
+- Focus: Pricing model, credit plans and top-up packs. Live plan prices are served on the pricing page from the app.
+
 ### Bring accessibility issues into the review workflow.
 
 - HTML: https://wordpresto.com/workers/accessibility/

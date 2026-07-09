@@ -210,6 +210,19 @@ export const siteRoutes: SiteRoute[] = [
     inXml: false,
   })),
   {
+    // English only for now (src/data/i18n/pricing.ts is structured for the
+    // locale rollout; see context.md). Plan prices load live from the app's
+    // public pricing API, so the page itself carries no hardcoded numbers.
+    path: '/pricing/',
+    label: 'Pricing',
+    description: 'Plans, credits and top-up packs for writers, editors and publishing teams.',
+    group: 'main',
+    inXml: true,
+    changefreq: 'weekly',
+    priority: 0.8,
+    markdown: '/pricing/index.md',
+  },
+  {
     path: '/prestobot/',
     label: 'WordPrestoBot',
     description: 'About WordPrestoBot, the Word Presto web crawler, and how to control it.',

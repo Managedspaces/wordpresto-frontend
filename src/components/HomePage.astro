@@ -64,7 +64,9 @@ const jsonLd = [
       <nav class="masthead-nav masthead-nav--right">
         <a href={`${localeHref(locale, '/')}#specialists`} class="nav-link">{c.specialists}</a>
         <a href={`${localeHref(locale, '/')}#languages`} class="nav-link">{c.languages}</a>
-        <a href="#" class="nav-link">{c.pricing}</a>
+        {/* Unprefixed on purpose: /pricing/ has no locale routes yet (same
+            convention as the footer /sitemap/ link — see context.md). */}
+        <a href="/pricing/" class="nav-link">{c.pricing}</a>
         <div class="locale-switcher">
           <a
             href={localeHref(locale, '/')}
