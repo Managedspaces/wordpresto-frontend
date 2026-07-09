@@ -463,3 +463,18 @@ includes it. This doc-only change (this paragraph) is a follow-up PR to
 isolate whether merges to `main` are reaching the live Vercel production
 deployment, since the Site Signals dashboard reported no events received
 after the tracking-tag merge.
+
+## Pricing VAT copy: exclusive to inclusive (2026-07-09)
+
+The backend pricing model switched from VAT-exclusive to VAT-inclusive. The
+public pricing API (`GET https://app.wordpresto.com/api/public/pricing`) now
+returns `vat: "included"` and all-in plan/pack prices, so the numbers on
+`/pricing` update themselves (they are fetched live, never hardcoded). Only
+the copy needed changing: `footnoteVat` in `src/data/i18n/pricing.ts` went
+from "Prices exclude VAT." to "All prices include VAT." The pricing page
+(`src/components/PricingPage.astro`) does not read the API `vat` field at all
+(it consumes only `currency`, `plans`, `packs`), so no conditional badge or
+label needed updating. The generated mirrors (`public/pricing/index.md`,
+`public/pages/pricing.md`, `public/llms-full.txt`) regenerated from the data
+file via prebuild and now read the inclusive wording. `/pricing` is still
+English-only, so there was one string to change and no locale variants.

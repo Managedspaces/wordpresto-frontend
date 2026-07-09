@@ -7,7 +7,7 @@ focus: "Pricing, credit plans and top-up packs"
 
 # One pool of credits for the whole workflow.
 
-Pick a monthly or annual plan, spend credits across planning, writing, review, SEO research, site analysis and publishing, and top up when a busy month needs more. Prices are served live from the Word Presto app.
+Pick a monthly or annual plan, spend credits across planning, writing, review, SEO research, site analysis and publishing, and top up when a busy month needs more.
 
 ## How pricing works
 
@@ -33,7 +33,7 @@ Credits are the one currency across the workflow. Here is what typical work cost
 
 Example usage is illustrative. Credits can be mixed across writing, editing, SEO research, site analysis, crawling and social publishing. External data and publishing actions may use premium credits because they rely on third-party API costs.
 
-Prices exclude VAT.
+All prices include VAT.
 
 ## Early access
 
