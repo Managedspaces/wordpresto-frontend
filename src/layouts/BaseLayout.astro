@@ -1,5 +1,6 @@
 ---
 import { SEO } from 'astro-seo';
+import { organizationSchema, websiteSchema, SITE_URL } from '@/lib/schema';
 
 interface Props {
   pageTitle: string;
@@ -8,9 +9,10 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   noindex?: boolean;
+  /** Additional page-specific schema.org objects, each rendered as its own JSON-LD script. */
+  jsonLd?: Record<string, unknown>[];
 }
 
-const SITE_URL = 'https://wordpresto.com';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og/wordpresto-home.png`;
 
 const {
@@ -20,6 +22,7 @@ const {
   canonical = Astro.url.href,
   ogImage = DEFAULT_OG_IMAGE,
   noindex = false,
+  jsonLd = [],
 } = Astro.props;
 ---
 
@@ -64,6 +67,12 @@ const {
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap.xml" />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(organizationSchema())} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(websiteSchema())} />
+    {jsonLd.map((item) => (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(item)} />
+    ))}
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ES3KQBXKK7"></script>

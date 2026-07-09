@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { legalPages, type LegalPageContent } from '@/data/legal';
+import { breadcrumbList, SITE_URL } from '@/lib/schema';
 
 interface Props {
   content: LegalPageContent;
@@ -8,13 +9,29 @@ interface Props {
 
 const { content } = Astro.props;
 const otherPages = legalPages.filter((page) => page.slug !== content.slug);
+const canonical = `${SITE_URL}/${content.slug}/`;
+
+const jsonLd = [
+  breadcrumbList([
+    { name: 'Home', url: `${SITE_URL}/` },
+    { name: content.title, url: canonical },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: content.title,
+    description: content.metaDescription,
+    url: canonical,
+  },
+];
 ---
 
 <BaseLayout
   pageTitle={content.title}
   seoTitle={content.seoTitle}
   description={content.metaDescription}
-  canonical={`https://wordpresto.com/${content.slug}/`}
+  canonical={canonical}
+  jsonLd={jsonLd}
 >
 
   <header class="masthead">

@@ -7,6 +7,7 @@ import { workerProfilePageChrome } from '@/data/i18n/workerProfilePage';
 import { commonStrings } from '@/data/i18n/common';
 import { workersSharedContent } from '@/data/i18n/workersDirectory';
 import { localeHref, type Locale } from '@/i18n/locales';
+import { absoluteUrl, breadcrumbList, SITE_URL } from '@/lib/schema';
 
 interface Props {
   locale: Locale;
@@ -28,6 +29,23 @@ const relatedProfiles = profile.relatedWorkerIds.map(({ id, description, outputL
 const canonical = locale === 'en'
   ? `https://wordpresto.com/workers/${profile.slug}/`
   : `https://wordpresto.com${localeHref(locale, `/workers/${profile.slug}/`)}`;
+
+const jsonLd = [
+  breadcrumbList([
+    { name: c.home, url: absoluteUrl(locale, '/') },
+    { name: c.workers, url: absoluteUrl(locale, '/workers/') },
+    { name: profile.name, url: canonical },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: `${profile.name} — ${profile.role}`,
+    serviceType: profile.role,
+    description: profile.metaDescription,
+    provider: { '@type': 'Organization', name: 'Word Presto', url: SITE_URL },
+    url: canonical,
+  },
+];
 ---
 
 <BaseLayout
@@ -35,6 +53,7 @@ const canonical = locale === 'en'
   seoTitle={profile.seoTitle}
   description={profile.metaDescription}
   canonical={canonical}
+  jsonLd={jsonLd}
 >
 
   <!-- ===================== MASTHEAD ===================== -->

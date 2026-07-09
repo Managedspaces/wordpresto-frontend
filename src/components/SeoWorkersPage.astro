@@ -5,6 +5,7 @@ import { getWorkersByTeam, workerImage, workerInitials } from '@/data/workerRegi
 import { seoWorkersContent, workersSharedContent } from '@/data/i18n/workersDirectory';
 import { commonStrings } from '@/data/i18n/common';
 import { localeHref, type Locale } from '@/i18n/locales';
+import { absoluteUrl, breadcrumbList } from '@/lib/schema';
 
 interface Props {
   locale: Locale;
@@ -26,6 +27,21 @@ const teamColor = 'var(--team-seo)';
 const canonical = locale === 'en'
   ? 'https://wordpresto.com/workers/seo/'
   : `https://wordpresto.com${localeHref(locale, '/workers/seo/')}`;
+
+const jsonLd = [
+  breadcrumbList([
+    { name: c.home, url: absoluteUrl(locale, '/') },
+    { name: c.workers, url: absoluteUrl(locale, '/workers/') },
+    { name: meta.h1, url: canonical },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: meta.h1,
+    description: meta.metaDescription,
+    url: canonical,
+  },
+];
 ---
 
 <BaseLayout
@@ -33,6 +49,7 @@ const canonical = locale === 'en'
   seoTitle={meta.seoTitle}
   description={meta.metaDescription}
   canonical={canonical}
+  jsonLd={jsonLd}
 >
 
   <!-- ===================== MASTHEAD ===================== -->

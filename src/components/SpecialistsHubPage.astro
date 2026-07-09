@@ -5,6 +5,7 @@ import { commonStrings } from '@/data/i18n/common';
 import { homeContent } from '@/data/i18n/home';
 import { getTeamGroups, TOTAL_SPECIALISTS, TOTAL_TEAMS } from '@/data/workerRegistry';
 import { localeHref, type Locale } from '@/i18n/locales';
+import { absoluteUrl, breadcrumbList } from '@/lib/schema';
 
 interface Props {
   locale: Locale;
@@ -19,6 +20,20 @@ const teamGroups = getTeamGroups(6, locale);
 const canonical = locale === 'en'
   ? 'https://wordpresto.com/specialists/'
   : `https://wordpresto.com${localeHref(locale, '/specialists/')}`;
+
+const jsonLd = [
+  breadcrumbList([
+    { name: c.home, url: absoluteUrl(locale, '/') },
+    { name: meta.h1, url: canonical },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: meta.h1,
+    description: meta.metaDescription,
+    url: canonical,
+  },
+];
 ---
 
 <BaseLayout
@@ -26,6 +41,7 @@ const canonical = locale === 'en'
   seoTitle={meta.seoTitle}
   description={meta.metaDescription}
   canonical={canonical}
+  jsonLd={jsonLd}
 >
 
   <!-- ===================== MASTHEAD ===================== -->
