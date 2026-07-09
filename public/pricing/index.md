@@ -33,7 +33,7 @@ Credits are the one currency across the workflow. Here is what typical work cost
 
 Example usage is illustrative. Credits can be mixed across writing, editing, SEO research, site analysis, crawling and social publishing. External data and publishing actions may use premium credits because they rely on third-party API costs.
 
-Prices exclude VAT.
+All prices include VAT.
 
 ## Early access
 

@@ -205,7 +205,7 @@ export const pricingContent: Partial<Record<Locale, PricingContent>> & {
     // Required footnote copy. Rendered verbatim: do not reword.
     footnoteUsage:
       'Example usage is illustrative. Credits can be mixed across writing, editing, SEO research, site analysis, crawling and social publishing. External data and publishing actions may use premium credits because they rely on third-party API costs.',
-    footnoteVat: 'Prices exclude VAT.',
+    footnoteVat: 'All prices include VAT.',
 
     ctaEyebrow: 'Early access',
     ctaH2: 'Start with the plan that fits the work.',
