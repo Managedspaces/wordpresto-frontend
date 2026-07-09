@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { pricingContent } from '@/data/i18n/pricing';
 import { commonStrings } from '@/data/i18n/common';
 import { localeHref, type Locale } from '@/i18n/locales';
+import { registerUrl, loginUrl } from '@/lib/appLinks';
 import { absoluteUrl, breadcrumbList } from '@/lib/schema';
 
 interface Props {
@@ -17,7 +18,8 @@ const canonical = locale === 'en'
   ? 'https://wordpresto.com/pricing/'
   : `https://wordpresto.com${localeHref(locale, '/pricing/')}`;
 
-const waitlistHref = localeHref(locale, '/waitlist');
+const joinHref = registerUrl(locale);
+const signInHref = loginUrl(locale);
 
 // Everything the client-side script needs: the API base, the join link
 // and the locale strings. Serialised into #pricing-config server-side so the
@@ -25,7 +27,7 @@ const waitlistHref = localeHref(locale, '/waitlist');
 // Plan prices and credits are NOT here: they come from the live API.
 const clientConfig = {
   apiBase: import.meta.env.PUBLIC_APP_API_BASE || 'https://app.wordpresto.com',
-  waitlistHref,
+  joinHref,
   usageItems: t.exampleCosts
     .filter((item) => item.onCard)
     .sort((a, b) => (a.cardOrder ?? 99) - (b.cardOrder ?? 99))
@@ -77,7 +79,7 @@ const jsonLd = [
   <header class="masthead">
     <div class="masthead-inner">
       <nav class="masthead-nav masthead-nav--left">
-        <a href={waitlistHref} class="nav-link">{c.signIn}</a>
+        <a href={signInHref} class="nav-link">{c.signIn}</a>
         <a href={`${localeHref(locale, '/')}#product`} class="nav-link">{c.product}</a>
         <a href={`${localeHref(locale, '/')}#capabilities`} class="nav-link">{c.workflow}</a>
       </nav>
@@ -87,7 +89,7 @@ const jsonLd = [
       <nav class="masthead-nav masthead-nav--right">
         <a href={localeHref(locale, '/workers/')} class="nav-link">{c.workers}</a>
         <a href="/pricing/" class="nav-link" aria-current="page">{c.pricing}</a>
-        <a href={waitlistHref} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
+        <a href={joinHref} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
       </nav>
     </div>
   </header>
@@ -146,7 +148,7 @@ const jsonLd = [
         <span class="fold-corner-line fold-corner-line--md"></span>
         <div class="mono-label pricing-fallback-label">{t.fallbackHeading}</div>
         <p class="pricing-fallback-body">{t.fallbackBody}</p>
-        <a href={waitlistHref} class="btn btn--primary btn--lg pricing-fallback-cta">
+        <a href={joinHref} class="btn btn--primary btn--lg pricing-fallback-cta">
           {t.fallbackCta}
           <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -155,7 +157,7 @@ const jsonLd = [
       <noscript>
         <p class="pricing-noscript">
           {t.noscriptBody}
-          <a href={waitlistHref} class="text-link">{t.fallbackCta}</a>
+          <a href={joinHref} class="text-link">{t.fallbackCta}</a>
         </p>
       </noscript>
 
@@ -221,7 +223,7 @@ const jsonLd = [
       <h2 class="cta-h2">{t.ctaH2}</h2>
       <p class="cta-body">{t.ctaBody}</p>
       <div class="cta-actions">
-        <a href={waitlistHref} class="btn btn--primary btn--lg">
+        <a href={joinHref} class="btn btn--primary btn--lg">
           {t.ctaButton}
           <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -256,7 +258,7 @@ const jsonLd = [
       </div>
       <div class="footer-col">
         <span class="footer-col-heading">{c.contact}</span>
-        <a href={waitlistHref} class="footer-link">{c.joinWaitlist}</a>
+        <a href={joinHref} class="footer-link">{c.joinWaitlist}</a>
         <a href="/sitemap/" class="footer-link">{c.siteMap}</a>
         <a href="mailto:hello@wordpresto.com" class="footer-link">hello@wordpresto.com</a>
       </div>
@@ -285,7 +287,7 @@ const jsonLd = [
   // pricing API at page load, so pricing changes in the app reflect here
   // without a site redeploy. Nothing on this page invents a number: if the
   // API is unreachable or returns an unusable shape, the page shows an
-  // honest fallback and the join CTA (routed to /waitlist, the application form) instead.
+  // honest fallback and the join CTA (routed to the app signup) instead.
 
   interface UsageItem {
     credits: number;
@@ -295,7 +297,7 @@ const jsonLd = [
 
   interface PricingConfig {
     apiBase: string;
-    waitlistHref: string;
+    joinHref: string;
     usageItems: UsageItem[];
     strings: Record<string, string>;
   }
@@ -462,7 +464,7 @@ const jsonLd = [
       foot.appendChild(el('span', 'mono-label plan-overage', S.topUpsAvailable));
     }
     const cta = el('a', 'btn btn--secondary plan-cta', S.planCta) as HTMLAnchorElement;
-    cta.href = CONFIG.waitlistHref;
+    cta.href = CONFIG.joinHref;
     foot.appendChild(cta);
     card.appendChild(foot);
 

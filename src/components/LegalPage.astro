@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { legalPages, type LegalPageContent } from '@/data/legal';
 import { breadcrumbList, SITE_URL } from '@/lib/schema';
+import { registerUrl, loginUrl } from '@/lib/appLinks';
 
 interface Props {
   content: LegalPageContent;
@@ -37,7 +38,7 @@ const jsonLd = [
   <header class="masthead">
     <div class="masthead-inner">
       <nav class="masthead-nav masthead-nav--left">
-        <a href="/waitlist" class="nav-link">Sign in</a>
+        <a href={loginUrl()} class="nav-link">Sign in</a>
       </nav>
       <a href="/" class="masthead-logo-link" aria-label="WordPresto home">
         <img
@@ -49,7 +50,7 @@ const jsonLd = [
         />
       </a>
       <nav class="masthead-nav masthead-nav--right">
-        <a href="/waitlist/" class="nav-cta">Get early access</a>
+        <a href={registerUrl()} class="nav-cta">Get early access</a>
       </nav>
     </div>
   </header>

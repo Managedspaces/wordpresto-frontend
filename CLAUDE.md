@@ -224,15 +224,18 @@ Still avoid as visible homepage language (these stay deeper in the product):
 
 Frame SEO as a signal the writer sees while shaping the work, never as a bolt-on module or a checklist product.
 
+## Account CTAs (Join now / Sign in)
+
+Primary CTAs now lead into the **app's real signup workflow**, not the waitlist:
+
+* "Join now" / primary CTAs / "Get early access" → the app signup page
+* nav "Sign in" → the app login page
+
+These destinations live in one place, `src/lib/appLinks.ts` (`registerUrl(locale)` / `loginUrl(locale)`). Do not hardcode app URLs in page components — import the helpers. The app origin is env-configurable via `PUBLIC_APP_BASE` (falls back to `PUBLIC_APP_API_BASE`, then `https://app.wordpresto.com`), and the visitor's locale is carried across as `?lang=<locale>` for non-English (the app reads that querystring and stamps it onto the new account). App routes are `/register` and `/login`.
+
 ## Waitlist
 
-All main CTAs temporarily link to:
-
-```txt
-/waitlist
-```
-
-The waitlist is a multi-step application form backed by Neon Postgres.
+The waitlist page (`/waitlist`) still exists and remains reachable, but main CTAs no longer point at it — they point at the app signup above. The waitlist is a multi-step application form backed by Neon Postgres.
 
 It should collect structured early-access information without feeling heavy.
 
@@ -330,7 +333,7 @@ Before reporting completion, verify:
 * no horizontal overflow on mobile
 * homepage is readable on mobile
 * waitlist form works on mobile
-* CTAs route to `/waitlist`
+* "Join now" CTAs route to the app signup (`registerUrl`), nav "Sign in" to app login (`loginUrl`)
 * homepage hero leads with writers and editors, not with SEO
 * SEO is framed as embedded in the workflow, never as a standalone tool or checklist
 * visible homepage copy does not expose deeper-only language (schema, accessibility, conversion alignment, technical audit, cannibalisation)

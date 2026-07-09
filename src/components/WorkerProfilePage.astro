@@ -7,6 +7,7 @@ import { workerProfilePageChrome } from '@/data/i18n/workerProfilePage';
 import { commonStrings } from '@/data/i18n/common';
 import { workersSharedContent } from '@/data/i18n/workersDirectory';
 import { localeHref, type Locale } from '@/i18n/locales';
+import { registerUrl, loginUrl } from '@/lib/appLinks';
 import { absoluteUrl, breadcrumbList, SITE_URL } from '@/lib/schema';
 
 interface Props {
@@ -60,7 +61,7 @@ const jsonLd = [
   <header class="masthead">
     <div class="masthead-inner">
       <nav class="masthead-nav masthead-nav--left">
-        <a href={localeHref(locale, '/waitlist')} class="nav-link">{c.signIn}</a>
+        <a href={loginUrl(locale)} class="nav-link">{c.signIn}</a>
         <a href={`${localeHref(locale, '/')}#product`} class="nav-link">{c.product}</a>
         <a href={`${localeHref(locale, '/')}#capabilities`} class="nav-link">{c.workflow}</a>
       </nav>
@@ -70,7 +71,7 @@ const jsonLd = [
       <nav class="masthead-nav masthead-nav--right">
         <a href={`${localeHref(locale, '/')}#use-cases`} class="nav-link">{c.useCases}</a>
         <a href={localeHref(locale, '/workers/')} class="nav-link nav-link--active">{c.workers}</a>
-        <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
+        <a href={registerUrl(locale)} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
       </nav>
     </div>
   </header>
@@ -103,7 +104,7 @@ const jsonLd = [
           <p class="hero-audience">{profile.heroPara2}</p>
           <div class="hero-ctas">
             {profile.planned ? (
-              <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--lg">
+              <a href={registerUrl(locale)} class="btn btn--primary btn--lg">
                 {c.joinWaitlist}
                 <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
@@ -502,7 +503,7 @@ const jsonLd = [
       <h2 class="cta-h2">{profile.ctaH2}</h2>
       <p class="cta-body">{profile.ctaPara}</p>
       <div class="cta-actions">
-        <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--lg">
+        <a href={registerUrl(locale)} class="btn btn--primary btn--lg">
           {c.joinWaitlist}
           <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
