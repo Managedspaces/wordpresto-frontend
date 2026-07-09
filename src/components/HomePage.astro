@@ -27,6 +27,18 @@ const EDITOR_META = [
 const editors = t.languages.editors.map((e, i) => ({ ...e, ...EDITOR_META[i] }));
 
 const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpresto.com${localeHref(locale, '/')}`;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Word Presto',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description: t.seo.metaDescription,
+    url: canonical,
+  },
+];
 ---
 
 <BaseLayout
@@ -34,6 +46,7 @@ const canonical = locale === 'en' ? 'https://wordpresto.com/' : `https://wordpre
   seoTitle={t.seo.seoTitle}
   description={t.seo.metaDescription}
   canonical={canonical}
+  jsonLd={jsonLd}
 >
 
   <!-- ===================== MASTHEAD ===================== -->
