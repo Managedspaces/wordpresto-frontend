@@ -106,7 +106,7 @@ export const pricingContent: Partial<Record<Locale, PricingContent>> & {
       'Plans and top-up packs for writers, editors and publishing teams. One pool of credits covers planning, writing, review, SEO research, site analysis and publishing preparation.',
     h1: 'One pool of credits for the whole workflow.',
     intro:
-      'Pick a monthly or annual plan, spend credits across planning, writing, review, SEO research, site analysis and publishing, and top up when a busy month needs more. Prices are served live from the Word Presto app.',
+      'Pick a monthly or annual plan, spend credits across planning, writing, review, SEO research, site analysis and publishing, and top up when a busy month needs more.',
     breadcrumbHome: 'Home',
     breadcrumbCurrent: 'Pricing',
     eyebrow: 'Pricing',
