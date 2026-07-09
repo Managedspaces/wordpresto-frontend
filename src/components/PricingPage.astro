@@ -19,7 +19,7 @@ const canonical = locale === 'en'
 
 const waitlistHref = localeHref(locale, '/waitlist');
 
-// Everything the client-side script needs: the API base, the waitlist link
+// Everything the client-side script needs: the API base, the join link
 // and the locale strings. Serialised into #pricing-config server-side so the
 // script never duplicates copy (same pattern as WaitlistPage's #wl-i18n).
 // Plan prices and credits are NOT here: they come from the live API.
@@ -285,7 +285,7 @@ const jsonLd = [
   // pricing API at page load, so pricing changes in the app reflect here
   // without a site redeploy. Nothing on this page invents a number: if the
   // API is unreachable or returns an unusable shape, the page shows an
-  // honest fallback and the waitlist CTA instead.
+  // honest fallback and the join CTA (routed to /waitlist, the application form) instead.
 
   interface UsageItem {
     credits: number;

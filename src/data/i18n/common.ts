@@ -30,7 +30,7 @@ export interface CommonStrings {
 export const commonStrings: Record<Locale, CommonStrings> = {
   en: {
     signIn: 'Sign in',
-    joinWaitlist: 'Join the waitlist',
+    joinWaitlist: 'Join now',
     product: 'Product',
     workflow: 'Workflow',
     useCases: 'Use cases',
@@ -52,7 +52,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
   },
   pt: {
     signIn: 'Iniciar sessão',
-    joinWaitlist: 'Entrar na lista de espera',
+    joinWaitlist: 'Aderir agora',
     product: 'Produto',
     workflow: 'Fluxo de trabalho',
     useCases: 'Casos de uso',
@@ -74,7 +74,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
   },
   'pt-br': {
     signIn: 'Entrar',
-    joinWaitlist: 'Entrar na lista de espera',
+    joinWaitlist: 'Junte-se agora',
     product: 'Produto',
     workflow: 'Fluxo de trabalho',
     useCases: 'Casos de uso',
@@ -96,7 +96,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
   },
   es: {
     signIn: 'Iniciar sesión',
-    joinWaitlist: 'Unirse a la lista de espera',
+    joinWaitlist: 'Únete ahora',
     product: 'Producto',
     workflow: 'Flujo de trabajo',
     useCases: 'Casos de uso',
@@ -118,7 +118,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
   },
   de: {
     signIn: 'Anmelden',
-    joinWaitlist: 'Warteliste beitreten',
+    joinWaitlist: 'Jetzt beitreten',
     product: 'Produkt',
     workflow: 'Workflow',
     useCases: 'Anwendungsfälle',
@@ -140,7 +140,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
   },
   fr: {
     signIn: 'Se connecter',
-    joinWaitlist: 'Rejoindre la liste d’attente',
+    joinWaitlist: 'Rejoindre maintenant',
     product: 'Produit',
     workflow: 'Workflow',
     useCases: 'Cas d’usage',

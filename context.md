@@ -213,6 +213,24 @@ homepage masthead's previously dead Pricing link (`href="#"`) now points
 at `/pricing/` (unprefixed, same convention as other not-yet-localised
 routes).
 
+**Site-wide copy change: "waitlist" wording retired from visible copy.**
+The owner shifted the posture from "sign up to the waitlist" to a direct
+join framing. CTA labels are now "Join now" (en) / "Aderir agora" (pt) /
+"Junte-se agora" (pt-br) / "Únete ahora" (es) / "Jetzt beitreten" (de) /
+"Rejoindre maintenant" (fr) — updated in `common.ts` (`joinWaitlist` key,
+name kept as an internal id), `home.ts` (`ctaPrimary` ×2 per locale),
+`pricing.ts`, `waitlist.ts` (page title/H1/submit/consent/success copy in
+all 6 locales, e.g. en H1 is now "Join Word Presto."), plus hardcoded
+strings in `workflow-demo/index.astro`, `sitemap/index.astro`,
+`siteRoutes.ts` labels and `legal.ts` (waitlist mentions reworded to
+"early-access application"). The `/waitlist` ROUTE, the `/api/waitlist`
+endpoint, the `waitlist_applications` table, the `waitlistContent` /
+`joinWaitlist` identifiers and the auth-gated `/admin/waitlist` pages are
+deliberately unchanged — the multi-step application form IS the join
+mechanism, and renaming the route would break links/SEO and backend
+wiring. Verified via Playwright innerText sweep across en/pt/pt-br/es/de/fr
+homepages, waitlist pages, pricing, workflow-demo, sitemap and privacy.
+
 **Next up:** `/workflow-demo/` (1,937 lines) is the only major page left
 untranslated. It's a dense, narrative workflow-demo essay
 (`noindex`, not an SEO page) — deliberately deferred earlier in this plan

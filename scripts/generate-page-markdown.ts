@@ -314,7 +314,7 @@ function renderPricingMarkdown() {
     ``,
     pricing.ctaBody,
     ``,
-    `Join the waitlist: ${SITE_URL}/waitlist`,
+    `Join now: ${SITE_URL}/waitlist`,
     ``,
   ].join('\n');
 }

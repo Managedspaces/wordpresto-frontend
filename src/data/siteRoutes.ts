@@ -196,7 +196,7 @@ export const siteRoutes: SiteRoute[] = [
     // noindex (see src/pages/waitlist.astro): HTML sitemap only, not in
     // sitemap.xml.
     path: '/waitlist/',
-    label: 'Join the waitlist',
+    label: 'Join Word Presto',
     description: 'Early access application.',
     group: 'main',
     inXml: false,
@@ -204,7 +204,7 @@ export const siteRoutes: SiteRoute[] = [
   // Waitlist locale variants (src/data/i18n/waitlist.ts).
   ...LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({
     path: `/${l.path}/waitlist/`,
-    label: `Join the waitlist (${l.label})`,
+    label: `Join Word Presto (${l.label})`,
     description: 'Early access application.',
     group: 'main' as const,
     inXml: false,

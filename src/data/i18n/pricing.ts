@@ -128,14 +128,14 @@ export const pricingContent: Partial<Record<Locale, PricingContent>> & {
     usageHeading: 'Example usage',
     usageOrPrefix: 'or',
     topUpsAvailable: 'Top-up packs available',
-    planCta: 'Join the waitlist',
+    planCta: 'Join now',
     loadingLabel: 'Loading live pricing',
     fallbackHeading: 'Live pricing is not available right now.',
     fallbackBody:
-      "Pricing is being finalised. Join the waitlist and we'll share it with you first.",
-    fallbackCta: 'Join the waitlist',
+      "Pricing is being finalised. Join now and we'll share it with you first.",
+    fallbackCta: 'Join now',
     noscriptBody:
-      'Plan prices load live from the Word Presto app and need JavaScript to display. Join the waitlist and we will share current pricing with you directly.',
+      'Plan prices load live from the Word Presto app and need JavaScript to display. Join now and we will share current pricing with you directly.',
 
     packsEyebrow: 'Top-ups',
     packsH2: 'Top-up packs for the heavier months.',
@@ -210,8 +210,8 @@ export const pricingContent: Partial<Record<Locale, PricingContent>> & {
     ctaEyebrow: 'Early access',
     ctaH2: 'Start with the plan that fits the work.',
     ctaBody:
-      'Word Presto is in early access. Join the waitlist and we will be in touch when your place is ready, with current pricing included.',
-    ctaButton: 'Join the waitlist',
+      'Word Presto is in early access. Join now and we will be in touch when your place is ready, with current pricing included.',
+    ctaButton: 'Join now',
     ctaRuleText: 'REVIEW-LED · HUMAN APPROVAL',
   },
 };

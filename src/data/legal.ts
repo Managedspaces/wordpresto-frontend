@@ -3,7 +3,7 @@
  *
  * English only for now, matching the rest-of-site i18n rollout (see
  * CLAUDE.md). Grounded in the actual data practices of wordpresto.com (the
- * marketing site, GA + Clarity analytics, the Neon-backed waitlist form) and
+ * marketing site, GA + Clarity analytics, the Neon-backed early-access application form) and
  * app.wordpresto.com (the App: Supabase-backed accounts, JWT auth stored in
  * browser storage rather than cookies, Stripe billing, and the third-party
  * integrations a user explicitly connects: Google Search Console/GA4, Bing
@@ -49,21 +49,21 @@ export const privacyPolicy: LegalPageContent = {
     'How Word Presto collects, uses and protects personal data across wordpresto.com and the Word Presto application.',
   effectiveDate: EFFECTIVE_DATE,
   intro: [
-    `Word Presto is operated by ${COMPANY} ("Word Presto", "we", "us", "our"). This policy explains what personal data we collect, why, and how it is handled across wordpresto.com (the marketing site and waitlist) and app.wordpresto.com (the Word Presto application, "the App").`,
+    `Word Presto is operated by ${COMPANY} ("Word Presto", "we", "us", "our"). This policy explains what personal data we collect, why, and how it is handled across wordpresto.com (the marketing site and early-access application) and app.wordpresto.com (the Word Presto application, "the App").`,
     `We collect only what the service needs to work, and we do not sell personal data. If anything here is unclear, contact us at ${CONTACT_EMAIL}.`,
   ],
   sections: [
     {
       heading: '1. Who this policy covers',
       blocks: [
-        p('This policy applies to three groups of people: visitors to wordpresto.com, applicants to the early-access waitlist, and registered users of the App.'),
+        p('This policy applies to three groups of people: visitors to wordpresto.com, early-access applicants, and registered users of the App.'),
       ],
     },
     {
       heading: '2. Information we collect',
       blocks: [
         p('Site visitors (wordpresto.com). We use Google Analytics and Microsoft Clarity to understand how the site is used: pages viewed, referring site, approximate location, device and browser type, and session recordings and heatmaps from Clarity. See our Cookie Policy for the full list of cookies these tools set. We do not store your raw IP address ourselves.'),
-        p('Waitlist applicants. The waitlist form collects your name, email address, company, role, intended use case and country, which we use to localise currency. A hidden field on the form is used only to detect automated spam submissions and is never shown to real visitors. We do not store your raw IP address.'),
+        p('Early-access applicants. The early-access application form collects your name, email address, company, role, intended use case and country, which we use to localise currency. A hidden field on the form is used only to detect automated spam submissions and is never shown to real visitors. We do not store your raw IP address.'),
         p('App account holders. When you create an account we hold your name, email address and a securely hashed password. As you use the App we store the project data you create or import: website or writing project details, drafts, briefs, review notes, Worker outputs and approval records.'),
         p('Connected integrations. Where you explicitly connect a third-party service, we store the data needed to use it: Google Search Console and Google Analytics 4 data (via Google OAuth), Bing Webmaster Tools data, DataForSEO keyword and SERP results (only when you trigger a specific paid action), and repository or site access for GitHub, WordPress or Sanity destinations you connect. Access tokens for these integrations are stored encrypted.'),
         p('Billing. Paid plans and credit packs are processed by Stripe. We store your billing history and subscription status; Stripe holds your card details, we do not.'),
@@ -74,8 +74,8 @@ export const privacyPolicy: LegalPageContent = {
       heading: '3. How we use your information',
       blocks: [
         ul([
-          'To provide and operate the marketing site, waitlist and App',
-          'To review waitlist applications and contact you about early access',
+          'To provide and operate the marketing site, early-access application and App',
+          'To review early-access applications and contact you about access',
           'To run the content workflow you initiate: planning, drafting, review, improvement, approval and publishing handoff',
           'To understand site and product usage so we can improve them',
           'To detect and prevent spam, abuse and security issues',
@@ -87,7 +87,7 @@ export const privacyPolicy: LegalPageContent = {
     {
       heading: '4. Our legal bases for processing',
       blocks: [
-        p('Where UK and EU data protection law applies, we rely on: performance of a contract (running your App account and billing), legitimate interests (analytics, waitlist follow-up, keeping the service secure), consent (non-essential cookies and marketing emails, which you can withdraw at any time), and legal obligation (accounting and tax records).'),
+        p('Where UK and EU data protection law applies, we rely on: performance of a contract (running your App account and billing), legitimate interests (analytics, application follow-up, keeping the service secure), consent (non-essential cookies and marketing emails, which you can withdraw at any time), and legal obligation (accounting and tax records).'),
       ],
     },
     {
@@ -109,7 +109,7 @@ export const privacyPolicy: LegalPageContent = {
         p('We share personal data only with the service providers needed to run Word Presto, under contracts that require them to protect it:'),
         ul([
           'Supabase — database hosting for the App',
-          'Neon — database hosting for the waitlist',
+          'Neon — database hosting for early-access applications',
           'Vercel — site and application hosting',
           'Stripe — payment processing',
           'Resend — transactional and notification email',
@@ -129,7 +129,7 @@ export const privacyPolicy: LegalPageContent = {
     {
       heading: '9. How long we keep data',
       blocks: [
-        p('Waitlist data is kept while your application is pending, and for a reasonable period afterwards in case you are invited to create an account, unless you ask us to delete it sooner. App account data is kept while your account is active, and for a limited period afterwards to meet legal, accounting and backup requirements. Analytics data is retained according to Google Analytics’ and Microsoft Clarity’s standard retention settings.'),
+        p('Early-access application data is kept while your application is pending, and for a reasonable period afterwards in case you are invited to create an account, unless you ask us to delete it sooner. App account data is kept while your account is active, and for a limited period afterwards to meet legal, accounting and backup requirements. Analytics data is retained according to Google Analytics’ and Microsoft Clarity’s standard retention settings.'),
       ],
     },
     {
@@ -180,19 +180,19 @@ export const termsAndConditions: LegalPageContent = {
     {
       heading: '1. The Service',
       blocks: [
-        p('Word Presto is a content workflow platform. It helps plan, brief, draft, review, improve and prepare content for search, readers and CMS handoff, with human review and approval at every stage. wordpresto.com is the marketing site and early-access waitlist; app.wordpresto.com is the application where projects, Workers, the Canvas and publishing handoff live.'),
+        p('Word Presto is a content workflow platform. It helps plan, brief, draft, review, improve and prepare content for search, readers and CMS handoff, with human review and approval at every stage. wordpresto.com is the marketing site and early-access application; app.wordpresto.com is the application where projects, Workers, the Canvas and publishing handoff live.'),
       ],
     },
     {
       heading: '2. Accounts and eligibility',
       blocks: [
-        p('You must provide accurate information when applying to the waitlist or creating an App account, and keep your login credentials secure. You are responsible for activity that happens under your account. You must be legally able to enter into a contract, and if you are acting for an organisation, authorised to do so.'),
+        p('You must provide accurate information when applying for early access or creating an App account, and keep your login credentials secure. You are responsible for activity that happens under your account. You must be legally able to enter into a contract, and if you are acting for an organisation, authorised to do so.'),
       ],
     },
     {
-      heading: '3. The waitlist and early access',
+      heading: '3. Early access',
       blocks: [
-        p('Submitting a waitlist application does not guarantee access, or a particular access date. We may prioritise applications at our discretion.'),
+        p('Submitting an early-access application does not guarantee access, or a particular access date. We may prioritise applications at our discretion.'),
       ],
     },
     {
@@ -378,13 +378,13 @@ export const dataDeletionInstructions: LegalPageContent = {
     'How to request deletion of the personal data Word Presto holds about you, including data linked to a connected Meta (Facebook) account.',
   effectiveDate: EFFECTIVE_DATE,
   intro: [
-    `This page explains how to request deletion of the personal data ${COMPANY} ("Word Presto", "we", "us", "our") holds about you across wordpresto.com and app.wordpresto.com, and applies to anyone who has used the waitlist, created an App account, or connected a third-party account such as Meta (Facebook) to the Service.`,
+    `This page explains how to request deletion of the personal data ${COMPANY} ("Word Presto", "we", "us", "our") holds about you across wordpresto.com and app.wordpresto.com, and applies to anyone who has applied for early access, created an App account, or connected a third-party account such as Meta (Facebook) to the Service.`,
   ],
   sections: [
     {
       heading: '1. How to request deletion',
       blocks: [
-        p(`Send a deletion request to ${PRIVACY_EMAIL} from the email address associated with your account or waitlist application. Include your name and, if you have one, your App account email, so we can locate your data.`),
+        p(`Send a deletion request to ${PRIVACY_EMAIL} from the email address associated with your account or early-access application. Include your name and, if you have one, your App account email, so we can locate your data.`),
       ],
     },
     {
@@ -392,7 +392,7 @@ export const dataDeletionInstructions: LegalPageContent = {
       blocks: [
         p('On a verified request, we delete or anonymise the personal data we hold about you, including:'),
         ul([
-          'Waitlist application details (name, email, company, role, use case, country)',
+          'Early-access application details (name, email, company, role, use case, country)',
           'App account details (name, email, hashed password) and the project data associated with your account',
           'Access tokens and data for any third-party integration you connected, including Meta (Facebook), Google, Bing Webmaster Tools, DataForSEO, GitHub, WordPress or Sanity',
           'Support correspondence linked to your account',
