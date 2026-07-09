@@ -4,6 +4,7 @@ import { specialistTeamContent, specialistsSharedContent } from '@/data/i18n/spe
 import { commonStrings } from '@/data/i18n/common';
 import { getWorkersByTeam, getTeamMeta, workerImage, workerInitials, type TeamId } from '@/data/workerRegistry';
 import { localeHref, type Locale } from '@/i18n/locales';
+import { registerUrl, loginUrl } from '@/lib/appLinks';
 import { absoluteUrl, breadcrumbList } from '@/lib/schema';
 
 interface Props {
@@ -50,7 +51,7 @@ const jsonLd = [
   <header class="masthead">
     <div class="masthead-inner">
       <nav class="masthead-nav masthead-nav--left">
-        <a href={localeHref(locale, '/waitlist')} class="nav-link">{c.signIn}</a>
+        <a href={loginUrl(locale)} class="nav-link">{c.signIn}</a>
         <a href={`${localeHref(locale, '/')}#product`} class="nav-link">{c.product}</a>
         <a href={`${localeHref(locale, '/')}#capabilities`} class="nav-link">{c.workflow}</a>
       </nav>
@@ -60,7 +61,7 @@ const jsonLd = [
       <nav class="masthead-nav masthead-nav--right">
         <a href={`${localeHref(locale, '/')}#use-cases`} class="nav-link">{c.useCases}</a>
         <a href={localeHref(locale, '/workers/')} class="nav-link">{c.workers}</a>
-        <a href={localeHref(locale, '/waitlist')} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
+        <a href={registerUrl(locale)} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
       </nav>
     </div>
   </header>
@@ -155,7 +156,7 @@ const jsonLd = [
       </div>
       <div class="footer-col">
         <span class="footer-col-heading">Company</span>
-        <a href={localeHref(locale, '/waitlist')} class="footer-link">{c.joinWaitlist}</a>
+        <a href={registerUrl(locale)} class="footer-link">{c.joinWaitlist}</a>
       </div>
     </div>
     <div class="footer-bottom">

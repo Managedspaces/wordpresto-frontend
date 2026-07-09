@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { workerProfiles } from '@/data/workerProfiles';
 import { mainRoutes, machineRoutes } from '@/data/siteRoutes';
+import { registerUrl, loginUrl } from '@/lib/appLinks';
 
 const seoTitle = 'Site map | WordPresto';
 const metaDescription = 'A complete map of the WordPresto site — main pages, Workers and resources.';
@@ -27,7 +28,7 @@ const governanceOpsWorkers = workerProfiles.filter((w) => w.team === 'governance
   <header class="masthead">
     <div class="masthead-inner">
       <nav class="masthead-nav masthead-nav--left">
-        <a href="/waitlist" class="nav-link">Sign in</a>
+        <a href={loginUrl()} class="nav-link">Sign in</a>
       </nav>
       <a href="/" class="masthead-logo-link" aria-label="WordPresto home">
         <img
@@ -39,7 +40,7 @@ const governanceOpsWorkers = workerProfiles.filter((w) => w.team === 'governance
         />
       </a>
       <nav class="masthead-nav masthead-nav--right">
-        <a href="/waitlist/" class="nav-cta">Get early access</a>
+        <a href={registerUrl()} class="nav-cta">Get early access</a>
       </nav>
     </div>
   </header>
@@ -197,7 +198,7 @@ const governanceOpsWorkers = workerProfiles.filter((w) => w.team === 'governance
       </nav>
       <nav class="footer-nav" aria-label="Get access">
         <span class="footer-nav-heading">Get access</span>
-        <a href="/waitlist/" class="footer-link">Join now</a>
+        <a href={registerUrl()} class="footer-link">Join now</a>
       </nav>
     </div>
     <div class="footer-bottom container">
