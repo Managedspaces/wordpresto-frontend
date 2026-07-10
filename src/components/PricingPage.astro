@@ -532,9 +532,20 @@ const jsonLd = [
 
   async function loadPricing(): Promise<void> {
     const base = CONFIG.apiBase.replace(/\/$/, '');
-    const res = await fetch(`${base}/api/public/pricing`, {
-      headers: { accept: 'application/json' },
-    });
+    // Bound the request so a slow/unreachable backend flips to the graceful fallback instead of leaving
+    // the skeleton tiles spinning forever. AbortController fires `abort` at the deadline → fetch rejects
+    // → the outer .catch runs showFallback().
+    const controller = new AbortController();
+    const deadline = setTimeout(() => controller.abort(), 8000);
+    let res: Response;
+    try {
+      res = await fetch(`${base}/api/public/pricing`, {
+        headers: { accept: 'application/json' },
+        signal: controller.signal,
+      });
+    } finally {
+      clearTimeout(deadline);
+    }
     if (!res.ok) throw new Error(`pricing_http_${res.status}`);
     const data: unknown = await res.json();
     const body = (data ?? {}) as Record<string, unknown>;
