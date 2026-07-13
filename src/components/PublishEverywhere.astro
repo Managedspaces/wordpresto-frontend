@@ -32,7 +32,7 @@ const groups = [
 ];
 ---
 
-<section id="publish" class="section section--border-top pe">
+<section id="publish" class="pe">
   <div class="container pe-inner">
 
     <header class="pe-header">
@@ -103,11 +103,15 @@ const groups = [
 
 <style>
   .pe {
+    /* Self-sufficient section chrome: the site's .section/.container classes are
+       scoped to HomePage and don't reach this component, so match their values here. */
+    padding: 92px 0;
+    border-top: 2px solid var(--wp-ink);
     /* Tokens the imported design used that the site doesn't define globally. */
     --pe-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 6px 16px rgba(17,19,24,0.04);
     --pe-surface-hover: var(--wp-paper-dark);
   }
-  .pe-inner { max-width: 1160px; }
+  .pe-inner { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 34px; }
 
   .pe-header { text-align: center; max-width: 700px; margin: 0 auto 32px; }
   .pe-eyebrow {
@@ -180,8 +184,15 @@ const groups = [
 
   /* Mobile: source stacks above channels; the connector arrow points down. */
   @media (max-width: 768px) {
+    .pe { padding: 60px 0; }
+    .pe-inner { padding: 0 24px; }
     .pe-source-wrap { max-width: none; }
     .pe-connector { flex-direction: row; padding: 4px 0; }
     .pe-arrow { transform: rotate(90deg); }
+  }
+
+  @media (max-width: 480px) {
+    .pe { padding: 44px 0; }
+    .pe-inner { padding: 0 18px; }
   }
 </style>
