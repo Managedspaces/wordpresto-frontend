@@ -115,6 +115,22 @@ export interface HomeContent {
     stampText: string;
     pillText: string;
   };
+  publish: {
+    eyebrow: string;
+    h2: string;
+    body: string;
+    sourceKicker: string;
+    sourceTitle: string;
+    sourceNote1: string;
+    sourceNote2: string;
+    connector: string;
+    socialLabel: string;
+    cmsLabel: string;
+    readyStatus: string;
+    footerLead: string;
+    footerEmphasis: string;
+    footerTail: string;
+  };
   cta: {
     h2: string;
     body: string;
@@ -290,6 +306,22 @@ export const homeContent: Record<Locale, HomeContent> = {
       stampText: 'Approved',
       pillText: 'the Editor holds the pen',
     },
+    publish: {
+      eyebrow: 'Write once · Publish everywhere',
+      h2: 'One approved idea, ready for every channel.',
+      body: 'Word Presto prepares channel-ready versions for your social platforms and your CMS, structured, on brand and consistent. Nothing goes live until a person approves it.',
+      sourceKicker: 'Human-approved source',
+      sourceTitle: 'Approved Content',
+      sourceNote1: 'Clear. Accurate. On brand.',
+      sourceNote2: 'Write once, adapt everywhere.',
+      connector: 'Publishes to',
+      socialLabel: 'Social channels',
+      cmsLabel: 'CMS & delivery',
+      readyStatus: 'Ready',
+      footerLead: 'Agents prepare every version.',
+      footerEmphasis: 'People still make the call',
+      footerTail: 'Human approval before anything goes live.',
+    },
     cta: {
       h2: 'Put Emma at the centre of your content operation.',
       body: 'For writers, editors and publishing teams who need better content work without giving up editorial control.',
@@ -463,6 +495,22 @@ export const homeContent: Record<Locale, HomeContent> = {
       approvedByLabel: 'aprovado por',
       stampText: 'Aprovado',
       pillText: 'o Editor tem a palavra final',
+    },
+    publish: {
+      eyebrow: 'Escreva uma vez · Publique em todo o lado',
+      h2: 'Uma ideia aprovada, pronta para cada canal.',
+      body: 'A Word Presto prepara versões prontas para cada canal, para as suas redes sociais e o seu CMS, estruturadas, fiéis à marca e consistentes. Nada é publicado até uma pessoa aprovar.',
+      sourceKicker: 'Fonte aprovada por humanos',
+      sourceTitle: 'Conteúdo aprovado',
+      sourceNote1: 'Claro. Rigoroso. Fiel à marca.',
+      sourceNote2: 'Escreva uma vez, adapte em todo o lado.',
+      connector: 'Publica em',
+      socialLabel: 'Redes sociais',
+      cmsLabel: 'CMS e entrega',
+      readyStatus: 'Pronto',
+      footerLead: 'Os agentes preparam cada versão.',
+      footerEmphasis: 'A decisão continua a ser das pessoas',
+      footerTail: 'Aprovação humana antes de qualquer publicação.',
     },
     cta: {
       h2: 'Coloque a Emma no centro da sua operação de conteúdo.',
@@ -638,6 +686,22 @@ export const homeContent: Record<Locale, HomeContent> = {
       stampText: 'Aprovado',
       pillText: 'o Editor tem a palavra final',
     },
+    publish: {
+      eyebrow: 'Escreva uma vez · Publique em todo lugar',
+      h2: 'Uma ideia aprovada, pronta para cada canal.',
+      body: 'A Word Presto prepara versões prontas para cada canal, para as suas redes sociais e o seu CMS, estruturadas, fiéis à marca e consistentes. Nada vai ao ar até uma pessoa aprovar.',
+      sourceKicker: 'Fonte aprovada por humanos',
+      sourceTitle: 'Conteúdo aprovado',
+      sourceNote1: 'Claro. Preciso. Fiel à marca.',
+      sourceNote2: 'Escreva uma vez, adapte em todo lugar.',
+      connector: 'Publica em',
+      socialLabel: 'Redes sociais',
+      cmsLabel: 'CMS e entrega',
+      readyStatus: 'Pronto',
+      footerLead: 'Os agentes preparam cada versão.',
+      footerEmphasis: 'A decisão continua sendo das pessoas',
+      footerTail: 'Aprovação humana antes de qualquer publicação.',
+    },
     cta: {
       h2: 'Coloque a Emma no centro da sua operação de conteúdo.',
       body: 'Para escritores, editores e equipes de publicação que precisam de um trabalho de conteúdo melhor sem abrir mão do controle editorial.',
@@ -811,6 +875,22 @@ export const homeContent: Record<Locale, HomeContent> = {
       approvedByLabel: 'aprobado por',
       stampText: 'Aprobado',
       pillText: 'el Editor tiene la última palabra',
+    },
+    publish: {
+      eyebrow: 'Escribe una vez · Publica en todas partes',
+      h2: 'Una idea aprobada, lista para cada canal.',
+      body: 'Word Presto prepara versiones listas para cada canal, para tus redes sociales y tu CMS, estructuradas, fieles a la marca y coherentes. Nada se publica hasta que una persona lo aprueba.',
+      sourceKicker: 'Fuente aprobada por personas',
+      sourceTitle: 'Contenido aprobado',
+      sourceNote1: 'Claro. Preciso. Fiel a la marca.',
+      sourceNote2: 'Escribe una vez, adapta en todas partes.',
+      connector: 'Publica en',
+      socialLabel: 'Redes sociales',
+      cmsLabel: 'CMS y entrega',
+      readyStatus: 'Listo',
+      footerLead: 'Los agentes preparan cada versión.',
+      footerEmphasis: 'La decisión sigue siendo de las personas',
+      footerTail: 'Aprobación humana antes de publicar nada.',
     },
     cta: {
       h2: 'Pon a Emma en el centro de tu operación de contenido.',
@@ -986,6 +1066,22 @@ export const homeContent: Record<Locale, HomeContent> = {
       stampText: 'Freigegeben',
       pillText: 'der Editor hat den Stift in der Hand',
     },
+    publish: {
+      eyebrow: 'Einmal schreiben · Überall veröffentlichen',
+      h2: 'Eine freigegebene Idee, bereit für jeden Kanal.',
+      body: 'Word Presto bereitet kanalfertige Versionen für Ihre sozialen Plattformen und Ihr CMS vor, strukturiert, markengerecht und konsistent. Nichts geht live, bevor ein Mensch es freigibt.',
+      sourceKicker: 'Von Menschen freigegebene Quelle',
+      sourceTitle: 'Freigegebener Inhalt',
+      sourceNote1: 'Klar. Präzise. Markengerecht.',
+      sourceNote2: 'Einmal schreiben, überall anpassen.',
+      connector: 'Veröffentlicht auf',
+      socialLabel: 'Soziale Kanäle',
+      cmsLabel: 'CMS & Auslieferung',
+      readyStatus: 'Bereit',
+      footerLead: 'Die Agenten bereiten jede Version vor.',
+      footerEmphasis: 'Die Entscheidung treffen weiterhin Menschen',
+      footerTail: 'Menschliche Freigabe, bevor etwas live geht.',
+    },
     cta: {
       h2: 'Stellen Sie Emma ins Zentrum Ihrer Content-Arbeit.',
       body: 'Für Autoren, Redakteure und Publishing-Teams, die bessere Content-Arbeit wollen, ohne die redaktionelle Kontrolle abzugeben.',
@@ -1159,6 +1255,22 @@ export const homeContent: Record<Locale, HomeContent> = {
       approvedByLabel: 'validé par',
       stampText: 'Validé',
       pillText: 'l’Éditeur a le dernier mot',
+    },
+    publish: {
+      eyebrow: 'Écrivez une fois · Publiez partout',
+      h2: 'Une idée approuvée, prête pour chaque canal.',
+      body: "Word Presto prépare des versions prêtes pour chaque canal, pour vos réseaux sociaux et votre CMS, structurées, fidèles à la marque et cohérentes. Rien n'est publié tant qu'une personne ne l'a pas approuvé.",
+      sourceKicker: 'Source approuvée par des humains',
+      sourceTitle: 'Contenu approuvé',
+      sourceNote1: 'Clair. Précis. Fidèle à la marque.',
+      sourceNote2: 'Écrivez une fois, adaptez partout.',
+      connector: 'Publie sur',
+      socialLabel: 'Réseaux sociaux',
+      cmsLabel: 'CMS et diffusion',
+      readyStatus: 'Prêt',
+      footerLead: 'Les agents préparent chaque version.',
+      footerEmphasis: 'La décision revient toujours aux humains',
+      footerTail: 'Validation humaine avant toute mise en ligne.',
     },
     cta: {
       h2: 'Placez Emma au centre de votre production de contenu.',

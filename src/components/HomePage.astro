@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Masthead from '@/components/Masthead.astro';
+import PublishEverywhere from '@/components/PublishEverywhere.astro';
 import { homeContent } from '@/data/i18n/home';
 import { commonStrings } from '@/data/i18n/common';
 import { getTeamGroups, TOTAL_SPECIALISTS, TOTAL_TEAMS } from '@/data/workerRegistry';
@@ -492,7 +493,10 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- ===================== 9. FINAL CTA ===================== -->
+  <!-- ===================== 9. PUBLISH EVERYWHERE ===================== -->
+  <PublishEverywhere locale={locale} />
+
+  <!-- ===================== 10. FINAL CTA ===================== -->
   <section class="section section--cta section--border-top">
     <div class="cta-inner">
       <img src="/editors/emma-192.webp" srcset="/editors/emma-192.webp 1x, /editors/emma-384.webp 2x" alt="Emma, managing editor" class="cta-avatar" width="78" height="78" loading="lazy" decoding="async" />
