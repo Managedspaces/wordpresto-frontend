@@ -1,5 +1,4 @@
-# Translation run
+# Translation run — complete
 
-Automated backend translation worker. English is the source of truth; brand terms are
-protected and each locale keeps its formality. Locales processed **German first**, then the rest.
-Review the diff before merging — nothing is live until this PR is approved.
+1332 string(s) changed across 30/40 units.
+Review the diff and merge when ready.
