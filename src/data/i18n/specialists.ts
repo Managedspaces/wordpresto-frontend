@@ -45,11 +45,11 @@ export const specialistsHubContent: Record<Locale, SpecialistsHubContent> = {
     note: 'Emma coordinates all four teams from one editorial desk. Specialists review, draft, check and prepare, but nothing moves forward, and nothing publishes, without the Editor’s approval.',
   },
   pt: {
-    seoTitle: 'O quadro de especialistas da Word Presto | WordPresto',
-    metaDescription: 'Conheça as quatro equipas por trás da Emma: Produção de Conteúdo, SEO, Operações e Aprovação / Governação. Cada especialista tem uma função definida e cada alteração continua a precisar da aprovação do Editor.',
-    h1: 'O quadro de especialistas por trás da Emma.',
-    intro: 'A Word Presto não é um escritor de IA genérico. É um quadro de Workers especializados, organizados em quatro equipas, que a Emma chama no momento certo. Os especialistas revêem, redigem e preparam. Só o Editor aprova.',
-    note: 'A Emma coordena as quatro equipas a partir de uma única redação editorial. Os especialistas revêem, redigem, verificam e preparam, mas nada avança, e nada é publicado, sem a aprovação do Editor.',
+    seoTitle: 'A bancada de especialistas da Word Presto | WordPresto',
+    metaDescription: 'Conheça as quatro equipas que compõem o Emma: Produção de Conteúdos, SEO, Operações e Aprovação/Governação. Cada especialista tem uma função definida, e qualquer alteração continua a necessitar da aprovação do Editor.',
+    h1: 'A equipa de especialistas por detrás do Emma.',
+    intro: 'O Word Presto não é um mero redator de IA genérico. É um conjunto de Workers especializados, organizados em quatro equipas, que o Emma convoca no momento certo. Os especialistas revêem, redigem e preparam. Apenas o Editor aprova.',
+    note: 'O Emma coordena as quatro equipas a partir de uma única secretaria editorial. Os especialistas revêem, redigem, verificam e preparam, mas nada avança nem é publicado sem a aprovação do Editor.',
   },
   'pt-br': {
     seoTitle: 'O time de especialistas da Word Presto | WordPresto',
