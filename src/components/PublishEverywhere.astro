@@ -1,0 +1,187 @@
+---
+// "Publish everywhere" homepage section: one approved source prepares channel-ready versions for
+// social platforms and CMS/delivery targets, with human approval as the gate. Imported from the
+// Word Presto design project (Publish Everywhere Highlight) and adapted to the site's section rhythm
+// and paper/ink tokens. Copy is locale-keyed in home.ts; channel names are a fixed taxonomy and stay
+// English everywhere (same rule as the Worker taxonomy).
+import { homeContent } from '@/data/i18n/home';
+import type { Locale } from '@/i18n/locales';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = homeContent[locale].publish;
+
+interface Channel { name: string; bg: string; icon: string; letter?: string }
+
+const social: Channel[] = [
+  { name: 'LinkedIn', bg: '#0A66C2', icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>' },
+  { name: 'X', bg: '#0F1419', icon: '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>' },
+  { name: 'Facebook', bg: '#1877F2', icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>' },
+  { name: 'Instagram', bg: '#E4405F', icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>' },
+];
+const cms: Channel[] = [
+  { name: 'WordPress', bg: '#21759B', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zM1.2 12c0-1.57.34-3.06.94-4.4l5.17 14.17C3.67 20 1.2 16.29 1.2 12zm10.8 10.8c-1.06 0-2.08-.15-3.05-.44l3.24-9.42 3.32 9.1c.02.05.05.1.07.15A10.75 10.75 0 0 1 12 22.8zm1.49-15.87c.65-.03 1.24-.1 1.24-.1.58-.07.51-.93-.07-.9 0 0-1.75.14-2.88.14-1.06 0-2.84-.14-2.84-.14-.58-.03-.65.86-.07.9 0 0 .55.07 1.14.1l1.69 4.64-2.38 7.13-3.96-11.77c.65-.03 1.24-.1 1.24-.1.58-.07.51-.93-.07-.9 0 0-1.75.14-2.88.14-.2 0-.44-.01-.69-.02A10.78 10.78 0 0 1 12 1.2c2.82 0 5.38 1.08 7.3 2.84-.05 0-.09-.01-.14-.01-1.06 0-1.81.92-1.81 1.91 0 .89.51 1.64 1.06 2.53.41.72.89 1.64.89 2.97 0 .92-.35 1.99-.82 3.48l-1.08 3.6-3.91-11.63zm5.28 14.28l3.29-9.52c.62-1.54.82-2.77.82-3.87 0-.4-.03-.77-.07-1.12a10.75 10.75 0 0 1-4.03 14.51z"/></svg>' },
+  { name: 'Sanity', bg: '#F03E2F', letter: 'S', icon: '' },
+  { name: 'Astro', bg: '#FF5D01', icon: '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M8.9 16.6c-.6-.6-.8-1.8-.5-2.7.5.6 1.3.8 2 1 1.2.3 2.3.3 3.4-.3.1.4.1.9-.1 1.4-.4 1.1-1.3 1.7-2.4 1.7-.9 0-1.7-.4-2.4-1.1zM13.7 1.3c.6 2 .6 3.9.5 5.9-.1 1.3-.7 2.4-1.4 3.5-.4.6-.9 1.1-1.4 1.7-.5-1-.6-2-.4-3 .2-.9.6-1.7 1.1-2.4.6-1 1.1-2 1.2-3.2 0-.5 0-1 .1-1.5.1-.4.2-.7.2-1zM3.3 15.6l6.2-8.5.2.1-2.7 8.4h5.2l-3.6 6.5.1.1L15 13H9.9l2.3-7.2-.2-.1z"/></svg>' },
+];
+const groups = [
+  { label: t.socialLabel, items: social },
+  { label: t.cmsLabel, items: cms },
+];
+---
+
+<section id="publish" class="section section--border-top pe">
+  <div class="container pe-inner">
+
+    <header class="pe-header">
+      <div class="pe-eyebrow"><span class="pe-eyebrow-dot"></span>{t.eyebrow}</div>
+      <h2 class="pe-h2">{t.h2}</h2>
+      <p class="pe-body">{t.body}</p>
+    </header>
+
+    <div class="pe-flow">
+      <!-- Approved source -->
+      <div class="pe-source-wrap">
+        <div class="pe-source">
+          <div class="pe-source-kicker">
+            <span class="pe-check" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <span class="pe-mono pe-source-kicker-text">{t.sourceKicker}</span>
+          </div>
+          <h3 class="pe-source-title">{t.sourceTitle}</h3>
+          <div class="pe-lines" aria-hidden="true">
+            <span style="width:92%"></span><span style="width:100%"></span>
+            <span style="width:78%"></span><span style="width:88%"></span>
+          </div>
+          <div class="pe-source-foot">
+            <span class="pe-mono">{t.sourceNote1}</span>
+            <span class="pe-source-note2">{t.sourceNote2}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connector -->
+      <div class="pe-connector">
+        <span class="pe-mono pe-connector-label">{t.connector}</span>
+        <svg class="pe-arrow" width="52" height="16" viewBox="0 0 56 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h46" stroke-dasharray="3 4"/><path d="M46 3l6 5-6 5"/></svg>
+      </div>
+
+      <!-- Channels -->
+      <div class="pe-channels">
+        {groups.map((g) => (
+          <div class="pe-group">
+            <div class="pe-mono pe-group-label">{g.label}</div>
+            <div class="pe-tiles">
+              {g.items.map((c) => (
+                <div class="pe-tile">
+                  <span class="pe-badge" style={`background:${c.bg}`} aria-hidden="true">
+                    {c.letter ? <span class="pe-badge-letter">{c.letter}</span> : <Fragment set:html={c.icon} />}
+                  </span>
+                  <span class="pe-tile-text">
+                    <span class="pe-tile-name">{c.name}</span>
+                    <span class="pe-ready"><span class="pe-ready-dot"></span>{t.readyStatus}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Human-approval note -->
+    <div class="pe-note">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>{t.footerLead} <strong>{t.footerEmphasis}</strong>. {t.footerTail}</span>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .pe {
+    /* Tokens the imported design used that the site doesn't define globally. */
+    --pe-shadow: 0 1px 2px rgba(17,19,24,0.05), 0 6px 16px rgba(17,19,24,0.04);
+    --pe-surface-hover: var(--wp-paper-dark);
+  }
+  .pe-inner { max-width: 1160px; }
+
+  .pe-header { text-align: center; max-width: 700px; margin: 0 auto 32px; }
+  .pe-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--wp-font-mono); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--wp-primary); margin-bottom: 14px;
+  }
+  .pe-eyebrow-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--wp-primary); }
+  .pe-h2 {
+    font-size: clamp(1.75rem, 4vw, 2.125rem); line-height: 1.12; letter-spacing: -0.02em;
+    font-weight: 600; margin: 0 0 12px; color: var(--wp-text-primary); text-wrap: balance;
+  }
+  .pe-body { font-size: 1rem; line-height: 1.55; color: var(--wp-text-secondary); margin: 0; }
+
+  .pe-flow { display: flex; flex-wrap: wrap; align-items: stretch; justify-content: center; gap: 20px; }
+  .pe-mono { font-family: var(--wp-font-mono); }
+
+  /* Source card */
+  .pe-source-wrap { flex: 1 1 280px; max-width: 320px; min-width: 260px; display: flex; }
+  .pe-source {
+    background: var(--wp-bg-elevated); border: 1px solid var(--wp-border-primary);
+    border-radius: 12px; box-shadow: var(--pe-shadow); padding: 18px 18px 16px;
+    width: 100%; display: flex; flex-direction: column;
+  }
+  .pe-source-kicker { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .pe-check {
+    width: 26px; height: 26px; border-radius: 999px; background: var(--wp-primary);
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .pe-source-kicker-text { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--wp-primary); }
+  .pe-source-title { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 12px; color: var(--wp-text-primary); }
+  .pe-lines { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+  .pe-lines span { height: 7px; border-radius: 999px; background: var(--wp-border-primary); }
+  .pe-source-foot { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--wp-border-primary); display: flex; flex-direction: column; gap: 4px; }
+  .pe-source-foot .pe-mono { font-size: 12px; color: var(--wp-text-secondary); }
+  .pe-source-note2 { font-size: 14px; font-weight: 600; color: var(--wp-text-primary); }
+
+  /* Connector */
+  .pe-connector { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-width: 60px; padding: 8px 0; color: var(--wp-text-tertiary); }
+  .pe-connector-label { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* Channels */
+  .pe-channels { flex: 1 1 460px; min-width: 300px; display: flex; flex-direction: column; gap: 16px; }
+  .pe-group-label { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--wp-text-tertiary); margin-bottom: 12px; }
+  .pe-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .pe-tile {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--wp-bg-elevated); border: 1px solid var(--wp-border-primary);
+    border-radius: 8px; box-shadow: var(--pe-shadow); padding: 10px 12px;
+    transition: border-color 200ms cubic-bezier(0.4,0,0.2,1), background 200ms cubic-bezier(0.4,0,0.2,1);
+  }
+  .pe-tile:hover { border-color: var(--wp-border-strong); background: var(--pe-surface-hover); }
+  .pe-badge { width: 34px; height: 34px; border-radius: 999px; color: #fff; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pe-badge :global(svg) { display: block; }
+  .pe-badge-letter { font-family: var(--wp-font-sans); font-weight: 700; font-size: 18px; line-height: 1; }
+  .pe-tile-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .pe-tile-name { font-size: 15px; font-weight: 600; color: var(--wp-text-primary); }
+  .pe-ready { display: inline-flex; align-items: center; gap: 5px; font-family: var(--wp-font-mono); font-size: 11px; color: var(--wp-primary); }
+  .pe-ready-dot { width: 5px; height: 5px; border-radius: 999px; background: var(--wp-primary); }
+
+  /* Approval note */
+  .pe-note {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--wp-border-primary);
+    color: var(--wp-text-secondary); text-align: center;
+  }
+  .pe-note svg { flex-shrink: 0; }
+  .pe-note span { font-size: 15px; }
+  .pe-note strong { color: var(--wp-text-primary); font-weight: 600; }
+
+  /* Mobile: source stacks above channels; the connector arrow points down. */
+  @media (max-width: 768px) {
+    .pe-source-wrap { max-width: none; }
+    .pe-connector { flex-direction: row; padding: 4px 0; }
+    .pe-arrow { transform: rotate(90deg); }
+  }
+</style>

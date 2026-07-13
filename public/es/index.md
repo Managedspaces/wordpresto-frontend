@@ -73,6 +73,15 @@ Emma puede preparar el trabajo. Los especialistas pueden revisarlo. El Canvas pu
 
 > Nada sale en directo hasta que la persona responsable dice que sí.
 
+## Una idea aprobada, lista para cada canal.
+
+Word Presto prepara versiones listas para cada canal, para tus redes sociales y tu CMS, estructuradas, fieles a la marca y coherentes. Nada se publica hasta que una persona lo aprueba.
+
+- Redes sociales: LinkedIn, X, Facebook, Instagram
+- CMS y entrega: WordPress, Sanity, Astro
+
+> Los agentes preparan cada versión. La decisión sigue siendo de las personas. Aprobación humana antes de publicar nada.
+
 ## Pon a Emma en el centro de tu operación de contenido.
 
 Para redactores, editores y equipos de publicación que necesitan un mejor trabajo de contenido sin renunciar al control editorial.
