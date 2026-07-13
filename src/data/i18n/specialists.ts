@@ -45,11 +45,11 @@ export const specialistsHubContent: Record<Locale, SpecialistsHubContent> = {
     note: 'Emma coordinates all four teams from one editorial desk. Specialists review, draft, check and prepare, but nothing moves forward, and nothing publishes, without the Editor’s approval.',
   },
   pt: {
-    seoTitle: 'A bancada de especialistas da Word Presto | WordPresto',
-    metaDescription: 'Conheça as quatro equipas que compõem o Emma: Produção de Conteúdos, SEO, Operações e Aprovação/Governação. Cada especialista tem uma função definida, e qualquer alteração continua a necessitar da aprovação do Editor.',
-    h1: 'A equipa de especialistas por detrás do Emma.',
-    intro: 'O Word Presto não é um mero redator de IA genérico. É um conjunto de Workers especializados, organizados em quatro equipas, que o Emma convoca no momento certo. Os especialistas revêem, redigem e preparam. Apenas o Editor aprova.',
-    note: 'O Emma coordena as quatro equipas a partir de uma única secretaria editorial. Os especialistas revêem, redigem, verificam e preparam, mas nada avança nem é publicado sem a aprovação do Editor.',
+    seoTitle: 'A bancada de especialistas do Word Presto | WordPresto',
+    metaDescription: 'Conhece as quatro equipas que trabalham com a Emma: Produção de Conteúdos, SEO, Operações e Aprovação / Governança. Cada especialista tem o seu papel definido, mas qualquer alteração precisa sempre da aprovação do Editor.',
+    h1: 'A equipa de especialistas por detrás da Emma.',
+    intro: 'O Word Presto não é um gerador de texto genérico. É uma bancada de Workers especializados, organizados em quatro equipas, que a Emma ativa no momento certo. Os especialistas revêm, escrevem e preparam. Só o Editor aprova.',
+    note: 'A Emma coordena as quatro equipas a partir de uma única secretária editorial. Os especialistas revêm, escrevem, verificam e preparam, mas nada avança nem é publicado sem a aprovação do Editor.',
   },
   'pt-br': {
     seoTitle: 'A bancada de especialistas da Word Presto | WordPresto',
