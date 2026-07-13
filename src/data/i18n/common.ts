@@ -14,6 +14,7 @@ export interface CommonStrings {
   specialists: string;
   languages: string;
   pricing: string;
+  docs: string;
   theDesk: string;
   canvas: string;
   home: string;
@@ -38,6 +39,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     specialists: 'Specialists',
     languages: 'Languages',
     pricing: 'Pricing',
+    docs: 'Docs',
     theDesk: 'The desk',
     canvas: 'Canvas',
     home: 'Home',
@@ -60,6 +62,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     specialists: 'Especialistas',
     languages: 'Idiomas',
     pricing: 'Preços',
+    docs: 'Documentação',
     theDesk: 'A redação',
     canvas: 'Canvas',
     home: 'Início',
@@ -82,6 +85,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     specialists: 'Especialistas',
     languages: 'Idiomas',
     pricing: 'Preços',
+    docs: 'Documentação',
     theDesk: 'A redação',
     canvas: 'Canvas',
     home: 'Início',
@@ -104,6 +108,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     specialists: 'Especialistas',
     languages: 'Idiomas',
     pricing: 'Precios',
+    docs: 'Documentación',
     theDesk: 'La redacción',
     canvas: 'Canvas',
     home: 'Inicio',
@@ -126,6 +131,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     specialists: 'Spezialisten',
     languages: 'Sprachen',
     pricing: 'Preise',
+    docs: 'Dokumentation',
     theDesk: 'Die Redaktion',
     canvas: 'Canvas',
     home: 'Start',
@@ -148,6 +154,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     specialists: 'Spécialistes',
     languages: 'Langues',
     pricing: 'Tarifs',
+    docs: 'Documentation',
     theDesk: 'La rédaction',
     canvas: 'Canvas',
     home: 'Accueil',

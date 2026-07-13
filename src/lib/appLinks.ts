@@ -36,3 +36,16 @@ export function registerUrl(locale: Locale = 'en'): string {
 export function loginUrl(locale: Locale = 'en'): string {
   return appUrl('/login', locale);
 }
+
+// The documentation site (docs.wordpresto.com). Env-configurable so it can be
+// pointed at a preview docs deploy without a code change; falls back to the
+// production docs domain. Docs are English-only for now, so no locale param.
+const DOCS_BASE = (
+  import.meta.env.PUBLIC_DOCS_BASE ||
+  'https://docs.wordpresto.com'
+).replace(/\/+$/, '');
+
+/** "Docs" → the documentation site. */
+export function docsUrl(): string {
+  return DOCS_BASE;
+}

@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import Masthead from '@/components/Masthead.astro';
 import { homeContent } from '@/data/i18n/home';
 import { commonStrings } from '@/data/i18n/common';
 import { getTeamGroups, TOTAL_SPECIALISTS, TOTAL_TEAMS } from '@/data/workerRegistry';
 import { FLAG_SVG } from '@/i18n/flags';
-import { LOCALES, localeHref, type Locale } from '@/i18n/locales';
-import { registerUrl, loginUrl } from '@/lib/appLinks';
+import { localeHref, type Locale } from '@/i18n/locales';
+import { registerUrl } from '@/lib/appLinks';
 
 interface Props {
   locale: Locale;
@@ -51,64 +52,7 @@ const jsonLd = [
 >
 
   <!-- ===================== MASTHEAD ===================== -->
-  <header class="masthead">
-    <div class="masthead-inner">
-      <nav class="masthead-nav masthead-nav--left">
-        <a href={loginUrl(locale)} class="nav-link">{c.signIn}</a>
-        <a href={`${localeHref(locale, '/')}#emma-desk`} class="nav-link">{c.theDesk}</a>
-        <a href={`${localeHref(locale, '/')}#canvas`} class="nav-link">{c.canvas}</a>
-        <a href={registerUrl(locale)} class="btn btn--primary btn--sm masthead-cta-mobile">{c.joinWaitlist}</a>
-      </nav>
-      <a href={localeHref(locale, '/')} class="masthead-logo">
-        <img src="/brand/main-logo.png" alt="Word Presto — the content engine behind publishing" height="110" />
-      </a>
-      <nav class="masthead-nav masthead-nav--right">
-        <a href={`${localeHref(locale, '/')}#specialists`} class="nav-link">{c.specialists}</a>
-        <a href={`${localeHref(locale, '/')}#languages`} class="nav-link">{c.languages}</a>
-        {/* Unprefixed on purpose: /pricing/ has no locale routes yet (same
-            convention as the footer /sitemap/ link — see context.md). */}
-        <a href="/pricing/" class="nav-link">{c.pricing}</a>
-        <div class="locale-switcher">
-          <a
-            href={localeHref(locale, '/')}
-            class="locale-switcher-current"
-            aria-label={LOCALES.find((l) => l.code === locale)?.label}
-            set:html={FLAG_SVG[LOCALES.find((l) => l.code === locale)?.countryCode ?? 'IE']}
-          />
-          <div class="locale-switcher-menu">
-            <div class="locale-switcher-menu-inner">
-              {LOCALES.filter((l) => l.code !== locale).map((l) => (
-                <a
-                  href={localeHref(l.code, '/')}
-                  class="locale-switcher-flag"
-                  aria-label={l.label}
-                  set:html={FLAG_SVG[l.countryCode]}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-        <details class="locale-switcher-mobile">
-          <summary
-            class="locale-switcher-current"
-            aria-label={LOCALES.find((l) => l.code === locale)?.label}
-            set:html={FLAG_SVG[LOCALES.find((l) => l.code === locale)?.countryCode ?? 'IE']}
-          ></summary>
-          <div class="locale-switcher-menu-inner locale-switcher-mobile-menu">
-            {LOCALES.filter((l) => l.code !== locale).map((l) => (
-              <a
-                href={localeHref(l.code, '/')}
-                class="locale-switcher-flag"
-                aria-label={l.label}
-                set:html={FLAG_SVG[l.countryCode]}
-              />
-            ))}
-          </div>
-        </details>
-        <a href={registerUrl(locale)} class="btn btn--primary btn--sm masthead-cta-desktop">{c.joinWaitlist}</a>
-      </nav>
-    </div>
-  </header>
+  <Masthead locale={locale} />
 
   <!-- ===================== 1. HERO ===================== -->
   <section id="top" class="section section--hero">
@@ -628,154 +572,6 @@ const jsonLd = [
   .section--paper-dark { background-color: var(--wp-paper-dark); }
   .section--border-top { border-top: 2px solid var(--wp-ink); }
   .section--overflow-hidden { overflow: hidden; }
-
-  /* ===== MASTHEAD ===== */
-  .masthead {
-    position: sticky;
-    top: 0;
-    z-index: 60;
-    background-color: var(--wp-bg-primary);
-    background-image: var(--wp-texture-paper);
-    overflow: visible;
-    transform: translateZ(0);
-  }
-  .masthead::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(
-      to right,
-      var(--wp-ink) calc(50% - 90px),
-      transparent calc(50% - 90px),
-      transparent calc(50% + 90px),
-      var(--wp-ink) calc(50% + 90px)
-    );
-  }
-  .masthead-inner {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 12px 34px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .masthead-nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .masthead-nav--left { justify-content: flex-start; }
-  .masthead-nav--right { justify-content: flex-end; }
-  /* Mobile puts the CTA on the left and the switcher on the right, as two
-     real flex items flanking the centred logo — same shape as desktop's
-     nav-left/nav-right, just with different content. Both mobile-only
-     elements stay hidden above the tablet breakpoint. */
-  /* .btn.masthead-cta-mobile, not .masthead-cta-mobile alone: .btn sets
-     display: inline-flex later in this stylesheet, and same-specificity
-     rules resolve by source order, so a single-class selector here would
-     lose to .btn regardless of the display:none intent. */
-  .btn.masthead-cta-mobile { display: none; }
-  .masthead-logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-    z-index: 61;
-  }
-  .masthead-logo img { display: block; height: 110px; width: auto; mix-blend-mode: multiply; }
-
-  .nav-link {
-    font-size: var(--wp-text-md);
-    font-weight: 500;
-    color: var(--wp-text-secondary);
-    transition: color 150ms;
-  }
-  .nav-link:hover { color: var(--wp-ink); }
-
-  /* Single current-locale flag inline; the other five reveal in a small
-     hover/focus dropdown, so the masthead's width never depends on how long
-     a given locale's nav labels happen to run. */
-  .locale-switcher { position: relative; display: flex; align-items: center; }
-  .locale-switcher-current,
-  .locale-switcher-flag {
-    display: block;
-    width: 16px;
-    height: 12px;
-    border-radius: 2px;
-    overflow: hidden;
-    box-shadow: 0 0 0 1px var(--wp-border-secondary);
-  }
-  .locale-switcher-current { box-shadow: 0 0 0 1.5px var(--wp-ink); }
-  .locale-switcher-flag { opacity: 0.7; transition: opacity 150ms; }
-  .locale-switcher-flag:hover { opacity: 1; }
-  .locale-switcher-current :global(svg),
-  .locale-switcher-flag :global(svg) { display: block; width: 100%; height: 100%; }
-  /* The outer wrapper sits flush against the trigger (top: 100%, no gap)
-     and uses padding-top, not a position offset, to hold the visual gap
-     before the visible card. Padding is still part of the element's own
-     box, so the mouse stays inside the hoverable area the whole way from
-     the flag down into the dropdown — a gap created via `top` offset
-     instead would sit outside any hoverable box and break :hover the
-     instant the pointer crossed it. */
-  .locale-switcher-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    padding-top: 10px;
-    z-index: 62;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-4px);
-    transition: opacity 150ms, transform 150ms, visibility 150ms;
-  }
-  .locale-switcher-menu-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 8px;
-    background: #FFF;
-    border: 1px solid var(--wp-line);
-    box-shadow: 0 4px 14px rgba(17,19,24,0.14);
-  }
-  .locale-switcher:hover .locale-switcher-menu,
-  .locale-switcher:focus-within .locale-switcher-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  /* Touch has no hover, so mobile gets a tap-driven <details> disclosure
-     instead of the desktop hover dropdown — no JS, no hover-chain gap to
-     get wrong. Hidden above the tablet breakpoint where .locale-switcher
-     (the hover version) takes over; see the ≤768px block below. */
-  .locale-switcher-mobile { display: none; position: relative; }
-  .locale-switcher-mobile summary {
-    list-style: none;
-    cursor: pointer;
-    display: block;
-    width: 20px;
-    height: 15px;
-    border-radius: 2px;
-    overflow: hidden;
-    box-shadow: 0 0 0 1.5px var(--wp-ink);
-  }
-  .locale-switcher-mobile summary::-webkit-details-marker { display: none; }
-  .locale-switcher-mobile summary :global(svg) { display: block; width: 100%; height: 100%; }
-  .locale-switcher-mobile-menu {
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-    z-index: 62;
-  }
-  .locale-switcher-mobile-menu .locale-switcher-flag {
-    width: 22px;
-    height: 16px;
-    opacity: 1;
-  }
 
   /* ===== BUTTONS ===== */
   .btn {
@@ -1736,31 +1532,8 @@ const jsonLd = [
     .container { padding: 0 24px; }
     .section { padding: 60px 0; }
 
-    /* --- Masthead --- */
-    /* Logo stays centred, as on desktop. nav-left and nav-right are still
-       the two flex items flanking it via space-between — mobile just
-       swaps their content: nav-left shows only the CTA (its text nav
-       links hidden), nav-right shows only the language switcher (its
-       text nav links and the desktop CTA hidden). CTA-left,
-       logo-centre, switcher-right. */
-    .masthead-inner { padding: 10px 24px; }
-    .masthead-nav--left { display: flex; }
-    .masthead-nav--left .nav-link { display: none; }
-    .btn.masthead-cta-mobile { display: inline-flex; }
-    .masthead-nav--right .nav-link { display: none; }
-    .btn.masthead-cta-desktop { display: none; }
-    .locale-switcher { display: none; }
-    .locale-switcher-mobile { display: block; }
-    .masthead-logo img { height: 64px; }
-    .masthead::after {
-      background: linear-gradient(
-        to right,
-        var(--wp-ink) calc(50% - 62px),
-        transparent calc(50% - 62px),
-        transparent calc(50% + 62px),
-        var(--wp-ink) calc(50% + 62px)
-      );
-    }
+    /* Masthead is now a shared component (src/components/Masthead.astro),
+       which owns its own responsive styles. */
 
     /* --- Hero --- */
     .section--hero { padding: 48px 0 56px; }
@@ -1823,18 +1596,6 @@ const jsonLd = [
     .container { padding: 0 18px; }
     .section { padding: 44px 0; }
 
-    /* --- Masthead --- */
-    .masthead-inner { padding: 8px 16px; }
-    .masthead-logo img { height: 52px; }
-    .masthead::after {
-      background: linear-gradient(
-        to right,
-        var(--wp-ink) calc(50% - 50px),
-        transparent calc(50% - 50px),
-        transparent calc(50% + 50px),
-        var(--wp-ink) calc(50% + 50px)
-      );
-    }
     .btn--sm { font-size: 12px; padding: 7px 12px; }
 
     /* --- Hero --- */

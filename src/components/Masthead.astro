@@ -1,0 +1,269 @@
+---
+// Shared site masthead, used on every marketing page. Replaces the per-page
+// inline mastheads that had drifted apart and, crucially, hid every nav link on
+// mobile with no way to reach them. Desktop keeps the split nav (links | centred
+// logo | links + language + CTA); mobile gets a real hamburger drawer exposing
+// the same links. One canonical nav here, so pages stay consistent.
+import { FLAG_SVG } from '@/i18n/flags';
+import { LOCALES, localeHref, type Locale } from '@/i18n/locales';
+import { commonStrings } from '@/data/i18n/common';
+import { registerUrl, loginUrl, docsUrl } from '@/lib/appLinks';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = commonStrings[locale];
+const home = localeHref(locale, '/');
+
+// Canonical nav. Real routes (not homepage-only anchors) so every item works
+// from any page. "The desk" / "Canvas" are homepage sections, reached via the
+// home route + anchor from anywhere. Docs is external (docs.wordpresto.com).
+interface NavLink { label: string; href: string; external?: boolean }
+const leftNav: NavLink[] = [
+  { label: c.signIn, href: loginUrl(locale) },
+  { label: c.theDesk, href: `${home}#emma-desk` },
+  { label: c.canvas, href: `${home}#canvas` },
+];
+const rightNav: NavLink[] = [
+  { label: c.specialists, href: localeHref(locale, '/specialists/') },
+  { label: c.workers, href: localeHref(locale, '/workers/') },
+  { label: c.pricing, href: '/pricing/' },
+  { label: c.docs, href: docsUrl(), external: true },
+];
+// Mobile drawer shows every link in one list.
+const allNav: NavLink[] = [...leftNav, ...rightNav];
+const currentLocale = LOCALES.find((l) => l.code === locale);
+const otherLocales = LOCALES.filter((l) => l.code !== locale);
+---
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <!-- Desktop: left nav -->
+    <nav class="mh-nav mh-nav--left" aria-label="Primary">
+      {leftNav.map((l) => (
+        <a href={l.href} class="mh-link" {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
+      ))}
+    </nav>
+
+    <!-- Mobile: hamburger drawer (no JS required; a small script enhances close behaviour) -->
+    <details class="mh-burger">
+      <summary class="mh-burger-btn" aria-label="Menu">
+        <svg class="mh-icon-open" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg class="mh-icon-close" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 5l12 12M17 5L5 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </summary>
+      <div class="mh-drawer">
+        <nav class="mh-drawer-nav" aria-label="Menu">
+          {allNav.map((l) => (
+            <a href={l.href} class="mh-drawer-link" {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
+          ))}
+        </nav>
+        <a href={registerUrl(locale)} class="mh-cta mh-drawer-cta">{c.joinWaitlist}</a>
+        <div class="mh-drawer-langs" aria-label="Language">
+          <a href={home} class="mh-flag mh-flag--current" aria-label={currentLocale?.label} set:html={FLAG_SVG[currentLocale?.countryCode ?? 'IE']} />
+          {otherLocales.map((l) => (
+            <a href={localeHref(l.code, '/')} class="mh-flag" aria-label={l.label} set:html={FLAG_SVG[l.countryCode]} />
+          ))}
+        </div>
+      </div>
+    </details>
+
+    <!-- Centre logo -->
+    <a href={home} class="mh-logo">
+      <img src="/brand/main-logo.png" alt="Word Presto — the content engine behind publishing" height="110" />
+    </a>
+
+    <!-- Desktop: right nav + language + CTA -->
+    <nav class="mh-nav mh-nav--right" aria-label="Secondary">
+      {rightNav.map((l) => (
+        <a href={l.href} class="mh-link" {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
+      ))}
+      <div class="mh-locale">
+        <a href={home} class="mh-flag mh-flag--current" aria-label={currentLocale?.label} set:html={FLAG_SVG[currentLocale?.countryCode ?? 'IE']} />
+        <div class="mh-locale-menu">
+          <div class="mh-locale-menu-inner">
+            {otherLocales.map((l) => (
+              <a href={localeHref(l.code, '/')} class="mh-flag" aria-label={l.label} set:html={FLAG_SVG[l.countryCode]} />
+            ))}
+          </div>
+        </div>
+      </div>
+      <a href={registerUrl(locale)} class="mh-cta">{c.joinWaitlist}</a>
+    </nav>
+
+    <!-- Mobile: compact CTA (right slot) -->
+    <a href={registerUrl(locale)} class="mh-cta mh-cta--mobile">{c.joinWaitlist}</a>
+  </div>
+</header>
+
+<style>
+  .masthead {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+    overflow: visible;
+    transform: translateZ(0);
+  }
+  /* Graphite rule under the masthead, split to frame the centred logo. */
+  .masthead::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      var(--wp-ink) calc(50% - 90px),
+      transparent calc(50% - 90px),
+      transparent calc(50% + 90px),
+      var(--wp-ink) calc(50% + 90px)
+    );
+  }
+  .masthead-inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mh-nav { display: flex; align-items: center; gap: 20px; }
+  .mh-nav--left { justify-content: flex-start; }
+  .mh-nav--right { justify-content: flex-end; }
+
+  .mh-logo { position: absolute; left: 50%; transform: translateX(-50%); top: 0; z-index: 61; }
+  .mh-logo img { display: block; height: 110px; width: auto; mix-blend-mode: multiply; }
+
+  .mh-link {
+    font-size: var(--wp-text-md);
+    font-weight: 500;
+    color: var(--wp-text-secondary);
+    transition: color 150ms;
+    white-space: nowrap;
+  }
+  .mh-link:hover { color: var(--wp-ink); }
+
+  /* CTA — self-contained (page .btn styles are scoped and don't reach here). */
+  .mh-cta {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--wp-font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    font-size: var(--wp-text-sm);
+    padding: 8px 16px;
+    border-radius: 5px;
+    background: var(--wp-ink);
+    color: var(--wp-paper);
+    border: 1px solid var(--wp-ink);
+    white-space: nowrap;
+    transition: transform 150ms, box-shadow 150ms;
+  }
+  .mh-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(17,19,24,0.18); }
+  .mh-cta--mobile { display: none; }
+
+  /* Desktop language switcher: current flag inline, others on hover/focus. */
+  .mh-locale { position: relative; display: flex; align-items: center; }
+  .mh-flag {
+    display: block; width: 16px; height: 12px;
+    border-radius: 2px; overflow: hidden;
+    box-shadow: 0 0 0 1px var(--wp-border-secondary);
+  }
+  .mh-flag--current { box-shadow: 0 0 0 1.5px var(--wp-ink); }
+  .mh-flag :global(svg) { display: block; width: 100%; height: 100%; }
+  .mh-locale-menu {
+    position: absolute; top: 100%; right: 0;
+    padding-top: 10px; z-index: 62;
+    opacity: 0; visibility: hidden; transform: translateY(-4px);
+    transition: opacity 150ms, transform 150ms, visibility 150ms;
+  }
+  .mh-locale-menu-inner {
+    display: flex; flex-direction: column; gap: 6px; padding: 8px;
+    background: #FFF; border: 1px solid var(--wp-line);
+    box-shadow: 0 4px 14px rgba(17,19,24,0.14);
+  }
+  .mh-locale:hover .mh-locale-menu,
+  .mh-locale:focus-within .mh-locale-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+  /* Hamburger — hidden on desktop, shown ≤768px. */
+  .mh-burger { display: none; position: static; }
+  .mh-burger-btn {
+    list-style: none; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; margin-left: -8px;
+    color: var(--wp-ink); border-radius: 6px;
+  }
+  .mh-burger-btn::-webkit-details-marker { display: none; }
+  .mh-burger-btn:hover { background: var(--wp-paper-dark); }
+  .mh-burger .mh-icon-close { display: none; }
+  .mh-burger[open] .mh-icon-open { display: none; }
+  .mh-burger[open] .mh-icon-close { display: block; }
+
+  .mh-drawer {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+    border-bottom: 2px solid var(--wp-ink);
+    box-shadow: 0 12px 24px rgba(17,19,24,0.12);
+    padding: 12px 24px 20px;
+    z-index: 61;
+  }
+  .mh-drawer-nav { display: flex; flex-direction: column; }
+  .mh-drawer-link {
+    display: block;
+    padding: 13px 4px;
+    font-size: var(--wp-text-lg);
+    font-weight: 500;
+    color: var(--wp-text-primary);
+    border-bottom: 1px solid var(--wp-line);
+  }
+  .mh-drawer-link:hover { color: var(--wp-signal); }
+  .mh-drawer-cta { margin-top: 16px; width: 100%; justify-content: center; padding: 13px 16px; font-size: var(--wp-text-md); }
+  .mh-drawer-langs { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+  .mh-drawer-langs .mh-flag { width: 26px; height: 19px; }
+  .mh-drawer-langs .mh-flag--current { box-shadow: 0 0 0 2px var(--wp-ink); }
+
+  @media (max-width: 768px) {
+    .masthead-inner { padding: 10px 24px; }
+    .mh-nav { display: none; }
+    .mh-burger { display: block; }
+    .mh-cta--mobile { display: inline-flex; }
+    .mh-logo img { height: 60px; }
+    .masthead::after {
+      background: linear-gradient(
+        to right,
+        var(--wp-ink) calc(50% - 60px),
+        transparent calc(50% - 60px),
+        transparent calc(50% + 60px),
+        var(--wp-ink) calc(50% + 60px)
+      );
+    }
+  }
+
+  @media (max-width: 380px) {
+    .mh-cta--mobile { padding: 7px 12px; font-size: var(--wp-text-xs); }
+    .mh-logo img { height: 52px; }
+  }
+</style>
+
+<script>
+  // Progressive enhancement for the hamburger drawer: close it when a link is
+  // tapped, on Escape, or when tapping outside. The menu works without this
+  // (it is a native <details>), so a JS failure just means it stays open until
+  // the summary is tapped again.
+  const burger = document.querySelector<HTMLDetailsElement>('.mh-burger');
+  if (burger) {
+    burger.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => burger.removeAttribute('open')),
+    );
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') burger.removeAttribute('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (burger.open && !burger.contains(e.target as Node)) burger.removeAttribute('open');
+    });
+  }
+</script>
