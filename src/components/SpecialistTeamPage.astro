@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import Masthead from '@/components/Masthead.astro';
 import { specialistTeamContent, specialistsSharedContent } from '@/data/i18n/specialists';
 import { commonStrings } from '@/data/i18n/common';
 import { getWorkersByTeam, getTeamMeta, workerImage, workerInitials, type TeamId } from '@/data/workerRegistry';
 import { localeHref, type Locale } from '@/i18n/locales';
-import { registerUrl, loginUrl } from '@/lib/appLinks';
+import { registerUrl } from '@/lib/appLinks';
 import { absoluteUrl, breadcrumbList } from '@/lib/schema';
 
 interface Props {
@@ -48,23 +49,7 @@ const jsonLd = [
 >
 
   <!-- ===================== MASTHEAD ===================== -->
-  <header class="masthead">
-    <div class="masthead-inner">
-      <nav class="masthead-nav masthead-nav--left">
-        <a href={loginUrl(locale)} class="nav-link">{c.signIn}</a>
-        <a href={`${localeHref(locale, '/')}#product`} class="nav-link">{c.product}</a>
-        <a href={`${localeHref(locale, '/')}#capabilities`} class="nav-link">{c.workflow}</a>
-      </nav>
-      <a href={localeHref(locale, '/')} class="masthead-logo">
-        <img src="/brand/main-logo.png" alt="Word Presto — the content engine behind publishing" height="110" />
-      </a>
-      <nav class="masthead-nav masthead-nav--right">
-        <a href={`${localeHref(locale, '/')}#use-cases`} class="nav-link">{c.useCases}</a>
-        <a href={localeHref(locale, '/workers/')} class="nav-link">{c.workers}</a>
-        <a href={registerUrl(locale)} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
-      </nav>
-    </div>
-  </header>
+  <Masthead locale={locale} />
 
   <!-- HERO -->
   <section class="section section--hero">
@@ -176,50 +161,7 @@ const jsonLd = [
 </BaseLayout>
 
 <style>
-  /* ===== MASTHEAD ===== */
-  .masthead {
-    position: sticky;
-    top: 0;
-    z-index: 60;
-    background-color: var(--wp-bg-primary);
-    background-image: var(--wp-texture-paper);
-    border-bottom: 2px solid var(--wp-ink);
-    transform: translateZ(0);
-  }
-  .masthead-inner {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 12px 34px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 28px;
-  }
-  .masthead-logo img { display: block; height: 48px; width: auto; mix-blend-mode: multiply; }
-  .masthead-nav { display: flex; align-items: center; gap: 24px; }
-  .masthead-nav--left { justify-content: flex-start; }
-  .masthead-nav--right { justify-content: flex-end; }
-  .nav-link { font-size: var(--wp-text-md); font-weight: 500; color: var(--wp-text-secondary); }
-  .nav-link:hover { color: var(--wp-ink); }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: var(--wp-text-md);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    border-radius: 5px;
-    text-decoration: none;
-  }
-  .btn--primary {
-    padding: 14px 24px;
-    background: var(--wp-ink);
-    color: #FAF7F0;
-    border: 1px solid var(--wp-ink);
-    box-shadow: 0 2px 4px rgba(54,44,24,0.12), 0 10px 18px -8px rgba(54,44,24,0.22);
-  }
-  .btn--sm { padding: 8px 16px; font-size: var(--wp-text-sm); }
+  /* Masthead is now a shared component (src/components/Masthead.astro). */
 
   /* ===== LAYOUT ===== */
   .section {
@@ -413,8 +355,6 @@ const jsonLd = [
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 940px) {
-    .masthead-nav { display: none; }
-    .masthead-inner { grid-template-columns: 1fr; justify-items: center; padding: 10px 20px; }
     .footer-inner { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 480px) {

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import Masthead from '@/components/Masthead.astro';
 import { workerProfiles, type WorkerProfile } from '@/data/workerProfiles';
 import { allWorkers } from '@/data/workers';
 import { getLocalizedProfile } from '@/data/i18n/workerProfiles';
@@ -7,7 +8,7 @@ import { workerProfilePageChrome } from '@/data/i18n/workerProfilePage';
 import { commonStrings } from '@/data/i18n/common';
 import { workersSharedContent } from '@/data/i18n/workersDirectory';
 import { localeHref, type Locale } from '@/i18n/locales';
-import { registerUrl, loginUrl } from '@/lib/appLinks';
+import { registerUrl } from '@/lib/appLinks';
 import { absoluteUrl, breadcrumbList, SITE_URL } from '@/lib/schema';
 
 interface Props {
@@ -58,23 +59,7 @@ const jsonLd = [
 >
 
   <!-- ===================== MASTHEAD ===================== -->
-  <header class="masthead">
-    <div class="masthead-inner">
-      <nav class="masthead-nav masthead-nav--left">
-        <a href={loginUrl(locale)} class="nav-link">{c.signIn}</a>
-        <a href={`${localeHref(locale, '/')}#product`} class="nav-link">{c.product}</a>
-        <a href={`${localeHref(locale, '/')}#capabilities`} class="nav-link">{c.workflow}</a>
-      </nav>
-      <a href={localeHref(locale, '/')} class="masthead-logo">
-        <img src="/brand/main-logo.png" alt="Word Presto — the content engine behind publishing" height="110" />
-      </a>
-      <nav class="masthead-nav masthead-nav--right">
-        <a href={`${localeHref(locale, '/')}#use-cases`} class="nav-link">{c.useCases}</a>
-        <a href={localeHref(locale, '/workers/')} class="nav-link nav-link--active">{c.workers}</a>
-        <a href={registerUrl(locale)} class="btn btn--primary btn--sm">{c.joinWaitlist}</a>
-      </nav>
-    </div>
-  </header>
+  <Masthead locale={locale} />
 
   <!-- ===================== 1. HERO ===================== -->
   <section class="section section--hero wp-overflow-hidden">
@@ -571,33 +556,7 @@ const jsonLd = [
 </script>
 
 <style>
-  /* ===== MASTHEAD ===== */
-  .masthead {
-    position: sticky;
-    top: 0;
-    z-index: 60;
-    background-color: var(--wp-bg-primary);
-    background-image: var(--wp-texture-paper);
-    border-bottom: 2px solid var(--wp-ink);
-    transform: translateZ(0);
-  }
-  .masthead-inner {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 12px 34px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 28px;
-  }
-  .masthead-logo img { display: block; height: 48px; width: auto; mix-blend-mode: multiply; }
-  .masthead-nav { display: flex; align-items: center; gap: 24px; }
-  .masthead-nav--left { justify-content: flex-start; }
-  .masthead-nav--right { justify-content: flex-end; }
-  .nav-link { font-size: var(--wp-text-md); font-weight: 500; color: var(--wp-text-secondary); }
-  .nav-link:hover { color: var(--wp-ink); }
-  .nav-link--active { color: var(--wp-ink); font-weight: 600; }
+  /* Masthead is now a shared component (src/components/Masthead.astro). */
 
   /* ===== SHARED ===== */
   .section {
@@ -1496,8 +1455,6 @@ const jsonLd = [
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 940px) {
-    .masthead-nav { display: none; }
-    .masthead-inner { grid-template-columns: 1fr; justify-items: center; padding: 10px 20px; }
     .hero-grid,
     .prob-grid,
     .io-grid,

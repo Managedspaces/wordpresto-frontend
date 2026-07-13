@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import Masthead from '@/components/Masthead.astro';
 import { legalPages, type LegalPageContent } from '@/data/legal';
 import { breadcrumbList, SITE_URL } from '@/lib/schema';
-import { registerUrl, loginUrl } from '@/lib/appLinks';
 
 interface Props {
   content: LegalPageContent;
@@ -35,25 +35,8 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
 
-  <header class="masthead">
-    <div class="masthead-inner">
-      <nav class="masthead-nav masthead-nav--left">
-        <a href={loginUrl()} class="nav-link">Sign in</a>
-      </nav>
-      <a href="/" class="masthead-logo-link" aria-label="WordPresto home">
-        <img
-          src="/brand/horizontal-lockup-transparent.png"
-          alt="Word Presto"
-          class="masthead-logo"
-          width="160"
-          height="40"
-        />
-      </a>
-      <nav class="masthead-nav masthead-nav--right">
-        <a href={registerUrl()} class="nav-cta">Get early access</a>
-      </nav>
-    </div>
-  </header>
+  <!-- ===================== MASTHEAD ===================== -->
+  <Masthead locale="en" />
 
   <main class="legal-main">
     <div class="container">
@@ -130,40 +113,7 @@ const jsonLd = [
     padding: 0 24px;
   }
 
-  /* ===== MASTHEAD ===== */
-  .masthead {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--wp-paper);
-    border-bottom: 1px solid var(--wp-rule);
-    transform: translateZ(0);
-  }
-  .masthead-inner {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    padding: 0 24px;
-    height: 56px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .masthead-logo-link { display: flex; align-items: center; justify-content: center; }
-  .masthead-logo { height: 36px; width: auto; mix-blend-mode: multiply; }
-  .masthead-nav { display: flex; align-items: center; gap: 16px; }
-  .masthead-nav--right { justify-content: flex-end; }
-  .nav-link { font-size: var(--wp-text-sm); color: var(--wp-text-secondary); }
-  .nav-link:hover { color: var(--wp-ink); }
-  .nav-cta {
-    font-size: var(--wp-text-sm);
-    font-weight: 600;
-    background: var(--wp-ink);
-    color: var(--wp-paper);
-    padding: 7px 16px;
-    border-radius: 4px;
-    white-space: nowrap;
-  }
-  .nav-cta:hover { opacity: 0.85; }
+  /* Masthead is now a shared component (src/components/Masthead.astro). */
 
   /* ===== MAIN ===== */
   .legal-main {
