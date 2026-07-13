@@ -52,11 +52,11 @@ export const specialistsHubContent: Record<Locale, SpecialistsHubContent> = {
     note: 'A Emma coordena as quatro equipas a partir de uma única secretária editorial. Os especialistas revêm, escrevem, verificam e preparam, mas nada avança nem é publicado sem a aprovação do Editor.',
   },
   'pt-br': {
-    seoTitle: 'A bancada de especialistas da Word Presto | WordPresto',
-    metaDescription: 'Conheça as quatro equipes por trás do Emma: Produção de Conteúdo, SEO, Operações e Aprovação/Governança. Cada especialista tem uma função definida, e qualquer alteração ainda precisa ser aprovada pelo Editor.',
-    h1: 'A bancada de especialistas por trás do Emma.',
-    intro: 'O Word Presto não é um redator de IA genérico. Trata-se de uma bancada de Workers especialistas, organizados em quatro equipes, que o Emma aciona no momento certo. Os especialistas revisam, redigem e preparam. Apenas o Editor aprova.',
-    note: 'O Emma coordena todas as quatro equipes a partir de uma única mesa editorial. Os especialistas revisam, redigem, verificam e preparam, mas nada avança nem é publicado sem a aprovação do Editor.',
+    seoTitle: 'A bancada de especialistas do Word Presto | WordPresto',
+    metaDescription: 'Conheça as quatro equipes que trabalham com a Emma: Produção de Conteúdo, SEO, Operações e Aprovação / Governança. Cada especialista tem um papel bem definido, e qualquer alteração ainda precisa passar pelo Editor para ser aprovada.',
+    h1: 'A equipe de especialistas que atua por trás da Emma.',
+    intro: 'O Word Presto não é um escritor de IA genérico. É uma bancada de Workers especialistas, organizados em quatro equipes, que a Emma aciona no momento certo. Os especialistas revisam, escrevem e preparam. Só o Editor aprova.',
+    note: 'A Emma coordena todas as quatro equipes a partir de uma única mesa editorial. Os especialistas revisam, escrevem, conferem e preparam, mas nada avança e nada é publicado sem a aprovação do Editor.',
   },
   es: {
     seoTitle: 'El banco de especialistas de Word Presto | WordPresto',
