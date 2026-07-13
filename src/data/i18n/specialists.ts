@@ -66,11 +66,11 @@ export const specialistsHubContent: Record<Locale, SpecialistsHubContent> = {
     note: 'Emma coordina los cuatro equipos desde una única redacción editorial. Los especialistas revisan, redactan, comprueban y preparan, pero nada avanza, y nada se publica, sin la aprobación del Editor.',
   },
   de: {
-    seoTitle: 'Das Spezialistenteam von Word Presto | WordPresto',
-    metaDescription: 'Lernen Sie die vier Teams hinter Emma kennen: Content-Produktion, SEO, Betrieb und Freigabe / Governance. Jeder Spezialist hat eine definierte Rolle, und jede Änderung braucht weiterhin die Freigabe des Editors.',
+    seoTitle: 'Die Spezialistenwerkbank „Word Presto“ | WordPresto',
+    metaDescription: 'Lernen Sie die vier Teams hinter Emma kennen: Content-Produktion, SEO, Betrieb und Freigabe/Governance. Jeder Spezialist hat eine festgelegte Rolle, und jede Änderung muss weiterhin vom Redakteur genehmigt werden.',
     h1: 'Das Spezialistenteam hinter Emma.',
-    intro: 'Word Presto ist kein generischer KI-Autor. Es ist eine Bank spezialisierter Workers, organisiert in vier Teams, die Emma im richtigen Moment hinzuzieht. Spezialisten prüfen, entwerfen und bereiten vor. Nur der Editor gibt frei.',
-    note: 'Emma koordiniert alle vier Teams von einer redaktionellen Schaltzentrale aus. Spezialisten prüfen, entwerfen, kontrollieren und bereiten vor, aber nichts geht weiter, und nichts wird veröffentlicht, ohne die Freigabe des Editors.',
+    intro: 'Word Presto ist kein einzelner, generischer KI-Autor. Es ist eine Werkbank aus spezialisierten Workern, die in vier Teams organisiert sind und von Emma zum richtigen Zeitpunkt hinzugezogen werden. Die Spezialisten prüfen, entwerfen und bereiten vor. Nur der Redakteur gibt die Freigabe.',
+    note: 'Emma koordiniert alle vier Teams von einem Redaktionsschreibtisch aus. Spezialisten prüfen, entwerfen, kontrollieren und bereiten vor, aber ohne die Zustimmung des Redakteurs geht nichts weiter und wird nichts veröffentlicht.',
   },
   fr: {
     seoTitle: 'L’équipe de spécialistes de Word Presto | WordPresto',
