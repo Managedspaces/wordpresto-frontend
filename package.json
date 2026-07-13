@@ -14,7 +14,9 @@
     "generate:markdown": "npx tsx scripts/generate-page-markdown.ts",
     "generate:llms": "node scripts/generate-llms.mjs",
     "validate:agent-ready": "npm run generate:markdown && npm run generate:llms && node scripts/validate-agent-resources.mjs",
-    "db:setup": "node scripts/setup-db.mjs"
+    "db:setup": "node scripts/setup-db.mjs",
+    "i18n:improve": "tsx scripts/i18n-worker/improve-translations.ts",
+    "test:i18n": "node --import tsx --test scripts/i18n-worker/worker.test.ts"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
