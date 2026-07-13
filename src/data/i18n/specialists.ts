@@ -60,9 +60,9 @@ export const specialistsHubContent: Record<Locale, SpecialistsHubContent> = {
   },
   es: {
     seoTitle: 'El banco de especialistas de Word Presto | WordPresto',
-    metaDescription: 'Te presentamos a los cuatro equipos detrás de Emma: Producción de Contenidos, SEO, Operaciones y Aprobación/Gobernanza. Cada especialista tiene un rol definido, y cualquier cambio sigue necesitando la aprobación del Editor.',
+    metaDescription: 'Conoce a los cuatro equipos que forman parte de Emma: Producción de Contenido, SEO, Operaciones y Aprobación / Gobernanza. Cada especialista tiene un rol claro, y cualquier cambio necesita la aprobación del Editor.',
     h1: 'El equipo de especialistas detrás de Emma.',
-    intro: 'Word Presto no es un simple escritor de IA genérico. Es un banco de Workers especializados, organizados en cuatro equipos, a los que Emma convoca en el momento justo. Los especialistas revisan, redactan y preparan. Solo el Editor aprueba.',
+    intro: 'Word Presto no es un escritor de IA genérico. Es un conjunto de Workers especializados, organizados en cuatro equipos, que Emma activa en el momento justo. Los especialistas revisan, redactan y preparan. Solo el Editor da el visto bueno.',
     note: 'Emma coordina los cuatro equipos desde un solo escritorio editorial. Los especialistas revisan, redactan, verifican y preparan, pero nada avanza ni se publica sin la aprobación del Editor.',
   },
   de: {
