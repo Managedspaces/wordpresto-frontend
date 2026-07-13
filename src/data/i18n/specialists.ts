@@ -73,11 +73,11 @@ export const specialistsHubContent: Record<Locale, SpecialistsHubContent> = {
     note: 'Emma steuert alle vier Teams von einem Redaktionsplatz aus. Die Spezialisten prüfen, entwerfen, kontrollieren und bereiten vor – aber ohne die Freigabe des Redakteurs geht nichts weiter und nichts online.',
   },
   fr: {
-    seoTitle: 'Le banc spécialisé Word Presto | WordPresto',
-    metaDescription: 'Découvrez les quatre équipes qui travaillent sur Emma : Production de contenu, Référencement naturel (SEO), Opérations et Validation / Gouvernance. Chaque spécialiste a un rôle bien défini, et toute modification doit toujours être approuvée par le rédacteur en chef.',
-    h1: 'L\'équipe de spécialistes qui soutient Emma.',
-    intro: 'Word Presto n\'est pas un simple rédacteur IA générique. Il s\'agit d\'un groupe de Workers spécialisés, répartis en quatre équipes, qu\'Emma sollicite au moment opportun. Les spécialistes relisent, rédigent et préparent les textes. Seul le rédacteur en chef donne son accord final.',
-    note: 'Emma coordonne les quatre équipes depuis une seule rédaction. Les spécialistes relisent, rédigent, vérifient et préparent les textes, mais rien n\'avance et rien n\'est publié sans l\'approbation du rédacteur en chef.',
+    seoTitle: 'Le banc des spécialistes Word Presto | WordPresto',
+    metaDescription: 'Découvre les quatre équipes qui travaillent avec Emma : Production de contenu, SEO, Opérations et Validation / Gouvernance. Chaque spécialiste a un rôle précis, et le rédacteur en chef doit toujours approuver chaque modification.',
+    h1: 'Le banc des spécialistes qui fait tourner Emma.',
+    intro: 'Word Presto n\'est pas un simple rédacteur IA générique. C\'est un banc de Workers spécialisés, répartis en quatre équipes, qu\'Emma fait intervenir au bon moment. Les spécialistes relisent, rédigent et préparent. Seul le rédacteur en chef approuve.',
+    note: 'Emma coordonne les quatre équipes depuis un seul bureau de rédaction. Les spécialistes relisent, rédigent, vérifient et préparent, mais rien n\'avance et rien n\'est publié sans l\'accord du rédacteur en chef.',
   },
 };
 
