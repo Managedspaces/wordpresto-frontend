@@ -66,11 +66,11 @@ export const specialistsHubContent: Record<Locale, SpecialistsHubContent> = {
     note: 'Emma coordina los cuatro equipos desde un solo escritorio editorial. Los especialistas revisan, redactan, verifican y preparan, pero nada avanza ni se publica sin la aprobación del Editor.',
   },
   de: {
-    seoTitle: 'Die Spezialistenwerkbank „Word Presto“ | WordPresto',
-    metaDescription: 'Lernen Sie die vier Teams hinter Emma kennen: Content-Produktion, SEO, Betrieb und Freigabe/Governance. Jeder Spezialist hat eine festgelegte Rolle, und jede Änderung muss weiterhin vom Redakteur genehmigt werden.',
-    h1: 'Das Spezialistenteam hinter Emma.',
-    intro: 'Word Presto ist kein einzelner, generischer KI-Autor. Es ist eine Werkbank aus spezialisierten Workern, die in vier Teams organisiert sind und von Emma zum richtigen Zeitpunkt hinzugezogen werden. Die Spezialisten prüfen, entwerfen und bereiten vor. Nur der Redakteur gibt die Freigabe.',
-    note: 'Emma koordiniert alle vier Teams von einem Redaktionsschreibtisch aus. Spezialisten prüfen, entwerfen, kontrollieren und bereiten vor, aber ohne die Zustimmung des Redakteurs geht nichts weiter und wird nichts veröffentlicht.',
+    seoTitle: 'Die Word Presto Spezialisten-Werkbank | WordPresto',
+    metaDescription: 'Lerne die vier Teams hinter Emma kennen: Content-Produktion, SEO, Operations und Freigabe/Governance. Jeder Spezialist hat eine klare Aufgabe, aber jede Änderung muss trotzdem vom Redakteur freigegeben werden.',
+    h1: 'Die Spezialisten-Werkbank hinter Emma.',
+    intro: 'Word Presto ist kein einzelner, generischer KI-Schreiber. Es ist eine Werkbank voller spezialisierter Worker, aufgeteilt in vier Teams, die Emma genau dann einsetzt, wenn sie gebraucht werden. Die Spezialisten prüfen, entwerfen und bereiten vor. Nur der Redakteur gibt frei.',
+    note: 'Emma steuert alle vier Teams von einem Redaktionsplatz aus. Die Spezialisten prüfen, entwerfen, kontrollieren und bereiten vor – aber ohne die Freigabe des Redakteurs geht nichts weiter und nichts online.',
   },
   fr: {
     seoTitle: 'Le banc spécialisé Word Presto | WordPresto',
