@@ -75,10 +75,10 @@ Emma can prepare the work. Specialists can review it. The Canvas can organise it
 
 ## One approved idea, ready for every channel.
 
-Word Presto prepares channel-ready versions for your social platforms and your CMS, structured, on brand and consistent. Nothing goes live until a person approves it.
+Word Presto adapts one approved idea into channel-ready versions for social, and reviews and improves the content already on your site, ready for handoff. Nothing goes live until a person approves it.
 
 - Social channels: LinkedIn, X, Facebook, Instagram
-- CMS & delivery: WordPress, Sanity, Astro
+- Website & CMS: WordPress, Sanity, Astro
 
 > Agents prepare every version. People still make the call. Human approval before anything goes live.
 

@@ -75,10 +75,10 @@ A Emma pode preparar o trabalho. Os especialistas podem revê-lo. O Canvas pode 
 
 ## Uma ideia aprovada, pronta para cada canal.
 
-A Word Presto prepara versões prontas para cada canal, para as suas redes sociais e o seu CMS, estruturadas, fiéis à marca e consistentes. Nada é publicado até uma pessoa aprovar.
+A Word Presto adapta uma ideia aprovada em versões prontas para as redes sociais e revê e melhora o conteúdo que já existe no seu site, pronto para entrega. Nada é publicado até uma pessoa aprovar.
 
 - Redes sociais: LinkedIn, X, Facebook, Instagram
-- CMS e entrega: WordPress, Sanity, Astro
+- Site e CMS: WordPress, Sanity, Astro
 
 > Os agentes preparam cada versão. A decisão continua a ser das pessoas. Aprovação humana antes de qualquer publicação.
 

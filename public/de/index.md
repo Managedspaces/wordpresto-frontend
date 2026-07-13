@@ -75,10 +75,10 @@ Emma kann die Arbeit vorbereiten. Spezialisten können sie reviewen. Das Canvas 
 
 ## Eine freigegebene Idee, bereit für jeden Kanal.
 
-Word Presto bereitet kanalfertige Versionen für Ihre sozialen Plattformen und Ihr CMS vor, strukturiert, markengerecht und konsistent. Nichts geht live, bevor ein Mensch es freigibt.
+Word Presto passt eine freigegebene Idee in kanalfertige Versionen für Social Media an und prüft und verbessert die Inhalte, die bereits auf Ihrer Website sind, bereit zur Übergabe. Nichts geht live, bevor ein Mensch es freigibt.
 
 - Soziale Kanäle: LinkedIn, X, Facebook, Instagram
-- CMS & Auslieferung: WordPress, Sanity, Astro
+- Website & CMS: WordPress, Sanity, Astro
 
 > Die Agenten bereiten jede Version vor. Die Entscheidung treffen weiterhin Menschen. Menschliche Freigabe, bevor etwas live geht.
 
