@@ -73,11 +73,11 @@ export const specialistsHubContent: Record<Locale, SpecialistsHubContent> = {
     note: 'Emma koordiniert alle vier Teams von einem Redaktionsschreibtisch aus. Spezialisten prüfen, entwerfen, kontrollieren und bereiten vor, aber ohne die Zustimmung des Redakteurs geht nichts weiter und wird nichts veröffentlicht.',
   },
   fr: {
-    seoTitle: 'L’équipe de spécialistes de Word Presto | WordPresto',
-    metaDescription: 'Découvrez les quatre équipes derrière Emma : Production de contenu, SEO, Opérations et Approbation / Gouvernance. Chaque spécialiste a un rôle défini, et chaque modification nécessite toujours l’approbation de l’éditeur.',
-    h1: 'L’équipe de spécialistes derrière Emma.',
-    intro: 'Word Presto n’est pas un rédacteur IA générique. C’est une équipe de Workers spécialisés, organisée en quatre équipes, qu’Emma mobilise au bon moment. Les spécialistes relisent, rédigent et préparent. Seul l’éditeur approuve.',
-    note: 'Emma coordonne les quatre équipes depuis un seul bureau éditorial. Les spécialistes relisent, rédigent, vérifient et préparent, mais rien n’avance, et rien n’est publié, sans l’approbation de l’éditeur.',
+    seoTitle: 'Le banc spécialisé Word Presto | WordPresto',
+    metaDescription: 'Découvrez les quatre équipes qui travaillent sur Emma : Production de contenu, Référencement naturel (SEO), Opérations et Validation / Gouvernance. Chaque spécialiste a un rôle bien défini, et toute modification doit toujours être approuvée par le rédacteur en chef.',
+    h1: 'L\'équipe de spécialistes qui soutient Emma.',
+    intro: 'Word Presto n\'est pas un simple rédacteur IA générique. Il s\'agit d\'un groupe de Workers spécialisés, répartis en quatre équipes, qu\'Emma sollicite au moment opportun. Les spécialistes relisent, rédigent et préparent les textes. Seul le rédacteur en chef donne son accord final.',
+    note: 'Emma coordonne les quatre équipes depuis une seule rédaction. Les spécialistes relisent, rédigent, vérifient et préparent les textes, mais rien n\'avance et rien n\'est publié sans l\'approbation du rédacteur en chef.',
   },
 };
 
