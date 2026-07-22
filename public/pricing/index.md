@@ -11,6 +11,7 @@ Pick a monthly or annual plan, spend credits across planning, writing, review, S
 
 ## How pricing works
 
+- New accounts can start with a short paid trial that gives full platform access, then converts to the entry plan automatically. A card is required, and it can be cancelled before the trial ends. The exact trial price, length and included credits are shown live on the pricing page.
 - Word Presto is priced as monthly or annual plans, each including a monthly pool of credits.
 - Credits are the one currency across the workflow: planning, briefs, drafting, review, SEO research, site crawling and analysis, publishing preparation and social publishing all draw from the same pool.
 - Annual billing is available on plans that offer it, at a saving over paying monthly.

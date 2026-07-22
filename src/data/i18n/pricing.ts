@@ -41,6 +41,14 @@ export interface PricingContent {
   breadcrumbCurrent: string;
   eyebrow: string;
 
+  /* Trial callout (data comes live from the pricing API; copy templates here) */
+  trialEyebrow: string;
+  /** "Start your {days}-day trial for {price}" — {days}/{price} replaced client-side. */
+  trialHeadingTemplate: string;
+  /** Body template — {credits}/{planLabel}/{planPrice} replaced client-side. */
+  trialBodyTemplate: string;
+  trialCta: string;
+
   /* Plans section */
   plansEyebrow: string;
   plansH2: string;
@@ -110,6 +118,12 @@ export const pricingContent: Partial<Record<Locale, PricingContent>> & {
     breadcrumbHome: 'Home',
     breadcrumbCurrent: 'Pricing',
     eyebrow: 'Pricing',
+
+    trialEyebrow: 'Trial',
+    trialHeadingTemplate: 'Start your {days}-day trial for {price}',
+    trialBodyTemplate:
+      'Full platform access with {credits} credits. A card is required, and the trial converts to {planLabel} at {planPrice} a month when it ends. Cancel anytime before then.',
+    trialCta: 'Start your trial',
 
     plansEyebrow: 'Plans',
     plansH2: 'Plans that grow with the publishing calendar.',

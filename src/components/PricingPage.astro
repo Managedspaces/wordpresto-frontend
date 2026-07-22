@@ -33,6 +33,10 @@ const clientConfig = {
     .sort((a, b) => (a.cardOrder ?? 99) - (b.cardOrder ?? 99))
     .map(({ credits, singular, plural }) => ({ credits, singular, plural })),
   strings: {
+    trialEyebrow: t.trialEyebrow,
+    trialHeadingTemplate: t.trialHeadingTemplate,
+    trialBodyTemplate: t.trialBodyTemplate,
+    trialCta: t.trialCta,
     billingMonthly: t.billingMonthly,
     billingAnnual: t.billingAnnual,
     perMonth: t.perMonth,
@@ -103,6 +107,18 @@ const jsonLd = [
         <div class="eyebrow eyebrow--pricing">{t.plansEyebrow}</div>
         <h2 class="section-h2">{t.plansH2}</h2>
         <p class="section-body">{t.plansBody}</p>
+      </div>
+
+      <div class="trial-callout" id="trial-callout" hidden>
+        <span class="fold-corner fold-corner--md"></span>
+        <span class="fold-corner-line fold-corner-line--md"></span>
+        <div class="mono-label trial-eyebrow" id="trial-eyebrow"></div>
+        <h3 class="trial-heading" id="trial-heading"></h3>
+        <p class="trial-body" id="trial-body"></p>
+        <a class="btn btn--primary trial-cta" id="trial-cta" href={joinHref}>
+          <span id="trial-cta-text"></span>
+          <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
 
       <div class="billing-toggle-wrap" id="billing-toggle-wrap" hidden>
@@ -304,6 +320,15 @@ const jsonLd = [
     priceEur: number;
   }
 
+  interface ApiTrial {
+    priceEur: number;
+    days: number;
+    convertsToTier?: string;
+    convertsToLabel: string;
+    convertsToMonthlyPriceEur: number;
+    convertsToMonthlyCredits: number;
+  }
+
   const CONFIG = JSON.parse(
     document.getElementById('pricing-config')!.textContent!
   ) as PricingConfig;
@@ -314,6 +339,7 @@ const jsonLd = [
   const packsSection = document.getElementById('packs-section')!;
   const toggleWrap = document.getElementById('billing-toggle-wrap')!;
   const fallbackEl = document.getElementById('pricing-fallback')!;
+  const trialCallout = document.getElementById('trial-callout')!;
 
   let currency = 'EUR';
   let billing: 'monthly' | 'annual' = 'monthly';
@@ -365,6 +391,35 @@ const jsonLd = [
     if (!p || typeof p !== 'object') return false;
     const pack = p as Record<string, unknown>;
     return isFiniteNumber(pack.credits) && pack.credits > 0 && isFiniteNumber(pack.priceEur);
+  }
+
+  // Only render the trial when the API describes it fully enough to price honestly — otherwise the
+  // callout stays hidden (older API deploys simply omit `trial`), never a half-filled or invented offer.
+  function isUsableTrial(t: unknown): t is ApiTrial {
+    if (!t || typeof t !== 'object') return false;
+    const trial = t as Record<string, unknown>;
+    return (
+      isFiniteNumber(trial.priceEur) && trial.priceEur > 0 &&
+      isFiniteNumber(trial.days) && trial.days > 0 &&
+      typeof trial.convertsToLabel === 'string' && trial.convertsToLabel.trim().length > 0 &&
+      isFiniteNumber(trial.convertsToMonthlyPriceEur) &&
+      isFiniteNumber(trial.convertsToMonthlyCredits)
+    );
+  }
+
+  function renderTrial(trial: ApiTrial): void {
+    document.getElementById('trial-eyebrow')!.textContent = S.trialEyebrow;
+    document.getElementById('trial-heading')!.textContent = fill(S.trialHeadingTemplate, {
+      days: String(trial.days),
+      price: fmtMoney(trial.priceEur),
+    });
+    document.getElementById('trial-body')!.textContent = fill(S.trialBodyTemplate, {
+      credits: fmtCredits(trial.convertsToMonthlyCredits),
+      planLabel: trial.convertsToLabel,
+      planPrice: fmtMoney(trial.convertsToMonthlyPriceEur),
+    });
+    document.getElementById('trial-cta-text')!.textContent = S.trialCta;
+    trialCallout.hidden = false;
   }
 
   // ----- plan cards ----------------------------------------------------
@@ -511,6 +566,7 @@ const jsonLd = [
     plansGrid.hidden = true;
     toggleWrap.hidden = true;
     packsSection.hidden = true;
+    trialCallout.hidden = true;
     fallbackEl.hidden = false;
   }
 
@@ -540,6 +596,8 @@ const jsonLd = [
 
     livePlans = Array.isArray(body.plans) ? body.plans.filter(isUsablePlan) : [];
     if (!livePlans.length) throw new Error('pricing_no_plans');
+
+    if (isUsableTrial(body.trial)) renderTrial(body.trial);
 
     renderPlans();
     setupToggle();
@@ -672,6 +730,36 @@ const jsonLd = [
   .fold-corner-line--sm { width: 18px; height: 18px; border-left: 1px solid var(--wp-line); border-bottom: 1px solid var(--wp-line); z-index: 3; }
   .fold-corner--md { width: 0; height: 0; border-top: 22px solid var(--wp-paper-dark); border-left: 22px solid transparent; z-index: 4; }
   .fold-corner-line--md { width: 22px; height: 22px; border-left: 1px solid var(--wp-line); border-bottom: 1px solid var(--wp-line); z-index: 3; }
+
+  /* ===== TRIAL CALLOUT ===== */
+  .trial-callout {
+    position: relative;
+    max-width: 620px;
+    background: #FFFFFF;
+    border: 1.5px solid var(--wp-signal);
+    box-shadow: 0 2px 5px rgba(54,44,24,0.06), 0 18px 34px -16px rgba(54,44,24,0.18);
+    padding: 24px 26px 26px;
+    margin-bottom: 34px;
+    transform: rotate(-0.5deg);
+    overflow: hidden;
+  }
+  .trial-callout[hidden] { display: none; }
+  .trial-eyebrow { display: block; margin-bottom: 10px; color: var(--wp-signal); }
+  .trial-heading {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--wp-ink);
+  }
+  .trial-body {
+    font-size: var(--wp-text-md);
+    color: var(--wp-text-secondary);
+    line-height: 1.55;
+    margin: 12px 0 20px;
+  }
+  .trial-cta { align-self: flex-start; }
 
   /* ===== BILLING TOGGLE ===== */
   .billing-toggle-wrap { display: flex; margin-bottom: 34px; }
