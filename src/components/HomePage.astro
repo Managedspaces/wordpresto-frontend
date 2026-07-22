@@ -71,8 +71,11 @@ const jsonLd = [
             {t.hero.ctaPrimary}
             <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href={`${localeHref(locale, '/')}#emma-desk`} class="btn btn--secondary btn--lg btn--tilt">{t.hero.ctaSecondary}</a>
+          <a href="/workflow-demo/" class="btn btn--secondary btn--lg btn--tilt">{t.hero.ctaSecondary}</a>
         </div>
+        <p class="hero-trial-note">
+          {t.hero.trialNote} <a href="/pricing/" class="hero-trial-pricing">{c.pricing} &rarr;</a>
+        </p>
         <p class="hero-demo-link">
           <a href="/workflow-demo/" class="demo-link">{t.hero.demoLink} →</a>
         </p>
@@ -507,7 +510,7 @@ const jsonLd = [
           {t.cta.ctaPrimary}
           <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href={`${localeHref(locale, '/')}#emma-desk`} class="btn btn--secondary btn--lg btn--tilt">{t.cta.ctaSecondary}</a>
+        <a href="/workflow-demo/" class="btn btn--secondary btn--lg btn--tilt">{t.cta.ctaSecondary}</a>
       </div>
       <div class="cta-mark">
         <span class="cta-rule"></span>
@@ -667,7 +670,20 @@ const jsonLd = [
     margin-top: 34px;
     flex-wrap: wrap;
   }
-  .hero-demo-link { margin: 18px 0 0; }
+  .hero-trial-note {
+    margin: 14px 0 0;
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-secondary);
+    line-height: 1.5;
+  }
+  .hero-trial-pricing {
+    color: var(--wp-signal);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+  }
+  .hero-trial-pricing:hover { color: var(--wp-ink); }
+  .hero-demo-link { margin: 12px 0 0; }
   .demo-link { font-size: var(--wp-text-sm); color: var(--wp-text-tertiary); text-decoration: underline; text-underline-offset: 3px; transition: color 150ms; }
   .demo-link:hover { color: var(--wp-ink); }
   .hero-prepares {
