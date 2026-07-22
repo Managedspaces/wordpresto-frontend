@@ -13,6 +13,8 @@ export interface HomeContent {
     ctaPrimary: string;
     ctaSecondary: string;
     demoLink: string;
+    /** Short reassurance under the primary (trial) CTA. */
+    trialNote: string;
     preparesLabel: string;
   };
   board: {
@@ -167,9 +169,10 @@ export const homeContent: Record<Locale, HomeContent> = {
       body: 'At the centre is Emma, your managing editor. She keeps the brief, draft, evidence, SEO, review and approval moving through one calm editorial desk, while you keep the final say.',
       approvalNoteLine1: 'Emma prepares. The Editor approves.',
       approvalNoteLine2: 'Nothing publishes without your sign-off.',
-      ctaPrimary: 'Join now',
+      ctaPrimary: 'Start your 14-day trial',
       ctaSecondary: 'See the editorial desk',
       demoLink: 'See rough thinking become review-ready',
+      trialNote: 'Full access. Cancel any time before it renews.',
       preparesLabel: 'prepares content for',
     },
     board: {
@@ -359,9 +362,10 @@ export const homeContent: Record<Locale, HomeContent> = {
       body: 'No centro está a Emma, a sua editora-chefe. Ela mantém o briefing, o rascunho, as evidências, o SEO, a revisão e a aprovação a fluir por uma secretária editorial calma, enquanto o senhor mantém a palavra final.',
       approvalNoteLine1: 'A Emma prepara. O editor aprova.',
       approvalNoteLine2: 'Nada é publicado sem a sua aprovação.',
-      ctaPrimary: 'Inscreva-se agora',
+      ctaPrimary: 'Comece o seu teste de 14 dias',
       ctaSecondary: 'Veja a secretária editorial',
       demoLink: 'Veja o pensamento inicial tornar-se pronto para revisão',
+      trialNote: 'Acesso total. Cancele quando quiser antes da renovação.',
       preparesLabel: 'prepara conteúdos para',
     },
     board: {
@@ -551,9 +555,10 @@ export const homeContent: Record<Locale, HomeContent> = {
       body: 'No centro está Emma, sua editora-chefe. Ela mantém o briefing, o rascunho, as evidências, o SEO, a revisão e a aprovação fluindo por uma mesa editorial tranquila, enquanto você mantém a palavra final.',
       approvalNoteLine1: 'Emma prepara. O editor aprova.',
       approvalNoteLine2: 'Nada é publicado sem a sua aprovação.',
-      ctaPrimary: 'Inscreva-se agora',
+      ctaPrimary: 'Comece seu teste de 14 dias',
       ctaSecondary: 'Veja a mesa editorial',
       demoLink: 'Veja o pensamento inicial se tornar pronto para revisão',
+      trialNote: 'Acesso total. Cancele quando quiser antes da renovação.',
       preparesLabel: 'prepara conteúdo para',
     },
     board: {
@@ -743,9 +748,10 @@ export const homeContent: Record<Locale, HomeContent> = {
       body: 'En el centro está Emma, tu editora jefe. Ella mantiene el briefing, el borrador, la evidencia, el SEO, la revisión y la aprobación fluyendo en un escritorio editorial tranquilo, mientras tú tienes la última palabra.',
       approvalNoteLine1: 'Emma lo prepara. El editor lo aprueba.',
       approvalNoteLine2: 'Nada se publica sin tu visto bueno.',
-      ctaPrimary: 'Únete ahora',
+      ctaPrimary: 'Empieza tu prueba de 14 días',
       ctaSecondary: 'Ver el escritorio editorial',
       demoLink: 'Ver cómo una idea en bruto se vuelve lista para revisión',
+      trialNote: 'Acceso completo. Cancela cuando quieras antes de que se renueve.',
       preparesLabel: 'prepara contenido para',
     },
     board: {
@@ -935,9 +941,10 @@ export const homeContent: Record<Locale, HomeContent> = {
       body: 'Im Mittelpunkt steht Emma, Ihre Chefredakteurin. Sie sorgt dafür, dass Briefing, Entwurf, Belege, SEO, Überprüfung und Freigabe über einen einzigen, übersichtlichen Redaktionsschreibtisch laufen, während Sie das letzte Wort behalten.',
       approvalNoteLine1: 'Emma bereitet vor. Der Redakteur genehmigt.',
       approvalNoteLine2: 'Ohne Ihre Freigabe wird nichts veröffentlicht.',
-      ctaPrimary: 'Jetzt registrieren',
+      ctaPrimary: 'Starten Sie Ihre 14-tägige Testphase',
       ctaSecondary: 'Sehen Sie sich den Redaktionsschreibtisch an',
       demoLink: 'Erleben Sie, wie aus groben Gedanken ein überprüfungsreifes Manuskript wird',
+      trialNote: 'Voller Zugriff. Jederzeit vor der Verlängerung kündbar.',
       preparesLabel: 'bereitet Inhalte vor für',
     },
     board: {
@@ -1127,9 +1134,10 @@ export const homeContent: Record<Locale, HomeContent> = {
       body: 'Au centre se trouve Emma, votre rédactrice en chef. Elle assure le suivi du brief, du brouillon, des sources, du SEO, de la relecture et de l\'approbation depuis un seul bureau éditorial apaisé, tandis que vous gardez le dernier mot.',
       approvalNoteLine1: 'Emma prépare. Le rédacteur en chef approuve.',
       approvalNoteLine2: 'Rien n\'est publié sans votre validation.',
-      ctaPrimary: 'Rejoignez-nous',
+      ctaPrimary: 'Commencez votre essai de 14 jours',
       ctaSecondary: 'Voir le bureau éditorial',
       demoLink: 'Voyez une réflexion brute devenir prête pour la relecture',
+      trialNote: 'Accès complet. Annulable à tout moment avant le renouvellement.',
       preparesLabel: 'prépare le contenu pour',
     },
     board: {
