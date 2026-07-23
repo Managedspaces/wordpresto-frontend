@@ -24,7 +24,10 @@ import { consentStrings } from '@/data/i18n/consent';
     <span class="wp-consent-dot" aria-hidden="true">·</span>
     <a class="wp-consent-link" data-key="terms" href="/terms/"></a>
   </nav>
-  <button type="button" class="wp-consent-accept"></button>
+  <div class="wp-consent-actions">
+    <button type="button" class="wp-consent-btn wp-consent-decline"></button>
+    <button type="button" class="wp-consent-btn wp-consent-accept"></button>
+  </div>
 </aside>
 
 <script type="application/json" id="wp-consent-i18n" set:html={JSON.stringify(consentStrings)}></script>
@@ -76,7 +79,13 @@ import { consentStrings } from '@/data/i18n/consent';
   .wp-consent-link:hover { color: var(--wp-ink, #111318); }
   .wp-consent-dot { color: var(--wp-border-strong, #aeb0a8); }
 
-  .wp-consent-accept {
+  .wp-consent-actions {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .wp-consent-btn {
     flex: 0 0 auto;
     font-family: var(--wp-font-sans);
     font-weight: 600;
@@ -84,13 +93,21 @@ import { consentStrings } from '@/data/i18n/consent';
     font-size: var(--wp-text-sm, 0.8125rem);
     padding: 9px 20px;
     border-radius: 5px;
+    cursor: pointer;
+    transition: transform 150ms, box-shadow 150ms, background 150ms;
+  }
+  .wp-consent-accept {
     background: var(--wp-ink, #111318);
     color: var(--wp-paper, #faf7f0);
     border: 1px solid var(--wp-ink, #111318);
-    cursor: pointer;
-    transition: transform 150ms, box-shadow 150ms;
   }
   .wp-consent-accept:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(17, 19, 24, 0.18); }
+  .wp-consent-decline {
+    background: transparent;
+    color: var(--wp-text-primary, #111318);
+    border: 1px solid var(--wp-border-strong, #aeb0a8);
+  }
+  .wp-consent-decline:hover { background: var(--wp-paper-dark, #efe7d6); }
 
   @media (max-width: 560px) {
     .wp-consent {
@@ -100,7 +117,8 @@ import { consentStrings } from '@/data/i18n/consent';
       padding: 14px 16px;
       gap: 12px;
     }
-    .wp-consent-accept { width: 100%; padding: 12px 20px; }
+    .wp-consent-actions { width: 100%; }
+    .wp-consent-btn { flex: 1 1 0; padding: 12px 20px; }
   }
 </style>
 
@@ -130,7 +148,8 @@ import { consentStrings } from '@/data/i18n/consent';
 
   function alreadyAcknowledged(): boolean {
     try {
-      return localStorage.getItem(STORAGE_KEY) === 'ack';
+      const v = localStorage.getItem(STORAGE_KEY);
+      return v === 'accepted' || v === 'declined';
     } catch {
       return false;
     }
@@ -159,17 +178,24 @@ import { consentStrings } from '@/data/i18n/consent';
       const key = a.dataset.key;
       if (key && t[key]) a.textContent = t[key];
     });
+    function dismiss(choice: 'accepted' | 'declined') {
+      try {
+        localStorage.setItem(STORAGE_KEY, choice);
+      } catch {
+        /* storage unavailable — just dismiss for this page view */
+      }
+      banner.setAttribute('hidden', '');
+    }
+
     const acceptBtn = banner.querySelector<HTMLButtonElement>('.wp-consent-accept');
     if (acceptBtn) {
       acceptBtn.textContent = t.accept;
-      acceptBtn.addEventListener('click', () => {
-        try {
-          localStorage.setItem(STORAGE_KEY, 'ack');
-        } catch {
-          /* storage unavailable — just dismiss for this page view */
-        }
-        banner.setAttribute('hidden', '');
-      });
+      acceptBtn.addEventListener('click', () => dismiss('accepted'));
+    }
+    const declineBtn = banner.querySelector<HTMLButtonElement>('.wp-consent-decline');
+    if (declineBtn) {
+      declineBtn.textContent = t.decline;
+      declineBtn.addEventListener('click', () => dismiss('declined'));
     }
 
     banner.removeAttribute('hidden');

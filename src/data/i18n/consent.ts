@@ -15,6 +15,8 @@ export interface ConsentStrings {
   message: string;
   /** Primary acknowledgement button. */
   accept: string;
+  /** Decline button (dismisses the notice). */
+  decline: string;
   privacy: string;
   cookies: string;
   terms: string;
@@ -26,6 +28,7 @@ export const consentStrings: Record<Locale, ConsentStrings> = {
   en: {
     message: 'This site uses cookies for analytics, to understand how it is used and to help us improve it.',
     accept: 'Accept',
+    decline: 'Decline',
     privacy: 'Privacy Policy',
     cookies: 'Cookie Policy',
     terms: 'Terms & Conditions',
@@ -34,6 +37,7 @@ export const consentStrings: Record<Locale, ConsentStrings> = {
   pt: {
     message: 'Este site utiliza cookies para análise, para compreender como é utilizado e para nos ajudar a melhorá-lo.',
     accept: 'Aceitar',
+    decline: 'Recusar',
     privacy: 'Política de Privacidade',
     cookies: 'Política de Cookies',
     terms: 'Termos e Condições',
@@ -42,6 +46,7 @@ export const consentStrings: Record<Locale, ConsentStrings> = {
   'pt-br': {
     message: 'Este site usa cookies para análise, para entender como ele é usado e para nos ajudar a melhorá-lo.',
     accept: 'Aceitar',
+    decline: 'Recusar',
     privacy: 'Política de Privacidade',
     cookies: 'Política de Cookies',
     terms: 'Termos e Condições',
@@ -50,6 +55,7 @@ export const consentStrings: Record<Locale, ConsentStrings> = {
   es: {
     message: 'Este sitio utiliza cookies para análisis, para entender cómo se usa y para ayudarnos a mejorarlo.',
     accept: 'Aceptar',
+    decline: 'Rechazar',
     privacy: 'Política de Privacidad',
     cookies: 'Política de Cookies',
     terms: 'Términos y Condiciones',
@@ -58,6 +64,7 @@ export const consentStrings: Record<Locale, ConsentStrings> = {
   de: {
     message: 'Diese Website verwendet Cookies für die Analyse, um zu verstehen, wie sie genutzt wird, und um sie zu verbessern.',
     accept: 'Akzeptieren',
+    decline: 'Ablehnen',
     privacy: 'Datenschutzerklärung',
     cookies: 'Cookie-Richtlinie',
     terms: 'Allgemeine Geschäftsbedingungen',
@@ -66,6 +73,7 @@ export const consentStrings: Record<Locale, ConsentStrings> = {
   fr: {
     message: "Ce site utilise des cookies à des fins d'analyse, pour comprendre comment il est utilisé et nous aider à l'améliorer.",
     accept: 'Accepter',
+    decline: 'Refuser',
     privacy: 'Politique de confidentialité',
     cookies: 'Politique relative aux cookies',
     terms: 'Conditions générales',
