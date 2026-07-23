@@ -165,7 +165,8 @@ const jsonLd = [
 
       <div class="pricing-footnotes">
         <p class="pricing-footnote">{t.footnoteUsage}</p>
-        <p class="pricing-footnote">{t.footnoteVat}</p>
+        <!-- VAT footnote is EUR-only: the client toggles it off for GBP/USD/AUD from the API's `vat` field. -->
+        <p class="pricing-footnote" id="pricing-vat-footnote">{t.footnoteVat}</p>
       </div>
     </div>
   </section>
@@ -350,6 +351,9 @@ const jsonLd = [
   let toggleWired = false;
   const CURRENCY_KEY = 'wp_currency';
   const currencySwitch = document.getElementById('currency-switch')!;
+  const vatFootnote = document.getElementById('pricing-vat-footnote')!;
+  // API `vat` value that means "prices include VAT" (EUR only). Anything else (e.g. 'none') hides the note.
+  const VAT_INCLUDED = 'included';
 
   // ----- helpers ------------------------------------------------------
 
@@ -622,6 +626,8 @@ const jsonLd = [
 
     if (typeof body.currency === 'string' && /^[A-Z]{3}$/.test(body.currency)) currency = body.currency;
     if (typeof body.symbol === 'string' && body.symbol) symbol = body.symbol;
+    // VAT is declared only for the EU (EUR) sale; drop the footnote for GBP/USD/AUD (API sends vat:'none').
+    vatFootnote.hidden = body.vat !== VAT_INCLUDED;
 
     livePlans = Array.isArray(body.plans) ? body.plans.filter(isUsablePlan) : [];
     if (!livePlans.length) throw new Error('pricing_no_plans');
