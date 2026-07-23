@@ -325,6 +325,7 @@ const jsonLd = [
 
   interface ApiTrial {
     priceEur: number;
+    credits: number;
     days: number;
     convertsToTier?: string;
     convertsToLabel: string;
@@ -423,8 +424,13 @@ const jsonLd = [
       days: String(trial.days),
       price: fmtMoney(trial.priceEur),
     });
+    // Prefer the trial's own taster grant; fall back to the converted plan's monthly credits so an older
+    // API deploy (before `credits` was added) still renders a valid, non-empty offer during the rollout.
+    const trialCredits = isFiniteNumber(trial.credits) && trial.credits > 0
+      ? trial.credits
+      : trial.convertsToMonthlyCredits;
     document.getElementById('trial-body')!.textContent = fill(S.trialBodyTemplate, {
-      credits: fmtCredits(trial.convertsToMonthlyCredits),
+      credits: fmtCredits(trialCredits),
       planLabel: trial.convertsToLabel,
       planPrice: fmtMoney(trial.convertsToMonthlyPriceEur),
     });
