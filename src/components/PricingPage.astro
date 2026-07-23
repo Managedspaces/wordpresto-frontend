@@ -121,6 +121,8 @@ const jsonLd = [
         </a>
       </div>
 
+      <div class="currency-switch" id="currency-switch" role="group" aria-label="Currency" hidden></div>
+
       <div class="billing-toggle-wrap" id="billing-toggle-wrap" hidden>
         <div class="billing-toggle" role="group" aria-label="Billing period">
           <button type="button" class="billing-toggle-btn is-active" data-billing="monthly" aria-pressed="true">{t.billingMonthly}</button>
@@ -163,7 +165,8 @@ const jsonLd = [
 
       <div class="pricing-footnotes">
         <p class="pricing-footnote">{t.footnoteUsage}</p>
-        <p class="pricing-footnote">{t.footnoteVat}</p>
+        <!-- VAT footnote is EUR-only: the client toggles it off for GBP/USD/AUD from the API's `vat` field. -->
+        <p class="pricing-footnote" id="pricing-vat-footnote">{t.footnoteVat}</p>
       </div>
     </div>
   </section>
@@ -342,8 +345,15 @@ const jsonLd = [
   const trialCallout = document.getElementById('trial-callout')!;
 
   let currency = 'EUR';
+  let symbol = '€';
   let billing: 'monthly' | 'annual' = 'monthly';
   let livePlans: ApiPlan[] = [];
+  let toggleWired = false;
+  const CURRENCY_KEY = 'wp_currency';
+  const currencySwitch = document.getElementById('currency-switch')!;
+  const vatFootnote = document.getElementById('pricing-vat-footnote')!;
+  // API `vat` value that means "prices include VAT" (EUR only). Anything else (e.g. 'none') hides the note.
+  const VAT_INCLUDED = 'included';
 
   // ----- helpers ------------------------------------------------------
 
@@ -351,14 +361,14 @@ const jsonLd = [
     return typeof v === 'number' && Number.isFinite(v);
   }
 
+  // Format with the API-provided symbol (so USD shows "$", AUD "A$", not Intl's "US$"), grouping digits
+  // and showing decimals only when the amount isn't whole.
   function fmtMoney(value: number): string {
     const wholeUnits = Math.round(value * 100) % 100 === 0;
-    return new Intl.NumberFormat('en-GB', {
-      style: 'currency',
-      currency,
+    return symbol + value.toLocaleString('en-GB', {
       minimumFractionDigits: wholeUnits ? 0 : 2,
       maximumFractionDigits: 2,
-    }).format(value);
+    });
   }
 
   function fmtCredits(value: number): string {
@@ -539,8 +549,10 @@ const jsonLd = [
   // ----- billing toggle --------------------------------------------------
 
   function setupToggle(): void {
+    if (toggleWired) return; // wire the static billing buttons once — loadPricing may run again on a currency change.
     const hasAnnual = livePlans.some((p) => p.oneTime !== true && isFiniteNumber(p.annualPriceEur));
     if (!hasAnnual) return; // no annual prices in the data: monthly only, no toggle.
+    toggleWired = true;
     toggleWrap.hidden = false;
     const buttons = toggleWrap.querySelectorAll<HTMLButtonElement>('.billing-toggle-btn');
     buttons.forEach((btn) => {
@@ -564,25 +576,47 @@ const jsonLd = [
     plansGrid.replaceChildren();
     plansGrid.setAttribute('aria-busy', 'false');
     plansGrid.hidden = true;
+    currencySwitch.hidden = true;
     toggleWrap.hidden = true;
     packsSection.hidden = true;
     trialCallout.hidden = true;
     fallbackEl.hidden = false;
   }
 
-  async function loadPricing(): Promise<void> {
+  interface ApiCurrency { code: string; symbol: string; label: string; }
+
+  // Build the currency selector from the API's list, highlighting the active one. Each button re-loads
+  // pricing with ?currency=<code> (an explicit choice, so it overrides geo) and remembers it for later.
+  function renderCurrencySwitch(currencies: unknown, active: string): void {
+    const list = Array.isArray(currencies)
+      ? (currencies as ApiCurrency[]).filter((c) => c && typeof c.code === 'string' && typeof c.symbol === 'string')
+      : [];
+    if (list.length < 2) return; // nothing to switch between
+    currencySwitch.replaceChildren(...list.map((c) => {
+      const btn = el('button', `currency-btn${c.code === active ? ' is-active' : ''}`, `${c.symbol} ${c.code}`) as HTMLButtonElement;
+      btn.type = 'button';
+      btn.setAttribute('aria-pressed', String(c.code === active));
+      btn.addEventListener('click', () => {
+        if (c.code === currency) return;
+        try { localStorage.setItem(CURRENCY_KEY, c.code); } catch { /* storage blocked: still switch for this view */ }
+        void loadPricing(c.code).catch(() => showFallback());
+      });
+      return btn;
+    }));
+    currencySwitch.hidden = false;
+  }
+
+  async function loadPricing(selected?: string): Promise<void> {
     const base = CONFIG.apiBase.replace(/\/$/, '');
+    // An explicit `selected` currency (from the switch or a saved choice) overrides the API's geo default.
+    const url = selected ? `${base}/api/public/pricing?currency=${encodeURIComponent(selected)}` : `${base}/api/public/pricing`;
     // Bound the request so a slow/unreachable backend flips to the graceful fallback instead of leaving
-    // the skeleton tiles spinning forever. AbortController fires `abort` at the deadline → fetch rejects
-    // → the outer .catch runs showFallback().
+    // the skeleton tiles spinning forever. AbortController fires `abort` at the deadline → fetch rejects.
     const controller = new AbortController();
     const deadline = setTimeout(() => controller.abort(), 8000);
     let res: Response;
     try {
-      res = await fetch(`${base}/api/public/pricing`, {
-        headers: { accept: 'application/json' },
-        signal: controller.signal,
-      });
+      res = await fetch(url, { headers: { accept: 'application/json' }, signal: controller.signal });
     } finally {
       clearTimeout(deadline);
     }
@@ -590,21 +624,25 @@ const jsonLd = [
     const data: unknown = await res.json();
     const body = (data ?? {}) as Record<string, unknown>;
 
-    if (typeof body.currency === 'string' && /^[A-Z]{3}$/.test(body.currency)) {
-      currency = body.currency;
-    }
+    if (typeof body.currency === 'string' && /^[A-Z]{3}$/.test(body.currency)) currency = body.currency;
+    if (typeof body.symbol === 'string' && body.symbol) symbol = body.symbol;
+    // VAT is declared only for the EU (EUR) sale; drop the footnote for GBP/USD/AUD (API sends vat:'none').
+    vatFootnote.hidden = body.vat !== VAT_INCLUDED;
 
     livePlans = Array.isArray(body.plans) ? body.plans.filter(isUsablePlan) : [];
     if (!livePlans.length) throw new Error('pricing_no_plans');
 
+    renderCurrencySwitch(body.currencies, currency);
     if (isUsableTrial(body.trial)) renderTrial(body.trial);
-
     renderPlans();
     setupToggle();
     renderPacks(Array.isArray(body.packs) ? body.packs.filter(isUsablePack) : []);
   }
 
-  loadPricing().catch(() => showFallback());
+  // Honour a previously chosen currency so it sticks across pages; otherwise let the API geo-default.
+  let storedCurrency: string | null = null;
+  try { storedCurrency = localStorage.getItem(CURRENCY_KEY); } catch { /* storage blocked */ }
+  loadPricing(storedCurrency && /^[A-Z]{3}$/.test(storedCurrency) ? storedCurrency : undefined).catch(() => showFallback());
 </script>
 
 <style>
@@ -760,6 +798,35 @@ const jsonLd = [
     margin: 12px 0 20px;
   }
   .trial-cta { align-self: flex-start; }
+
+  /* ===== CURRENCY SWITCH ===== */
+  .currency-switch {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    background: #FFFFFF;
+    border: 1.5px solid var(--wp-ink);
+    border-radius: 6px;
+    padding: 4px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(54,44,24,0.08);
+  }
+  .currency-switch[hidden] { display: none; }
+  .currency-switch :global(.currency-btn) {
+    appearance: none;
+    border: none;
+    background: transparent;
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.02em;
+    color: var(--wp-text-secondary);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    min-height: 34px;
+  }
+  .currency-switch :global(.currency-btn:hover) { color: var(--wp-ink); }
+  .currency-switch :global(.currency-btn.is-active) { background: var(--wp-ink); color: #FAF7F0; }
 
   /* ===== BILLING TOGGLE ===== */
   .billing-toggle-wrap { display: flex; margin-bottom: 34px; }
