@@ -301,7 +301,7 @@ export const cookiePolicy: LegalPageContent = {
           'Google Analytics — cookies such as _ga and _gid, used to measure page views, referrers and general usage patterns.',
           'Microsoft Clarity — cookies such as _clck and _clsk, used for anonymised session recordings and heatmaps that show how visitors use the site.',
         ]),
-        p('We do not currently run a cookie-consent banner. If you are visiting from a region where consent is required before non-essential cookies are set, you can prevent them using the browser controls below.'),
+        p('We show a cookie notice to visitors in the UK and European Economic Area, linking to this policy so you know these analytics cookies are in use. You can block or remove them at any time using the browser controls below.'),
       ],
     },
     {
