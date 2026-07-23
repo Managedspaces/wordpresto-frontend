@@ -1,0 +1,183 @@
+---
+// Site-wide cookie/consent notice. Rendered once from BaseLayout, so it appears
+// on every marketing page. It is shown only to visitors in regions where a
+// cookie notice is expected (EEA + UK, detected client-side by timezone) and
+// only until they acknowledge it once (stored in localStorage).
+//
+// BaseLayout is locale-agnostic, so rather than take a `locale` prop threaded
+// through every page, the full translated string set is serialised into a JSON
+// script tag and the correct locale is picked client-side from the URL path
+// (matching the /pt/, /pt-br/, /es/, /de/, /fr/ route convention). This mirrors
+// the waitlist form's `#wl-i18n` pattern.
+//
+// The banner is purely informational: it links to the Privacy Policy, Cookie
+// Policy and Terms & Conditions and does not itself change what loads.
+import { consentStrings } from '@/data/i18n/consent';
+---
+
+<aside class="wp-consent" aria-label="Cookie notice" hidden>
+  <p class="wp-consent-text"></p>
+  <nav class="wp-consent-links" aria-label="Policies">
+    <a class="wp-consent-link" data-key="cookies" href="/cookies/"></a>
+    <span class="wp-consent-dot" aria-hidden="true">·</span>
+    <a class="wp-consent-link" data-key="privacy" href="/privacy/"></a>
+    <span class="wp-consent-dot" aria-hidden="true">·</span>
+    <a class="wp-consent-link" data-key="terms" href="/terms/"></a>
+  </nav>
+  <button type="button" class="wp-consent-accept"></button>
+</aside>
+
+<script type="application/json" id="wp-consent-i18n" set:html={JSON.stringify(consentStrings)}></script>
+
+<style>
+  .wp-consent {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 200;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 18px;
+    padding: 16px 20px;
+    background: var(--wp-white, #fff);
+    background-image: var(--wp-texture-paper);
+    border: 1px solid var(--wp-border-secondary, #cacbc5);
+    border-top: 3px solid var(--wp-ink, #111318);
+    border-radius: 3px;
+    box-shadow: 0 8px 28px rgba(17, 19, 24, 0.16);
+  }
+  .wp-consent[hidden] { display: none; }
+
+  .wp-consent-text {
+    flex: 1 1 260px;
+    margin: 0;
+    font-size: var(--wp-text-sm, 0.8125rem);
+    line-height: 1.55;
+    color: var(--wp-text-secondary, #4e5662);
+  }
+
+  .wp-consent-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .wp-consent-link {
+    font-size: var(--wp-text-sm, 0.8125rem);
+    font-weight: 500;
+    color: var(--wp-text-tertiary, #737b87);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .wp-consent-link:hover { color: var(--wp-ink, #111318); }
+  .wp-consent-dot { color: var(--wp-border-strong, #aeb0a8); }
+
+  .wp-consent-accept {
+    flex: 0 0 auto;
+    font-family: var(--wp-font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    font-size: var(--wp-text-sm, 0.8125rem);
+    padding: 9px 20px;
+    border-radius: 5px;
+    background: var(--wp-ink, #111318);
+    color: var(--wp-paper, #faf7f0);
+    border: 1px solid var(--wp-ink, #111318);
+    cursor: pointer;
+    transition: transform 150ms, box-shadow 150ms;
+  }
+  .wp-consent-accept:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(17, 19, 24, 0.18); }
+
+  @media (max-width: 560px) {
+    .wp-consent {
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      padding: 14px 16px;
+      gap: 12px;
+    }
+    .wp-consent-accept { width: 100%; padding: 12px 20px; }
+  }
+</style>
+
+<script>
+  // Show a cookie notice to visitors in regions where one is expected (EEA +
+  // UK), detected by browser timezone so no IP lookup or network call is needed.
+  // Over-inclusive on purpose (any Europe/* timezone counts): showing the notice
+  // to a few extra visitors is harmless. Acknowledgement is remembered in
+  // localStorage so it does not reappear.
+  const STORAGE_KEY = 'wp-cookie-notice';
+  const SUPPORTED = ['pt', 'pt-br', 'es', 'de', 'fr'];
+
+  function localeFromPath(): string {
+    const seg = location.pathname.split('/')[1];
+    return SUPPORTED.includes(seg) ? seg : 'en';
+  }
+
+  function noticeExpected(): boolean {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+      if (/^Europe\//.test(tz)) return true;
+      return ['Atlantic/Canary', 'Atlantic/Madeira', 'Atlantic/Azores', 'Atlantic/Reykjavik', 'Arctic/Longyearbyen'].includes(tz);
+    } catch {
+      return true; // fail safe: if we cannot tell, show the notice
+    }
+  }
+
+  function alreadyAcknowledged(): boolean {
+    try {
+      return localStorage.getItem(STORAGE_KEY) === 'ack';
+    } catch {
+      return false;
+    }
+  }
+
+  function init() {
+    const banner = document.querySelector<HTMLElement>('.wp-consent');
+    const dataEl = document.getElementById('wp-consent-i18n');
+    if (!banner || !dataEl) return;
+    if (alreadyAcknowledged() || !noticeExpected()) return;
+
+    let strings: Record<string, Record<string, string>>;
+    try {
+      strings = JSON.parse(dataEl.textContent || '{}');
+    } catch {
+      return;
+    }
+    const locale = localeFromPath();
+    const t = strings[locale] || strings.en;
+    if (!t) return;
+
+    banner.setAttribute('aria-label', t.ariaLabel);
+    const textEl = banner.querySelector<HTMLElement>('.wp-consent-text');
+    if (textEl) textEl.textContent = t.message;
+    banner.querySelectorAll<HTMLAnchorElement>('.wp-consent-link').forEach((a) => {
+      const key = a.dataset.key;
+      if (key && t[key]) a.textContent = t[key];
+    });
+    const acceptBtn = banner.querySelector<HTMLButtonElement>('.wp-consent-accept');
+    if (acceptBtn) {
+      acceptBtn.textContent = t.accept;
+      acceptBtn.addEventListener('click', () => {
+        try {
+          localStorage.setItem(STORAGE_KEY, 'ack');
+        } catch {
+          /* storage unavailable — just dismiss for this page view */
+        }
+        banner.setAttribute('hidden', '');
+      });
+    }
+
+    banner.removeAttribute('hidden');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>
