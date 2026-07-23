@@ -1,6 +1,7 @@
 ---
 import { SEO } from 'astro-seo';
 import { organizationSchema, websiteSchema, SITE_URL } from '@/lib/schema';
+import ConsentBanner from '@/components/ConsentBanner.astro';
 
 interface Props {
   pageTitle: string;
@@ -104,6 +105,7 @@ const {
   </head>
   <body>
     <slot />
+    <ConsentBanner />
   </body>
 </html>
 
