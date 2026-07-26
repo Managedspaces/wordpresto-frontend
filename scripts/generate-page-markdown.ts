@@ -72,6 +72,19 @@ function renderHomepageMarkdown(locale: Locale, t: HomeContent) {
     ``,
     `> ${t.hero.approvalNoteLine1} ${t.hero.approvalNoteLine2}`,
     ``,
+    ...(t.story
+      ? [
+          `## ${t.story.h2}`,
+          ``,
+          t.story.lead,
+          ``,
+          ...t.story.paragraphs.flatMap((p) => [p, ``]),
+          `**${t.story.pullQuote}**`,
+          ``,
+          t.story.closing,
+          ``,
+        ]
+      : []),
     `## ${t.operatingModel.h2}`,
     ``,
     t.operatingModel.body,

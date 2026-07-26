@@ -17,6 +17,22 @@ export interface HomeContent {
     trialNote: string;
     preparesLabel: string;
   };
+  /**
+   * Feature story — the "letter on the desk" tile sitting directly under the hero.
+   * Optional so non-English locales build cleanly until the copy is translated;
+   * the section only renders (page + Markdown mirror) when present.
+   */
+  story?: {
+    kicker: string;
+    h2: string;
+    lead: string;
+    paragraphs: string[];
+    pullQuote: string;
+    closing: string;
+    annotation: string;
+    signOffName: string;
+    signOffRole: string;
+  };
   board: {
     note: string;
     title: string;
@@ -194,6 +210,29 @@ export const homeContent: Record<Locale, HomeContent> = {
       gateApproval: 'Editor approval required',
       gateCms: 'Ready for CMS handoff',
       stamp: 'Awaiting sign-off',
+    },
+    story: {
+      kicker: 'A note from the Word Presto desk',
+      h2: 'Be found without becoming part of the AI slop.',
+      lead: 'Your customers are searching in more places than ever.',
+      paragraphs: [
+        'They are looking through Google, asking AI, following recommendations and deciding which businesses deserve their attention on social media.',
+        'To remain visible, your business needs webpages that rank, content that earns mentions in AI answers and social posts that people actually want to read.',
+        'But producing more content is not enough.',
+        'The internet is already drowning in generic articles, automated replies and posts that sound as though nobody believed a word of them.',
+        'Word Presto helps you use AI without publishing like a machine.',
+        'It brings website intelligence, SEO, AI visibility, social campaigns and publishing into one human-controlled operation.',
+        'Pull an existing page into the Canvas. Let specialist Workers grade its search relevance, structure, evidence, voice and AI visibility. Improve it without losing the original. Review every change. Approve it. Then prepare it for republication.',
+        'Create individual social posts or complete campaigns from what your business actually knows. Adapt them for each platform without stripping out the personality. Keep a human in control before anything goes live.',
+        'Behind the scenes, Word Presto does the heavy lifting.',
+        'It investigates, organises, grades, recommends, drafts, reviews and prepares.',
+        'You decide what is true, what sounds like you and what deserves to be published.',
+      ],
+      pullQuote: 'AI provides the leverage. Humans provide the value.',
+      closing: 'Word Presto helps your website rank, your business appear in AI answers and your social presence grow, without turning your brand into another content bot.',
+      annotation: 'read this twice',
+      signOffName: 'Emma',
+      signOffRole: 'Managing editor · at the desk',
     },
     operatingModel: {
       eyebrow: 'The operating model',
