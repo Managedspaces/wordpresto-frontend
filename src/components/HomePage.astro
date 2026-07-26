@@ -1869,6 +1869,11 @@ const jsonLd = [
 
     /* --- Languages --- */
     .editors-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    /* Keep long localised language names (e.g. German "Portugiesisch")
+       inside the card on narrow screens. */
+    .editor-card { min-width: 0; padding: 18px 8px 16px; }
+    .editor-card-lang { flex-wrap: wrap; justify-content: center; max-width: 100%; padding: 3px 8px; gap: 4px; }
+    .editor-card-lang-name { overflow-wrap: anywhere; }
 
     /* --- CTA --- */
     .section--cta { padding: 56px 0 64px; }
