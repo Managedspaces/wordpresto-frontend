@@ -179,6 +179,43 @@ const jsonLd = [
     </div>
   </section>
 
+  <!-- ============= FEATURE STORY — letter on the desk ============= -->
+  {t.story && (
+  <section id="story" class="section section--story section--border-top section--overflow-hidden">
+    <div class="container">
+      <div class="story-desk">
+        <article class="story-letter">
+          <span class="story-annot" aria-hidden="true">{t.story.annotation}</span>
+          <span class="story-fold" aria-hidden="true"></span>
+          <span class="story-margin" aria-hidden="true"></span>
+
+          <div class="story-letterhead">
+            <span class="story-postmark" aria-hidden="true"></span>
+            <span class="mono-label story-kicker">{t.story.kicker}</span>
+          </div>
+
+          <h2 class="story-h2">{t.story.h2}</h2>
+
+          <div class="story-prose">
+            <p class="story-lead">{t.story.lead}</p>
+            {t.story.paragraphs.map((para) => <p>{para}</p>)}
+            <p class="story-pull"><span>{t.story.pullQuote}</span></p>
+            <p class="story-closing">{t.story.closing}</p>
+          </div>
+
+          <div class="story-signoff">
+            <img src="/editors/emma-192.webp" srcset="/editors/emma-192.webp 1x, /editors/emma-384.webp 2x" alt="Emma, managing editor" width="46" height="46" loading="lazy" decoding="async" />
+            <div class="story-signoff-text">
+              <span class="story-signature">{t.story.signOffName}</span>
+              <span class="mono-label">{t.story.signOffRole}</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  )}
+
   <!-- ===================== 2. THE OPERATING MODEL ===================== -->
   <section id="not-dashboard" class="section section--paper-dark section--border-top">
     <div class="container">
@@ -1527,6 +1564,198 @@ const jsonLd = [
     color: var(--wp-text-muted);
   }
   .footer-legal-links .footer-link { font-size: var(--wp-text-sm); }
+
+  /* ============================================================
+     FEATURE STORY — letter on the desk (mobile-first)
+  ============================================================ */
+  .section--story {
+    /* The desk: a touch deeper and warmer than the paper sections,
+       so the writing-paper sheet reads as sitting on top of it. */
+    background-color: #E7DEC9;
+    background-image:
+      radial-gradient(150% 95% at 50% -12%, rgba(17,19,24,0.06), transparent 55%),
+      var(--wp-texture-paper);
+  }
+  .story-desk {
+    display: flex;
+    justify-content: center;
+    padding: 4px 0 8px;
+  }
+  .story-letter {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    background: #FFFDF7;
+    border: 1px solid var(--wp-line);
+    box-shadow:
+      0 1px 2px rgba(17,19,24,0.05),
+      0 22px 44px -20px rgba(17,19,24,0.3);
+    padding: 30px 22px 26px 32px;
+  }
+
+  /* Red writing-paper margin rule down the left edge */
+  .story-margin {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 20px;
+    width: 1px;
+    background: rgba(194,65,58,0.4);
+  }
+
+  .story-letterhead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 13px;
+    border-bottom: 1.5px solid var(--wp-ink);
+  }
+  .story-postmark {
+    width: 26px; height: 26px;
+    flex: 0 0 auto;
+    border: 1.5px solid var(--wp-border-strong);
+    border-radius: 50%;
+    background:
+      repeating-linear-gradient(45deg, transparent 0 3px, rgba(174,176,168,0.5) 3px 4px);
+    opacity: 0.7;
+    transform: rotate(-6deg);
+  }
+  .story-kicker { letter-spacing: 0.14em; color: var(--wp-text-tertiary); }
+
+  .story-h2 {
+    font-size: clamp(1.7rem, 6.2vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    margin: 18px 0 4px;
+    color: var(--wp-ink);
+  }
+
+  /* Ruled writing-paper body. Prose is locked to a 30px vertical
+     rhythm so the faint rules sit under the lines of text. */
+  .story-prose {
+    --rule: 30px;
+    position: relative;
+    margin-top: 16px;
+    padding-top: 5px;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--rule) - 1px),
+      rgba(96,125,170,0.14) calc(var(--rule) - 1px),
+      rgba(96,125,170,0.14) var(--rule)
+    );
+    background-position: 0 6px;
+  }
+  .story-prose p {
+    margin: 0 0 var(--rule);
+    font-size: var(--wp-text-md);
+    line-height: var(--rule);
+    color: var(--wp-text-secondary);
+  }
+  .story-prose p:last-child { margin-bottom: 0; }
+  .story-lead {
+    font-size: var(--wp-text-lg);
+    font-weight: 600;
+    color: var(--wp-ink);
+  }
+  .story-closing {
+    color: var(--wp-ink);
+    font-weight: 600;
+  }
+  /* The key line — a highlighter pass, echoing the hero "agentic" mark */
+  .story-pull {
+    font-size: var(--wp-text-lg);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--wp-ink);
+  }
+  .story-pull span {
+    background: linear-gradient(180deg, transparent 56%, #d4e8b2 56%, #d4e8b2 93%, transparent 93%);
+    padding: 0 3px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .story-signoff {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--wp-line);
+  }
+  .story-signoff img {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 1.5px var(--wp-ink);
+    flex: 0 0 auto;
+  }
+  .story-signoff-text { display: flex; flex-direction: column; gap: 3px; }
+  .story-signature {
+    font-family: var(--wp-font-hand);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 0.85;
+    color: var(--wp-ink);
+  }
+
+  /* Folded corner + hand annotation only appear once the sheet tilts */
+  .story-fold { display: none; }
+  .story-annot { display: none; }
+
+  /* --- ≥ 640px: the sheet lifts onto the desk at an angle --- */
+  @media (min-width: 640px) {
+    .section--story { padding: 84px 0; }
+    .story-desk { padding: 20px 0 28px; }
+    .story-letter {
+      padding: 42px 48px 34px 56px;
+      transform: rotate(-1.5deg);
+    }
+    /* A second sheet peeking out behind, for depth on the desk */
+    .story-letter::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #FBF7EC;
+      border: 1px solid var(--wp-line);
+      box-shadow: 0 16px 38px -22px rgba(17,19,24,0.28);
+      transform: rotate(2.6deg);
+      transform-origin: center center;
+      z-index: -1;
+    }
+    .story-margin { left: 34px; }
+    /* Dog-eared folded corner, top-right */
+    .story-fold {
+      display: block;
+      position: absolute;
+      top: -1px; right: -1px;
+      width: 0; height: 0;
+      border-style: solid;
+      border-width: 0 34px 34px 0;
+      border-color: transparent #E7DEC9 transparent transparent;
+      filter: drop-shadow(-2px 2px 2px rgba(17,19,24,0.14));
+    }
+    /* Hand-written margin note */
+    .story-annot {
+      display: block;
+      position: absolute;
+      top: -16px; right: 44px;
+      z-index: 4;
+      transform: rotate(4deg);
+      font-family: var(--wp-font-hand);
+      font-weight: 600;
+      font-size: 22px;
+      color: var(--wp-amber);
+    }
+  }
+
+  /* --- ≥ 1024px: a little more room and a larger headline --- */
+  @media (min-width: 1024px) {
+    .story-letter { max-width: 800px; padding: 48px 62px 40px 68px; }
+    .story-h2 { font-size: 2.7rem; }
+    .story-prose p { font-size: 1.0625rem; }
+  }
 
   /* ============================================================
      RESPONSIVE — tablet landscape / small laptop (≤ 1024px)
