@@ -1,90 +1,90 @@
 ---
-title: "Motor de flujo de trabajo de contenido para redactores y equipos de publicación | Word Presto"
-description: "Planifica, redacta el brief, escribe, revisa, mejora y prepara el contenido para la búsqueda, los lectores y la entrega al CMS."
+title: "Motor de flujo de trabajo de contenido para escritores y equipos editoriales | Word Presto"
+description: "Planifica, define el briefing, escribe, revisa, mejora y prepara el contenido para buscadores, lectores y la entrega al CMS."
 canonical: "https://wordpresto.com/es/"
 lang: "es"
 ---
 
-# Word Presto es el motor de contenido agéntico para redactores, editores y equipos de publicación.
+# Word Presto es el agéntico motor de contenido para escritores, editores y equipos editoriales.
 
-Planifica, redacta el brief, escribe, revisa, mejora y prepara el contenido para la búsqueda, los lectores y la entrega al CMS.
+Planifica, define el briefing, escribe, revisa, mejora y prepara el contenido para buscadores, lectores y la entrega al CMS.
 
 ---
 
-En el centro está Emma, tu editora jefa. Mantiene el brief, el borrador, la evidencia, el SEO, la revisión y la aprobación avanzando por una única redacción, mientras tú conservas la última palabra.
+En el centro está Emma, tu editora jefe. Ella mantiene el briefing, el borrador, la evidencia, el SEO, la revisión y la aprobación fluyendo en un escritorio editorial tranquilo, mientras tú tienes la última palabra.
 
-> Emma prepara. El Editor aprueba. Nada se publica sin tu visto bueno.
+> Emma lo prepara. El editor lo aprueba. Nada se publica sin tu visto bueno.
 
 ## Esto no es otro panel de contenido.
 
-La mayoría del trabajo de contenido no falla porque la gente no sepa escribir. Falla porque el brief cambia, las revisiones llegan tarde, las afirmaciones pierden sus fuentes, el SEO se añade al final, y nadie sabe quién ha aprobado qué.
+La mayoría del trabajo de contenido no fracasa porque la gente no sepa escribir. Fracasa porque el brief cambia, las revisiones llegan tarde, las afirmaciones pierden sus fuentes, el SEO se añade al final y nadie sabe quién aprobó qué.
 
-> Word Presto le da al trabajo una redacción. Emma la dirige.
+> Word Presto le da un escritorio al trabajo. Emma lo gestiona.
 
 - Brief acordado y archivado
 - SEO revisado en el borrador, no después
-- Las afirmaciones llevan su evidencia
-- La aprobación recae en el Editor
+- Las afirmaciones llevan sus pruebas
+- La aprobación la tiene el editor
 
-## Conoce a Emma, tu editora jefa.
+## Te presentamos a Emma, tu editora jefe.
 
-- **Ella guarda el brief**: Mantiene el objetivo, el público, la voz, el contexto y las decisiones anteriores siempre a la vista, para que el trabajo no se desvíe.
-- **Ella dirige la redacción**: Mueve cada pieza del brief al borrador, la revisión y la aprobación sin perder el hilo.
-- **Ella convoca a los especialistas**: Envía trabajo de afirmaciones, SEO, evidencia, voz, enlaces, riesgo y entrega al especialista adecuado, en el momento adecuado.
-- **Ella protege tu autoridad**: Emma puede recomendar y preparar. Solo el Editor puede aprobar.
+- **Ella tiene el encargo**: Mantiene el objetivo, la audiencia, el tono, el contexto y las decisiones anteriores a la vista, para que el trabajo no se desvíe.
+- **Ella dirige el escritorio**: Mueve cada pieza desde el resumen hasta el borrador, la corrección, la revisión y la aprobación sin perder el hilo.
+- **Ella convoca a los especialistas**: Envía reclamaciones, SEO, pruebas, tono, enlaces, riesgos y trabajo de traspaso al especialista adecuado en el momento adecuado.
+- **Ella protege tu autoridad**: Emma puede recomendar y preparar. Solo el editor puede aprobar.
 
 ## Los cuatro compromisos de Emma.
 
-Los estándares que Emma mantiene en cada trabajo: las reglas que hacen que la redacción sea fiable.
+Los estándares que Emma aplica en cada trabajo: las reglas que hacen que el escritorio sea confiable.
 
-- **La verdad ante todo**: Sin cifras inventadas. Sin afirmaciones sin respaldo. Sin fingir que una evidencia débil es sólida.
-- **Dice lo honesto**: Emma no adula un mal borrador. Te dice qué necesita trabajo.
+- **La verdad fundamental ante todo**: Nada de cifras inventadas. Nada de afirmaciones sin respaldo. Nada de fingir que la evidencia débil es fuerte.
+- **Di lo honesto**: Emma no halagará un borrador malo. Te dice lo que necesita trabajo.
 - **Protege tu trabajo**: Nada se publica sin la aprobación del Editor.
-- **Recuerda lo que importa**: Emma aprende los estándares, la voz y las decisiones que dan forma al proyecto.
+- **Recuerda lo que importa**: Emma aprende los estándares, el tono y las decisiones que dan forma al proyecto.
 
-## Una sola superficie para el texto real.
+## Una superficie de trabajo para la copia real.
 
-El Canvas es donde Emma reúne el trabajo: páginas importadas, borradores, reescrituras, notas de revisión, hallazgos de especialistas y decisiones de aprobación.
+El Canvas es donde Emma reúne todo el trabajo: páginas importadas, borradores, reescrituras, notas de corrección, hallazgos de especialistas y decisiones de aprobación.
 
-- Importa, redacta, reescribe, corrige y revisa en un solo lugar.
-- Los hallazgos de los especialistas llegan como notas al margen, no reuniones.
-- La aprobación final sigue siendo siempre necesaria.
+- Importa, redacta, reescribe, revisa y corrige, todo en un solo lugar.
+- Los hallazgos de los especialistas llegan como notas al margen, no como reuniones.
+- La aprobación final siempre es necesaria.
 
-## 41 especialistas. Una editora jefa.
+## 41especialistas. Un editor jefe.
 
-Emma no trabaja sola. Detrás de ella está todo el equipo de especialistas de Word Presto: producción de contenido, SEO, operaciones y gobernanza de aprobación, cada uno con un rol y un lugar definidos en el flujo de trabajo.
+Emma no trabaja sola. Detrás de ella está todo el banco de especialistas de Word Presto: personal de producción de contenido, SEO, operaciones y gobernanza de aprobaciones, cada uno con un rol y un lugar definidos en el flujo de trabajo.
 
 > Emma convoca al especialista adecuado en el momento adecuado, y luego devuelve los hallazgos que necesitan el criterio del Editor.
 
-## El mismo estándar. Voz nativa.
+## Mismo estándar. Voz nativa.
 
-Cuando trabajas en otro idioma, no recibes a Emma traducida. Recibes una editora jefa que dirige la misma redacción en su propio idioma y estilo.
+Cuando trabajas en otro idioma, no te dan a Emma traducida. Te dan una editora jefe que dirige la misma sección en su propio idioma y estilo.
 
 - **Emma** — Dublín · Inglés
 - **Aurora** — Lisboa · Portugués
-- **Francisca** — São Paulo · Portugués de Brasil
+- **Francisca** — São Paulo · Portugués brasileño
 - **Sofía** — Madrid · Español
 - **Sabine** — Berlín · Alemán
 - **Ambre** — París · Francés
 
-## Solo el Editor puede aprobar el trabajo.
+## Solo el editor puede aprobar el trabajo.
 
-Emma puede preparar el trabajo. Los especialistas pueden revisarlo. El Canvas puede organizarlo. Pero solo el Editor puede aprobarlo.
+Emma puede preparar el trabajo. Los especialistas pueden revisarlo. El Canvas puede organizarlo. Pero solo el editor puede aprobarlo.
 
-> Nada sale en directo hasta que la persona responsable dice que sí.
+> Nada se publica hasta que el responsable humano dé el visto bueno.
 
-## Una idea aprobada, lista para cada canal.
+## Una idea aprobada, lista para cualquier canal.
 
-Word Presto adapta una idea aprobada en versiones listas para redes sociales, y revisa y mejora el contenido que ya está en tu sitio, listo para la entrega. Nada se publica hasta que una persona lo aprueba.
+Word Presto adapta una idea aprobada para crear versiones listas para publicar en redes sociales, y revisa y mejora el contenido que ya tienes en tu web, dejándolo listo para la entrega. Nada se publica hasta que una persona lo apruebe.
 
 - Redes sociales: LinkedIn, X, Facebook, Instagram
-- Sitio y CMS: WordPress, Sanity, Astro
+- Sitio web y CMS: WordPress, Sanity, Astro
 
-> Los agentes preparan cada versión. La decisión sigue siendo de las personas. Aprobación humana antes de publicar nada.
+> Los agentes preparan cada versión. La gente sigue tomando la decisión final. Se necesita la aprobación humana antes de publicar nada.
 
-## Pon a Emma en el centro de tu operación de contenido.
+## Pon a Emma en el centro de tu operación de contenidos.
 
-Para redactores, editores y equipos de publicación que necesitan un mejor trabajo de contenido sin renunciar al control editorial.
+Para escritores, editores y equipos de publicación que necesitan mejor contenido sin perder el control editorial.
 
 ## Agent-readable resources
 
