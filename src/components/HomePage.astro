@@ -162,6 +162,7 @@ const jsonLd = [
             </div>
 
             <div class="board-gate-row">
+              <span class="hero-board-stamp">{t.board.stamp}</span>
               <div class="board-gate-approval">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--wp-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
                 <span>{t.board.gateApproval}</span>
@@ -173,8 +174,6 @@ const jsonLd = [
             </div>
           </div>
         </div>
-
-        <span class="hero-board-stamp">{t.board.stamp}</span>
       </div>
     </div>
   </section>
@@ -805,7 +804,9 @@ const jsonLd = [
     border: 1px solid var(--wp-line);
     box-shadow: 0 2px 5px rgba(17,19,24,0.06), 0 30px 56px -22px rgba(17,19,24,0.26);
     transform: rotate(-0.8deg);
-    overflow: hidden;
+    /* visible so the approval stamp, anchored to the gate row inside the card,
+       can hang off the left edge as it did when it was a sibling element. */
+    overflow: visible;
   }
   .board-header {
     display: flex;
@@ -901,7 +902,7 @@ const jsonLd = [
   }
   .board-avatar-stack img:first-child { margin-left: 0; }
 
-  .board-gate-row { display: grid; grid-template-columns: 1.25fr 1fr; gap: 10px; margin-top: 4px; }
+  .board-gate-row { position: relative; display: grid; grid-template-columns: 1.25fr 1fr; gap: 10px; margin-top: 4px; }
   .board-gate-approval {
     display: flex; align-items: center; gap: 9px;
     padding: 12px 14px;
@@ -924,9 +925,12 @@ const jsonLd = [
   }
   .board-gate-cms-dot { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--wp-border-strong); flex: 0 0 auto; }
 
+  /* Anchored to the top of the gate row, not a fixed offset from the card
+     bottom: locales whose gate labels wrap to two lines (de) would otherwise
+     grow the row upward and end up underneath the stamp. */
   .hero-board-stamp {
     position: absolute;
-    bottom: 42px; left: -14px;
+    bottom: calc(100% - 6px); left: -36px;
     z-index: 6;
     transform: rotate(-8deg);
     border: 2.5px solid var(--wp-ink);
@@ -1222,8 +1226,11 @@ const jsonLd = [
     box-shadow: 0 2px 5px rgba(17,19,24,0.06), 0 28px 52px -20px rgba(17,19,24,0.24);
     transform: rotate(-0.6deg);
   }
-  .canvas-doc-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 24px; border-bottom: 2px solid var(--wp-ink); }
-  .canvas-doc-header-left { display: flex; align-items: center; gap: 11px; }
+  /* gap + min-width so a longer localised doc label (de) wraps instead of
+     running under the draft label on the right. */
+  .canvas-doc-header { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 15px 24px; border-bottom: 2px solid var(--wp-ink); }
+  .canvas-doc-header > .mono-label { flex: 0 0 auto; }
+  .canvas-doc-header-left { display: flex; align-items: center; gap: 11px; min-width: 0; }
   .canvas-doc-header-left img { border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1.5px var(--wp-ink); }
   .canvas-doc-title { font-size: var(--wp-text-md); font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
   .canvas-doc-body { display: grid; grid-template-columns: 1fr 190px; }
@@ -1332,7 +1339,9 @@ const jsonLd = [
   .team-card-cta--secondary { color: var(--wp-text-tertiary); font-weight: 500; }
 
   /* ===== SAME DESK, NATIVE VOICE ===== */
-  .editors-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  /* minmax(0,…) so a long language name (German "Brasilianisches Portugiesisch")
+     cannot push a track past its share and overflow the page. */
+  .editors-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
   .editor-card {
     position: relative;
     display: flex;
@@ -1378,14 +1387,19 @@ const jsonLd = [
   .editor-card-lang {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 100%;
     gap: 6px;
     margin-top: 11px;
     padding: 3px 9px;
     border: 1px solid var(--wp-line);
-    border-radius: var(--wp-radius-pill);
+    /* not a full pill radius: long names (Brazilian Portuguese in de/fr) wrap
+       to two or three lines, where a stadium radius reads as a blob. */
+    border-radius: 12px;
   }
   .editor-card-lang span:first-child { font-weight: 600; color: var(--wp-ink); }
-  .editor-card-lang-name { color: var(--wp-text-tertiary); }
+  .editor-card-lang-name { color: var(--wp-text-tertiary); overflow-wrap: anywhere; }
   .editors-closing { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 36px; }
   .editors-closing-rule { height: 1px; width: 44px; background: var(--wp-border-strong); }
   .editors-closing-text { font-size: var(--wp-text-lg); font-weight: 700; letter-spacing: -0.02em; color: var(--wp-ink); }
@@ -1768,7 +1782,7 @@ const jsonLd = [
 
     .emma-cards-grid { grid-template-columns: repeat(2, 1fr); }
     .team-cards-grid { grid-template-columns: repeat(2, 1fr); }
-    .editors-grid { grid-template-columns: repeat(3, 1fr); }
+    .editors-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
     .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
     .footer-grid > :last-child { display: none; }
@@ -1816,7 +1830,7 @@ const jsonLd = [
     .team-cards-grid { grid-template-columns: 1fr 1fr; }
 
     /* --- Languages --- */
-    .editors-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .editors-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 
     /* --- Approval --- */
     .approval-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1868,7 +1882,7 @@ const jsonLd = [
     .team-cards-grid { grid-template-columns: 1fr; }
 
     /* --- Languages --- */
-    .editors-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .editors-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 
     /* --- CTA --- */
     .section--cta { padding: 56px 0 64px; }
