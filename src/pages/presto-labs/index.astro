@@ -1,0 +1,9 @@
+---
+import PillarPage from '@/components/PillarPage.astro';
+import { getPillar } from '@/data/pillars';
+import { Content } from '@/content/pillars/presto-labs.md';
+---
+
+<PillarPage article={getPillar('presto-labs')}>
+  <Content />
+</PillarPage>

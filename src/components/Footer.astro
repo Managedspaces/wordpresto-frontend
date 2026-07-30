@@ -1,0 +1,149 @@
+---
+// Shared site footer, used on every marketing page. Replaces the eleven inline
+// footers that had drifted apart: they disagreed on columns, on the wordmark
+// ("WordPresto" vs "Word Presto") and on which legal links appeared, and most
+// of them pointed at homepage anchors that no longer exist (#product,
+// #capabilities, #use-cases). One canonical footer here, so every page links
+// the same way and the pillar column below is the only place new pillar pages
+// need to be wired in.
+import { localeHref, type Locale } from '@/i18n/locales';
+import { commonStrings } from '@/data/i18n/common';
+import { registerUrl, loginUrl, docsUrl } from '@/lib/appLinks';
+import { pillarCategories, pillarPath } from '@/data/pillars';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = 'en' } = Astro.props;
+const c = commonStrings[locale];
+const home = localeHref(locale, '/');
+
+interface FooterLink { label: string; href: string; external?: boolean }
+
+// Real destinations only. Anchors are checked against the ids that actually
+// exist on the homepage (src/components/HomePage.astro).
+const productLinks: FooterLink[] = [
+  { label: c.howItWorks, href: `${home}#story` },
+  { label: c.theDesk, href: `${home}#emma-desk` },
+  { label: c.canvas, href: `${home}#canvas` },
+  { label: c.specialists, href: localeHref(locale, '/specialists/') },
+  { label: c.workers, href: localeHref(locale, '/workers/') },
+];
+
+const companyLinks: FooterLink[] = [
+  { label: c.pricing, href: '/pricing/' },
+  { label: c.docs, href: docsUrl(), external: true },
+  { label: c.joinWaitlist, href: registerUrl(locale) },
+  { label: c.signIn, href: loginUrl(locale) },
+  { label: c.contact, href: 'mailto:hello@wordpresto.com' },
+];
+
+const legalLinks: FooterLink[] = [
+  { label: 'Privacy', href: '/privacy/' },
+  { label: 'Terms', href: '/terms/' },
+  { label: 'Cookies', href: '/cookies/' },
+  { label: 'Fair use', href: '/fair-use/' },
+  { label: 'Data deletion', href: '/data-deletion/' },
+];
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/brand/main-logo.png" alt="Word Presto" class="footer-logo" loading="lazy" width="220" height="90" />
+      <p class="footer-tagline">{c.footerTagline}</p>
+    </div>
+
+    <nav class="footer-col" aria-label={c.product}>
+      <span class="footer-col-heading">{c.product}</span>
+      {productLinks.map((l) => <a href={l.href} class="footer-link">{l.label}</a>)}
+    </nav>
+
+    {pillarCategories.map((category) => (
+      <nav class="footer-col" aria-label={category.heading}>
+        <span class="footer-col-heading">{category.heading}</span>
+        {category.articles.map((article) => (
+          <a href={pillarPath(article)} class="footer-link">{article.navLabel}</a>
+        ))}
+      </nav>
+    ))}
+
+    <nav class="footer-col" aria-label={c.company}>
+      <span class="footer-col-heading">{c.company}</span>
+      {companyLinks.map((l) => (
+        <a href={l.href} class="footer-link" {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
+      ))}
+    </nav>
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; 2026 Word Presto</span>
+    <span>{c.reviewLed}</span>
+    <span class="footer-legal-links">
+      <a href="/sitemap/" class="footer-link">{c.siteMap}</a>
+      {legalLinks.map((l) => (
+        <Fragment> &middot; <a href={l.href} class="footer-link">{l.label}</a></Fragment>
+      ))}
+    </span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--wp-paper-dark);
+    background-image: var(--wp-texture-paper);
+    border-top: 2px solid var(--wp-ink);
+    padding: 58px 0 42px;
+  }
+  .footer-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 34px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
+  .footer-logo { display: block; height: 90px; width: auto; align-self: flex-start; mix-blend-mode: multiply; }
+  .footer-tagline { margin: 6px 0 0; font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; }
+  .footer-col { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col-heading { font-size: var(--wp-text-sm); font-weight: 700; }
+  .footer-link {
+    font-size: var(--wp-text-base);
+    color: var(--wp-text-tertiary);
+    transition: color 150ms;
+  }
+  .footer-link:hover { color: var(--wp-ink); }
+  .footer-bottom {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 22px 34px 0;
+    border-top: 1px solid var(--wp-border-strong);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    justify-content: space-between;
+    font-size: var(--wp-text-sm);
+    color: var(--wp-text-muted);
+  }
+  .footer-legal-links { font-size: var(--wp-text-sm); }
+  .footer-legal-links .footer-link { font-size: var(--wp-text-sm); }
+
+  /* Mobile-first: single column, then two, then the full four-column row. */
+  @media (min-width: 560px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; max-width: none; }
+  }
+  @media (min-width: 940px) {
+    .footer-inner { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; }
+    .footer-brand { grid-column: auto; max-width: 300px; }
+  }
+  @media (max-width: 480px) {
+    .footer { padding: 44px 0 32px; }
+    .footer-inner { padding: 0 20px; }
+    .footer-bottom { padding: 22px 20px 0; }
+    .footer-logo { height: 72px; }
+  }
+</style>

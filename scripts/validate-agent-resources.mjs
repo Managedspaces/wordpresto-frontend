@@ -21,11 +21,13 @@ const requiredFiles = [
   'workers/index.md',
   'workers/seo/index.md',
   'pricing/index.md',
+  'presto-labs/index.md',
   // Legacy mirrors (read by generate-llms.mjs)
   'pages/index.md',
   'pages/workflow-demo.md',
   'pages/workers/index.md',
   'pages/pricing.md',
+  'pages/presto-labs.md',
   // Discovery files
   '.well-known/mcp.json',
   '.well-known/webmcp.json',

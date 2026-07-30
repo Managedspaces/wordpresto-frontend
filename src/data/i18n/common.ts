@@ -15,6 +15,7 @@ export interface CommonStrings {
   languages: string;
   pricing: string;
   docs: string;
+  company: string;
   theDesk: string;
   canvas: string;
   home: string;
@@ -40,6 +41,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     languages: 'Languages',
     pricing: 'Pricing',
     docs: 'Docs',
+    company: 'Company',
     theDesk: 'The desk',
     canvas: 'Canvas',
     home: 'Home',
@@ -63,6 +65,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     languages: 'Idiomas',
     pricing: 'Preços',
     docs: 'Documentação',
+    company: 'Empresa',
     theDesk: 'A secretária',
     canvas: 'Canvas',
     home: 'Página inicial',
@@ -86,6 +89,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     languages: 'Idiomas',
     pricing: 'Preços',
     docs: 'Documentação',
+    company: 'Empresa',
     theDesk: 'A mesa',
     canvas: 'Canvas',
     home: 'Início',
@@ -109,6 +113,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     languages: 'Idiomas',
     pricing: 'Precios',
     docs: 'Documentos',
+    company: 'Empresa',
     theDesk: 'El escritorio',
     canvas: 'Canvas',
     home: 'Inicio',
@@ -132,6 +137,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     languages: 'Sprachen',
     pricing: 'Preise',
     docs: 'Dokumentation',
+    company: 'Unternehmen',
     theDesk: 'Der Schreibtisch',
     canvas: 'Canvas',
     home: 'Startseite',
@@ -155,6 +161,7 @@ export const commonStrings: Record<Locale, CommonStrings> = {
     languages: 'Langues',
     pricing: 'Tarifs',
     docs: 'Documentation',
+    company: 'Entreprise',
     theDesk: 'Le bureau',
     canvas: 'Canvas',
     home: 'Accueil',

@@ -1,0 +1,367 @@
+---
+// Shared shell for pillar pages. Metadata comes from src/data/pillars.ts, the
+// prose comes in through the default slot as a rendered Markdown <Content />
+// (src/content/pillars/{slug}.md), so a new pillar page is a Markdown file, a
+// registry entry and a five-line route.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Masthead from '@/components/Masthead.astro';
+import Footer from '@/components/Footer.astro';
+import { registerUrl } from '@/lib/appLinks';
+import { breadcrumbList, SITE_URL } from '@/lib/schema';
+import { pillarArticles, pillarPath, type PillarArticle } from '@/data/pillars';
+
+interface Props {
+  article: PillarArticle;
+}
+
+const { article } = Astro.props;
+const canonical = `${SITE_URL}${pillarPath(article)}`;
+const related = pillarArticles.filter((a) => a.slug !== article.slug);
+
+const publishedLabel = new Date(article.published).toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const jsonLd = [
+  breadcrumbList([
+    { name: 'Home', url: `${SITE_URL}/` },
+    { name: article.eyebrow, url: canonical },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.metaDescription,
+    url: canonical,
+    mainEntityOfPage: canonical,
+    datePublished: article.published,
+    ...(article.updated ? { dateModified: article.updated } : {}),
+    author: { '@type': 'Person', name: article.author },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Word Presto',
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/brand/main-logo.png` },
+    },
+  },
+];
+---
+
+<BaseLayout
+  pageTitle={article.title}
+  seoTitle={article.seoTitle}
+  description={article.metaDescription}
+  canonical={canonical}
+  jsonLd={jsonLd}
+>
+  <Masthead locale="en" />
+
+  <main class="pillar-main">
+    <div class="pillar-container">
+
+      <article class="pillar-sheet">
+        <span class="pillar-fold" aria-hidden="true"></span>
+
+        <header class="pillar-header">
+          <span class="mono-label pillar-eyebrow">{article.eyebrow}</span>
+          <h1 class="pillar-h1">{article.title}</h1>
+          <p class="pillar-standfirst">{article.summary}</p>
+          <p class="pillar-byline">
+            <span>{article.author}</span>
+            <span aria-hidden="true">·</span>
+            <time datetime={article.published}>{publishedLabel}</time>
+            <span aria-hidden="true">·</span>
+            <span>{article.readingMinutes} min read</span>
+          </p>
+        </header>
+
+        <div class="pillar-prose">
+          <slot />
+        </div>
+      </article>
+
+      <aside class="pillar-cta">
+        <span class="mono-label pillar-cta-kicker">Word Presto</span>
+        <p class="pillar-cta-text">
+          Plan, brief, write, review and prepare content for search, readers and CMS handoff,
+          with a human approval step that never moves.
+        </p>
+        <div class="pillar-cta-actions">
+          <a href={registerUrl('en')} class="pillar-btn pillar-btn--primary">Join now</a>
+          <a href="/workers/" class="pillar-btn pillar-btn--secondary">See the Workers</a>
+        </div>
+      </aside>
+
+      {related.length > 0 && (
+        <nav class="pillar-related" aria-label="More from Word Presto">
+          <span class="pillar-related-heading">More from Word Presto</span>
+          {related.map((a) => (
+            <a href={pillarPath(a)} class="pillar-related-link">
+              <span class="pillar-related-label">{a.navLabel}</span>
+              <span class="pillar-related-title">{a.title}</span>
+            </a>
+          ))}
+        </nav>
+      )}
+
+    </div>
+  </main>
+
+  <Footer locale="en" />
+</BaseLayout>
+
+<style>
+  .pillar-main {
+    padding: 40px 0 72px;
+    background-color: var(--wp-bg-primary);
+    background-image: var(--wp-texture-paper);
+  }
+  .pillar-container {
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ===== PAPER SHEET ===== */
+  .pillar-sheet {
+    position: relative;
+    background: var(--wp-white);
+    border: 1px solid var(--wp-border-primary);
+    box-shadow: 0 1px 2px rgba(17, 19, 24, 0.05), 0 14px 30px -22px rgba(17, 19, 24, 0.35);
+    padding: 28px 22px 36px;
+    overflow: hidden;
+  }
+  /* Folded top-right corner. */
+  .pillar-fold {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(225deg, var(--wp-paper-dark) 50%, transparent 50%);
+    border-left: 1px solid var(--wp-border-primary);
+    border-bottom: 1px solid var(--wp-border-primary);
+  }
+
+  /* ===== HEADER ===== */
+  .pillar-header {
+    padding-bottom: 22px;
+    margin-bottom: 26px;
+    border-bottom: 2px solid var(--wp-ink);
+  }
+  .mono-label {
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .pillar-eyebrow {
+    display: inline-block;
+    color: var(--wp-signal);
+    margin-bottom: 14px;
+  }
+  .pillar-h1 {
+    font-size: clamp(1.75rem, 5.5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin: 0 0 16px;
+  }
+  .pillar-standfirst {
+    font-size: var(--wp-text-lg);
+    line-height: 1.55;
+    color: var(--wp-text-secondary);
+    margin: 0 0 18px;
+  }
+  .pillar-byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+  }
+
+  /* ===== PROSE (rendered Markdown) ===== */
+  .pillar-prose {
+    font-size: var(--wp-text-md);
+    line-height: 1.72;
+    color: var(--wp-text-secondary);
+  }
+  .pillar-prose :global(p) { margin: 0 0 18px; }
+  .pillar-prose :global(h2) {
+    font-size: clamp(1.3rem, 3.6vw, 1.6rem);
+    font-weight: 700;
+    color: var(--wp-ink);
+    line-height: 1.2;
+    margin: 40px 0 14px;
+    padding-top: 18px;
+    border-top: 1px solid var(--wp-border-primary);
+  }
+  .pillar-prose :global(h3) {
+    font-size: clamp(1.05rem, 3vw, 1.2rem);
+    font-weight: 700;
+    color: var(--wp-ink);
+    margin: 28px 0 10px;
+  }
+  .pillar-prose :global(strong) { color: var(--wp-ink); font-weight: 650; }
+  .pillar-prose :global(em) { font-style: italic; }
+  .pillar-prose :global(a) {
+    color: var(--wp-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--wp-signal);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+  }
+  .pillar-prose :global(a:hover) { color: var(--wp-signal-hover); }
+  .pillar-prose :global(ul),
+  .pillar-prose :global(ol) {
+    margin: 0 0 18px;
+    padding-left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .pillar-prose :global(li) { line-height: 1.6; }
+  .pillar-prose :global(li)::marker { color: var(--wp-text-muted); }
+  .pillar-prose :global(blockquote) {
+    margin: 0 0 18px;
+    padding: 4px 0 4px 18px;
+    border-left: 3px solid var(--wp-signal);
+    color: var(--wp-ink);
+  }
+  .pillar-prose :global(hr) {
+    border: 0;
+    border-top: 1px solid var(--wp-border-primary);
+    margin: 32px 0;
+  }
+  .pillar-prose :global(code) {
+    font-family: var(--wp-font-mono);
+    font-size: 0.875em;
+    background: var(--wp-paper-soft);
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+
+  /* Tables scroll inside their own box, so the page itself never overflows. */
+  .pillar-prose :global(table) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin: 0 0 22px;
+    font-size: var(--wp-text-base);
+    border: 1px solid var(--wp-border-primary);
+  }
+  .pillar-prose :global(th),
+  .pillar-prose :global(td) {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--wp-border-primary);
+    vertical-align: top;
+    min-width: 150px;
+  }
+  .pillar-prose :global(thead th) {
+    background: var(--wp-paper-soft);
+    color: var(--wp-ink);
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pillar-prose :global(tbody tr:last-child td) { border-bottom: 0; }
+
+  /* References list: tighter, smaller, clearly secondary to the article. */
+  .pillar-prose :global(h2 + ol) {
+    font-size: var(--wp-text-sm);
+    gap: 7px;
+    color: var(--wp-text-tertiary);
+    word-break: break-word;
+  }
+
+  /* ===== CTA SLIP ===== */
+  .pillar-cta {
+    margin-top: 32px;
+    padding: 24px 22px;
+    background: var(--wp-paper-soft);
+    border: 1px solid var(--wp-ink);
+    box-shadow: 3px 3px 0 var(--wp-paper-dark);
+  }
+  .pillar-cta-kicker { display: block; color: var(--wp-text-muted); margin-bottom: 10px; }
+  .pillar-cta-text {
+    margin: 0 0 18px;
+    font-size: var(--wp-text-md);
+    line-height: 1.6;
+    color: var(--wp-ink);
+    max-width: 52ch;
+  }
+  .pillar-cta-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .pillar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: var(--wp-text-base);
+    border-radius: 5px;
+    transition: transform 150ms, box-shadow 150ms;
+  }
+  .pillar-btn--primary {
+    background: var(--wp-ink);
+    color: var(--wp-paper);
+    border: 1px solid var(--wp-ink);
+  }
+  .pillar-btn--secondary {
+    background: var(--wp-white);
+    color: var(--wp-ink);
+    border: 1.5px solid var(--wp-ink);
+  }
+  .pillar-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(17, 19, 24, 0.16); }
+
+  /* ===== RELATED PILLARS ===== */
+  .pillar-related {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .pillar-related-heading {
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+  }
+  .pillar-related-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 16px;
+    background: var(--wp-white);
+    border: 1px solid var(--wp-border-primary);
+    transition: border-color 150ms, transform 150ms;
+  }
+  .pillar-related-link:hover { border-color: var(--wp-ink); transform: translateY(-2px); }
+  .pillar-related-label {
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--wp-signal);
+  }
+  .pillar-related-title { font-size: var(--wp-text-base); color: var(--wp-ink); font-weight: 600; }
+
+  @media (min-width: 700px) {
+    .pillar-main { padding: 56px 0 96px; }
+    .pillar-container { padding: 0 34px; }
+    .pillar-sheet { padding: 44px 48px 56px; }
+    .pillar-cta { padding: 30px 32px; }
+    .pillar-fold { width: 46px; height: 46px; }
+  }
+</style>

@@ -76,9 +76,6 @@ export interface PrestobotContent {
   ctaButton: string;
   ctaRuleText: string;
 
-  footerCrawlerHeading: string;
-  footerWordPrestoBot: string;
-  footerContact: string;
 }
 
 export const prestobotContent: Record<Locale, PrestobotContent> = {
@@ -153,9 +150,6 @@ export const prestobotContent: Record<Locale, PrestobotContent> = {
     ctaBody: 'Word Presto helps writers, editors and publishing teams plan, brief, write, review and prepare content for search, readers and CMS handoff.',
     ctaButton: 'See what Word Presto finds on your site',
     ctaRuleText: 'PAPER · INK · SIGNAL · CONTROL',
-    footerCrawlerHeading: 'Crawler',
-    footerWordPrestoBot: 'WordPrestoBot',
-    footerContact: 'Contact',
   },
   pt: {
     seoTitle: 'WordPrestoBot, o rastreador da Web do Word Presto | Word Presto',
@@ -228,9 +222,6 @@ export const prestobotContent: Record<Locale, PrestobotContent> = {
     ctaBody: 'Word Presto ajuda escritores, editores e equipas editoriais a planear, definir o briefing, redigir, rever e preparar conteúdos para os motores de busca, para os leitores e para a transferência para o CMS.',
     ctaButton: 'Veja o que o Word Presto encontra no seu site',
     ctaRuleText: 'PAPEL · TINTA · SINAL · CONTROLO',
-    footerCrawlerHeading: 'Rastreador',
-    footerWordPrestoBot: 'WordPrestoBot',
-    footerContact: 'Contacto',
   },
   'pt-br': {
     seoTitle: 'WordPrestoBot, o rastreador da web do Word Presto | Word Presto',
@@ -303,9 +294,6 @@ export const prestobotContent: Record<Locale, PrestobotContent> = {
     ctaBody: 'O Word Presto ajuda redatores, editores e equipes editoriais a planejar, definir briefing, redigir, revisar e preparar conteúdo para mecanismos de busca, leitores e entrega ao CMS.',
     ctaButton: 'Veja o que o Word Presto encontra no seu site',
     ctaRuleText: 'PAPEL · TINTA · SINAL · CONTROLE',
-    footerCrawlerHeading: 'Rastreador',
-    footerWordPrestoBot: 'WordPrestoBot',
-    footerContact: 'Contato',
   },
   es: {
     seoTitle: 'WordPrestoBot, el rastreador web de Word Presto | Word Presto',
@@ -378,9 +366,6 @@ export const prestobotContent: Record<Locale, PrestobotContent> = {
     ctaBody: 'Word Presto ayuda a escritores, editores y equipos editoriales a planificar, definir el briefing, redactar, revisar y preparar contenido para búsqueda, lectores y entrega al CMS.',
     ctaButton: 'Descubre lo que Word Presto encuentra en tu sitio',
     ctaRuleText: 'PAPEL · TINTA · SEÑAL · CONTROL',
-    footerCrawlerHeading: 'Crawler',
-    footerWordPrestoBot: 'WordPrestoBot',
-    footerContact: 'Contacto',
   },
   de: {
     seoTitle: 'WordPrestoBot, der Webcrawler von Word Presto | Word Presto',
@@ -453,9 +438,6 @@ export const prestobotContent: Record<Locale, PrestobotContent> = {
     ctaBody: 'Word Presto unterstützt Autoren, Redakteure und Redaktionsteams bei der Planung, Erstellung von Briefings, dem Verfassen, der Überprüfung und der Aufbereitung von Inhalten für Suchmaschinen, Leser und die Übergabe an das CMS.',
     ctaButton: 'Sehen Sie, was Word Presto auf Ihrer Website findet',
     ctaRuleText: 'PAPIER · TINTE · SIGNAL · STEUERUNG',
-    footerCrawlerHeading: 'Crawler',
-    footerWordPrestoBot: 'WordPrestoBot',
-    footerContact: 'Kontakt',
   },
   fr: {
     seoTitle: 'WordPrestoBot, le robot d\'exploration Web de Word Presto | Word Presto',
@@ -528,8 +510,5 @@ export const prestobotContent: Record<Locale, PrestobotContent> = {
     ctaBody: 'Word Presto aide les rédacteurs, les éditeurs et les équipes éditoriales à planifier, rédiger, réviser et préparer le contenu pour le référencement, les lecteurs et la transmission au CMS.',
     ctaButton: 'Découvrez ce que Word Presto trouve sur votre site',
     ctaRuleText: 'PAPIER · ENCRE · SIGNAL · CONTRÔLE',
-    footerCrawlerHeading: 'Robot d\'exploration',
-    footerWordPrestoBot: 'WordPrestoBot',
-    footerContact: 'Contact',
   },
 };

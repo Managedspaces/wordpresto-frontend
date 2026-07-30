@@ -8,6 +8,7 @@ import { getTeamGroups, TOTAL_SPECIALISTS, TOTAL_TEAMS } from '@/data/workerRegi
 import { FLAG_SVG } from '@/i18n/flags';
 import { localeHref, type Locale } from '@/i18n/locales';
 import { registerUrl } from '@/lib/appLinks';
+import Footer from '@/components/Footer.astro';
 
 interface Props {
   locale: Locale;
@@ -556,45 +557,7 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <img src="/brand/horizontal-lockup-transparent.png" alt="Word Presto" class="footer-logo" />
-        <p class="footer-tagline">{c.footerTagline}</p>
-      </div>
-      <nav class="footer-nav" aria-label={t.footer.deskHeading}>
-        <span class="footer-nav-heading">{t.footer.deskHeading}</span>
-        <a href={`${localeHref(locale, '/')}#emma-desk`} class="footer-link">{t.footer.deskLinks[0]}</a>
-        <a href={`${localeHref(locale, '/')}#canvas`} class="footer-link">{t.footer.deskLinks[1]}</a>
-        <a href={`${localeHref(locale, '/')}#specialists`} class="footer-link">{t.footer.deskLinks[2]}</a>
-      </nav>
-      <nav class="footer-nav" aria-label={t.footer.standardsHeading}>
-        <span class="footer-nav-heading">{t.footer.standardsHeading}</span>
-        <a href={`${localeHref(locale, '/')}#commitments`} class="footer-link">{t.footer.standardsLinks[0]}</a>
-        <a href={`${localeHref(locale, '/')}#approval`} class="footer-link">{t.footer.standardsLinks[1]}</a>
-        <a href={`${localeHref(locale, '/')}#languages`} class="footer-link">{t.footer.standardsLinks[2]}</a>
-      </nav>
-      <nav class="footer-nav" aria-label={t.footer.forHeading}>
-        <span class="footer-nav-heading">{t.footer.forHeading}</span>
-        <a href={`${localeHref(locale, '/')}#top`} class="footer-link">{t.footer.forLinks[0]}</a>
-        <a href={`${localeHref(locale, '/')}#top`} class="footer-link">{t.footer.forLinks[1]}</a>
-        <a href={`${localeHref(locale, '/')}#top`} class="footer-link">{t.footer.forLinks[2]}</a>
-      </nav>
-    </div>
-    <div class="footer-bottom container">
-      <span>{t.footer.copyright}</span>
-      <span>{t.footer.tagline2}</span>
-      <a href="/sitemap/" class="footer-link footer-sitemap-link">{c.siteMap}</a>
-      <span class="footer-legal-links">
-        <a href="/privacy/" class="footer-link">Privacy</a> ·
-        <a href="/terms/" class="footer-link">Terms</a> ·
-        <a href="/cookies/" class="footer-link">Cookies</a> ·
-        <a href="/fair-use/" class="footer-link">Fair use</a> ·
-        <a href="/data-deletion/" class="footer-link">Data deletion</a>
-      </span>
-    </div>
-  </footer>
+  <Footer locale={locale} />
 
 </BaseLayout>
 
@@ -1547,38 +1510,6 @@ const jsonLd = [
   }
   .cta-mark-text { letter-spacing: 0.16em; }
 
-  /* ===== FOOTER ===== */
-  .footer {
-    background-color: var(--wp-paper-dark);
-    background-image: var(--wp-texture-paper);
-    border-top: 2px solid var(--wp-ink);
-    padding: 58px 0 42px;
-  }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 32px;
-  }
-  .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
-  .footer-logo { display: block; height: 90px; width: auto; align-self: flex-start; margin-left: -4px; }
-  .footer-tagline { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; margin: 6px 0 0; }
-  .footer-nav { display: flex; flex-direction: column; gap: 10px; }
-  .footer-nav-heading { font-size: var(--wp-text-sm); font-weight: 700; }
-  .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); transition: color 150ms; }
-  .footer-link:hover { color: var(--wp-ink); }
-  .footer-bottom {
-    margin-top: 46px;
-    padding-top: 22px;
-    border-top: 1px solid var(--wp-border-strong);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 16px;
-    justify-content: space-between;
-    font-size: var(--wp-text-sm);
-    color: var(--wp-text-muted);
-  }
-  .footer-legal-links .footer-link { font-size: var(--wp-text-sm); }
-
   /* ============================================================
      FEATURE STORY — letter on the desk (mobile-first)
   ============================================================ */
@@ -1784,8 +1715,6 @@ const jsonLd = [
     .team-cards-grid { grid-template-columns: repeat(2, 1fr); }
     .editors-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
-    .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
-    .footer-grid > :last-child { display: none; }
   }
 
   /* ============================================================
@@ -1839,16 +1768,6 @@ const jsonLd = [
     .section--cta { padding: 72px 0 80px; }
     .cta-inner { padding: 0 24px; }
 
-    /* --- Footer --- */
-    .footer-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-    .footer-brand {
-      grid-column: 1 / -1;
-      max-width: none;
-    }
-    .footer-grid > :last-child { display: flex; }
   }
 
   /* ============================================================
@@ -1891,10 +1810,5 @@ const jsonLd = [
     .cta-buttons .btn { justify-content: center; }
     .cta-body { font-size: var(--wp-text-md); }
 
-    /* --- Footer --- */
-    .footer-grid { grid-template-columns: 1fr; }
-    .footer-brand { grid-column: auto; }
-    .footer-bottom { flex-direction: column; gap: 6px; }
-    .footer { padding: 44px 0 32px; }
   }
 </style>

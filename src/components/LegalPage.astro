@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Masthead from '@/components/Masthead.astro';
 import { legalPages, type LegalPageContent } from '@/data/legal';
 import { breadcrumbList, SITE_URL } from '@/lib/schema';
+import Footer from '@/components/Footer.astro';
 
 interface Props {
   content: LegalPageContent;
@@ -76,32 +77,7 @@ const jsonLd = [
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <img src="/brand/horizontal-lockup-transparent.png" alt="Word Presto" class="footer-logo" />
-        <p class="footer-tagline">The content engine behind better publishing workflows.</p>
-      </div>
-      <nav class="footer-nav" aria-label="Site">
-        <span class="footer-nav-heading">Site</span>
-        <a href="/" class="footer-link">Home</a>
-        <a href="/workers/" class="footer-link">Workers</a>
-        <a href="/sitemap/" class="footer-link">Sitemap</a>
-      </nav>
-      <nav class="footer-nav" aria-label="Legal">
-        <span class="footer-nav-heading">Legal</span>
-        <a href="/privacy/" class="footer-link">Privacy Policy</a>
-        <a href="/terms/" class="footer-link">Terms &amp; Conditions</a>
-        <a href="/cookies/" class="footer-link">Cookie Policy</a>
-        <a href="/fair-use/" class="footer-link">Fair Use Policy</a>
-        <a href="/data-deletion/" class="footer-link">Data Deletion</a>
-      </nav>
-    </div>
-    <div class="footer-bottom container">
-      <span>&copy; 2026 Word Presto</span>
-      <span>Review-led publishing &middot; Human approval</span>
-    </div>
-  </footer>
+  <Footer locale="en" />
 
 </BaseLayout>
 
@@ -221,34 +197,6 @@ const jsonLd = [
     text-decoration: underline;
   }
 
-  /* ===== FOOTER ===== */
-  .footer {
-    border-top: 1px solid var(--wp-rule);
-    padding: 48px 0 28px;
-  }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 32px;
-  }
-  .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
-  .footer-logo { display: block; height: 90px; width: auto; align-self: flex-start; margin-left: -4px; }
-  .footer-tagline { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; margin: 6px 0 0; }
-  .footer-nav { display: flex; flex-direction: column; gap: 10px; }
-  .footer-nav-heading { font-size: var(--wp-text-sm); font-weight: 700; }
-  .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); transition: color 150ms; }
-  .footer-link:hover { color: var(--wp-ink); }
-  .footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 20px;
-    border-top: 1px solid var(--wp-rule);
-    font-size: var(--wp-text-sm);
-    color: var(--wp-text-tertiary);
-  }
-
   @media (min-width: 900px) {
     .legal-body {
       grid-template-columns: 1fr 260px;
@@ -256,14 +204,8 @@ const jsonLd = [
   }
 
   @media (max-width: 768px) {
-    .footer-grid {
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
-    .footer-bottom {
-      flex-direction: column;
-      gap: 6px;
-    }
+    
+    
     .legal-nav {
       max-width: none;
     }
