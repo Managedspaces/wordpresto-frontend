@@ -68,17 +68,16 @@ export const pillarCategories: PillarCategory[] = [
       {
         slug: 'presto-labs',
         navLabel: 'Presto Labs',
-        eyebrow: 'Presto Labs',
-        title: 'Presto: the word, the technology and the future of content operations',
-        seoTitle:
-          'Presto: the word, the query engine and content operations | Word Presto',
+        eyebrow: 'Presto Labs · Foundation story',
+        title: 'Presto: the word behind the workflow',
+        seoTitle: 'Why it is called Word Presto, the story behind the name | Word Presto',
         metaDescription:
-          'Where the word presto comes from, how the Presto query engine solved speed at petabyte scale, and why coordination, not generation, is the real bottleneck in content operations.',
+          'An Italian word, a fast tempo, a magician’s flourish and a distributed query engine. The story behind the Word Presto name, and the standard it commits us to.',
         summary:
-          'An Italian word, a distributed query engine and a publishing workflow have more in common than they look. All three are about doing complex work quickly without giving up precision.',
+          'Four hundred years of a word that means complex work done quickly, without the difficulty showing. This is where the name came from, and what it obliges us to build.',
         author: 'Patrick',
         published: '2026-07-30',
-        readingMinutes: 9,
+        readingMinutes: 6,
       },
     ],
   },
