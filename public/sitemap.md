@@ -46,6 +46,13 @@ A readable index of public WordPresto pages and their Markdown mirrors.
 - Legacy Markdown: https://wordpresto.com/pages/pricing.md
 - Focus: Pricing model, credit plans and top-up packs. Live plan prices are served on the pricing page from the app.
 
+### Presto Labs
+
+- HTML: https://wordpresto.com/presto-labs/
+- Markdown: https://wordpresto.com/presto-labs/index.md
+- Legacy Markdown: https://wordpresto.com/pages/presto-labs.md
+- Focus: Pillar article: where the word presto comes from, the Presto query engine, and why coordination rather than generation is the bottleneck in content operations.
+
 ### Bring accessibility issues into the review workflow.
 
 - HTML: https://wordpresto.com/workers/accessibility/

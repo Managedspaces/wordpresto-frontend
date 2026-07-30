@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { workerProfiles } from '@/data/workerProfiles';
 import { mainRoutes, machineRoutes } from '@/data/siteRoutes';
 import { registerUrl, loginUrl } from '@/lib/appLinks';
+import Footer from '@/components/Footer.astro';
 
 const seoTitle = 'Site map | WordPresto';
 const metaDescription = 'A complete map of the WordPresto site — main pages, Workers and resources.';
@@ -183,36 +184,7 @@ const governanceOpsWorkers = workerProfiles.filter((w) => w.team === 'governance
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <img src="/brand/horizontal-lockup-transparent.png" alt="Word Presto" class="footer-logo" />
-        <p class="footer-tagline">The content engine behind better publishing workflows.</p>
-      </div>
-      <nav class="footer-nav" aria-label="Site">
-        <span class="footer-nav-heading">Site</span>
-        <a href="/" class="footer-link">Home</a>
-        <a href="/workers/" class="footer-link">Workers</a>
-        <a href="/workflow-demo/" class="footer-link">Workflow demo</a>
-        <a href="/sitemap/" class="footer-link">Sitemap</a>
-      </nav>
-      <nav class="footer-nav" aria-label="Get access">
-        <span class="footer-nav-heading">Get access</span>
-        <a href={registerUrl()} class="footer-link">Join now</a>
-      </nav>
-    </div>
-    <div class="footer-bottom container">
-      <span>© 2026 Word Presto</span>
-      <span>Review-led publishing · Human approval</span>
-      <span class="footer-legal-links">
-        <a href="/privacy/" class="footer-link">Privacy</a> ·
-        <a href="/terms/" class="footer-link">Terms</a> ·
-        <a href="/cookies/" class="footer-link">Cookies</a> ·
-        <a href="/fair-use/" class="footer-link">Fair use</a> ·
-        <a href="/data-deletion/" class="footer-link">Data deletion</a>
-      </span>
-    </div>
-  </footer>
+  <Footer locale="en" />
 
 </BaseLayout>
 
@@ -315,11 +287,13 @@ const governanceOpsWorkers = workerProfiles.filter((w) => w.team === 'governance
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: 1fr;
+    /* minmax(0, …) so a long route path cannot push its grid track, and the
+       page with it, wider than the viewport on mobile. */
+    grid-template-columns: minmax(0, 1fr);
     gap: 2px;
   }
   .sitemap-list--workers {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .sitemap-item {
     background: var(--wp-paper-soft, #f9f6f1);
@@ -332,8 +306,10 @@ const governanceOpsWorkers = workerProfiles.filter((w) => w.team === 'governance
   }
   .sitemap-link {
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
-    gap: 12px;
+    gap: 4px 12px;
+    min-width: 0;
     text-decoration: none;
     margin-bottom: 4px;
   }
@@ -344,12 +320,13 @@ const governanceOpsWorkers = workerProfiles.filter((w) => w.team === 'governance
     font-size: var(--wp-text-base);
     font-weight: 600;
     color: var(--wp-ink);
-    flex-shrink: 0;
   }
   .sitemap-url {
     font-size: var(--wp-text-xs, 11px);
     font-family: var(--wp-font-mono, monospace);
     color: var(--wp-text-tertiary);
+    min-width: 0;
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -361,49 +338,11 @@ const governanceOpsWorkers = workerProfiles.filter((w) => w.team === 'governance
     line-height: 1.4;
   }
 
-  /* ===== FOOTER ===== */
-  .footer {
-    border-top: 1px solid var(--wp-rule);
-    padding: 48px 0 28px;
-  }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 32px;
-  }
-  .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
-  .footer-logo { display: block; height: 90px; width: auto; align-self: flex-start; margin-left: -4px; }
-  .footer-tagline { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; margin: 6px 0 0; }
-  .footer-nav { display: flex; flex-direction: column; gap: 10px; }
-  .footer-nav-heading { font-size: var(--wp-text-sm); font-weight: 700; }
-  .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); transition: color 150ms; }
-  .footer-link:hover { color: var(--wp-ink); }
-  .footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px 16px;
-    padding-top: 20px;
-    border-top: 1px solid var(--wp-rule);
-    font-size: var(--wp-text-sm);
-    color: var(--wp-text-tertiary);
-  }
-  .footer-legal-links { font-size: var(--wp-text-sm); }
-  .footer-legal-links .footer-link { font-size: var(--wp-text-sm); }
-
   @media (max-width: 768px) {
     .sitemap-list--workers {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
-    .footer-grid {
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
-    .footer-bottom {
-      flex-direction: column;
-      gap: 6px;
-    }
+    
+    
   }
 </style>

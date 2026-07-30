@@ -158,16 +158,6 @@ export interface HomeContent {
     ctaSecondary: string;
     markText: string;
   };
-  footer: {
-    deskHeading: string;
-    deskLinks: [string, string, string];
-    standardsHeading: string;
-    standardsLinks: [string, string, string];
-    forHeading: string;
-    forLinks: [string, string, string];
-    copyright: string;
-    tagline2: string;
-  };
 }
 
 export const homeContent: Record<Locale, HomeContent> = {
@@ -375,16 +365,6 @@ export const homeContent: Record<Locale, HomeContent> = {
       ctaSecondary: 'See the editorial desk',
       markText: 'PAPER · INK · SIGNAL · CONTROL',
     },
-    footer: {
-      deskHeading: 'The desk',
-      deskLinks: ['Emma runs the desk', 'The Canvas', 'Specialist desk'],
-      standardsHeading: 'Standards',
-      standardsLinks: ['Four commitments', 'Editor approval', 'Native voice'],
-      forHeading: 'For',
-      forLinks: ['Writers', 'Editors', 'Publishing teams'],
-      copyright: '© 2026 Word Presto',
-      tagline2: 'Emma prepares · the Editor approves',
-    },
   },
 
   pt: {
@@ -567,16 +547,6 @@ export const homeContent: Record<Locale, HomeContent> = {
       ctaPrimary: 'Inscreva-se agora',
       ctaSecondary: 'Veja a secretária editorial',
       markText: 'PAPEL · TINTA · SINAL · CONTROLO',
-    },
-    footer: {
-      deskHeading: 'A secretária',
-      deskLinks: ['A Emma gere a secretária', 'O Canvas', 'Balcão especializado'],
-      standardsHeading: 'Normas',
-      standardsLinks: ['Quatro compromissos', 'Aprovação do editor', 'Voz nativa'],
-      forHeading: 'Para',
-      forLinks: ['Escritores', 'Editores', 'Equipas editoriais'],
-      copyright: '© 2026 Word Presto',
-      tagline2: 'A Emma prepara · o Editor aprova',
     },
   },
 
@@ -761,16 +731,6 @@ export const homeContent: Record<Locale, HomeContent> = {
       ctaSecondary: 'Veja a mesa editorial',
       markText: 'PAPEL · TINTA · SINAL · CONTROLE',
     },
-    footer: {
-      deskHeading: 'A bancada',
-      deskLinks: ['A Emma gerencia a bancada', 'O Canvas', 'Secretaria especializada'],
-      standardsHeading: 'Padrões',
-      standardsLinks: ['Quatro compromissos', 'Aprovação do editor', 'Voz nativa'],
-      forHeading: 'Para',
-      forLinks: ['Redatores', 'Editores', 'Equipes de publicação'],
-      copyright: '© 2026 Word Presto',
-      tagline2: 'A Emma prepara · o editor aprova',
-    },
   },
 
   es: {
@@ -953,16 +913,6 @@ export const homeContent: Record<Locale, HomeContent> = {
       ctaPrimary: 'Únete ahora',
       ctaSecondary: 'Ver el escritorio editorial',
       markText: 'PAPEL · TINTA · SEÑAL · CONTROL',
-    },
-    footer: {
-      deskHeading: 'El escritorio',
-      deskLinks: ['Emma gestiona el escritorio', 'El Canvas', 'Mesa de especialistas'],
-      standardsHeading: 'Estándares',
-      standardsLinks: ['Cuatro compromisos', 'Aprobación del editor', 'Voz nativa'],
-      forHeading: 'Para',
-      forLinks: ['Escritores', 'Editores', 'Equipos de publicación'],
-      copyright: '© 2026 Word Presto',
-      tagline2: 'Emma prepara · el editor aprueba',
     },
   },
 
@@ -1147,16 +1097,6 @@ export const homeContent: Record<Locale, HomeContent> = {
       ctaSecondary: 'Redaktionszentrale ansehen',
       markText: 'PAPIER · TINTE · SIGNAL · STEUERUNG',
     },
-    footer: {
-      deskHeading: 'Redaktionszentrale',
-      deskLinks: ['Emma als Redaktionsleitung', 'Das Canvas', 'Spezialisten'],
-      standardsHeading: 'Standards',
-      standardsLinks: ['Vier Grundsätze', 'Redaktionelle Freigabe', 'Muttersprachliche Redaktion'],
-      forHeading: 'Für',
-      forLinks: ['Autoren', 'Redaktionen', 'Content-Teams'],
-      copyright: '© 2026 Word Presto',
-      tagline2: 'Emma bereitet Inhalte vor · Die Redaktion entscheidet',
-    },
   },
 
   fr: {
@@ -1339,16 +1279,6 @@ export const homeContent: Record<Locale, HomeContent> = {
       ctaPrimary: 'Rejoignez-nous',
       ctaSecondary: 'Voir le bureau éditorial',
       markText: 'PAPIER · ENCRE · SIGNAL · CONTRÔLE',
-    },
-    footer: {
-      deskHeading: 'Le bureau',
-      deskLinks: ['Emma gère le bureau', 'Le Canvas', 'Bureau spécialisé'],
-      standardsHeading: 'Normes',
-      standardsLinks: ['Quatre engagements', 'Validation par l\'éditeur', 'Voix native'],
-      forHeading: 'Pour',
-      forLinks: ['Auteurs', 'Rédacteurs', 'Équipes éditoriales'],
-      copyright: '© 2026 Word Presto',
-      tagline2: 'Emma prépare · l\'éditeur approuve',
     },
   },
 };

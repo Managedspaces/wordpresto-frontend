@@ -102,6 +102,7 @@ const contentPages = [
   { route: '/workers/', md: 'workers/index.md' },
   { route: '/prestobot/', md: 'prestobot/index.md' },
   { route: '/pricing/', md: 'pricing/index.md' },
+  { route: '/presto-labs/', md: 'presto-labs/index.md' },
   // Homepage locale mirrors (src/data/i18n/home.ts) — see context.md.
   { route: '/pt/', md: 'pt/index.md' },
   { route: '/pt-br/', md: 'pt-br/index.md' },

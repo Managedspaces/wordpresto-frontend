@@ -12,7 +12,7 @@
  * - Homepage: src/data/i18n/home.ts (all locales) — see context.md for the i18n plan
  * - Worker profiles: src/data/workerProfiles.ts (English only for now — see context.md, "Phase 2/3")
  */
-import { mkdirSync, writeFileSync } from 'fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { homeContent, type HomeContent } from '../src/data/i18n/home';
@@ -23,6 +23,7 @@ import { workflowDemo } from '../src/data/staticPages';
 import { workersHubContent, seoWorkersContent } from '../src/data/i18n/workersDirectory';
 import { prestobotContent } from '../src/data/i18n/prestobot';
 import { pricingContent } from '../src/data/i18n/pricing';
+import { pillarArticles, type PillarArticle } from '../src/data/pillars';
 
 const workersDirectory = workersHubContent.en;
 const seoWorkersDirectory = seoWorkersContent.en;
@@ -547,6 +548,37 @@ writeMirror('workers/index.md', workersIndexMd);
 // and mistaken for a Worker profile.
 const seoWorkersIndexMd = renderSeoWorkersIndexMarkdown();
 writeMirror('workers/seo/index.md', seoWorkersIndexMd);
+
+// Pillar pages. The body is already Markdown (src/content/pillars/{slug}.md),
+// which is the same file the live page renders, so the mirror is that file with
+// the frontmatter and H1 from the registry prepended. Nothing to re-render and
+// nothing to drift.
+function renderPillarMarkdown(article: PillarArticle) {
+  const body = readFileSync(join(ROOT, 'src/content/pillars', `${article.slug}.md`), 'utf8').trim();
+  return [
+    `---`,
+    `title: "${article.seoTitle.replace(/"/g, '\\"')}"`,
+    `description: "${article.metaDescription.replace(/"/g, '\\"')}"`,
+    `canonical: "${SITE_URL}/${article.slug}/"`,
+    `lang: "en"`,
+    `---`,
+    ``,
+    `# ${article.title}`,
+    ``,
+    `_${article.eyebrow} · ${article.author} · ${article.published}_`,
+    ``,
+    article.summary,
+    ``,
+    body,
+    ``,
+  ].join('\n');
+}
+
+for (const article of pillarArticles) {
+  const md = renderPillarMarkdown(article);
+  writeMirror(`pages/${article.slug}.md`, md);
+  writeMirror(`${article.slug}/index.md`, md);
+}
 
 // Worker profiles
 for (const w of workerProfiles) {

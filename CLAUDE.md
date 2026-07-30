@@ -233,6 +233,34 @@ Primary CTAs now lead into the **app's real signup workflow**, not the waitlist:
 
 These destinations live in one place, `src/lib/appLinks.ts` (`registerUrl(locale)` / `loginUrl(locale)`). Do not hardcode app URLs in page components — import the helpers. The app origin is env-configurable via `PUBLIC_APP_BASE` (falls back to `PUBLIC_APP_API_BASE`, then `https://app.wordpresto.com`), and the visitor's locale is carried across as `?lang=<locale>` for non-English (the app reads that querystring and stamps it onto the new account). App routes are `/register` and `/login`.
 
+## Footer
+
+There is one footer for the whole site: `src/components/Footer.astro`, parameterised by `locale`, the same pattern as `Masthead.astro`. Every page renders `<Footer locale={locale} />` and no page defines its own footer markup or `.footer*` CSS. This replaced eleven inline footers that had drifted apart: different columns per page, "WordPresto" vs "Word Presto" in the copyright, inconsistent legal links, and several dead homepage anchors (`#product`, `#capabilities`, `#use-cases` do not exist).
+
+Rules:
+
+* Footer links must be real destinations. Homepage anchors are only allowed when the id actually exists in `src/components/HomePage.astro`.
+* Nav labels come from `src/data/i18n/common.ts` so every locale gets them. Do not hardcode English strings in the footer.
+* The pillar column renders itself from `src/data/pillars.ts`, so adding a pillar page updates the footer everywhere with no component edit.
+
+## Pillar Pages
+
+Pillar pages are the long-form, authoritative articles the footer links through. `/presto-labs/` is the first.
+
+Each one is three things:
+
+1. `src/content/pillars/{slug}.md` — the prose, plain Markdown, starting at `##` (the H1 comes from the registry). This is the only copy of the body.
+2. an entry in `src/data/pillars.ts` — the metadata registry: slug, footer nav label, eyebrow, H1, `seoTitle`, `metaDescription`, standfirst, byline, date, reading time. Grouped under a category whose `heading` is the footer column title.
+3. `src/pages/{slug}/index.astro` — a five-line route that imports the Markdown and hands it to `PillarPage.astro`.
+
+`src/data/pillars.ts` is deliberately free of `astro:content` and other Astro-only imports: `scripts/generate-page-markdown.ts` imports it through tsx, outside Astro.
+
+Everything downstream is wired off the registry, so a new pillar page reaches the sitemaps, the Markdown mirror, `llms.txt` and the footer automatically. The two places that still need a manual line per page are `scripts/inject-markdown-routes.mjs` and `src/middleware.ts` (the `Accept: text/markdown` negotiation route and its `Vary` path).
+
+Pillar pages are English only for now, like `/pricing/` and `/sitemap/`. The footer links them from every locale because there is only one version to link to.
+
+Style: pillar prose may run longer and more personal than the marketing pages, and carries a byline. The house copy rules still apply, in particular British English and no em dashes.
+
 ## Waitlist
 
 The waitlist page (`/waitlist`) still exists and remains reachable, but main CTAs no longer point at it — they point at the app signup above. The waitlist is a multi-step application form backed by Neon Postgres.

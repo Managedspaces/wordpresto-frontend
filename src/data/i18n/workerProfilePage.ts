@@ -47,8 +47,6 @@ export interface WorkerProfilePageChrome {
   byWorkflowSequenceLabel: string;
   seeFullWorkflowCta: string;
   ctaRuleText: string;
-  allWorkersFooterLink: string;
-  theWorkflowFooterLink: string;
 }
 
 export const workerProfilePageChrome: Record<Locale, WorkerProfilePageChrome> = {
@@ -92,8 +90,6 @@ export const workerProfilePageChrome: Record<Locale, WorkerProfilePageChrome> = 
     byWorkflowSequenceLabel: 'BY WORKFLOW SEQUENCE',
     seeFullWorkflowCta: 'See the full workflow',
     ctaRuleText: 'PAPER · INK · SIGNAL · CONTROL',
-    allWorkersFooterLink: 'All Workers',
-    theWorkflowFooterLink: 'The workflow',
   },
   pt: {
     seeHowWorksPrefix: 'Veja como',
@@ -135,8 +131,6 @@ export const workerProfilePageChrome: Record<Locale, WorkerProfilePageChrome> = 
     byWorkflowSequenceLabel: 'POR SEQUÊNCIA DO FLUXO DE TRABALHO',
     seeFullWorkflowCta: 'Consulte o fluxo de trabalho completo',
     ctaRuleText: 'PAPEL · TINTA · SINAL · CONTROLO',
-    allWorkersFooterLink: 'Todos os Workers',
-    theWorkflowFooterLink: 'O fluxo de trabalho',
   },
   'pt-br': {
     seeHowWorksPrefix: 'Veja como',
@@ -178,8 +172,6 @@ export const workerProfilePageChrome: Record<Locale, WorkerProfilePageChrome> = 
     byWorkflowSequenceLabel: 'POR SEQUÊNCIA DO FLUXO DE TRABALHO',
     seeFullWorkflowCta: 'Consulte o fluxo de trabalho completo',
     ctaRuleText: 'PAPEL · TINTA · SINAL · CONTROLE',
-    allWorkersFooterLink: 'Todos os Workers',
-    theWorkflowFooterLink: 'O fluxo de trabalho',
   },
   es: {
     seeHowWorksPrefix: 'Mira cómo',
@@ -221,8 +213,6 @@ export const workerProfilePageChrome: Record<Locale, WorkerProfilePageChrome> = 
     byWorkflowSequenceLabel: 'POR SECUENCIA DEL FLUJO DE TRABAJO',
     seeFullWorkflowCta: 'Ver el flujo de trabajo completo',
     ctaRuleText: 'PAPEL · TINTA · SEÑAL · CONTROL',
-    allWorkersFooterLink: 'Todos los trabajadores',
-    theWorkflowFooterLink: 'El flujo de trabajo',
   },
   de: {
     seeHowWorksPrefix: 'Erfahren Sie, wie',
@@ -264,8 +254,6 @@ export const workerProfilePageChrome: Record<Locale, WorkerProfilePageChrome> = 
     byWorkflowSequenceLabel: 'NACH WORKFLOW-REIHENFOLGE',
     seeFullWorkflowCta: 'Den vollständigen Workflow anzeigen',
     ctaRuleText: 'PAPIER · TINTE · SIGNAL · STEUERUNG',
-    allWorkersFooterLink: 'Alle Worker',
-    theWorkflowFooterLink: 'Der Workflow',
   },
   fr: {
     seeHowWorksPrefix: 'Découvrez comment',
@@ -307,7 +295,5 @@ export const workerProfilePageChrome: Record<Locale, WorkerProfilePageChrome> = 
     byWorkflowSequenceLabel: 'PAR ORDRE DU FLUX DE TRAVAIL',
     seeFullWorkflowCta: 'Voir le flux de travail complet',
     ctaRuleText: 'PAPIER · ENCRE · SIGNAL · CONTRÔLE',
-    allWorkersFooterLink: 'Tous les collaborateurs',
-    theWorkflowFooterLink: 'Le flux de travail',
   },
 };

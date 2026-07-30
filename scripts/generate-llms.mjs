@@ -94,6 +94,15 @@ const pageResources = [
     sourcePath: 'pages/pricing.md',
     focus: 'Pricing model, credit plans and top-up packs. Live plan prices are served on the pricing page from the app.',
   },
+  {
+    title: 'Presto Labs',
+    htmlPath: '/presto-labs/',
+    markdownPath: '/presto-labs/index.md',
+    legacyMarkdownPath: '/pages/presto-labs.md',
+    sourcePath: 'pages/presto-labs.md',
+    focus:
+      'Pillar article: where the word presto comes from, the Presto query engine, and why coordination rather than generation is the bottleneck in content operations.',
+  },
 ];
 
 const workerResources = workerFiles.map((file) => {

@@ -18,6 +18,7 @@
 
 import { LOCALES, DEFAULT_LOCALE, localeHref } from '@/i18n/locales';
 import { TEAM_ORDER, TEAM_META } from '@/data/workerRegistry';
+import { pillarArticles, pillarPath, pillarMarkdownPath } from '@/data/pillars';
 
 export type RouteGroup = 'main' | 'machine';
 
@@ -244,6 +245,19 @@ export const siteRoutes: SiteRoute[] = [
     inXml: true,
     changefreq: 'monthly' as const,
     priority: 0.3,
+  })),
+  // Pillar pages (src/data/pillars.ts). English only for now, like /pricing/.
+  // High priority: these are the long-form pages the footer links through and
+  // the ones internal linking is meant to build up.
+  ...pillarArticles.map((article) => ({
+    path: pillarPath(article),
+    label: article.navLabel,
+    description: article.summary,
+    group: 'main' as const,
+    inXml: true,
+    changefreq: 'monthly' as const,
+    priority: 0.8,
+    markdown: pillarMarkdownPath(article),
   })),
   {
     path: '/sitemap/',

@@ -33,9 +33,6 @@ export interface SeoWorkersContent {
   crosslinkLabel: string;
   crosslinkTitle: string;
   crosslinkCta: string;
-  footerWorkersHeading: string;
-  footerContentWorkers: string;
-  footerSeoWorkers: string;
 }
 
 export interface WorkersSharedContent {
@@ -135,9 +132,6 @@ export const seoWorkersContent: Record<Locale, SeoWorkersContent> = {
     crosslinkLabel: 'Also in the workflow',
     crosslinkTitle: 'Content Workers, in their own directory',
     crosslinkCta: 'See the Content Workers',
-    footerWorkersHeading: 'Workers',
-    footerContentWorkers: 'Content Workers',
-    footerSeoWorkers: 'SEO Workers',
   },
   pt: {
     seoTitle: 'Workers de SEO para pesquisa, estrutura e autoridade | WordPresto',
@@ -151,9 +145,6 @@ export const seoWorkersContent: Record<Locale, SeoWorkersContent> = {
     crosslinkLabel: 'Também no fluxo de trabalho',
     crosslinkTitle: 'Workers de Conteúdo, no seu próprio diretório',
     crosslinkCta: 'Ver os Workers de Conteúdo',
-    footerWorkersHeading: 'Workers',
-    footerContentWorkers: 'Workers de Conteúdo',
-    footerSeoWorkers: 'Workers de SEO',
   },
   'pt-br': {
     seoTitle: 'Workers de SEO para busca, estrutura e autoridade | WordPresto',
@@ -167,9 +158,6 @@ export const seoWorkersContent: Record<Locale, SeoWorkersContent> = {
     crosslinkLabel: 'Também no fluxo de trabalho',
     crosslinkTitle: 'Workers de Conteúdo, em seu próprio diretório',
     crosslinkCta: 'Ver os Workers de Conteúdo',
-    footerWorkersHeading: 'Workers',
-    footerContentWorkers: 'Workers de Conteúdo',
-    footerSeoWorkers: 'Workers de SEO',
   },
   es: {
     seoTitle: 'Workers de SEO para búsqueda, estructura y autoridad | WordPresto',
@@ -183,9 +171,6 @@ export const seoWorkersContent: Record<Locale, SeoWorkersContent> = {
     crosslinkLabel: 'También en el flujo de trabajo',
     crosslinkTitle: 'Workers de Contenido, en su propio directorio',
     crosslinkCta: 'Ver los Workers de Contenido',
-    footerWorkersHeading: 'Workers',
-    footerContentWorkers: 'Workers de Contenido',
-    footerSeoWorkers: 'Workers de SEO',
   },
   de: {
     seoTitle: 'SEO-Workers für Suche, Struktur und Autorität | WordPresto',
@@ -199,9 +184,6 @@ export const seoWorkersContent: Record<Locale, SeoWorkersContent> = {
     crosslinkLabel: 'Ebenfalls im Workflow',
     crosslinkTitle: 'Content-Workers, in ihrem eigenen Verzeichnis',
     crosslinkCta: 'Die Content-Workers ansehen',
-    footerWorkersHeading: 'Workers',
-    footerContentWorkers: 'Content-Workers',
-    footerSeoWorkers: 'SEO-Workers',
   },
   fr: {
     seoTitle: 'Workers SEO pour la recherche, la structure et l’autorité | WordPresto',
@@ -215,9 +197,6 @@ export const seoWorkersContent: Record<Locale, SeoWorkersContent> = {
     crosslinkLabel: 'Également dans le flux de travail',
     crosslinkTitle: 'Les Workers de contenu, dans leur propre annuaire',
     crosslinkCta: 'Voir les Workers de contenu',
-    footerWorkersHeading: 'Workers',
-    footerContentWorkers: 'Workers de contenu',
-    footerSeoWorkers: 'Workers SEO',
   },
 };
 

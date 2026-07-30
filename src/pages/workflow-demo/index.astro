@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { workflowDemo as meta } from '@/data/staticPages';
 import { registerUrl, loginUrl } from '@/lib/appLinks';
+import Footer from '@/components/Footer.astro';
 ---
 
 <BaseLayout
@@ -1289,42 +1290,7 @@ import { registerUrl, loginUrl } from '@/lib/appLinks';
     </div>
   </section>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="/brand/main-logo.png" alt="Word Presto" class="footer-logo" loading="lazy" />
-        <p class="footer-tagline">The content engine behind better publishing workflows.</p>
-      </div>
-      <div class="footer-col">
-        <span class="footer-col-heading">Product</span>
-        <a href="/#product" class="footer-link">How it works</a>
-        <a href="/#capabilities" class="footer-link">Workflow</a>
-        <a href="/workers/" class="footer-link">Workers</a>
-      </div>
-      <div class="footer-col">
-        <span class="footer-col-heading">Use cases</span>
-        <a href="/#use-cases" class="footer-link">Astro + CMS builds</a>
-        <a href="/#use-cases" class="footer-link">CMS-connected</a>
-        <a href="/#use-cases" class="footer-link">Standalone engine</a>
-      </div>
-      <div class="footer-col">
-        <span class="footer-col-heading">Company</span>
-        <a href={registerUrl()} class="footer-link">Join now</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 WordPresto</span>
-      <span>Review-led publishing · Human approval</span>
-      <span class="footer-legal-links">
-        <a href="/privacy/" class="footer-link">Privacy</a> ·
-        <a href="/terms/" class="footer-link">Terms</a> ·
-        <a href="/cookies/" class="footer-link">Cookies</a> ·
-        <a href="/fair-use/" class="footer-link">Fair use</a> ·
-        <a href="/data-deletion/" class="footer-link">Data deletion</a>
-      </span>
-    </div>
-  </footer>
+  <Footer locale="en" />
 
 </BaseLayout>
 
@@ -1714,19 +1680,6 @@ import { registerUrl, loginUrl } from '@/lib/appLinks';
   .cta-rule { height: 1px; width: 44px; background: var(--wp-line); }
   .cta-mark-text { letter-spacing: 0.14em; }
 
-  /* ===== FOOTER ===== */
-  .footer { background-color: var(--wp-paper-dark); background-image: var(--wp-texture-paper); border-top: 2px solid var(--wp-ink); padding: 58px 0 42px; }
-  .footer-inner { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 34px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; }
-  .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
-  .footer-logo { display: block; height: 90px; width: auto; align-self: flex-start; mix-blend-mode: multiply; }
-  .footer-tagline { margin: 6px 0 0; font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; }
-  .footer-col { display: flex; flex-direction: column; gap: 10px; }
-  .footer-col-heading { font-size: var(--wp-text-sm); font-weight: 700; }
-  .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); transition: color 150ms; }
-  .footer-link:hover { color: var(--wp-ink); }
-  .footer-bottom { width: 100%; max-width: 1200px; margin: 46px auto 0; padding: 22px 34px 0; border-top: 1px solid var(--wp-line); display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; font-size: var(--wp-text-sm); color: var(--wp-text-muted); }
-  .footer-legal-links .footer-link { font-size: var(--wp-text-sm); }
-
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
     .container { padding: 0 24px; }
@@ -1738,8 +1691,8 @@ import { registerUrl, loginUrl } from '@/lib/appLinks';
     .review-surface-body { grid-template-columns: 1fr; }
     .review-meta { border-right: none; border-bottom: 1px solid var(--wp-line); }
     .review-meta-dl { grid-template-columns: 110px 1fr; }
-    .footer-inner { grid-template-columns: 1fr 1fr; }
-    .footer-brand { grid-column: 1 / -1; max-width: none; }
+    
+    
   }
 
   @media (max-width: 480px) {
@@ -1770,9 +1723,7 @@ import { registerUrl, loginUrl } from '@/lib/appLinks';
     .cta-inner { padding: 0 18px; }
     .cta-buttons { flex-direction: column; align-items: stretch; }
     .cta-buttons .btn { justify-content: center; }
-    .footer-inner { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; gap: 6px; }
-    .footer { padding: 40px 0 28px; }
+
     .approval-stamp-block { flex-direction: column; }
     .track-legend { gap: 12px; }
   }

@@ -5,8 +5,8 @@ import { specialistTeamContent, specialistsSharedContent } from '@/data/i18n/spe
 import { commonStrings } from '@/data/i18n/common';
 import { getWorkersByTeam, getTeamMeta, workerImage, workerInitials, type TeamId } from '@/data/workerRegistry';
 import { localeHref, type Locale } from '@/i18n/locales';
-import { registerUrl } from '@/lib/appLinks';
 import { absoluteUrl, breadcrumbList } from '@/lib/schema';
+import Footer from '@/components/Footer.astro';
 
 interface Props {
   locale: Locale;
@@ -120,43 +120,7 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="/brand/main-logo.png" alt="Word Presto" class="footer-logo" loading="lazy" />
-        <p class="footer-tagline">{c.footerTagline}</p>
-      </div>
-      <div class="footer-col">
-        <span class="footer-col-heading">{c.product}</span>
-        <a href={`${localeHref(locale, '/')}#product`} class="footer-link">{c.howItWorks}</a>
-        <a href={`${localeHref(locale, '/')}#capabilities`} class="footer-link">{c.workflow}</a>
-        <a href={localeHref(locale, '/workers/')} class="footer-link">{c.workers}</a>
-      </div>
-      <div class="footer-col">
-        <span class="footer-col-heading">{c.useCases}</span>
-        <a href={`${localeHref(locale, '/')}#use-cases`} class="footer-link">{c.astroCms}</a>
-        <a href={`${localeHref(locale, '/')}#use-cases`} class="footer-link">{c.cmsConnected}</a>
-        <a href={`${localeHref(locale, '/')}#use-cases`} class="footer-link">{c.standaloneEngine}</a>
-      </div>
-      <div class="footer-col">
-        <span class="footer-col-heading">Company</span>
-        <a href={registerUrl(locale)} class="footer-link">{c.joinWaitlist}</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 WordPresto</span>
-      <span>{c.reviewLed}</span>
-      <a href="/sitemap/" class="footer-link footer-sitemap-link">{c.siteMap}</a>
-      <span class="footer-legal-links">
-        <a href="/privacy/" class="footer-link">Privacy</a> ·
-        <a href="/terms/" class="footer-link">Terms</a> ·
-        <a href="/cookies/" class="footer-link">Cookies</a> ·
-        <a href="/fair-use/" class="footer-link">Fair use</a> ·
-        <a href="/data-deletion/" class="footer-link">Data deletion</a>
-      </span>
-    </div>
-  </footer>
+  <Footer locale={locale} />
 
 </BaseLayout>
 
@@ -315,52 +279,12 @@ const jsonLd = [
   }
   .specialists-note p { margin: 0; font-size: var(--wp-text-base); color: var(--wp-text-secondary); line-height: 1.6; }
 
-  /* ===== FOOTER ===== */
-  .footer {
-    background-color: var(--wp-paper-dark);
-    background-image: var(--wp-texture-paper);
-    border-top: 2px solid var(--wp-ink);
-    padding: 58px 0 42px;
-  }
-  .footer-inner {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 34px;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 32px;
-  }
-  .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
-  .footer-logo { display: block; height: 90px; width: auto; align-self: flex-start; mix-blend-mode: multiply; }
-  .footer-tagline { margin: 6px 0 0; font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; }
-  .footer-col { display: flex; flex-direction: column; gap: 10px; }
-  .footer-col-heading { font-size: var(--wp-text-sm); font-weight: 700; }
-  .footer-link { font-size: var(--wp-text-base); color: var(--wp-text-tertiary); }
-  .footer-link:hover { color: var(--wp-ink); }
-  .footer-legal-links .footer-link { font-size: var(--wp-text-sm); }
-  .footer-bottom {
-    width: 100%;
-    max-width: 1200px;
-    margin: 46px auto 0;
-    padding: 22px 34px 0;
-    border-top: 1px solid var(--wp-border-strong);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: space-between;
-    font-size: var(--wp-text-sm);
-    color: var(--wp-text-muted);
-  }
-
   /* ===== RESPONSIVE ===== */
-  @media (max-width: 940px) {
-    .footer-inner { grid-template-columns: 1fr 1fr; }
-  }
+  
   @media (max-width: 480px) {
     .container { padding: 0 20px; }
     .specialists-grid { grid-template-columns: 1fr; }
     .worker-directory-header { flex-direction: column; align-items: flex-start; gap: 2px; }
-    .footer-inner { grid-template-columns: 1fr; }
+    
   }
 </style>

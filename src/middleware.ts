@@ -14,6 +14,8 @@ const NEGOTIATED_PATHS = new Set([
   '/sitemap',
   '/pricing/',
   '/pricing',
+  '/presto-labs/',
+  '/presto-labs',
 ]);
 
 function isNegotiatedPath(pathname: string): boolean {
