@@ -2,6 +2,7 @@
 import { SEO } from 'astro-seo';
 import { organizationSchema, websiteSchema, SITE_URL } from '@/lib/schema';
 import ConsentBanner from '@/components/ConsentBanner.astro';
+import { LOCALES, DEFAULT_LOCALE, getLocaleMeta, localeHref, type Locale } from '@/i18n/locales';
 
 interface Props {
   pageTitle: string;
@@ -12,6 +13,22 @@ interface Props {
   noindex?: boolean;
   /** Additional page-specific schema.org objects, each rendered as its own JSON-LD script. */
   jsonLd?: Record<string, unknown>[];
+  /**
+   * The locale this page is rendered in. Drives <html lang> and og:locale, so
+   * every translated page must pass it. Defaults to English for the pages that
+   * only exist in English.
+   */
+  locale?: Locale;
+  /**
+   * Locale-agnostic path (e.g. "/workers/seo/") for pages that exist in EVERY
+   * locale. Setting it emits the reciprocal hreflang set plus x-default.
+   *
+   * Leave it unset for English-only pages (/pricing/, /sitemap/, the pillar
+   * pages, the legal pages). A partial hreflang cluster is worse than none:
+   * pointing at a URL that does not exist invalidates the whole set, so this is
+   * opt-in per page rather than derived automatically.
+   */
+  localisedPath?: string;
 }
 
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og/wordpresto-home.png`;
@@ -24,11 +41,28 @@ const {
   ogImage = DEFAULT_OG_IMAGE,
   noindex = false,
   jsonLd = [],
+  locale = DEFAULT_LOCALE,
+  localisedPath,
 } = Astro.props;
+
+const localeMeta = getLocaleMeta(locale);
+
+// Every version of a page must link to every version, itself included, or
+// Google discards the cluster. x-default points at English.
+const alternates =
+  localisedPath && !noindex
+    ? [
+        ...LOCALES.map((l) => ({
+          hreflang: l.htmlLang,
+          href: `${SITE_URL}${localeHref(l.code, localisedPath)}`,
+        })),
+        { hreflang: 'x-default', href: `${SITE_URL}${localisedPath}` },
+      ]
+    : [];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={localeMeta.htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,6 +86,7 @@ const {
         optional: {
           description: description,
           siteName: 'Word Presto',
+          locale: localeMeta.ogLocale,
         },
         image: {
           width: 1200,
@@ -67,6 +102,10 @@ const {
         imageAlt: 'Word Presto — The content engine behind better publishing workflows',
       }}
     />
+
+    {alternates.map((a) => (
+      <link rel="alternate" hreflang={a.hreflang} href={a.href} />
+    ))}
 
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

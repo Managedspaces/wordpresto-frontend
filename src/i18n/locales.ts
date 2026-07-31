@@ -11,17 +11,30 @@ export interface LocaleMeta {
   path: string;
   /** Flag lookup key — see src/i18n/flags.ts. */
   countryCode: 'IE' | 'PT' | 'BR' | 'ES' | 'DE' | 'FR';
+  /**
+   * BCP 47 tag for <html lang> and hreflang. Not the same string as `code`:
+   * "pt-br" is the URL segment, "pt-BR" is the language tag.
+   *
+   * European Portuguese is tagged plain "pt", not "pt-PT", deliberately. With
+   * "pt-PT" + "pt-BR" a Portuguese speaker outside those two countries matches
+   * neither and falls through to the English x-default; with "pt" + "pt-BR",
+   * Brazil gets the Brazilian page and every other Portuguese speaker gets the
+   * European one.
+   */
+  htmlLang: string;
+  /** Open Graph locale (og:locale), which uses underscores, not hyphens. */
+  ogLocale: string;
 }
 
 export const DEFAULT_LOCALE: Locale = 'en';
 
 export const LOCALES: LocaleMeta[] = [
-  { code: 'en', label: 'English', path: '', countryCode: 'IE' },
-  { code: 'pt', label: 'Português', path: 'pt', countryCode: 'PT' },
-  { code: 'pt-br', label: 'Português (Brasil)', path: 'pt-br', countryCode: 'BR' },
-  { code: 'es', label: 'Español', path: 'es', countryCode: 'ES' },
-  { code: 'de', label: 'Deutsch', path: 'de', countryCode: 'DE' },
-  { code: 'fr', label: 'Français', path: 'fr', countryCode: 'FR' },
+  { code: 'en', label: 'English', path: '', countryCode: 'IE', htmlLang: 'en', ogLocale: 'en_GB' },
+  { code: 'pt', label: 'Português', path: 'pt', countryCode: 'PT', htmlLang: 'pt', ogLocale: 'pt_PT' },
+  { code: 'pt-br', label: 'Português (Brasil)', path: 'pt-br', countryCode: 'BR', htmlLang: 'pt-BR', ogLocale: 'pt_BR' },
+  { code: 'es', label: 'Español', path: 'es', countryCode: 'ES', htmlLang: 'es', ogLocale: 'es_ES' },
+  { code: 'de', label: 'Deutsch', path: 'de', countryCode: 'DE', htmlLang: 'de', ogLocale: 'de_DE' },
+  { code: 'fr', label: 'Français', path: 'fr', countryCode: 'FR', htmlLang: 'fr', ogLocale: 'fr_FR' },
 ];
 
 export const LOCALE_CODES: Locale[] = LOCALES.map((l) => l.code);
