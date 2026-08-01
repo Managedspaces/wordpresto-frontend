@@ -2,7 +2,7 @@ import type { WorkerProfileTranslatable } from './types';
 
 export const frBatch4: Record<string, WorkerProfileTranslatable> = {
   safe_change_planner: {
-    seoTitle: 'Safe Change Planner | WordPresto',
+    seoTitle: 'Worker Planification de changements sûrs | WordPresto',
     metaDescription:
       'Sam transforme les constats des Workers en changements proposés structurés, en indiquant la zone concernée, le risque et le bénéfice attendu, sans jamais éditer la page ni rien appliquer.',
     h1: 'Transformer les constats en changements qui peuvent être relus en toute sécurité.',
@@ -144,7 +144,7 @@ export const frBatch4: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'Proposé · en attente de relecture',
   },
   review: {
-    seoTitle: 'Review Worker | WordPresto',
+    seoTitle: 'Worker Relecture éditoriale | WordPresto',
     metaDescription:
       'Helen rassemble les constats et recommandations en une synthèse de relecture structurée pour l’action humaine, rendant la relecture compréhensible sans en supprimer les nuances.',
     h1: 'Transformer des constats complexes en une relecture éditoriale claire.',
@@ -286,7 +286,7 @@ export const frBatch4: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'Synthèse prête · action de l’éditeur nécessaire',
   },
   editorial_approval_gate: {
-    seoTitle: 'Editorial Approval Gate Worker | WordPresto',
+    seoTitle: 'Worker Contrôle d’approbation éditoriale | WordPresto',
     metaDescription:
       'Dana lit les résultats existants des Workers et produit un contrôle d’approbation prudent, indiquant au relecteur humain si le contenu semble prêt pour la relecture, a besoin d’une révision, ou est bloqué.',
     h1: 'Vérifier si le travail est prêt pour l’approbation humaine.',
@@ -430,7 +430,7 @@ export const frBatch4: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'Révision nécessaire · décision de l’éditeur requise',
   },
   site_discovery: {
-    seoTitle: 'Site Discovery Worker | WordPresto',
+    seoTitle: 'Worker Découverte du site | WordPresto',
     metaDescription:
       'Claire aide à identifier les pages d’un projet de site pour que les éditeurs voient ce qui a besoin d’être relu, où se trouvent les opportunités de contenu, et comment le site commence à s’articuler.',
     h1: 'Trouver les pages avant que le travail ne commence.',
@@ -572,7 +572,7 @@ export const frBatch4: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'Pages prêtes pour la relecture',
   },
   page_inspector: {
-    seoTitle: 'Page Inspector Worker | WordPresto',
+    seoTitle: 'Worker Inspection de page | WordPresto',
     metaDescription:
       'Patrick inspecte la page et en extrait les signaux source dont dépend le reste du flux de travail : titre, meta description, titres de section, liens, images, schema, nombre de mots et structure visible de la page.',
     h1: 'Commencer par ce que la page dit réellement.',
@@ -708,7 +708,7 @@ export const frBatch4: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'Signaux de page prêts pour la relecture',
   },
   accessibility: {
-    seoTitle: 'Accessibility Worker | WordPresto',
+    seoTitle: 'Worker Accessibilité | WordPresto',
     metaDescription:
       'Mara relit les signaux d’accessibilité disponibles dans les preuves de la page, en signalant une structure de titres faible, des alternatives d’image manquantes, un texte de lien peu clair, des risques de lisibilité et les vérifications qui ont besoin d’une confirmation humaine.',
     h1: 'Faire entrer les problèmes d’accessibilité dans le flux de relecture.',
@@ -844,7 +844,7 @@ export const frBatch4: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'À relire · vérifications prêtes',
   },
   intent_analyst: {
-    seoTitle: 'Intent Analyst Worker | WordPresto',
+    seoTitle: 'Worker Analyse d’intention | WordPresto',
     metaDescription:
       'Yuna vérifie si le contenu, la structure, les métadonnées et l’étape suivante d’une page correspondent à l’intention probable de recherche ou de lecture.',
     h1: 'Vérifier si la page correspond à ce que le lecteur est venu chercher.',
@@ -980,7 +980,7 @@ export const frBatch4: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'À relire · écarts trouvés',
   },
   evidence: {
-    seoTitle: 'Evidence Worker | WordPresto',
+    seoTitle: 'Worker Preuves | WordPresto',
     metaDescription:
       'Kenji relit les preuves derrière les constats et les recommandations, en vérifiant la solidité du soutien, les affirmations non étayées, la provenance et les limites avant l’approbation.',
     h1: 'Savoir quelles recommandations sont réellement étayées.',
@@ -1115,7 +1115,7 @@ export const frBatch4: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'Limites signalées · relecture nécessaire',
   },
   internal_linking: {
-    seoTitle: 'Content Relationship Worker | WordPresto',
+    seoTitle: 'Worker Relations de contenu | WordPresto',
     metaDescription:
       'Leo relit comment une page se connecte au reste du contenu : liens internes, liens externes, qualité des ancres, parcours de lecteur, et si la page paraît isolée ou mal connectée.',
     h1: 'Vérifier si la page se connecte au reste du site.',
@@ -1251,7 +1251,7 @@ export const frBatch4: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'À relire · lacunes de parcours trouvées',
   },
   review_queue: {
-    seoTitle: 'Review Queue Worker | WordPresto',
+    seoTitle: 'Worker File de relecture | WordPresto',
     metaDescription:
       'Riley transforme les changements proposés en éléments de relecture structurés, montrant ce qui a besoin d’une décision humaine, pourquoi cela compte, et quelle action est disponible.',
     h1: 'Transformer les changements proposés en décisions qu’un éditeur peut gérer.',

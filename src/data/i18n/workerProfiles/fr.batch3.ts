@@ -2,7 +2,7 @@ import type { WorkerProfileTranslatable } from './types';
 
 export const frBatch3: Record<string, WorkerProfileTranslatable> = {
   clarity_proofing: {
-    seoTitle: 'Clarity & Proofing Worker | WordPresto',
+    seoTitle: 'Worker Clarté & relecture | WordPresto',
     metaDescription:
       'Esme relit la grammaire, la clarté, le ton et les formulations à risque, et produit des suggestions destinées uniquement à la relecture, pour que les éditeurs puissent améliorer le texte sans céder le contrôle à l’automatisation.',
     h1: 'Rendre l’écriture plus nette avant qu’elle n’arrive en relecture.',
@@ -141,7 +141,7 @@ export const frBatch3: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'Suggestions prêtes · en attente de l’éditeur',
   },
   cannibalisation_overlap: {
-    seoTitle: 'Cannibalisation & Overlap Worker | WordPresto',
+    seoTitle: 'Worker Cannibalisation & chevauchement | WordPresto',
     metaDescription:
       'Cleo relit une page à la recherche de conflits d’intention, de risques de chevauchement et de rôle de contenu flou, pour aider les éditeurs à décider s’il faut préciser, soutenir, consolider ou vérifier manuellement une page par rapport aux autres.',
     h1: 'Repérer les pages qui essaient de remplir trop de rôles à la fois.',
@@ -277,7 +277,7 @@ export const frBatch3: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'À relire · rôle flou',
   },
   content_decay: {
-    seoTitle: 'Content Decay & Refresh Priority Worker | WordPresto',
+    seoTitle: 'Worker Usure du contenu & priorité de mise à jour | WordPresto',
     metaDescription:
       'Faye relit les signaux de fraîcheur et le risque de dégradation du contenu, pour aider les éditeurs à décider si une page est encore d’actualité, doit être surveillée, rafraîchie, ou nécessite une relecture urgente.',
     h1: 'Savoir quand une page commence à perdre de son tranchant.',
@@ -413,7 +413,7 @@ export const frBatch3: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'Rafraîchissement recommandé · relecture nécessaire',
   },
   topical_authority: {
-    seoTitle: 'Topical Authority & Coverage Gap Worker | WordPresto',
+    seoTitle: 'Worker Autorité thématique & lacunes de couverture | WordPresto',
     metaDescription:
       'Zara relit les signaux de couverture thématique et les lacunes de contenu, pour aider les éditeurs à voir si une page paraît solide, a besoin de soutien, est incomplète, ou nécessite un plan de contenu plus large.',
     h1: 'Voir si la page dispose d’un soutien thématique suffisant.',
@@ -549,7 +549,7 @@ export const frBatch3: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'Soutien nécessaire · lacunes trouvées',
   },
   conversion_alignment: {
-    seoTitle: 'Conversion & CTA Alignment Worker | WordPresto',
+    seoTitle: 'Worker Conversion & alignement des CTA | WordPresto',
     metaDescription:
       'Diane relit l’alignement de conversion : la clarté du CTA, les signaux de confiance, les lacunes de preuve, la correspondance avec la promesse des métadonnées, et si l’étape suivante a du sens pour l’intention de la page.',
     h1: 'Vérifier si la page donne au lecteur une étape suivante claire.',
@@ -685,7 +685,7 @@ export const frBatch3: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'À relire · parcours faible',
   },
   content_format_serp_fit: {
-    seoTitle: 'Content Format & SERP Fit Worker | WordPresto',
+    seoTitle: 'Worker Format de contenu & adéquation SERP | WordPresto',
     metaDescription:
       'Ivan vérifie si le format de contenu actuel correspond à l’intention probable et à la forme de page attendue, en signalant les conflits de format et les métadonnées qui promettent une expérience différente.',
     h1: 'Vérifier si la page a la bonne forme pour son rôle.',
@@ -821,7 +821,7 @@ export const frBatch3: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'Mauvaise adéquation · relecture nécessaire',
   },
   internal_link_pathway: {
-    seoTitle: 'Internal Link Pathway Worker | WordPresto',
+    seoTitle: 'Worker Parcours de liens internes | WordPresto',
     metaDescription:
       'Felix relit la santé des parcours de liens internes : le risque de page orpheline, la qualité du texte d’ancre, les relations hub-and-spoke, les liens d’étape suivante manquants, les liens concurrents et la cohérence du parcours.',
     h1: 'Relire les chemins que les lecteurs et les robots peuvent vraiment suivre.',
@@ -957,7 +957,7 @@ export const frBatch3: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'À relire · parcours faibles',
   },
   content_pruning_consolidation: {
-    seoTitle: 'Content Pruning & Consolidation Worker | WordPresto',
+    seoTitle: 'Worker Élagage & consolidation de contenu | WordPresto',
     metaDescription:
       'Hugo relit les signaux de maintenance de contenu : le risque de chevauchement, le contenu mince, la dégradation, le rôle flou, les parcours faibles et les pistes de consolidation, pour aider les éditeurs à décider de l’action de maintenance la plus sûre.',
     h1: 'Décider si un contenu faible doit être amélioré, fusionné ou laissé tel quel.',
@@ -1093,7 +1093,7 @@ export const frBatch3: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'À relire · candidate à la consolidation',
   },
   content_inventory: {
-    seoTitle: 'Content Inventory Worker | WordPresto',
+    seoTitle: 'Worker Inventaire de contenu | WordPresto',
     metaDescription:
       'Nora relit la page comme un contenu à part entière, en identifiant le type de page, les signaux structurels, les lacunes de contenu et les métadonnées d’inventaire qui peuvent aider les éditeurs à mieux planifier leur travail.',
     h1: 'Comprendre à quel type de contenu vous avez affaire.',
@@ -1229,7 +1229,7 @@ export const frBatch3: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'Contenu relu · lacunes trouvées',
   },
   semantic_search_analyzer: {
-    seoTitle: 'Semantic Coverage Analyser | WordPresto',
+    seoTitle: 'Worker Analyse de couverture sémantique | WordPresto',
     metaDescription:
       'Sema relit la couverture sémantique en comparant le contenu à la couche de connaissance de Word Presto et au contexte du projet, en faisant remonter les sous-thèmes manquants et les entités peu couvertes.',
     h1: 'Trouver les concepts qui manquent à la page.',
@@ -1365,7 +1365,7 @@ export const frBatch3: Record<string, WorkerProfileTranslatable> = {
     guidanceFooterValue: 'Lacunes de couverture trouvées · relecture nécessaire',
   },
   competitor_intel: {
-    seoTitle: 'Competitor Intelligence Worker | WordPresto',
+    seoTitle: 'Worker Veille concurrentielle | WordPresto',
     metaDescription:
       'Cassius relit la couverture concurrentielle à partir des données SERP concurrentes stockées, en faisant remonter les sous-thèmes, les entités et les angles que les concurrents semblent couvrir et que votre contenu pourrait manquer.',
     h1: 'Voir ce que les concurrents classés couvrent et que vous ne couvrez pas.',
