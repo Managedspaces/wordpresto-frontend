@@ -2,7 +2,7 @@ import type { WorkerProfileTranslatable } from './types';
 
 export const ptBatch1: Record<string, WorkerProfileTranslatable> = {
   voice_style: {
-    seoTitle: 'Voice & Style Worker | WordPresto',
+    seoTitle: 'Worker de Voz e Estilo | WordPresto',
     metaDescription:
       'A Helena confere cada rascunho com as suas regras de voz e exemplos aprovados, devolvendo-o ao estilo da casa antes da revisão. Para equipas que precisam de manter uma voz consistente.',
     h1: 'Mantenha a voz no trabalho.',
@@ -137,7 +137,7 @@ export const ptBatch1: Record<string, WorkerProfileTranslatable> = {
   },
 
   content_analyst: {
-    seoTitle: 'Content Analyst Worker | WordPresto',
+    seoTitle: 'Worker de Análise de Conteúdo | WordPresto',
     metaDescription:
       'O Omar analisa o conteúdo existente, o contexto e o propósito antes de qualquer edição ou reescrita. Para equipas que precisam de um ponto de partida claro antes de mexerem numa página.',
     h1: 'Perceba a página antes de a reescrever.',
@@ -272,7 +272,7 @@ export const ptBatch1: Record<string, WorkerProfileTranslatable> = {
   },
 
   structure: {
-    seoTitle: 'Structure Worker | WordPresto',
+    seoTitle: 'Worker de Estrutura | WordPresto',
     metaDescription:
       'O Marcus molda títulos, secções e o fluxo da página para que o conteúdo tenha uma estrutura editorial clara antes ou durante a redação. Para páginas que precisam de uma forma adequada antes de a escrita começar.',
     h1: 'Dê a cada rascunho uma forma mais clara.',
@@ -407,7 +407,7 @@ export const ptBatch1: Record<string, WorkerProfileTranslatable> = {
   },
 
   content_brief_builder: {
-    seoTitle: 'Content Brief Builder | WordPresto',
+    seoTitle: 'Worker de Criação de Briefings | WordPresto',
     metaDescription:
       'O Luca transforma um tema e um objetivo num briefing de conteúdo estruturado: propósito, público, ângulo e secções, antes de a redação começar.',
     h1: 'Comece com um briefing que os redatores conseguem realmente usar.',
@@ -542,7 +542,7 @@ export const ptBatch1: Record<string, WorkerProfileTranslatable> = {
   },
 
   draft_rewrite: {
-    seoTitle: 'Draft Rewrite Worker | WordPresto',
+    seoTitle: 'Worker de Reescrita de Rascunhos | WordPresto',
     metaDescription:
       'O Ellis constrói e reescreve rascunhos que seguem o briefing: estruturados, com propósito, e prontos para revisão. Para conteúdo que precisa de um rascunho moldado antes de a edição ou a revisão começarem.',
     h1: 'Reescreva rascunhos sem perder o essencial.',
@@ -674,7 +674,7 @@ export const ptBatch1: Record<string, WorkerProfileTranslatable> = {
   },
 
   draft_quality_reviewer: {
-    seoTitle: 'Draft Quality Reviewer | WordPresto',
+    seoTitle: 'Worker de Revisão de Qualidade do Rascunho | WordPresto',
     metaDescription:
       'O Quinn verifica se um rascunho está claro, estruturado e pronto para avançar, antes de chegar a um cliente ou ao CMS. Para equipas que precisam de uma revisão estruturada antes da aprovação final.',
     h1: 'Reveja o rascunho antes de ele avançar.',
@@ -809,7 +809,7 @@ export const ptBatch1: Record<string, WorkerProfileTranslatable> = {
   },
 
   section_rewrite: {
-    seoTitle: 'Section Rewrite Worker | WordPresto',
+    seoTitle: 'Worker de Reescrita de Secções | WordPresto',
     metaDescription:
       'A Rosa reescreve secções específicas que estão pouco claras, fracas ou fora do briefing, sem tocar no resto da peça. Para melhorias direcionadas ao nível da secção, depois da revisão.',
     h1: 'Corrija a secção fraca sem reescrever a página inteira.',
@@ -942,7 +942,7 @@ export const ptBatch1: Record<string, WorkerProfileTranslatable> = {
   },
 
   approval_report: {
-    seoTitle: 'Approval Report Worker | WordPresto',
+    seoTitle: 'Worker de Relatório de Aprovação | WordPresto',
     metaDescription:
       'A Audrey resume o que está pronto, o que precisa de atenção e o que não deve avançar, para que as pessoas tomem uma decisão de aprovação com confiança.',
     h1: 'Torne a aprovação mais fácil de confiar.',
@@ -1077,7 +1077,7 @@ export const ptBatch1: Record<string, WorkerProfileTranslatable> = {
   },
 
   readability: {
-    seoTitle: 'Readability Worker | WordPresto',
+    seoTitle: 'Worker de Legibilidade | WordPresto',
     metaDescription:
       'A Priya aperta frases, simplifica a estrutura e melhora a fluidez, para que o conteúdo se leia com clareza para o público a que se destina. Para rascunhos corretos, mas mais difíceis de ler do que precisam de ser.',
     h1: 'Torne o bom conteúdo mais fácil de ler.',
@@ -1209,7 +1209,7 @@ export const ptBatch1: Record<string, WorkerProfileTranslatable> = {
   },
 
   brief_draft_alignment: {
-    seoTitle: 'Brief-to-Draft Alignment Worker | WordPresto',
+    seoTitle: 'Worker de Alinhamento entre Briefing e Rascunho | WordPresto',
     metaDescription:
       'A Ada confere se o rascunho cumpre mesmo o briefing, destacando lacunas, desvios e secções desalinhadas antes de avançarem.',
     h1: 'Confirme se o rascunho segue mesmo o briefing.',

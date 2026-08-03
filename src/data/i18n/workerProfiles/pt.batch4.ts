@@ -2,7 +2,7 @@ import type { WorkerProfileTranslatable } from './types';
 
 export const ptBatch4: Record<string, WorkerProfileTranslatable> = {
   safe_change_planner: {
-    seoTitle: 'Safe Change Planner | WordPresto',
+    seoTitle: 'Worker de Planeamento de Alterações Seguras | WordPresto',
     metaDescription:
       'O Sam converte as conclusões dos Workers em propostas de alteração estruturadas, indicando a área afetada, o risco e o benefício esperado, sem editar a página nem aplicar seja o que for.',
     h1: 'Transforme conclusões em alterações que podem ser revistas com segurança.',
@@ -139,7 +139,7 @@ export const ptBatch4: Record<string, WorkerProfileTranslatable> = {
   },
 
   review: {
-    seoTitle: 'Review Worker | WordPresto',
+    seoTitle: 'Worker de Revisão Editorial | WordPresto',
     metaDescription:
       'A Helen reúne conclusões e recomendações num resumo de revisão estruturado para ação humana, tornando a revisão compreensível sem remover a nuance.',
     h1: 'Transforme conclusões complexas numa revisão editorial clara.',
@@ -276,7 +276,7 @@ export const ptBatch4: Record<string, WorkerProfileTranslatable> = {
   },
 
   editorial_approval_gate: {
-    seoTitle: 'Editorial Approval Gate Worker | WordPresto',
+    seoTitle: 'Worker de Aprovação Editorial | WordPresto',
     metaDescription:
       'A Dana lê os resultados já produzidos pelos Workers e gera um portão de aprovação conservador, dizendo ao revisor humano se o conteúdo parece pronto para revisão, precisa de correção ou está bloqueado.',
     h1: 'Verifique se o trabalho está pronto para aprovação humana.',
@@ -415,7 +415,7 @@ export const ptBatch4: Record<string, WorkerProfileTranslatable> = {
   },
 
   site_discovery: {
-    seoTitle: 'Site Discovery Worker | WordPresto',
+    seoTitle: 'Worker de Descoberta do Site | WordPresto',
     metaDescription:
       'A Claire ajuda a identificar as páginas de um projeto de website, para que os editores vejam o que precisa de revisão, onde estão as oportunidades de conteúdo e como o site começa a encaixar-se.',
     h1: 'Encontre as páginas antes de o trabalho começar.',
@@ -552,7 +552,7 @@ export const ptBatch4: Record<string, WorkerProfileTranslatable> = {
   },
 
   page_inspector: {
-    seoTitle: 'Page Inspector Worker | WordPresto',
+    seoTitle: 'Worker de Inspeção de Páginas | WordPresto',
     metaDescription:
       'O Patrick inspeciona a página e extrai os sinais de origem de que o resto do fluxo de trabalho depende: título, meta description, títulos, links, imagens, schema, contagem de palavras e estrutura visível da página.',
     h1: 'Comece pelo que a página realmente diz.',
@@ -689,7 +689,7 @@ export const ptBatch4: Record<string, WorkerProfileTranslatable> = {
   },
 
   accessibility: {
-    seoTitle: 'Accessibility Worker | WordPresto',
+    seoTitle: 'Worker de Acessibilidade | WordPresto',
     metaDescription:
       'A Mara revê os sinais de acessibilidade disponíveis na evidência da página, assinalando estrutura de títulos fraca, alternativas de imagem em falta, texto de link pouco claro, riscos de legibilidade e verificações que precisam de confirmação humana.',
     h1: 'Traga os problemas de acessibilidade para o fluxo de revisão.',
@@ -826,7 +826,7 @@ export const ptBatch4: Record<string, WorkerProfileTranslatable> = {
   },
 
   intent_analyst: {
-    seoTitle: 'Intent Analyst Worker | WordPresto',
+    seoTitle: 'Worker de Análise de Intenção | WordPresto',
     metaDescription:
       'A Yuna revê se o conteúdo, a estrutura, os metadados e o próximo passo de uma página estão alinhados com a provável intenção de pesquisa ou do leitor.',
     h1: 'Verifique se a página corresponde ao que o leitor veio procurar.',
@@ -963,7 +963,7 @@ export const ptBatch4: Record<string, WorkerProfileTranslatable> = {
   },
 
   evidence: {
-    seoTitle: 'Evidence Worker | WordPresto',
+    seoTitle: 'Worker de Evidências | WordPresto',
     metaDescription:
       'O Kenji revê a evidência por trás das conclusões e recomendações, verificando a força do suporte, afirmações sem sustentação, proveniência e limitações antes da aprovação.',
     h1: 'Saiba quais as recomendações que estão realmente sustentadas.',
@@ -1099,7 +1099,7 @@ export const ptBatch4: Record<string, WorkerProfileTranslatable> = {
   },
 
   internal_linking: {
-    seoTitle: 'Content Relationship Worker | WordPresto',
+    seoTitle: 'Worker de Relações de Conteúdo | WordPresto',
     metaDescription:
       'O Leo revê como uma página se liga a outro conteúdo: links internos, links externos, qualidade das âncoras, percursos do leitor e se a página parece isolada ou mal ligada.',
     h1: 'Verifique se a página se liga ao resto do site.',
@@ -1236,7 +1236,7 @@ export const ptBatch4: Record<string, WorkerProfileTranslatable> = {
   },
 
   review_queue: {
-    seoTitle: 'Review Queue Worker | WordPresto',
+    seoTitle: 'Worker de Fila de Revisão | WordPresto',
     metaDescription:
       'O Riley converte as alterações propostas em itens de revisão estruturados, mostrando o que precisa de uma decisão humana, porque é que importa e que ação está disponível.',
     h1: 'Transforme alterações propostas em decisões que um editor consegue gerir.',

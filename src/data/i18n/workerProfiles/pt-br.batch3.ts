@@ -2,7 +2,7 @@ import type { WorkerProfileTranslatable } from './types';
 
 export const ptBrBatch3: Record<string, WorkerProfileTranslatable> = {
   clarity_proofing: {
-    seoTitle: 'Clarity & Proofing Worker | WordPresto',
+    seoTitle: 'Worker de Clareza e Revisão | WordPresto',
     metaDescription:
       'Esme revisa gramática, clareza, tom e linguagem sensível a risco, produzindo sugestões só para revisão, para que os editores possam melhorar o texto sem entregar o controle à automação.',
     h1: 'Deixe a escrita mais limpa antes de ela chegar à revisão.',
@@ -142,7 +142,7 @@ export const ptBrBatch3: Record<string, WorkerProfileTranslatable> = {
   },
 
   cannibalisation_overlap: {
-    seoTitle: 'Cannibalisation & Overlap Worker | WordPresto',
+    seoTitle: 'Worker de Canibalização e Sobreposição | WordPresto',
     metaDescription:
       'Cleo revisa uma página em busca de conflito de intenção, risco de sobreposição e papel de conteúdo pouco claro, ajudando os editores a decidir se devem aprimorar, apoiar, consolidar ou checar manualmente a página em relação a outras.',
     h1: 'Encontre páginas que estão tentando fazer trabalho demais.',
@@ -285,7 +285,7 @@ export const ptBrBatch3: Record<string, WorkerProfileTranslatable> = {
   },
 
   content_decay: {
-    seoTitle: 'Content Decay & Refresh Priority Worker | WordPresto',
+    seoTitle: 'Worker de Desgaste de Conteúdo e Prioridade de Atualização | WordPresto',
     metaDescription:
       'Faye revisa sinais de atualidade e risco de decadência de conteúdo, ajudando os editores a decidir se uma página ainda está atual, precisa de monitoramento, deve ser atualizada ou exige revisão urgente.',
     h1: 'Saiba quando uma página está começando a perder o gás.',
@@ -428,7 +428,7 @@ export const ptBrBatch3: Record<string, WorkerProfileTranslatable> = {
   },
 
   topical_authority: {
-    seoTitle: 'Topical Authority & Coverage Gap Worker | WordPresto',
+    seoTitle: 'Worker de Autoridade Temática e Lacunas de Cobertura | WordPresto',
     metaDescription:
       'Zara revisa sinais de cobertura temática e lacunas de conteúdo, ajudando os editores a ver se uma página parece forte, precisa de apoio, está incompleta ou exige um plano de conteúdo mais amplo.',
     h1: 'Veja se a página tem apoio temático suficiente.',
@@ -571,7 +571,7 @@ export const ptBrBatch3: Record<string, WorkerProfileTranslatable> = {
   },
 
   conversion_alignment: {
-    seoTitle: 'Conversion & CTA Alignment Worker | WordPresto',
+    seoTitle: 'Worker de Alinhamento de Conversão e CTA | WordPresto',
     metaDescription:
       'Diane revisa o alinhamento de conversão: clareza da CTA, sinais de confiança, lacunas de prova, correspondência com a promessa dos metadados e se o próximo passo faz sentido para a intenção da página.',
     h1: 'Verifique se a página dá ao leitor um próximo passo claro.',
@@ -714,7 +714,7 @@ export const ptBrBatch3: Record<string, WorkerProfileTranslatable> = {
   },
 
   content_format_serp_fit: {
-    seoTitle: 'Content Format & SERP Fit Worker | WordPresto',
+    seoTitle: 'Worker de Formato de Conteúdo e Adequação à SERP | WordPresto',
     metaDescription:
       'Ivan revisa se o formato de conteúdo atual combina com a intenção provável e a forma esperada da página, sinalizando conflitos de formato e metadados que prometem uma experiência diferente.',
     h1: 'Verifique se a página está na forma certa para o trabalho.',
@@ -857,7 +857,7 @@ export const ptBrBatch3: Record<string, WorkerProfileTranslatable> = {
   },
 
   internal_link_pathway: {
-    seoTitle: 'Internal Link Pathway Worker | WordPresto',
+    seoTitle: 'Worker de Caminhos de Links Internos | WordPresto',
     metaDescription:
       'Felix revisa a saúde dos caminhos de links internos: risco de página órfã, qualidade do texto âncora, relações de hub e spoke, links de próximo passo ausentes, links concorrentes e coerência do caminho.',
     h1: 'Revise os caminhos que leitores e rastreadores conseguem realmente seguir.',
@@ -1000,7 +1000,7 @@ export const ptBrBatch3: Record<string, WorkerProfileTranslatable> = {
   },
 
   content_pruning_consolidation: {
-    seoTitle: 'Content Pruning & Consolidation Worker | WordPresto',
+    seoTitle: 'Worker de Poda e Consolidação de Conteúdo | WordPresto',
     metaDescription:
       'Hugo revisa sinais de manutenção de conteúdo: risco de sobreposição, conteúdo raso, decadência, papel pouco claro, caminhos fracos e sugestões de consolidação, ajudando os editores a decidir a próxima ação de manutenção mais segura.',
     h1: 'Decida se um conteúdo fraco deve ser melhorado, mesclado ou deixado como está.',
@@ -1143,7 +1143,7 @@ export const ptBrBatch3: Record<string, WorkerProfileTranslatable> = {
   },
 
   content_inventory: {
-    seoTitle: 'Content Inventory Worker | WordPresto',
+    seoTitle: 'Worker de Inventário de Conteúdo | WordPresto',
     metaDescription:
       'Nora revisa a página como um ativo de conteúdo, identificando tipo de página, sinais estruturais, lacunas de conteúdo e metadados de inventário que podem ajudar os editores a planejar melhor o trabalho.',
     h1: 'Entenda com que tipo de ativo de conteúdo você está lidando.',
@@ -1286,7 +1286,7 @@ export const ptBrBatch3: Record<string, WorkerProfileTranslatable> = {
   },
 
   semantic_search_analyzer: {
-    seoTitle: 'Semantic Coverage Analyser | WordPresto',
+    seoTitle: 'Worker de Análise de Cobertura Semântica | WordPresto',
     metaDescription:
       "Sema revisa a cobertura semântica comparando o conteúdo com a camada de conhecimento e o contexto de projeto do Word Presto, trazendo à tona subtemas ausentes e entidades pouco cobertas.",
     h1: 'Encontre os conceitos que faltam na página.',
@@ -1429,7 +1429,7 @@ export const ptBrBatch3: Record<string, WorkerProfileTranslatable> = {
   },
 
   competitor_intel: {
-    seoTitle: 'Competitor Intelligence Worker | WordPresto',
+    seoTitle: 'Worker de Inteligência Competitiva | WordPresto',
     metaDescription:
       'Cassius revisa a cobertura de concorrentes a partir de dados de SERP de concorrentes armazenados, trazendo à tona os subtemas, entidades e ângulos que os concorrentes parecem cobrir e que seu conteúdo talvez esteja deixando de lado.',
     h1: 'Veja o que os concorrentes bem ranqueados cobrem e você não.',
