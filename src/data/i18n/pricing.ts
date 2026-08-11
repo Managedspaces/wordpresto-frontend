@@ -45,6 +45,8 @@ export interface PricingContent {
   trialEyebrow: string;
   /** "Start your {days}-day trial for {price}" — {days}/{price} replaced client-side. */
   trialHeadingTemplate: string;
+  /** Heading used when the API prices the trial at zero: "Start your {days}-day trial free". */
+  trialHeadingFreeTemplate: string;
   /** Body template — {credits}/{planLabel}/{planPrice} replaced client-side. */
   trialBodyTemplate: string;
   trialCta: string;
@@ -64,6 +66,13 @@ export interface PricingContent {
   annualEquivalentTemplate: string;
   /** "Save {amount} a year" — computed as 12 x monthly minus annual. */
   annualSavingTemplate: string;
+  /**
+   * Screen-reader prefix for a struck-through list price ("Usually"), which a reader would otherwise
+   * announce as just another number. The strike itself carries no meaning to assistive tech.
+   */
+  wasPriceLabel: string;
+  /** "Save {percent}%" — computed from the displayed price and its struck-through list price. */
+  saveTemplate: string;
   /** "{credits} credits a month" — {credits} replaced client-side. */
   creditsTemplate: string;
   usageHeading: string;
@@ -121,6 +130,7 @@ export const pricingContent: Partial<Record<Locale, PricingContent>> & {
 
     trialEyebrow: 'Trial',
     trialHeadingTemplate: 'Start your {days}-day trial for {price}',
+    trialHeadingFreeTemplate: 'Start your {days}-day trial free',
     trialBodyTemplate:
       'Full platform access with {credits} credits. A card is required, and the trial converts to {planLabel} at {planPrice} a month when it ends. Cancel anytime before then.',
     trialCta: 'Start your trial',
@@ -138,6 +148,8 @@ export const pricingContent: Partial<Record<Locale, PricingContent>> & {
     oneTimeLabel: 'one-time',
     annualEquivalentTemplate: '{price} a month equivalent',
     annualSavingTemplate: 'Save {amount} a year',
+    wasPriceLabel: 'Usually',
+    saveTemplate: 'Save {percent}%',
     creditsTemplate: '{credits} credits a month',
     usageHeading: 'Example usage',
     usageOrPrefix: 'or',
