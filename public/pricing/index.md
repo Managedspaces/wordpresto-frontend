@@ -40,4 +40,4 @@ All prices include VAT.
 
 Word Presto is in early access and open now. Create an account, start your trial, and choose a plan whenever you are ready.
 
-Join now: https://wordpresto.com/waitlist
+Join now: https://app.wordpresto.com/register

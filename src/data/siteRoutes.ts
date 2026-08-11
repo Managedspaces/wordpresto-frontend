@@ -193,23 +193,11 @@ export const siteRoutes: SiteRoute[] = [
     inXml: false,
     markdown: '/workflow-demo/index.md',
   },
-  {
-    // noindex (see src/pages/waitlist.astro): HTML sitemap only, not in
-    // sitemap.xml.
-    path: '/waitlist/',
-    label: 'Join Word Presto',
-    description: 'Early access application.',
-    group: 'main',
-    inXml: false,
-  },
-  // Waitlist locale variants (src/data/i18n/waitlist.ts).
-  ...LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({
-    path: `/${l.path}/waitlist/`,
-    label: `Join Word Presto (${l.label})`,
-    description: 'Early access application.',
-    group: 'main' as const,
-    inXml: false,
-  })),
+  // /waitlist and its locale variants are gone from here on purpose: they are
+  // 301s into the app's signup now (see src/pages/waitlist.astro), and listing a
+  // redirect on the sitemap sends readers somewhere that immediately sends them
+  // somewhere else. The destination is off-site, so it has no sitemap entry of
+  // its own.
   {
     // English only for now (src/data/i18n/pricing.ts is structured for the
     // locale rollout; see context.md). Plan prices load live from the app's

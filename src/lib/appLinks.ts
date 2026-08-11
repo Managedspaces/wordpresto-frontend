@@ -16,9 +16,13 @@ import type { Locale } from '@/i18n/locales';
 // and stamps it onto the new account, so a German visitor lands on a German
 // signup. English is the app default and is left unparameterised.
 
+// `import.meta.env?` rather than `import.meta.env.`: scripts/generate-page-markdown.ts imports this
+// module through tsx, OUTSIDE Astro/Vite, where `import.meta.env` does not exist and a bare property
+// read throws. The optional chain lets the generator fall through to the production default and keeps
+// ONE definition of the app URLs, instead of the mirrors carrying their own copy that can drift.
 const APP_BASE = (
-  import.meta.env.PUBLIC_APP_BASE ||
-  import.meta.env.PUBLIC_APP_API_BASE ||
+  import.meta.env?.PUBLIC_APP_BASE ||
+  import.meta.env?.PUBLIC_APP_API_BASE ||
   'https://app.wordpresto.com'
 ).replace(/\/+$/, '');
 
@@ -41,7 +45,7 @@ export function loginUrl(locale: Locale = 'en'): string {
 // pointed at a preview docs deploy without a code change; falls back to the
 // production docs domain. Docs are English-only for now, so no locale param.
 const DOCS_BASE = (
-  import.meta.env.PUBLIC_DOCS_BASE ||
+  import.meta.env?.PUBLIC_DOCS_BASE ||
   'https://docs.wordpresto.com'
 ).replace(/\/+$/, '');
 

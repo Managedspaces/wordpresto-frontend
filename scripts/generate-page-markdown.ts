@@ -24,6 +24,7 @@ import { workersHubContent, seoWorkersContent } from '../src/data/i18n/workersDi
 import { prestobotContent } from '../src/data/i18n/prestobot';
 import { pricingContent } from '../src/data/i18n/pricing';
 import { pillarArticles, type PillarArticle } from '../src/data/pillars';
+import { registerUrl } from '../src/lib/appLinks';
 
 const workersDirectory = workersHubContent.en;
 const seoWorkersDirectory = seoWorkersContent.en;
@@ -338,7 +339,10 @@ function renderPricingMarkdown() {
     ``,
     pricing.ctaBody,
     ``,
-    `Join now: ${SITE_URL}/waitlist`,
+    // The app's real signup, from the same helper the live page uses. This said
+    // `${SITE_URL}/waitlist` until the waitlist was deprecated, which pointed every
+    // LLM reading the mirror at a form that is now a redirect.
+    `Join now: ${registerUrl('en')}`,
     ``,
   ].join('\n');
 }
