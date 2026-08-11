@@ -36,6 +36,7 @@ const clientConfig = {
   strings: {
     trialEyebrow: t.trialEyebrow,
     trialHeadingTemplate: t.trialHeadingTemplate,
+    trialHeadingFreeTemplate: t.trialHeadingFreeTemplate,
     trialBodyTemplate: t.trialBodyTemplate,
     trialCta: t.trialCta,
     billingMonthly: t.billingMonthly,
@@ -47,6 +48,8 @@ const clientConfig = {
     oneTimeLabel: t.oneTimeLabel,
     annualEquivalentTemplate: t.annualEquivalentTemplate,
     annualSavingTemplate: t.annualSavingTemplate,
+    wasPriceLabel: t.wasPriceLabel,
+    saveTemplate: t.saveTemplate,
     creditsTemplate: t.creditsTemplate,
     usageHeading: t.usageHeading,
     usageOrPrefix: t.usageOrPrefix,
@@ -273,7 +276,10 @@ const jsonLd = [
     label: string;
     monthlyCredits: number;
     monthlyPriceEur: number;
+    /** Struck-through list price the monthly price is discounted from; null/absent = no discount. */
+    monthlyListPriceEur?: number | null;
     annualPriceEur?: number | null;
+    annualListPriceEur?: number | null;
     oneTimePriceEur?: number | null;
     oneTime?: boolean;
     allowsOverage?: boolean;
@@ -288,6 +294,8 @@ const jsonLd = [
 
   interface ApiTrial {
     priceEur: number;
+    /** Struck-through list price the trial is discounted from; null/absent = sold at list. */
+    listPriceEur?: number | null;
     credits: number;
     days: number;
     convertsToTier?: string;
@@ -373,7 +381,7 @@ const jsonLd = [
     if (!t || typeof t !== 'object') return false;
     const trial = t as Record<string, unknown>;
     return (
-      isFiniteNumber(trial.priceEur) && trial.priceEur > 0 &&
+      isFiniteNumber(trial.priceEur) && trial.priceEur >= 0 &&
       isFiniteNumber(trial.days) && trial.days > 0 &&
       typeof trial.convertsToLabel === 'string' && trial.convertsToLabel.trim().length > 0 &&
       isFiniteNumber(trial.convertsToMonthlyPriceEur) &&
@@ -383,10 +391,17 @@ const jsonLd = [
 
   function renderTrial(trial: ApiTrial): void {
     document.getElementById('trial-eyebrow')!.textContent = S.trialEyebrow;
-    document.getElementById('trial-heading')!.textContent = fill(S.trialHeadingTemplate, {
-      days: String(trial.days),
-      price: fmtMoney(trial.priceEur),
-    });
+    // The heading follows the API's price rather than assuming either state: free today, and correct
+    // again the day the trial is priced. The list price it is discounted from is struck through beside it.
+    const heading = document.getElementById('trial-heading')!;
+    heading.textContent = trial.priceEur > 0
+      ? fill(S.trialHeadingTemplate, { days: String(trial.days), price: fmtMoney(trial.priceEur) })
+      : fill(S.trialHeadingFreeTemplate, { days: String(trial.days) });
+    const trialWas = wasPrice(trial.priceEur, trial.listPriceEur, 'trial-price-was');
+    if (trialWas) {
+      heading.appendChild(document.createTextNode(' '));
+      heading.appendChild(trialWas);
+    }
     // Prefer the trial's own taster grant; fall back to the converted plan's monthly credits so an older
     // API deploy (before `credits` was added) still renders a valid, non-empty offer during the rollout.
     const trialCredits = isFiniteNumber(trial.credits) && trial.credits > 0
@@ -408,6 +423,28 @@ const jsonLd = [
     card.appendChild(el('span', 'fold-corner-line fold-corner-line--sm'));
   }
 
+  /**
+   * The struck-through list price, when the API says this price is discounted from a higher one. The
+   * strike is a real <s> with a screen-reader prefix, and the "Save N%" figure is computed from the two
+   * numbers on screen — never a discount claim the prices themselves do not support. Returns null when
+   * there is nothing to strike, so the card renders exactly as it did before the launch discount.
+   */
+  function wasPrice(price: number, listPrice: unknown, className = 'plan-price-was'): HTMLElement | null {
+    if (!isFiniteNumber(listPrice) || listPrice <= price) return null;
+    const was = el('s', className);
+    was.appendChild(el('span', 'sr-only', `${S.wasPriceLabel} `));
+    was.appendChild(document.createTextNode(fmtMoney(listPrice)));
+    return was;
+  }
+
+  /** "Save N%", derived from the same two prices the card shows. */
+  function savingBadge(price: number, listPrice: unknown): HTMLElement | null {
+    if (!isFiniteNumber(listPrice) || listPrice <= price) return null;
+    const percent = Math.round((1 - price / listPrice) * 100);
+    if (percent <= 0) return null;
+    return el('span', 'plan-price-save', fill(S.saveTemplate, { percent: String(percent) }));
+  }
+
   function planPriceBlock(plan: ApiPlan): HTMLElement {
     const block = el('div', 'plan-price-block');
     const row = el('div', 'plan-price-row');
@@ -420,6 +457,10 @@ const jsonLd = [
       const annual = plan.annualPriceEur as number;
       row.appendChild(el('span', 'plan-price-figure', fmtMoney(annual)));
       row.appendChild(el('span', 'plan-price-per', S.perYear));
+      const annualWas = wasPrice(annual, plan.annualListPriceEur);
+      if (annualWas) row.appendChild(annualWas);
+      const annualSave = savingBadge(annual, plan.annualListPriceEur);
+      if (annualSave) row.appendChild(annualSave);
       note.appendChild(
         el('span', 'plan-note-line', fill(S.annualEquivalentTemplate, { price: fmtMoney(annual / 12) }))
       );
@@ -432,6 +473,10 @@ const jsonLd = [
     } else {
       row.appendChild(el('span', 'plan-price-figure', fmtMoney(plan.monthlyPriceEur)));
       row.appendChild(el('span', 'plan-price-per', S.perMonth));
+      const monthlyWas = wasPrice(plan.monthlyPriceEur, plan.monthlyListPriceEur);
+      if (monthlyWas) row.appendChild(monthlyWas);
+      const monthlySave = savingBadge(plan.monthlyPriceEur, plan.monthlyListPriceEur);
+      if (monthlySave) row.appendChild(monthlySave);
       note.appendChild(
         el('span', 'plan-note-line', billing === 'annual' ? S.monthlyOnlyNote : S.billedMonthly)
       );
@@ -668,7 +713,9 @@ const jsonLd = [
     color: var(--wp-text-muted);
   }
 
-  .sr-only {
+  /* GLOBAL, not scoped: the struck-through "was" prices are built in JS at runtime, so they never get
+     Astro's scoping attribute — a scoped rule would leave their screen-reader prefix visible. */
+  :global(.sr-only) {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -759,6 +806,13 @@ const jsonLd = [
     line-height: 1.1;
     margin: 0;
     color: var(--wp-ink);
+  }
+  .trial-heading :global(.trial-price-was) {
+    font-size: 0.7em;
+    font-weight: 500;
+    color: var(--wp-text-tertiary);
+    text-decoration-thickness: 1.5px;
+    white-space: nowrap;
   }
   .trial-body {
     font-size: var(--wp-text-md);
@@ -877,6 +931,22 @@ const jsonLd = [
     color: var(--wp-ink);
   }
   .plans-grid :global(.plan-price-per) { font-size: var(--wp-text-md); color: var(--wp-text-tertiary); }
+  /* Launch discount: the price it was, ruled through in ink, with the saving stamped beside it. */
+  .plans-grid :global(.plan-price-was) {
+    font-size: var(--wp-text-md);
+    color: var(--wp-text-tertiary);
+    text-decoration-thickness: 1.5px;
+  }
+  .plans-grid :global(.plan-price-save) {
+    font-family: var(--wp-font-mono);
+    font-size: var(--wp-text-xs);
+    letter-spacing: 0.06em;
+    color: var(--wp-signal);
+    border: 1.5px solid var(--wp-signal);
+    border-radius: 3px;
+    padding: 2px 6px;
+    white-space: nowrap;
+  }
   .plans-grid :global(.plan-price-note) {
     display: flex;
     flex-direction: column;
