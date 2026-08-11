@@ -38,6 +38,6 @@ All prices include VAT.
 
 ## Early access
 
-Word Presto is in early access. Join now and we will be in touch when your place is ready, with current pricing included.
+Word Presto is in early access and open now. Create an account, start your trial, and choose a plan whenever you are ready.
 
 Join now: https://wordpresto.com/waitlist
