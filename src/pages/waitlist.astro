@@ -1,7 +1,25 @@
 ---
-import WaitlistPage from '@/components/WaitlistPage.astro';
+// DEPRECATED — /waitlist now redirects into the app's signup.
+//
+// The waitlist existed while early access was a queue you applied to join. It
+// is not one any more: the site is live, signup is self-serve and the trial
+// starts the moment you finish it, so an application form promising to be in
+// touch is the wrong destination for anyone who lands here from an old link,
+// a bookmark or a search result.
+//
+// 301, not 302: the form is not coming back, so search engines should drop the
+// URL and pass any accumulated signal to the destination.
+//
+// Server-rendered (prerender = false) so this is a real HTTP redirect. A
+// prerendered page could only manage a meta-refresh, which flashes the dead URL
+// and is not a redirect search engines honour.
+//
+// Still here, deliberately: the submitted applications in Neon and the admin
+// viewer at /admin/waitlist that reads them. Deprecating the form does not mean
+// destroying the entries people took the time to fill in.
+import { registerUrl } from '@/lib/appLinks';
 
-export const prerender = true;
+export const prerender = false;
+
+return Astro.redirect(registerUrl('en'), 301);
 ---
-
-<WaitlistPage locale="en" />

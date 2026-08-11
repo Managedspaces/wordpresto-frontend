@@ -1,17 +1,22 @@
 ---
-import WaitlistPage from '@/components/WaitlistPage.astro';
+// DEPRECATED — see src/pages/waitlist.astro for why. This is the localised
+// counterpart: /pt/waitlist, /de/waitlist and so on.
+//
+// The visitor's language is carried into the app as ?lang=<locale> by
+// registerUrl, so a German visitor following an old /de/waitlist link lands on
+// a German signup rather than being quietly reset to English.
+//
+// Unlike its prerendered neighbours in this folder there is no getStaticPaths:
+// the route is server-rendered, so it also catches a locale segment that no
+// longer exists (or never did) instead of 404ing someone who is simply holding
+// an old URL. An unrecognised segment falls back to the English signup.
 import { LOCALES, DEFAULT_LOCALE } from '@/i18n/locales';
+import { registerUrl } from '@/lib/appLinks';
 
-export const prerender = true;
+export const prerender = false;
 
-export function getStaticPaths() {
-  return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({
-    params: { locale: l.path },
-    props: { locale: l.code },
-  }));
-}
+const segment = Astro.params.locale;
+const matched = LOCALES.find((l) => l.path !== '' && l.path === segment);
 
-const { locale } = Astro.props;
+return Astro.redirect(registerUrl(matched?.code ?? DEFAULT_LOCALE), 301);
 ---
-
-<WaitlistPage locale={locale} />
