@@ -235,8 +235,12 @@ export const pricingContent: Partial<Record<Locale, PricingContent>> & {
 
     ctaEyebrow: 'Early access',
     ctaH2: 'Start with the plan that fits the work.',
+    // Early access is still true, but the queue is not: the button below goes straight into the app's
+    // signup and the trial starts the moment you finish it. Deliberately no trial length or price here —
+    // the callout at the top of this page carries those live from the API, and a second static copy is
+    // how the homepage ended up advertising a 14-day trial after it became 7 days.
     ctaBody:
-      'Word Presto is in early access. Join now and we will be in touch when your place is ready, with current pricing included.',
+      'Word Presto is in early access and open now. Create an account, start your trial, and choose a plan whenever you are ready.',
     ctaButton: 'Join now',
     ctaRuleText: 'REVIEW-LED · HUMAN APPROVAL',
   },
