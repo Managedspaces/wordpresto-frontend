@@ -167,6 +167,12 @@ function place(x: number, y: number) {
 <style>
   /* The dark band runs full-bleed; its own inner shell repeats the page gutters. */
   .loop {
+    /* Tallest node card, measured with the longest title in the set, plus a
+       little slack for a font that renders wider than the one measured. */
+    --loop-card-max-h: 118px;
+    /* Vertical distance between the closest pair of nodes (y 392 -> 480) as a
+       share of the 620-unit canvas: 88 / 620. */
+    --loop-closest-pair: 0.1419;
     background: #0b0d12;
     border-top: 1px solid #23262e;
     border-bottom: 1px solid #23262e;
@@ -380,7 +386,19 @@ function place(x: number, y: number) {
   @media (min-width: 72rem) {
     .loop-frame {
       position: relative;
+      /* Explicit, so the box has a definite width. Without it the min-height
+         below feeds back through aspect-ratio and the browser re-derives a
+         WIDER frame from the taller box, pushing the page into horizontal
+         scroll. Width is fixed; only height flexes. */
+      width: 100%;
       aspect-ratio: 1000 / 620;
+      /* The closest vertical pair of nodes sits 88 units apart on the 620-unit
+         canvas, but the cards are a fixed text height — so below a certain
+         frame height they overlap each other. The page shell caps at 1320px,
+         which caps the frame at ~779px tall, which is NOT enough: these two
+         pairs collided at every width. Reserve the height the tallest card
+         actually needs instead of trusting the aspect ratio. */
+      min-height: calc(var(--loop-card-max-h) / var(--loop-closest-pair));
       margin-top: 34px;
     }
     .loop-glow {
