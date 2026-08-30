@@ -1,0 +1,498 @@
+---
+/**
+ * "The same ecosystem, in motion" — the dark band. An infinity path carries the
+ * flow between the search half and the social half, with the body of work at the
+ * crossing point and eight surfaces sitting on the loop.
+ *
+ * Same two adaptations as the ecosystem map above: no horizontal scroller (the
+ * cards stack in normal flow below the wide breakpoint) and the lit ring is an
+ * offset outline rather than an inset overlay, so nothing clips on focus. The
+ * shared caption panel is the artboard's own pattern here.
+ */
+import type { HomeV4Content } from '@/data/i18n/homeV4';
+
+interface Props {
+  loop: HomeV4Content['loop'];
+}
+const { loop } = Astro.props;
+
+// The loop's coordinate space, and the crossing point the arcs bow away from.
+const VIEW_W = 1000;
+const VIEW_H = 620;
+const CENTRE = { x: 500, y: 310 };
+// How far a related-pair arc bows outward from the straight line between them.
+const ARC_BOW = 40;
+
+// The figure-of-eight itself. One path, drawn three times: a soft wide stroke
+// for the glow, a hairline for the edge, and a dashed accent that travels it.
+const LOOP_PATH =
+  'M500,310 C440,190 300,130 200,200 C100,265 100,355 200,420 C300,490 440,430 500,310 ' +
+  'C560,190 700,130 800,200 C900,265 900,355 800,420 C700,490 560,430 500,310';
+
+const byId = Object.fromEntries(loop.nodes.map((n) => [n.id, n]));
+
+// One arc per related pair, de-duplicated so A–B and B–A draw once.
+const seen = new Set<string>();
+const arcs: { a: string; b: string; d: string }[] = [];
+for (const node of loop.nodes) {
+  for (const relatedId of node.related) {
+    const other = byId[relatedId];
+    if (!other) continue;
+    const key = [node.id, relatedId].sort().join('-');
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const mx = (node.x + other.x) / 2;
+    const my = (node.y + other.y) / 2;
+    const dx = mx - CENTRE.x;
+    const dy = my - CENTRE.y;
+    const len = Math.hypot(dx, dy) || 1;
+    arcs.push({
+      a: node.id,
+      b: relatedId,
+      d: `M${node.x},${node.y} Q${mx - (dx / len) * ARC_BOW},${my - (dy / len) * ARC_BOW} ${other.x},${other.y}`,
+    });
+  }
+}
+
+const relMap = Object.fromEntries(loop.nodes.map((n) => [n.id, [n.id, ...n.related]]));
+const captions = Object.fromEntries(loop.nodes.map((n) => [n.id, n.caption]));
+
+function place(x: number, y: number) {
+  return `--nx:${((x / VIEW_W) * 100).toFixed(3)}%;--ny:${((y / VIEW_H) * 100).toFixed(3)}%`;
+}
+---
+
+<section id="loop" class="loop" data-loop>
+  <div class="loop-inner">
+    <div class="loop-kicker">
+      <span class="loop-kicker-label">{loop.kicker}</span>
+      <span class="loop-rule"></span>
+      <span class="loop-badge">{loop.exampleBadge}</span>
+    </div>
+    <h2 class="loop-h2">{loop.h2}</h2>
+    <p class="loop-body">{loop.body}</p>
+
+    <div class="loop-frame">
+      <span class="loop-glow" aria-hidden="true"></span>
+      <svg class="loop-svg" viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path class="loop-path loop-path--glow" d={LOOP_PATH} vector-effect="non-scaling-stroke"></path>
+        <path class="loop-path loop-path--edge" d={LOOP_PATH} vector-effect="non-scaling-stroke"></path>
+        <path class="loop-path loop-path--flow" d={LOOP_PATH} vector-effect="non-scaling-stroke"></path>
+        {arcs.map((arc) => (
+          <path class="loop-arc" data-arc-a={arc.a} data-arc-b={arc.b} d={arc.d} vector-effect="non-scaling-stroke"></path>
+        ))}
+      </svg>
+
+      <p class="loop-axis loop-axis--left">{loop.axisLeft}</p>
+      <p class="loop-axis loop-axis--right">{loop.axisRight}</p>
+
+      <div class="loop-centre">
+        <div class="loop-work">
+          <div class="loop-work-bar">
+            <span class="loop-dots"><span></span><span></span><span></span></span>
+            <span class="loop-work-url">{loop.centre.url}</span>
+          </div>
+          <p class="loop-work-title">{loop.centre.title}</p>
+          <p class="loop-work-body">{loop.centre.body}</p>
+          <span class="loop-work-tiles"><span></span><span></span><span></span></span>
+        </div>
+      </div>
+
+      <div class="loop-nodes">
+        {loop.nodes.map((n) => (
+          <button
+            class="loop-node"
+            type="button"
+            data-loop-node={n.id}
+            aria-describedby="loop-caption"
+            aria-pressed="false"
+            style={place(n.x, n.y)}
+          >
+            <span class="loop-card">
+              <span class="loop-card-head">
+                <svg width="15" height="15" aria-hidden="true"><use href={n.icon}></use></svg>
+                <span class="loop-card-kicker">{n.kicker}</span>
+              </span>
+              <span class="loop-card-title">{n.title}</span>
+              <span class="loop-card-meta">{n.meta}</span>
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <p class="loop-caption" id="loop-caption" data-loop-caption aria-live="polite">{loop.defaultCaption}</p>
+    <p class="loop-instruction">{loop.instruction}</p>
+  </div>
+</section>
+
+<script is:inline define:vars={{ relMap, captions, defaultCaption: loop.defaultCaption }}>
+  (() => {
+    const root = document.querySelector('[data-loop]');
+    if (!root) return;
+    const caption = root.querySelector('[data-loop-caption]');
+    const nodes = Array.from(root.querySelectorAll('[data-loop-node]'));
+    const arcs = Array.from(root.querySelectorAll('[data-arc-a]'));
+
+    function select(id) {
+      const lit = id ? relMap[id] : null;
+      for (const n of nodes) {
+        const on = !!lit && lit.includes(n.dataset.loopNode);
+        n.classList.toggle('is-lit', on);
+        n.setAttribute('aria-pressed', String(n.dataset.loopNode === id));
+      }
+      // An arc lights only when it touches the selected node AND joins it to
+      // one of its related surfaces — the same rule the artboard applies.
+      for (const arc of arcs) {
+        const { arcA, arcB } = arc.dataset;
+        const on =
+          !!lit && ((arcA === id && lit.includes(arcB)) || (arcB === id && lit.includes(arcA)));
+        arc.classList.toggle('is-lit', on);
+      }
+      caption.textContent = id ? captions[id] : defaultCaption;
+    }
+
+    for (const n of nodes) {
+      n.addEventListener('click', () => select(n.dataset.loopNode));
+      n.addEventListener('focus', () => select(n.dataset.loopNode));
+      n.addEventListener('mouseenter', () => select(n.dataset.loopNode));
+    }
+    root.addEventListener('mouseleave', () => select(null));
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') select(null);
+    });
+  })();
+</script>
+
+<style>
+  /* The dark band runs full-bleed; its own inner shell repeats the page gutters. */
+  .loop {
+    background: #0b0d12;
+    border-top: 1px solid #23262e;
+    border-bottom: 1px solid #23262e;
+    margin-top: clamp(64px, 9vw, 104px);
+  }
+  .loop-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: clamp(56px, 7vw, 78px) clamp(18px, 4vw, 32px) clamp(60px, 7vw, 84px);
+  }
+  .loop-kicker {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 0 0 26px;
+  }
+  .loop-kicker-label {
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(247, 244, 236, 0.55);
+  }
+  .loop-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(247, 244, 236, 0.14);
+    min-width: 24px;
+  }
+  .loop-badge {
+    font-family: var(--wp-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(247, 244, 236, 0.62);
+    border: 1px solid rgba(247, 244, 236, 0.2);
+    border-radius: var(--wp-radius-pill);
+    padding: 4px 10px;
+    flex: none;
+  }
+  .loop-h2 {
+    font-family: var(--wp-font-serif);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 2.8vw + 0.5rem, 2.5rem);
+    line-height: 1.06;
+    letter-spacing: -0.028em;
+    margin: 0;
+    color: #f7f4ec;
+    max-width: 22em;
+  }
+  .loop-body {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: rgba(247, 244, 236, 0.68);
+    margin: 16px 0 0;
+    max-width: 42em;
+  }
+
+  /* ---- narrow: stacked cards, no scroller ---- */
+  .loop-frame {
+    margin-top: 28px;
+  }
+  .loop-svg,
+  .loop-glow,
+  .loop-axis,
+  .loop-instruction {
+    display: none;
+  }
+  .loop-nodes {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .loop-node {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+  }
+  .loop-node:focus-visible {
+    outline: 2px solid #e07c58;
+    outline-offset: 4px;
+    border-radius: 9px;
+  }
+  .loop-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: #14171f;
+    border: 1px solid rgba(247, 244, 236, 0.16);
+    border-radius: 7px;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.42);
+    padding: 11px 12px;
+    outline: 1.5px solid transparent;
+    outline-offset: 4px;
+    transition: outline-color 200ms ease, border-color 200ms ease,
+      transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .loop-node.is-lit .loop-card {
+    outline-color: #e07c58;
+  }
+  .loop-card-head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .loop-card-kicker {
+    font-family: var(--wp-font-mono);
+    font-size: 8.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(247, 244, 236, 0.55);
+  }
+  .loop-card-title {
+    font-size: 12px;
+    line-height: 1.35;
+    color: #f7f4ec;
+  }
+  .loop-card-meta {
+    font-family: var(--wp-font-mono);
+    font-size: 9px;
+    color: rgba(247, 244, 236, 0.5);
+  }
+
+  .loop-centre {
+    margin-bottom: 14px;
+  }
+  .loop-work {
+    background: #14171f;
+    border: 1px solid rgba(247, 244, 236, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.55);
+    padding: 16px 18px;
+  }
+  .loop-work-bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(247, 244, 236, 0.12);
+  }
+  .loop-dots {
+    display: flex;
+    gap: 4px;
+  }
+  .loop-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(247, 244, 236, 0.3);
+  }
+  .loop-work-url {
+    font-family: var(--wp-font-mono);
+    font-size: 10px;
+    color: rgba(247, 244, 236, 0.6);
+  }
+  .loop-work-title {
+    font-family: var(--wp-font-serif);
+    font-size: 1.625rem;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    color: #f7f4ec;
+    margin: 12px 0 0;
+  }
+  .loop-work-body {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: rgba(247, 244, 236, 0.65);
+    margin: 6px 0 0;
+  }
+  .loop-work-tiles {
+    display: flex;
+    gap: 6px;
+    margin-top: 14px;
+  }
+  .loop-work-tiles span {
+    flex: 1;
+    height: 26px;
+    background: rgba(247, 244, 236, 0.07);
+    border-radius: 3px;
+  }
+
+  .loop-caption {
+    font-family: var(--wp-font-serif);
+    font-size: clamp(1.125rem, 1.9vw, 1.5rem);
+    line-height: 1.4;
+    color: #f7f4ec;
+    margin: 26px auto 0;
+    max-width: 44em;
+    text-align: center;
+  }
+  .loop-instruction {
+    font-family: var(--wp-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(247, 244, 236, 0.45);
+    text-align: center;
+    margin: 10px 0 0;
+  }
+
+  /* ---- wide: the loop itself ---- */
+  @media (min-width: 72rem) {
+    .loop-frame {
+      position: relative;
+      aspect-ratio: 1000 / 620;
+      margin-top: 34px;
+    }
+    .loop-glow {
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 76%;
+      height: 66%;
+      background: radial-gradient(closest-side, rgba(96, 112, 196, 0.2), rgba(11, 13, 18, 0));
+      pointer-events: none;
+    }
+    .loop-svg {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .loop-path {
+      fill: none;
+    }
+    .loop-path--glow {
+      stroke: rgba(247, 244, 236, 0.16);
+      stroke-width: 30;
+      stroke-linecap: round;
+    }
+    .loop-path--edge {
+      stroke: rgba(247, 244, 236, 0.34);
+      stroke-width: 1;
+    }
+    .loop-path--flow {
+      stroke: #e07c58;
+      stroke-width: 1.6;
+      stroke-dasharray: 5 13;
+      animation: wpv4-loop-flow 9s linear infinite;
+    }
+    .loop-arc {
+      fill: none;
+      stroke: transparent;
+      stroke-width: 1.3;
+      stroke-dasharray: 3 7;
+      transition: stroke 200ms ease;
+    }
+    .loop-arc.is-lit {
+      stroke: #e0a88f;
+    }
+    .loop-axis {
+      display: block;
+      position: absolute;
+      top: 93%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      margin: 0;
+      font-family: var(--wp-font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(247, 244, 236, 0.5);
+      white-space: nowrap;
+    }
+    .loop-axis--left {
+      left: 23%;
+    }
+    .loop-axis--right {
+      left: 77%;
+    }
+    .loop-centre {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      width: 298px;
+      margin: 0;
+    }
+    .loop-nodes {
+      display: block;
+      margin: 0;
+    }
+    .loop-node {
+      position: absolute;
+      left: var(--nx);
+      top: var(--ny);
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      width: 180px;
+    }
+    .loop-node:hover .loop-card,
+    .loop-node:focus-visible .loop-card {
+      transform: scale(1.06);
+      border-color: rgba(224, 124, 88, 0.75);
+    }
+    .loop-instruction {
+      display: block;
+    }
+  }
+
+  @keyframes wpv4-loop-flow {
+    to {
+      stroke-dashoffset: 180;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loop-path--flow {
+      animation: none;
+    }
+    .loop-node:hover .loop-card,
+    .loop-node:focus-visible .loop-card {
+      transform: none;
+    }
+  }
+</style>

@@ -1,0 +1,363 @@
+---
+/**
+ * The "Editorial operations board" card that sits beside the hero: you as
+ * editor-in-chief, Emma as managing editor, the Canvas as the working document,
+ * the specialist desk around it, and the two states work moves through.
+ */
+import type { HomeV4Content } from '@/data/i18n/homeV4';
+
+interface Props {
+  desk: HomeV4Content['desk'];
+}
+const { desk } = Astro.props;
+
+// The four specialist headshots shown as a stacked row. These are real portrait
+// assets already in the site's agent set; listed here so the markup loops over
+// one source rather than repeating four <img> tags.
+const SPECIALIST_PORTRAITS = ['profile-08', 'profile-12', 'profile-15', 'profile-19'];
+---
+
+<div class="desk" id="desk">
+  <!-- Alias anchor: the shared masthead links to #emma-desk from every page. -->
+  <span id="emma-desk" class="desk-anchor-alias" aria-hidden="true"></span>
+  <p class="desk-kicker">{desk.kicker}</p>
+
+  <div class="desk-card">
+    <div class="desk-head">
+      <span class="desk-head-title">{desk.boardTitle}</span>
+      <span class="desk-live"><span class="desk-live-dot"></span>{desk.liveLabel}</span>
+    </div>
+
+    <div class="desk-body">
+      <div class="desk-row">
+        <span class="desk-you">You</span>
+        <span class="desk-row-main">
+          <span class="desk-role">{desk.you.role}</span>
+          <span class="desk-row-title">{desk.you.title}</span>
+        </span>
+        <span class="desk-badge desk-badge--ready">{desk.you.badge}</span>
+      </div>
+
+      <div class="desk-row desk-row--emma">
+        <span class="desk-avatar">
+          <img
+            src="/editors/emma-192.webp"
+            srcset="/editors/emma-192.webp 1x, /editors/emma-384.webp 2x"
+            alt="Emma, managing editor"
+            width="38"
+            height="38"
+            loading="eager"
+            decoding="async"
+          />
+        </span>
+        <span class="desk-row-main">
+          <span class="desk-emma-name">{desk.emma.name}<span class="desk-role desk-role--inline">{desk.emma.role}</span></span>
+          <span class="desk-emma-body">{desk.emma.body}</span>
+        </span>
+        <span class="desk-status">{desk.emma.status}</span>
+      </div>
+
+      <div class="desk-canvas">
+        <div class="desk-canvas-head">
+          <span class="desk-canvas-label">{desk.canvas.label}</span>
+          <span class="desk-canvas-note">{desk.canvas.note}</span>
+        </div>
+        <div class="desk-canvas-lines">
+          {desk.canvas.lines.map((line) => (
+            <p class="desk-canvas-line">
+              <span class="desk-canvas-tag">{line.tag}</span>
+              <span>{line.text}</span>
+            </p>
+          ))}
+        </div>
+      </div>
+
+      <div class="desk-row">
+        <span class="desk-stack">
+          {SPECIALIST_PORTRAITS.map((p) => (
+            <img
+              src={`/agents/profiles/${p}-192.webp`}
+              srcset={`/agents/profiles/${p}-192.webp 1x, /agents/profiles/${p}-384.webp 2x`}
+              alt=""
+              width="28"
+              height="28"
+              loading="lazy"
+              decoding="async"
+            />
+          ))}
+        </span>
+        <span class="desk-row-main">
+          <span class="desk-row-title">{desk.specialists.title}</span>
+          <span class="desk-specialist-body">{desk.specialists.body}</span>
+        </span>
+      </div>
+
+      <div class="desk-states">
+        {desk.states.map((s) => (
+          <div class="desk-state">
+            <span class="desk-state-label">{s.label}</span>
+            <span class={`desk-badge desk-badge--${s.tone}`}>{s.badge}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <p class="desk-annotation">{desk.annotation}</p>
+</div>
+
+<style>
+  /* The alias target sits where the section starts but takes no space. */
+  .desk-anchor-alias {
+    display: block;
+    height: 0;
+  }
+  .desk {
+    position: relative;
+  }
+  .desk-kicker {
+    font-family: var(--wp-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+    margin: 0 0 12px;
+  }
+  .desk-card {
+    background: var(--wp-white);
+    border: 1px solid var(--wp-text-primary);
+    border-radius: 10px;
+    box-shadow: 0 18px 44px rgba(17, 19, 24, 0.12);
+    overflow: hidden;
+  }
+  .desk-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 11px 16px;
+    background: var(--wp-bg-secondary);
+    border-bottom: 1px solid var(--wp-border-primary);
+  }
+  .desk-head-title {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .desk-live {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--wp-font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--wp-text-tertiary);
+  }
+  .desk-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--wp-primary);
+  }
+  .desk-body {
+    padding: 18px 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .desk-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 14px;
+    border: 1px solid var(--wp-border-primary);
+    border-radius: 6px;
+  }
+  .desk-row--emma {
+    border-color: var(--wp-border-secondary);
+    background: var(--wp-bg-secondary);
+  }
+  .desk-row-main {
+    flex: 1;
+    min-width: 0;
+  }
+  .desk-you,
+  .desk-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--wp-border-secondary);
+    background: var(--wp-bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    overflow: hidden;
+  }
+  .desk-you {
+    font-family: var(--wp-font-mono);
+    font-size: 12px;
+    color: var(--wp-text-secondary);
+  }
+  .desk-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .desk-role {
+    display: block;
+    font-family: var(--wp-font-mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+  }
+  .desk-role--inline {
+    display: inline;
+    letter-spacing: 0.14em;
+    margin-left: 6px;
+  }
+  .desk-row-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 3px;
+    line-height: 1.35;
+  }
+  .desk-emma-name {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .desk-emma-body {
+    display: block;
+    font-size: 12.5px;
+    color: var(--wp-text-secondary);
+    margin-top: 3px;
+  }
+  .desk-status {
+    font-family: var(--wp-font-mono);
+    font-size: 9.5px;
+    color: var(--wp-text-tertiary);
+    flex: none;
+  }
+  .desk-badge {
+    font-family: var(--wp-font-mono);
+    font-size: 9.5px;
+    padding: 3px 8px;
+    border-radius: var(--wp-radius-pill);
+    flex: none;
+    white-space: nowrap;
+  }
+  .desk-badge--ready {
+    background: var(--wp-signal-soft);
+    color: var(--wp-primary);
+  }
+  .desk-badge--review {
+    background: var(--wp-amber-soft);
+    /* Darker than --wp-amber so the pill text clears AA on its own tint. */
+    color: #8a5a14;
+  }
+  .desk-canvas {
+    border: 1px solid var(--wp-border-primary);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .desk-canvas-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 9px 13px;
+    border-bottom: 1px solid var(--wp-border-primary);
+    background: var(--wp-bg-secondary);
+  }
+  .desk-canvas-label {
+    font-family: var(--wp-font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--wp-text-tertiary);
+  }
+  .desk-canvas-note {
+    margin-left: auto;
+    font-family: var(--wp-font-mono);
+    font-size: 9.5px;
+    color: var(--wp-text-muted);
+  }
+  .desk-canvas-lines {
+    padding: 13px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .desk-canvas-line {
+    display: flex;
+    gap: 9px;
+    align-items: baseline;
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--wp-text-secondary);
+  }
+  .desk-canvas-tag {
+    font-family: var(--wp-font-mono);
+    font-size: 9px;
+    color: var(--wp-accent-ink);
+    flex: none;
+  }
+  .desk-stack {
+    display: flex;
+    flex: none;
+  }
+  .desk-stack img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--wp-white);
+  }
+  .desk-stack img + img {
+    margin-left: -9px;
+  }
+  .desk-specialist-body {
+    display: block;
+    font-family: var(--wp-font-mono);
+    font-size: 9.5px;
+    line-height: 1.45;
+    color: var(--wp-text-tertiary);
+    margin-top: 2px;
+  }
+  .desk-states {
+    border-top: 1px solid var(--wp-border-primary);
+    padding-top: 12px;
+  }
+  .desk-state {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+  }
+  .desk-state + .desk-state {
+    border-top: 1px solid var(--wp-border-primary);
+  }
+  .desk-state-label {
+    font-size: 12.5px;
+    flex: 1;
+  }
+  .desk-annotation {
+    font-family: var(--wp-font-hand);
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--wp-accent-ink);
+    margin: 16px 0 0;
+    transform: rotate(-1deg);
+  }
+
+  /* Roomier card padding once there is horizontal space for it. */
+  @media (min-width: 30rem) {
+    .desk-body {
+      padding: 20px 22px 22px;
+    }
+  }
+</style>

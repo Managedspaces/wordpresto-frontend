@@ -1,0 +1,107 @@
+---
+/**
+ * Homepage v4 — "Better information in. Better writing out."
+ *
+ * The previous homepage is untouched in `HomePage.astro` and still serves the
+ * five non-English locales; see context.md. This one is English-only until its
+ * copy is translated, which is why it takes no `locale` prop.
+ *
+ * Every section is its own component under `home-v4/`, and every string comes
+ * from `@/data/i18n/homeV4` so the page and its Markdown mirror read the same
+ * source and cannot drift.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Masthead from '@/components/Masthead.astro';
+import Footer from '@/components/Footer.astro';
+import IconSprite from '@/components/home-v4/IconSprite.astro';
+import HeroCopy from '@/components/home-v4/HeroCopy.astro';
+import DeskBoard from '@/components/home-v4/DeskBoard.astro';
+import PillarRows from '@/components/home-v4/PillarRows.astro';
+import EcosystemMap from '@/components/home-v4/EcosystemMap.astro';
+import LoopSection from '@/components/home-v4/LoopSection.astro';
+import ChannelsSection from '@/components/home-v4/ChannelsSection.astro';
+import DppSection from '@/components/home-v4/DppSection.astro';
+import SignInCta from '@/components/home-v4/SignInCta.astro';
+import { homeV4 } from '@/data/i18n/homeV4';
+import { registerUrl } from '@/lib/appLinks';
+import { DEFAULT_LOCALE } from '@/i18n/locales';
+
+const t = homeV4;
+const registerHref = registerUrl(DEFAULT_LOCALE);
+const canonical = 'https://wordpresto.com/';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Word Presto',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description: t.seo.metaDescription,
+    url: canonical,
+  },
+];
+---
+
+<BaseLayout
+  pageTitle={t.seo.pageTitle}
+  seoTitle={t.seo.seoTitle}
+  description={t.seo.metaDescription}
+  canonical={canonical}
+  jsonLd={jsonLd}
+  locale={DEFAULT_LOCALE}
+  localisedPath="/"
+>
+  <IconSprite />
+  <Masthead locale={DEFAULT_LOCALE} />
+
+  <main id="top" class="v4-shell">
+    <section class="v4-hero">
+      <HeroCopy hero={t.hero} registerHref={registerHref} />
+      <DeskBoard desk={t.desk} />
+    </section>
+
+    <PillarRows pillars={t.pillars} />
+    <EcosystemMap ecosystem={t.ecosystem} />
+  </main>
+
+  <LoopSection loop={t.loop} />
+
+  <main class="v4-shell">
+    <ChannelsSection channels={t.channels} />
+  </main>
+
+  <DppSection dpp={t.dpp} />
+
+  <main class="v4-shell">
+    <SignInCta signIn={t.signIn} registerHref={registerHref} />
+  </main>
+
+  <Footer locale={DEFAULT_LOCALE} />
+</BaseLayout>
+
+<style>
+  /* The page shell: one max width and one gutter pair, shared by every band
+     that is not full-bleed. The dark loop band and the DPP band repeat these
+     values inside their own inner wrappers because they paint edge to edge. */
+  .v4-shell {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 4vw, 32px);
+  }
+  .v4-hero {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+    padding: 48px 0 0;
+  }
+
+  /* Hero goes side-by-side once both columns clear their comfortable minimum. */
+  @media (min-width: 58rem) {
+    .v4-hero {
+      grid-template-columns: repeat(2, minmax(440px, 1fr));
+      gap: 56px;
+      padding-top: 60px;
+    }
+  }
+</style>

@@ -1,0 +1,158 @@
+---
+/**
+ * The five alternating image/text rows — Write, Publish, Engage, Rank, Track.
+ * Odd rows put the image first on wide screens; on narrow screens every row
+ * stacks image-then-text so the reading order never depends on the viewport.
+ */
+import type { HomeV4Content } from '@/data/i18n/homeV4';
+
+interface Props {
+  pillars: HomeV4Content['pillars'];
+}
+const { pillars } = Astro.props;
+
+// Widths of the generated WebP set in public/home/. Named here so the srcset
+// and the conversion step read the same list rather than two pasted copies.
+const PILLAR_IMAGE_WIDTHS = [640, 800, 960, 1280];
+// On wide screens the frame occupies about half of the 1320px shell; below that
+// it is full-bleed within the page gutters.
+const PILLAR_IMAGE_SIZES = '(min-width: 60rem) 46vw, 92vw';
+// The source art is 4:3; declared on the element so the row reserves its space
+// before the image decodes and nothing shifts underneath it.
+const PILLAR_IMAGE_WIDTH = 1280;
+const PILLAR_IMAGE_HEIGHT = 960;
+
+function srcSet(image: string): string {
+  return PILLAR_IMAGE_WIDTHS.map((w) => `/home/${image}-${w}.webp ${w}w`).join(', ');
+}
+---
+
+<section id="pillars" class="pillars" aria-label="How Word Presto works">
+  <!-- Alias anchor: the shared footer's "How it works" links to #story, which
+       was the previous homepage's id for this same idea. -->
+  <span id="story" class="pillars-anchor-alias" aria-hidden="true"></span>
+  {pillars.rows.map((row, i) => (
+    <div class:list={['pillar', { 'pillar--reversed': i % 2 === 1, 'pillar--last': i === pillars.rows.length - 1 }]}>
+      <figure class="pillar-figure">
+        <div class="pillar-frame">
+          <img
+            src={`/home/${row.image}-${PILLAR_IMAGE_WIDTHS[0]}.webp`}
+            srcset={srcSet(row.image)}
+            sizes={PILLAR_IMAGE_SIZES}
+            alt={row.imageAlt}
+            width={PILLAR_IMAGE_WIDTH}
+            height={PILLAR_IMAGE_HEIGHT}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </figure>
+
+      <div class="pillar-copy">
+        <p class="pillar-kicker">
+          <span class="pillar-number">{row.number}</span>
+          <span>{row.kicker}</span>
+        </p>
+        <h3 class="pillar-title">{row.title}</h3>
+        <p class="pillar-lead">{row.lead}</p>
+        {row.body.map((p) => <p class="pillar-body">{p}</p>)}
+        <p class="pillar-closing">{row.closing}</p>
+      </div>
+    </div>
+  ))}
+</section>
+
+<style>
+  .pillars {
+    padding: clamp(64px, 9vw, 104px) 0 0;
+  }
+  .pillars-anchor-alias {
+    display: block;
+    height: 0;
+  }
+  .pillar {
+    display: grid;
+    gap: 32px;
+    align-items: center;
+    padding: clamp(36px, 5vw, 56px) 0;
+    border-top: 1px solid var(--wp-border-primary);
+  }
+  .pillar--last {
+    border-bottom: 1px solid var(--wp-border-primary);
+  }
+  .pillar-figure {
+    margin: 0;
+  }
+  .pillar-frame {
+    border: 1px solid var(--wp-border-secondary);
+    box-shadow: 0 1px 2px rgba(17, 19, 24, 0.08);
+    background: var(--wp-white);
+    padding: 10px;
+  }
+  .pillar-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .pillar-kicker {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 0;
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--wp-text-tertiary);
+  }
+  .pillar-number {
+    color: var(--wp-accent-ink);
+    text-transform: none;
+    flex: none;
+  }
+  .pillar-title {
+    font-family: var(--wp-font-serif);
+    font-weight: 600;
+    /* The design's giant word: 56px on a phone up to 116px on a wide desk. */
+    font-size: clamp(3.5rem, 8vw, 7.25rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    margin: 14px 0 0;
+  }
+  .pillar-lead {
+    font-family: var(--wp-font-serif);
+    font-size: clamp(1.1875rem, 1.6vw + 0.5rem, 1.5rem);
+    line-height: 1.34;
+    margin: 22px 0 0;
+    max-width: 22em;
+  }
+  .pillar-body {
+    font-size: 0.96875rem;
+    line-height: 1.65;
+    color: var(--wp-text-secondary);
+    margin: 14px 0 0;
+    max-width: 34em;
+  }
+  .pillar-closing {
+    font-size: 0.96875rem;
+    line-height: 1.6;
+    font-weight: 600;
+    margin: 14px 0 0;
+    max-width: 32em;
+  }
+
+  /* Two columns once both a 400px image and a 400px column fit side by side. */
+  @media (min-width: 55rem) {
+    .pillar {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    /* Even rows put the copy first; the figure is source-ordered first so the
+       stacked (mobile) reading order stays image-then-text everywhere. */
+    .pillar--reversed .pillar-figure {
+      order: 2;
+    }
+  }
+</style>

@@ -1,0 +1,331 @@
+---
+/**
+ * "One piece of work. More ways to use it." — the Canvas as the single source,
+ * an arrow, and the destinations prepared from it (social channels, then CMS
+ * targets). The arrow is horizontal on wide screens and turns downward when the
+ * three columns stack, so the flow still reads correctly on a phone.
+ */
+import type { HomeV4Content } from '@/data/i18n/homeV4';
+
+interface Props {
+  channels: HomeV4Content['channels'];
+}
+const { channels } = Astro.props;
+
+const social = channels.destinations.filter((d) => d.group === 'social');
+const cms = channels.destinations.filter((d) => d.group === 'cms');
+---
+
+<section id="channels" class="ch">
+  <!-- Alias anchor: the shared masthead links to #canvas from every page. -->
+  <span id="canvas" class="ch-anchor-alias" aria-hidden="true"></span>
+  <p class="ch-kicker">{channels.kicker}</p>
+  <h2 class="ch-h2">{channels.h2}</h2>
+  <p class="ch-body">{channels.body}</p>
+  <p class="ch-emphasis">{channels.emphasis}</p>
+
+  <div class="ch-flow">
+    <div class="ch-source">
+      <p class="ch-source-label">
+        <span class="ch-tick" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+        </span>
+        {channels.source.label}
+      </p>
+      <div>
+        <p class="ch-source-title">{channels.source.title}</p>
+        <ul class="ch-source-items">
+          {channels.source.items.map((item) => (
+            <li><span class="ch-bullet" aria-hidden="true"></span>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="ch-source-foot">
+        <p class="ch-source-foot-label">{channels.source.footnoteLabel}</p>
+        <p class="ch-source-foot-text">{channels.source.footnote}</p>
+      </div>
+    </div>
+
+    <div class="ch-arrow" aria-hidden="true">
+      <span class="ch-arrow-label">{channels.arrowLabel}</span>
+      <svg class="ch-arrow-mark" width="86" height="12" viewBox="0 0 86 12" fill="none">
+        <path d="M2 6h74" stroke="var(--wp-border-strong)" stroke-width="1.4" stroke-dasharray="6 6"></path>
+        <path d="M76 1.5L83 6l-7 4.5" stroke="var(--wp-border-strong)" stroke-width="1.4" fill="none"></path>
+      </svg>
+    </div>
+
+    <div class="ch-dests">
+      <div>
+        <p class="ch-group-label">{channels.socialLabel}</p>
+        <div class="ch-pills">
+          {social.map((d) => (
+            <div class="ch-pill">
+              <svg width="20" height="20" aria-hidden="true"><use href={d.icon}></use></svg>
+              <span>
+                <span class="ch-pill-name">{d.name}</span>
+                <span class="ch-pill-state">{d.state}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <p class="ch-group-label">{channels.cmsLabel}</p>
+        <p class="ch-group-body">{channels.cmsBody}</p>
+        <div class="ch-pills">
+          {cms.map((d) => (
+            <div class="ch-pill">
+              <svg width="20" height="20" aria-hidden="true"><use href={d.icon}></use></svg>
+              <span>
+                <span class="ch-pill-name">{d.name}</span>
+                <span class="ch-pill-state">{d.state}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="ch-safety">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--wp-text-tertiary)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+    <span>{channels.safetyNote} <strong>{channels.safetyEmphasis}</strong></span>
+  </p>
+</section>
+
+<style>
+  .ch {
+    padding: clamp(60px, 8vw, 96px) 0 0;
+  }
+  .ch-anchor-alias {
+    display: block;
+    height: 0;
+  }
+  .ch-kicker {
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--wp-text-primary);
+    padding-top: 14px;
+    margin: 0;
+  }
+  .ch-h2 {
+    font-family: var(--wp-font-serif);
+    font-weight: 600;
+    font-size: clamp(1.875rem, 4vw, 3.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin: 26px 0 0;
+    max-width: 19em;
+  }
+  .ch-body {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--wp-text-secondary);
+    margin: 16px 0 0;
+    max-width: 42em;
+  }
+  .ch-emphasis {
+    font-family: var(--wp-font-serif);
+    font-size: clamp(1.25rem, 1.8vw + 0.5rem, 1.6875rem);
+    line-height: 1.3;
+    margin: 20px 0 0;
+  }
+  .ch-flow {
+    display: grid;
+    gap: 24px;
+    align-items: center;
+    margin-top: 44px;
+  }
+  .ch-source {
+    background: var(--wp-white);
+    border: 1px solid var(--wp-border-primary);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(17, 19, 24, 0.06);
+    padding: 22px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .ch-source-label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0;
+    font-family: var(--wp-font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--wp-primary);
+  }
+  .ch-tick {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--wp-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  .ch-source-title {
+    font-family: var(--wp-font-serif);
+    font-size: 1.625rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .ch-source-items {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .ch-source-items li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.84375rem;
+    color: var(--wp-text-secondary);
+  }
+  .ch-bullet {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--wp-border-strong);
+    flex: none;
+  }
+  .ch-source-foot {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--wp-border-primary);
+  }
+  .ch-source-foot-label {
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--wp-text-tertiary);
+    margin: 0;
+  }
+  .ch-source-foot-text {
+    font-size: 0.90625rem;
+    font-weight: 600;
+    margin: 6px 0 0;
+  }
+  .ch-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .ch-arrow-label {
+    font-family: var(--wp-font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+    white-space: nowrap;
+  }
+  /* Stacked layout: the arrow points down the page, matching the reading flow.
+     Fixed intrinsic size so the grid's `auto` column never squashes it. */
+  .ch-arrow-mark {
+    width: 86px;
+    height: 12px;
+    flex: none;
+    transform: rotate(90deg);
+  }
+  .ch-dests {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .ch-group-label {
+    font-family: var(--wp-font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--wp-text-tertiary);
+    margin: 0;
+  }
+  .ch-group-body {
+    font-size: 0.875rem;
+    color: var(--wp-text-secondary);
+    margin: 7px 0 0;
+  }
+  .ch-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .ch-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--wp-white);
+    border: 1px solid var(--wp-border-primary);
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(17, 19, 24, 0.05);
+    padding: 10px 13px;
+  }
+  .ch-pill svg {
+    flex: none;
+  }
+  .ch-pill-name {
+    display: block;
+    font-size: 0.84375rem;
+    font-weight: 600;
+  }
+  .ch-pill-state {
+    display: block;
+    font-family: var(--wp-font-mono);
+    font-size: 10px;
+    color: var(--wp-primary);
+    margin-top: 2px;
+  }
+  .ch-safety {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    margin: 34px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--wp-border-primary);
+    font-size: 0.90625rem;
+    line-height: 1.55;
+    color: var(--wp-text-secondary);
+  }
+  .ch-safety svg {
+    flex: none;
+    margin-top: 3px;
+  }
+  .ch-safety strong {
+    color: var(--wp-text-primary);
+    font-weight: 600;
+  }
+
+  /* Three columns — source, arrow, destinations — once they genuinely fit. */
+  @media (min-width: 60rem) {
+    .ch-flow {
+      grid-template-columns: minmax(280px, 1fr) auto minmax(320px, 1.4fr);
+      gap: 32px;
+    }
+    .ch-source {
+      padding: 22px 24px 20px;
+      min-height: 300px;
+    }
+    .ch-arrow-mark {
+      transform: none;
+    }
+    .ch-safety {
+      align-items: center;
+      text-align: center;
+    }
+    .ch-safety svg {
+      margin-top: 0;
+    }
+  }
+</style>

@@ -148,7 +148,7 @@ const alternates =
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=IBM+Plex+Mono:wght@400;500;600&family=Caveat:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Caveat:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -197,6 +197,13 @@ const alternates =
     --wp-red: #C2413A;
     --wp-red-soft: rgba(194, 65, 58, 0.10);
 
+    /* Editorial accent — the red pen. Marks annotations, section numbers and
+       the "lit" state in the homepage ecosystem diagrams. Defined once here so
+       the accent is a token rather than a literal repeated across components. */
+    --wp-accent-ink: #B5482C;
+    --wp-accent-ink-hover: #8E3620;
+    --wp-accent-ink-soft: rgba(181, 72, 44, 0.16);
+
     /* Team accents */
     --team-content: #16A36A;
     --team-seo: #0891B2;
@@ -230,6 +237,8 @@ const alternates =
     --wp-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --wp-font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
     --wp-font-hand: "Caveat", cursive;
+    /* Display serif — homepage-v4 headlines and pull lines. */
+    --wp-font-serif: "Newsreader", Georgia, "Times New Roman", serif;
 
     --wp-text-xs: 0.75rem;
     --wp-text-sm: 0.8125rem;

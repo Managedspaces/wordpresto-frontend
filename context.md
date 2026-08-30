@@ -478,3 +478,113 @@ label needed updating. The generated mirrors (`public/pricing/index.md`,
 `public/pages/pricing.md`, `public/llms-full.txt`) regenerated from the data
 file via prebuild and now read the inclusive wording. `/pricing` is still
 English-only, so there was one string to change and no locale variants.
+
+## Homepage v4 — "Better information in. Better writing out." (2026-08-30)
+
+The English homepage at `/` is now a new design. **The previous homepage was
+not discarded**: `src/components/HomePage.astro` and its copy in
+`src/data/i18n/home.ts` are untouched and still serve `/pt/`, `/pt-br/`,
+`/es/`, `/de/` and `/fr/` via `src/pages/[locale]/index.astro`. Nothing was
+deleted; the English route simply points somewhere else.
+
+### What changed
+
+- **New**: `src/components/HomePageV4.astro` — the page shell, composing eight
+  section components under `src/components/home-v4/`: `IconSprite`, `HeroCopy`,
+  `DeskBoard`, `PillarRows`, `EcosystemMap`, `LoopSection`, `ChannelsSection`,
+  `DppSection`, `SignInCta`. Each section is its own file; none is large.
+- **New**: `src/data/i18n/homeV4.ts` — every string on the page, typed. The
+  page and its Markdown mirror both read it, so `check-mirror-sync.mjs` can
+  never find drift between them.
+- **Changed**: `src/pages/index.astro` renders `HomePageV4` (English only —
+  the component takes no `locale` prop, because the copy is not translated yet).
+- **Changed**: `scripts/generate-page-markdown.ts` gained
+  `renderHomeV4Markdown()`. English mirrors (`public/index.md`,
+  `public/pages/index.md`) come from `homeV4.ts`; the five locale mirrors still
+  come from `home.ts` through the original `renderHomepageMarkdown()`.
+- **Changed**: `src/layouts/BaseLayout.astro` — added `--wp-font-serif`
+  (Newsreader, the display serif the design is built on, folded into the single
+  existing Google Fonts request) and `--wp-accent-ink` / `-hover` / `-soft`
+  (`#B5482C`, the editorial red used for annotations, section numbers and the
+  lit state in the diagrams). Both are tokens, not literals scattered in
+  components.
+- **New**: `public/home/*.webp` — the five pillar illustrations.
+
+### Site chrome kept, design chrome dropped
+
+The artboard draws its own sticky header (logo, "How it works / The desk /
+Sign in / Join now") and a two-link footer. Those were **not** implemented:
+the site's shared `Masthead` and `Footer` carry the real routed navigation and
+the locale switcher, and swapping them out on one page only would have lost
+both and broken consistency with every other page. The design's nav intent is
+already covered — the masthead has "The desk" and "Canvas", the footer has
+"How it works".
+
+Those chrome links target homepage sections, so the v4 page carries alias
+anchors for them: `#emma-desk` on the desk board, `#canvas` on the channels
+section, `#story` on the pillars. See the new build guard below.
+
+### Two deliberate departures from the artboard, both about clipping
+
+The ecosystem map and the loop are the only interactive parts, and the artboard
+builds both as a fixed 1000px-wide canvas inside `overflow-x:auto`, with each
+node's explanation in an absolutely-positioned tooltip hanging below its card
+and its lit state drawn as an overlay at `inset:-5px`.
+
+1. **Tooltips → one shared caption panel below each diagram.** A scroll
+   container cannot clip on one axis only: `overflow-x:auto` forces
+   `overflow-y:auto`, so every one of those tooltips would have been cut off,
+   and focusing a card would have yanked the frame sideways. The caption panel
+   is the artboard's own pattern in the loop section, applied to both.
+2. **Lit ring → `outline` with `outline-offset`.** An outline cannot be clipped
+   by the card's own box and never changes layout when it appears.
+
+Below the wide breakpoint neither diagram is a shrunken map: the same cards
+stack in normal flow, in reading order, with no scroll container at all. There
+is no horizontal overflow at any width (verified at 375 / 768 / 1440).
+
+Interaction is on real `<button>` elements: click, keyboard focus and hover all
+reach the same state, `aria-pressed` reflects the selection, Escape clears it,
+the caption panel is `aria-live="polite"`, and the dashed flow animations stop
+under `prefers-reduced-motion` (WCAG 2.3.3).
+
+### Images
+
+The design shipped five ~3 MB PNGs (14.6 MB total). They are now WebP at
+640/800/960/1280 with a `sizes` hint, so a 1x phone pulls 640w and a 2x phone
+800w rather than the widest file. Generated at `quality 72, effort 6`; AVIF was
+measured and rejected (only ~6% smaller on this artwork, for a doubled asset
+set and a `<picture>` element).
+
+Separately — and this was the single biggest asset on the site, not just this
+page — `public/brand/main-logo.png` was an **820×620, 497 kB PNG rendered at
+110px tall in the masthead and 90px in the footer**, i.e. on every page. It is
+now `main-logo-{160,320,480}.webp` with `sizes`, wired into `Masthead`,
+`Footer`, `PricingPage`, `PrestobotPage`, `WorkerProfilePage`, `WaitlistPage`
+and `workflow-demo`. The PNG stays in `public/brand/` because the JSON-LD
+`logo` fields in `src/lib/schema.ts` and `PillarPage.astro` reference it and
+schema.org wants a real, large image there.
+
+Measured on the homepage at 375px: images went from **698 kB to 238 kB** for
+the whole page, and **82 kB above the fold**.
+
+### New build guard: shared-chrome anchors must resolve
+
+`scripts/check-mirror-sync.mjs` gained a third check. It reads the built
+homepages, extracts every same-page `#anchor` the chrome renders **from the
+HTML itself** (never a hand-maintained list), and fails the build if the target
+id does not exist on that page. 33 anchors are checked.
+
+It found a real, pre-existing bug on its first run: the footer's "How it works"
+links to `#story`, but that section only renders where `HomeContent.story` is
+translated — so the link had been dead on all five locale homepages. Fixed in
+`HomePage.astro` by giving the always-present operating-model band the `#story`
+id when the story section is absent.
+
+### Not done
+
+- The v4 copy is English only. The five locale homepages still render the
+  previous design. Translating `homeV4.ts` and switching
+  `src/pages/[locale]/index.astro` over is the follow-up.
+- `src/components/HomePage.astro` stays in the tree as the locale homepage. It
+  can only be deleted once all six locales are on v4.

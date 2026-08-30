@@ -1,0 +1,790 @@
+---
+/**
+ * "Your brand doesn't live on one webpage." — the website at the centre with
+ * nine surrounding surfaces, joined by ink-flow links that light up together.
+ *
+ * Two deliberate departures from the artboard, both about not clipping:
+ *
+ *  1. The artboard puts each surface's explanation in an absolutely-positioned
+ *     tooltip hanging below its card, inside a horizontally-scrolling frame.
+ *     A scroll container cannot clip on one axis only, so every one of those
+ *     tooltips — and the lit ring drawn at `inset:-5px` — would be cut off, and
+ *     focusing a card would yank the frame sideways. The explanations are
+ *     instead shown in one shared caption panel below the diagram, which is the
+ *     pattern the design itself uses in the loop section further down.
+ *  2. The lit ring is an `outline` with an offset rather than an inset overlay,
+ *     so it can never be clipped by, or add to, the card's own box.
+ *
+ * Below the wide breakpoint the map is not a scaled-down diagram: the same nine
+ * cards stack in normal flow, in reading order, with no scroll container.
+ */
+import type { HomeV4Content } from '@/data/i18n/homeV4';
+
+interface Props {
+  ecosystem: HomeV4Content['ecosystem'];
+}
+const { ecosystem } = Astro.props;
+
+// The diagram's own coordinate space. Node coordinates in homeV4.ts are
+// expressed in it, and both the SVG viewBox and the CSS percentages derive
+// from these two numbers rather than repeating them.
+const VIEW_W = 1000;
+const VIEW_H = 800;
+// Where the website card sits, and where every link terminates.
+const CENTRE = { x: 500, y: 384 };
+// How far each link bows away from a straight line, as a share of its length.
+const LINK_BOW = 0.1;
+
+/** Quadratic link from a node to the centre, bowed perpendicular to the run. */
+function linkPath(x: number, y: number): string {
+  const dx = CENTRE.x - x;
+  const dy = CENTRE.y - y;
+  const len = Math.hypot(dx, dy) || 1;
+  const mx = (x + CENTRE.x) / 2;
+  const my = (y + CENTRE.y) / 2;
+  const off = len * LINK_BOW;
+  return `M${x},${y} Q${mx - (dy / len) * off},${my + (dx / len) * off} ${CENTRE.x},${CENTRE.y}`;
+}
+
+const links = ecosystem.nodes.map((n) => ({ id: n.id, d: linkPath(n.x, n.y) }));
+
+// Selecting a node lights the node itself plus everything it relates to.
+const litMap = Object.fromEntries(ecosystem.nodes.map((n) => [n.id, [n.id, ...n.related]]));
+const captions = Object.fromEntries(ecosystem.nodes.map((n) => [n.id, n.caption]));
+
+/** Node placement as a share of the frame, straight off the node coordinates. */
+function place(x: number, y: number) {
+  return `--nx:${((x / VIEW_W) * 100).toFixed(3)}%;--ny:${((y / VIEW_H) * 100).toFixed(3)}%`;
+}
+
+// Illustrative example content for the diagram. The section is badged
+// "Example content ecosystem" on the page: this is a worked example of one
+// (fictional) brand's surfaces, not data from any account.
+const EXAMPLE = {
+  google: {
+    path: 'vantia.co.uk › guides',
+    badge: 'Top results',
+    title: 'How to choose the right clinic management system',
+    snippet: 'The eight questions to ask before you sign anything, and the two nobody thinks of.',
+  },
+  linkedin: {
+    author: 'Ruth Vance',
+    meta: 'Founder, Vantia · 2d',
+    text: 'Most businesses do not have a content shortage. They have good ideas scattered across meetings, documents and people’s heads.',
+    tags: ['gaining attention', 'active discussion'],
+  },
+  instagram: {
+    kicker: 'Carousel · frequently saved',
+    title: 'Five questions customers ask before they are ready to buy',
+  },
+  youtube: {
+    duration: '4:12',
+    title: 'A four-minute tour of patient booking',
+    meta: 'appearing in recommendations',
+  },
+  ai: {
+    label: 'AI answer',
+    text: 'Ask about the checks a practice should make before changing systems and the answer cites the guide',
+    ref: '[2]',
+    source: 'vantia.co.uk/guides',
+  },
+  communities: {
+    kicker: 'Conversation · active discussion',
+    quote: '“Send me that booking article, we are having this exact argument.”',
+    meta: 'widely shared',
+  },
+  reviews: {
+    stars: 5,
+    label: 'Verified review',
+    quote: '“They understood our clinic before they tried to sell us anything. Booking finally makes sense to patients.”',
+    meta: 'Ashgrove Practice',
+  },
+  publications: {
+    masthead: 'Practice Weekly',
+    headline: 'The software questions clinics should ask first',
+    excerpt: '“…as Vantia’s own guide puts it, the front desk decides whether a system works.”',
+  },
+  profile: {
+    name: 'Ruth Vance',
+    meta: 'Founder, Vantia · 14 years in clinics',
+    tags: ['patient booking', 'practice ops'],
+  },
+};
+const byId = Object.fromEntries(ecosystem.nodes.map((n) => [n.id, n]));
+---
+
+<section id="ecosystem" class="eco" data-eco>
+  <div class="eco-kicker">
+    <span class="eco-kicker-label">{ecosystem.kicker}</span>
+    <span class="eco-badge">{ecosystem.exampleBadge}</span>
+  </div>
+  <h2 class="eco-h2">{ecosystem.h2}</h2>
+  <p class="eco-body">{ecosystem.body}</p>
+  <p class="eco-emphasis">{ecosystem.emphasis}</p>
+
+  <div class="eco-frame">
+    <svg class="eco-links" viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="wpv4-ink" x="-25%" y="-25%" width="150%" height="150%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="9" result="n"></feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+        </filter>
+      </defs>
+      <g filter="url(#wpv4-ink)">
+        {links.map((l) => <path class="eco-link" data-link={l.id} d={l.d} vector-effect="non-scaling-stroke"></path>)}
+      </g>
+    </svg>
+
+    <div class="eco-centre">
+      <div class="eco-site">
+        <div class="eco-site-bar">
+          <span class="eco-dots"><span></span><span></span><span></span></span>
+          <span class="eco-site-url">{ecosystem.site.url}</span>
+        </div>
+        <div class="eco-site-body">
+          <p class="eco-site-kicker">{ecosystem.site.kicker}</p>
+          <p class="eco-site-headline">{ecosystem.site.headline}</p>
+          <div class="eco-site-tiles">
+            {ecosystem.site.tiles.map((t) => (
+              <div class="eco-site-tile"><span class="eco-site-tile-bar"></span><span>{t}</span></div>
+            ))}
+          </div>
+          <div class="eco-site-doc">
+            <svg width="16" height="16" aria-hidden="true"><use href="#wpv4-doc"></use></svg>
+            <span class="eco-site-doc-line">{ecosystem.site.docLine}</span>
+            <span class="eco-site-doc-status">{ecosystem.site.docStatus}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eco-nodes">
+      <button class="eco-node eco-node--google" type="button" data-node="google" aria-describedby="eco-caption" style={place(byId.google.x, byId.google.y)}>
+        <span class="eco-card">
+          <span class="eco-line">
+            <svg width="15" height="15" aria-hidden="true"><use href="#wpv4-google"></use></svg>
+            <span class="eco-mono">{EXAMPLE.google.path}</span>
+            <span class="eco-tag eco-tag--ready">{EXAMPLE.google.badge}</span>
+          </span>
+          <span class="eco-serp-title">{EXAMPLE.google.title}</span>
+          <span class="eco-serp-snippet">{EXAMPLE.google.snippet}</span>
+        </span>
+      </button>
+
+      <button class="eco-node eco-node--linkedin" type="button" data-node="linkedin" aria-describedby="eco-caption" style={place(byId.linkedin.x, byId.linkedin.y)}>
+        <span class="eco-card">
+          <span class="eco-line">
+            <svg width="18" height="18" aria-hidden="true"><use href="#wpv4-linkedin"></use></svg>
+            <span>
+              <span class="eco-author">{EXAMPLE.linkedin.author}</span>
+              <span class="eco-mono eco-mono--block">{EXAMPLE.linkedin.meta}</span>
+            </span>
+          </span>
+          <span class="eco-post-text">{EXAMPLE.linkedin.text}</span>
+          <span class="eco-placeholder eco-placeholder--wide"></span>
+          <span class="eco-post-tags">{EXAMPLE.linkedin.tags.map((t) => <span class="eco-mono">{t}</span>)}</span>
+        </span>
+      </button>
+
+      <button class="eco-node eco-node--instagram" type="button" data-node="instagram" aria-describedby="eco-caption" style={place(byId.instagram.x, byId.instagram.y)}>
+        <span class="eco-card">
+          <span class="eco-line">
+            <svg width="17" height="17" aria-hidden="true"><use href="#wpv4-instagram"></use></svg>
+            <span class="eco-mono">{EXAMPLE.instagram.kicker}</span>
+          </span>
+          <span class="eco-strong">{EXAMPLE.instagram.title}</span>
+          <span class="eco-carousel"><span></span><span></span><span></span></span>
+        </span>
+      </button>
+
+      <button class="eco-node eco-node--youtube" type="button" data-node="youtube" aria-describedby="eco-caption" style={place(byId.youtube.x, byId.youtube.y)}>
+        <span class="eco-card">
+          <span class="eco-video">
+            <svg width="24" height="24" aria-hidden="true"><use href="#wpv4-youtube"></use></svg>
+            <span class="eco-video-time">{EXAMPLE.youtube.duration}</span>
+          </span>
+          <span class="eco-strong">{EXAMPLE.youtube.title}</span>
+          <span class="eco-mono eco-mono--block">{EXAMPLE.youtube.meta}</span>
+        </span>
+      </button>
+
+      <button class="eco-node eco-node--ai" type="button" data-node="ai" aria-describedby="eco-caption" style={place(byId.ai.x, byId.ai.y)}>
+        <span class="eco-card">
+          <span class="eco-line">
+            <svg width="16" height="16" aria-hidden="true"><use href="#wpv4-ai"></use></svg>
+            <span class="eco-mono eco-mono--caps">{EXAMPLE.ai.label}</span>
+          </span>
+          <span class="eco-ai-text">{EXAMPLE.ai.text}<span class="eco-ref">{EXAMPLE.ai.ref}</span></span>
+          <span class="eco-ai-source">
+            <span class="eco-ref">{EXAMPLE.ai.ref}</span>
+            <span class="eco-mono">{EXAMPLE.ai.source}</span>
+          </span>
+        </span>
+      </button>
+
+      <button class="eco-node eco-node--communities" type="button" data-node="communities" aria-describedby="eco-caption" style={place(byId.communities.x, byId.communities.y)}>
+        <span class="eco-card">
+          <span class="eco-line">
+            <svg width="16" height="16" aria-hidden="true"><use href="#wpv4-bluesky"></use></svg>
+            <span class="eco-mono">{EXAMPLE.communities.kicker}</span>
+          </span>
+          <span class="eco-quote">{EXAMPLE.communities.quote}</span>
+          <span class="eco-mono eco-mono--block">{EXAMPLE.communities.meta}</span>
+        </span>
+      </button>
+
+      <button class="eco-node eco-node--reviews" type="button" data-node="reviews" aria-describedby="eco-caption" style={place(byId.reviews.x, byId.reviews.y)}>
+        <span class="eco-card">
+          <span class="eco-stars" role="img" aria-label={`${EXAMPLE.reviews.stars} out of ${EXAMPLE.reviews.stars}`}>
+            {Array.from({ length: EXAMPLE.reviews.stars }).map(() => (
+              <svg width="12" height="12" aria-hidden="true"><use href="#wpv4-star"></use></svg>
+            ))}
+            <span class="eco-mono">{EXAMPLE.reviews.label}</span>
+          </span>
+          <span class="eco-review-quote">{EXAMPLE.reviews.quote}</span>
+          <span class="eco-mono eco-mono--block">{EXAMPLE.reviews.meta}</span>
+        </span>
+      </button>
+
+      <button class="eco-node eco-node--publications" type="button" data-node="publications" aria-describedby="eco-caption" style={place(byId.publications.x, byId.publications.y)}>
+        <span class="eco-card">
+          <span class="eco-masthead">{EXAMPLE.publications.masthead}</span>
+          <span class="eco-pub-headline">{EXAMPLE.publications.headline}</span>
+          <span class="eco-pub-excerpt">{EXAMPLE.publications.excerpt}</span>
+        </span>
+      </button>
+
+      <button class="eco-node eco-node--profile" type="button" data-node="profile" aria-describedby="eco-caption" style={place(byId.profile.x, byId.profile.y)}>
+        <span class="eco-card">
+          <span class="eco-line">
+            <span class="eco-avatar"></span>
+            <span>
+              <span class="eco-author">{EXAMPLE.profile.name}</span>
+              <span class="eco-profile-meta">{EXAMPLE.profile.meta}</span>
+            </span>
+          </span>
+          <span class="eco-post-tags">{EXAMPLE.profile.tags.map((t) => <span class="eco-chip">{t}</span>)}</span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <p class="eco-caption" id="eco-caption" data-eco-caption aria-live="polite">{ecosystem.defaultCaption}</p>
+  <p class="eco-instruction">{ecosystem.instruction}</p>
+</section>
+
+<script is:inline define:vars={{ litMap, captions, defaultCaption: ecosystem.defaultCaption }}>
+  (() => {
+    const root = document.querySelector('[data-eco]');
+    if (!root) return;
+    const caption = root.querySelector('[data-eco-caption]');
+    const nodes = Array.from(root.querySelectorAll('[data-node]'));
+    const links = Array.from(root.querySelectorAll('[data-link]'));
+
+    function select(id) {
+      const lit = id ? litMap[id] : null;
+      for (const n of nodes) {
+        const on = !!lit && lit.includes(n.dataset.node);
+        n.classList.toggle('is-lit', on);
+        n.setAttribute('aria-pressed', String(n.dataset.node === id));
+      }
+      for (const l of links) l.classList.toggle('is-lit', !!lit && lit.includes(l.dataset.link));
+      caption.textContent = id ? captions[id] : defaultCaption;
+    }
+
+    for (const n of nodes) {
+      n.setAttribute('aria-pressed', 'false');
+      n.addEventListener('click', () => select(n.dataset.node));
+      n.addEventListener('focus', () => select(n.dataset.node));
+      // Hover is a convenience for pointer users; it never replaces the click,
+      // so touch and keyboard reach exactly the same states.
+      n.addEventListener('mouseenter', () => select(n.dataset.node));
+    }
+    root.addEventListener('mouseleave', () => select(null));
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') select(null);
+    });
+  })();
+</script>
+
+<style>
+  .eco {
+    padding: clamp(64px, 9vw, 100px) 0 0;
+  }
+  .eco-kicker {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--wp-text-primary);
+    padding-top: 14px;
+    margin: 0;
+  }
+  .eco-kicker-label {
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .eco-badge {
+    font-family: var(--wp-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--wp-text-tertiary);
+    border: 1px solid var(--wp-border-secondary);
+    border-radius: var(--wp-radius-pill);
+    padding: 4px 10px;
+    margin-left: auto;
+  }
+  .eco-h2 {
+    font-family: var(--wp-font-serif);
+    font-weight: 600;
+    font-size: clamp(1.875rem, 4vw, 3.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin: 26px 0 0;
+    max-width: 20em;
+  }
+  .eco-body {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--wp-text-secondary);
+    margin: 16px 0 0;
+    max-width: 44em;
+  }
+  .eco-emphasis {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    font-weight: 600;
+    margin: 14px 0 0;
+    max-width: 38em;
+  }
+
+  /* ---- narrow: a plain stack, no scroller, no absolute positioning ---- */
+  .eco-frame {
+    margin-top: 28px;
+  }
+  .eco-links,
+  .eco-instruction {
+    display: none;
+  }
+  .eco-nodes {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .eco-node {
+    /* A button, so the card is reachable and operable by keyboard. */
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+  }
+  .eco-node:focus-visible {
+    outline: 2px solid var(--wp-accent-ink);
+    outline-offset: 4px;
+    border-radius: 8px;
+  }
+  .eco-card {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    background: var(--wp-white);
+    border: 1px solid var(--wp-border-primary);
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(17, 19, 24, 0.06);
+    padding: 13px 15px;
+    /* An outline rather than an inset overlay: it can never be clipped by the
+       card's own box and never changes the layout when it appears. */
+    outline: 1.5px solid transparent;
+    outline-offset: 4px;
+    transition: outline-color 200ms ease, transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 200ms ease;
+  }
+  .eco-node.is-lit .eco-card {
+    outline-color: var(--wp-accent-ink);
+  }
+  .eco-line {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .eco-mono {
+    font-family: var(--wp-font-mono);
+    font-size: 9.5px;
+    color: var(--wp-text-tertiary);
+  }
+  .eco-mono--block {
+    display: block;
+  }
+  .eco-mono--caps {
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+    font-size: 9px;
+  }
+  .eco-tag {
+    margin-left: auto;
+    font-family: var(--wp-font-mono);
+    font-size: 9px;
+    padding: 1px 5px;
+    flex: none;
+  }
+  .eco-tag--ready {
+    background: var(--wp-signal-soft);
+    color: var(--wp-primary);
+  }
+  .eco-serp-title {
+    font-size: 14.5px;
+    line-height: 1.25;
+    /* Search-result blue: this card is a picture of a result listing. */
+    color: #1a3e8c;
+  }
+  .eco-serp-snippet {
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: var(--wp-text-tertiary);
+  }
+  .eco-author {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+  .eco-post-text {
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+  .eco-placeholder {
+    display: block;
+    background: var(--wp-bg-secondary);
+    border: 1px solid var(--wp-border-primary);
+    border-radius: 3px;
+  }
+  .eco-placeholder--wide {
+    height: 44px;
+  }
+  .eco-post-tags {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .eco-strong {
+    font-size: 12.5px;
+    line-height: 1.35;
+    font-weight: 600;
+  }
+  .eco-carousel {
+    display: flex;
+    gap: 6px;
+  }
+  .eco-carousel span {
+    flex: 1;
+    height: 52px;
+    background: var(--wp-bg-secondary);
+    border: 1px solid var(--wp-border-primary);
+    border-radius: 3px;
+  }
+  .eco-carousel span:nth-child(2) {
+    background: var(--wp-bg-tertiary);
+  }
+  .eco-video {
+    position: relative;
+    height: 62px;
+    background: var(--wp-bg-secondary);
+    border: 1px solid var(--wp-border-primary);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .eco-video-time {
+    position: absolute;
+    right: 6px;
+    bottom: 5px;
+    font-family: var(--wp-font-mono);
+    font-size: 9px;
+    background: rgba(17, 19, 24, 0.82);
+    color: #fff;
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+  .eco-ai-text {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--wp-text-secondary);
+  }
+  .eco-ref {
+    color: var(--wp-accent-ink);
+    font-family: var(--wp-font-mono);
+    font-size: 9px;
+    vertical-align: super;
+  }
+  .eco-ai-source {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-top: 9px;
+    border-top: 1px solid var(--wp-border-primary);
+  }
+  .eco-quote {
+    font-size: 12px;
+    line-height: 1.45;
+    padding-left: 9px;
+    border-left: 2px solid var(--wp-border-strong);
+    color: var(--wp-text-secondary);
+  }
+  .eco-stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .eco-review-quote {
+    font-size: 12px;
+    line-height: 1.45;
+    font-style: italic;
+    color: var(--wp-text-secondary);
+  }
+  .eco-masthead {
+    font-family: var(--wp-font-serif);
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--wp-text-primary);
+    padding-bottom: 5px;
+  }
+  .eco-pub-headline {
+    font-family: var(--wp-font-serif);
+    font-size: 15.5px;
+    line-height: 1.22;
+  }
+  .eco-pub-excerpt {
+    font-size: 11px;
+    line-height: 1.45;
+    color: var(--wp-text-tertiary);
+  }
+  .eco-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--wp-bg-tertiary);
+    border: 1px solid var(--wp-border-secondary);
+    flex: none;
+  }
+  .eco-profile-meta {
+    display: block;
+    font-size: 11px;
+    color: var(--wp-text-tertiary);
+  }
+  .eco-chip {
+    font-family: var(--wp-font-mono);
+    font-size: 9.5px;
+    padding: 2px 6px;
+    background: var(--wp-bg-tertiary);
+    color: var(--wp-text-secondary);
+  }
+
+  /* The website card. In the stacked layout it reads first, as the centre. */
+  .eco-centre {
+    margin-bottom: 16px;
+  }
+  .eco-site {
+    background: var(--wp-white);
+    border: 1px solid var(--wp-text-primary);
+    border-radius: 8px;
+    box-shadow: 0 18px 44px rgba(17, 19, 24, 0.15);
+  }
+  .eco-site-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--wp-border-primary);
+    background: var(--wp-bg-secondary);
+    border-radius: 8px 8px 0 0;
+  }
+  .eco-dots {
+    display: flex;
+    gap: 5px;
+    flex: none;
+  }
+  .eco-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--wp-border-strong);
+  }
+  .eco-site-url {
+    flex: 1;
+    font-family: var(--wp-font-mono);
+    font-size: 10.5px;
+    color: var(--wp-text-tertiary);
+    background: var(--wp-white);
+    border: 1px solid var(--wp-border-primary);
+    border-radius: 3px;
+    padding: 3px 8px;
+  }
+  .eco-site-body {
+    padding: 18px 16px 20px;
+  }
+  .eco-site-kicker {
+    font-family: var(--wp-font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--wp-accent-ink);
+    margin: 0;
+  }
+  .eco-site-headline {
+    font-family: var(--wp-font-serif);
+    font-size: clamp(1.375rem, 3vw, 1.9375rem);
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    margin: 8px 0 0;
+  }
+  .eco-site-tiles {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .eco-site-tile {
+    flex: 1;
+    border: 1px solid var(--wp-border-primary);
+    border-radius: 4px;
+    padding: 8px 9px;
+    font-size: 10.5px;
+    line-height: 1.3;
+    color: var(--wp-text-secondary);
+  }
+  .eco-site-tile-bar {
+    height: 34px;
+    display: block;
+    background: var(--wp-bg-secondary);
+    border-radius: 2px;
+    margin-bottom: 6px;
+  }
+  .eco-site-doc {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--wp-border-primary);
+  }
+  .eco-site-doc-line {
+    font-size: 12px;
+    flex: 1;
+    color: var(--wp-text-secondary);
+  }
+  .eco-site-doc-status {
+    font-family: var(--wp-font-mono);
+    font-size: 9.5px;
+    color: var(--wp-text-muted);
+  }
+
+  .eco-caption {
+    font-family: var(--wp-font-serif);
+    font-size: clamp(1.125rem, 1.9vw, 1.5rem);
+    line-height: 1.4;
+    margin: 22px auto 0;
+    max-width: 44em;
+    text-align: center;
+  }
+  .eco-instruction {
+    font-family: var(--wp-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+    text-align: center;
+    margin: 10px 0 0;
+  }
+
+  /* ---- wide: the map itself, once 1120px of diagram fits without scrolling ---- */
+  @media (min-width: 72rem) {
+    .eco-frame {
+      position: relative;
+      /* Matches the artboard's 1000x800 canvas. */
+      aspect-ratio: 1000 / 800;
+      margin-top: 28px;
+    }
+    .eco-links {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .eco-link {
+      fill: none;
+      stroke: rgba(17, 19, 24, 0.2);
+      stroke-width: 1;
+      stroke-dasharray: 5 9;
+      animation: wpv4-flow 9s linear infinite;
+      transition: stroke 200ms ease, stroke-width 200ms ease;
+    }
+    .eco-link.is-lit {
+      stroke: var(--wp-accent-ink);
+      stroke-width: 1.7;
+    }
+    .eco-centre {
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      width: 404px;
+      margin: 0;
+    }
+    .eco-site-body {
+      padding: 20px 22px 22px;
+    }
+    .eco-nodes {
+      display: block;
+      margin: 0;
+    }
+    .eco-node {
+      position: absolute;
+      left: var(--nx);
+      top: var(--ny);
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 244px;
+    }
+    .eco-node:hover .eco-card,
+    .eco-node:focus-visible .eco-card {
+      transform: scale(1.05);
+      box-shadow: 0 12px 28px rgba(17, 19, 24, 0.14);
+    }
+    .eco-instruction {
+      display: block;
+    }
+  }
+
+  @keyframes wpv4-flow {
+    to {
+      stroke-dashoffset: 180;
+    }
+  }
+
+  /* WCAG 2.3.3 — no continuous motion for anyone who has asked for less. */
+  @media (prefers-reduced-motion: reduce) {
+    .eco-link {
+      animation: none;
+    }
+    .eco-card {
+      transition: outline-color 200ms ease;
+    }
+    .eco-node:hover .eco-card,
+    .eco-node:focus-visible .eco-card {
+      transform: none;
+    }
+  }
+</style>
