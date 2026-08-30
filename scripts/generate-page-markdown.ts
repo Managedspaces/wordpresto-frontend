@@ -9,13 +9,15 @@
  * Run: npx tsx scripts/generate-page-markdown.ts  (or via prebuild)
  *
  * Single source of truth:
- * - Homepage: src/data/i18n/home.ts (all locales) — see context.md for the i18n plan
+ * - Homepage (English): src/data/i18n/homeV4.ts — the v4 page live at /
+ * - Homepage (other locales): src/data/i18n/home.ts — the previous page, still live at /{locale}/
  * - Worker profiles: src/data/workerProfiles.ts (English only for now — see context.md, "Phase 2/3")
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { homeContent, type HomeContent } from '../src/data/i18n/home';
+import { homeV4 } from '../src/data/i18n/homeV4';
 import { LOCALES, DEFAULT_LOCALE, localeHref, type Locale } from '../src/i18n/locales';
 import { TOTAL_SPECIALISTS } from '../src/data/workerRegistry';
 import { workerProfiles } from '../src/data/workerProfiles';
@@ -160,6 +162,110 @@ function renderHomepageMarkdown(locale: Locale, t: HomeContent) {
     `- Workers directory: ${SITE_URL}/workers/index.md`,
     ``,
   );
+
+  return lines.join('\n');
+}
+
+/* ------------------------------------------------------------------ */
+/*  Render homepage v4 (English) as Markdown                            */
+/* ------------------------------------------------------------------ */
+// The English homepage is the v4 page (src/components/HomePageV4.astro) and
+// reads homeV4.ts, so its mirror must read homeV4.ts too — check-mirror-sync
+// compares the built <title>/description/<h1> against this output.
+function renderHomeV4Markdown(): string {
+  const t = homeV4;
+  const canonical = `${SITE_URL}/`;
+
+  const lines: string[] = [
+    `---`,
+    `title: "${t.seo.seoTitle.replace(/"/g, '\\"')}"`,
+    `description: "${t.seo.metaDescription.replace(/"/g, '\\"')}"`,
+    `canonical: "${canonical}"`,
+    `lang: "${DEFAULT_LOCALE}"`,
+    `---`,
+    ``,
+    `# ${t.hero.h1}`,
+    ``,
+    ...t.hero.body.flatMap((p) => [p, ``]),
+    `> ${t.hero.serifLine}`,
+    ``,
+    `${t.hero.preparesLabel}: ${t.hero.preparesFor.join(', ')}`,
+    ``,
+    `---`,
+    ``,
+    `## ${t.desk.boardTitle}`,
+    ``,
+    `- **${t.desk.you.role}** — ${t.desk.you.title}`,
+    `- **${t.desk.emma.name}** (${t.desk.emma.role}) — ${t.desk.emma.body}`,
+    `- **${t.desk.canvas.label}** — ${t.desk.canvas.note}`,
+    `- **${t.desk.specialists.title}** — ${t.desk.specialists.body}`,
+    ...t.desk.states.map((s) => `- ${s.label}: ${s.badge}`),
+    ``,
+    `> ${t.desk.annotation}`,
+    ``,
+    // The five pillars are the substance of the page; each gets a heading so a
+    // reader of the Markdown gets the same structure a reader of the page does.
+    ...t.pillars.rows.flatMap((row) => [
+      `## ${row.number} · ${row.title} — ${row.kicker}`,
+      ``,
+      `**${row.lead}**`,
+      ``,
+      ...row.body.flatMap((p) => [p, ``]),
+      `**${row.closing}**`,
+      ``,
+    ]),
+    `## ${t.ecosystem.h2}`,
+    ``,
+    t.ecosystem.body,
+    ``,
+    t.ecosystem.emphasis,
+    ``,
+    ...t.ecosystem.nodes.map((n) => `- **${n.label}**: ${n.caption}`),
+    ``,
+    `## ${t.loop.h2}`,
+    ``,
+    t.loop.body,
+    ``,
+    ...t.loop.nodes.map((n) => `- **${n.kicker}**: ${n.caption}`),
+    ``,
+    `## ${t.channels.h2}`,
+    ``,
+    t.channels.body,
+    ``,
+    `**${t.channels.emphasis}**`,
+    ``,
+    `${t.channels.source.label} — ${t.channels.source.title}: ${t.channels.source.items.join(', ')}`,
+    ``,
+    `- ${t.channels.socialLabel}: ${t.channels.destinations.filter((d) => d.group === 'social').map((d) => d.name).join(', ')}`,
+    `- ${t.channels.cmsLabel}: ${t.channels.destinations.filter((d) => d.group === 'cms').map((d) => d.name).join(', ')}`,
+    ``,
+    `> ${t.channels.safetyNote} ${t.channels.safetyEmphasis}`,
+    ``,
+    `## ${t.dpp.h2Line1} ${t.dpp.h2Line2}`,
+    ``,
+    ...t.dpp.paragraphs.flatMap((p) => [p, ``]),
+    `**${t.dpp.punchline}**`,
+    ``,
+    `### ${t.dpp.leverageLabel}`,
+    ``,
+    ...t.dpp.leverage.map((item, i) => `${i + 1}. ${item}`),
+    ``,
+    `> ${t.dpp.closing}`,
+    ``,
+    `## ${t.signIn.h2}`,
+    ``,
+    t.signIn.body,
+    ``,
+    `${t.signIn.cta}: ${registerUrl(DEFAULT_LOCALE)}`,
+    ``,
+    `## Agent-readable resources`,
+    ``,
+    `- LLM index: ${SITE_URL}/llms.txt`,
+    `- Full Markdown context: ${SITE_URL}/llms-full.txt`,
+    `- Markdown sitemap: ${SITE_URL}/sitemap.md`,
+    `- Workers directory: ${SITE_URL}/workers/index.md`,
+    ``,
+  ];
 
   return lines.join('\n');
 }
@@ -524,14 +630,13 @@ function renderSeoWorkersIndexMarkdown() {
 
 // Homepage — English at the legacy root paths, every other locale at
 // public/{locale}/index.md (matching its live route exactly).
+// English is the v4 homepage; the other five still render the previous page.
+const homeV4Md = renderHomeV4Markdown();
+writeMirror('pages/index.md', homeV4Md);
+writeMirror('index.md', homeV4Md);
 for (const l of LOCALES) {
-  const md = renderHomepageMarkdown(l.code, homeContent[l.code]);
-  if (l.code === DEFAULT_LOCALE) {
-    writeMirror('pages/index.md', md);
-    writeMirror('index.md', md);
-  } else {
-    writeMirror(`${l.path}/index.md`, md);
-  }
+  if (l.code === DEFAULT_LOCALE) continue;
+  writeMirror(`${l.path}/index.md`, renderHomepageMarkdown(l.code, homeContent[l.code]));
 }
 
 // Workflow demo

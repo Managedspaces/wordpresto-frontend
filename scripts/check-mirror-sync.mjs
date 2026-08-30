@@ -14,6 +14,13 @@
  *   2. A URL advertised in sitemap.xml is marked noindex. Submitting a noindex
  *      URL to search engines is contradictory and trips Search Console.
  *
+ *   3. A same-page anchor that the shared masthead or footer links to does not
+ *      exist on the page it points at. The chrome is rendered on every page but
+ *      its "#emma-desk"/"#canvas"/"#story" links target homepage sections, so a
+ *      homepage rewrite can silently strand them. The anchor list is derived
+ *      from the built chrome's own hrefs, never hand-listed here, so a new link
+ *      is covered the moment it ships.
+ *
  * Run: node scripts/check-mirror-sync.mjs  (wired into `build`)
  */
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
@@ -174,6 +181,40 @@ if (sitemapXml === null) {
   }
 }
 
+/* ---------- 3. shared-chrome anchors resolve on their target page ---- */
+
+// Every homepage-anchor link the chrome renders, taken from the built pages
+// themselves. `/#x` from any page, and a bare `#x` on the homepage, both mean
+// "the element with id x on the homepage".
+const LOCALE_HOME = /^\/(?:pt|pt-br|es|de|fr)\/$/;
+const homeRoutes = ['/', '/pt/', '/pt-br/', '/es/', '/de/', '/fr/'];
+let anchorsChecked = 0;
+for (const route of homeRoutes) {
+  const html = readFile(htmlPathForRoute(route));
+  if (html === null) continue;
+  const prefix = route === '/' ? '/' : route;
+  const wanted = new Set();
+  for (const m of html.matchAll(/href=["']([^"']*#[a-z0-9-]+)["']/gi)) {
+    const href = m[1];
+    const hashAt = href.indexOf('#');
+    const path = href.slice(0, hashAt) || prefix;
+    // Only links that point at THIS page.
+    if (path !== prefix && !(route === '/' && path === '')) continue;
+    const id = href.slice(hashAt + 1);
+    if (id === 'top') continue; // #top is the <main> wrapper, checked like any other
+    wanted.add(id);
+  }
+  for (const id of wanted) {
+    anchorsChecked++;
+    if (!new RegExp(`\\bid=["']${id}["']`).test(html)) {
+      errors.push(
+        `${route}: links to #${id} but no element with that id exists on the page` +
+          (LOCALE_HOME.test(route) ? ' (locale homepage)' : ''),
+      );
+    }
+  }
+}
+
 /* ------------------------------ report ----------------------------- */
 
 if (errors.length) {
@@ -183,5 +224,6 @@ if (errors.length) {
 }
 
 console.log(
-  `✓ Mirror sync check passed (${checked} content pages in sync, ${sitemapUrls} sitemap URLs indexable)`,
+  `✓ Mirror sync check passed (${checked} content pages in sync, ${sitemapUrls} sitemap URLs indexable, ` +
+    `${anchorsChecked} same-page anchors resolve)`,
 );

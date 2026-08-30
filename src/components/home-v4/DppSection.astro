@@ -1,0 +1,189 @@
+---
+/**
+ * The "Data Powered Publishing" manifesto band — the case for how much AI is in
+ * the product, and the five things leverage actually means.
+ */
+import type { HomeV4Content } from '@/data/i18n/homeV4';
+
+interface Props {
+  dpp: HomeV4Content['dpp'];
+}
+const { dpp } = Astro.props;
+---
+
+<section id="dpp" class="dpp">
+  <div class="dpp-inner">
+    <p class="dpp-kicker">
+      <span class="dpp-dot" aria-hidden="true"></span>
+      <span>{dpp.kicker}</span>
+      <span class="dpp-rule"></span>
+    </p>
+
+    <h2 class="dpp-h2">{dpp.h2Line1}<span class="dpp-h2-accent">{dpp.h2Line2}</span></h2>
+
+    <div class="dpp-grid">
+      <div class="dpp-argument">
+        {dpp.paragraphs.map((p) => <p class="dpp-para">{p}</p>)}
+        <p class="dpp-punchline">{dpp.punchline}</p>
+      </div>
+
+      <div>
+        <p class="dpp-leverage-label">{dpp.leverageLabel}</p>
+        <ol class="dpp-leverage">
+          {dpp.leverage.map((item, i) => (
+            <li>
+              <span class="dpp-num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="dpp-item">{item}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+
+    <p class="dpp-closing">
+      <span class="dpp-closing-rule" aria-hidden="true"></span>
+      <span class="dpp-closing-text">{dpp.closing}</span>
+      <span class="dpp-closing-rule" aria-hidden="true"></span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .dpp {
+    background-color: var(--wp-bg-secondary);
+    background-image: var(--wp-texture-paper);
+    border-top: 1px solid var(--wp-text-primary);
+    border-bottom: 1px solid var(--wp-text-primary);
+    margin-top: clamp(64px, 9vw, 104px);
+  }
+  .dpp-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: clamp(56px, 7vw, 86px) clamp(18px, 4vw, 32px) clamp(60px, 8vw, 90px);
+  }
+  .dpp-kicker {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--wp-text-secondary);
+  }
+  .dpp-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--wp-accent-ink);
+    flex: none;
+  }
+  .dpp-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--wp-border-secondary);
+  }
+  .dpp-h2 {
+    font-family: var(--wp-font-serif);
+    font-weight: 600;
+    font-size: clamp(2.375rem, 6.4vw, 5.75rem);
+    line-height: 0.98;
+    letter-spacing: -0.038em;
+    margin: clamp(26px, 3vw, 40px) 0 0;
+    max-width: 16em;
+  }
+  .dpp-h2-accent {
+    display: block;
+    color: var(--wp-accent-ink);
+  }
+  .dpp-grid {
+    display: grid;
+    gap: clamp(32px, 4vw, 64px);
+    margin-top: clamp(32px, 4vw, 54px);
+    align-items: start;
+  }
+  .dpp-argument {
+    border-left: 2px solid var(--wp-text-primary);
+    padding-left: clamp(20px, 2.4vw, 32px);
+  }
+  .dpp-para {
+    font-family: var(--wp-font-serif);
+    font-size: clamp(1.3125rem, 2.1vw, 1.9375rem);
+    line-height: 1.34;
+    letter-spacing: -0.012em;
+    margin: 0;
+    max-width: 24em;
+  }
+  .dpp-para + .dpp-para {
+    margin-top: clamp(20px, 2vw, 30px);
+  }
+  .dpp-punchline {
+    font-family: var(--wp-font-serif);
+    font-weight: 600;
+    font-size: clamp(1.75rem, 3.4vw, 3.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.032em;
+    margin: clamp(24px, 2.6vw, 36px) 0 0;
+  }
+  .dpp-leverage-label {
+    font-family: var(--wp-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--wp-text-tertiary);
+    margin: 0 0 8px;
+  }
+  .dpp-leverage {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .dpp-leverage li {
+    display: flex;
+    gap: 18px;
+    align-items: baseline;
+    padding: 16px 0;
+    border-top: 1px solid var(--wp-border-secondary);
+  }
+  .dpp-leverage li:last-child {
+    border-bottom: 1px solid var(--wp-border-secondary);
+  }
+  .dpp-num {
+    font-family: var(--wp-font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--wp-accent-ink);
+    width: 26px;
+    flex: none;
+  }
+  .dpp-item {
+    font-size: clamp(1rem, 1.4vw, 1.1875rem);
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  .dpp-closing {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: clamp(40px, 5vw, 64px) 0 0;
+  }
+  .dpp-closing-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--wp-text-primary);
+  }
+  .dpp-closing-text {
+    font-family: var(--wp-font-serif);
+    font-size: clamp(1.5rem, 3.2vw, 2.875rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-align: center;
+  }
+
+  @media (min-width: 62rem) {
+    .dpp-grid {
+      grid-template-columns: repeat(2, minmax(420px, 1fr));
+    }
+  }
+</style>

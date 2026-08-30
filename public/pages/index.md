@@ -1,124 +1,148 @@
 ---
-title: "Content workflow engine for writers and publishing teams | Word Presto"
-description: "Plan, brief, write, review, improve and prepare content for search, readers and CMS handoff."
+title: "Word Presto — Better information in. Better writing out."
+description: "Word Presto brings research, evidence, search intelligence and publishing support into one editorial workflow. Write it yourself, work with Emma, or let Word Presto help with the heavy lifting."
 canonical: "https://wordpresto.com/"
 lang: "en"
 ---
 
-# Word Presto is the agentic content engine for writers, editors and publishing teams.
+# Better information in. Better writing out.
 
-Plan, brief, write, review, improve and prepare content for search, readers and CMS handoff.
+Word Presto brings research, evidence, search intelligence and publishing support into one editorial workflow.
+
+Write it yourself, work with Emma, or let Word Presto help with the heavy lifting.
+
+> How much help you want is up to you.
+
+prepares content for: WordPress, Astro, Payload, Sanity
 
 ---
 
-At the centre is Emma, your managing editor. She keeps the brief, draft, evidence, SEO, review and approval moving through one calm editorial desk, while you keep the final say.
+## Editorial operations board
 
-> Emma prepares. The Editor approves. Nothing publishes without your sign-off.
+- **Editor-in-chief** — Ideas, judgement and the final call
+- **Emma** (managing editor) — Keeping the work moving
+- **Canvas · launch guide** — the working document
+- **Specialist desk** — Research, review and publishing specialists around the document
+- Awaiting review: Ready for you
+- Ready for CMS handoff: Ready
 
-## Be found without becoming part of the AI slop.
+> One desk. The work, the intelligence behind it and what happens next.
 
-Your customers are searching in more places than ever.
+## 01 · Write — Intelligence converges into content
 
-They are looking through Google, asking AI, following recommendations and deciding which businesses deserve their attention on social media.
+**Start with more than a blank page.**
 
-To remain visible, your business needs webpages that rank, content that earns mentions in AI answers and social posts that people actually want to read.
+Good writing starts before the first sentence. Word Presto brings the brief, audience, research, search intent, source material and project knowledge into the Canvas before you begin.
 
-But producing more content is not enough.
+Then write your way. Start from scratch, develop an idea, rewrite a section or ask Word Presto for a complete first draft.
 
-The internet is already drowning in generic articles, automated replies and posts that sound as though nobody believed a word of them.
+**The technology can do a lot of the work. The judgement about what is worth saying remains yours.**
 
-Word Presto helps you use AI without publishing like a machine.
+## 02 · Publish — Content moves outward
 
-It brings website intelligence, SEO, AI visibility, social campaigns and publishing into one human-controlled operation.
+**Take one piece of work further.**
 
-Pull an existing page into the Canvas. Let specialist Workers grade its search relevance, structure, evidence, voice and AI visibility. Improve it without losing the original. Review every change. Approve it. Then prepare it for republication.
+A useful piece of writing should not have to be started again every time you want to use it somewhere else.
 
-Create individual social posts or complete campaigns from what your business actually knows. Adapt them for each platform without stripping out the personality. Keep a human in control before anything goes live.
+Take an article, website page, guide or draft from your Canvas and adapt it for LinkedIn, X, Facebook, Bluesky, Instagram or another publishing destination. Word Presto creates a new version for that use case, while the original stays intact.
 
-Behind the scenes, Word Presto does the heavy lifting.
+**One idea. More places for it to matter.**
 
-It investigates, organises, grades, recommends, drafts, reviews and prepares.
+## 03 · Engage — People and conversations respond
 
-You decide what is true, what sounds like you and what deserves to be published.
+**Publishing is only half the conversation.**
 
-**AI provides the leverage. Humans provide the value.**
+The best opportunities to engage are rarely sitting in your own feed waiting to be found.
 
-Word Presto helps your website rank, your business appear in AI answers and your social presence grow, without turning your brand into another content bot.
+Word Presto helps you follow the people, subjects and conversations that matter to your market, see what is gaining attention and find places where you genuinely have something useful to add. Draft a reply, develop an idea or bring the conversation back into your content work.
 
-## As seen on
+**Better reasons to join the conversation.**
 
-Product Hunt · Capterra · GetApp · Software Advice · SourceForge · Slashdot · SaaSHub · PeerPush · Future Tools · Crunchbase
+## 04 · Rank — Search and market visibility develops
 
-## This is not another content dashboard.
+**Help good work get found.**
 
-Most content work does not fall apart because people cannot write. It falls apart because the brief changes, reviews arrive late, claims lose their sources, SEO gets bolted on at the end, and nobody knows who has approved what.
+Search intelligence should make writing better informed, not make it sound as though it was written for a search engine.
 
-> Word Presto gives the work a desk. Emma runs it.
+Word Presto brings together what people are searching for, what your site already covers, how existing pages are performing and where useful opportunities are being missed. Existing pages can come back into the editorial process too, ready to review, improve and develop.
 
-- Brief agreed and on file
-- SEO checked in the draft, not after
-- Claims carry their evidence
-- Approval sits with the Editor
+**Write for people. Give search engines enough evidence to understand why it matters.**
 
-## Meet Emma, your managing editor.
+## 05 · Track — Results return as new intelligence
 
-- **She holds the brief**: Keeps the goal, audience, voice, context and previous decisions in view, so the work does not drift.
-- **She runs the desk**: Moves each piece from brief to draft, proofing, review and approval without losing the thread.
-- **She calls in the specialists**: Sends claims, SEO, evidence, voice, links, risk and handoff work to the right specialist at the right time.
-- **She protects your authority**: Emma can recommend and prepare. Only the Editor can approve.
+**Learn what happens after you publish.**
 
-## Emma’s four commitments.
+Rankings move. People search. Posts get responses. Pages earn attention.
 
-The standards Emma holds to on every piece of work: the rules that make the desk trustworthy.
+Word Presto brings those signals back into the project so the next piece of work starts with more information than the last. Over time it builds a deeper understanding of your website, audience, market and what actually produces a response.
 
-- **Ground truth above all**: No invented figures. No unsupported claims. No pretending weak evidence is strong.
-- **Say the honest thing**: Emma will not flatter a bad draft. She tells you what needs work.
-- **Protect your work**: Nothing publishes without the Editor’s approval.
-- **Remember what matters**: Emma learns the standards, voice and decisions that shape the project.
+**Publish. Observe. Learn. Write again with more information.**
 
-## One working surface for the actual copy.
+## Your brand doesn’t live on one webpage.
 
-The Canvas is where Emma brings the work together: imported pages, drafts, rewrites, proofing notes, specialist findings and approval decisions.
+Search, social, conversations, authority and your website all influence how people discover and understand you.
 
-- Import, draft, rewrite, proof and review in one place.
-- Specialist findings arrive as margin notes, not meetings.
-- Final approval still required, always.
+Word Presto treats them as one connected publishing system.
 
-## 41 specialists. One managing editor.
+- **Search result**: A strong page becomes more than a search result. It becomes something people (and increasingly other systems) can discover, reference and use.
+- **LinkedIn post**: One useful idea takes a different form when it reaches a feed. The subject stays connected to the original work while the format changes for the people reading it there.
+- **Instagram carousel**: One story, told in a form people save and send on, the same questions your best pages answer.
+- **Video**: Video answers the question the page also answers, so it turns up in search, feeds and recommendations alike.
+- **AI answer**: AI systems build their understanding from the wider network of content, identity, authority and references around your brand.
+- **Conversation**: Replies, questions and reactions are not just numbers underneath a post. They are evidence of what people understood, challenged or cared enough about to discuss.
+- **Customer review**: Customer language strengthens the story people, search engines and AI systems associate with your business.
+- **Publication reference**: When other people reference your work, the idea travels beyond the page it started on. Expertise accumulates across the wider body of work, not inside a single article.
+- **Author profile**: A credible person behind the writing is part of the evidence. Expertise connects to the company, not just the page.
 
-Emma is not working alone. Behind her is the full Word Presto specialist bench: content production, SEO, operations and approval governance workers, each with a defined role and place in the workflow.
+## Search and social are one ecosystem. Discovery doesn’t happen in one place anymore.
 
-> Emma brings in the right specialist at the right moment, then returns the findings that need the Editor’s judgement.
+Attention creates searches. Search creates discovery. Useful work earns references. Conversations expose new questions. Those questions become the next piece worth making.
 
-## Same standard. Native voice.
+- **Ranking page**: A strong webpage becomes more than a search result. It becomes evidence that can be referenced, shared and cited.
+- **Useful article**: One genuinely useful page answers the question everywhere at once, in search, in an assistant, in a reply to a customer.
+- **Customer review**: Customer language strengthens the story people, search engines and AI systems associate with your business.
+- **AI answer**: AI systems build their understanding from the wider network of content, identity, authority and references around your brand.
+- **LinkedIn story**: A useful social story creates attention, branded searches and wider recognition around the subjects your business wants to own.
+- **Instagram carousel**: The same story, told in a form people save and send on, and searched for by name afterwards.
+- **Video discovery**: Video turns up where text cannot, then sends people back to the page that explains the rest.
+- **Conversation**: Conversation is how a story travels, and how the next thing worth writing announces itself.
 
-When you work in another language, you do not get Emma translated. You get a managing editor who runs the same desk in her own language and idiom.
+## One piece of work. More ways to use it.
 
-- **Emma** — Dublin · English
-- **Aurora** — Lisbon · Portuguese
-- **Francisca** — São Paulo · Brazilian Portuguese
-- **Sofía** — Madrid · Spanish
-- **Sabine** — Berlin · German
-- **Ambre** — Paris · French
+From there, Word Presto can prepare new versions for the places where the idea needs to travel. Each becomes its own piece of work that you can review and change without rewriting the source.
 
-## Only the Editor can approve the work.
+**The original stays intact.**
 
-Emma can prepare the work. Specialists can review it. The Canvas can organise it. But only the Editor can approve it.
+Source — Your Canvas: Article, Guide, Website page, Draft, Original idea
 
-> Nothing goes live until the human in charge says yes.
+- Destination-specific work: LinkedIn, X, Bluesky, Facebook, Instagram
+- Website / CMS preparation: WordPress, Sanity, Astro
 
-## One approved idea, ready for every channel.
+> Word Presto does the repetitive work of understanding the destination and preparing another version. You decide whether it represents the original idea properly.
 
-Word Presto adapts one approved idea into channel-ready versions for social, and reviews and improves the content already on your site, ready for handoff. Nothing goes live until a person approves it.
+## There is a lot of AI inside Word Presto. There should be.
 
-- Social channels: LinkedIn, X, Facebook, Instagram
-- Website & CMS: WordPress, Sanity, Astro
+It can analyse more information than a writer should have to gather manually. It can research, compare, organise, draft, review, adapt and learn from what happens next.
 
-> Agents prepare every version. People still make the call. Human approval before anything goes live.
+But replacing the person doing the thinking is not the point.
 
-## Put Emma at the centre of your content operation.
+**The point is leverage.**
 
-For writers, editors and publishing teams who need better content work without giving up editorial control.
+### What leverage looks like
+
+1. Better information before you write.
+2. More help while you work.
+3. Less repetitive work when you’re finished.
+4. More ways to use something good.
+5. Better evidence about what deserves attention next.
+
+> That is Data Powered Publishing.
+
+## Put Word Presto behind your writing.
+
+For writers, editors and content teams who want the advantages of modern AI, search intelligence and publishing technology without handing over the work that makes their content worth reading.
+
+Join now: https://app.wordpresto.com/register
 
 ## Agent-readable resources
 

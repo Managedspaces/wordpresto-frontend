@@ -226,6 +226,11 @@ const jsonLd = [
   <AsSeenOn label={t.asSeenOn.label} />
 
   <!-- ===================== 2. THE OPERATING MODEL ===================== -->
+  <!-- The footer's "How it works" points at #story. That section only renders
+       where its copy is translated, so on the other locales this section — the
+       first "here is how it works" band that always renders — carries the id
+       instead. Without it the link was dead on five of six homepages. -->
+  {!t.story && <span id="story" class="anchor-alias" aria-hidden="true"></span>}
   <section id="not-dashboard" class="section section--paper-dark section--not-dashboard-tight">
     <div class="container">
       <div class="section-intro section-intro--wide">
@@ -579,6 +584,7 @@ const jsonLd = [
     padding: 0 34px;
   }
 
+  .anchor-alias { display: block; height: 0; }
   .section {
     padding: 92px 0;
     background-color: var(--wp-bg-primary);

@@ -1,0 +1,135 @@
+---
+/**
+ * Closing call to action: Emma, the ask, and the Write · Publish · Engage ·
+ * Rank · Track strip that names the five pillars one last time.
+ */
+import type { HomeV4Content } from '@/data/i18n/homeV4';
+
+interface Props {
+  signIn: HomeV4Content['signIn'];
+  registerHref: string;
+}
+const { signIn, registerHref } = Astro.props;
+---
+
+<section id="signin" class="cta">
+  <span class="cta-avatar">
+    <img
+      src="/editors/emma-192.webp"
+      srcset="/editors/emma-192.webp 1x, /editors/emma-384.webp 2x"
+      alt="Emma, managing editor"
+      width="112"
+      height="112"
+      loading="lazy"
+      decoding="async"
+    />
+  </span>
+  <h2 class="cta-h2">{signIn.h2}</h2>
+  <p class="cta-body">{signIn.body}</p>
+  <a class="cta-button" href={registerHref}>{signIn.cta}</a>
+  <p class="cta-strip">
+    <span class="cta-strip-rule" aria-hidden="true"></span>
+    <span class="cta-strip-text">
+      <span class="cta-strip-main">{signIn.strip}</span>
+      <span class="cta-strip-sub">{signIn.stripSub}</span>
+    </span>
+    <span class="cta-strip-rule" aria-hidden="true"></span>
+  </p>
+</section>
+
+<style>
+  .cta {
+    padding: clamp(64px, 9vw, 104px) 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .cta-avatar {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--wp-text-primary);
+    background: var(--wp-bg-tertiary);
+    flex: none;
+  }
+  .cta-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .cta-h2 {
+    font-family: var(--wp-font-serif);
+    font-weight: 600;
+    font-size: clamp(2.125rem, 5.2vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    margin: 34px 0 0;
+    max-width: 16em;
+  }
+  .cta-body {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--wp-text-secondary);
+    margin: 22px 0 0;
+    max-width: 26em;
+  }
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 26px;
+    margin-top: 30px;
+    border: 1px solid var(--wp-primary);
+    border-radius: 6px;
+    background: var(--wp-primary);
+    color: var(--wp-text-inverse);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease;
+  }
+  .cta-button:hover {
+    background: var(--wp-signal-hover);
+    border-color: var(--wp-signal-hover);
+    color: var(--wp-text-inverse);
+  }
+  .cta-button:focus-visible {
+    outline: 2px solid var(--wp-accent-ink);
+    outline-offset: 3px;
+  }
+  .cta-strip {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 52px 0 0;
+  }
+  .cta-strip-rule {
+    width: 52px;
+    height: 1px;
+    background: var(--wp-border-secondary);
+    flex: none;
+  }
+  .cta-strip-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .cta-strip-main {
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--wp-text-secondary);
+  }
+  .cta-strip-sub {
+    font-family: var(--wp-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+  }
+</style>

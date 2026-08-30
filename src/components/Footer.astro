@@ -50,7 +50,18 @@ const legalLinks: FooterLink[] = [
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="/brand/main-logo.png" alt="Word Presto" class="footer-logo" loading="lazy" width="220" height="90" />
+      <!-- 90px tall here, so ~119 CSS px wide. Same responsive set as the masthead. -->
+      <img
+        src="/brand/main-logo-160.webp"
+        srcset="/brand/main-logo-160.webp 160w, /brand/main-logo-320.webp 320w, /brand/main-logo-480.webp 480w"
+        sizes="119px"
+        alt="Word Presto"
+        class="footer-logo"
+        loading="lazy"
+        width="119"
+        height="90"
+        decoding="async"
+      />
       <p class="footer-tagline">{c.footerTagline}</p>
     </div>
 
