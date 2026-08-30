@@ -15,11 +15,13 @@ export interface AsSeenOnOutlet {
 }
 
 /**
- * Rendered width of a logo disc at the largest breakpoint, in CSS pixels. The exported constant is what the
+ * Rendered width of a logo disc at the largest breakpoint, in CSS pixels. Deliberately modest: the strip is
+ * a quiet trust signal at the head of the operating-model band, not a section of its own competing with the
+ * letter above it. The exported constant is what the
  * stylesheet's `--wp-asn-disc` and the `<img width/height>` attributes both read, so the intrinsic size,
  * the layout box and the generated asset can never drift apart.
  */
-export const ASN_DISC_PX = 116;
+export const ASN_DISC_PX = 96;
 
 /** The pixel width the WebP assets were generated at: 2× the largest disc, for retina. */
 export const ASN_LOGO_PX = ASN_DISC_PX * 2;
