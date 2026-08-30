@@ -100,6 +100,10 @@ You decide what is true, what sounds like you and what deserves to be published.
 
 Word Presto helps your website rank, your business appear in AI answers and your social presence grow, without turning your brand into another content bot.
 
+## As seen on
+
+Product Hunt · Capterra · GetApp · Software Advice · SourceForge · Slashdot · SaaSHub · PeerPush · Future Tools · Crunchbase
+
 ## This is not another content dashboard.
 
 Most content work does not fall apart because people cannot write. It falls apart because the brief changes, reviews arrive late, claims lose their sources, SEO gets bolted on at the end, and nobody knows who has approved what.

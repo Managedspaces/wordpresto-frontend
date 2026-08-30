@@ -15,6 +15,10 @@ No centro está a Emma, a sua editora-chefe. Ela mantém o briefing, o rascunho,
 
 > A Emma prepara. O editor aprova. Nada é publicado sem a sua aprovação.
 
+## Como visto em
+
+Product Hunt · Capterra · GetApp · Software Advice · SourceForge · Slashdot · SaaSHub · PeerPush · Future Tools · Crunchbase
+
 ## Este não é mais um painel de conteúdos.
 
 A maior parte do trabalho de conteúdos não falha porque as pessoas não sabem escrever. Falha porque o briefing muda, as revisões chegam tarde, as alegações perdem as fontes, o SEO é adicionado no final e ninguém sabe quem aprovou o quê.

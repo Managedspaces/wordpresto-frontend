@@ -25,6 +25,7 @@ import { prestobotContent } from '../src/data/i18n/prestobot';
 import { pricingContent } from '../src/data/i18n/pricing';
 import { pillarArticles, type PillarArticle } from '../src/data/pillars';
 import { registerUrl } from '../src/lib/appLinks';
+import { AS_SEEN_ON } from '../src/data/asSeenOn';
 
 const workersDirectory = workersHubContent.en;
 const seoWorkersDirectory = seoWorkersContent.en;
@@ -87,6 +88,12 @@ function renderHomepageMarkdown(locale: Locale, t: HomeContent) {
           ``,
         ]
       : []),
+    // The trust strip is a real claim on the page, so the mirror states it in words
+    // rather than leaving a picture-only section invisible to a reader of the Markdown.
+    `## ${t.asSeenOn.label}`,
+    ``,
+    AS_SEEN_ON.map((o) => o.name).join(' · '),
+    ``,
     `## ${t.operatingModel.h2}`,
     ``,
     t.operatingModel.body,

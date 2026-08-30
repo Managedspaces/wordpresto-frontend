@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Masthead from '@/components/Masthead.astro';
 import PublishEverywhere from '@/components/PublishEverywhere.astro';
+import AsSeenOn from '@/components/AsSeenOn.astro';
 import { homeContent } from '@/data/i18n/home';
 import { commonStrings } from '@/data/i18n/common';
 import { getTeamGroups, TOTAL_SPECIALISTS, TOTAL_TEAMS } from '@/data/workerRegistry';
@@ -218,8 +219,14 @@ const jsonLd = [
   </section>
   )}
 
+  <!-- ===== AS SEEN ON — the head of the operating-model band, not a band of its own =====
+       It carries the section's own paper-dark ground and the 2px ink rule that would otherwise
+       sit on #not-dashboard, so the strip and the heading below read as ONE band with no line
+       between them. #not-dashboard therefore drops its own border-top. -->
+  <AsSeenOn label={t.asSeenOn.label} />
+
   <!-- ===================== 2. THE OPERATING MODEL ===================== -->
-  <section id="not-dashboard" class="section section--paper-dark section--border-top">
+  <section id="not-dashboard" class="section section--paper-dark section--not-dashboard-tight">
     <div class="container">
       <div class="section-intro section-intro--wide">
         <div class="eyebrow eyebrow--strategy">{t.operatingModel.eyebrow}</div>
@@ -578,6 +585,9 @@ const jsonLd = [
     background-image: var(--wp-texture-paper);
   }
   .section--paper-dark { background-color: var(--wp-paper-dark); }
+  /* Continues the As-seen-on strip rather than starting a new band: no ink rule of its own (the strip
+     carries it), and a shorter top padding because the strip already opened the band. */
+  .section--not-dashboard-tight { padding-top: 44px; }
   .section--border-top { border-top: 2px solid var(--wp-ink); }
   .section--overflow-hidden { overflow: hidden; }
 

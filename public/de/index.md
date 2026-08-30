@@ -15,6 +15,10 @@ Im Mittelpunkt steht Emma, Ihre KI-Chefredakteurin. Sie steuert Briefing, Entwur
 
 > Emma bereitet vor. Sie genehmigen. Ohne Ihre Freigabe wird nichts veröffentlicht.
 
+## Bekannt aus
+
+Product Hunt · Capterra · GetApp · Software Advice · SourceForge · Slashdot · SaaSHub · PeerPush · Future Tools · Crunchbase
+
 ## Dies ist kein weiteres Content-Dashboard.
 
 Die meisten Content-Projekte scheitern nicht am Schreiben. Sie scheitern daran, dass Anforderungen sich ändern, Rückmeldungen zu spät kommen, Quellen verloren gehen, SEO erst kurz vor der Veröffentlichung berücksichtigt wird und am Ende niemand mehr weiß, wer die Freigabe erteilt hat.

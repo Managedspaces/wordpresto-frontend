@@ -1,0 +1,194 @@
+---
+/**
+ * "As seen on" — the directory/community logo strip that sits between the founder's letter and the
+ * operating-model section on the home page.
+ *
+ * A CSS-only marquee: no JavaScript, no carousel library, no timers. The track holds the real list plus one
+ * decorative clone of it, and the animation translates by exactly -50% — so the clone arrives precisely
+ * where the original began and the loop is seamless without measuring anything at runtime.
+ *
+ * IT IS NOT ITS OWN BAND. The first version painted `--wp-paper` (#FAF7F0) between the story desk (#E7DEC9)
+ * and the operating-model section (`--wp-paper-dark`), so a pale stripe sat wedged between two warm ones —
+ * exactly the "different colour background" it should never have had. It now carries the SAME paper-dark
+ * ground and grain as the operating-model section it leads into, and no bottom rule, so the two read as one
+ * continuous band with the strip at its head. The 2px ink rule that used to sit under it moved above it, so
+ * there is no line between the logos and "This is not another content dashboard."
+ *
+ * MOBILE FIRST. The base rules are the phone layout (smaller discs, tighter gap, a faster cycle so the
+ * shorter viewport still turns over at a readable pace); the wider layout is added at the breakpoint, never
+ * subtracted from. Every colour is a site token; the grain reuses `--wp-texture-paper` rather than shipping
+ * a second copy of the noise SVG.
+ *
+ * Reduced motion is not a downgrade: the strip becomes a static, centred, wrapping row of the real list,
+ * with the decorative clone removed so nothing is announced or shown twice (WCAG 2.3.3).
+ */
+import { AS_SEEN_ON, ASN_DISC_PX, ASN_LOGO_PX } from '@/data/asSeenOn';
+
+interface Props {
+  /** Localised section label, e.g. "As seen on". */
+  label: string;
+}
+
+const { label } = Astro.props;
+
+/*
+ * Set A is the real list; set B is the clone that makes the loop seamless. Derived from ONE array so a new
+ * outlet is added in a single place — a hand-duplicated second list is how the two halves drift apart and
+ * the loop develops a visible jump.
+ */
+const track = [
+  ...AS_SEEN_ON.map((outlet) => ({ ...outlet, decorative: false })),
+  ...AS_SEEN_ON.map((outlet) => ({ ...outlet, decorative: true })),
+];
+---
+
+<section class="wp-asn" aria-label={label}>
+  <div class="wp-asn__head">
+    <span class="wp-asn__rule" aria-hidden="true"></span>
+    <span class="wp-asn__label">{label}</span>
+    <span class="wp-asn__rule" aria-hidden="true"></span>
+  </div>
+
+  <div class="wp-asn__viewport">
+    <div class="wp-asn__track">
+      {track.map((outlet) => (
+        <div class="wp-asn__item" aria-hidden={outlet.decorative ? 'true' : undefined}>
+          <img
+            src={`/as-seen-on/${outlet.slug}-${ASN_LOGO_PX}.webp`}
+            alt={outlet.decorative ? '' : outlet.name}
+            width={ASN_DISC_PX}
+            height={ASN_DISC_PX}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style define:vars={{ discPx: `${ASN_DISC_PX}px` }}>
+  /* ── Base: the phone. Every wider rule is additive, below. ───────────────── */
+  .wp-asn {
+    --wp-asn-disc: 72px;
+    --wp-asn-gap: 34px;
+    /* One full cycle of the track. Shorter on a phone so the strip still turns
+       over while the section is on screen, longer on desktop where more of the
+       list is visible at once and fast movement reads as noise. */
+    --wp-asn-speed: 42s;
+    /* How much of each edge fades out, so logos enter and leave rather than
+       being cut off by the viewport border. */
+    --wp-asn-fade: 8%;
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Tight, and no bottom rule: this is the HEAD of the operating-model band,
+       not a section of its own, so it runs straight into the heading below. */
+    padding: 30px 0 26px;
+    background-color: var(--wp-paper-dark);
+    background-image: var(--wp-texture-paper);
+    border-top: 2px solid var(--wp-ink);
+  }
+
+  .wp-asn__head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 0 24px;
+    margin-bottom: 18px;
+  }
+
+  .wp-asn__rule {
+    height: 1px;
+    width: 40px;
+    max-width: 20vw;
+    background: var(--wp-border-primary);
+  }
+
+  .wp-asn__label {
+    font-family: var(--wp-font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--wp-text-tertiary);
+    white-space: nowrap;
+  }
+
+  .wp-asn__viewport {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--wp-asn-fade), #000 calc(100% - var(--wp-asn-fade)), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--wp-asn-fade), #000 calc(100% - var(--wp-asn-fade)), transparent 100%);
+  }
+
+  .wp-asn__track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: var(--wp-asn-gap);
+    animation: wp-asn-marquee var(--wp-asn-speed) linear infinite;
+    will-change: transform;
+  }
+
+  /* Pause on hover so a logo can actually be read. Pointer-only: on a touch
+     screen `:hover` sticks after a tap and would freeze the strip for good. */
+  @media (hover: hover) {
+    .wp-asn__viewport:hover .wp-asn__track { animation-play-state: paused; }
+  }
+
+  .wp-asn__item {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wp-asn__item img {
+    display: block;
+    width: var(--wp-asn-disc);
+    height: var(--wp-asn-disc);
+    opacity: 0.9;
+    transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .wp-asn__item:hover img { opacity: 1; }
+
+  /* Exactly half the track: the clone lands where the original started. */
+  @keyframes wp-asn-marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+
+  /* ── Wider than a phone: bigger discs, more air, a calmer cycle. ─────────── */
+  @media (min-width: 768px) {
+    .wp-asn {
+      --wp-asn-disc: var(--discPx);
+      --wp-asn-gap: 52px;
+      --wp-asn-speed: 56s;
+      padding: 40px 0 34px;
+    }
+    .wp-asn__head { margin-bottom: 22px; }
+    .wp-asn__rule { width: 72px; }
+  }
+
+  /* ── No motion: a static, centred, wrapping row of the REAL list. ────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .wp-asn__track {
+      animation: none;
+      transform: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      row-gap: 22px;
+    }
+    /* The clone exists only to make the loop seamless; with no loop it would
+       just show every logo twice. */
+    .wp-asn__item[aria-hidden='true'] { display: none; }
+    .wp-asn__viewport { -webkit-mask-image: none; mask-image: none; }
+  }
+</style>
