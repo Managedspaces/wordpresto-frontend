@@ -12,6 +12,8 @@ export interface AsSeenOnOutlet {
   slug: string;
   /** The outlet's own name — a proper noun, so it is NOT translated per locale. */
   name: string;
+  /** The live listing this logo links to. Rendered nofollow — see AsSeenOn.astro. */
+  url: string;
 }
 
 /**
@@ -27,14 +29,22 @@ export const ASN_DISC_PX = 96;
 export const ASN_LOGO_PX = ASN_DISC_PX * 2;
 
 export const AS_SEEN_ON: AsSeenOnOutlet[] = [
-  { slug: 'product-hunt', name: 'Product Hunt' },
-  { slug: 'capterra', name: 'Capterra' },
-  { slug: 'getapp', name: 'GetApp' },
-  { slug: 'software-advice', name: 'Software Advice' },
-  { slug: 'sourceforge', name: 'SourceForge' },
-  { slug: 'slashdot', name: 'Slashdot' },
-  { slug: 'saashub', name: 'SaaSHub' },
-  { slug: 'peerpush', name: 'PeerPush' },
-  { slug: 'future-tools', name: 'Future Tools' },
-  { slug: 'crunchbase', name: 'Crunchbase' },
+  { slug: 'product-hunt', name: 'Product Hunt', url: 'https://www.producthunt.com/products/word-presto' },
+  { slug: 'capterra', name: 'Capterra', url: 'https://www.capterra.com/p/10052606/Word-Presto/' },
+  { slug: 'getapp', name: 'GetApp', url: 'https://www.getapp.com/all-software/a/word-presto/' },
+  {
+    slug: 'software-advice',
+    name: 'Software Advice',
+    url: 'https://www.softwareadvice.com/product/560160-Word-Presto/',
+  },
+  { slug: 'sourceforge', name: 'SourceForge', url: 'https://sourceforge.net/software/product/Word-Presto/' },
+  { slug: 'slashdot', name: 'Slashdot', url: 'https://slashdot.org/software/p/Word-Presto/' },
+  { slug: 'saashub', name: 'SaaSHub', url: 'https://www.saashub.com/word-presto' },
+  {
+    slug: 'peerpush',
+    name: 'PeerPush',
+    url: 'https://peerpush.com/p/word-presto?sq=cmtft6t3905e1072govnnk2vh&pos=0',
+  },
+  { slug: 'future-tools', name: 'Future Tools', url: 'https://futuretools.io/tools/word-presto-lp3d25' },
+  { slug: 'crunchbase', name: 'Crunchbase', url: 'https://www.crunchbase.com/organization/word-presto' },
 ];

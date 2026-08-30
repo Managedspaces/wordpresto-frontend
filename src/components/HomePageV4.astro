@@ -22,6 +22,7 @@ import LoopSection from '@/components/home-v4/LoopSection.astro';
 import ChannelsSection from '@/components/home-v4/ChannelsSection.astro';
 import DppSection from '@/components/home-v4/DppSection.astro';
 import SignInCta from '@/components/home-v4/SignInCta.astro';
+import AsSeenOn from '@/components/AsSeenOn.astro';
 import { homeV4 } from '@/data/i18n/homeV4';
 import { registerUrl } from '@/lib/appLinks';
 import { DEFAULT_LOCALE } from '@/i18n/locales';
@@ -55,26 +56,36 @@ const jsonLd = [
   <IconSprite />
   <Masthead locale={DEFAULT_LOCALE} />
 
-  <main id="top" class="v4-shell">
-    <section class="v4-hero">
-      <HeroCopy hero={t.hero} registerHref={registerHref} />
-      <DeskBoard desk={t.desk} />
-    </section>
+  <main id="top">
+    <div class="v4-shell">
+      <section class="v4-hero">
+        <HeroCopy hero={t.hero} registerHref={registerHref} />
+        <DeskBoard desk={t.desk} />
+      </section>
 
-    <PillarRows pillars={t.pillars} />
-    <EcosystemMap ecosystem={t.ecosystem} />
-  </main>
+      <PillarRows pillars={t.pillars} />
+    </div>
 
-  <LoopSection loop={t.loop} />
+    <!-- Closes the five pillars: the strip's own full-bleed ink rule is the
+         line under "Publish. Observe. Learn. Write again with more
+         information.", which is why the last pillar row drops its own. -->
+    <AsSeenOn label={t.asSeenOn.label} />
 
-  <main class="v4-shell">
-    <ChannelsSection channels={t.channels} />
-  </main>
+    <div class="v4-shell">
+      <EcosystemMap ecosystem={t.ecosystem} />
+    </div>
 
-  <DppSection dpp={t.dpp} />
+    <LoopSection loop={t.loop} />
 
-  <main class="v4-shell">
-    <SignInCta signIn={t.signIn} registerHref={registerHref} />
+    <div class="v4-shell">
+      <ChannelsSection channels={t.channels} />
+    </div>
+
+    <DppSection dpp={t.dpp} />
+
+    <div class="v4-shell">
+      <SignInCta signIn={t.signIn} registerHref={registerHref} />
+    </div>
   </main>
 
   <Footer locale={DEFAULT_LOCALE} />
@@ -82,8 +93,10 @@ const jsonLd = [
 
 <style>
   /* The page shell: one max width and one gutter pair, shared by every band
-     that is not full-bleed. The dark loop band and the DPP band repeat these
-     values inside their own inner wrappers because they paint edge to edge. */
+     that is not full-bleed. The dark loop band, the DPP band and the "as seen
+     on" strip repeat these values inside their own inner wrappers because they
+     paint edge to edge. One <main> wraps the lot — a document gets exactly one,
+     and the artboard's three were three landmarks for one page. */
   .v4-shell {
     max-width: 1320px;
     margin: 0 auto;

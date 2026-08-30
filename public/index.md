@@ -78,6 +78,19 @@ Word Presto brings those signals back into the project so the next piece of work
 
 **Publish. Observe. Learn. Write again with more information.**
 
+## As seen on
+
+- [Product Hunt](https://www.producthunt.com/products/word-presto)
+- [Capterra](https://www.capterra.com/p/10052606/Word-Presto/)
+- [GetApp](https://www.getapp.com/all-software/a/word-presto/)
+- [Software Advice](https://www.softwareadvice.com/product/560160-Word-Presto/)
+- [SourceForge](https://sourceforge.net/software/product/Word-Presto/)
+- [Slashdot](https://slashdot.org/software/p/Word-Presto/)
+- [SaaSHub](https://www.saashub.com/word-presto)
+- [PeerPush](https://peerpush.com/p/word-presto?sq=cmtft6t3905e1072govnnk2vh&pos=0)
+- [Future Tools](https://futuretools.io/tools/word-presto-lp3d25)
+- [Crunchbase](https://www.crunchbase.com/organization/word-presto)
+
 ## Your brand doesn’t live on one webpage.
 
 Search, social, conversations, authority and your website all influence how people discover and understand you.

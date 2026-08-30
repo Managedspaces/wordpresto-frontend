@@ -81,6 +81,11 @@ export interface HomeV4Content {
     annotation: string;
   };
   pillars: { rows: PillarRow[] };
+  /**
+   * "As seen on" strip label. The outlet NAMES and their listing URLs are in
+   * `@/data/asSeenOn`; only this label lives here.
+   */
+  asSeenOn: { label: string };
   ecosystem: {
     kicker: string;
     exampleBadge: string;
@@ -280,6 +285,8 @@ export const homeV4: HomeV4Content = {
   },
 
   pillars: { rows: PILLAR_ROWS },
+
+  asSeenOn: { label: 'As seen on' },
 
   ecosystem: {
     kicker: 'The modern brand ecosystem',

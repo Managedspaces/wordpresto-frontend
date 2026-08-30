@@ -214,6 +214,12 @@ function renderHomeV4Markdown(): string {
       `**${row.closing}**`,
       ``,
     ]),
+    // The trust strip is a real claim on the page, so the mirror states it in
+    // words — and as links, since each disc now links to its live listing.
+    `## ${t.asSeenOn.label}`,
+    ``,
+    ...AS_SEEN_ON.map((o) => `- [${o.name}](${o.url})`),
+    ``,
     `## ${t.ecosystem.h2}`,
     ``,
     t.ecosystem.body,
