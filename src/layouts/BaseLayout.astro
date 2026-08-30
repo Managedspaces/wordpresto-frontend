@@ -275,6 +275,13 @@ const alternates =
     html { scroll-padding-top: 48px; }
   }
 
+  /* WCAG 2.3.3 — an anchor jump should be instant for anyone who has asked for
+     less motion. scroll-padding-top still applies, so the target still lands
+     clear of the sticky masthead. */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
   body {
     margin: 0;
     font-family: var(--wp-font-sans);

@@ -26,7 +26,6 @@ const { hero, registerHref } = Astro.props;
 
   <div class="hero-ctas">
     <a class="hero-cta hero-cta--primary" href={registerHref}>{hero.ctaPrimary}</a>
-    <a class="hero-cta hero-cta--secondary" href="#desk">{hero.ctaSecondary}</a>
   </div>
 
   <p class="hero-note">{hero.trialNote}</p>
@@ -111,15 +110,6 @@ const { hero, registerHref } = Astro.props;
     background: var(--wp-signal-hover);
     border-color: var(--wp-signal-hover);
     color: var(--wp-text-inverse);
-  }
-  .hero-cta--secondary {
-    background: transparent;
-    border: 1px solid var(--wp-text-primary);
-    color: var(--wp-text-primary);
-  }
-  .hero-cta--secondary:hover {
-    background: var(--wp-bg-secondary);
-    color: var(--wp-text-primary);
   }
   .hero-cta:focus-visible {
     outline: 2px solid var(--wp-accent-ink);

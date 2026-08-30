@@ -61,7 +61,6 @@ export interface HomeV4Content {
     body: string[];
     serifLine: string;
     ctaPrimary: string;
-    ctaSecondary: string;
     trialNote: string;
     preparesLabel: string;
     preparesFor: string[];
@@ -240,7 +239,6 @@ export const homeV4: HomeV4Content = {
     ],
     serifLine: 'How much help you want is up to you.',
     ctaPrimary: 'Start your 7-day free trial',
-    ctaSecondary: 'See the editorial desk',
     trialNote: 'Full access. Cancel any time before it renews.',
     preparesLabel: 'prepares content for',
     preparesFor: ['WordPress', 'Astro', 'Payload', 'Sanity'],

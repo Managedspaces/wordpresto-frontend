@@ -309,6 +309,8 @@ const byId = Object.fromEntries(ecosystem.nodes.map((n) => [n.id, n]));
 
 <style>
   .eco {
+    /* Half the height of the tallest node card — see .eco-frame below. */
+    --eco-node-overhang: 88px;
     padding: clamp(64px, 9vw, 100px) 0 0;
   }
   .eco-kicker {
@@ -713,7 +715,13 @@ const byId = Object.fromEntries(ecosystem.nodes.map((n) => [n.id, n]));
       position: relative;
       /* Matches the artboard's 1000x800 canvas. */
       aspect-ratio: 1000 / 800;
-      margin-top: 28px;
+      /* Each card is CENTRED on its node point, and the highest point sits at
+         8% of the frame (the lowest at 88%), so roughly half a card hangs
+         outside the frame at each end. The frame scales with the viewport but
+         that overhang is a fixed card-height, so it is reserved as a fixed
+         margin — without it the top card lands on the paragraph above. */
+      margin-top: calc(28px + var(--eco-node-overhang));
+      margin-bottom: var(--eco-node-overhang);
     }
     .eco-links {
       display: block;
