@@ -21,6 +21,11 @@
  *
  * Reduced motion is not a downgrade: the strip becomes a static, centred, wrapping row of the real list,
  * with the decorative clone removed so nothing is announced or shown twice (WCAG 2.3.3).
+ *
+ * EACH DISC LINKS TO ITS LISTING, `rel="nofollow noopener"`. These are third-party directory profiles we do
+ * not control and are not vouching for with our own ranking signal, so nofollow is the honest annotation.
+ * The clone half is `aria-hidden` AND `tabindex="-1"`: without the latter a keyboard user would tab through
+ * all twenty discs and hit every outlet twice.
  */
 import { AS_SEEN_ON, ASN_DISC_PX, ASN_LOGO_PX } from '@/data/asSeenOn';
 
@@ -52,7 +57,15 @@ const track = [
   <div class="wp-asn__viewport">
     <div class="wp-asn__track">
       {track.map((outlet) => (
-        <div class="wp-asn__item" aria-hidden={outlet.decorative ? 'true' : undefined}>
+        <a
+          class="wp-asn__item"
+          href={outlet.url}
+          target="_blank"
+          rel="nofollow noopener"
+          aria-hidden={outlet.decorative ? 'true' : undefined}
+          tabindex={outlet.decorative ? -1 : undefined}
+          aria-label={outlet.decorative ? undefined : `${outlet.name} — Word Presto listing (opens in a new tab)`}
+        >
           <img
             src={`/as-seen-on/${outlet.slug}-${ASN_LOGO_PX}.webp`}
             alt={outlet.decorative ? '' : outlet.name}
@@ -61,7 +74,7 @@ const track = [
             loading="lazy"
             decoding="async"
           />
-        </div>
+        </a>
       ))}
     </div>
   </div>
@@ -146,6 +159,20 @@ const track = [
     display: flex;
     align-items: center;
     justify-content: center;
+    /* It is an <a> now: strip the link colour/underline, keep the disc's box. */
+    color: inherit;
+    text-decoration: none;
+    border-radius: 50%;
+  }
+
+  .wp-asn__item:focus-visible {
+    outline: 2px solid var(--wp-ink);
+    outline-offset: 4px;
+  }
+
+  /* A focused disc would otherwise scroll past under the marquee. */
+  .wp-asn__viewport:focus-within .wp-asn__track {
+    animation-play-state: paused;
   }
 
   .wp-asn__item img {

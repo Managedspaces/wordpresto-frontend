@@ -32,7 +32,7 @@ function srcSet(image: string): string {
        was the previous homepage's id for this same idea. -->
   <span id="story" class="pillars-anchor-alias" aria-hidden="true"></span>
   {pillars.rows.map((row, i) => (
-    <div class:list={['pillar', { 'pillar--reversed': i % 2 === 1, 'pillar--last': i === pillars.rows.length - 1 }]}>
+    <div class:list={['pillar', { 'pillar--reversed': i % 2 === 1 }]}>
       <figure class="pillar-figure">
         <div class="pillar-frame">
           <img
@@ -77,9 +77,9 @@ function srcSet(image: string): string {
     padding: clamp(36px, 5vw, 56px) 0;
     border-top: 1px solid var(--wp-border-primary);
   }
-  .pillar--last {
-    border-bottom: 1px solid var(--wp-border-primary);
-  }
+  /* No closing rule on the last row: the "as seen on" strip that follows
+     carries a full-bleed 2px ink rule, and a container-width hairline sitting
+     directly above it reads as a mistake. */
   .pillar-figure {
     margin: 0;
   }
