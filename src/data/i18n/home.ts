@@ -33,6 +33,11 @@ export interface HomeContent {
     signOffName: string;
     signOffRole: string;
   };
+  /**
+   * "As seen on" logo strip label. The outlet NAMES are proper nouns and live in
+   * `@/data/asSeenOn`; only this label is translated.
+   */
+  asSeenOn: { label: string };
   board: {
     note: string;
     title: string;
@@ -181,6 +186,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       trialNote: 'Full access. Cancel any time before it renews.',
       preparesLabel: 'prepares content for',
     },
+    asSeenOn: { label: 'As seen on' },
     board: {
       note: 'your desk, coordinated',
       title: 'Editorial operations board',
@@ -387,6 +393,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       trialNote: 'Acesso total. Cancele quando quiser antes da renovação.',
       preparesLabel: 'prepara conteúdos para',
     },
+    asSeenOn: { label: 'Como visto em' },
     board: {
       note: 'a sua secretária, coordenada',
       title: 'Painel de Operações Editoriais',
@@ -570,6 +577,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       trialNote: 'Acesso total. Cancele quando quiser antes da renovação.',
       preparesLabel: 'prepara conteúdo para',
     },
+    asSeenOn: { label: 'Como visto em' },
     board: {
       note: 'sua mesa, coordenada',
       title: 'Painel de operações editoriais',
@@ -753,6 +761,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       trialNote: 'Acceso completo. Cancela cuando quieras antes de que se renueve.',
       preparesLabel: 'prepara contenido para',
     },
+    asSeenOn: { label: 'Visto en' },
     board: {
       note: 'tu escritorio, coordinado',
       title: 'Panel de operaciones editoriales',
@@ -936,6 +945,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       trialNote: 'Voller Zugriff. Jederzeit vor der Verlängerung kündbar.',
       preparesLabel: 'bereitet Inhalte vor für',
     },
+    asSeenOn: { label: 'Bekannt aus' },
     board: {
       note: 'Ihr Arbeitsbereich, koordiniert',
       title: 'Redaktionszentrale',
@@ -1119,6 +1129,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       trialNote: 'Accès complet. Annulable à tout moment avant le renouvellement.',
       preparesLabel: 'prépare le contenu pour',
     },
+    asSeenOn: { label: 'Vu sur' },
     board: {
       note: 'votre bureau, coordonné',
       title: 'Tableau des opérations éditoriales',

@@ -15,6 +15,10 @@ En el centro está Emma, tu editora jefe. Ella mantiene el briefing, el borrador
 
 > Emma lo prepara. El editor lo aprueba. Nada se publica sin tu visto bueno.
 
+## Visto en
+
+Product Hunt · Capterra · GetApp · Software Advice · SourceForge · Slashdot · SaaSHub · PeerPush · Future Tools · Crunchbase
+
 ## Esto no es otro panel de contenido.
 
 La mayoría del trabajo de contenido no fracasa porque la gente no sepa escribir. Fracasa porque el brief cambia, las revisiones llegan tarde, las afirmaciones pierden sus fuentes, el SEO se añade al final y nadie sabe quién aprobó qué.

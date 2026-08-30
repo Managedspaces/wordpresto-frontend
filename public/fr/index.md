@@ -15,6 +15,10 @@ Au centre se trouve Emma, votre rédactrice en chef. Elle assure le suivi du bri
 
 > Emma prépare. Le rédacteur en chef approuve. Rien n'est publié sans votre validation.
 
+## Vu sur
+
+Product Hunt · Capterra · GetApp · Software Advice · SourceForge · Slashdot · SaaSHub · PeerPush · Future Tools · Crunchbase
+
 ## Ceci n'est pas un énième tableau de bord de contenu.
 
 La plupart des travaux de contenu n'échouent pas parce que les gens ne savent pas écrire. Ils échouent parce que le brief change, les relectures arrivent en retard, les affirmations perdent leurs sources, le SEO est ajouté à la dernière minute, et personne ne sait qui a approuvé quoi.
