@@ -149,18 +149,18 @@ Word Presto treats them as one connected publishing system.
 - **Publication reference**: When other people reference your work, the idea travels beyond the page it started on. Expertise accumulates across the wider body of work, not inside a single article.
 - **Author profile**: A credible person behind the writing is part of the evidence. Expertise connects to the company, not just the page.
 
-## Search and social are one ecosystem. Discovery doesn’t happen in one place anymore.
+## The funnel stopped being a funnel.
 
-Attention creates searches. Search creates discovery. Useful work earns references. Conversations expose new questions. Those questions become the next piece worth making.
+Nobody moves down a straight line from awareness to decision any more. They notice you somewhere, go quiet, ask people they trust, search for you by name, check whether you are credible, ask an AI to summarise you — and arrive already decided. Then they tell someone else, and it starts again.
 
-- **Ranking page**: A strong webpage becomes more than a search result. It becomes evidence that can be referenced, shared and cited.
-- **Useful article**: One genuinely useful page answers the question everywhere at once, in search, in an assistant, in a reply to a customer.
-- **Customer review**: Customer language strengthens the story people, search engines and AI systems associate with your business.
-- **AI answer**: AI systems build their understanding from the wider network of content, identity, authority and references around your brand.
-- **LinkedIn story**: A useful social story creates attention, branded searches and wider recognition around the subjects your business wants to own.
-- **Instagram carousel**: The same story, told in a form people save and send on, and searched for by name afterwards.
-- **Video discovery**: Video turns up where text cannot, then sends people back to the page that explains the rest.
-- **Conversation**: Conversation is how a story travels, and how the next thing worth writing announces itself.
+- **Unprompted attention**: Almost nobody starts by searching for you. They start by noticing something worth their time, from someone they were already reading.
+- **Saved for later**: Most of the journey is invisible. Work gets saved, forwarded and remembered long before anyone fills in a form.
+- **Quiet research**: The research happens without you. By the time you hear from someone, they have usually made most of their mind up already.
+- **Asks people they trust**: A recommendation from someone they already trust outweighs anything you say about yourself. This is the part of the funnel you cannot buy.
+- **Searches by name**: A branded search is not the top of the funnel. It is evidence that something earlier in the loop already worked.
+- **Reads the detail**: One genuinely useful page does the work of a sales call, and does it at three in the morning without you.
+- **Checks you are credible**: Trust gets verified somewhere you do not control. What other customers said is part of your evidence whether you like it or not.
+- **Asks an AI to summarise you**: An assistant answers from the whole picture, not one page. What it says about you is built out of every loop that came before it.
 
 ## One piece of work. More ways to use it.
 
