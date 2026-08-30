@@ -292,9 +292,9 @@ export const homeV4: HomeV4Content = {
     site: {
       url: 'vantia.co.uk',
       kicker: 'Your website · the centre of your brand',
-      headline: 'Clinic management your front desk actually likes',
-      tiles: ['Booking that patients finish', 'Notes, records, recalls', 'Reporting your board reads'],
-      docLine: 'Guide · What patients want to know before booking',
+      headline: 'Ideas your audience can actually use',
+      tiles: ['Research worth sharing', 'Questions worth answering', 'Ideas worth developing'],
+      docLine: 'Guide · What customers want to know before they decide',
       docStatus: 'updated',
     },
     nodes: [
