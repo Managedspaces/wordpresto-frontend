@@ -159,7 +159,7 @@ Each page should have a generated Markdown version.
 
 The Markdown mirror is generated from the shared data file, not from the `.astro` page:
 
-* `src/data/i18n/home.ts` is the single source of truth for the homepage, in all locales — both the live page (`src/components/HomePage.astro`, rendered by `src/pages/index.astro` for English and `src/pages/[locale]/index.astro` for every other locale) and the generated Markdown mirrors read from it. There is no separate mirror-only copy of the homepage any more.
+* The English homepage and the translated ones are **different pages**. English is the v4 page: `src/pages/index.astro` renders `src/components/HomePageV4.astro` from `src/data/i18n/homeV4.ts`. Every other locale is the v6 page: `src/pages/[locale]/index.astro` renders `src/components/HomePage.astro` from `src/data/i18n/home.ts`. Each data file is the single source of truth for its own page, and the generated Markdown mirrors read from the same file the live page does, so a mirror can never drift from its page. Check which of the two you are editing before changing homepage copy or homepage links.
 * `scripts/generate-page-markdown.ts` renders the mirrors; it runs via `prebuild`. The homepage mirror is generated once per locale: English at the legacy `public/index.md` / `public/pages/index.md`, every other locale at `public/{locale}/index.md` (e.g. `public/pt/index.md`), matching its live route exactly.
 * `src/data/workerProfiles.ts` is the source of truth for Worker pages (English only for now).
 
@@ -370,6 +370,7 @@ Before reporting completion, verify:
 * meta description exists
 * OG image exists
 * Markdown mirrors generate
+* `check-internal-links.mjs` passes: no localised page links an English URL that has a translated twin, and every page is reachable from its own locale homepage without switching language
 * `llms.txt` and `llm.txt` exist
 * no Payload/CMS dependency was added
 * no Supabase/Aurora dependency was added

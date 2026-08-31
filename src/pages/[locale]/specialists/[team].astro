@@ -6,7 +6,7 @@ import { TEAM_ORDER, TEAM_META } from '@/data/workerRegistry';
 export function getStaticPaths() {
   const teamSlugs = TEAM_ORDER.map((id) => ({
     id,
-    slug: TEAM_META[id].href.replace('/specialists/', '').replace(/\/$/, ''),
+    slug: TEAM_META[id].path.replace('/specialists/', '').replace(/\/$/, ''),
   }));
 
   return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).flatMap((l) =>

@@ -20,9 +20,9 @@ const c = commonStrings[locale];
 const team = getTeamMeta(teamId, locale);
 const workers = getWorkersByTeam(teamId);
 
-const canonical = locale === 'en'
-  ? `https://wordpresto.com${team.href}`
-  : `https://wordpresto.com${localeHref(locale, team.href)}`;
+// team.href is already prefixed for this locale, so it is the canonical as-is.
+// team.path is the unprefixed form, which is what localisedPath below needs.
+const canonical = `https://wordpresto.com${team.href}`;
 
 const jsonLd = [
   breadcrumbList([
@@ -47,11 +47,11 @@ const jsonLd = [
   canonical={canonical}
   jsonLd={jsonLd}
   locale={locale}
-  localisedPath={team.href}
+  localisedPath={team.path}
 >
 
   <!-- ===================== MASTHEAD ===================== -->
-  <Masthead locale={locale} />
+  <Masthead locale={locale} localisedPath={team.path} />
 
   <!-- HERO -->
   <section class="section section--hero">

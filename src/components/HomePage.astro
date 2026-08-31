@@ -57,7 +57,7 @@ const jsonLd = [
 >
 
   <!-- ===================== MASTHEAD ===================== -->
-  <Masthead locale={locale} />
+  <Masthead locale={locale} localisedPath="/" />
 
   <!-- ===================== 1. HERO ===================== -->
   <section id="top" class="section section--hero">
@@ -75,6 +75,9 @@ const jsonLd = [
             {t.hero.ctaPrimary}
             <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true"><path d="M1 5.5 H17 M13 1.8 L17.8 5.5 L13 9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
+          {/* English-only routes: /workflow-demo/ and /pricing/ have no localised
+              twin yet, so these stay unprefixed deliberately. Wrap them in
+              localeHref the day those routes exist. */}
           <a href="/workflow-demo/" class="btn btn--secondary btn--lg btn--tilt">{t.hero.ctaSecondary}</a>
         </div>
         <p class="hero-trial-note">
@@ -459,7 +462,7 @@ const jsonLd = [
               {cta}
               <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a href="/specialists/" class="team-card-cta team-card-cta--secondary">
+            <a href={localeHref(locale, '/specialists/')} class="team-card-cta team-card-cta--secondary">
               {t.specialists.browseProfiles}
               <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h12M9.5 1.5 13.5 5 9.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
