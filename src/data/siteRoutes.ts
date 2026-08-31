@@ -173,7 +173,7 @@ export const siteRoutes: SiteRoute[] = [
       priority: 0.7,
     },
     ...TEAM_ORDER.map((id) => ({
-      path: localeHref(l.code, TEAM_META[id].href),
+      path: localeHref(l.code, TEAM_META[id].path),
       label: `${TEAM_META[id].name} (${l.label})`,
       description: TEAM_META[id].summary,
       group: 'main' as const,

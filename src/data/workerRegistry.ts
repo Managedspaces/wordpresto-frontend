@@ -1,4 +1,4 @@
-import type { Locale } from '@/i18n/locales';
+import { localeHref, type Locale } from '@/i18n/locales';
 
 // Marketing-safe worker/team manifest for the public site.
 //
@@ -28,10 +28,24 @@ export interface TeamMeta {
   name: string;
   summary: string;
   color: string;
-  /** Team page on the marketing site. */
+  /**
+   * Locale-agnostic team page path, e.g. "/specialists/seo/". This is the
+   * shape BaseLayout's `localisedPath` expects: it prefixes each locale
+   * itself when building the hreflang cluster, so this must never already
+   * carry one. Use it for hreflang and for canonicals, never for a link.
+   */
+  path: string;
+  /**
+   * Team page link, already prefixed for the locale passed to getTeamMeta().
+   * Every team page is translated at the same slug, so a German page linking
+   * a team must send the reader to the German twin, not the English original.
+   */
   href: string;
   cta: string;
 }
+
+/** TEAM_META holds only what does not vary by locale; getTeamMeta() adds `href`. */
+type TeamMetaBase = Omit<TeamMeta, 'href'>;
 
 export interface WorkerEntry {
   id: string;
@@ -76,13 +90,13 @@ export function workerInitials(name: string): string {
 // Command Centre dashboard order, which leads with Operations).
 export const TEAM_ORDER: TeamId[] = ['content', 'seo', 'operations', 'governance'];
 
-export const TEAM_META: Record<TeamId, TeamMeta> = {
+export const TEAM_META: Record<TeamId, TeamMetaBase> = {
   content: {
     id: 'content',
     name: 'Content Production Team',
     summary: 'Plans, drafts, rewrites and proofs the copy, turning briefs into structured, ready content.',
     color: 'var(--team-content)',
-    href: '/specialists/content-production/',
+    path: '/specialists/content-production/',
     cta: 'Browse Content Workers',
   },
   seo: {
@@ -90,7 +104,7 @@ export const TEAM_META: Record<TeamId, TeamMeta> = {
     name: 'SEO Team',
     summary: 'Works search intent, structure, technical signals, evidence and internal relationships into the content, not bolted on at the end.',
     color: 'var(--team-seo)',
-    href: '/specialists/seo/',
+    path: '/specialists/seo/',
     cta: 'Browse SEO Workers',
   },
   operations: {
@@ -98,7 +112,7 @@ export const TEAM_META: Record<TeamId, TeamMeta> = {
     name: 'Operations / Management',
     summary: 'Coordinates the review flow and keeps every piece of work ready for a human decision.',
     color: 'var(--team-strategy)',
-    href: '/specialists/operations-management/',
+    path: '/specialists/operations-management/',
     cta: 'Browse Operations',
   },
   governance: {
@@ -106,15 +120,16 @@ export const TEAM_META: Record<TeamId, TeamMeta> = {
     name: 'Approval / Governance Team',
     summary: 'Checks risk, evidence, approval state and whether proposed changes are ready for the Editor.',
     color: 'var(--team-governance)',
-    href: '/specialists/approval-governance/',
+    path: '/specialists/approval-governance/',
     cta: 'Browse Approval Workers',
   },
 };
 
-// Translated name/summary/cta per locale. `color` and `href` never change
-// by locale, so they stay only in TEAM_META above; getTeamMeta() below
-// merges the two. English (`en`) intentionally mirrors TEAM_META verbatim
-// so there is one wording to maintain, not two.
+// Translated name/summary/cta per locale. `color` and `path` never change by
+// locale, so they stay only in TEAM_META above; getTeamMeta() below merges the
+// two and derives the locale-aware `href` from `path`. English (`en`)
+// intentionally mirrors TEAM_META verbatim so there is one wording to
+// maintain, not two.
 type TeamCopy = Record<TeamId, Pick<TeamMeta, 'name' | 'summary' | 'cta'>>;
 
 const TEAM_I18N: Record<Locale, TeamCopy> = {
@@ -156,9 +171,17 @@ const TEAM_I18N: Record<Locale, TeamCopy> = {
   },
 };
 
-/** TeamMeta with name/summary/cta translated for `locale`; color/href are locale-independent. */
+/**
+ * TeamMeta with name/summary/cta translated for `locale` and `href` prefixed
+ * for it. `color` and `path` are locale-independent.
+ *
+ * Deriving href here rather than storing it is what keeps a translated page
+ * from linking the English team page: every caller that renders a link gets a
+ * locale-correct one without having to remember to wrap it.
+ */
 export function getTeamMeta(id: TeamId, locale: Locale = 'en'): TeamMeta {
-  return { ...TEAM_META[id], ...TEAM_I18N[locale][id] };
+  const base = TEAM_META[id];
+  return { ...base, ...TEAM_I18N[locale][id], href: localeHref(locale, base.path) };
 }
 
 // One entry per visible worker (safe_edit and publishing excluded, matching the

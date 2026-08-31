@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { workflowDemo as meta } from '@/data/staticPages';
-import { registerUrl, loginUrl } from '@/lib/appLinks';
+import { registerUrl } from '@/lib/appLinks';
+import Masthead from '@/components/Masthead.astro';
 import Footer from '@/components/Footer.astro';
 ---
 
@@ -14,23 +15,11 @@ import Footer from '@/components/Footer.astro';
 >
 
   <!-- ===================== MASTHEAD ===================== -->
-  <header class="masthead">
-    <div class="masthead-inner">
-      <nav class="masthead-nav masthead-nav--left">
-        <a href={loginUrl()} class="nav-link">Sign in</a>
-        <a href="/#product" class="nav-link">Product</a>
-        <a href="/workers/" class="nav-link">Workers</a>
-      </nav>
-      <a href="/" class="masthead-logo">
-        <img src="/brand/main-logo-160.webp" srcset="/brand/main-logo-160.webp 160w, /brand/main-logo-320.webp 320w, /brand/main-logo-480.webp 480w" sizes="174px" alt="Word Presto — the content engine behind publishing" width="174" height="132" decoding="async" />
-      </a>
-      <nav class="masthead-nav masthead-nav--right">
-        <a href="/#use-cases" class="nav-link">Use cases</a>
-        <a href="/workers/" class="nav-link">Workers</a>
-        <a href={registerUrl()} class="btn btn--primary btn--sm">Join now</a>
-      </nav>
-    </div>
-  </header>
+  <!-- This page kept an inline masthead when every other page moved to the
+       shared component, and it drifted: its nav pointed at /#product and
+       /#use-cases, homepage ids that no longer exist, and it hid every link on
+       mobile. English only, so no localisedPath. -->
+  <Masthead locale="en" />
 
   <!-- ===================== INTRO ===================== -->
   <section class="section section--intro">
@@ -1347,48 +1336,6 @@ import Footer from '@/components/Footer.astro';
 </script>
 
 <style>
-  /* ===== MASTHEAD ===== */
-  .masthead {
-    position: sticky;
-    top: 0;
-    z-index: 60;
-    background-color: var(--wp-bg-primary);
-    background-image: var(--wp-texture-paper);
-    border-bottom: 2px solid var(--wp-ink);
-    transform: translateZ(0);
-  }
-  .masthead-inner {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 12px 34px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 16px;
-  }
-  .masthead-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .masthead-logo img { height: 56px; width: auto; display: block; mix-blend-mode: multiply; }
-  .masthead-nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .masthead-nav--right { justify-content: flex-end; }
-  .nav-link {
-    font-size: var(--wp-text-sm);
-    font-weight: 500;
-    color: var(--wp-text-secondary);
-    transition: color 120ms;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-  .nav-link:hover { color: var(--wp-ink); }
-
   /* ===== LAYOUT ===== */
   .container {
     width: 100%;
@@ -1686,8 +1633,6 @@ import Footer from '@/components/Footer.astro';
     .section { padding: 52px 0; }
     .section--intro { padding: 44px 0 40px; }
     .section--demo { padding: 40px 0 60px; }
-    .masthead-nav { display: none; }
-    .masthead-inner { grid-template-columns: 1fr; justify-items: center; padding: 10px 20px; }
     .review-surface-body { grid-template-columns: 1fr; }
     .review-meta { border-right: none; border-bottom: 1px solid var(--wp-line); }
     .review-meta-dl { grid-template-columns: 110px 1fr; }

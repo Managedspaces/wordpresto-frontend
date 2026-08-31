@@ -11,10 +11,24 @@ import { registerUrl, loginUrl, docsUrl } from '@/lib/appLinks';
 
 interface Props {
   locale: Locale;
+  /**
+   * Locale-agnostic path of the page this masthead sits on, e.g. "/workers/seo/".
+   * Same value the page hands BaseLayout for its hreflang cluster, so the two
+   * can never disagree about where a locale's twin lives.
+   *
+   * Set it and the language switcher swaps language in place: a reader on
+   * /de/workers/seo/ who picks Português lands on /pt/workers/seo/. Leave it
+   * unset on a page with no translated twin and the switcher falls back to the
+   * locale homepage, which is the only honest destination in that case.
+   */
+  localisedPath?: string;
 }
-const { locale } = Astro.props;
+const { locale, localisedPath } = Astro.props;
 const c = commonStrings[locale];
 const home = localeHref(locale, '/');
+
+/** Where the flag for `code` should go: this same page in that language, if it has one. */
+const localeSwitchHref = (code: Locale) => localeHref(code, localisedPath ?? '/');
 
 // Canonical nav. Real routes (not homepage-only anchors) so every item works
 // from any page. "The desk" / "Canvas" are homepage sections, reached via the
@@ -60,9 +74,9 @@ const otherLocales = LOCALES.filter((l) => l.code !== locale);
         </nav>
         <a href={registerUrl(locale)} class="mh-cta mh-drawer-cta">{c.joinWaitlist}</a>
         <div class="mh-drawer-langs" aria-label="Language">
-          <a href={home} class="mh-flag mh-flag--current" aria-label={currentLocale?.label} set:html={FLAG_SVG[currentLocale?.countryCode ?? 'IE']} />
+          <a href={localeSwitchHref(locale)} class="mh-flag mh-flag--current" rel="alternate" hreflang={currentLocale?.htmlLang} aria-label={currentLocale?.label} set:html={FLAG_SVG[currentLocale?.countryCode ?? 'IE']} />
           {otherLocales.map((l) => (
-            <a href={localeHref(l.code, '/')} class="mh-flag" aria-label={l.label} set:html={FLAG_SVG[l.countryCode]} />
+            <a href={localeSwitchHref(l.code)} class="mh-flag" rel="alternate" hreflang={l.htmlLang} aria-label={l.label} set:html={FLAG_SVG[l.countryCode]} />
           ))}
         </div>
       </div>
@@ -90,11 +104,11 @@ const otherLocales = LOCALES.filter((l) => l.code !== locale);
         <a href={l.href} class="mh-link" {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
       ))}
       <div class="mh-locale">
-        <a href={home} class="mh-flag mh-flag--current" aria-label={currentLocale?.label} set:html={FLAG_SVG[currentLocale?.countryCode ?? 'IE']} />
+        <a href={localeSwitchHref(locale)} class="mh-flag mh-flag--current" rel="alternate" hreflang={currentLocale?.htmlLang} aria-label={currentLocale?.label} set:html={FLAG_SVG[currentLocale?.countryCode ?? 'IE']} />
         <div class="mh-locale-menu">
           <div class="mh-locale-menu-inner">
             {otherLocales.map((l) => (
-              <a href={localeHref(l.code, '/')} class="mh-flag" aria-label={l.label} set:html={FLAG_SVG[l.countryCode]} />
+              <a href={localeSwitchHref(l.code)} class="mh-flag" rel="alternate" hreflang={l.htmlLang} aria-label={l.label} set:html={FLAG_SVG[l.countryCode]} />
             ))}
           </div>
         </div>

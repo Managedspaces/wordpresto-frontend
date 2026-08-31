@@ -3,9 +3,13 @@ import HomePage from '@/components/HomePage.astro';
 import { LOCALES, DEFAULT_LOCALE } from '@/i18n/locales';
 
 export function getStaticPaths() {
-  // English lives unprefixed at src/pages/index.astro; every other locale
-  // gets its own "/{locale}/" route here, rendering the same shared
-  // HomePage component parameterised by locale (see context.md).
+  // Every locale except English gets its own "/{locale}/" route here,
+  // rendering the shared HomePage (v6) component parameterised by locale.
+  //
+  // English is NOT this page. It lives unprefixed at src/pages/index.astro and
+  // renders HomePageV4, a different page with different copy and a different
+  // link structure. Changing homepage copy or links in one does not touch the
+  // other (see context.md and CLAUDE.md).
   return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({
     params: { locale: l.path },
     props: { locale: l.code },
