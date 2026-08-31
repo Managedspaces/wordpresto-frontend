@@ -32,13 +32,14 @@ interface Props {
 }
 
 // Built at prebuild by scripts/generate-og.mjs from the source artwork,
-// public/og/WordPresto-Aug-OG-02.png. Keep these dimensions in step with the
+// public/og/Word-Presto-OG-optimized.png. Keep these dimensions in step with the
 // WIDTH and HEIGHT in that script: a declared size that does not match the file
 // makes platforms render a mis-sized card.
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og/wordpresto-social.png`;
 const OG_IMAGE_WIDTH = 1200;
 const OG_IMAGE_HEIGHT = 630;
-const OG_IMAGE_ALT = 'Word Presto: write, engage, rank, publish, track.';
+// Reads the artwork's own strip, top to bottom. Keep it in step with the source.
+const OG_IMAGE_ALT = 'Word Presto: write, publish, engage, rank, track.';
 
 const {
   pageTitle,
