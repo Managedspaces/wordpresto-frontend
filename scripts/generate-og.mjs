@@ -1,20 +1,23 @@
 /**
  * Builds the social share image at public/og/wordpresto-social.png.
- * Source: public/og/WordPresto-Aug-OG-02.png (the artwork, committed beside it).
+ * Source: public/og/Word-Presto-OG-optimized.png (the artwork, committed beside it).
  * Run: node scripts/generate-og.mjs  (or via prebuild)
  *
  * Two reasons this exists rather than pointing og:image straight at the artwork.
  *
- * 1. Weight. The source is a 497 KB PNG. WhatsApp drops the preview thumbnail
- *    for images much over ~300 KB, so it would show no image there at all.
- *    Quantising to a 128-colour palette takes it to about 197 KB with a mean
- *    channel difference of 1.4/255 — no visible banding, even on the paper
- *    texture, which is the part most at risk from palettising.
+ * 1. Weight. The source is a 602 KB PNG: already palettised to 254 colours, but
+ *    the paper grain spread across that many shades is what makes it heavy.
+ *    WhatsApp drops the preview thumbnail for images much over ~300 KB, so it
+ *    would show no image there at all. Requantising takes it to about 197 KB
+ *    with a mean channel difference of 2.3/255, which at 3x zoom on the flat
+ *    paper ground — the part most at risk from palettising — is not visible:
+ *    the grain and the torn edges survive intact.
  *
  * 2. A stable URL. Social platforms cache scraped cards against the image URL,
  *    so a card shared today keeps showing whatever /og/wordpresto-social.png
- *    holds. Dropping a new WordPresto-Aug-OG-03.png in and repointing SOURCE
- *    refreshes existing cards for free, with no new URL to propagate.
+ *    holds. Dropping new artwork in and repointing SOURCE refreshes existing
+ *    cards for free, with no new URL to propagate. That is how this file came
+ *    to replace WordPresto-Aug-OG-02.png, which is left beside it unreferenced.
  *
  * The artwork should be supplied at 1200x630 (1.91:1). If it is not, it gets
  * contained on its own sampled border colour rather than cropped: link previews
@@ -32,7 +35,7 @@ import sharp from 'sharp';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const OG_DIR = join(ROOT, 'public', 'og');
-const SOURCE = join(OG_DIR, 'WordPresto-Aug-OG-02.png');
+const SOURCE = join(OG_DIR, 'Word-Presto-OG-optimized.png');
 const OUT_FILE = join(OG_DIR, 'wordpresto-social.png');
 
 /** Keep in step with the og:image width / height declared in BaseLayout.astro. */
