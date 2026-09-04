@@ -63,6 +63,21 @@ const legalLinks: FooterLink[] = [
         decoding="async"
       />
       <p class="footer-tagline">{c.footerTagline}</p>
+      <a
+        href="https://codehype.ai/product/word-presto?utm_source=codehype_badge"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer-codehype-badge"
+      >
+        <img
+          src="https://codehype.ai/badges/word-presto.svg?variant=find-us&v=11"
+          alt="Find us on CodeHype"
+          width="380"
+          height="100"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
     </div>
 
     <nav class="footer-col" aria-label={c.product}>
@@ -118,6 +133,8 @@ const legalLinks: FooterLink[] = [
   .footer-brand { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
   .footer-logo { display: block; height: 90px; width: auto; align-self: flex-start; mix-blend-mode: multiply; }
   .footer-tagline { margin: 6px 0 0; font-size: var(--wp-text-base); color: var(--wp-text-tertiary); line-height: 1.5; }
+  .footer-codehype-badge { display: block; margin-top: 8px; align-self: flex-start; }
+  .footer-codehype-badge img { display: block; border: 0; width: 100%; max-width: 380px; height: auto; }
   .footer-col { display: flex; flex-direction: column; gap: 10px; }
   .footer-col-heading { font-size: var(--wp-text-sm); font-weight: 700; }
   .footer-link {
